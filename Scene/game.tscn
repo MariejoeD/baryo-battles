@@ -38,7 +38,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_soyno")
 
-[node name="Build" type="Node" parent="." node_paths=PackedStringArray("hbox", "build_button", "attack_button", "build_panel")]
+[node name="Build" type="Node3D" parent="." node_paths=PackedStringArray("hbox", "build_button", "attack_button", "build_panel")]
 script = ExtResource("16_mvi3c")
 hbox = NodePath("../BuildInventoryPanel/HScrollContainer/HBoxContainer")
 build_button = NodePath("../BuildButton")
@@ -148,7 +148,7 @@ texture_normal = ExtResource("11_52o1p")
 layout_mode = 2
 texture_normal = ExtResource("12_dwm4g")
 
-[node name="TextureButton12" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="KuboBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("13_sm8h5")
 

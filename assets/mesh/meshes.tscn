@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://boknptc13ynpu"]
+
+[ext_resource type="ArrayMesh" uid="uid://0xp0iolvwtip" path="res://assets/building models/Kampo-Lv1.obj" id="1_02ufd"]
+[ext_resource type="ArrayMesh" uid="uid://bewk11a3dst35" path="res://assets/building models/Kubo-Lv1.obj" id="2_glv0o"]
+
+[node name="Meshes" type="Node3D"]
+
+[node name="Kampo-lv1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+visible = false
+mesh = ExtResource("1_02ufd")
+
+[node name="Kubo-lv1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+visible = false
+mesh = ExtResource("2_glv0o")
