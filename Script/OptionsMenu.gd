@@ -60,7 +60,7 @@ func _on_sound_button_pressed():
 		sound_button.text = "Sound: Off"
 
 func _on_back_button_pressed():
-	get_tree().change_scene_to_file("res://MainMenu.tscn")
+	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
 
 func _on_about_button_pressed():
 	print("About button pressed!")
@@ -73,7 +73,7 @@ func _on_reset_game_button_pressed():
 
 func _on_reset_confirmed():
 	if reset_text_input.text == "confirm reset":
-		get_tree().change_scene_to_file("res://loading.tscn")  # Transitions to loading screen
+		get_tree().change_scene_to_file("res://Scene/loading.tscn")  # Transitions to loading screen
 	else:
 		print("Reset not confirmed. Please type 'confirm reset' to proceed.")
 		reset_dialog.hide()  # Hide dialog if reset is not confirmed

@@ -1,6 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://bw6q2p71ihxf6"]
+[gd_scene load_steps=23 format=3 uid="uid://bw6q2p71ihxf6"]
 
-[ext_resource type="Script" path="res://game.gd" id="1_soyno"]
+[ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
 [ext_resource type="Texture2D" uid="uid://b1wwyf5rvrg53" path="res://assets/buildings/1.png" id="2_fo735"]
 [ext_resource type="Texture2D" uid="uid://bypumsbt1jqce" path="res://assets/buildings/2.png" id="3_lojci"]
 [ext_resource type="Texture2D" uid="uid://btdf8isd1i225" path="res://assets/buildings/3.png" id="4_gtbp2"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cg585e7tpenx3" path="res://assets/buildings/13.png" id="14_emx8f"]
 [ext_resource type="Texture2D" uid="uid://rwsty7vdsrbm" path="res://assets/buildings/14.png" id="15_i552v"]
 [ext_resource type="Texture2D" uid="uid://cue1edqrt4po3" path="res://assets/map/3dPhilippineMap.jpg" id="16_llexe"]
+[ext_resource type="Script" path="res://Script/build.gd" id="16_mvi3c"]
 [ext_resource type="Texture2D" uid="uid://v1o2siq1evqa" path="res://assets/button/checkbox_beige_empty.png" id="17_aohav"]
 [ext_resource type="Texture2D" uid="uid://cy2ngj8fdba7" path="res://assets/button/checkbox_beige_checked.png" id="18_dflnr"]
 
@@ -36,6 +37,13 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_soyno")
+
+[node name="Build" type="Node" parent="." node_paths=PackedStringArray("hbox", "build_button", "attack_button", "build_panel")]
+script = ExtResource("16_mvi3c")
+hbox = NodePath("../BuildInventoryPanel/HScrollContainer/HBoxContainer")
+build_button = NodePath("../BuildButton")
+attack_button = NodePath("../AttackButton")
+build_panel = NodePath("../BuildInventoryPanel")
 
 [node name="BuildButton" type="Button" parent="."]
 layout_mode = 1
@@ -94,16 +102,16 @@ size_flags_vertical = 3
 theme = SubResource("Theme_0lo5u")
 theme_override_constants/separation = 7
 
-[node name="TextureButton" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="MalacadabraBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_fo735")
 
-[node name="TextureButton2" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="KampoBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 texture_normal = ExtResource("3_lojci")
 
-[node name="TextureButton3" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="KuwadraBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("4_gtbp2")

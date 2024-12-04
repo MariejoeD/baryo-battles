@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="thesis UI"
-run/main_scene="res://LoadingScreen.tscn"
+run/main_scene="res://Scene/LoadingScreen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 

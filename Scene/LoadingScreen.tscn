@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://vnhicn6dhmy"]
 
-[ext_resource type="Texture2D" uid="uid://ccargimus72s" path="res://assets/game/bg2.png" id="1_1oy7s"]
-[ext_resource type="Script" path="res://LoadingScreen.gd" id="1_77sq1"]
-[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_ue88t"]
+[ext_resource type="Texture2D" uid="uid://ccargimus72s" path="res://assets/game/bg2.png" id="1_ksfb6"]
+[ext_resource type="Script" path="res://Script/LoadingScreen.gd" id="2_gs7m5"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_6cuyi"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_firer"]
-texture = ExtResource("1_1oy7s")
+texture = ExtResource("1_ksfb6")
 
 [sub_resource type="Theme" id="Theme_wymkj"]
 
@@ -34,7 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 0.999
 offset_bottom = -0.280029
 theme = SubResource("Theme_wymkj")
-script = ExtResource("1_77sq1")
+script = ExtResource("2_gs7m5")
 
 [node name="LoadingBar" type="ProgressBar" parent="Control"]
 layout_mode = 1
@@ -89,6 +89,6 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 7
 theme_override_constants/outline_size = 4
 theme_override_constants/shadow_outline_size = -1
-theme_override_fonts/font = ExtResource("3_ue88t")
+theme_override_fonts/font = ExtResource("3_6cuyi")
 theme_override_font_sizes/font_size = 130
 text = "BARYO BATTLES"

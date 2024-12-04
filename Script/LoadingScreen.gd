@@ -52,4 +52,4 @@ func perform_loading() -> void:
 		await get_tree().create_timer(0.02).timeout  # Adjust the timer for loading delay
 		
 	# Once loading is complete, change to the main menu scene
-	get_tree().change_scene_to_file("res://MainMenu.tscn")  
+	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")  

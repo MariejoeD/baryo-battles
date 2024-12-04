@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://dblguli3l5xj0"]
 
-[ext_resource type="Script" path="res://OptionsMenu.gd" id="1_d3ey0"]
+[ext_resource type="Script" path="res://Script/OptionsMenu.gd" id="1_d3ey0"]
 [ext_resource type="Texture2D" uid="uid://ccargimus72s" path="res://assets/game/bg2.png" id="1_i0kiq"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_0i08j"]
 

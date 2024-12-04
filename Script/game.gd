@@ -20,10 +20,11 @@ func _ready():
 func _on_attack_button_pressed():
 	print("Attack button pressed!")
 	attack_panel.visible = !attack_panel.visible
+	build_button.visible = !build_button.visible
 
 func _on_build_button_pressed():
 	build_inventory_panel.visible = !build_inventory_panel.visible
-		
+	attack_button.visible = !attack_button.visible
 		
 
 func _on_slot_pressed(slot_index: int):
