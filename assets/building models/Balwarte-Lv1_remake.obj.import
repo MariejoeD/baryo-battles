@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bbs448nmullbn"
+path="res://.godot/imported/Balwarte-Lv1_remake.obj-0d4c42c9317417fa585dbf559ce7f89c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Balwarte-Lv1_remake.obj-0d4c42c9317417fa585dbf559ce7f89c.mesh"]
+
+source_file="res://assets/building models/Balwarte-Lv1_remake.obj"
+dest_files=["res://.godot/imported/Balwarte-Lv1_remake.obj-0d4c42c9317417fa585dbf559ce7f89c.mesh", "res://.godot/imported/Balwarte-Lv1_remake.obj-0d4c42c9317417fa585dbf559ce7f89c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dpyfsy70pmelg"
+path="res://.godot/imported/Barracks-Lv1-remake(WOOD).obj-9d1304ad2f56eca6150dcb929045c67b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Barracks-Lv1-remake(WOOD).obj-9d1304ad2f56eca6150dcb929045c67b.mesh"]
+
+source_file="res://assets/building models/Barracks-Lv1-remake(WOOD).obj"
+dest_files=["res://.godot/imported/Barracks-Lv1-remake(WOOD).obj-9d1304ad2f56eca6150dcb929045c67b.mesh", "res://.godot/imported/Barracks-Lv1-remake(WOOD).obj-9d1304ad2f56eca6150dcb929045c67b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
