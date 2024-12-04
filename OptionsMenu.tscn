@@ -1,0 +1,295 @@
+[gd_scene load_steps=17 format=3 uid="uid://dblguli3l5xj0"]
+
+[ext_resource type="Script" path="res://OptionsMenu.gd" id="1_d3ey0"]
+[ext_resource type="Texture2D" uid="uid://ccargimus72s" path="res://assets/game/bg2.png" id="1_i0kiq"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_0i08j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ylpkr"]
+texture = ExtResource("1_i0kiq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2bnrp"]
+bg_color = Color(0.963544, 0.93634, 0.976731, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.396078, 0.333333, 0.560784, 1)
+shadow_size = 3
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rmxn"]
+bg_color = Color(0.396078, 0.333333, 0.560784, 1)
+border_color = Color(0.260592, 0.229913, 0.351053, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.996219, 0.989114, 0.991635, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbvrx"]
+bg_color = Color(0.396078, 0.333333, 0.560784, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_a5x4j"]
+default_font_size = 50
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.396078, 0.333333, 0.560784, 1)
+Button/colors/icon_disabled_color = Color(0.803233, 0.708506, 0.64298, 0.4)
+Button/colors/icon_focus_color = Color(0.875713, 0.720962, 0.789599, 1)
+Button/colors/icon_normal_color = Color(0.921579, 0.932573, 0.540455, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_2bnrp")
+Button/styles/normal = SubResource("StyleBoxFlat_7rmxn")
+Button/styles/pressed = SubResource("StyleBoxFlat_pbvrx")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dpsf"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0.396078, 0.333333, 0.560784, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.396078, 0.333333, 0.560784, 1)
+shadow_size = 3
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8qe4"]
+bg_color = Color(0.396078, 0.333333, 0.560784, 1)
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45ab5"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_bg2dj"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.396078, 0.333333, 0.560784, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_6dpsf")
+Button/styles/normal = SubResource("StyleBoxFlat_b8qe4")
+Button/styles/pressed = SubResource("StyleBoxFlat_45ab5")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3wj2"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0.898039, 0.0117647, 0.0588235, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.898039, 0.0117647, 0.0588235, 1)
+shadow_size = 3
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2d5v"]
+bg_color = Color(0.898039, 0.0117647, 0.0588235, 1)
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncdi1"]
+bg_color = Color(0.898039, 0.0117647, 0.0588235, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_vv0pg"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.396078, 0.333333, 0.560784, 1)
+Button/colors/font_hover_pressed_color = Color(0.396078, 0.333333, 0.560784, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_u3wj2")
+Button/styles/normal = SubResource("StyleBoxFlat_s2d5v")
+Button/styles/pressed = SubResource("StyleBoxFlat_ncdi1")
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ylpkr")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_d3ey0")
+
+[node name="Options" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 2.85
+anchor_right = 31.719
+anchor_bottom = 5.6
+offset_left = 310.0
+offset_top = -28.0
+offset_right = -322.76
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.752941, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.443034, 0.241884, 0.2279, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 7
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = -1
+theme_override_fonts/font = ExtResource("3_0i08j")
+theme_override_font_sizes/font_size = 130
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 346.0
+offset_right = 933.0
+offset_bottom = 611.0
+theme = SubResource("Theme_a5x4j")
+theme_override_constants/separation = 29
+alignment = 1
+
+[node name="musicButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = " Music On/Off"
+
+[node name="musicOn" type="TextureRect" parent="Control/VBoxContainer/musicButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.043
+anchor_top = 0.246
+anchor_right = 0.109
+anchor_bottom = 0.826
+offset_left = 2.985
+offset_top = -2.974
+offset_right = 3.055
+offset_bottom = -2.994
+
+[node name="musicOff" type="TextureRect" parent="Control/VBoxContainer/musicButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.043
+anchor_top = 0.246
+anchor_right = 0.109
+anchor_bottom = 0.826
+offset_left = 2.985
+offset_top = -2.974
+offset_right = 3.055
+offset_bottom = -2.994
+
+[node name="SoundButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = " Sound On/Off"
+
+[node name="audioOn" type="TextureRect" parent="Control/VBoxContainer/SoundButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.038
+anchor_top = 0.261
+anchor_right = 0.104
+anchor_bottom = 0.841
+offset_left = 0.00999832
+offset_top = -0.00900078
+offset_right = 0.079998
+offset_bottom = -0.0290031
+
+[node name="audioOff" type="TextureRect" parent="Control/VBoxContainer/SoundButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.038
+anchor_top = 0.261
+anchor_right = 0.104
+anchor_bottom = 0.841
+offset_left = 0.00999832
+offset_top = -0.00900078
+offset_right = 0.079998
+offset_bottom = -0.0290031
+
+[node name="AboutButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "About"
+
+[node name="about" type="TextureRect" parent="Control/VBoxContainer/AboutButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = 0.232
+anchor_right = 0.107
+anchor_bottom = 0.812
+offset_left = 0.195
+offset_top = -0.00800133
+offset_right = 0.264992
+offset_bottom = -0.0280037
+
+[node name="backButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 33.0
+offset_right = 126.0
+offset_bottom = 70.0
+theme = SubResource("Theme_bg2dj")
+text = "BACK  "
+alignment = 2
+
+[node name="backButton" type="TextureRect" parent="Control/backButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.081
+anchor_right = 0.289
+anchor_bottom = 0.892
+offset_left = 0.312
+offset_top = 0.00300002
+offset_right = 10.256
+offset_bottom = -0.00400162
+
+[node name="ResetGameButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 1055.0
+offset_top = 640.0
+offset_right = 1199.0
+offset_bottom = 678.0
+theme = SubResource("Theme_vv0pg")
+text = "       RESET GAME  "
+alignment = 2
+
+[node name="resetGame" type="TextureRect" parent="Control/ResetGameButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.233
+anchor_bottom = 0.921
+offset_left = 5.0
+offset_top = 4.0
+offset_right = -0.0470009
+offset_bottom = 0.0019989
+
+[node name="ResetDialog" type="ConfirmationDialog" parent="Control"]
+initial_position = 1
+size = Vector2i(350, 150)
+
+[node name="LineEdit" type="LineEdit" parent="Control/ResetDialog"]

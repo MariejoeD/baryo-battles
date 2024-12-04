@@ -1,0 +1,109 @@
+[gd_scene load_steps=3 format=3 uid="uid://3hgod1qc163n"]
+
+[ext_resource type="Script" path="res://play.gd" id="1_gjxbs"]
+[ext_resource type="Texture2D" uid="uid://65ddk7qnjqk1" path="res://assets/button/buttonSquare_beige.png" id="2_jrd8q"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.964
+offset_left = 5.0
+offset_top = -18.0
+offset_right = 7.0
+offset_bottom = 5.91998
+script = ExtResource("1_gjxbs")
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+
+[node name="BuildButton" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.877
+anchor_top = 0.812
+anchor_right = 0.955
+anchor_bottom = 0.951
+offset_left = -44.314
+offset_top = 17.984
+offset_right = 49.6901
+offset_bottom = 28.182
+
+[node name="TabContainer" type="TabContainer" parent="BuildButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.999
+anchor_bottom = 1.0
+offset_left = -1082.0
+offset_top = -471.0
+offset_right = 0.194
+offset_bottom = -121.0
+current_tab = 0
+
+[node name="HScrollBar" type="HScrollBar" parent="BuildButton/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="GridContainer" type="GridContainer" parent="BuildButton/TabContainer/HScrollBar"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 4.0
+offset_right = -5.0
+offset_bottom = -4.0
+columns = 10
+
+[node name="TextureButton" type="TextureButton" parent="BuildButton/TabContainer/HScrollBar/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture_normal = ExtResource("2_jrd8q")
+
+[node name="TextureButton2" type="TextureButton" parent="BuildButton/TabContainer/HScrollBar/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture_normal = ExtResource("2_jrd8q")
+
+[node name="TextureButton3" type="TextureButton" parent="BuildButton/TabContainer/HScrollBar/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture_normal = ExtResource("2_jrd8q")
+
+[node name="TextureButton4" type="TextureButton" parent="BuildButton/TabContainer/HScrollBar/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture_normal = ExtResource("2_jrd8q")
+
+[node name="TextureButton5" type="TextureButton" parent="BuildButton/TabContainer/HScrollBar/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture_normal = ExtResource("2_jrd8q")
+
+[node name="TextureButton6" type="TextureButton" parent="BuildButton/TabContainer/HScrollBar/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture_normal = ExtResource("2_jrd8q")
+
+[node name="TextureButton7" type="TextureButton" parent="BuildButton/TabContainer/HScrollBar/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture_normal = ExtResource("2_jrd8q")
+
+[node name="TextureButton8" type="TextureButton" parent="BuildButton/TabContainer/HScrollBar/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture_normal = ExtResource("2_jrd8q")
+
+[node name="TextureButton9" type="TextureButton" parent="BuildButton/TabContainer/HScrollBar/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture_normal = ExtResource("2_jrd8q")
+
+[node name="TextureButton10" type="TextureButton" parent="BuildButton/TabContainer/HScrollBar/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture_normal = ExtResource("2_jrd8q")
+
+[node name="AttackButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0

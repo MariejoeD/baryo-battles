@@ -1,0 +1,93 @@
+[gd_scene load_steps=2 format=3 uid="uid://3hgod1qc163n"]
+
+[ext_resource type="Script" path="res://play.gd" id="1_gjxbs"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.964
+offset_right = 2.0
+offset_bottom = 23.92
+script = ExtResource("1_gjxbs")
+
+[node name="BuildButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1040.0
+offset_top = 610.0
+offset_right = 1266.0
+offset_bottom = 707.0
+text = "BUILD"
+
+[node name="AttackButton" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 614.0
+offset_right = 239.0
+offset_bottom = 706.0
+text = "Attack"
+
+[node name="BuildInventoryPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 83.0
+offset_top = 109.0
+offset_right = 1176.0
+offset_bottom = 559.0
+
+[node name="HScrollContainer" type="HScrollBar" parent="BuildInventoryPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="BuildInventoryPanel/HScrollContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -267.0
+offset_right = 268.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 10
+
+[node name="TextureButton" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="TextureButton2" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="TextureButton3" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="TextureButton4" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="TextureButton5" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="TextureButton6" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="TextureButton7" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="TextureButton8" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="TextureButton9" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="TextureButton10" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2

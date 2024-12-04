@@ -1,0 +1,232 @@
+[gd_scene load_steps=22 format=3 uid="uid://bw6q2p71ihxf6"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_soyno"]
+[ext_resource type="Texture2D" uid="uid://b1wwyf5rvrg53" path="res://assets/buildings/1.png" id="2_fo735"]
+[ext_resource type="Texture2D" uid="uid://bypumsbt1jqce" path="res://assets/buildings/2.png" id="3_lojci"]
+[ext_resource type="Texture2D" uid="uid://btdf8isd1i225" path="res://assets/buildings/3.png" id="4_gtbp2"]
+[ext_resource type="Texture2D" uid="uid://bxkl6yt3cqsb2" path="res://assets/buildings/4.png" id="5_ssaq3"]
+[ext_resource type="Texture2D" uid="uid://xjpie8htx1lp" path="res://assets/buildings/5.png" id="6_cf4pu"]
+[ext_resource type="Texture2D" uid="uid://bx5bdxq4ws4a1" path="res://assets/buildings/6.png" id="7_2h52i"]
+[ext_resource type="Texture2D" uid="uid://c4cw83n0byjm6" path="res://assets/buildings/7.png" id="8_4b8y4"]
+[ext_resource type="Texture2D" uid="uid://dsgmswk6e4vrj" path="res://assets/buildings/8.png" id="9_mgmfc"]
+[ext_resource type="Texture2D" uid="uid://clqcjvq38ydh7" path="res://assets/buildings/9.png" id="10_m661d"]
+[ext_resource type="Texture2D" uid="uid://0jqj8hqppvp0" path="res://assets/buildings/10.png" id="11_52o1p"]
+[ext_resource type="Texture2D" uid="uid://d212mdbl643mo" path="res://assets/buildings/11.png" id="12_dwm4g"]
+[ext_resource type="Texture2D" uid="uid://d4ii0eu4d683o" path="res://assets/buildings/12.png" id="13_sm8h5"]
+[ext_resource type="Texture2D" uid="uid://cg585e7tpenx3" path="res://assets/buildings/13.png" id="14_emx8f"]
+[ext_resource type="Texture2D" uid="uid://rwsty7vdsrbm" path="res://assets/buildings/14.png" id="15_i552v"]
+[ext_resource type="Texture2D" uid="uid://cue1edqrt4po3" path="res://assets/map/3dPhilippineMap.jpg" id="16_llexe"]
+[ext_resource type="Texture2D" uid="uid://v1o2siq1evqa" path="res://assets/button/checkbox_beige_empty.png" id="17_aohav"]
+[ext_resource type="Texture2D" uid="uid://cy2ngj8fdba7" path="res://assets/button/checkbox_beige_checked.png" id="18_dflnr"]
+
+[sub_resource type="Theme" id="Theme_1ed3j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ql8km"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="Theme" id="Theme_0lo5u"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_soyno")
+
+[node name="BuildButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 26.0
+anchor_top = 15.25
+anchor_right = 31.65
+anchor_bottom = 17.274
+offset_left = -0.00012207
+offset_top = -6.10352e-05
+offset_bottom = 16.04
+theme_override_font_sizes/font_size = 60
+text = "BUILD"
+
+[node name="AttackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 15.35
+anchor_right = 5.975
+anchor_bottom = 17.65
+offset_left = -4.0
+offset_top = -8.0
+offset_right = -1.52588e-05
+offset_bottom = -6.10352e-05
+theme_override_font_sizes/font_size = 60
+text = "Attack"
+
+[node name="BuildInventoryPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+offset_left = 19.0
+offset_top = 35.0
+offset_right = 1259.0
+offset_bottom = 577.0
+theme = SubResource("Theme_1ed3j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ql8km")
+
+[node name="HScrollContainer" type="ScrollContainer" parent="BuildInventoryPanel"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 37.0
+offset_right = -15.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BuildInventoryPanel/HScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_0lo5u")
+theme_override_constants/separation = 7
+
+[node name="TextureButton" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_fo735")
+
+[node name="TextureButton2" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+texture_normal = ExtResource("3_lojci")
+
+[node name="TextureButton3" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_gtbp2")
+
+[node name="TextureButton4" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_ssaq3")
+
+[node name="TextureButton5" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_cf4pu")
+
+[node name="TextureButton6" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_2h52i")
+
+[node name="TextureButton7" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("8_4b8y4")
+
+[node name="TextureButton8" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_mgmfc")
+
+[node name="TextureButton9" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_m661d")
+
+[node name="TextureButton10" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("11_52o1p")
+
+[node name="TextureButton11" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("12_dwm4g")
+
+[node name="TextureButton12" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_sm8h5")
+
+[node name="TextureButton13" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("14_emx8f")
+
+[node name="TextureButton14" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("15_i552v")
+
+[node name="AttackPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 7.125
+anchor_top = 1.0
+anchor_right = 25.45
+anchor_bottom = 14.325
+offset_left = -3.05176e-05
+offset_top = 10.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="AttackPanel"]
+layout_mode = 0
+offset_right = 731.0
+offset_bottom = 523.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AttackPanel/ScrollContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="AttackPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("16_llexe")
+
+[node name="Button" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.352
+anchor_top = 0.544
+anchor_right = 0.418
+anchor_bottom = 0.604
+offset_left = 0.279968
+offset_top = -0.0240173
+offset_right = -0.230011
+offset_bottom = 0.215973
+texture_normal = ExtResource("17_aohav")
+texture_pressed = ExtResource("18_dflnr")
+
+[node name="Button2" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.352
+anchor_top = 0.544
+anchor_right = 0.418
+anchor_bottom = 0.604
+offset_left = 282.28
+offset_top = -38.024
+offset_right = 281.77
+offset_bottom = -37.784
+texture_normal = ExtResource("17_aohav")
+texture_pressed = ExtResource("18_dflnr")
+
+[node name="Button3" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.352
+anchor_top = 0.544
+anchor_right = 0.418
+anchor_bottom = 0.604
+offset_left = 156.28
+offset_top = 65.976
+offset_right = 155.77
+offset_bottom = 66.216
+texture_normal = ExtResource("17_aohav")
+texture_pressed = ExtResource("18_dflnr")
+
+[node name="Button4" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.352
+anchor_top = 0.544
+anchor_right = 0.418
+anchor_bottom = 0.604
+offset_left = 137.28
+offset_top = -41.024
+offset_right = 136.77
+offset_bottom = -40.784
+texture_normal = ExtResource("17_aohav")
+texture_pressed = ExtResource("18_dflnr")

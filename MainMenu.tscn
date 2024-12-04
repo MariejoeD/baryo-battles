@@ -1,0 +1,160 @@
+[gd_scene load_steps=9 format=3 uid="uid://cw16scta7vyme"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_mnnij"]
+[ext_resource type="Texture2D" uid="uid://ccargimus72s" path="res://assets/game/bg2.png" id="2_2q07w"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_1jttn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_byc1u"]
+texture = ExtResource("2_2q07w")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxqdx"]
+bg_color = Color(0.963544, 0.93634, 0.976731, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.396078, 0.333333, 0.560784, 1)
+shadow_size = 3
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fnxjr"]
+bg_color = Color(0.396078, 0.333333, 0.560784, 1)
+border_color = Color(0.260592, 0.229913, 0.351053, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.996219, 0.989114, 0.991635, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5dkn3"]
+bg_color = Color(0.396078, 0.333333, 0.560784, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_xot5b"]
+default_font_size = 50
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.396078, 0.333333, 0.560784, 1)
+Button/colors/icon_disabled_color = Color(0.803233, 0.708506, 0.64298, 0.4)
+Button/colors/icon_focus_color = Color(0.875713, 0.720962, 0.789599, 1)
+Button/colors/icon_normal_color = Color(0.921579, 0.932573, 0.540455, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_yxqdx")
+Button/styles/normal = SubResource("StyleBoxFlat_fnxjr")
+Button/styles/pressed = SubResource("StyleBoxFlat_5dkn3")
+
+[node name="Scenes" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1299.0
+offset_bottom = 739.0
+script = ExtResource("1_mnnij")
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.984
+anchor_bottom = 0.977
+offset_right = -0.216064
+offset_bottom = -0.00305176
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_byc1u")
+
+[node name="Baryo Battles" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -396.5
+offset_top = 87.0
+offset_right = 457.5
+offset_bottom = -449.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.752941, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 7
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = -1
+theme_override_fonts/font = ExtResource("3_1jttn")
+theme_override_font_sizes/font_size = 130
+text = "BARYO BATTLES"
+
+[node name="Description" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 259.0
+offset_right = 1073.0
+offset_bottom = 293.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.57961, 0.371796, 0.30738, 1)
+theme_override_font_sizes/font_size = 24
+text = "A FILIPINO GAME FOR PHILIPPINE CULTURAL HERITAGE PRESERVATION.
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 346.0
+offset_right = 933.0
+offset_bottom = 611.0
+theme = SubResource("Theme_xot5b")
+theme_override_constants/separation = 29
+alignment = 1
+
+[node name="play" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="playIcon" type="TextureRect" parent="Control/VBoxContainer/play"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.045
+anchor_top = 0.188
+anchor_right = 0.111
+anchor_bottom = 0.768
+offset_left = -0.225
+offset_top = 0.0279999
+offset_right = -0.155006
+offset_bottom = 0.00799942
+
+[node name="options" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="optionsIcon" type="TextureRect" parent="Control/VBoxContainer/options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = 0.203
+anchor_right = 0.107
+anchor_bottom = 0.696
+offset_left = 0.195
+offset_top = -6.007
+offset_right = 0.264992
+offset_bottom = -0.0240021
+
+[node name="quit" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="quitIcon" type="TextureRect" parent="Control/VBoxContainer/quit"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.046
+anchor_top = 0.217
+anchor_right = 0.112
+anchor_bottom = 0.797
+offset_left = -0.830002
+offset_top = -0.973001
+offset_right = -0.760002
+offset_bottom = -0.993004

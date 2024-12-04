@@ -1,0 +1,109 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw16scta7vyme"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_mrso7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uaum4"]
+bg_color = Color(1, 0.917647, 0.654902, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_glv1j"]
+
+[node name="Scenes" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1299.0
+offset_bottom = 739.0
+script = ExtResource("1_mrso7")
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -19.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uaum4")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -307.5
+offset_top = 108.0
+offset_right = 308.5
+offset_bottom = -521.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.752941, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.443034, 0.241884, 0.2279, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = -1
+theme_override_constants/line_spacing = 7
+theme_override_fonts/font = SubResource("SystemFont_glv1j")
+theme_override_font_sizes/font_size = 80
+text = "BARYO BATTLES"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 210.0
+offset_right = 1078.0
+offset_bottom = 244.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.57961, 0.371796, 0.30738, 1)
+theme_override_font_sizes/font_size = 24
+text = "A FILIPINO GAME FOR PHILIPPINE CULTURAL HERITAGE PRESERVATION.
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 7
+
+[node name="PlayButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_pressed_color = Color(1, 0.709804, 0.854902, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.709804, 0.854902, 1)
+theme_override_colors/icon_disabled_color = Color(1, 0.709804, 0.854902, 1)
+toggle_mode = true
+button_pressed = true
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_focus_color = Color(1, 0.709804, 0.854902, 1)
+toggle_mode = true
+button_pressed = true
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "Quit Game"
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="Control/VBoxContainer/PlayButton" to="Control" method="_on_play_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/OptionsButton" to="Control" method="_on_options_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/QuitButton" to="Control" method="_on_quit_button_pressed"]

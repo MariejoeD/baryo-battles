@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://vnhicn6dhmy"]
+
+[ext_resource type="Texture2D" uid="uid://ccargimus72s" path="res://assets/game/bg2.png" id="1_1oy7s"]
+[ext_resource type="Script" path="res://LoadingScreen.gd" id="1_77sq1"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_ue88t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_firer"]
+texture = ExtResource("1_1oy7s")
+
+[sub_resource type="Theme" id="Theme_wymkj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emjjt"]
+bg_color = Color(0.396078, 0.333333, 0.560784, 1)
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(5, 5)
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_firer")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.999
+offset_bottom = -0.280029
+theme = SubResource("Theme_wymkj")
+script = ExtResource("1_77sq1")
+
+[node name="LoadingBar" type="ProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 279.0
+offset_top = -106.0
+offset_right = -313.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 19
+theme_override_styles/background = SubResource("StyleBoxFlat_emjjt")
+
+[node name="RandomMessage" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.207
+anchor_top = 1.0
+anchor_right = 0.739
+anchor_bottom = 1.0
+offset_left = 68.04
+offset_top = -134.0
+offset_right = -34.92
+offset_bottom = -108.0
+theme_override_colors/font_color = Color(0.0717031, 0.0906458, 0.0745647, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.917647, 0.654902, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Loading..."
+
+[node name="Baryo Battles" type="Label" parent="Control/RandomMessage"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.156
+anchor_top = -18.423
+anchor_right = 1.322
+anchor_bottom = -12.782
+offset_left = 0.168015
+offset_top = -0.00198364
+offset_right = -0.116089
+offset_bottom = 16.332
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.752941, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 7
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = -1
+theme_override_fonts/font = ExtResource("3_ue88t")
+theme_override_font_sizes/font_size = 130
+text = "BARYO BATTLES"

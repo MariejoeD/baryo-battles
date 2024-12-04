@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://3hgod1qc163n"]
+
+[ext_resource type="Script" path="res://play.gd" id="1_gjxbs"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.964
+offset_right = 2.0
+offset_bottom = 23.92
+script = ExtResource("1_gjxbs")
+
+[node name="BuildButton" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 29.6
+anchor_top = 15.775
+anchor_right = 29.6
+anchor_bottom = 15.775
+offset_left = -36826.2
+offset_top = -10775.5
+offset_right = -36676.2
+offset_bottom = -10625.5
+text = "Build"
+
+[node name="BuildingPopupMenu" type="PopupMenu" parent="."]
+
+[connection signal="pressed" from="BuildButton" to="." method="_on_build_button_pressed"]
