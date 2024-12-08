@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bw6q2p71ihxf6"]
+[gd_scene load_steps=22 format=3 uid="uid://bw6q2p71ihxf6"]
 
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
 [ext_resource type="Texture2D" uid="uid://b1wwyf5rvrg53" path="res://assets/buildings/1.png" id="2_fo735"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bx5bdxq4ws4a1" path="res://assets/buildings/6.png" id="7_2h52i"]
 [ext_resource type="Texture2D" uid="uid://c4cw83n0byjm6" path="res://assets/buildings/7.png" id="8_4b8y4"]
 [ext_resource type="Texture2D" uid="uid://dsgmswk6e4vrj" path="res://assets/buildings/8.png" id="9_mgmfc"]
-[ext_resource type="Texture2D" uid="uid://clqcjvq38ydh7" path="res://assets/buildings/9.png" id="10_m661d"]
 [ext_resource type="Texture2D" uid="uid://0jqj8hqppvp0" path="res://assets/buildings/10.png" id="11_52o1p"]
 [ext_resource type="Texture2D" uid="uid://d212mdbl643mo" path="res://assets/buildings/11.png" id="12_dwm4g"]
 [ext_resource type="Texture2D" uid="uid://d4ii0eu4d683o" path="res://assets/buildings/12.png" id="13_sm8h5"]
@@ -90,8 +89,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 11.0
 offset_top = 37.0
-offset_right = -15.0
-offset_bottom = -33.0
+offset_right = 71.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -116,35 +115,31 @@ layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("4_gtbp2")
 
-[node name="TextureButton4" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="PandayanBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("5_ssaq3")
 
-[node name="TextureButton5" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="SandatahangLakasBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("6_cf4pu")
 
-[node name="TextureButton6" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="KawaBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("7_2h52i")
 
-[node name="TextureButton7" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="KanyonBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("8_4b8y4")
 
-[node name="TextureButton8" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="BakodBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("9_mgmfc")
 
-[node name="TextureButton9" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("10_m661d")
-
-[node name="TextureButton10" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="BalwarteBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("11_52o1p")
 
-[node name="TextureButton11" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="KwitisBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("12_dwm4g")
 
@@ -152,11 +147,11 @@ texture_normal = ExtResource("12_dwm4g")
 layout_mode = 2
 texture_normal = ExtResource("13_sm8h5")
 
-[node name="TextureButton13" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="TanimBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("14_emx8f")
 
-[node name="TextureButton14" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="ImbakanBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("15_i552v")
 

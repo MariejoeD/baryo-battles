@@ -13,7 +13,7 @@ var quit_icon = preload("res://assets/game/quit_icon.png")
 # Function to start the game
 func _on_play_button_pressed():
 	print("Play button pressed!")
-	get_tree().change_scene_to_file("res://Scene/game.tscn")
+	get_tree().change_scene_to_file("res://Scene/HomeBase.tscn")
 
 # Function to open options
 func _on_options_button_pressed():

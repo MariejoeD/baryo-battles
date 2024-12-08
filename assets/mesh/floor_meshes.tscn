@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpas4g84qld1c"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jxhvx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1euv6"]
+albedo_color = Color(0.347702, 1, 0.315169, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vaoap"]
+points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qxkvv"]
+
+[node name="Floor Meshes" type="Node3D"]
+
+[node name="Grass Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_jxhvx")
+surface_material_override/0 = SubResource("StandardMaterial3D_1euv6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grass Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass Floor/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_vaoap")
+
+[node name="Path Point" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -1, 0)
+mesh = SubResource("BoxMesh_qxkvv")

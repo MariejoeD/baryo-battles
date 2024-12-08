@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bqp5rcu1i0tvy"
+path="res://.godot/imported/Malacanang-Lv1_remake(WOOD).obj-5b1877700460f2118d9bda2ce920793b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Malacanang-Lv1_remake(WOOD).obj-5b1877700460f2118d9bda2ce920793b.mesh"]
+
+source_file="res://assets/building models/Malacanang-Lv1_remake(WOOD).obj"
+dest_files=["res://.godot/imported/Malacanang-Lv1_remake(WOOD).obj-5b1877700460f2118d9bda2ce920793b.mesh", "res://.godot/imported/Malacanang-Lv1_remake(WOOD).obj-5b1877700460f2118d9bda2ce920793b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
