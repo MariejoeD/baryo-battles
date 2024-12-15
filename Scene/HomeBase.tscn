@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddwrhwm3otd8p"]
+[gd_scene load_steps=12 format=3 uid="uid://ddwrhwm3otd8p"]
 
 [ext_resource type="PackedScene" uid="uid://bw6q2p71ihxf6" path="res://Scene/game.tscn" id="1_8noqr"]
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="1_ewtg3"]
@@ -18,6 +18,13 @@ sky = SubResource("Sky_uof85")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o15vt"]
+albedo_color = Color(0.34902, 1, 0.313726, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kjyqw"]
+material = SubResource("StandardMaterial3D_o15vt")
+size = Vector2(500, 500)
 
 [node name="Root" type="CanvasLayer"]
 
@@ -64,3 +71,7 @@ script = ExtResource("4_6i8of")
 
 [node name="DuplicatedTiles" type="Node3D" parent="Base/AMap"]
 script = ExtResource("6_ttmot")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150, 0, -150)
+mesh = SubResource("PlaneMesh_kjyqw")

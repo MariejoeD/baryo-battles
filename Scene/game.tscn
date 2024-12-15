@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bw6q2p71ihxf6"]
+[gd_scene load_steps=41 format=3 uid="uid://bw6q2p71ihxf6"]
 
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
 [ext_resource type="Texture2D" uid="uid://b1wwyf5rvrg53" path="res://assets/buildings/1.png" id="2_fo735"]
 [ext_resource type="Texture2D" uid="uid://bypumsbt1jqce" path="res://assets/buildings/2.png" id="3_lojci"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_mlhjp"]
 [ext_resource type="Texture2D" uid="uid://btdf8isd1i225" path="res://assets/buildings/3.png" id="4_gtbp2"]
 [ext_resource type="Texture2D" uid="uid://bxkl6yt3cqsb2" path="res://assets/buildings/4.png" id="5_ssaq3"]
 [ext_resource type="Texture2D" uid="uid://xjpie8htx1lp" path="res://assets/buildings/5.png" id="6_cf4pu"]
@@ -18,6 +19,116 @@
 [ext_resource type="Script" path="res://Script/build.gd" id="16_mvi3c"]
 [ext_resource type="Texture2D" uid="uid://v1o2siq1evqa" path="res://assets/button/checkbox_beige_empty.png" id="17_aohav"]
 [ext_resource type="Texture2D" uid="uid://cy2ngj8fdba7" path="res://assets/button/checkbox_beige_checked.png" id="18_dflnr"]
+[ext_resource type="Texture2D" uid="uid://cn66uvxh4adkn" path="res://assets/game/foodIcon.png" id="20_5oy3o"]
+[ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="21_f868t"]
+[ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="22_u0e8w"]
+[ext_resource type="Texture2D" uid="uid://spocye4ssw8t" path="res://assets/game/settingsIcon.png" id="23_iau8l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtsk4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.266667, 0.137255, 0.0588235, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n67ky"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.266667, 0.137255, 0.0588235, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nftat"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.266667, 0.137255, 0.0588235, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5bw3"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_je6kh"]
+bg_color = Color(0.683579, 0.498823, 0.20816, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.266667, 0.137255, 0.0588235, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6myes"]
+bg_color = Color(0.721569, 0.447059, 0.968627, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lo67v"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.266667, 0.137255, 0.0588235, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edsjt"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.266667, 0.137255, 0.0588235, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gr1ie"]
+bg_color = Color(0.764882, 0.18117, 0.15977, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.26777, 0.138217, 0.0582334, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [sub_resource type="Theme" id="Theme_1ed3j"]
 
@@ -29,6 +140,57 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="Theme" id="Theme_0lo5u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lt0qo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wts8e"]
+bg_color = Color(0.945578, 0.725404, 0.530248, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85004, 0.784728, 0.762477, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f03b4"]
+bg_color = Color(0.945578, 0.725404, 0.530248, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85004, 0.784728, 0.762477, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rg8t3"]
+bg_color = Color(0.945578, 0.725404, 0.530248, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85004, 0.784728, 0.762477, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_066ap"]
+bg_color = Color(0.735598, 0.567891, 0.313245, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85004, 0.784728, 0.762477, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -54,7 +216,17 @@ anchor_bottom = 17.274
 offset_left = -0.00012207
 offset_top = -6.10352e-05
 offset_bottom = 16.04
-theme_override_font_sizes/font_size = 60
+theme_override_colors/font_hover_pressed_color = Color(0.682353, 0.498039, 0.207843, 1)
+theme_override_colors/font_hover_color = Color(0.682353, 0.498039, 0.207843, 1)
+theme_override_colors/font_pressed_color = Color(0.682353, 0.498039, 0.207843, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxFlat_wtsk4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_n67ky")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nftat")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o5bw3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_je6kh")
 text = "BUILD"
 
 [node name="AttackButton" type="Button" parent="."]
@@ -68,7 +240,16 @@ offset_left = -4.0
 offset_top = -8.0
 offset_right = -1.52588e-05
 offset_bottom = -6.10352e-05
-theme_override_font_sizes/font_size = 60
+theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
+theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
+theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxFlat_6myes")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lo67v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_edsjt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gr1ie")
 text = "Attack"
 
 [node name="BuildInventoryPanel" type="Panel" parent="."]
@@ -233,3 +414,90 @@ offset_right = 136.77
 offset_bottom = -40.784
 texture_normal = ExtResource("17_aohav")
 texture_pressed = ExtResource("18_dflnr")
+
+[node name="ResourcePanel" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 3.0
+offset_right = 978.0
+offset_bottom = 44.0
+theme_override_constants/separation = 200
+
+[node name="FoodContainer" type="HBoxContainer" parent="ResourcePanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="icon" type="TextureRect" parent="ResourcePanel/FoodContainer"]
+layout_mode = 2
+texture = ExtResource("20_5oy3o")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="ResourcePanel/FoodContainer"]
+layout_mode = 2
+
+[node name="StoneContainer" type="HBoxContainer" parent="ResourcePanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="icon" type="TextureRect" parent="ResourcePanel/StoneContainer"]
+layout_mode = 2
+texture = ExtResource("21_f868t")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="ResourcePanel/StoneContainer"]
+layout_mode = 2
+
+[node name="WoodContainer" type="HBoxContainer" parent="ResourcePanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="icon" type="TextureRect" parent="ResourcePanel/WoodContainer"]
+layout_mode = 2
+texture = ExtResource("22_u0e8w")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="ResourcePanel/WoodContainer"]
+layout_mode = 2
+
+[node name="SettingsContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 6.641
+anchor_bottom = 1.0
+offset_left = 1191.0
+offset_top = 4.0
+offset_right = 983.36
+offset_bottom = 19.0
+
+[node name="SettingsButton" type="Button" parent="SettingsContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_lt0qo")
+text = "              "
+
+[node name="icon" type="TextureRect" parent="SettingsContainer/SettingsButton"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 52.0
+offset_bottom = 47.0
+texture = ExtResource("23_iau8l")
+expand_mode = 3
+
+[node name="SettingsPanel" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 312.0
+offset_top = 151.0
+offset_right = 928.0
+offset_bottom = 480.0
+
+[node name="BackToMainMenuButton" type="Button" parent="SettingsPanel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wts8e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_f03b4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rg8t3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rg8t3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_066ap")
+text = " Back to Main Menu"
