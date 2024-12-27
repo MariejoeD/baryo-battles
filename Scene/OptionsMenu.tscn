@@ -46,7 +46,7 @@ Button/styles/hover = SubResource("StyleBoxFlat_2bnrp")
 Button/styles/normal = SubResource("StyleBoxFlat_7rmxn")
 Button/styles/pressed = SubResource("StyleBoxFlat_pbvrx")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dpsf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow8tj"]
 bg_color = Color(1, 1, 1, 1)
 border_color = Color(0.396078, 0.333333, 0.560784, 1)
 border_blend = true
@@ -58,7 +58,7 @@ shadow_color = Color(0.396078, 0.333333, 0.560784, 1)
 shadow_size = 3
 shadow_offset = Vector2(5, 5)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8qe4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxlqa"]
 bg_color = Color(0.396078, 0.333333, 0.560784, 1)
 border_color = Color(1, 1, 1, 1)
 border_blend = true
@@ -70,7 +70,7 @@ shadow_color = Color(1, 1, 1, 0.6)
 shadow_size = 3
 shadow_offset = Vector2(5, 5)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45ab5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pp60x"]
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -79,9 +79,9 @@ corner_radius_bottom_left = 20
 [sub_resource type="Theme" id="Theme_bg2dj"]
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_color = Color(0.396078, 0.333333, 0.560784, 1)
-Button/styles/hover = SubResource("StyleBoxFlat_6dpsf")
-Button/styles/normal = SubResource("StyleBoxFlat_b8qe4")
-Button/styles/pressed = SubResource("StyleBoxFlat_45ab5")
+Button/styles/hover = SubResource("StyleBoxFlat_ow8tj")
+Button/styles/normal = SubResource("StyleBoxFlat_bxlqa")
+Button/styles/pressed = SubResource("StyleBoxFlat_pp60x")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3wj2"]
 bg_color = Color(1, 1, 1, 1)

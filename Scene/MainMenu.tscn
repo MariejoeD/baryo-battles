@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cw16scta7vyme"]
+[gd_scene load_steps=11 format=3 uid="uid://cw16scta7vyme"]
 
 [ext_resource type="Script" path="res://Script/MainMenu.gd" id="1_mnnij"]
 [ext_resource type="Texture2D" uid="uid://ccargimus72s" path="res://assets/game/bg2.png" id="2_2q07w"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_1jttn"]
+[ext_resource type="Texture2D" uid="uid://b455hpxccldpw" path="res://assets/button/almanac.png" id="4_60vqa"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_byc1u"]
 texture = ExtResource("2_2q07w")
@@ -45,6 +46,9 @@ Button/colors/icon_normal_color = Color(0.921579, 0.932573, 0.540455, 1)
 Button/styles/hover = SubResource("StyleBoxFlat_yxqdx")
 Button/styles/normal = SubResource("StyleBoxFlat_fnxjr")
 Button/styles/pressed = SubResource("StyleBoxFlat_5dkn3")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mc7y"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Scenes" type="Node2D"]
 
@@ -158,3 +162,43 @@ offset_left = -0.830002
 offset_top = -0.973001
 offset_right = -0.760002
 offset_bottom = -0.993004
+
+[node name="AlmanacContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.075
+anchor_top = 0.57
+anchor_right = 0.199
+anchor_bottom = 0.863
+offset_left = 0.574997
+offset_top = -0.230042
+offset_right = 0.498993
+offset_bottom = 0.242981
+theme_override_constants/separation = 1
+
+[node name="AlmanacButton" type="Button" parent="Control/AlmanacContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_7mc7y")
+
+[node name="ButtonIcon" type="TextureRect" parent="Control/AlmanacContainer/AlmanacButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 8.00006
+offset_right = 1.0
+offset_bottom = -11.9999
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_60vqa")
+expand_mode = 3
+
+[node name="AlmanacLabel" type="Label" parent="Control/AlmanacContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1jttn")
+theme_override_font_sizes/font_size = 29
+text = "Almanac"
+horizontal_alignment = 1
+uppercase = true

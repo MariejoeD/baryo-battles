@@ -1,0 +1,102 @@
+[gd_scene load_steps=4 format=3 uid="uid://beqemmkuf8x58"]
+
+[ext_resource type="Texture2D" uid="uid://quordaff62ym" path="res://assets/game/almanacBackground.jpg" id="1_5uto3"]
+[ext_resource type="Script" path="res://Script/almanac.gd" id="1_cx1tn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_drncb"]
+texture = ExtResource("1_5uto3")
+
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cx1tn")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_drncb")
+
+[node name="EnemyContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.078
+anchor_top = 0.114
+anchor_right = 0.938
+anchor_bottom = 0.875
+offset_left = 0.159996
+offset_top = 0.147995
+offset_right = 0.359985
+offset_bottom = -0.250061
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/EnemyContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/EnemyContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="allyButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.404
+anchor_top = 0.046
+anchor_right = 0.5
+anchor_bottom = 0.111
+offset_left = 424.88
+offset_top = -0.0280037
+offset_right = 426.0
+offset_bottom = 0.301994
+text = "ALLY"
+
+[node name="enemyButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.502
+anchor_top = 0.046
+anchor_right = 0.599
+anchor_bottom = 0.111
+offset_left = 425.44
+offset_top = -0.0280037
+offset_right = 425.28
+offset_bottom = 0.301994
+text = "ENEMY"
+
+[node name="AllyContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.078
+anchor_top = 0.114
+anchor_right = 0.938
+anchor_bottom = 0.875
+offset_left = 0.159996
+offset_top = 0.147995
+offset_right = 0.359985
+offset_bottom = -0.250061
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/AllyContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/AllyContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.079
+anchor_top = 0.046
+anchor_right = 0.176
+anchor_bottom = 0.111
+offset_left = -0.120003
+offset_top = -0.0280037
+offset_right = -0.280014
+offset_bottom = 0.301994
+text = "BACK"
