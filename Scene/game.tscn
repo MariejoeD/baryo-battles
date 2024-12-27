@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=22 format=3 uid="uid://bw6q2p71ihxf6"]
 
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
@@ -14,6 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://d4ii0eu4d683o" path="res://assets/buildings/12.png" id="13_sm8h5"]
 [ext_resource type="Texture2D" uid="uid://cg585e7tpenx3" path="res://assets/buildings/13.png" id="14_emx8f"]
 [ext_resource type="Texture2D" uid="uid://rwsty7vdsrbm" path="res://assets/buildings/14.png" id="15_i552v"]
+=======
+[gd_scene load_steps=29 format=3 uid="uid://bw6q2p71ihxf6"]
+
+[ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_mlhjp"]
+[ext_resource type="Texture2D" path="res://assets/buildings/5.png" id="6_cf4pu"]
+>>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://cue1edqrt4po3" path="res://assets/map/3dPhilippineMap.jpg" id="16_llexe"]
 [ext_resource type="Script" path="res://Script/build.gd" id="16_mvi3c"]
 [ext_resource type="Texture2D" uid="uid://v1o2siq1evqa" path="res://assets/button/checkbox_beige_empty.png" id="17_aohav"]
@@ -103,57 +111,39 @@ theme_override_constants/separation = 7
 
 [node name="MalacadabraBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_fo735")
 
 [node name="KampoBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
-texture_normal = ExtResource("3_lojci")
 
-[node name="KuwadraBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="KawaBtn2" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("4_gtbp2")
-
-[node name="PandayanBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("5_ssaq3")
 
 [node name="SandatahangLakasBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("6_cf4pu")
 
-[node name="KawaBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="EstakadaBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("7_2h52i")
 
-[node name="KanyonBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="BalwarteBtn2" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("8_4b8y4")
 
-[node name="BakodBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="KuwitisBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("9_mgmfc")
 
-[node name="BalwarteBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="KuboBtn2" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("11_52o1p")
-
-[node name="KwitisBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("12_dwm4g")
-
-[node name="KuboBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("13_sm8h5")
 
 [node name="TanimBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("14_emx8f")
 
 [node name="ImbakanBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("15_i552v")
+
+[node name="BodegaBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+layout_mode = 2
 
 [node name="AttackPanel" type="Panel" parent="."]
 visible = false
