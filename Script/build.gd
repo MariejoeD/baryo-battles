@@ -42,7 +42,16 @@ func _on_btn_pressed(btn: TextureButton) -> void:
 	#print("Button pressed:", button.name)
 	build_button.visible = !build_button.visible
 	build_panel.visible = !build_panel.visible
-	
+	print("Name: ",button.name)
+	if !parent.button_states[button.name]:
+		attack_button.visible = !attack_button.visible
+		build_button.visible = !build_button.visible
+		return
+	if button.name == "MalacadabraBtn":
+		print("TRUE")
+		for key in parent.button_states.keys():
+			parent.button_states[key] = !parent.button_states[key]
+			print(parent.button_states[key])
 	# Create a new mesh instance and set it up
 	if mesh_instance:
 		mesh_instance.queue_free()  # Remove the previous instance if any
@@ -119,7 +128,7 @@ func follow_mouse():
 			#print("No hit, stopped following the mouse")
 
 	# If right mouse button is pressed, stop following the mouse and place the object
-	if Input.is_mouse_button_pressed(1) and mesh_instance:  # "ui_select" is typically mapped to the right mouse button
+	if Input.is_mouse_button_pressed(1) and mesh_instance:  # mapped to the left mouse button
 		#print("press")
 		if following:
 			following = false  # Stop following the mouse
