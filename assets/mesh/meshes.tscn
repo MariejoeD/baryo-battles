@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://boknptc13ynpu"]
+[gd_scene load_steps=29 format=3 uid="uid://boknptc13ynpu"]
 
 [ext_resource type="ArrayMesh" uid="uid://da5n3kip1phok" path="res://assets/building models/Kampo-Lv1.obj" id="1_02ufd"]
 [ext_resource type="ArrayMesh" uid="uid://du72i55png27u" path="res://assets/building models/kubo.mesh" id="2_gb360"]
@@ -6,6 +6,10 @@
 [ext_resource type="ArrayMesh" uid="uid://bqp5rcu1i0tvy" path="res://assets/building models/Malacanang-Lv1_remake(WOOD).obj" id="4_cdses"]
 [ext_resource type="ArrayMesh" uid="uid://qnmp5bp1bdfc" path="res://assets/building models/Kawa-Lv1.obj" id="5_02w2w"]
 [ext_resource type="ArrayMesh" uid="uid://dvno0ly7hugfp" path="res://assets/building models/Tore-Lv1_remake.obj" id="6_0gmc3"]
+[ext_resource type="ArrayMesh" uid="uid://bjb1hy0hgmlb8" path="res://assets/building models/Imbakan-Lv1_Empty.obj" id="7_0v7m7"]
+[ext_resource type="ArrayMesh" uid="uid://c4kn8ehvhh2ad" path="res://assets/building models/Estakada-lvl1(Bamboo).obj" id="8_61wdr"]
+[ext_resource type="ArrayMesh" uid="uid://ksxawvkqfkp5" path="res://assets/building models/Bodega(Empty).obj" id="9_ew6c8"]
+[ext_resource type="ArrayMesh" uid="uid://g0v206pk6v8h" path="res://assets/building models/Kwitis-Lv1.obj" id="10_ufcyd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bl4oy"]
 size = Vector3(5.83398, 4.23755, 5.10547)
@@ -24,6 +28,42 @@ size = Vector3(1.65524, 0.709045, 1.63672)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a8obp"]
 points = PackedVector3Array(-0.932167, 0.0081, -0.991228, 1.0851, 1.48663, 1.0924, -1.05526, 1.4662, 1.06268, 1.0851, 1.48663, -1.0777, 0.976347, 1.11022e-16, 0.983645, -1.05526, 1.4662, -1.04798, -0.97622, -2.22045e-16, 0.983645, 0.972774, 0.0363718, -1.03241, -1.1023, 1.39513, 1.10972, 1.03783, 0.104616, 0.944667, -0.997635, 0.108741, -0.95702, 1.10242, 1.39513, -1.09502, -0.939026, 0.0363718, -1.03241, 1.10242, 1.39513, 1.10972, -0.969127, 0.0389204, 1.00963, 0.96567, 0.0081, -0.991228, 1.00212, 0.0392148, -0.92796, -0.97622, 1.11022e-16, -0.968735, 0.962563, 0.0769302, 1.00271, 1.00825, 0.0349298, 0.948373, -0.996359, 0.109549, -0.623434)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u17gb"]
+albedo_color = Color(0.242188, 0.15299, 0.0136202, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3eja"]
+albedo_color = Color(0.117356, 0.171875, 0.0577077, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbo3q"]
+albedo_color = Color(0.242188, 0.15299, 0.0136202, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67si4"]
+albedo_color = Color(0.117356, 0.171875, 0.0577077, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ue1bp"]
+albedo_color = Color(0.173144, 0.207031, 0.0641744, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_enwtn"]
+albedo_color = Color(0.203125, 0.108047, 0.0227745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iauhs"]
+albedo_color = Color(0.203125, 0.108047, 0.0227745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uffbb"]
+albedo_color = Color(0.203125, 0.108047, 0.0227745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkdro"]
+albedo_color = Color(0.203125, 0.108047, 0.0227745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gg18"]
+albedo_color = Color(0.203125, 0.108047, 0.0227745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xlpf"]
+albedo_color = Color(0.203125, 0.108047, 0.0227745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqt85"]
+albedo_color = Color(0.203125, 0.108047, 0.0227745, 1)
 
 [node name="Meshes" type="Node3D"]
 
@@ -68,21 +108,52 @@ transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -0.0401001, 2.75934, -0.05896
 shape = SubResource("BoxShape3D_45bdk")
 metadata/_edit_group_ = true
 
-[node name="Tore-lv1" type="MeshInstance3D" parent="."]
+[node name="Balwarte" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 visible = false
 mesh = ExtResource("6_0gmc3")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tore-lv1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Balwarte"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tore-lv1/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Balwarte/StaticBody3D"]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -0.0401001, 2.1236, 0.0117188)
 shape = SubResource("BoxShape3D_agbjb")
 
-[node name="Barracks-lv1" type="MeshInstance3D" parent="."]
+[node name="Sandatahang Lakas" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 visible = false
 mesh = ExtResource("3_7n3pm")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Barracks-lv1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sandatahang Lakas"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Barracks-lv1/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sandatahang Lakas/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_a8obp")
+
+[node name="Imbakan-lv1Empty" type="MeshInstance3D" parent="."]
+visible = false
+mesh = ExtResource("7_0v7m7")
+surface_material_override/0 = SubResource("StandardMaterial3D_u17gb")
+surface_material_override/1 = SubResource("StandardMaterial3D_p3eja")
+surface_material_override/2 = SubResource("StandardMaterial3D_jbo3q")
+surface_material_override/3 = SubResource("StandardMaterial3D_67si4")
+
+[node name="Estakada-lvl1(bamboo)" type="MeshInstance3D" parent="."]
+visible = false
+mesh = ExtResource("8_61wdr")
+surface_material_override/0 = SubResource("StandardMaterial3D_ue1bp")
+surface_material_override/1 = SubResource("StandardMaterial3D_enwtn")
+
+[node name="Bodega(empty)" type="MeshInstance3D" parent="."]
+visible = false
+mesh = ExtResource("9_ew6c8")
+surface_material_override/0 = SubResource("StandardMaterial3D_iauhs")
+surface_material_override/1 = SubResource("StandardMaterial3D_uffbb")
+surface_material_override/2 = SubResource("StandardMaterial3D_dkdro")
+surface_material_override/3 = SubResource("StandardMaterial3D_2gg18")
+surface_material_override/4 = SubResource("StandardMaterial3D_0xlpf")
+surface_material_override/5 = SubResource("StandardMaterial3D_tqt85")
+
+[node name="Kwitis-lv1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
+mesh = ExtResource("10_ufcyd")
