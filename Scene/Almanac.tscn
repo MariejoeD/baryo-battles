@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://beqemmkuf8x58"]
+[gd_scene load_steps=30 format=3 uid="uid://dm70cr5gasunw"]
 
 [ext_resource type="Texture2D" uid="uid://quordaff62ym" path="res://assets/game/almanacBackground.jpg" id="1_5uto3"]
 [ext_resource type="Script" path="res://Script/almanac.gd" id="1_cx1tn"]
