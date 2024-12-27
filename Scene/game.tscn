@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bw6q2p71ihxf6"]
+[gd_scene load_steps=41 format=3 uid="uid://f8rjxbhxccny"]
 
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
 [ext_resource type="Texture2D" uid="uid://b1wwyf5rvrg53" path="res://assets/buildings/1.png" id="2_fo735"]
@@ -337,6 +337,7 @@ layout_mode = 2
 texture_normal = ExtResource("15_i552v")
 
 [node name="AttackPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 7.125

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://ddwrhwm3otd8p"]
 
-[ext_resource type="PackedScene" uid="uid://bw6q2p71ihxf6" path="res://Scene/game.tscn" id="1_8noqr"]
+[ext_resource type="PackedScene" uid="uid://f8rjxbhxccny" path="res://Scene/game.tscn" id="1_8noqr"]
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="1_ewtg3"]
 [ext_resource type="MeshLibrary" uid="uid://bwmfv8if2w61e" path="res://assets/mesh/meshes.tres" id="2_upbyy"]
 [ext_resource type="MeshLibrary" uid="uid://bqpxrt4ymmkn2" path="res://assets/mesh/floor_meshes.tres" id="3_ucrro"]
