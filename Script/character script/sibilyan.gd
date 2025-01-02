@@ -6,7 +6,8 @@ var speed = 10
 var path = []
 var path_index = 0
 var parent
-var gparent  # Ensure this points to your Camera3D node
+var gparent
+var base
 var camera
 var amap
 var moveb
@@ -14,9 +15,8 @@ var animation
 func _ready():
 	parent = get_parent()
 	gparent = parent.get_parent()
-	camera = gparent.get_node("SubViewportContainer/SubViewport/Camera3D")
-	amap = gparent.get_node("AMap/floor setup")
-	print(camera.name)
+	base = gparent.get_parent()
+	amap = base.get_node("AMap/floor setup")
 	animation = $AnimationPlayer
 	animation.play("idle",-1,1,true)
 	pass
@@ -26,6 +26,7 @@ func _process(delta: float):
 		var space_state = get_world_3d().direct_space_state
 		var mouse_position = get_viewport().get_mouse_position()  # Get the mouse position in screen coordinates
 
+		camera = base.get_node("SubViewportContainer/SubViewport/Camera3D")
 		# Create a ray from the camera to the mouse position
 		var from = camera.project_ray_origin(mouse_position)
 		var to = from + camera.project_ray_normal(mouse_position) * 1000  # Adjust the length as needed
@@ -47,7 +48,7 @@ func _process(delta: float):
 		else:
 			print()
 	if moveb:
-		global_transform.origin.y = 0
+		#global_transform.origin.y = 0
 		move(delta)
 		if animation.current_animation != "walk":
 			animation.play("walk", -1, 1, true)

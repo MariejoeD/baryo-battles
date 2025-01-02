@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://by34vb37j13u2"]
+
+[ext_resource type="ArrayMesh" uid="uid://b7oyipmc2doas" path="res://assets/mesh/tree2.tres" id="1_otcuk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cltdo"]
+albedo_color = Color(0.508823, 0.276954, 0.0448274, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jop1g"]
+albedo_color = Color(0.317596, 0.490822, 0.22608, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mo7e4"]
+albedo_color = Color(0.317596, 0.490822, 0.22608, 1)
+
+[node name="Tree" type="Node3D"]
+
+[node name="tree" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.6, -1.62921e-07, 0, 2.60673e-07, 1, 0, 0, 0)
+mesh = ExtResource("1_otcuk")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_cltdo")
+surface_material_override/1 = SubResource("StandardMaterial3D_jop1g")
+surface_material_override/2 = SubResource("StandardMaterial3D_mo7e4")
+surface_material_override/3 = SubResource("StandardMaterial3D_cltdo")

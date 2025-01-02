@@ -1,10 +1,10 @@
 [gd_scene load_steps=38 format=3 uid="uid://f8rjxbhxccny"]
 
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
-[ext_resource type="Texture2D" uid="uid://euijedk73i10" path="res://assets/story/1.png" id="2_fo735"]
 [ext_resource type="Texture2D" uid="uid://cfydgkca5x3lb" path="res://assets/story/2.png" id="3_lojci"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_mlhjp"]
 [ext_resource type="Texture2D" uid="uid://b1fljd08gty1b" path="res://assets/story/3.png" id="4_gtbp2"]
+[ext_resource type="Texture2D" uid="uid://b8dfdjsg6pnh3" path="res://assets/buildings/unlocked/1.png" id="4_yic6l"]
 [ext_resource type="Texture2D" uid="uid://63yxg7vbsn84" path="res://assets/story/4.png" id="5_ssaq3"]
 [ext_resource type="Texture2D" uid="uid://d2ixmvcvrq301" path="res://assets/story/5.png" id="6_cf4pu"]
 [ext_resource type="Texture2D" uid="uid://d0kblfshrpu4e" path="res://assets/story/6.png" id="7_2h52i"]
@@ -281,7 +281,7 @@ theme_override_constants/separation = 7
 
 [node name="MalacadabraBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_fo735")
+texture_normal = ExtResource("4_yic6l")
 
 [node name="KampoBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 custom_minimum_size = Vector2(1, 1)
