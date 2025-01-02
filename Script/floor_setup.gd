@@ -1,5 +1,10 @@
 extends Node3D
 
+var all_points = {}
+var aS = null
+
+
+
 @onready var parent = get_parent()
 @onready var floor_map = parent.get_node("Floor")
 @onready var other_map = parent.get_node("GridMap")
@@ -8,6 +13,7 @@ var grid_range = floor(grid_size/2)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	fill_map()
+	create_AStar_map()
 	pass # Replace with function body.
 
 func fill_map():
@@ -53,3 +59,59 @@ func get_tile_size(tile_id):
 		return Vector3i(floor(size.x), floor(size.y), floor(size.z))  # Use integer sizes for grid alignment
 	return Vector3i(1, 1, 1)  # Default size if the size can't be determined
 	pass
+
+func create_AStar_map():
+	aS = AStar3D.new()
+	var cells = floor_map.get_used_cells()
+	
+	# Add walkable cells to AStar3D
+	for cell in cells:
+		var cell_pos = Vector3i(cell.x, cell.y, cell.z)  # Create a Vector3i
+		var mesh_id = floor_map.get_cell_item(cell_pos)  # Use Vector3i to get the cell item
+		if mesh_id == 1:  # Only add walkable cells
+			var index = aS.get_available_point_id()
+			aS.add_point(index, floor_map.map_to_local(cell_pos))
+			all_points[v3_to_index(cell_pos)] = index
+	
+	# Connect neighboring points
+	for cell in cells:
+		for x in [-1, 0, 1]:
+			for y in [-1, 0, 1]:
+				for z in [-1, 0, 1]:
+					var v3 = Vector3i(x, y, z)
+					if v3 == Vector3i(0, 0, 0):
+						continue
+					
+					var neighbor_cell = Vector3i(v3 + cell)
+					var neighbor_mesh_id = floor_map.get_cell_item(neighbor_cell)  # Use Vector3i for neighbor
+					if neighbor_mesh_id == 1 and v3_to_index(neighbor_cell) in all_points:
+						var index1 = all_points.get(v3_to_index(cell), -1)  # Add a default value if not found
+						var index2 = all_points.get(v3_to_index(neighbor_cell), -1)  # Same for neighbor
+						if index1 != -1 and index2 != -1 and !aS.are_points_connected(index1, index2):
+							aS.connect_points(index1, index2, true)
+	
+	
+func v3_to_index(v3: Vector3i) -> String:
+	# Convert Vector3i to a string key with x,y,z values
+	return str(v3.x) + "," + str(v3.y) + "," + str(v3.z)
+
+func find_path(start: Vector3, end: Vector3):
+	# Convert world positions to grid map indices
+	var gm_start = v3_to_index(floor_map.local_to_map(start))
+	var gm_end = v3_to_index(floor_map.local_to_map(end))
+	var start_id = 0
+	var end_id = 0
+
+	# Safely lookup points in the dictionary
+	if all_points.has(gm_start):
+		start_id = all_points[gm_start]
+	else:
+		start_id = aS.get_closest_point(start)
+	
+	if all_points.has(gm_end):
+		end_id = all_points[gm_end]
+	else:
+		end_id = aS.get_closest_point(end)
+	#print(all_points)
+	# Generate the path from AStar3D
+	return aS.get_point_path(start_id, end_id)
