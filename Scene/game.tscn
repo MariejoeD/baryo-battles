@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://f8rjxbhxccny"]
+[gd_scene load_steps=38 format=3 uid="uid://f8rjxbhxccny"]
 
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
 [ext_resource type="Texture2D" uid="uid://euijedk73i10" path="res://assets/story/1.png" id="2_fo735"]
@@ -12,9 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://cwvp7xeb5vpnn" path="res://assets/story/8.png" id="9_mgmfc"]
 [ext_resource type="Texture2D" uid="uid://b0p0pqqi1njsp" path="res://assets/Almanac/enemy/10.png" id="11_52o1p"]
 [ext_resource type="Texture2D" uid="uid://bkspmlwlt5fq2" path="res://assets/buildings/locked/11.png" id="12_dwm4g"]
-[ext_resource type="Texture2D" path="res://assets/buildings/12.png" id="13_sm8h5"]
-[ext_resource type="Texture2D" path="res://assets/buildings/13.png" id="14_emx8f"]
-[ext_resource type="Texture2D" path="res://assets/buildings/14.png" id="15_i552v"]
 [ext_resource type="Texture2D" uid="uid://cue1edqrt4po3" path="res://assets/map/3dPhilippineMap.jpg" id="16_llexe"]
 [ext_resource type="Script" path="res://Script/build.gd" id="16_mvi3c"]
 [ext_resource type="Texture2D" uid="uid://v1o2siq1evqa" path="res://assets/button/checkbox_beige_empty.png" id="17_aohav"]
@@ -326,15 +323,12 @@ texture_normal = ExtResource("12_dwm4g")
 
 [node name="KuboBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("13_sm8h5")
 
 [node name="TanimBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("14_emx8f")
 
 [node name="ImbakanBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("15_i552v")
 
 [node name="AttackPanel" type="Panel" parent="."]
 visible = false

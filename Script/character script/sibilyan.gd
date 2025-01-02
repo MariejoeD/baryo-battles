@@ -53,20 +53,23 @@ func _process(delta: float):
 func move(delta):
 	if path_index < path.size():
 		var move_vec = (path[path_index] - global_transform.origin)
+		
+		# If close to the target waypoint, proceed to the next
 		if move_vec.length() < 2:
-			path_index += 1  # Proceed to the next waypoint
+			path_index += 1
 		else:
+			# Move towards the target
 			velocity = move_vec.normalized() * speed
 			move_and_slide()
-			
-			# Only rotate the character on the Y-axis (to avoid tilting towards the ground)
-			var direction = move_vec.normalized() # Add normalized move_vec to current position
-			# Calculate the rotation angle to face the target position on the XZ plane
-			var target_rotation = global_transform.basis.get_euler()
-			# Use the angle_to function to rotate around the Y-axis
-			target_rotation.y = direction.angle_to(Vector3.FORWARD)
-			# Apply the new rotation while keeping the X and Z rotations intact
-			rotation = Vector3(0, target_rotation.y, 0)  # Only rotate on the Y-axis (yaw rotation)
+
+			# Calculate target rotation based on direction
+			var direction = move_vec.normalized()
+			var target_rotation_y = atan2(direction.x, direction.z)  # atan2 gives the correct Y-axis rotation
+
+			# Smoothly interpolate current rotation to the target rotation (360-degree wrapping)
+			rotation.y = lerp_angle(rotation.y, target_rotation_y, delta * 5)  # Use lerp_angle for smooth shortest-path rotation
+
+
 
 		
 	pass
