@@ -232,7 +232,6 @@ visible = false
 mesh = SubResource("PlaneMesh_kjyqw")
 
 [node name="Node3D" type="Node3D" parent="Base"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="Sibilyan" type="CharacterBody3D" parent="Base/Node3D"]
 script = ExtResource("7_6he64")

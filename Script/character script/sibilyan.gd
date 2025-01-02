@@ -35,19 +35,25 @@ func _process(delta: float):
 
 		# Perform a raycast to find where to spawn the NPC
 		var result = space_state.intersect_ray(query)
-		var position = result.position
-		var pos = Vector3(
-				floor(position.x),  # Snap X to integer
-				1,  # Snap Y to integer
-				floor(position.z)   # Snap Z to integer
-			)
-		set_path(pos)
+		if result.has("position"):
+			
+			var position = result.position
+			var pos = Vector3(
+					floor(position.x),  # Snap X to integer
+					1,  # Snap Y to integer
+					floor(position.z)   # Snap Z to integer
+				)
+			set_path(pos)
+		else:
+			print()
 	if moveb:
 		global_transform.origin.y = 0
 		move(delta)
-		animation.play("walk",-1,1,true)
+		if animation.current_animation != "walk":
+			animation.play("walk", -1, 1, true)
 	else:
-		animation.play("idle",-1,1,true)
+		if animation.current_animation != "idle":
+			animation.play("idle", -1, 1, true)
 	pass
 
 func move(delta):
@@ -68,7 +74,8 @@ func move(delta):
 
 			# Smoothly interpolate current rotation to the target rotation (360-degree wrapping)
 			rotation.y = lerp_angle(rotation.y, target_rotation_y, delta * 5)  # Use lerp_angle for smooth shortest-path rotation
-
+	else:
+		moveb = false
 
 
 		
