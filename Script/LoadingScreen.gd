@@ -6,7 +6,6 @@ extends Control
 var random_texts = [
 	"Tip: Use your resources wisely!",
 	"Did you know? The Tikbalang guards its territory fiercely.",
-	"Fun fact: Gabriela Silang was a revolutionary leader.",
 	"Tip: Upgrade your troops for tougher battles.",
 	"Loading... Hang tight!"
 ]

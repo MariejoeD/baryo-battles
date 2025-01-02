@@ -1,15 +1,15 @@
 [gd_scene load_steps=38 format=3 uid="uid://f8rjxbhxccny"]
 
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
-[ext_resource type="Texture2D" uid="uid://cfydgkca5x3lb" path="res://assets/story/2.png" id="3_lojci"]
+[ext_resource type="Texture2D" path="res://assets/story/2.png" id="3_lojci"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_mlhjp"]
-[ext_resource type="Texture2D" uid="uid://b1fljd08gty1b" path="res://assets/story/3.png" id="4_gtbp2"]
+[ext_resource type="Texture2D" path="res://assets/story/3.png" id="4_gtbp2"]
 [ext_resource type="Texture2D" uid="uid://b8dfdjsg6pnh3" path="res://assets/buildings/unlocked/1.png" id="4_yic6l"]
-[ext_resource type="Texture2D" uid="uid://63yxg7vbsn84" path="res://assets/story/4.png" id="5_ssaq3"]
-[ext_resource type="Texture2D" uid="uid://d2ixmvcvrq301" path="res://assets/story/5.png" id="6_cf4pu"]
-[ext_resource type="Texture2D" uid="uid://d0kblfshrpu4e" path="res://assets/story/6.png" id="7_2h52i"]
-[ext_resource type="Texture2D" uid="uid://c8jr6g0j2xnj8" path="res://assets/story/7.png" id="8_4b8y4"]
-[ext_resource type="Texture2D" uid="uid://cwvp7xeb5vpnn" path="res://assets/story/8.png" id="9_mgmfc"]
+[ext_resource type="Texture2D" path="res://assets/story/4.png" id="5_ssaq3"]
+[ext_resource type="Texture2D" path="res://assets/story/5.png" id="6_cf4pu"]
+[ext_resource type="Texture2D" path="res://assets/story/6.png" id="7_2h52i"]
+[ext_resource type="Texture2D" path="res://assets/story/7.png" id="8_4b8y4"]
+[ext_resource type="Texture2D" path="res://assets/story/8.png" id="9_mgmfc"]
 [ext_resource type="Texture2D" uid="uid://b0p0pqqi1njsp" path="res://assets/Almanac/enemy/10.png" id="11_52o1p"]
 [ext_resource type="Texture2D" uid="uid://bkspmlwlt5fq2" path="res://assets/buildings/locked/11.png" id="12_dwm4g"]
 [ext_resource type="Texture2D" uid="uid://cue1edqrt4po3" path="res://assets/map/3dPhilippineMap.jpg" id="16_llexe"]
@@ -331,7 +331,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="AttackPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 7.125
@@ -344,7 +343,7 @@ offset_top = 10.0
 [node name="ScrollContainer" type="ScrollContainer" parent="AttackPanel"]
 layout_mode = 0
 offset_right = 731.0
-offset_bottom = 781.0
+offset_bottom = 527.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AttackPanel/ScrollContainer"]
 layout_mode = 2
