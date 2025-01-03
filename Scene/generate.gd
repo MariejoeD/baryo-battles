@@ -19,7 +19,7 @@ func generate_trees():
 		
 		var children = tree_inst.get_children()
 		
-		var selected_child = children[randi()%children.size()]
+		var selected_child = children[randi()%4]
 		
 		selected_child.visible = true
 		tree_inst.global_transform.origin = pos

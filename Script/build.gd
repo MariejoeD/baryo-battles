@@ -11,11 +11,7 @@ var grand_parent
 var following
 var dup_tiles
 @onready var mesh_lib : MeshLibrary = preload("res://assets/mesh/meshes.tres")  # Load the MeshLibrary resource
-var buildings = {
-	"MalacadabraBtn":0,
-	"KampoBtn": 1,
-	"KuboBtn": 3
-}
+var buildings = {}
 var button
 var mesh_instance: MeshInstance3D = null
 var camera: Camera3D = null  # Camera reference for projection
@@ -30,7 +26,9 @@ func _ready() -> void:
 	camera = grand_parent.get_node("Camera3D")  # Make sure your camera is named "Camera3D"
 	print(grand_parent.get_tree_string_pretty())
 	# Connect the "pressed" signal for each TextureButton child
-	for child in hbox.get_children():
+	for i in hbox.get_children().size():
+		var child = hbox.get_child(i)
+		buildings[child.name] = i
 		if child is TextureButton:
 			child.connect("pressed", Callable(self, "_on_btn_pressed").bind(child))  # Use Callable and bind the button
 	pass
