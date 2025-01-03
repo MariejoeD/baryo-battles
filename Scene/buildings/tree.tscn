@@ -49,17 +49,35 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11644, 3.75854, -0.0962983)
 shape = SubResource("BoxShape3D_dqt5a")
 
-[node name="Popup" type="Popup" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Cut" type="Button" parent="Popup"]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.312
+anchor_right = 0.202
+anchor_bottom = 0.457
+offset_left = 0.313995
+offset_top = 0.29599
+offset_right = 0.537933
+offset_bottom = 0.242981
+
+[node name="Cut" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
 text = "Cut"
 
-[node name="Uproot" type="Button" parent="Popup"]
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Uproot
-"
+[node name="Uproot" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Uproot"
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]

@@ -476,10 +476,10 @@ expand_mode = 3
 [node name="SettingsPanel" type="VBoxContainer" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 312.0
-offset_top = 151.0
-offset_right = 928.0
-offset_bottom = 480.0
+offset_left = 1024.0
+offset_top = 59.0
+offset_right = 1251.0
+offset_bottom = 95.0
 
 [node name="BackToMainMenuButton" type="Button" parent="SettingsPanel"]
 layout_mode = 2

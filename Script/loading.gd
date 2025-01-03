@@ -16,4 +16,5 @@ func perform_loading():
 		loading_bar.value = loading_percentage
 		await get_tree().create_timer(step_time).timeout
 	
-	# After loading, transition to the storytelling scene	get_tree().change_scene_to_file("res://MainMenu.tscn")
+	# After loading, transition to the storytelling scene	
+	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")

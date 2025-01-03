@@ -5,6 +5,7 @@ extends Control
 @onready var build_inventory_panel = $BuildInventoryPanel
 @onready var grid_container = $BuildInventoryPanel/HScrollContainer/HBoxContainer
 @onready var attack_panel = $AttackPanel
+@onready var settings_panel = $SettingsPanel
 
 
 # Button textures for locked and unlocked states
@@ -52,18 +53,26 @@ var button_states = {
 }
 
 func _ready():
-	# Update connect calls to use Callable
 	attack_button.connect("pressed", Callable(self, "_on_attack_button_pressed"))
 	build_button.connect("pressed", Callable(self, "_on_build_button_pressed"))
 	
+	# Connect SettingsButton
+	var settings_button = $SettingsContainer/SettingsButton
+	settings_button.connect("pressed", Callable(self, "_on_settings_button_pressed"))
+	
+	# Connect BackToMainMenuButton
+	var back_to_main_menu_button = $SettingsPanel/BackToMainMenuButton
+	back_to_main_menu_button.connect("pressed", Callable(self, "_on_back_to_main_menu_pressed"))
+
 	print("AttackButton:", attack_button)
 	print("BuildButton:", build_button)
 	print("BuildInventoryPanel:", build_inventory_panel)
 
-
 	# Initialize the resource display
 	update_resource_display()
 
+	# Initialize button visuals
+	update_button_visuals()
 
 
 
