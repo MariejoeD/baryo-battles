@@ -44,7 +44,7 @@ func _process(delta: float):
 					1,  # Snap Y to integer
 					floor(position.z)   # Snap Z to integer
 				)
-			set_path(pos)
+			
 		else:
 			print()
 	if moveb:

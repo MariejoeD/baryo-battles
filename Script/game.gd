@@ -8,13 +8,13 @@ extends Control
 
 
 # Button textures for locked and unlocked states
-@export var locked_textures = {
+@onready var locked_textures = {
 	"MalacadabraBtn": preload("res://assets/buildings/locked/1.png"),
 	"KampoBtn": preload("res://assets/buildings/locked/2.png"),
-	#"BodegaBtn": preload("res://assets/buildings/locked/3.png"),
+	"BodegaBtn": preload("res://assets/buildings/locked/3.png"),
 	"SandatahangLakasBtn": preload("res://assets/buildings/locked/4.png"),
 	"KawaBtn": preload("res://assets/buildings/locked/5.png"),
-	#"EstakadaBtn": preload("res://assets/buildings/locked/6.png"),
+	"EstakadaBtn": preload("res://assets/buildings/locked/6.png"),
 	"BalwarteBtn": preload("res://assets/buildings/locked/7.png"),
 	"KwitisBtn": preload("res://assets/buildings/locked/8.png"),
 	"KuboBtn": preload("res://assets/buildings/locked/9.png"),
@@ -22,13 +22,13 @@ extends Control
 	"ImbakanBtn": preload("res://assets/buildings/locked/11.png")
 }
 
-@export var unlocked_textures = {
+@onready var unlocked_textures = {
 	"MalacadabraBtn": preload("res://assets/buildings/unlocked/1.png"),
 	"KampoBtn": preload("res://assets/buildings/unlocked/2.png"),
-	#"BodegaBtn": preload("res://assets/buildings/unlocked/3.png"),
+	"BodegaBtn": preload("res://assets/buildings/unlocked/3.png"),
 	"SandatahangLakasBtn": preload("res://assets/buildings/unlocked/4.png"),
 	"KawaBtn": preload("res://assets/buildings/unlocked/5.png"),
-	#"EstakadaBtn": preload("res://assets/buildings/unlocked/6.png"),
+	"EstakadaBtn": preload("res://assets/buildings/unlocked/6.png"),
 	"BalwarteBtn": preload("res://assets/buildings/unlocked/7.png"),
 	"KwitisBtn": preload("res://assets/buildings/unlocked/8.png"),
 	"KuboBtn": preload("res://assets/buildings/unlocked/9.png"),
@@ -40,10 +40,10 @@ extends Control
 var button_states = {
 	"MalacadabraBtn": true,
 	"KampoBtn": false,
-	#"BodegaBtn": false,
+	"BodegaBtn": false,
 	"SandatahangLakasBtn": false,
 	"KawaBtn": false,
-	#"EstakadaBtn": false,
+	"EstakadaBtn": false,
 	"BalwarteBtn": false,
 	"KwitisBtn": false,
 	"KuboBtn": false,

@@ -1,6 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://by34vb37j13u2"]
+[gd_scene load_steps=10 format=3 uid="uid://by34vb37j13u2"]
 
+[ext_resource type="Script" path="res://Script/building scripts/tree.gd" id="1_fe0s8"]
 [ext_resource type="ArrayMesh" uid="uid://b7oyipmc2doas" path="res://assets/mesh/tree2.tres" id="1_otcuk"]
+[ext_resource type="PackedScene" uid="uid://e5tgdstbnbut" path="res://assets/building models/tree1.fbx" id="2_oypd6"]
+[ext_resource type="PackedScene" uid="uid://u7bowpv5cs5w" path="res://assets/building models/tree2.fbx" id="3_d54cu"]
+[ext_resource type="PackedScene" uid="uid://y3ykhag1nqi" path="res://assets/building models/tree3.fbx" id="4_ttdjy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cltdo"]
 albedo_color = Color(0.508823, 0.276954, 0.0448274, 1)
@@ -11,13 +15,51 @@ albedo_color = Color(0.317596, 0.490822, 0.22608, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mo7e4"]
 albedo_color = Color(0.317596, 0.490822, 0.22608, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dqt5a"]
+size = Vector3(6.49594, 7.55724, 6.59027)
+
 [node name="Tree" type="Node3D"]
+script = ExtResource("1_fe0s8")
 
 [node name="tree" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.6, -1.62921e-07, 0, 2.60673e-07, 1, 0, 0, 0)
+visible = false
 mesh = ExtResource("1_otcuk")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_cltdo")
 surface_material_override/1 = SubResource("StandardMaterial3D_jop1g")
 surface_material_override/2 = SubResource("StandardMaterial3D_mo7e4")
 surface_material_override/3 = SubResource("StandardMaterial3D_cltdo")
+
+[node name="tree1" parent="." instance=ExtResource("2_oypd6")]
+transform = Transform3D(3.84, 0, 0, 0, 3.84, 0, 0, 0, 3.84, 0, 0, 0)
+visible = false
+
+[node name="tree2" parent="." instance=ExtResource("3_d54cu")]
+transform = Transform3D(4.51, 0, 0, 0, 4.51, 0, 0, 0, 4.51, 0, 0, 0)
+visible = false
+
+[node name="tree3" parent="." instance=ExtResource("4_ttdjy")]
+transform = Transform3D(4.215, 0, 0, 0, 4.215, 0, 0, 0, 4.215, 0, 0, 0)
+visible = false
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11644, 3.75854, -0.0962983)
+shape = SubResource("BoxShape3D_dqt5a")
+
+[node name="Popup" type="Popup" parent="."]
+
+[node name="Cut" type="Button" parent="Popup"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Cut"
+
+[node name="Uproot" type="Button" parent="Popup"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Uproot
+"
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]

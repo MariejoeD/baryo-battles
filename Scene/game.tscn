@@ -1,17 +1,18 @@
-[gd_scene load_steps=38 format=3 uid="uid://f8rjxbhxccny"]
+[gd_scene load_steps=39 format=3 uid="uid://f8rjxbhxccny"]
 
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
-[ext_resource type="Texture2D" path="res://assets/story/2.png" id="3_lojci"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_mlhjp"]
-[ext_resource type="Texture2D" path="res://assets/story/3.png" id="4_gtbp2"]
 [ext_resource type="Texture2D" uid="uid://b8dfdjsg6pnh3" path="res://assets/buildings/unlocked/1.png" id="4_yic6l"]
-[ext_resource type="Texture2D" path="res://assets/story/4.png" id="5_ssaq3"]
-[ext_resource type="Texture2D" path="res://assets/story/5.png" id="6_cf4pu"]
-[ext_resource type="Texture2D" path="res://assets/story/6.png" id="7_2h52i"]
-[ext_resource type="Texture2D" path="res://assets/story/7.png" id="8_4b8y4"]
-[ext_resource type="Texture2D" path="res://assets/story/8.png" id="9_mgmfc"]
-[ext_resource type="Texture2D" uid="uid://b0p0pqqi1njsp" path="res://assets/Almanac/enemy/10.png" id="11_52o1p"]
-[ext_resource type="Texture2D" uid="uid://bkspmlwlt5fq2" path="res://assets/buildings/locked/11.png" id="12_dwm4g"]
+[ext_resource type="Texture2D" uid="uid://dgjsl0syl3n2v" path="res://assets/buildings/unlocked/2.png" id="5_bnhwa"]
+[ext_resource type="Texture2D" uid="uid://dniquwdp87ofk" path="res://assets/buildings/unlocked/3.png" id="6_vihmr"]
+[ext_resource type="Texture2D" uid="uid://dbb728rdx8d4l" path="res://assets/buildings/unlocked/5.png" id="7_fy0qb"]
+[ext_resource type="Texture2D" uid="uid://12baqpe5381" path="res://assets/buildings/unlocked/4.png" id="8_eruqp"]
+[ext_resource type="Texture2D" uid="uid://264q5lw60gng" path="res://assets/buildings/unlocked/6.png" id="9_kjmiu"]
+[ext_resource type="Texture2D" uid="uid://bw6ktxmfo8qe1" path="res://assets/buildings/unlocked/7.png" id="10_dxsv1"]
+[ext_resource type="Texture2D" uid="uid://wgrjd4cmgkgi" path="res://assets/buildings/unlocked/8.png" id="11_qxa0g"]
+[ext_resource type="Texture2D" uid="uid://wggnm3crg4js" path="res://assets/buildings/unlocked/9.png" id="12_rxc11"]
+[ext_resource type="Texture2D" uid="uid://pgt5oux32bvk" path="res://assets/buildings/unlocked/10.png" id="13_mhxnu"]
+[ext_resource type="Texture2D" uid="uid://bm25vbrs667u" path="res://assets/buildings/unlocked/11.png" id="14_hj4q3"]
 [ext_resource type="Texture2D" uid="uid://cue1edqrt4po3" path="res://assets/map/3dPhilippineMap.jpg" id="16_llexe"]
 [ext_resource type="Script" path="res://Script/build.gd" id="16_mvi3c"]
 [ext_resource type="Texture2D" uid="uid://v1o2siq1evqa" path="res://assets/button/checkbox_beige_empty.png" id="17_aohav"]
@@ -286,51 +287,47 @@ texture_normal = ExtResource("4_yic6l")
 [node name="KampoBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
-texture_normal = ExtResource("3_lojci")
+texture_normal = ExtResource("5_bnhwa")
 
-[node name="KuwadraBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="BodegaBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("4_gtbp2")
-
-[node name="PandayanBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("5_ssaq3")
+texture_normal = ExtResource("6_vihmr")
 
 [node name="SandatahangLakasBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("6_cf4pu")
+texture_normal = ExtResource("8_eruqp")
 
 [node name="KawaBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("7_2h52i")
+size_flags_horizontal = 3
+texture_normal = ExtResource("7_fy0qb")
 
-[node name="KanyonBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="EstakadaBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("8_4b8y4")
-
-[node name="BakodBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("9_mgmfc")
+texture_normal = ExtResource("9_kjmiu")
 
 [node name="BalwarteBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("11_52o1p")
+texture_normal = ExtResource("10_dxsv1")
 
 [node name="KwitisBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("12_dwm4g")
+texture_normal = ExtResource("11_qxa0g")
 
 [node name="KuboBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("12_rxc11")
 
 [node name="TanimBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("13_mhxnu")
 
 [node name="ImbakanBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("14_hj4q3")
 
 [node name="AttackPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 7.125
