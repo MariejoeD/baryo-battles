@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://by34vb37j13u2"]
+[gd_scene load_steps=15 format=3 uid="uid://by34vb37j13u2"]
 
 [ext_resource type="Script" path="res://Script/building scripts/tree.gd" id="1_fe0s8"]
 [ext_resource type="ArrayMesh" uid="uid://b7oyipmc2doas" path="res://assets/mesh/tree2.tres" id="1_otcuk"]
 [ext_resource type="PackedScene" uid="uid://e5tgdstbnbut" path="res://assets/building models/tree1.fbx" id="2_oypd6"]
 [ext_resource type="PackedScene" uid="uid://u7bowpv5cs5w" path="res://assets/building models/tree2.fbx" id="3_d54cu"]
 [ext_resource type="PackedScene" uid="uid://y3ykhag1nqi" path="res://assets/building models/tree3.fbx" id="4_ttdjy"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="6_bulng"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cltdo"]
 albedo_color = Color(0.508823, 0.276954, 0.0448274, 1)
@@ -22,6 +23,20 @@ size = Vector3(6.49594, 7.55724, 6.59027)
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2uoce"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktgo5"]
+bg_color = Color(0.916537, 0.800495, 0.342081, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krxkk"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Tree" type="Node3D"]
 script = ExtResource("1_fe0s8")
@@ -64,7 +79,6 @@ transparent_bg = true
 size = Vector2i(128, 96)
 
 [node name="Panel" type="Panel" parent="SubViewport"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -97,6 +111,11 @@ offset_top = -15.424
 offset_right = 0.0639954
 offset_bottom = 14.808
 grow_horizontal = 2
+theme_override_colors/font_hover_pressed_color = Color(0.917647, 0.8, 0.341176, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_bulng")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_ktgo5")
 text = "Cut
 "
 
@@ -113,6 +132,12 @@ offset_right = 0.0639954
 offset_bottom = 15.488
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_hover_pressed_color = Color(0.917647, 0.8, 0.341176, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_bulng")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_krxkk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ktgo5")
 text = "Uproot
 "
 
