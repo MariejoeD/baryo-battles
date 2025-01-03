@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dm70cr5gasunw"]
+[gd_scene load_steps=31 format=3 uid="uid://dm70cr5gasunw"]
 
 [ext_resource type="Texture2D" uid="uid://quordaff62ym" path="res://assets/game/almanacBackground.jpg" id="1_5uto3"]
 [ext_resource type="Script" path="res://Script/almanac.gd" id="1_cx1tn"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dj0pulc6j7b0x" path="res://assets/Almanac/enemy/8.png" id="10_7onho"]
 [ext_resource type="Texture2D" uid="uid://cx820gfndptxt" path="res://assets/Almanac/enemy/9.png" id="11_tfta8"]
 [ext_resource type="Texture2D" uid="uid://b0p0pqqi1njsp" path="res://assets/Almanac/enemy/10.png" id="12_odhap"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="13_2rl07"]
 [ext_resource type="Texture2D" uid="uid://ba2fiosawpeas" path="res://assets/Almanac/ally/1.png" id="13_sd4hl"]
 [ext_resource type="Texture2D" uid="uid://ndn47efmjqri" path="res://assets/Almanac/ally/2.png" id="14_afvye"]
 [ext_resource type="Texture2D" uid="uid://t026g1q0heln" path="res://assets/Almanac/ally/3.png" id="15_ko0s3"]
@@ -171,6 +172,7 @@ offset_top = -11.028
 offset_right = 388.0
 offset_bottom = -10.698
 theme = SubResource("Theme_niof8")
+theme_override_fonts/font = ExtResource("13_2rl07")
 text = "ALLY"
 
 [node name="enemyButton" type="Button" parent="Panel"]
@@ -185,6 +187,7 @@ offset_top = -11.028
 offset_right = 397.28
 offset_bottom = -10.698
 theme = SubResource("Theme_3vifk")
+theme_override_fonts/font = ExtResource("13_2rl07")
 text = "ENEMY"
 
 [node name="AllyContainer" type="ScrollContainer" parent="Panel"]
@@ -251,4 +254,5 @@ offset_top = -10.028
 offset_right = -0.280014
 offset_bottom = -9.69801
 theme = SubResource("Theme_1kt3g")
+theme_override_fonts/font = ExtResource("13_2rl07")
 text = "BACK"

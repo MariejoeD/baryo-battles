@@ -94,13 +94,16 @@ text = "BARYO BATTLES"
 
 [node name="Description" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 250.0
-offset_top = 259.0
-offset_right = 1073.0
-offset_bottom = 293.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.57961, 0.371796, 0.30738, 1)
-theme_override_font_sizes/font_size = 24
+offset_left = 210.0
+offset_top = 241.0
+offset_right = 1137.0
+offset_bottom = 284.0
+theme_override_colors/font_color = Color(0.128751, 0.442531, 0.467779, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_1jttn")
+theme_override_font_sizes/font_size = 34
 text = "A FILIPINO GAME FOR PHILIPPINE CULTURAL HERITAGE PRESERVATION.
 "
 
@@ -116,6 +119,7 @@ alignment = 1
 
 [node name="play" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1jttn")
 text = "Play"
 
 [node name="playIcon" type="TextureRect" parent="Control/VBoxContainer/play"]
@@ -132,6 +136,7 @@ offset_bottom = 0.00799942
 
 [node name="options" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1jttn")
 text = "Options"
 
 [node name="optionsIcon" type="TextureRect" parent="Control/VBoxContainer/options"]
@@ -148,6 +153,7 @@ offset_bottom = -0.0240021
 
 [node name="quit" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1jttn")
 text = "Quit
 "
 

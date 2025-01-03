@@ -7,7 +7,6 @@ extends Control
 @onready var attack_panel = $AttackPanel
 @onready var settings_panel = $SettingsPanel
 
-
 # Button textures for locked and unlocked states
 @onready var locked_textures = {
 	"MalacadabraBtn": preload("res://assets/buildings/locked/1.png"),
@@ -49,34 +48,24 @@ var button_states = {
 	"KwitisBtn": false,
 	"KuboBtn": false,
 	"TanimBtn": false,
-	"ImbakanBtn": false,
+	"ImbakanBtn": false
 }
 
 func _ready():
+	# Connect main buttons
 	attack_button.connect("pressed", Callable(self, "_on_attack_button_pressed"))
 	build_button.connect("pressed", Callable(self, "_on_build_button_pressed"))
-	
-	# Connect SettingsButton
+
+	# Connect settings button
 	var settings_button = $SettingsContainer/SettingsButton
 	settings_button.connect("pressed", Callable(self, "_on_settings_button_pressed"))
-	
-	# Connect BackToMainMenuButton
+
+	# Connect Back to Main Menu button
 	var back_to_main_menu_button = $SettingsPanel/BackToMainMenuButton
 	back_to_main_menu_button.connect("pressed", Callable(self, "_on_back_to_main_menu_pressed"))
 
-	print("AttackButton:", attack_button)
-	print("BuildButton:", build_button)
-	print("BuildInventoryPanel:", build_inventory_panel)
-
-	# Initialize the resource display
+	# Initialize the resource display and button visuals
 	update_resource_display()
-
-	# Initialize button visuals
-	update_button_visuals()
-
-
-
-	# Initialize button visuals
 	update_button_visuals()
 
 func _on_attack_button_pressed():
@@ -85,47 +74,28 @@ func _on_attack_button_pressed():
 	build_button.visible = !build_button.visible
 
 func _on_build_button_pressed():
-	update_button_visuals()
-
+	print("Build button pressed!")
 	build_inventory_panel.visible = !build_inventory_panel.visible
 	attack_button.visible = !attack_button.visible
-		
+	update_button_visuals()
 
-#func _on_slot_pressed(slot_index: int):
-	#print("Slot %d clicked!" % slot_index)
+func _on_settings_button_pressed():
+	print("Settings button pressed!")
+	settings_panel.visible = !settings_panel.visible
 
+func _on_back_to_main_menu_pressed():
+	print("Back to Main Menu button pressed!")
+	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
 
 # Update the resource display
 func update_resource_display():
-	#food_label.text = "Food: %d" % food
-	#stone_label.text = "Stone: %d" % stone
-	#wood_label.text = "Wood: %d" % wood
-	print()
-
-# Functions to modify resources
-func add_food(amount: int):
-	#food += amount
-	update_resource_display()
-
-func add_stone(amount: int):
-	#stone += amount
-	update_resource_display()
-
-func add_wood(amount: int):
-	#wood += amount
-	update_resource_display()
+	print("Updating resource display...")
+	# Placeholder for updating UI elements for resources
 
 # Update button visuals based on their states
 func update_button_visuals():
-	print(button_states.keys())
-	print(grid_container)
+	print("Updating button visuals...")
 	for button_name in button_states.keys():
-		
-		print(button_name)
-		
 		var button = grid_container.get_node_or_null(button_name)
 		if button:
-			if button_states[button_name]:
-				button.texture_normal = unlocked_textures[button_name]
-			else:
-				button.texture_normal = locked_textures[button_name]
+			button.texture_normal = unlocked_textures[button_name] if button_states[button_name] else locked_textures[button_name]
