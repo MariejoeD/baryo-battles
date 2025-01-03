@@ -6,6 +6,10 @@ extends Control
 @onready var grid_container = $BuildInventoryPanel/HScrollContainer/HBoxContainer
 @onready var attack_panel = $AttackPanel
 
+@onready var settings_button = $SettingsContainer/SettingsButton
+@onready var settings_panel = $SettingsPanel
+@onready var back_to_main_menu_button = $SettingsPanel/BackToMainMenuButton
+
 
 # Button textures for locked and unlocked states
 @export var locked_textures = {
@@ -56,11 +60,26 @@ func _ready():
 	attack_button.connect("pressed", Callable(self, "_on_attack_button_pressed"))
 	build_button.connect("pressed", Callable(self, "_on_build_button_pressed"))
 	
+	# Connect the settings button to toggle the settings panel
+	settings_button.connect("pressed", Callable(self, "_on_settings_button_pressed"))
+	
+	# Connect the back-to-main-menu button to handle going back to the main menu
+	back_to_main_menu_button.connect("pressed", Callable(self, "_on_back_to_main_menu_button_pressed"))
+	
 	print("AttackButton:", attack_button)
 	print("BuildButton:", build_button)
 	print("BuildInventoryPanel:", build_inventory_panel)
 
 
+func _on_settings_button_pressed():
+	print("Settings button pressed!")
+	settings_panel.visible = !settings_panel.visible
+
+func _on_back_to_main_menu_button_pressed():
+	print("Returning to main menu...")
+	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
+
+	
 	# Initialize the resource display
 	update_resource_display()
 
