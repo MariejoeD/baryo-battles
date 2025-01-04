@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://by34vb37j13u2"]
+[gd_scene load_steps=15 format=3 uid="uid://by34vb37j13u2"]
 
 [ext_resource type="Script" path="res://Script/building scripts/tree.gd" id="1_fe0s8"]
 [ext_resource type="ArrayMesh" uid="uid://b7oyipmc2doas" path="res://assets/mesh/tree2.tres" id="1_otcuk"]
 [ext_resource type="PackedScene" uid="uid://e5tgdstbnbut" path="res://assets/building models/tree1.fbx" id="2_oypd6"]
 [ext_resource type="PackedScene" uid="uid://u7bowpv5cs5w" path="res://assets/building models/tree2.fbx" id="3_d54cu"]
 [ext_resource type="PackedScene" uid="uid://y3ykhag1nqi" path="res://assets/building models/tree3.fbx" id="4_ttdjy"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="6_y3kqn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cltdo"]
 albedo_color = Color(0.508823, 0.276954, 0.0448274, 1)
@@ -17,6 +18,44 @@ albedo_color = Color(0.317596, 0.490822, 0.22608, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dqt5a"]
 size = Vector3(6.49594, 7.55724, 6.59027)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6qpm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4xj1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtdbp"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.411765, 0.235294, 0.0784314, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ej4af"]
+bg_color = Color(0.844423, 0.505688, 0.211759, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.410629, 0.236975, 0.0772795, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Tree" type="Node3D"]
 script = ExtResource("1_fe0s8")
@@ -59,18 +98,60 @@ grow_vertical = 2
 
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -100.0
-offset_right = 50.0
+anchors_preset = -1
+anchor_left = 0.394
+anchor_top = 0.817
+anchor_right = 0.497
+anchor_bottom = 0.872
+offset_left = -0.320038
+offset_top = -0.240051
+offset_right = -0.160034
+offset_bottom = 0.159973
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_hover_pressed_color = Color(0.843137, 0.505882, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.843137, 0.505882, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.843137, 0.505882, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_y3kqn")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxFlat_o6qpm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_y4xj1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_rtdbp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rtdbp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtdbp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ej4af")
 text = "Cut
+"
+
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.817
+anchor_right = 0.602
+anchor_bottom = 0.872
+offset_left = -2.0
+offset_top = -0.240051
+offset_right = -0.560059
+offset_bottom = 0.159912
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_hover_pressed_color = Color(0.843137, 0.505882, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.843137, 0.505882, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.843137, 0.505882, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_y3kqn")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxFlat_o6qpm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_y4xj1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_rtdbp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rtdbp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtdbp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ej4af")
+text = "Uproot
 "
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
 [connection signal="pressed" from="Control/Button" to="." method="pressed_cut"]
+[connection signal="pressed" from="Control/Button2" to="." method="pressed_cut"]
