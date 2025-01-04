@@ -3,10 +3,12 @@ extends Node3D
 # Dictionary to store popups for each tree
 
 # Reference to the popup and other nodes
-@onready var panel = $Control
-@onready var cut_button = $Control/Button
-@onready var uproot_button = $SubViewport/Panel/Control/Uproot
+@onready var bounds = $UI/Panel
+@onready var panel = $UI
+@onready var cut_button = $UI/Cut
+@onready var uproot_button = $UI/Uproot
 @onready var area = $Area3D
+@onready var entities = $"../../Entities"
 
 var is_panel_visible = false
 
@@ -35,12 +37,34 @@ func _input(event: InputEvent) -> void:
 			var clicked_pos = viewport.get_mouse_position()
 			
 			#checked if the click is outside the panel
-			if not panel.get_global_rect().has_point(clicked_pos):
+			if not bounds.get_global_rect().has_point(clicked_pos):
 				panel.visible = false
 				is_panel_visible = false
 
 
 
 func pressed_cut():
-	print("cut")
+	panel.visible = false
+	is_panel_visible = false
+	var target_pos = global_transform.origin
+	var panday = find_nearest_panday(target_pos)
+	var sibilyan = panday.get_child(0)
+	sibilyan.chop(target_pos)
+	pass
+
+func pressed_uproot():
+	
+	pass
+
+func find_nearest_panday(ref_pos):
+	var nearest_panday: Node3D = null
+	var shortest_distance: float = INF
+	
+	for panday in get_tree().get_nodes_in_group("Pandays"):
+		var distance = ref_pos.distance_to(panday.global_transform.origin)
+		if distance < shortest_distance:
+			shortest_distance = distance
+			nearest_panday = panday
+		
+	return nearest_panday
 	pass

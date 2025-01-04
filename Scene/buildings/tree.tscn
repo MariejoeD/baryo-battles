@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://by34vb37j13u2"]
+[gd_scene load_steps=16 format=3 uid="uid://by34vb37j13u2"]
 
 [ext_resource type="Script" path="res://Script/building scripts/tree.gd" id="1_fe0s8"]
 [ext_resource type="ArrayMesh" uid="uid://b7oyipmc2doas" path="res://assets/mesh/tree2.tres" id="1_otcuk"]
@@ -57,6 +57,8 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_noh2j"]
+
 [node name="Tree" type="Node3D"]
 script = ExtResource("1_fe0s8")
 
@@ -88,7 +90,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11644, 3.75854, -0.0962983)
 shape = SubResource("BoxShape3D_dqt5a")
 
-[node name="Control" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,7 +98,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Cut" type="Button" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.394
@@ -124,7 +126,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ej4af")
 text = "Cut
 "
 
-[node name="Button2" type="Button" parent="Control"]
+[node name="Uproot" type="Button" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -152,6 +154,15 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ej4af")
 text = "Uproot
 "
 
+[node name="Panel" type="Panel" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 497.0
+offset_top = 582.0
+offset_right = 776.0
+offset_bottom = 635.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_noh2j")
+
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
-[connection signal="pressed" from="Control/Button" to="." method="pressed_cut"]
-[connection signal="pressed" from="Control/Button2" to="." method="pressed_cut"]
+[connection signal="pressed" from="UI/Cut" to="." method="pressed_cut"]
+[connection signal="pressed" from="UI/Uproot" to="." method="pressed_uproot"]

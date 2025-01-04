@@ -21,32 +21,6 @@ func _ready():
 	animation.play("idle",-1,1,true)
 	pass
 func _process(delta: float):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		moveb = true
-		var space_state = get_world_3d().direct_space_state
-		var mouse_position = get_viewport().get_mouse_position()  # Get the mouse position in screen coordinates
-
-		camera = base.get_node("SubViewportContainer/SubViewport/Camera3D")
-		# Create a ray from the camera to the mouse position
-		var from = camera.project_ray_origin(mouse_position)
-		var to = from + camera.project_ray_normal(mouse_position) * 1000  # Adjust the length as needed
-		#print("Ray from: ", from, " to: ", to)  # Debug ray direction
-
-		var query = PhysicsRayQueryParameters3D.create(from, to)
-
-		# Perform a raycast to find where to spawn the NPC
-		var result = space_state.intersect_ray(query)
-		if result.has("position"):
-			
-			var position = result.position
-			var pos = Vector3(
-					floor(position.x),  # Snap X to integer
-					1,  # Snap Y to integer
-					floor(position.z)   # Snap Z to integer
-				)
-			
-		else:
-			print()
 	if moveb:
 		#global_transform.origin.y = 0
 		move(delta)
@@ -82,7 +56,9 @@ func move(delta):
 		
 	pass
 	
-func chop():
+func chop(target):
+	moveb = true
+	set_path(target)
 	pass
 	
 func idle():
