@@ -6,8 +6,8 @@
 [ext_resource type="MeshLibrary" uid="uid://bqpxrt4ymmkn2" path="res://assets/mesh/floor_meshes.tres" id="3_ucrro"]
 [ext_resource type="Script" path="res://Script/floor_setup.gd" id="4_6i8of"]
 [ext_resource type="Script" path="res://Script/duplicated_tiles.gd" id="6_ttmot"]
-[ext_resource type="Script" path="res://Scene/load.gd" id="7_xwng1"]
-[ext_resource type="Script" path="res://Scene/generate.gd" id="8_hwwmm"]
+[ext_resource type="Script" path="res://Script/load.gd" id="7_xwng1"]
+[ext_resource type="Script" path="res://Script/generate.gd" id="8_hwwmm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c05a2"]
 
@@ -42,6 +42,7 @@ shadow_enabled = true
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Base"]
 offset_right = 1280.0
 offset_bottom = 720.0
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Base/SubViewportContainer"]
 handle_input_locally = false

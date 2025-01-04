@@ -24,7 +24,7 @@ func _ready() -> void:
 	dup_tiles = amap.get_node("DuplicatedTiles")
 	grid = amap.get_child(0)
 	camera = grand_parent.get_node("Camera3D")  # Make sure your camera is named "Camera3D"
-	print(grand_parent.get_tree_string_pretty())
+	
 	# Connect the "pressed" signal for each TextureButton child
 	for i in hbox.get_children().size():
 		var child = hbox.get_child(i)
