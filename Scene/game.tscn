@@ -195,6 +195,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+tooltip_text = "tra"
 script = ExtResource("1_soyno")
 
 [node name="Build" type="Node3D" parent="." node_paths=PackedStringArray("hbox", "build_button", "attack_button", "build_panel")]

@@ -64,6 +64,7 @@ func _ready():
 	var back_to_main_menu_button = $SettingsPanel/BackToMainMenuButton
 	back_to_main_menu_button.connect("pressed", Callable(self, "_on_back_to_main_menu_pressed"))
 
+	$ResourcePanel/WoodContainer/Label.set_text(str(0))
 	# Initialize the resource display and button visuals
 	update_resource_display()
 	update_button_visuals()

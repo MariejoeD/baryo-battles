@@ -12,6 +12,7 @@ var camera
 var amap
 var moveb
 var animation
+var tree
 func _ready():
 	parent = get_parent()
 	gparent = parent.get_parent()
@@ -29,6 +30,7 @@ func _process(delta: float):
 	else:
 		if animation.current_animation != "idle":
 			animation.play("idle", -1, 1, true)
+		
 	pass
 
 func move(delta):
@@ -50,17 +52,47 @@ func move(delta):
 			# Smoothly interpolate current rotation to the target rotation (360-degree wrapping)
 			rotation.y = lerp_angle(rotation.y, target_rotation_y, delta * 5)  # Use lerp_angle for smooth shortest-path rotation
 	else:
-		moveb = false
+		var tree_pos = path[path.size() - 1]
+		if global_transform.origin.distance_to(tree_pos):
+			chop_tree()
+			moveb = false
+			
 
 
 		
 	pass
 	
-func chop(target):
+func chop(target,tree):
+	self.tree = tree
 	moveb = true
 	set_path(target)
+	
+	#put timer for 5 second when destintaion reach then run a command to remove the tree
 	pass
 	
+func chop_tree():
+	print("tree")
+	self.visible = false
+	$"../sibilyanWithAxe".transform = self.transform
+	$"../sibilyanWithAxe".visible = true
+	$"../sibilyanWithAxe/AnimationPlayer".play("chopping",-1,1,true)
+	var timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = 5
+	timer.one_shot = true
+	timer.connect("timeout", Callable(self,"_on_chopped_tree"))
+	timer.start()
+	pass
+
+func _on_chopped_tree():
+	var tree_pos = path[path.size() - 1]
+	if tree:
+		tree.queue_free()
+	$"../sibilyanWithAxe".visible = false
+	self.visible = true
+	var wood = int($"../../../Control/ResourcePanel/WoodContainer/Label".get_text())
+	$"../../../Control/ResourcePanel/WoodContainer/Label".set_text(str(wood+5))
+	pass
 func idle():
 	pass
 

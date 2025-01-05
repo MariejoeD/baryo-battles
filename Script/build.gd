@@ -15,6 +15,7 @@ var buildings = {}
 var button
 var mesh_instance: MeshInstance3D = null
 var camera: Camera3D = null  # Camera reference for projection
+var in_building_mode = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -89,6 +90,7 @@ func _process(delta: float) -> void:
 	
 func follow_mouse():
 	if mesh_instance:
+		in_building_mode = true
 		# Get the mouse position in screen space
 		var space_state = get_world_3d().direct_space_state
 		var camera = grand_parent.get_node("SubViewportContainer/SubViewport/Camera3D") # Ensure this points to your Camera3D node
@@ -128,6 +130,7 @@ func follow_mouse():
 	# If right mouse button is pressed, stop following the mouse and place the object
 	if Input.is_mouse_button_pressed(1) and mesh_instance:  # mapped to the left mouse button
 		#print("press")
+		
 		if following:
 			following = false  # Stop following the mouse
 			var pos = mesh_instance.transform.origin
@@ -136,6 +139,7 @@ func follow_mouse():
 			if not is_area_free(pos, mesh_instance):
 				print("Cannot place tile; overlaps with existing tile.")
 				return
+			in_building_mode = false
 			grid.set_cell_item(pos, buildings[button.name])
 			button = null
 			print("Mesh dropped at: ", mesh_instance.transform.origin)
@@ -160,12 +164,20 @@ func is_area_free(start_pos: Vector3i, new_tile_instance: MeshInstance3D):
 			continue  # Skip empty cells
 		# Get the existing tile's mesh and bounding box
 		var existing_tile_instance = mesh_lib.get_item_mesh(existing_tile_item)  # Assuming StaticBody3D child
-		print(existing_tile_instance)
-		var existing_tile_aabb = get_tile_bounding_box_for_existing_tile(existing_tile_pos, existing_tile_instance)
-
-		# Check for overlap between the two bounding boxes
-		if new_tile_aabb.intersects(existing_tile_aabb):
-			return false  # Found an overlap, so can't place the new tile
+		if existing_tile_instance:
+			var existing_tile_aabb = get_tile_bounding_box_for_existing_tile(existing_tile_pos, existing_tile_instance)
+			# Check for overlap between the two bounding boxes
+			if new_tile_aabb.intersects(existing_tile_aabb):
+				return false # Found an overlap, so can't place the new tile
+				
+	for parent in get_tree().get_nodes_in_group("Trees"):
+		for child in parent.get_children():
+			if child is MeshInstance3D and child.visible == true:
+				var tree_mesh = child
+				var tree_aabb = get_tile_bounding_box_for_existing_tile(child.global_transform.origin, tree_mesh.mesh)
+				if new_tile_aabb.intersects(tree_aabb):
+					print("overlaps")
+					return false
 	return true # No Overlapped
 	
 	pass
