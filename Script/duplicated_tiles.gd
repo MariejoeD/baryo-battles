@@ -32,9 +32,11 @@ func create_functional_tile(tile_id: int, grid_position: Vector3i):
 		# Create a new MeshInstance3D and assign the mesh
 		var mesh_instance = MeshInstance3D.new()
 		mesh_instance.mesh = tile_mesh
+		
+		var mesh_offset = tile_mesh.get_aabb().position + (tile_mesh.get_aabb().size/2)
 
 		# Set the position of the mesh instance
-		var world_position = other_map.map_to_local(grid_position)
+		var world_position = other_map.map_to_local(grid_position) - mesh_offset
 		mesh_instance.transform.origin = world_position
 
 		#Dynamically assign a script if available in the script library
@@ -56,4 +58,4 @@ func create_functional_tile(tile_id: int, grid_position: Vector3i):
 		add_child(mesh_instance)
 
 		# Debug: Print the position
-		print("Created functional tile with script at: ", world_position)
+		#print("Created functional tile with script at: ", world_position)

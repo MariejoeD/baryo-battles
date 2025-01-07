@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgeyxpiiwyn3l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pg87i"]
+albedo_color = Color(0.375328, 0.141255, 0.018481, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8uchb"]
+material = SubResource("StandardMaterial3D_pg87i")
+size = Vector3(0.1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w32s5"]
+albedo_color = Color(0.159936, 0.090675, 0.00520254, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_12d8s"]
+material = SubResource("StandardMaterial3D_w32s5")
+size = Vector3(0.8, 1, 0.8)
+
+[node name="Enemy Buildings" type="Node3D"]
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.5, 0)
+mesh = SubResource("BoxMesh_8uchb")
+
+[node name="House" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_12d8s")

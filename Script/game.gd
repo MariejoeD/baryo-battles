@@ -64,7 +64,6 @@ func _ready():
 	var back_to_main_menu_button = $SettingsPanel/BackToMainMenuButton
 	back_to_main_menu_button.connect("pressed", Callable(self, "_on_back_to_main_menu_pressed"))
 
-	$ResourcePanel/WoodContainer/Label.set_text(str(0))
 	# Initialize the resource display and button visuals
 	update_resource_display()
 	update_button_visuals()
@@ -85,17 +84,18 @@ func _on_settings_button_pressed():
 	settings_panel.visible = !settings_panel.visible
 
 func _on_back_to_main_menu_pressed():
-	print("Back to Main Menu button pressed!")
+	#print("Back to Main Menu button pressed!")
 	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
 
 # Update the resource display
 func update_resource_display():
-	print("Updating resource display...")
+	#print("Updating resource display...")
+	$ResourcePanel/WoodContainer/Label.set_text(str(0))
 	# Placeholder for updating UI elements for resources
 
 # Update button visuals based on their states
 func update_button_visuals():
-	print("Updating button visuals...")
+	#print("Updating button visuals...")
 	for button_name in button_states.keys():
 		var button = grid_container.get_node_or_null(button_name)
 		if button:

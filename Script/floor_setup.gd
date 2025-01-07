@@ -14,6 +14,7 @@ var grid_range = floor(grid_size/2)
 func _ready() -> void:
 	fill_map()
 	create_AStar_map()
+	check_for_tile_collision()
 	pass # Replace with function body.
 
 func fill_map():
@@ -27,35 +28,44 @@ func fill_map():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	check_for_tile_collision()
+	#check_for_tile_collision()
 	pass
 	
 # Function to check if a collision exists at a given position
 func check_for_tile_collision():
-	var range = floor(grid_size/2)
-	for x in range(-range, range+1):
-		for z in range(-range, range+1):
-			# Check if a tile exists in the other map at this position
-			var other_tile_id = other_map.get_cell_item(Vector3i(x, 0, z))
-			if other_tile_id != -1:  # Tile exists
-				var other_tile_size = get_tile_size(other_tile_id)
-				# Check if a floor tile with ID 1 exists in the same position
-				var drangex = ceil(other_tile_size.x/2)
-				var drangez = ceil(other_tile_size.z/2)
-				for dx in range(-drangex, drangex):
-					for dz in range(-drangez, drangez):
-						var check_pos = Vector3i(x + dx, 1, z + dz)
-						var floor_tile_id = floor_map.get_cell_item(check_pos)
-						if floor_tile_id == 1:  # Tile with ID 1 found
-							#print("Collision detected at position: ", check_pos)
-							# Remove the floor tile
-							floor_map.set_cell_item(check_pos, -1)
+	var used_cells = other_map.get_used_cells()
+	for grid_pos in used_cells:
+		# Check if a tile exists in the other map at this position
+		var other_tile_id = other_map.get_cell_item(grid_pos)
+		if other_tile_id != -1:  # Tile exists
+			var other_tile_size = get_tile_size(other_tile_id)
+			if other_tile_size == Vector3i(1,1,1):
+				grid_pos.y = 1
+				remove_path(grid_pos)
+				continue
+			# Check if a floor tile with ID 1 exists in the same position
+			var drangex = ceil(other_tile_size.x/2)
+			var drangez = ceil(other_tile_size.z/2)
+			#print(drangex,":",drangez)
+			for dx in range(-drangex, drangex):
+				for dz in range(-drangez, drangez):
+					var check_pos = Vector3i(grid_pos.x + dx, 1, grid_pos.z + dz)
+					remove_path(check_pos)
 
-
+func remove_path(check_pos):
+	var floor_tile_id = floor_map.get_cell_item(check_pos)
+	if floor_tile_id == 1:  # Tile with ID 1 found
+		#print("Collision detected at position: ", check_pos)
+		# Remove the floor tile
+		floor_map.set_cell_item(check_pos, -1)
+		remove_point(check_pos)
+		update_neighbors(check_pos)
 func get_tile_size(tile_id):
 	var mesh = other_map.mesh_library.get_item_mesh(tile_id)
 	if mesh:
 		var size = mesh.get_aabb().size
+		if size >= Vector3(0.1,0.1,0.1):
+			return Vector3i(1, 1, 1) 
 		return Vector3i(floor(size.x), floor(size.y), floor(size.z))  # Use integer sizes for grid alignment
 	return Vector3i(1, 1, 1)  # Default size if the size can't be determined
 	pass
@@ -115,3 +125,30 @@ func find_path(start: Vector3, end: Vector3):
 	#print(all_points)
 	# Generate the path from AStar3D
 	return aS.get_point_path(start_id, end_id)
+
+func remove_point(cell_pos: Vector3i):
+	if v3_to_index(cell_pos) in all_points:
+		var point_id = all_points[v3_to_index(cell_pos)]
+		aS.remove_point(point_id)  # Remove the point from AStar
+		all_points.erase(v3_to_index(cell_pos))  # Remove from the dictionary
+
+
+func update_neighbors(cell_pos: Vector3i):
+	for x in [-1, 0, 1]:
+		for y in [-1, 0, 1]:
+			for z in [-1, 0, 1]:
+				var offset = Vector3i(x, y, z)
+				if offset == Vector3i(0, 0, 0):
+					continue
+				
+				var neighbor_pos = cell_pos + offset
+				if v3_to_index(neighbor_pos) in all_points:
+					var neighbor_id = all_points[v3_to_index(neighbor_pos)]
+					if floor_map.get_cell_item(neighbor_pos) == 1:
+						# Reconnect valid neighbors
+						var point_id = all_points.get(v3_to_index(cell_pos), -1)
+						if point_id != -1 and !aS.are_points_connected(point_id, neighbor_id):
+							aS.connect_points(point_id, neighbor_id, true)
+					else:
+						# Disconnect invalid neighbors
+						aS.disconnect_points(all_points[v3_to_index(cell_pos)], neighbor_id)

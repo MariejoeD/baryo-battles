@@ -1,0 +1,139 @@
+[gd_scene load_steps=11 format=3 uid="uid://3aah0bqh47a3"]
+
+[ext_resource type="MeshLibrary" uid="uid://kirr0sbmxkhx" path="res://assets/mesh/enemy_meshes.tres" id="1_d24y5"]
+[ext_resource type="Script" path="res://Script/temp script/grid_map.gd" id="2_nsjkx"]
+[ext_resource type="MeshLibrary" uid="uid://bqpxrt4ymmkn2" path="res://assets/mesh/floor_meshes.tres" id="2_w8dxt"]
+[ext_resource type="Script" path="res://Script/floor_setup.gd" id="3_d8lc0"]
+[ext_resource type="Script" path="res://Script/duplicated_tiles.gd" id="4_0ylnp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2mwie"]
+
+[sub_resource type="Sky" id="Sky_uof85"]
+sky_material = SubResource("ProceduralSkyMaterial_2mwie")
+
+[sub_resource type="Environment" id="Environment_1814n"]
+background_mode = 2
+sky = SubResource("Sky_uof85")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 16.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8oboq"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hq2j2"]
+
+[node name="Attack Scene" type="CanvasLayer"]
+
+[node name="Base" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Base"]
+environment = SubResource("Environment_1814n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Base"]
+transform = Transform3D(0.23005, 0.696497, 0.679683, -6.10574e-08, -0.698415, 0.715693, 0.973179, -0.164645, -0.16067, 0, 13.3756, 0)
+shadow_enabled = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Base"]
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="SubViewport" type="SubViewport" parent="Base/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Base/SubViewportContainer/SubViewport"]
+transform = Transform3D(0.707107, -0.5, 0.5, -2.55739e-08, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 39, 41, 40)
+
+[node name="UI" type="Control" parent="Base"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Troop Button Control" type="Node" parent="Base/UI"]
+
+[node name="Troops" type="Panel" parent="Base/UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.889
+anchor_right = 0.9
+anchor_bottom = 0.978
+offset_top = -0.0800171
+offset_bottom = -0.160034
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8oboq")
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Base/UI/Troops"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="Base/UI/Troops/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Base/UI/Troops/HBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Troop"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Base/UI/Troops/HBoxContainer/Button"]
+layout_mode = 0
+offset_left = 43.0
+offset_right = 63.0
+offset_bottom = 23.0
+text = "5"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Button2" type="Button" parent="Base/UI/Troops/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+text = "Test"
+
+[node name="AMap" type="Node3D" parent="Base"]
+
+[node name="GridMap" type="GridMap" parent="Base/AMap"]
+mesh_library = ExtResource("1_d24y5")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(2, 0, 655360, 2, 65535, 655360, 2, 65534, 655360, 1, 65534, 1048576, 0, 65534, 1048576, 65535, 65534, 1048576, 65534, 65534, 1048576, 65533, 65534, 1048576, 65532, 65534, 0, 65532, 65535, 0, 65532, 0, 0, 65532, 1, 0, 2, 1, 655360, 2, 2, 655360, 2, 3, 655360, 1, 4, 1048576, 0, 4, 1048576, 65535, 4, 1048576, 65534, 4, 1048576, 65533, 4, 1048576, 65532, 4, 1048576, 65531, 4, 1048576, 65530, 3, 0, 65530, 2, 0, 65530, 1, 0, 65530, 0, 0, 65530, 65535, 0, 65530, 65534, 0, 65530, 65533, 0, 65530, 65532, 0, 65531, 65531, 1441792, 65532, 65531, 1441792, 65533, 65531, 1441792, 65534, 65531, 1441792, 65535, 65531, 1441792, 0, 65531, 1441792, 1, 65531, 1441792, 2, 65531, 1441792, 3, 65531, 1441792, 4, 65532, 655360, 4, 65533, 655360, 4, 65534, 655360, 4, 65535, 655360, 4, 0, 655360, 4, 1, 655360, 4, 2, 655360, 4, 3, 655360)
+}
+script = ExtResource("2_nsjkx")
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Floor" type="GridMap" parent="Base/AMap"]
+mesh_library = ExtResource("2_w8dxt")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 2
+collision_mask = 3
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="floor setup" type="Node3D" parent="Base/AMap"]
+script = ExtResource("3_d8lc0")
+
+[node name="DuplicatedTiles" type="Node3D" parent="Base/AMap"]
+visible = false
+script = ExtResource("4_0ylnp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Base/AMap"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+mesh = SubResource("PlaneMesh_hq2j2")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=39 format=3 uid="uid://f8rjxbhxccny"]
+[gd_scene load_steps=41 format=3 uid="uid://f8rjxbhxccny"]
 
+[ext_resource type="Script" path="res://Script/attack scripts/Attack.gd" id="1_shcpm"]
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_mlhjp"]
 [ext_resource type="Texture2D" uid="uid://b8dfdjsg6pnh3" path="res://assets/buildings/unlocked/1.png" id="4_yic6l"]
@@ -139,6 +140,24 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="Theme" id="Theme_0lo5u"]
 
+[sub_resource type="GDScript" id="GDScript_bvp18"]
+script/source = "extends TextureButton
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _pressed() -> void:
+	
+	pass
+"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lt0qo"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
@@ -195,7 +214,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-tooltip_text = "tra"
 script = ExtResource("1_soyno")
 
 [node name="Build" type="Node3D" parent="." node_paths=PackedStringArray("hbox", "build_button", "attack_button", "build_panel")]
@@ -204,6 +222,9 @@ hbox = NodePath("../BuildInventoryPanel/HScrollContainer/HBoxContainer")
 build_button = NodePath("../BuildButton")
 attack_button = NodePath("../AttackButton")
 build_panel = NodePath("../BuildInventoryPanel")
+
+[node name="Attack" type="Node" parent="."]
+script = ExtResource("1_shcpm")
 
 [node name="BuildButton" type="Button" parent="."]
 layout_mode = 1
@@ -363,6 +384,7 @@ offset_right = -188.23
 offset_bottom = 83.216
 texture_normal = ExtResource("17_aohav")
 texture_pressed = ExtResource("18_dflnr")
+script = SubResource("GDScript_bvp18")
 
 [node name="Button2" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
