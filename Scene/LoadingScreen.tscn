@@ -50,6 +50,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_6cuyi")
 theme_override_font_sizes/font_size = 19
 theme_override_styles/background = SubResource("StyleBoxFlat_emjjt")
 
@@ -67,6 +68,7 @@ offset_bottom = -108.0
 theme_override_colors/font_color = Color(0.0717031, 0.0906458, 0.0745647, 1)
 theme_override_colors/font_shadow_color = Color(1, 0.917647, 0.654902, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6cuyi")
 theme_override_font_sizes/font_size = 18
 text = "Loading..."
 
