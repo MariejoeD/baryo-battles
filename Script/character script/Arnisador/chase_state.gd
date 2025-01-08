@@ -1,38 +1,64 @@
 extends NpcState
 
-var target : Node3D = null
+var target : CharacterBody3D = null
 var path = []
 var current_target_index = 0
 var speed = 5.0  # Movement speed
 var end
 @onready var fsm = get_parent() as StateMachine  # Reference to the FSM for state changes
-
+var start
 func enter(previous_state_path: String, data := {}) -> void:
 	target = data.get("target", null)
+	start = fsm.npc_root_node.global_transform.origin
 	end = data.get("target", null).global_transform.origin
-	path = fsm.pathfinder_component.findpaths(fsm.npc_root_node.global_transform.origin, end)  # Adjusted the method name to match the pathfinding function
+	path = fsm.pathfinder_component.findpaths(start, end)  # Adjusted the method name to match the pathfinding function
 	
 	if path == null:
 		print("No path found")
 		return
 
 	current_target_index = 0  # Start from the first point in the path
-	print("Path calculated:", path, "\nstarting movement")
 
 func update(delta: float) -> void:
 	if not target:
 		print("lost target")
 		fsm._transition_to_next_state("Idle")  # Change to idle or another state if the target is lost
 		return
+	if fsm.targeting_component.detection_area.get_overlapping_bodies():
+		fsm.targeting_component._find_nearest_target()
+		var new_target = fsm.targeting_component.target
+		
+		if new_target != target and new_target:  # Only update target if it's a new one
+			print("New target found.")
+			target = new_target
+			# Recalculate path to the new target
+			start = fsm.npc_root_node.global_transform.origin
+			end = target.global_transform.origin
+			print(new_target.global_transform.origin)
+			path = fsm.pathfinder_component.findpaths(start, end)
+			current_target_index = 0
+		pass
+	
+	if fsm.npc_root_node.global_transform.origin.distance_to(target.global_transform.origin) <.6:
+		print("Reached the end of the path.")
+		fsm._transition_to_next_state("Attack",{"target":target}) 
+		
+	#if fsm.npc_root_node.global_transform.origin.distance_to(end) < 1 or target.global_transform.origin.distance_to(end) > 1:
+		#start = fsm.npc_root_node.global_transform.origin
+		#end = target.global_transform.origin
+		#path = fsm.pathfinder_component.findpaths(start, end)
+		#current_target_index = 0
+		#pass
+	
 	
 	var char_body = fsm.npc_root_node as CharacterBody3D
 	if current_target_index < path.size():
+		print()
 		fsm.anim_player.play("run")
 		var move_vec = (path[current_target_index] - char_body.global_transform.origin)
 		
 		# If close to the target waypoint, proceed to the next
 		if move_vec.length() <= 1.65:
-			print(move_vec.length())
 			current_target_index += 1
 		else:
 			# Move towards the target

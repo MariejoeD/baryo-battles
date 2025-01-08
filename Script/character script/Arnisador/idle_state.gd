@@ -1,10 +1,11 @@
 extends NpcState
 
-var target : Node3D = null
+var target : CharacterBody3D = null
 @onready var fsm = get_parent() as StateMachine  # Reference to the FSM for state changes
 
 
 func update(_delta: float) -> void:
+	fsm.targeting_component._find_nearest_target()
 	target = fsm.targeting_component.target
 	if target:
 		# If target is found, change state to 'Running' or another relevant state

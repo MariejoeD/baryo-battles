@@ -1,7 +1,7 @@
 # State Machine Class
 class_name StateMachine extends Node
 
-@export var npc_root_node: Node3D
+@export var npc_root_node: CharacterBody3D
 @export var targeting_component: Node3D
 @export var anim_player: AnimationPlayer
 @export var pathfinder_component: Node3D

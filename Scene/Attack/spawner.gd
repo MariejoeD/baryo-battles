@@ -8,7 +8,6 @@ var fl =true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_view = cm.transform
-	print(current_view)
 	pass # Replace with function body.
 
 
@@ -29,7 +28,6 @@ func _process(delta: float) -> void:
 	if choice and int(value) > 0:
 		inst = arnis.instantiate()
 		if Input.is_action_just_pressed("lmb"):
-			print("press")
 			var mouse_position = get_viewport().get_mouse_position()
 			var from = cm.project_ray_origin(mouse_position)
 			var to = from + cm.project_ray_normal(mouse_position) * 100000
@@ -37,7 +35,6 @@ func _process(delta: float) -> void:
 			var query = PhysicsRayQueryParameters3D.create(from, to)
 			
 			var result = space_state.intersect_ray(query)
-			print(result)
 			var pos = result["position"]
 			
 			add_child(inst)
@@ -53,6 +50,5 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	print("pressed btn")
 	choice = 1
 	pass # Replace with function body.
