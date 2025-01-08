@@ -1,4 +1,4 @@
-extends Node3D
+class_name path_finder extends Node3D
 
 var all_points = {}
 var aS = null
@@ -76,7 +76,8 @@ func create_AStar_map():
 	
 	# Add walkable cells to AStar3D
 	for cell in cells:
-		var cell_pos = Vector3i(cell.x, cell.y, cell.z)  # Create a Vector3i
+		if(cell.y == 0):continue
+		var cell_pos = Vector3i(cell.x, 1, cell.z)  # Create a Vector3i
 		var mesh_id = floor_map.get_cell_item(cell_pos)  # Use Vector3i to get the cell item
 		if mesh_id == 1:  # Only add walkable cells
 			var index = aS.get_available_point_id()
@@ -85,20 +86,15 @@ func create_AStar_map():
 	
 	# Connect neighboring points
 	for cell in cells:
-		for x in [-1, 0, 1]:
-			for y in [-1, 0, 1]:
-				for z in [-1, 0, 1]:
-					var v3 = Vector3i(x, y, z)
-					if v3 == Vector3i(0, 0, 0):
-						continue
-					
-					var neighbor_cell = Vector3i(v3 + cell)
-					var neighbor_mesh_id = floor_map.get_cell_item(neighbor_cell)  # Use Vector3i for neighbor
-					if neighbor_mesh_id == 1 and v3_to_index(neighbor_cell) in all_points:
-						var index1 = all_points.get(v3_to_index(cell), -1)  # Add a default value if not found
-						var index2 = all_points.get(v3_to_index(neighbor_cell), -1)  # Same for neighbor
-						if index1 != -1 and index2 != -1 and !aS.are_points_connected(index1, index2):
-							aS.connect_points(index1, index2, true)
+		if(cell.y == 0):continue
+		for offset in [Vector3i(-1, 0, 0), Vector3i(1, 0, 0), Vector3i(0, 0, -1), Vector3i(0, 0, 1)]:
+				var neighbor_cell = cell + offset
+				var neighbor_mesh_id = floor_map.get_cell_item(neighbor_cell)  # Use Vector3i for neighbor
+				if neighbor_mesh_id == 1 and v3_to_index(neighbor_cell) in all_points:
+					var index1 = all_points.get(v3_to_index(cell), -1)  # Add a default value if not found
+					var index2 = all_points.get(v3_to_index(neighbor_cell), -1)  # Same for neighbor
+					if index1 != -1 and index2 != -1 and !aS.are_points_connected(index1, index2):
+						aS.connect_points(index1, index2, true)
 	
 	
 func v3_to_index(v3: Vector3i) -> String:
@@ -124,6 +120,7 @@ func find_path(start: Vector3, end: Vector3):
 		end_id = aS.get_closest_point(end)
 	#print(all_points)
 	# Generate the path from AStar3D
+	
 	return aS.get_point_path(start_id, end_id)
 
 func remove_point(cell_pos: Vector3i):

@@ -1,7 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://3aah0bqh47a3"]
+[gd_scene load_steps=28 format=3 uid="uid://cc88oexqedtk6"]
 
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_0s3e8"]
-[ext_resource type="MeshLibrary" uid="uid://kirr0sbmxkhx" path="res://assets/mesh/enemy_meshes.tres" id="1_d24y5"]
+[ext_resource type="MeshLibrary" uid="uid://hca37vovm3mn" path="res://assets/mesh/enemy_meshes.tres" id="1_d24y5"]
 [ext_resource type="Texture2D" uid="uid://cn66uvxh4adkn" path="res://assets/game/foodIcon.png" id="2_ltoeo"]
 [ext_resource type="Script" path="res://Script/temp script/grid_map.gd" id="2_nsjkx"]
 [ext_resource type="MeshLibrary" uid="uid://bqpxrt4ymmkn2" path="res://assets/mesh/floor_meshes.tres" id="2_w8dxt"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="3_i57tp"]
 [ext_resource type="Script" path="res://Script/duplicated_tiles.gd" id="4_0ylnp"]
 [ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="4_fbd0p"]
+[ext_resource type="Script" path="res://Scene/Attack/spawner.gd" id="10_b32uk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2mwie"]
 
@@ -117,6 +118,10 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hq2j2"]
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y50xu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0wfcq"]
+
 [node name="Attack Scene" type="CanvasLayer"]
 
 [node name="Base" type="Node3D" parent="."]
@@ -138,7 +143,7 @@ size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Base/SubViewportContainer/SubViewport"]
-transform = Transform3D(0.707107, -0.5, 0.5, -2.55739e-08, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 39, 41, 40)
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 39, 41, 40)
 
 [node name="UI" type="Control" parent="Base"]
 layout_mode = 3
@@ -188,7 +193,6 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_4pfay")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_mvduv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hplk1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_s1olc")
-button_mask = 0
 
 [node name="TroopName" type="Label" parent="Base/UI/Troops/troops/Button"]
 layout_mode = 1
@@ -365,7 +369,7 @@ collision_layer = 2
 collision_mask = 3
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
-[node name="floor setup" type="Node3D" parent="Base/AMap"]
+[node name="floor setup" type="Node3D" parent="Base/AMap" groups=["pathscript"]]
 script = ExtResource("3_d8lc0")
 
 [node name="DuplicatedTiles" type="Node3D" parent="Base/AMap"]
@@ -375,3 +379,17 @@ script = ExtResource("4_0ylnp")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Base/AMap"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 mesh = SubResource("PlaneMesh_hq2j2")
+
+[node name="Node" type="Node" parent="Base"]
+script = ExtResource("10_b32uk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Base" groups=["Enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16731, 0)
+mesh = SubResource("CapsuleMesh_y50xu")
+
+[node name="Area3D" type="Area3D" parent="Base/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base/MeshInstance3D/Area3D"]
+shape = SubResource("CapsuleShape3D_0wfcq")
+
+[connection signal="pressed" from="Base/UI/Troops/troops/Button" to="Base/Node" method="_on_button_pressed"]

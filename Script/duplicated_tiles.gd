@@ -47,12 +47,13 @@ func create_functional_tile(tile_id: int, grid_position: Vector3i):
 			if mesh_instance.has_method("initialize"):
 				mesh_instance.initialize(world_position, tile_id)
 
-		# Optional: Add collision or additional functionality
-		#var static_body = StaticBody3D.new()
-		#var collision_shape = CollisionShape3D.new()
-		#collision_shape.shape = mesh_lib.get_item_shapes(tile_id)  # Use the MeshLibrary shape for collision
-		#static_body.add_child(collision_shape)
-		#mesh_instance.add_child(static_body)
+		 #Optional: Add collision or additional functionality
+		var static_body = StaticBody3D.new()
+		var shapes = mesh_lib.get_item_shapes(tile_id)
+		for shape in shapes:
+			var collision_shape = CollisionShape3D.new()
+			collision_shape.shape = shape
+			static_body.add_child(collision_shape)
 
 		# Add to the duplicate container in the scene tree
 		add_child(mesh_instance)

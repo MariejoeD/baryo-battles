@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://chfyar41tdneb"]
+
+[ext_resource type="Script" path="res://Script/character script/Arnisador/FSM.gd" id="1_qtdhu"]
+[ext_resource type="Script" path="res://Script/character script/Arnisador/idle_state.gd" id="2_gp8dd"]
+[ext_resource type="Script" path="res://Script/character script/Arnisador/chase_state.gd" id="3_c76py"]
+[ext_resource type="Script" path="res://Script/character script/Arnisador/attack_state.gd" id="4_20gty"]
+
+[node name="FSM" type="Node" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_qtdhu")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node3D" parent="."]
+script = ExtResource("2_gp8dd")
+
+[node name="Chase" type="Node3D" parent="."]
+script = ExtResource("3_c76py")
+
+[node name="Attack" type="Node3D" parent="."]
+script = ExtResource("4_20gty")
