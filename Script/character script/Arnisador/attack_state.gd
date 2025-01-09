@@ -25,9 +25,9 @@ func enter(_previous_state_path: String, data := {}) -> void:
 	fsm.anim_player.play("attack")
 	
 func _attack():
-	if target:
+	if target and is_instance_valid(target):
 		target.get_node("Health Component")._on_attacked(10)
 	pass
 func update(_delta: float):
-	if not target:
+	if not is_instance_valid(target) and not target:
 		fsm._transition_to_next_state("Idle")
