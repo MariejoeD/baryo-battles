@@ -3,11 +3,11 @@ extends NpcState
 var target : CharacterBody3D = null
 var path = []
 var current_target_index = 0
-var speed = 5.0  # Movement speed
+var speed = 10.0  # Movement speed
 var end
 @onready var fsm = get_parent() as StateMachine  # Reference to the FSM for state changes
 var start
-func enter(previous_state_path: String, data := {}) -> void:
+func enter(_previous_state_path: String, data := {}) -> void:
 	target = data.get("target", null)
 	start = fsm.npc_root_node.global_transform.origin
 	end = data.get("target", null).global_transform.origin
@@ -34,13 +34,12 @@ func update(delta: float) -> void:
 			# Recalculate path to the new target
 			start = fsm.npc_root_node.global_transform.origin
 			end = target.global_transform.origin
-			print(new_target.global_transform.origin)
 			path = fsm.pathfinder_component.findpaths(start, end)
 			current_target_index = 0
 		pass
 	
 	if fsm.npc_root_node.global_transform.origin.distance_to(target.global_transform.origin) <.6:
-		print("Reached the end of the path.")
+		print("Reached the end of the path1.")
 		fsm._transition_to_next_state("Attack",{"target":target}) 
 		
 	#if fsm.npc_root_node.global_transform.origin.distance_to(end) < 1 or target.global_transform.origin.distance_to(end) > 1:
@@ -53,7 +52,6 @@ func update(delta: float) -> void:
 	
 	var char_body = fsm.npc_root_node as CharacterBody3D
 	if current_target_index < path.size():
-		print()
 		fsm.anim_player.play("run")
 		var move_vec = (path[current_target_index] - char_body.global_transform.origin)
 		

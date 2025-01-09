@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmlqf0ttlwty"]
+[gd_scene load_steps=2 format=3 uid="uid://c4cfpqr1pg4pe"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_aupcr"]
 radius = 100.0

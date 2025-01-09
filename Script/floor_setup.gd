@@ -9,7 +9,7 @@ var aS = null
 @onready var floor_map = parent.get_node("Floor")
 @onready var other_map = parent.get_node("GridMap")
 @export var grid_size: int = 100
-var grid_range = floor(grid_size/2)
+var grid_range = floor(grid_size/2.0)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	fill_map()
@@ -26,10 +26,7 @@ func fill_map():
 	print(floor_map.get_cell_item(Vector3i(0,0,0)))
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	#check_for_tile_collision()
-	pass
+
 	
 # Function to check if a collision exists at a given position
 func check_for_tile_collision():
@@ -60,6 +57,7 @@ func remove_path(check_pos):
 		floor_map.set_cell_item(check_pos, -1)
 		remove_point(check_pos)
 		update_neighbors(check_pos)
+		
 func get_tile_size(tile_id):
 	var mesh = other_map.mesh_library.get_item_mesh(tile_id)
 	if mesh:
@@ -68,7 +66,6 @@ func get_tile_size(tile_id):
 			return Vector3i(1, 1, 1) 
 		return Vector3i(floor(size.x), floor(size.y), floor(size.z))  # Use integer sizes for grid alignment
 	return Vector3i(1, 1, 1)  # Default size if the size can't be determined
-	pass
 
 func create_AStar_map():
 	aS = AStar3D.new()

@@ -1,6 +1,10 @@
 extends Node
 
+var map_level = {
+	"Button": "res://Scene/Attack/attack_scene.tscn",
+	"Button2": ""
 
+}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for btn in $"../AttackPanel/ScrollContainer/VBoxContainer/TextureRect".get_children():
@@ -13,5 +17,5 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_btn_pressed(btn):
-	print(btn.name)
+	get_tree().change_scene_to_file(map_level[btn.name])
 	pass

@@ -6,7 +6,8 @@ var target : CharacterBody3D = null
 
 func update(_delta: float) -> void:
 	fsm.targeting_component._find_nearest_target()
-	target = fsm.targeting_component.target
+	if fsm.targeting_component.target and is_instance_valid(fsm.targeting_component.target):
+		target = fsm.targeting_component.target
 	if target:
 		# If target is found, change state to 'Running' or another relevant state
 		# Assuming 'RunningState' is a state where the NPC moves towards the target

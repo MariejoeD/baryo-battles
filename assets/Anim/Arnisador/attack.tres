@@ -3,6 +3,7 @@
 [resource]
 resource_name = "Armature|Armature|mixamo_com|Layer0_001"
 length = 8.16667
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
