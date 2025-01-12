@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://f8rjxbhxccny" path="res://Scene/game.tscn" id="1_8noqr"]
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="1_ewtg3"]
-[ext_resource type="MeshLibrary" uid="uid://bwmfv8if2w61e" path="res://assets/mesh/meshes.tres" id="2_upbyy"]
+[ext_resource type="MeshLibrary" uid="uid://ds47eqvqkbyhq" path="res://assets/mesh/meshes.tres" id="3_j3x7l"]
 [ext_resource type="MeshLibrary" uid="uid://bqpxrt4ymmkn2" path="res://assets/mesh/floor_meshes.tres" id="3_ucrro"]
 [ext_resource type="Script" path="res://Script/floor_setup.gd" id="4_6i8of"]
 [ext_resource type="Script" path="res://Script/duplicated_tiles.gd" id="6_ttmot"]
@@ -57,7 +57,8 @@ script = ExtResource("1_ewtg3")
 [node name="AMap" type="Node3D" parent="Base"]
 
 [node name="GridMap" type="GridMap" parent="Base/AMap"]
-mesh_library = ExtResource("2_upbyy")
+visible = false
+mesh_library = ExtResource("3_j3x7l")
 cell_size = Vector3(1, 1, 1)
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
