@@ -17,6 +17,7 @@ func generate_trees():
 		
 		var tree_inst = tree_scene.instantiate()
 		
+		add_child(tree_inst)
 		var children = tree_inst.get_children()
 		
 		var selected_child = children[randi()%4]
@@ -24,7 +25,6 @@ func generate_trees():
 		selected_child.visible = true
 		tree_inst.global_transform.origin = pos
 		
-		add_child(tree_inst)
 		#var area = tree_inst.get_node("Area3D")
 		#if area == null:
 			#print("area not found")

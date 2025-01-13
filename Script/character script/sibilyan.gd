@@ -85,7 +85,7 @@ func chop_tree():
 	pass
 
 func _on_chopped_tree():
-	var tree_pos = path[path.size() - 1]
+	var _tree_pos = path[path.size() - 1]
 	if tree:
 		tree.queue_free()
 	$"../sibilyanWithAxe".visible = false

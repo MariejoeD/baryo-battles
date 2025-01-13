@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		_handle_rotation()
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if Input.is_mouse_button_pressed(2):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		camera = camera
 	mouse_delta = Vector2.ZERO
 	pass

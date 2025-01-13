@@ -11,6 +11,7 @@ var grand_parent
 var following
 var dup_tiles
 @onready var mesh_lib : MeshLibrary = preload("res://assets/mesh/meshes.tres")  # Load the MeshLibrary resource
+@export var building_dict: building_resource
 var buildings = {}
 var button
 var mesh_instance: MeshInstance3D = null
@@ -55,7 +56,9 @@ func _on_btn_pressed(btn: TextureButton) -> void:
 	if mesh_instance:
 		mesh_instance.queue_free()  # Remove the previous instance if any
 	mesh_instance = MeshInstance3D.new()
-	var mesh = mesh_lib.get_item_mesh(buildings[button.name])  # Get mesh from the library
+	var inst = building_dict.building_assets[buildings[button.name]].instantiate()  # Get mesh from the library
+	var mesh = inst.mesh
+	inst = null
 	mesh_instance.mesh = mesh
 	
 	grid.add_child(mesh_instance)
@@ -64,7 +67,7 @@ func _on_btn_pressed(btn: TextureButton) -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	follow_mouse()
 	pass
 
@@ -93,7 +96,7 @@ func follow_mouse():
 		in_building_mode = true
 		# Get the mouse position in screen space
 		var space_state = get_world_3d().direct_space_state
-		var camera = grand_parent.get_node("SubViewportContainer/SubViewport/Camera3D") # Ensure this points to your Camera3D node
+		camera = grand_parent.get_node("SubViewportContainer/SubViewport/Camera3D") # Ensure this points to your Camera3D node
 		var mouse_position = get_viewport().get_mouse_position()  # Get the mouse position in screen coordinates
 
 		# Create a ray from the camera to the mouse position
@@ -128,7 +131,7 @@ func follow_mouse():
 			#print("No hit, stopped following the mouse")
 
 	# If right mouse button is pressed, stop following the mouse and place the object
-	if Input.is_mouse_button_pressed(1) and mesh_instance:  # mapped to the left mouse button
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and mesh_instance:  # mapped to the left mouse button
 		#print("press")
 		
 		if following:
@@ -170,8 +173,8 @@ func is_area_free(start_pos: Vector3i, new_tile_instance: MeshInstance3D):
 			if new_tile_aabb.intersects(existing_tile_aabb):
 				return false # Found an overlap, so can't place the new tile
 				
-	for parent in get_tree().get_nodes_in_group("Trees"):
-		for child in parent.get_children():
+	for tree_parent in get_tree().get_nodes_in_group("Trees"):
+		for child in tree_parent.get_children():
 			if child is MeshInstance3D and child.visible == true:
 				var tree_mesh = child
 				var tree_aabb = get_tile_bounding_box_for_existing_tile(child.global_transform.origin, tree_mesh.mesh)
@@ -180,7 +183,7 @@ func is_area_free(start_pos: Vector3i, new_tile_instance: MeshInstance3D):
 					return false
 	return true # No Overlapped
 	
-	pass
+	
 
 func get_tile_bounding_box(position: Vector3i, tile_instance: MeshInstance3D) -> AABB:
 	# Assuming the mesh has a valid AABB. If not, calculate it using the tile's size.
@@ -190,7 +193,7 @@ func get_tile_bounding_box(position: Vector3i, tile_instance: MeshInstance3D) ->
 	var world_position = tile_instance.transform.origin
 	var tile_size = mesh_aabb.size  # Use the mesh's size to represent the tile's bounding box
 	return AABB(world_position - tile_size / 2, tile_size)  # Return AABB in world space
-	pass
+	
 	
 func get_tile_bounding_box_for_existing_tile(position:Vector3i, tile_instance: Mesh) -> AABB:
 	# Get the AABB of the existing tile's mesh
@@ -198,4 +201,4 @@ func get_tile_bounding_box_for_existing_tile(position:Vector3i, tile_instance: M
 	# Adjust the position of the tile in the grid
 	var grid_world_position = grid.map_to_local(position)
 	return AABB(grid_world_position - mesh_aabb.size / 2, mesh_aabb.size)
-	pass
+	

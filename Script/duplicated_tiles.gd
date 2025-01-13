@@ -11,6 +11,7 @@ extends Node3D
 	#1: preload("res://scripts/TileScript2.gd"),  # Example script for tile ID 1
 	# Add more tile-to-script mappings as needed
 }
+@export var packed_building: building_resource
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,7 +23,7 @@ func duplicate_tiles_with_functionality():
 	for grid_position in used_cells:
 		var tile_id = other_map.get_cell_item(grid_position)
 		if tile_id != -1:  # A valid tile exists at this position
-			create_functional_tile(tile_id, grid_position)
+			place_building(tile_id, grid_position)
 		
 
 func create_functional_tile(tile_id: int, grid_position: Vector3i):
@@ -46,6 +47,9 @@ func create_functional_tile(tile_id: int, grid_position: Vector3i):
 			# Call an optional setup function in the script (if defined)
 			if mesh_instance.has_method("initialize"):
 				mesh_instance.initialize(world_position, tile_id)
+		
+		var node = Node.new()
+		mesh_instance.add_child(node)
 
 		 ##Optional: Add collision or additional functionality
 		#var static_body = StaticBody3D.new()
@@ -60,3 +64,16 @@ func create_functional_tile(tile_id: int, grid_position: Vector3i):
 
 		# Debug: Print the position
 		#print("Created functional tile with script at: ", world_position)
+
+
+func place_building(tile_id: int, grid_pos: Vector3i):
+	var building_scene = packed_building.building_assets[tile_id]
+	var building_instance = building_scene.instantiate()
+	var mesh = building_instance.mesh
+	
+	var mesh_offset = mesh.get_aabb().position + (mesh.get_aabb().size/2)
+	
+	var world_position = other_map.map_to_local(grid_pos) - mesh_offset
+	world_position.y = 0.6
+	building_instance.global_transform.origin = world_position
+	add_child(building_instance)
