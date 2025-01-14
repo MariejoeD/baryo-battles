@@ -113,12 +113,12 @@ func follow_mouse():
 			# Raycast hit something valid, update the mesh position and resume following
 			var hit_position = result["position"]
 			
+			# Snap the hit position to the grid
+			var cell = grid.local_to_map(hit_position)
+			var snapped_position = grid.map_to_local(cell)
+			snapped_position.y = 0.6
 			# Snap to integer positions
-			mesh_instance.transform.origin = Vector3(
-				floor(hit_position.x),  # Snap X to integer
-				0.6,  # Snap Y to integer
-				floor(hit_position.z)   # Snap Z to integer
-			)
+			mesh_instance.transform.origin = snapped_position
 			#print("Ray hit at position (snapped): ", mesh_instance.transform.origin)
 
 			# Only follow if it's valid
@@ -131,29 +131,29 @@ func follow_mouse():
 			#print("No hit, stopped following the mouse")
 
 	# If right mouse button is pressed, stop following the mouse and place the object
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and mesh_instance:  # mapped to the left mouse button
-		#print("press")
-		
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and mesh_instance:
 		if following:
-			following = false  # Stop following the mouse
-			var pos = mesh_instance.transform.origin
-			pos.y = 0
-			# Check all cells the tile would occupy, considering the new tile's bounding box
-			if not is_area_free(pos, mesh_instance):
+			following = false
+			in_building_mode = false
+
+			# Snap final position to the grid and check for placement validity
+			var cell = grid.local_to_map(mesh_instance.transform.origin)  # Use local position for snapping
+			var snapped_position = grid.map_to_local(cell)
+			snapped_position.y = 0  # Align with the ground level
+			
+			if not is_area_free(snapped_position, mesh_instance):
 				print("Cannot place tile; overlaps with existing tile.")
 				return
-			in_building_mode = false
-			grid.set_cell_item(pos, buildings[button.name])
-			button = null
-			print("Mesh dropped at: ", mesh_instance.transform.origin)
+
+			mesh_instance.transform.origin = snapped_position  # Set the position locally
+			grid.set_cell_item(cell, buildings[button.name])  # Place the tile
+
 			dup_tiles.duplicate_tiles_with_functionality()
 			mesh_instance.queue_free()
 			mesh_instance = null
 			attack_button.visible = !attack_button.visible
 			build_button.visible = !build_button.visible
-			var arr = grid.get_used_cells()
-			for i in arr:
-				print(i)
+
 	pass
 	
 func is_area_free(start_pos: Vector3i, new_tile_instance: MeshInstance3D):

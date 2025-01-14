@@ -8,6 +8,7 @@ var aS = null
 @onready var parent = get_parent()
 @onready var floor_map = parent.get_node("Floor")
 @onready var other_map = parent.get_node("GridMap")
+@onready var grid_display = $"../Grid Display"
 @export var grid_size: int = 100
 var grid_range = floor(grid_size/2.0)
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +23,7 @@ func fill_map():
 	for x in range(-grid_range,grid_range+1,):
 		for z in range(-grid_range,grid_range+1,):
 			floor_map.set_cell_item(Vector3i(x, 0, z), 0) #Set Floor on position
+			grid_display.set_cell_item(Vector3i(x, 0, z),0)
 			floor_map.set_cell_item(Vector3(x, 1, z), 1)
 	print(floor_map.get_cell_item(Vector3i(0,0,0)))
 	pass

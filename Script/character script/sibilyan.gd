@@ -90,8 +90,7 @@ func _on_chopped_tree():
 		tree.queue_free()
 	$"../sibilyanWithAxe".visible = false
 	self.visible = true
-	var wood = int($"../../../Control/ResourcePanel/WoodContainer/Label".get_text())
-	$"../../../Control/ResourcePanel/WoodContainer/Label".set_text(str(wood+5))
+	$"../../../Control/ResourcePanel/WoodContainer/Label".text = str(int(Global.wood_qty)+5)
 	pass
 func idle():
 	pass

@@ -90,7 +90,7 @@ func _on_back_to_main_menu_pressed():
 # Update the resource display
 func update_resource_display():
 	#print("Updating resource display...")
-	$ResourcePanel/WoodContainer/Label.set_text(str(0))
+	$ResourcePanel/WoodContainer/Label.text = str(Global.wood_qty)
 	# Placeholder for updating UI elements for resources
 
 # Update button visuals based on their states

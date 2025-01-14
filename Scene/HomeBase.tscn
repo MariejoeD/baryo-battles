@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://ddwrhwm3otd8p"]
+[gd_scene load_steps=16 format=3 uid="uid://ddwrhwm3otd8p"]
 
 [ext_resource type="PackedScene" uid="uid://d4nb8cjrspohc" path="res://Scene/game.tscn" id="1_8noqr"]
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="1_ewtg3"]
 [ext_resource type="MeshLibrary" uid="uid://ds47eqvqkbyhq" path="res://assets/mesh/meshes.tres" id="3_j3x7l"]
 [ext_resource type="MeshLibrary" uid="uid://bqpxrt4ymmkn2" path="res://assets/mesh/floor_meshes.tres" id="3_ucrro"]
 [ext_resource type="Script" path="res://Script/floor_setup.gd" id="4_6i8of"]
+[ext_resource type="MeshLibrary" uid="uid://cn3sx0uxue34g" path="res://assets/mesh/grid_dis.tres" id="5_74pts"]
 [ext_resource type="Script" path="res://Script/duplicated_tiles.gd" id="6_ttmot"]
 [ext_resource type="Resource" uid="uid://cw0w04fmunqv8" path="res://Scene/buildings/building_scenes.tres" id="7_5btd4"]
 [ext_resource type="Script" path="res://Script/load.gd" id="7_xwng1"]
@@ -67,7 +68,14 @@ mesh_library = ExtResource("3_ucrro")
 cell_size = Vector3(1, 1, 1)
 collision_layer = 2
 collision_mask = 3
-metadata/_editor_floor_ = Vector3(0, 1, 0)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Grid Display" type="GridMap" parent="Base/AMap"]
+mesh_library = ExtResource("5_74pts")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(0, 65535, 0, 0, 0, 0, 1, 65535, 0, 1, 0, 0)
+}
 
 [node name="floor setup" type="Node3D" parent="Base/AMap"]
 script = ExtResource("4_6i8of")
