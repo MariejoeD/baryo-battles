@@ -1,87 +1,87 @@
-[gd_scene load_steps=31 format=3 uid="uid://dm70cr5gasunw"]
+[gd_scene load_steps=23 format=3 uid="uid://dm70cr5gasunw"]
 
-[ext_resource type="Texture2D" uid="uid://quordaff62ym" path="res://assets/game/almanacBackground.jpg" id="1_5uto3"]
 [ext_resource type="Script" path="res://Script/almanac.gd" id="1_cx1tn"]
-[ext_resource type="Texture2D" uid="uid://ccp7vyaw6h2h8" path="res://assets/Almanac/enemy/1.png" id="3_kk4aq"]
-[ext_resource type="Texture2D" uid="uid://dau3f0ffgr5wi" path="res://assets/Almanac/enemy/2.png" id="4_oxo83"]
-[ext_resource type="Texture2D" uid="uid://dcr7w3cu4cl87" path="res://assets/Almanac/enemy/3.png" id="5_tg57v"]
-[ext_resource type="Texture2D" uid="uid://c3tfogyk6kqfg" path="res://assets/Almanac/enemy/4.png" id="6_54ai2"]
-[ext_resource type="Texture2D" uid="uid://tkf0d687xjfi" path="res://assets/Almanac/enemy/5.png" id="7_07nxm"]
-[ext_resource type="Texture2D" uid="uid://cfqwsm52pg1bf" path="res://assets/Almanac/enemy/6.png" id="8_vclnl"]
-[ext_resource type="Texture2D" uid="uid://cxjm330yfdkc" path="res://assets/Almanac/enemy/7.png" id="9_01ihp"]
-[ext_resource type="Texture2D" uid="uid://dj0pulc6j7b0x" path="res://assets/Almanac/enemy/8.png" id="10_7onho"]
-[ext_resource type="Texture2D" uid="uid://cx820gfndptxt" path="res://assets/Almanac/enemy/9.png" id="11_tfta8"]
-[ext_resource type="Texture2D" uid="uid://b0p0pqqi1njsp" path="res://assets/Almanac/enemy/10.png" id="12_odhap"]
+[ext_resource type="Texture2D" uid="uid://bfxkhcmtlxb7g" path="res://assets/game/almanacBackground.png" id="2_nhnuj"]
+[ext_resource type="Texture2D" uid="uid://cbt8owlhlal3x" path="res://assets/Almanac/characterImgs/agta.jpg" id="4_555uy"]
+[ext_resource type="Texture2D" uid="uid://droqx15ilu2nj" path="res://assets/Almanac/characterImgs/duwende.jpg" id="5_3olae"]
+[ext_resource type="Texture2D" uid="uid://dq708qxjaqvwy" path="res://assets/Almanac/characterImgs/tikbalang.jpg" id="6_cfqir"]
+[ext_resource type="Texture2D" uid="uid://c3w8cxxx7m1u7" path="res://assets/Almanac/characterImgs/kapre.jpg" id="7_d7bpr"]
+[ext_resource type="Texture2D" uid="uid://bnr058nbhxfsw" path="res://assets/Almanac/characterImgs/mananaggal.jpg" id="8_ugb52"]
+[ext_resource type="Texture2D" uid="uid://4aqk1japu627" path="res://assets/Almanac/characterImgs/sigbin.jpg" id="9_yx5hu"]
+[ext_resource type="Texture2D" uid="uid://crkahgyranfeq" path="res://assets/Almanac/characterImgs/tiniente gimo.jpg" id="10_5e7qh"]
+[ext_resource type="Texture2D" uid="uid://drarq66ts5d5b" path="res://assets/Almanac/characterImgs/amomongo.jpg" id="11_wvlwg"]
+[ext_resource type="Texture2D" uid="uid://d1orhc231825u" path="res://assets/Almanac/characterImgs/mangkukulam.jpg" id="12_8mqnt"]
+[ext_resource type="Texture2D" uid="uid://b24is61omxm7f" path="res://assets/Almanac/characterImgs/Lizardo.jpg" id="13_0xosu"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="13_2rl07"]
-[ext_resource type="Texture2D" uid="uid://ba2fiosawpeas" path="res://assets/Almanac/ally/1.png" id="13_sd4hl"]
-[ext_resource type="Texture2D" uid="uid://ndn47efmjqri" path="res://assets/Almanac/ally/2.png" id="14_afvye"]
-[ext_resource type="Texture2D" uid="uid://t026g1q0heln" path="res://assets/Almanac/ally/3.png" id="15_ko0s3"]
-[ext_resource type="Texture2D" uid="uid://befvs0d0kya7j" path="res://assets/Almanac/ally/4.png" id="16_kpgm6"]
-[ext_resource type="Texture2D" uid="uid://c5x3ixvg1y4xd" path="res://assets/Almanac/ally/5.png" id="17_bxux7"]
-[ext_resource type="Texture2D" uid="uid://dro1xf1otb37n" path="res://assets/Almanac/ally/6.png" id="18_htruu"]
-[ext_resource type="Texture2D" uid="uid://bhsmcwy5uk6hk" path="res://assets/Almanac/ally/7.png" id="19_ix0dr"]
-[ext_resource type="Texture2D" uid="uid://dfwvp6b6ubbeq" path="res://assets/Almanac/ally/8.png" id="20_0gwyk"]
-[ext_resource type="Texture2D" uid="uid://ofogt3rpmkeo" path="res://assets/Almanac/ally/9.png" id="21_go1ig"]
+[ext_resource type="Texture2D" uid="uid://di3oe8qjky00s" path="res://assets/Almanac/characterImgs/super inday.jpg" id="14_4ihx4"]
+[ext_resource type="Texture2D" uid="uid://bglp8f0wbw5eu" path="res://assets/Almanac/characterImgs/Captain Makoy.jpg" id="15_itcd3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_drncb"]
-texture = ExtResource("1_5uto3")
+texture = ExtResource("2_nhnuj")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_berbk"]
+[sub_resource type="Theme" id="Theme_i1j8r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qmep"]
+bg_color = Color(0.529412, 0.403922, 0.2, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.271131, 0.208624, 0.101616, 1)
+border_blend = true
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+shadow_color = Color(0.492243, 0.301486, 0.0976069, 0.6)
+shadow_size = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dpsf"]
-bg_color = Color(1, 1, 1, 1)
-border_color = Color(0.396078, 0.333333, 0.560784, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2nlam"]
+bg_color = Color(0.752395, 0.586413, 0.32817, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.129295, 0.0937956, 0.0332357, 1)
 border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-shadow_color = Color(0.396078, 0.333333, 0.560784, 1)
-shadow_size = 3
-shadow_offset = Vector2(5, 5)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.492243, 0.301486, 0.0976069, 0.6)
+shadow_size = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8qe4"]
-bg_color = Color(0.396078, 0.333333, 0.560784, 1)
-border_color = Color(1, 1, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxh86"]
+bg_color = Color(0.702308, 0.542894, 0.293266, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.271131, 0.208624, 0.101616, 1)
 border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-shadow_color = Color(1, 1, 1, 0.6)
-shadow_size = 3
-shadow_offset = Vector2(5, 5)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.492243, 0.301486, 0.0976069, 0.6)
+shadow_size = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45ab5"]
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wb415"]
+bg_color = Color(0.531217, 0.402875, 0.199416, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.271131, 0.208624, 0.101616, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.492243, 0.301486, 0.0976069, 0.6)
+shadow_size = 10
 
-[sub_resource type="Theme" id="Theme_niof8"]
-Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_hover_color = Color(0.396078, 0.333333, 0.560784, 1)
-Button/styles/hover = SubResource("StyleBoxFlat_6dpsf")
-Button/styles/normal = SubResource("StyleBoxFlat_b8qe4")
-Button/styles/pressed = SubResource("StyleBoxFlat_45ab5")
-
-[sub_resource type="Theme" id="Theme_3vifk"]
-Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_hover_color = Color(0.396078, 0.333333, 0.560784, 1)
-Button/styles/hover = SubResource("StyleBoxFlat_6dpsf")
-Button/styles/normal = SubResource("StyleBoxFlat_b8qe4")
-Button/styles/pressed = SubResource("StyleBoxFlat_45ab5")
-
-[sub_resource type="Theme" id="Theme_1kt3g"]
-Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_hover_color = Color(0.396078, 0.333333, 0.560784, 1)
-Button/styles/hover = SubResource("StyleBoxFlat_6dpsf")
-Button/styles/normal = SubResource("StyleBoxFlat_b8qe4")
-Button/styles/pressed = SubResource("StyleBoxFlat_45ab5")
+[sub_resource type="Theme" id="Theme_d7uiy"]
 
 [node name="Control" type="Control"]
 custom_minimum_size = Vector2(1280, 720)
@@ -93,7 +93,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cx1tn")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="mainPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,156 +103,708 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_drncb")
 
-[node name="EnemyContainer" type="ScrollContainer" parent="Panel"]
-visible = false
+[node name="VBoxContainer" type="VBoxContainer" parent="mainPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.078
-anchor_top = 0.114
-anchor_right = 0.938
-anchor_bottom = 0.875
-offset_left = 0.159996
-offset_top = 0.147995
-offset_right = 0.359985
-offset_bottom = -0.250061
-theme_override_styles/panel = SubResource("StyleBoxFlat_berbk")
+anchor_left = 0.032
+anchor_top = 0.103
+anchor_right = 0.214
+anchor_bottom = 0.841
+offset_left = 0.0399971
+offset_top = 0.0459976
+offset_right = 0.0799866
+offset_bottom = 10.162
+theme = SubResource("Theme_i1j8r")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/EnemyContainer"]
+[node name="BackButton" type="Button" parent="mainPanel/VBoxContainer"]
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Panel/EnemyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("3_kk4aq")
-
-[node name="TextureRect2" type="TextureRect" parent="Panel/EnemyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("4_oxo83")
-
-[node name="TextureRect3" type="TextureRect" parent="Panel/EnemyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("5_tg57v")
-
-[node name="TextureRect4" type="TextureRect" parent="Panel/EnemyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("6_54ai2")
-
-[node name="TextureRect5" type="TextureRect" parent="Panel/EnemyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("7_07nxm")
-
-[node name="TextureRect6" type="TextureRect" parent="Panel/EnemyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("8_vclnl")
-
-[node name="TextureRect7" type="TextureRect" parent="Panel/EnemyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("9_01ihp")
-
-[node name="TextureRect8" type="TextureRect" parent="Panel/EnemyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("10_7onho")
-
-[node name="TextureRect9" type="TextureRect" parent="Panel/EnemyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("11_tfta8")
-
-[node name="TextureRect10" type="TextureRect" parent="Panel/EnemyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("12_odhap")
-
-[node name="allyButton" type="Button" parent="Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.404
-anchor_top = 0.046
-anchor_right = 0.5
-anchor_bottom = 0.111
-offset_left = 386.88
-offset_top = -11.028
-offset_right = 388.0
-offset_bottom = -10.698
-theme = SubResource("Theme_niof8")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxFlat_7qmep")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_2nlam")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vxh86")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2nlam")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wb415")
+text = "BACK"
+
+[node name="AllyButton" type="Button" parent="mainPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxFlat_7qmep")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_2nlam")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vxh86")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2nlam")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wb415")
 text = "ALLY"
 
-[node name="enemyButton" type="Button" parent="Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.502
-anchor_top = 0.046
-anchor_right = 0.599
-anchor_bottom = 0.111
-offset_left = 397.44
-offset_top = -11.028
-offset_right = 397.28
-offset_bottom = -10.698
-theme = SubResource("Theme_3vifk")
+[node name="EnemyButton" type="Button" parent="mainPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxFlat_7qmep")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_2nlam")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vxh86")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2nlam")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wb415")
 text = "ENEMY"
 
-[node name="AllyContainer" type="ScrollContainer" parent="Panel"]
+[node name="picturePanel" type="Panel" parent="mainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22
+anchor_top = 0.097
+anchor_right = 0.943
+anchor_bottom = 0.857
+offset_left = 9.39999
+offset_top = 4.354
+offset_right = 9.95996
+offset_bottom = -24.326
+theme_override_styles/panel = SubResource("StyleBoxFlat_wb415")
+
+[node name="EnemyContainer" type="ScrollContainer" parent="mainPanel/picturePanel"]
+visible = false
+layout_mode = 2
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 914.0
+offset_bottom = 512.0
+
+[node name="pictureContainer" type="HBoxContainer" parent="mainPanel/picturePanel/EnemyContainer"]
+layout_mode = 2
+
+[node name="Agta" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_555uy")
+stretch_mode = 1
+
+[node name="Duwende" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_3olae")
+stretch_mode = 1
+
+[node name="Tikbalang" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_cfqir")
+stretch_mode = 1
+
+[node name="Kapre" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_d7bpr")
+stretch_mode = 1
+
+[node name="Mananaggal" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("8_ugb52")
+stretch_mode = 1
+
+[node name="Sigbin" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_yx5hu")
+stretch_mode = 1
+
+[node name="TinienteGimo" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_5e7qh")
+stretch_mode = 1
+
+[node name="Amomongo" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("11_wvlwg")
+stretch_mode = 1
+
+[node name="Mangkukulam" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("12_8mqnt")
+stretch_mode = 1
+
+[node name="Lizardo" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_0xosu")
+stretch_mode = 1
+
+[node name="DescriptionPanel" type="Panel" parent="mainPanel/picturePanel"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.078
-anchor_top = 0.114
-anchor_right = 0.938
-anchor_bottom = 0.875
-offset_left = 0.159996
-offset_top = 0.147995
-offset_right = 0.359985
-offset_bottom = -0.250061
+anchor_left = 0.014
+anchor_top = 0.017
+anchor_right = 0.988
+anchor_bottom = 0.985
+offset_left = -2.964
+offset_top = 0.210999
+offset_right = 0.111938
+offset_bottom = -0.245026
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/AllyContainer"]
+[node name="AgtaDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
 layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
 
-[node name="TextureRect" type="TextureRect" parent="Panel/AllyContainer/VBoxContainer"]
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/AgtaDescription"]
 layout_mode = 2
-texture = ExtResource("13_sd4hl")
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "AGTA"
+horizontal_alignment = 1
+uppercase = true
 
-[node name="TextureRect2" type="TextureRect" parent="Panel/AllyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("14_afvye")
-
-[node name="TextureRect3" type="TextureRect" parent="Panel/AllyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("15_ko0s3")
-
-[node name="TextureRect4" type="TextureRect" parent="Panel/AllyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("16_kpgm6")
-
-[node name="TextureRect5" type="TextureRect" parent="Panel/AllyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("17_bxux7")
-
-[node name="TextureRect6" type="TextureRect" parent="Panel/AllyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("18_htruu")
-
-[node name="TextureRect7" type="TextureRect" parent="Panel/AllyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("19_ix0dr")
-
-[node name="TextureRect8" type="TextureRect" parent="Panel/AllyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("20_0gwyk")
-
-[node name="TextureRect9" type="TextureRect" parent="Panel/AllyContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("21_go1ig")
-
-[node name="BackButton" type="Button" parent="Panel"]
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/AgtaDescription"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.079
-anchor_top = 0.046
-anchor_right = 0.176
-anchor_bottom = 0.111
-offset_left = -0.120003
-offset_top = -10.028
-offset_right = -0.280014
-offset_bottom = -9.69801
-theme = SubResource("Theme_1kt3g")
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("4_555uy")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/AgtaDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-text = "BACK"
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="DuwendeDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/DuwendeDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "DUWENDE"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/DuwendeDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("5_3olae")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/DuwendeDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="TikbalangDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/TikbalangDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "Tikbalang"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/TikbalangDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("6_cfqir")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/TikbalangDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="KapreDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/KapreDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "Kapre"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/KapreDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("7_d7bpr")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/KapreDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="MananaggalDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/MananaggalDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "Mananaggal"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/MananaggalDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("8_ugb52")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/MananaggalDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="SigbinDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/SigbinDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "Sigbin"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/SigbinDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("9_yx5hu")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/SigbinDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="TinienteGimoDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/TinienteGimoDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "Tiniente Gimo"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/TinienteGimoDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("10_5e7qh")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/TinienteGimoDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="AmomongoDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/AmomongoDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "Amomongo"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/AmomongoDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("11_wvlwg")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/AmomongoDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="MangkukulamDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/MangkukulamDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "Mangkukulam"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/MangkukulamDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("12_8mqnt")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/MangkukulamDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="LizardoDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/LizardoDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "Lizardo"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/LizardoDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("13_0xosu")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/LizardoDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="AllyContainer" type="ScrollContainer" parent="mainPanel/picturePanel"]
+visible = false
+layout_mode = 0
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 914.0
+offset_bottom = 512.0
+
+[node name="pictureContainer" type="HBoxContainer" parent="mainPanel/picturePanel/AllyContainer"]
+layout_mode = 2
+
+[node name="SuperInday" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("14_4ihx4")
+stretch_mode = 1
+
+[node name="Captain Makoy" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("15_itcd3")
+stretch_mode = 1

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Script/attack scripts/Attack.gd" id="1_shcpm"]
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
-[ext_resource type="Resource" uid="uid://cw0w04fmunqv8" path="res://Scene/buildings/building_scenes.tres" id="3_lca32"]
+[ext_resource type="Resource" path="res://Scene/buildings/building_scenes.tres" id="3_lca32"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_mlhjp"]
 [ext_resource type="Texture2D" uid="uid://b8dfdjsg6pnh3" path="res://assets/buildings/unlocked/1.png" id="4_yic6l"]
 [ext_resource type="Texture2D" uid="uid://dgjsl0syl3n2v" path="res://assets/buildings/unlocked/2.png" id="5_bnhwa"]
@@ -216,7 +216,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="Control" type="Control"]
+[node name="Control2" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

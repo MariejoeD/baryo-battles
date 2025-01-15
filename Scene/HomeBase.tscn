@@ -6,9 +6,9 @@
 [ext_resource type="MeshLibrary" uid="uid://ds47eqvqkbyhq" path="res://assets/mesh/meshes.tres" id="3_j3x7l"]
 [ext_resource type="MeshLibrary" uid="uid://bqpxrt4ymmkn2" path="res://assets/mesh/floor_meshes.tres" id="3_ucrro"]
 [ext_resource type="Script" path="res://Script/floor_setup.gd" id="4_6i8of"]
-[ext_resource type="MeshLibrary" uid="uid://cn3sx0uxue34g" path="res://assets/mesh/grid_dis.tres" id="5_74pts"]
+[ext_resource type="MeshLibrary" uid="uid://coyq64ubih6j1" path="res://assets/mesh/grid_dis.tres" id="5_74pts"]
 [ext_resource type="Script" path="res://Script/duplicated_tiles.gd" id="6_ttmot"]
-[ext_resource type="Resource" uid="uid://cw0w04fmunqv8" path="res://Scene/buildings/building_scenes.tres" id="7_5btd4"]
+[ext_resource type="Resource" path="res://Scene/buildings/building_scenes.tres" id="7_5btd4"]
 [ext_resource type="Script" path="res://Script/load.gd" id="7_xwng1"]
 [ext_resource type="Script" path="res://Script/generate.gd" id="8_hwwmm"]
 
