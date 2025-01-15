@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://ddwrhwm3otd8p"]
+[gd_scene load_steps=17 format=3 uid="uid://ddwrhwm3otd8p"]
 
+[ext_resource type="Script" path="res://Scene/day_cycle.gd" id="1_5bpij"]
 [ext_resource type="PackedScene" uid="uid://d4nb8cjrspohc" path="res://Scene/game.tscn" id="1_8noqr"]
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="1_ewtg3"]
 [ext_resource type="MeshLibrary" uid="uid://ds47eqvqkbyhq" path="res://assets/mesh/meshes.tres" id="3_j3x7l"]
@@ -40,6 +41,7 @@ environment = SubResource("Environment_6klo0")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Base"]
 transform = Transform3D(0.23005, 0.696497, 0.679683, -6.10574e-08, -0.698415, 0.715693, 0.973179, -0.164645, -0.16067, 0, 13.3756, 0)
 shadow_enabled = true
+script = ExtResource("1_5bpij")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Base"]
 offset_right = 1280.0
@@ -71,11 +73,9 @@ collision_mask = 3
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Grid Display" type="GridMap" parent="Base/AMap"]
+visible = false
 mesh_library = ExtResource("5_74pts")
 cell_size = Vector3(1, 1, 1)
-data = {
-"cells": PackedInt32Array(0, 65535, 0, 0, 0, 0, 1, 65535, 0, 1, 0, 0)
-}
 
 [node name="floor setup" type="Node3D" parent="Base/AMap"]
 script = ExtResource("4_6i8of")
@@ -100,3 +100,8 @@ script = ExtResource("8_hwwmm")
 transform = Transform3D(0.707107, -0.5, 0.5, -2.55739e-08, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 39, 41, 40)
 
 [node name="Entities" type="Node" parent="Base"]
+
+[connection signal="tree_entered" from="Base/Control" to="Base/Control" method="_on_tree_entered"]
+[connection signal="tree_exiting" from="Base/Control" to="Base/Control" method="_on_tree_exiting"]
+[connection signal="tree_entered" from="Base/Generate" to="Base/Generate" method="_on_tree_entered"]
+[connection signal="tree_exiting" from="Base/Generate" to="Base/Generate" method="_on_tree_exiting"]

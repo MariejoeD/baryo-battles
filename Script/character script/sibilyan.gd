@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 #@onready var amap = $"Base/AMap/floor setup"
 var speed = 10
 var path = []
@@ -87,10 +86,11 @@ func chop_tree():
 func _on_chopped_tree():
 	var _tree_pos = path[path.size() - 1]
 	if tree:
+		SignalManager.tree_remove.emit(tree)
 		tree.queue_free()
 	$"../sibilyanWithAxe".visible = false
 	self.visible = true
-	$"../../../Control/ResourcePanel/WoodContainer/Label".text = str(int(Global.wood_qty)+5)
+	Global.wood_qty += 5
 	pass
 func idle():
 	pass

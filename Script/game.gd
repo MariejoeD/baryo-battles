@@ -100,3 +100,14 @@ func update_button_visuals():
 		var button = grid_container.get_node_or_null(button_name)
 		if button:
 			button.texture_normal = unlocked_textures[button_name] if button_states[button_name] else locked_textures[button_name]
+
+
+func _on_tree_entered() -> void:
+	SignalManager.update_mats.connect(update_resource_display)
+	pass # Replace with function body.
+
+
+func _on_tree_exiting() -> void:
+	SignalManager.update_mats.disconnect(update_resource_display)
+	
+	pass # Replace with function body.
