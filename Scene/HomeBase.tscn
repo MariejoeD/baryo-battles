@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://ddwrhwm3otd8p"]
 
-[ext_resource type="Script" path="res://Scene/day_cycle.gd" id="1_5bpij"]
+[ext_resource type="Script" path="res://Script/day_cycle.gd" id="1_5bpij"]
 [ext_resource type="PackedScene" uid="uid://d4nb8cjrspohc" path="res://Scene/game.tscn" id="1_8noqr"]
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="1_ewtg3"]
 [ext_resource type="MeshLibrary" uid="uid://ds47eqvqkbyhq" path="res://assets/mesh/meshes.tres" id="3_j3x7l"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Script/floor_setup.gd" id="4_6i8of"]
 [ext_resource type="MeshLibrary" uid="uid://coyq64ubih6j1" path="res://assets/mesh/grid_dis.tres" id="5_74pts"]
 [ext_resource type="Script" path="res://Script/duplicated_tiles.gd" id="6_ttmot"]
-[ext_resource type="Resource" path="res://Scene/buildings/building_scenes.tres" id="7_5btd4"]
+[ext_resource type="Resource" uid="uid://cw0w04fmunqv8" path="res://Scene/buildings/building_scenes.tres" id="7_5btd4"]
 [ext_resource type="Script" path="res://Script/load.gd" id="7_xwng1"]
 [ext_resource type="Script" path="res://Script/generate.gd" id="8_hwwmm"]
 

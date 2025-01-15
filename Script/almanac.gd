@@ -7,20 +7,7 @@ extends Control
 @onready var enemy_container = $mainPanel/picturePanel/EnemyContainer
 @onready var description_panel = $mainPanel/picturePanel/DescriptionPanel
 
-# Dictionary to store button-to-description mapping
-var descriptions = {
-	"Agta": $mainPanel/picturePanel/DescriptionPanel/AgtaDescription,
-	"Duwende": $mainPanel/picturePanel/DescriptionPanel/DuwendeDescription,
-	"Tikbalang": $mainPanel/picturePanel/DescriptionPanel/TikbalangDescription,
-	"Kapre": $mainPanel/picturePanel/DescriptionPanel/KapreDescription,
-	"Manananggal": $mainPanel/picturePanel/DescriptionPanel/MananaggalDescription,
-	"Sigbin": $mainPanel/picturePanel/DescriptionPanel/SigbinDescription,
-	"TinienteGimo": $mainPanel/picturePanel/DescriptionPanel/TinienteGimoDescription,
-	"Amomongo": $mainPanel/picturePanel/DescriptionPanel/AmomongoDescription,
-	"Mangkukulam": $mainPanel/picturePanel/DescriptionPanel/MangkukulamDescription,
-	"Lizardo": $mainPanel/picturePanel/DescriptionPanel/LizardoDescription,
-	# Add other descriptions here
-}
+
 
 # Hide containers and panels initially
 func _ready():
@@ -32,10 +19,14 @@ func _ready():
 	ally_button.connect("pressed", Callable(self, "_on_ally_button_pressed"))
 	enemy_button.connect("pressed", Callable(self, "_on_enemy_button_pressed"))
 
-	for name in descriptions.keys():
-		var button = $mainPanel/picturePanel/EnemyContainer/pictureContainer.get_node(name)
-		if button:
-			button.connect("pressed", Callable(self, "_on_character_button_pressed").bind(name))
+	for child in $mainPanel/picturePanel/EnemyContainer/pictureContainer.get_children():
+		var desc
+		for desc_panel_child in description_panel.get_children():
+			if desc_panel_child.name.contains(child.name):
+				desc = desc_panel_child
+		if child:
+			child.pressed.connect(_on_character_button_pressed.bind(desc))
+		
 
 # Back button hides all panels
 func _on_back_button_pressed():
@@ -49,16 +40,19 @@ func _on_ally_button_pressed():
 
 # Enemy button opens the enemy container
 func _on_enemy_button_pressed():
+	for i in description_panel.get_children():
+		i.visible = false
+	description_panel.visible = false
 	enemy_container.visible = true
 	description_panel.visible = false
 
 # Generic handler for character buttons
-func _on_character_button_pressed(name):
-	print(name + " button clicked")
+func _on_character_button_pressed(desc):
+	print(desc.name + " button clicked")
+	enemy_container.visible = false
 	description_panel.visible = true
-	
+	#var panel = get_node_or_null(descriptions[_name])
 	# Show the specific description
-	if descriptions.has(name):
-		print(descriptions.get(self.name))
-		descriptions[name].visible = true
+	if desc:
+		desc.visible = true
 		
