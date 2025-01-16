@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dm70cr5gasunw"]
+[gd_scene load_steps=30 format=3 uid="uid://dm70cr5gasunw"]
 
 [ext_resource type="Script" path="res://Script/almanac.gd" id="1_cx1tn"]
 [ext_resource type="Texture2D" uid="uid://bfxkhcmtlxb7g" path="res://assets/game/almanacBackground.png" id="2_nhnuj"]
@@ -15,6 +15,12 @@
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="13_2rl07"]
 [ext_resource type="Texture2D" uid="uid://di3oe8qjky00s" path="res://assets/Almanac/characterImgs/super inday.jpg" id="14_4ihx4"]
 [ext_resource type="Texture2D" uid="uid://bglp8f0wbw5eu" path="res://assets/Almanac/characterImgs/Captain Makoy.jpg" id="15_itcd3"]
+[ext_resource type="Texture2D" uid="uid://cppmrsa6lxd5v" path="res://assets/Almanac/characterImgs/manggagamot.jpg" id="16_bci30"]
+[ext_resource type="Texture2D" uid="uid://b7r7ayyocdlhc" path="res://assets/Almanac/characterImgs/marites.jpg" id="17_o8u5e"]
+[ext_resource type="Texture2D" uid="uid://c45lmgpx1v0y5" path="res://assets/Almanac/characterImgs/lakan warrior.jpg" id="18_54ynl"]
+[ext_resource type="Texture2D" uid="uid://72m7vbcglqf3" path="res://assets/Almanac/characterImgs/arnisador.jpg" id="19_b5trg"]
+[ext_resource type="Texture2D" uid="uid://ba4e4s14kfmd4" path="res://assets/Almanac/characterImgs/tirador.jpg" id="20_dfjxv"]
+[ext_resource type="Texture2D" uid="uid://byjd0vc4ykpuc" path="res://assets/Almanac/characterImgs/sibilyan.jpg" id="21_bdwix"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_drncb"]
 texture = ExtResource("2_nhnuj")
@@ -80,6 +86,9 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 shadow_color = Color(0.492243, 0.301486, 0.0976069, 0.6)
 shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oacf7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="Theme" id="Theme_d7uiy"]
 
@@ -239,6 +248,7 @@ offset_left = -2.964
 offset_top = 0.210999
 offset_right = 0.111938
 offset_bottom = -0.245026
+theme_override_styles/panel = SubResource("StyleBoxFlat_oacf7")
 
 [node name="AgtaDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -789,6 +799,446 @@ theme_override_font_sizes/font_size = 20
 text = "character description here"
 autowrap_mode = 2
 
+[node name="SuperIndayDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/SuperIndayDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "AGTA"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/SuperIndayDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("4_555uy")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/SuperIndayDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="CaptainMakoyDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/CaptainMakoyDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "AGTA"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/CaptainMakoyDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("4_555uy")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/CaptainMakoyDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="ManggagamotDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/ManggagamotDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "AGTA"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/ManggagamotDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("4_555uy")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/ManggagamotDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="MaritesDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/MaritesDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "AGTA"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/MaritesDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("4_555uy")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/MaritesDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="LakanWarriorDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/LakanWarriorDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "AGTA"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/LakanWarriorDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("4_555uy")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/LakanWarriorDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="ArnisadorDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/ArnisadorDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "AGTA"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/ArnisadorDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("4_555uy")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/ArnisadorDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="TiradorDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/TiradorDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "AGTA"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/TiradorDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("4_555uy")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/TiradorDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
+[node name="SibilyanDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_right = -2.0
+offset_bottom = -6.10352e-05
+
+[node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/SibilyanDescription"]
+layout_mode = 2
+offset_left = 533.0
+offset_top = 37.0
+offset_right = 778.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 50
+text = "AGTA"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/SibilyanDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.012
+anchor_right = 0.46
+anchor_bottom = 0.982
+offset_left = -0.224
+offset_top = -0.0120001
+offset_right = -0.380005
+offset_bottom = 0.0179749
+theme = SubResource("Theme_d7uiy")
+texture = ExtResource("4_555uy")
+expand_mode = 4
+
+[node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/SibilyanDescription"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 115.0
+offset_right = 894.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 20
+text = "character description here"
+autowrap_mode = 2
+
 [node name="AllyContainer" type="ScrollContainer" parent="mainPanel/picturePanel"]
 visible = false
 layout_mode = 0
@@ -805,7 +1255,37 @@ layout_mode = 2
 texture_normal = ExtResource("14_4ihx4")
 stretch_mode = 1
 
-[node name="Captain Makoy" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
+[node name="CaptainMakoy" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
 layout_mode = 2
 texture_normal = ExtResource("15_itcd3")
+stretch_mode = 1
+
+[node name="Manggagamot" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("16_bci30")
+stretch_mode = 1
+
+[node name="Marites" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("17_o8u5e")
+stretch_mode = 1
+
+[node name="LakanWarrior" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("18_54ynl")
+stretch_mode = 1
+
+[node name="Arnisador" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("19_b5trg")
+stretch_mode = 1
+
+[node name="Tirador" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("20_dfjxv")
+stretch_mode = 1
+
+[node name="Sibilyan" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
+layout_mode = 2
+texture_normal = ExtResource("21_bdwix")
 stretch_mode = 1
