@@ -1,26 +1,44 @@
-[gd_scene load_steps=30 format=3 uid="uid://dm70cr5gasunw"]
+[gd_scene load_steps=66 format=3 uid="uid://dm70cr5gasunw"]
 
 [ext_resource type="Script" path="res://Script/almanac.gd" id="1_cx1tn"]
 [ext_resource type="Texture2D" uid="uid://bfxkhcmtlxb7g" path="res://assets/game/almanacBackground.png" id="2_nhnuj"]
-[ext_resource type="Texture2D" uid="uid://cbt8owlhlal3x" path="res://assets/Almanac/characterImgs/agta.jpg" id="4_555uy"]
-[ext_resource type="Texture2D" uid="uid://droqx15ilu2nj" path="res://assets/Almanac/characterImgs/duwende.jpg" id="5_3olae"]
-[ext_resource type="Texture2D" uid="uid://dq708qxjaqvwy" path="res://assets/Almanac/characterImgs/tikbalang.jpg" id="6_cfqir"]
-[ext_resource type="Texture2D" uid="uid://c3w8cxxx7m1u7" path="res://assets/Almanac/characterImgs/kapre.jpg" id="7_d7bpr"]
-[ext_resource type="Texture2D" uid="uid://bnr058nbhxfsw" path="res://assets/Almanac/characterImgs/mananaggal.jpg" id="8_ugb52"]
-[ext_resource type="Texture2D" uid="uid://4aqk1japu627" path="res://assets/Almanac/characterImgs/sigbin.jpg" id="9_yx5hu"]
-[ext_resource type="Texture2D" uid="uid://crkahgyranfeq" path="res://assets/Almanac/characterImgs/tiniente gimo.jpg" id="10_5e7qh"]
-[ext_resource type="Texture2D" uid="uid://drarq66ts5d5b" path="res://assets/Almanac/characterImgs/amomongo.jpg" id="11_wvlwg"]
-[ext_resource type="Texture2D" uid="uid://d1orhc231825u" path="res://assets/Almanac/characterImgs/mangkukulam.jpg" id="12_8mqnt"]
-[ext_resource type="Texture2D" uid="uid://b24is61omxm7f" path="res://assets/Almanac/characterImgs/Lizardo.jpg" id="13_0xosu"]
+[ext_resource type="Texture2D" uid="uid://de74jtxe820ag" path="res://assets/Almanac/Enemylocked/Agta.png" id="4_oa3um"]
+[ext_resource type="Texture2D" uid="uid://b8873up5rbsds" path="res://assets/Almanac/Enemylocked/Duwende.png" id="5_4r3s8"]
+[ext_resource type="Texture2D" uid="uid://b8bluas4otm71" path="res://assets/Almanac/Enemylocked/Tikbalang.png" id="6_w50lj"]
+[ext_resource type="Texture2D" uid="uid://ddvgn8fb4pudi" path="res://assets/Almanac/Enemylocked/Kapre.png" id="7_alkwe"]
+[ext_resource type="Texture2D" uid="uid://cxy4lnnh3fwea" path="res://assets/Almanac/Enemylocked/Mananaggal.png" id="8_k4jp7"]
+[ext_resource type="Texture2D" uid="uid://cjcvh5c82835a" path="res://assets/Almanac/Enemylocked/Sigbin.png" id="9_sf66l"]
+[ext_resource type="Texture2D" uid="uid://bdvk3dbvuc7yo" path="res://assets/Almanac/Enemylocked/TinienteGimo.png" id="10_siaqt"]
+[ext_resource type="Texture2D" uid="uid://d4h11ftbrf8mu" path="res://assets/Almanac/Enemylocked/Amomongo.png" id="11_s3y8x"]
+[ext_resource type="Texture2D" uid="uid://pmue3qkybsbu" path="res://assets/Almanac/Enemylocked/Mangkukulam.png" id="12_s5axa"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="13_2rl07"]
-[ext_resource type="Texture2D" uid="uid://di3oe8qjky00s" path="res://assets/Almanac/characterImgs/super inday.jpg" id="14_4ihx4"]
-[ext_resource type="Texture2D" uid="uid://bglp8f0wbw5eu" path="res://assets/Almanac/characterImgs/Captain Makoy.jpg" id="15_itcd3"]
-[ext_resource type="Texture2D" uid="uid://cppmrsa6lxd5v" path="res://assets/Almanac/characterImgs/manggagamot.jpg" id="16_bci30"]
-[ext_resource type="Texture2D" uid="uid://b7r7ayyocdlhc" path="res://assets/Almanac/characterImgs/marites.jpg" id="17_o8u5e"]
-[ext_resource type="Texture2D" uid="uid://c45lmgpx1v0y5" path="res://assets/Almanac/characterImgs/lakan warrior.jpg" id="18_54ynl"]
-[ext_resource type="Texture2D" uid="uid://72m7vbcglqf3" path="res://assets/Almanac/characterImgs/arnisador.jpg" id="19_b5trg"]
-[ext_resource type="Texture2D" uid="uid://ba4e4s14kfmd4" path="res://assets/Almanac/characterImgs/tirador.jpg" id="20_dfjxv"]
-[ext_resource type="Texture2D" uid="uid://byjd0vc4ykpuc" path="res://assets/Almanac/characterImgs/sibilyan.jpg" id="21_bdwix"]
+[ext_resource type="Texture2D" uid="uid://diqxuapm84txr" path="res://assets/Almanac/Enemylocked/Lizardo.png" id="13_5hgy5"]
+[ext_resource type="Texture2D" uid="uid://dcwd3gsqmtwl5" path="res://assets/Almanac/characterImgs/1.png" id="14_lnt0n"]
+[ext_resource type="Texture2D" uid="uid://bwgxnsqh0sesv" path="res://assets/Almanac/characterImgs/2.png" id="15_8216r"]
+[ext_resource type="Texture2D" uid="uid://bknx2h4pbmrou" path="res://assets/Almanac/characterImgs/3.png" id="16_sm26t"]
+[ext_resource type="Texture2D" uid="uid://wriyx8gqnxyu" path="res://assets/Almanac/characterImgs/4.png" id="17_5udfn"]
+[ext_resource type="Texture2D" uid="uid://e1f10toi3fcc" path="res://assets/Almanac/characterImgs/5.png" id="18_wrw4r"]
+[ext_resource type="Texture2D" uid="uid://b15xiemf6p86f" path="res://assets/Almanac/characterImgs/6.png" id="19_c636b"]
+[ext_resource type="Texture2D" uid="uid://det8eqc74mg5w" path="res://assets/Almanac/characterImgs/7.png" id="20_52iug"]
+[ext_resource type="Texture2D" uid="uid://b7px7lk586f0e" path="res://assets/Almanac/characterImgs/8.png" id="21_tpkq8"]
+[ext_resource type="Texture2D" uid="uid://c76dm8nwu4nlt" path="res://assets/Almanac/characterImgs/9.png" id="22_usjkf"]
+[ext_resource type="Texture2D" uid="uid://dkec41a3nqtrp" path="res://assets/Almanac/characterImgs/10.png" id="23_6k718"]
+[ext_resource type="Texture2D" uid="uid://ub7freu13c85" path="res://assets/Almanac/characterImgs/11.png" id="24_tmu7h"]
+[ext_resource type="Texture2D" uid="uid://bg65usunojt1d" path="res://assets/Almanac/characterImgs/12.png" id="25_6etyx"]
+[ext_resource type="Texture2D" uid="uid://c1cwwm3lo5dtv" path="res://assets/Almanac/characterImgs/13.png" id="26_hix42"]
+[ext_resource type="Texture2D" uid="uid://cekygpcphtgm4" path="res://assets/Almanac/characterImgs/14.png" id="27_sx0bx"]
+[ext_resource type="Texture2D" uid="uid://ce8oafg068p8x" path="res://assets/Almanac/characterImgs/15.png" id="28_a5e7w"]
+[ext_resource type="Texture2D" uid="uid://dq7ymt3bvd4pc" path="res://assets/Almanac/characterImgs/16.png" id="29_4lba6"]
+[ext_resource type="Texture2D" uid="uid://b0321020t2i5w" path="res://assets/Almanac/characterImgs/17.png" id="30_au382"]
+[ext_resource type="Texture2D" uid="uid://dcvb5ofgic4w2" path="res://assets/Almanac/characterImgs/18.png" id="31_6cqat"]
+[ext_resource type="Texture2D" uid="uid://b0m08oeec0voy" path="res://assets/Almanac/Allylocked/SuperInday.png" id="32_x2bat"]
+[ext_resource type="Texture2D" uid="uid://b4tfc0k5b1oqs" path="res://assets/Almanac/Allylocked/CaptainMakoy.png" id="33_mjt2q"]
+[ext_resource type="Texture2D" uid="uid://dgr8ae2nqb0hp" path="res://assets/Almanac/Allylocked/Manggagamot.png" id="34_b1sv3"]
+[ext_resource type="Texture2D" uid="uid://bdoj2clw2ofee" path="res://assets/Almanac/Allylocked/Marites.png" id="35_rrahq"]
+[ext_resource type="Texture2D" uid="uid://cmcqglb6xbgre" path="res://assets/Almanac/Allylocked/LakanWarrior.png" id="36_2jxk4"]
+[ext_resource type="Texture2D" uid="uid://0vvxy5re74ow" path="res://assets/Almanac/Allylocked/Arnisador.png" id="37_js5or"]
+[ext_resource type="Texture2D" uid="uid://bkg3o4joawxp4" path="res://assets/Almanac/Allylocked/Tirador.png" id="38_vuwsi"]
+[ext_resource type="Texture2D" uid="uid://riw3pyvsxgda" path="res://assets/Almanac/Allylocked/Sibilyan.png" id="39_mpbjh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_drncb"]
 texture = ExtResource("2_nhnuj")
@@ -90,7 +108,61 @@ shadow_size = 10
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oacf7"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4327"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="Theme" id="Theme_d7uiy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5up6t"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52iuw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sn0kf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ju2x"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vj6j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvjos"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8wsf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilaiv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lu6ia"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8j644"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afse4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afeov"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ejp8n"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs1ii"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjei7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0a7b0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xyfcy"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Control" type="Control"]
 custom_minimum_size = Vector2(1280, 720)
@@ -166,20 +238,20 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.22
 anchor_top = 0.097
-anchor_right = 0.943
-anchor_bottom = 0.857
+anchor_right = 0.95
+anchor_bottom = 0.852
 offset_left = 9.39999
 offset_top = 4.354
-offset_right = 9.95996
-offset_bottom = -24.326
+offset_bottom = 0.263977
 theme_override_styles/panel = SubResource("StyleBoxFlat_wb415")
 
 [node name="EnemyContainer" type="ScrollContainer" parent="mainPanel/picturePanel"]
+visible = false
 layout_mode = 2
 offset_left = 12.0
 offset_top = 9.0
-offset_right = 914.0
-offset_bottom = 512.0
+offset_right = 919.0
+offset_bottom = 529.0
 
 [node name="pictureContainer" type="HBoxContainer" parent="mainPanel/picturePanel/EnemyContainer"]
 clip_contents = true
@@ -188,52 +260,52 @@ layout_mode = 2
 
 [node name="Agta" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("4_555uy")
+texture_normal = ExtResource("4_oa3um")
 stretch_mode = 1
 
 [node name="Duwende" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("5_3olae")
+texture_normal = ExtResource("5_4r3s8")
 stretch_mode = 1
 
 [node name="Tikbalang" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("6_cfqir")
+texture_normal = ExtResource("6_w50lj")
 stretch_mode = 1
 
 [node name="Kapre" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("7_d7bpr")
+texture_normal = ExtResource("7_alkwe")
 stretch_mode = 1
 
 [node name="Mananaggal" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("8_ugb52")
+texture_normal = ExtResource("8_k4jp7")
 stretch_mode = 1
 
 [node name="Sigbin" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("9_yx5hu")
+texture_normal = ExtResource("9_sf66l")
 stretch_mode = 1
 
 [node name="TinienteGimo" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("10_5e7qh")
+texture_normal = ExtResource("10_siaqt")
 stretch_mode = 1
 
 [node name="Amomongo" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("11_wvlwg")
+texture_normal = ExtResource("11_s3y8x")
 stretch_mode = 1
 
 [node name="Mangkukulam" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("12_8mqnt")
+texture_normal = ExtResource("12_s5axa")
 stretch_mode = 1
 
 [node name="Lizardo" type="TextureButton" parent="mainPanel/picturePanel/EnemyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("13_0xosu")
+texture_normal = ExtResource("13_5hgy5")
 stretch_mode = 1
 
 [node name="DescriptionPanel" type="Panel" parent="mainPanel/picturePanel"]
@@ -244,10 +316,10 @@ anchor_left = 0.014
 anchor_top = 0.017
 anchor_right = 0.988
 anchor_bottom = 0.985
-offset_left = -2.964
-offset_top = 0.210999
-offset_right = 0.111938
-offset_bottom = -0.245026
+offset_left = -2.95
+offset_top = -0.146001
+offset_right = 5.10004
+offset_bottom = -2.92999
 theme_override_styles/panel = SubResource("StyleBoxFlat_oacf7")
 
 [node name="AgtaDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
@@ -257,6 +329,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_l4327")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/AgtaDescription"]
 layout_mode = 2
@@ -290,7 +363,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("4_555uy")
+texture = ExtResource("14_lnt0n")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/AgtaDescription"]
@@ -312,6 +385,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_5up6t")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/DuwendeDescription"]
 layout_mode = 2
@@ -345,7 +419,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("5_3olae")
+texture = ExtResource("15_8216r")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/DuwendeDescription"]
@@ -367,6 +441,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_52iuw")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/TikbalangDescription"]
 layout_mode = 2
@@ -400,7 +475,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("6_cfqir")
+texture = ExtResource("16_sm26t")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/TikbalangDescription"]
@@ -422,6 +497,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_sn0kf")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/KapreDescription"]
 layout_mode = 2
@@ -455,7 +531,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("7_d7bpr")
+texture = ExtResource("17_5udfn")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/KapreDescription"]
@@ -477,6 +553,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_3ju2x")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/MananaggalDescription"]
 layout_mode = 2
@@ -510,7 +587,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("8_ugb52")
+texture = ExtResource("18_wrw4r")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/MananaggalDescription"]
@@ -532,6 +609,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_7vj6j")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/SigbinDescription"]
 layout_mode = 2
@@ -565,7 +643,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("9_yx5hu")
+texture = ExtResource("19_c636b")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/SigbinDescription"]
@@ -587,6 +665,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_vvjos")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/TinienteGimoDescription"]
 layout_mode = 2
@@ -620,7 +699,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("10_5e7qh")
+texture = ExtResource("20_52iug")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/TinienteGimoDescription"]
@@ -642,6 +721,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_a8wsf")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/AmomongoDescription"]
 layout_mode = 2
@@ -675,7 +755,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("11_wvlwg")
+texture = ExtResource("21_tpkq8")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/AmomongoDescription"]
@@ -697,6 +777,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_ilaiv")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/MangkukulamDescription"]
 layout_mode = 2
@@ -730,7 +811,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("12_8mqnt")
+texture = ExtResource("22_usjkf")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/MangkukulamDescription"]
@@ -752,6 +833,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_lu6ia")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/LizardoDescription"]
 layout_mode = 2
@@ -785,7 +867,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("13_0xosu")
+texture = ExtResource("23_6k718")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/LizardoDescription"]
@@ -807,6 +889,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_8j644")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/SuperIndayDescription"]
 layout_mode = 2
@@ -824,7 +907,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("13_2rl07")
 theme_override_font_sizes/font_size = 50
-text = "AGTA"
+text = "Super Inday"
 horizontal_alignment = 1
 uppercase = true
 
@@ -840,7 +923,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("4_555uy")
+texture = ExtResource("24_tmu7h")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/SuperIndayDescription"]
@@ -862,6 +945,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_afse4")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/CaptainMakoyDescription"]
 layout_mode = 2
@@ -879,7 +963,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("13_2rl07")
 theme_override_font_sizes/font_size = 50
-text = "AGTA"
+text = "Captain makoy"
 horizontal_alignment = 1
 uppercase = true
 
@@ -895,7 +979,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("4_555uy")
+texture = ExtResource("25_6etyx")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/CaptainMakoyDescription"]
@@ -917,6 +1001,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_afeov")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/ManggagamotDescription"]
 layout_mode = 2
@@ -934,8 +1019,9 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("13_2rl07")
 theme_override_font_sizes/font_size = 50
-text = "AGTA"
+text = "mangagamot"
 horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true
 
 [node name="characterPicture" type="TextureRect" parent="mainPanel/picturePanel/DescriptionPanel/ManggagamotDescription"]
@@ -949,8 +1035,7 @@ offset_left = -0.224
 offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
-theme = SubResource("Theme_d7uiy")
-texture = ExtResource("4_555uy")
+texture = ExtResource("26_hix42")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/ManggagamotDescription"]
@@ -972,6 +1057,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_ejp8n")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/MaritesDescription"]
 layout_mode = 2
@@ -989,7 +1075,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("13_2rl07")
 theme_override_font_sizes/font_size = 50
-text = "AGTA"
+text = "marites"
 horizontal_alignment = 1
 uppercase = true
 
@@ -1005,7 +1091,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("4_555uy")
+texture = ExtResource("27_sx0bx")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/MaritesDescription"]
@@ -1027,6 +1113,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_xs1ii")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/LakanWarriorDescription"]
 layout_mode = 2
@@ -1044,7 +1131,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("13_2rl07")
 theme_override_font_sizes/font_size = 50
-text = "AGTA"
+text = "Lakan warrior"
 horizontal_alignment = 1
 uppercase = true
 
@@ -1060,7 +1147,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("4_555uy")
+texture = ExtResource("28_a5e7w")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/LakanWarriorDescription"]
@@ -1082,6 +1169,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_mjei7")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/ArnisadorDescription"]
 layout_mode = 2
@@ -1099,7 +1187,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("13_2rl07")
 theme_override_font_sizes/font_size = 50
-text = "AGTA"
+text = "arnisador"
 horizontal_alignment = 1
 uppercase = true
 
@@ -1115,7 +1203,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("4_555uy")
+texture = ExtResource("29_4lba6")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/ArnisadorDescription"]
@@ -1137,6 +1225,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_0a7b0")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/TiradorDescription"]
 layout_mode = 2
@@ -1154,7 +1243,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("13_2rl07")
 theme_override_font_sizes/font_size = 50
-text = "AGTA"
+text = "tirador"
 horizontal_alignment = 1
 uppercase = true
 
@@ -1170,7 +1259,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("4_555uy")
+texture = ExtResource("30_au382")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/TiradorDescription"]
@@ -1192,6 +1281,7 @@ anchor_right = 1.0
 anchor_bottom = 1.002
 offset_right = -2.0
 offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_xyfcy")
 
 [node name="characterName" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/SibilyanDescription"]
 layout_mode = 2
@@ -1209,7 +1299,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("13_2rl07")
 theme_override_font_sizes/font_size = 50
-text = "AGTA"
+text = "sibilyan"
 horizontal_alignment = 1
 uppercase = true
 
@@ -1225,7 +1315,7 @@ offset_top = -0.0120001
 offset_right = -0.380005
 offset_bottom = 0.0179749
 theme = SubResource("Theme_d7uiy")
-texture = ExtResource("4_555uy")
+texture = ExtResource("31_6cqat")
 expand_mode = 4
 
 [node name="characterDescription" type="Label" parent="mainPanel/picturePanel/DescriptionPanel/SibilyanDescription"]
@@ -1252,40 +1342,40 @@ layout_mode = 2
 
 [node name="SuperInday" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("14_4ihx4")
+texture_normal = ExtResource("32_x2bat")
 stretch_mode = 1
 
 [node name="CaptainMakoy" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("15_itcd3")
+texture_normal = ExtResource("33_mjt2q")
 stretch_mode = 1
 
 [node name="Manggagamot" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("16_bci30")
+texture_normal = ExtResource("34_b1sv3")
 stretch_mode = 1
 
 [node name="Marites" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("17_o8u5e")
+texture_normal = ExtResource("35_rrahq")
 stretch_mode = 1
 
 [node name="LakanWarrior" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("18_54ynl")
+texture_normal = ExtResource("36_2jxk4")
 stretch_mode = 1
 
 [node name="Arnisador" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("19_b5trg")
+texture_normal = ExtResource("37_js5or")
 stretch_mode = 1
 
 [node name="Tirador" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("20_dfjxv")
+texture_normal = ExtResource("38_vuwsi")
 stretch_mode = 1
 
 [node name="Sibilyan" type="TextureButton" parent="mainPanel/picturePanel/AllyContainer/pictureContainer"]
 layout_mode = 2
-texture_normal = ExtResource("21_bdwix")
+texture_normal = ExtResource("39_mpbjh")
 stretch_mode = 1
