@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j7p55a1vp316"
-path="res://.godot/imported/11.png-707c0a205128a0b05e7a3f7a85975588.ctex"
+uid="uid://4k34udy14ee8"
+path="res://.godot/imported/Sibilyan.png-59563e959829b54a7a4c757801464f9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Almanac/Allyunlocked/11.png"
-dest_files=["res://.godot/imported/11.png-707c0a205128a0b05e7a3f7a85975588.ctex"]
+source_file="res://assets/Almanac/Allyunlocked/Sibilyan.png"
+dest_files=["res://.godot/imported/Sibilyan.png-59563e959829b54a7a4c757801464f9e.ctex"]
 
 [params]
 

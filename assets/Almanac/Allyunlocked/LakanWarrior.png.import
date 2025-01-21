@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cupxeleo6viia"
-path="res://.godot/imported/1.png-f6ea200c14e858baa703a7a2bc933a6a.ctex"
+uid="uid://bqnr24c6cn7bq"
+path="res://.godot/imported/LakanWarrior.png-28ea086148ddc4cbcf8afe0158f261ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Almanac/Allyunlocked/1.png"
-dest_files=["res://.godot/imported/1.png-f6ea200c14e858baa703a7a2bc933a6a.ctex"]
+source_file="res://assets/Almanac/Allyunlocked/LakanWarrior.png"
+dest_files=["res://.godot/imported/LakanWarrior.png-28ea086148ddc4cbcf8afe0158f261ff.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kosy710do7l7"
-path="res://.godot/imported/13.png-57c092d666bb8df29bb7b4a52a1054a2.ctex"
+uid="uid://cupxeleo6viia"
+path="res://.godot/imported/SuperInday.png-5678bfb01c040b23caf6c9b02bbc6c72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Almanac/Allyunlocked/13.png"
-dest_files=["res://.godot/imported/13.png-57c092d666bb8df29bb7b4a52a1054a2.ctex"]
+source_file="res://assets/Almanac/Allyunlocked/SuperInday.png"
+dest_files=["res://.godot/imported/SuperInday.png-5678bfb01c040b23caf6c9b02bbc6c72.ctex"]
 
 [params]
 

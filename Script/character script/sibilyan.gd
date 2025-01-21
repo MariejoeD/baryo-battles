@@ -13,6 +13,7 @@ var moveb
 var animation
 var tree
 func _ready():
+	SignalManager.discovered.emit(self.name)
 	parent = get_parent()
 	gparent = parent.get_parent()
 	base = gparent.get_parent()

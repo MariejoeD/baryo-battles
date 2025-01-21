@@ -1379,3 +1379,6 @@ stretch_mode = 1
 layout_mode = 2
 texture_normal = ExtResource("39_mpbjh")
 stretch_mode = 1
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

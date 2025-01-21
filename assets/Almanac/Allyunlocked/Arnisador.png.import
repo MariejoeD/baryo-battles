@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqnr24c6cn7bq"
-path="res://.godot/imported/9.png-8789a93f9e26034ae81898a78fb25bef.ctex"
+uid="uid://j7p55a1vp316"
+path="res://.godot/imported/Arnisador.png-a2dde4425d95d31e09b79f414bcfa4c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Almanac/Allyunlocked/9.png"
-dest_files=["res://.godot/imported/9.png-8789a93f9e26034ae81898a78fb25bef.ctex"]
+source_file="res://assets/Almanac/Allyunlocked/Arnisador.png"
+dest_files=["res://.godot/imported/Arnisador.png-a2dde4425d95d31e09b79f414bcfa4c7.ctex"]
 
 [params]
 

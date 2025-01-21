@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xy10nmgfqq1d"
-path="res://.godot/imported/3.png-410501187f2884d6a610fa9144114e94.ctex"
+uid="uid://bhnlwu71naoc"
+path="res://.godot/imported/Manggagamot.png-0167e62fddcb33d83f5a242d298c0821.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Almanac/Allyunlocked/3.png"
-dest_files=["res://.godot/imported/3.png-410501187f2884d6a610fa9144114e94.ctex"]
+source_file="res://assets/Almanac/Allyunlocked/Manggagamot.png"
+dest_files=["res://.godot/imported/Manggagamot.png-0167e62fddcb33d83f5a242d298c0821.ctex"]
 
 [params]
 

@@ -78,8 +78,10 @@ func free_tree_index(tree: Node):
 		var index = int(index_str)
 		available_indices.append(index)
 
-
+func npc(name):
+	print(name)
 func _on_tree_entered() -> void:
+	SignalManager.discovered.connect(npc)
 	SignalManager.tree_remove.connect(free_tree_index)
 	SignalManager.new_day.connect(generate_trees)
 	pass # Replace with function body.

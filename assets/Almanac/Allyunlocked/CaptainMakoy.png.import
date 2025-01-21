@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4k34udy14ee8"
-path="res://.godot/imported/15.png-a9a9e12fbdee98ed0be77afdcc13ea81.ctex"
+uid="uid://xy10nmgfqq1d"
+path="res://.godot/imported/CaptainMakoy.png-73f1bb2f8839d755eeedab260f0019dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Almanac/Allyunlocked/15.png"
-dest_files=["res://.godot/imported/15.png-a9a9e12fbdee98ed0be77afdcc13ea81.ctex"]
+source_file="res://assets/Almanac/Allyunlocked/CaptainMakoy.png"
+dest_files=["res://.godot/imported/CaptainMakoy.png-73f1bb2f8839d755eeedab260f0019dc.ctex"]
 
 [params]
 

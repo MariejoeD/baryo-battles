@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtrbox5gd0idv"
-path="res://.godot/imported/7.png-bf1992cc4d4e572b0339ac9e221e832b.ctex"
+uid="uid://kosy710do7l7"
+path="res://.godot/imported/Tirador.png-55fb7caec257a6ba8628cd6968c73bbf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Almanac/Allyunlocked/7.png"
-dest_files=["res://.godot/imported/7.png-bf1992cc4d4e572b0339ac9e221e832b.ctex"]
+source_file="res://assets/Almanac/Allyunlocked/Tirador.png"
+dest_files=["res://.godot/imported/Tirador.png-55fb7caec257a6ba8628cd6968c73bbf.ctex"]
 
 [params]
 
