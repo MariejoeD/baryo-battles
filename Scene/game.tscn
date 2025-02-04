@@ -1,8 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://d4nb8cjrspohc"]
+[gd_scene load_steps=43 format=3 uid="uid://d4nb8cjrspohc"]
 
 [ext_resource type="Script" path="res://Script/attack scripts/Attack.gd" id="1_shcpm"]
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
-[ext_resource type="Resource" uid="uid://cw0w04fmunqv8" path="res://Scene/buildings/building_scenes.tres" id="3_lca32"]
+[ext_resource type="Resource" path="res://Scene/buildings/building_scenes.tres" id="3_lca32"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_mlhjp"]
 [ext_resource type="Texture2D" uid="uid://b8dfdjsg6pnh3" path="res://assets/buildings/unlocked/1.png" id="4_yic6l"]
 [ext_resource type="Texture2D" uid="uid://dgjsl0syl3n2v" path="res://assets/buildings/unlocked/2.png" id="5_bnhwa"]
@@ -15,11 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://wggnm3crg4js" path="res://assets/buildings/unlocked/9.png" id="12_rxc11"]
 [ext_resource type="Texture2D" uid="uid://pgt5oux32bvk" path="res://assets/buildings/unlocked/10.png" id="13_mhxnu"]
 [ext_resource type="Texture2D" uid="uid://bm25vbrs667u" path="res://assets/buildings/unlocked/11.png" id="14_hj4q3"]
-[ext_resource type="Texture2D" uid="uid://cue1edqrt4po3" path="res://assets/map/3dPhilippineMap.jpg" id="16_llexe"]
 [ext_resource type="Script" path="res://Script/build.gd" id="16_mvi3c"]
-[ext_resource type="Texture2D" uid="uid://v1o2siq1evqa" path="res://assets/button/checkbox_beige_empty.png" id="17_aohav"]
-[ext_resource type="Texture2D" uid="uid://cy2ngj8fdba7" path="res://assets/button/checkbox_beige_checked.png" id="18_dflnr"]
+[ext_resource type="Texture2D" uid="uid://do70ksveq3ml4" path="res://assets/map/VisayasMap.png" id="17_gi6q2"]
+[ext_resource type="Texture2D" uid="uid://b55dwwbj5ipbl" path="res://assets/button/pin.png" id="18_2wtt7"]
+[ext_resource type="Texture2D" uid="uid://b5sxdcvqsn2qg" path="res://assets/button/pinClicked.png" id="19_m2dyo"]
 [ext_resource type="Texture2D" uid="uid://cn66uvxh4adkn" path="res://assets/game/foodIcon.png" id="20_5oy3o"]
+[ext_resource type="Texture2D" uid="uid://c7q8wjmnr0a4h" path="res://assets/button/basePin.png" id="20_b3tbn"]
+[ext_resource type="Texture2D" uid="uid://ckpcgttrqqoy1" path="res://assets/button/basePinClicked.png" id="21_a4jmo"]
 [ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="21_f868t"]
 [ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="22_u0e8w"]
 [ext_resource type="Texture2D" uid="uid://spocye4ssw8t" path="res://assets/game/settingsIcon.png" id="23_iau8l"]
@@ -357,7 +359,6 @@ layout_mode = 2
 texture_normal = ExtResource("14_hj4q3")
 
 [node name="AttackPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 7.125
@@ -372,9 +373,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ql8km")
 [node name="ScrollContainer" type="ScrollContainer" parent="AttackPanel"]
 layout_mode = 0
 offset_left = 13.0
-offset_top = 13.0
-offset_right = 716.0
-offset_bottom = 506.0
+offset_top = 19.0
+offset_right = 712.0
+offset_bottom = 503.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ql8km")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AttackPanel/ScrollContainer"]
@@ -383,64 +384,230 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="AttackPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("16_llexe")
+texture = ExtResource("17_gi6q2")
 stretch_mode = 3
 
 [node name="Button" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.544
-anchor_right = 0.418
-anchor_bottom = 0.604
-offset_left = -187.72
-offset_top = 82.976
-offset_right = -188.23
-offset_bottom = 83.216
-texture_normal = ExtResource("17_aohav")
-texture_pressed = ExtResource("18_dflnr")
+anchor_left = 0.183
+anchor_top = 0.356
+anchor_right = 0.238
+anchor_bottom = 0.453
+offset_left = 0.265991
+offset_top = 0.052002
+offset_right = -0.124008
+offset_bottom = 0.200989
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
 
 [node name="Button2" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.544
-anchor_right = 0.418
-anchor_bottom = 0.604
-offset_left = 282.28
-offset_top = -38.024
-offset_right = 281.77
-offset_bottom = -37.784
-texture_normal = ExtResource("17_aohav")
-texture_pressed = ExtResource("18_dflnr")
+anchor_left = 0.097
+anchor_top = 0.348
+anchor_right = 0.15
+anchor_bottom = 0.445
+offset_left = -0.706001
+offset_top = -0.0840149
+offset_right = 0.299995
+offset_bottom = 0.0649872
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
 
 [node name="Button3" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.544
-anchor_right = 0.418
-anchor_bottom = 0.604
-offset_left = 156.28
-offset_top = 65.976
-offset_right = 155.77
-offset_bottom = 66.216
-texture_normal = ExtResource("17_aohav")
-texture_pressed = ExtResource("18_dflnr")
+anchor_left = 0.125
+anchor_top = 0.209
+anchor_right = 0.179
+anchor_bottom = 0.306
+offset_left = -0.25
+offset_top = 0.0529938
+offset_right = 0.0579987
+offset_bottom = 0.201996
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
 
 [node name="Button4" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.544
-anchor_right = 0.418
-anchor_bottom = 0.604
-offset_left = 137.28
-offset_top = -41.024
-offset_right = 136.77
-offset_bottom = -40.784
-texture_normal = ExtResource("17_aohav")
-texture_pressed = ExtResource("18_dflnr")
+anchor_left = 0.203
+anchor_top = 0.455
+anchor_right = 0.258
+anchor_bottom = 0.553
+offset_left = 0.306
+offset_top = 0.235001
+offset_right = -0.0840149
+offset_bottom = -0.0990295
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="Button5" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.537
+anchor_top = 0.64
+anchor_right = 0.592
+anchor_bottom = 0.737
+offset_left = 0.174011
+offset_top = -0.120026
+offset_right = -0.216003
+offset_bottom = 0.0289917
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="Button6" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.463
+anchor_top = 0.482
+anchor_right = 0.517
+anchor_bottom = 0.58
+offset_left = -0.174011
+offset_top = 0.193985
+offset_right = 0.133972
+offset_bottom = -0.140015
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="Button7" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.277
+anchor_top = 0.727
+anchor_right = 0.331
+anchor_bottom = 0.824
+offset_left = -0.346008
+offset_top = -0.141022
+offset_right = -0.0380249
+offset_bottom = 0.00796509
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="Button8" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.281
+anchor_top = 0.509
+anchor_right = 0.334
+anchor_bottom = 0.607
+offset_left = -1.13802
+offset_top = 0.153
+offset_right = -0.132019
+offset_bottom = -0.18103
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="Button9" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.408
+anchor_top = 0.82
+anchor_right = 0.463
+anchor_bottom = 0.917
+offset_left = 0.215973
+offset_top = -0.0600281
+offset_right = -0.174011
+offset_bottom = 0.0889587
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="Button11" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.678
+anchor_right = 0.732
+anchor_bottom = 0.097
+offset_left = -0.244019
+offset_right = 0.0639648
+offset_bottom = 0.148998
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="Button12" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.708
+anchor_top = 0.128
+anchor_right = 0.762
+anchor_bottom = 0.226
+offset_left = -0.18399
+offset_top = 0.175999
+offset_right = 0.123962
+offset_bottom = -0.158005
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="Button13" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.788
+anchor_top = 0.224
+anchor_right = 0.842
+anchor_bottom = 0.321
+offset_left = -0.0240479
+offset_top = -0.192001
+offset_right = 0.283936
+offset_bottom = -0.0429993
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="Button14" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.602
+anchor_top = 0.211
+anchor_right = 0.656
+anchor_bottom = 0.308
+offset_left = -0.196045
+offset_top = 0.086998
+offset_right = 0.112
+offset_bottom = 0.235992
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="Button15" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.665
+anchor_top = 0.337
+anchor_right = 0.719
+anchor_bottom = 0.435
+offset_left = -0.170013
+offset_top = 0.228989
+offset_right = 0.13797
+offset_bottom = -0.105011
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="Button16" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.729
+anchor_top = 0.505
+anchor_right = 0.784
+anchor_bottom = 0.602
+offset_left = 0.15799
+offset_top = 0.0850067
+offset_right = -0.232056
+offset_bottom = 0.233978
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="Capiz" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.229
+anchor_top = 0.28
+anchor_right = 0.284
+anchor_bottom = 0.352
+offset_left = 0.15799
+offset_top = -0.240005
+offset_right = -0.23201
+offset_bottom = -0.0160065
+texture_normal = ExtResource("20_b3tbn")
+texture_pressed = ExtResource("21_a4jmo")
 
 [node name="ResourcePanel" type="HBoxContainer" parent="."]
 layout_mode = 0

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7uoiu2wararg"]
+
+[ext_resource type="PackedScene" uid="uid://cc8174tmds80" path="res://assets/Anim/Kapitan Bong/Kapitan_Bong.fbx" id="1_lwoun"]
+
+[node name="Kapitan_Bong" instance=ExtResource("1_lwoun")]
