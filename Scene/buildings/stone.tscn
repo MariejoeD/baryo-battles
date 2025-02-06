@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://cve84g5gfvhum"]
+
+[ext_resource type="Script" path="res://Scene/buildings/stone.gd" id="1_egnvh"]
+[ext_resource type="PackedScene" uid="uid://cibaoi8abw80r" path="res://assets/building models/stone1.fbx" id="1_wmfgu"]
+[ext_resource type="PackedScene" uid="uid://cs0wlb26i2c18" path="res://assets/building models/stone2.fbx" id="2_2oefp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2m2ys"]
+size = Vector3(1.92041, 1.26001, 1.96912)
+
+[node name="Stone" type="Node3D"]
+script = ExtResource("1_egnvh")
+
+[node name="stone1" parent="." instance=ExtResource("1_wmfgu")]
+visible = false
+
+[node name="stone2" parent="." instance=ExtResource("2_2oefp")]
+visible = false
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00610352, 0.642212, -0.00616455)
+shape = SubResource("BoxShape3D_2m2ys")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Mine" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 593.0
+offset_top = 662.0
+offset_right = 640.0
+offset_bottom = 693.0
+text = "Mine"
+
+[node name="Panel" type="Panel" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 586.0
+offset_top = 655.0
+offset_right = 647.0
+offset_bottom = 700.0
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
+[connection signal="pressed" from="UI/Mine" to="." method="pressed_mine"]

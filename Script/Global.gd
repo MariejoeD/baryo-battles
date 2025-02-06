@@ -6,6 +6,13 @@ var wood_qty :int = 0:
 		SignalManager.update_mats.emit()
 	get:
 		return wood_qty
+		
+var stone_qty :int = 0:
+	set(stone):
+		stone_qty = stone
+		SignalManager.update_mats.emit()
+	get:
+		return stone_qty
 var grid_size :int = 100
 
 var npc_discovered = {}
