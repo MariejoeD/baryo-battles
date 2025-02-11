@@ -373,9 +373,26 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "Agtas are large, dark-skinned spirits similar to Kapres, but often depicted as wise and friendly. They are said to help lost travelers and act as guardians of the wilderness."
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/AgtaDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://www.aswangproject.com/agta/"
 
 [node name="DuwendeDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -429,9 +446,27 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "Duwendes are small supernatural beings associated with luck and mischief. Some legends divide them into Duwendeng Puti (good) and Duwendeng Itim (bad). Many Filipinos still ask permission before stepping on anthills or disturbing suspected duwende homes.
+"
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/DuwendeDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://www.aswangproject.com/duwende-lore-in-the-philippines/"
 
 [node name="TikbalangDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -485,9 +520,27 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "The Tikbalang is a mythological creature in Filipino folklore, described as a tall, humanoid horse spirit that misleads travelers in the mountains. Legends say one can tame a Tikbalang by plucking a golden strand of its hair. In some stories, Tikbalangs serve as protectors of nature, punishing those who disrespect the land.
+"
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/TikbalangDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://www.aswangproject.com/tikbalang/"
 
 [node name="KapreDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -541,9 +594,26 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "Kapres are massive, dark-skinned, cigar-smoking giants believed to live in Balete trees. They are said to be mischievous but generally harmless unless provoked. In some stories, Kapres form friendships with humans and act as guardians of forests."
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/KapreDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://www.scribd.com/document/450255941/kapre"
 
 [node name="MananaggalDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -597,9 +667,27 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "The Manananggal is a vampire-like creature that separates its upper body and flies at night to hunt victims, usually pregnant women. To kill a Manananggal, one must find its lower body and coat it with salt or ash before dawn.
+"
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/MananaggalDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://vocal.media/horror/manananggal-the-urban-legend-of-the-philippines"
 
 [node name="SigbinDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -653,9 +741,27 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "The Sigbin is animal-like creature that walks backward, often associated with aswang folklore. Some stories claim sorcerers keep Sigbins as pets to help them attack enemies.
+"
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/SigbinDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://phspirits.com/sigbin/"
 
 [node name="TinienteGimoDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -709,9 +815,27 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "Tiniente Gimo is a legendary aswang from Iloilo. He is infamous for luring visitors to his home, only to kill and eat them. His story serves as a cautionary tale about trusting strangers.
+"
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/TinienteGimoDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://www.aswangproject.com/teniente-gimo/"
 
 [node name="AmomongoDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -765,9 +889,27 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "The Amomongo is a mysterious ape-like creature from Negros. It is known for attacking livestock and occasionally terrorizing villagers. Some believe it is a cryptid similar to Bigfoot.
+"
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/AmomongoDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://www.aswangproject.com/amomongo/"
 
 [node name="MangkukulamDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -821,9 +963,27 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "A Mangkukulam is a witch or sorcerer who can cast spells, inflict curses, or heal people. They are feared for their ability to control supernatural forces.
+"
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/MangkukulamDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://www.mangkukulam.com/folklore/351/Mangkukulam"
 
 [node name="LizardoDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -881,6 +1041,23 @@ theme_override_font_sizes/font_size = 20
 text = "character description here"
 autowrap_mode = 2
 
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/LizardoDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://journals.lww.com/jfmpc/Fulltext/2020/09080/Role_of_Faith_healers__A_barrier_or_a_support.81.aspx"
+
 [node name="SuperIndayDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
 layout_mode = 1
@@ -933,9 +1110,27 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = " The character reflects pre-colonial warrior women and babaylans (spiritual leaders), who played crucial roles in protecting their communities.
+"
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/SuperIndayDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://www.centerforbabaylanstudies.org/faqs#:~:text=Philippine%20indigenous%20communities%20recognize%20a,therapies%20such%20as%20hilot%2C%20arbularyo."
 
 [node name="CaptainMakoyDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -989,9 +1184,27 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "Captain Makoy is a figure that likely represents the archetype of a Filipino military leader or revolutionary hero. If adapted into modern media, Captain Makoy could symbolize resistance against oppression and leadership in times of crisis.
+"
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/CaptainMakoyDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://www.army.mil.ph/"
 
 [node name="ManggagamotDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -1045,9 +1258,26 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "Manggagamots, or albularyos, are traditional healers who combine herbal medicine, spiritual healing, and folk rituals. Their healing practices are often considered a form of medical pluralism, blending indigenous knowledge with Catholic influences. Some manggagamots are believed to have supernatural powers, such as the ability to remove curses or communicate with spirits."
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/ManggagamotDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://www.scirp.org/journal/paperinformation?paperid=100714"
 
 [node name="MaritesDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -1101,9 +1331,27 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "\"Marites\" is a modern term for gossipers in Filipino culture. Historically, gossip has played a role in maintaining social order, spreading information, and even resisting colonial rule through underground networks. The power of gossip has expanded with digital media, influencing public perception, social movements, and political landscapes.
+"
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/MaritesDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://ieeexplore.ieee.org/document/9996138"
 
 [node name="LakanWarriorDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -1157,9 +1405,27 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "Lakan was a title given to pre-colonial Filipino noble leaders and warriors. Lakan warriors were known for their skills in combat, particularly Arnis (stick fighting) and swordplay. They participated in rituals and rites that connected them to ancestral spirits and invoked protection before battles.
+"
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/LakanWarriorDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://babaylanfiles.blogspot.com/2009/07/conversations-lakandiwa-way-of-warrior.html"
 
 [node name="ArnisadorDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -1213,9 +1479,27 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "An Arnisador is a practitioner of Arnis, the national martial art of the Philippines. Arnis emphasizes weapon-based combat, including the use of rattan sticks, knives, and improvised weapons. It was originally developed by indigenous warriors to fight invaders and is now widely practiced for self-defense and law enforcement training.
+"
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/ArnisadorDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://www.tandfonline.com/doi/full/10.1080/27690148.2023.2239651"
 
 [node name="TiradorDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -1269,9 +1553,27 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "The Tirador refers to Filipino warriors skilled in long-range combat, often using slingshots (tirador), bows, or early firearms. During the Philippine Revolution and World War II, Filipino guerrilla fighters relied on slingshots and makeshift weapons to fight against stronger colonial forces.
+"
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/TiradorDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://revpubli.unileon.es/index.php/artesmarciales/article/view/7604"
 
 [node name="SibilyanDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
@@ -1325,9 +1627,27 @@ offset_top = 115.0
 offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
-theme_override_font_sizes/font_size = 20
-text = "character description here"
+theme_override_font_sizes/font_size = 25
+text = "Sibilyans played a crucial role in supporting revolutions and resistance movements. In history, Filipino civilians acted as spies, couriers, and healers, aiding Katipuneros and other guerrilla forces while maintaining their daily lives. Their resilience is a testament to the strength of ordinary Filipinos in times of conflict.
+"
 autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/SibilyanDescription"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.848
+anchor_top = 0.909
+anchor_right = 0.971
+anchor_bottom = 0.969
+offset_left = -0.136047
+offset_top = 0.196289
+offset_right = 0.302917
+offset_bottom = 0.0541382
+theme_override_fonts/font = ExtResource("13_2rl07")
+theme_override_font_sizes/font_size = 24
+text = "View more"
+underline = 1
+uri = "https://www.scirp.org/journal/paperinformation?paperid=128016"
 
 [node name="AllyContainer" type="ScrollContainer" parent="mainPanel/picturePanel"]
 visible = false

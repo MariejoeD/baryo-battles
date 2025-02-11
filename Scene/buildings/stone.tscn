@@ -1,11 +1,74 @@
-[gd_scene load_steps=5 format=3 uid="uid://cve84g5gfvhum"]
+[gd_scene load_steps=12 format=3 uid="uid://cve84g5gfvhum"]
 
 [ext_resource type="Script" path="res://Scene/buildings/stone.gd" id="1_egnvh"]
 [ext_resource type="PackedScene" uid="uid://cibaoi8abw80r" path="res://assets/building models/stone1.fbx" id="1_wmfgu"]
 [ext_resource type="PackedScene" uid="uid://cs0wlb26i2c18" path="res://assets/building models/stone2.fbx" id="2_2oefp"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="4_7k3i8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2m2ys"]
 size = Vector3(1.92041, 1.26001, 1.96912)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4vgr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8fcg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvnxf"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.411765, 0.235294, 0.0784314, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73aty"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.411765, 0.235294, 0.0784314, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnxqm"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.411765, 0.235294, 0.0784314, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aylb5"]
+bg_color = Color(0.844423, 0.505688, 0.211759, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.410629, 0.236975, 0.0772795, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Stone" type="Node3D"]
 script = ExtResource("1_egnvh")
@@ -32,8 +95,20 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_left = 593.0
 offset_top = 662.0
-offset_right = 640.0
-offset_bottom = 693.0
+offset_right = 671.0
+offset_bottom = 703.0
+theme_override_colors/font_hover_pressed_color = Color(0.843137, 0.505882, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.843137, 0.505882, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.843137, 0.505882, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_7k3i8")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxFlat_g4vgr")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_d8fcg")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_dvnxf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_73aty")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nnxqm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_aylb5")
 text = "Mine"
 
 [node name="Panel" type="Panel" parent="UI"]
