@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://d4nb8cjrspohc"]
+[gd_scene load_steps=44 format=3 uid="uid://d4nb8cjrspohc"]
 
 [ext_resource type="Script" path="res://Script/attack scripts/Attack.gd" id="1_shcpm"]
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dgjsl0syl3n2v" path="res://assets/buildings/unlocked/2.png" id="5_bnhwa"]
 [ext_resource type="Texture2D" uid="uid://dniquwdp87ofk" path="res://assets/buildings/unlocked/3.png" id="6_vihmr"]
 [ext_resource type="Texture2D" uid="uid://dbb728rdx8d4l" path="res://assets/buildings/unlocked/5.png" id="7_fy0qb"]
-[ext_resource type="Texture2D" uid="uid://12baqpe5381" path="res://assets/buildings/unlocked/4.png" id="8_eruqp"]
+[ext_resource type="Texture2D" uid="uid://bhtyn7rl65c42" path="res://assets/buildings/unlocked/4.png" id="8_eruqp"]
 [ext_resource type="Texture2D" uid="uid://264q5lw60gng" path="res://assets/buildings/unlocked/6.png" id="9_kjmiu"]
 [ext_resource type="Texture2D" uid="uid://bw6ktxmfo8qe1" path="res://assets/buildings/unlocked/7.png" id="10_dxsv1"]
 [ext_resource type="Texture2D" uid="uid://wgrjd4cmgkgi" path="res://assets/buildings/unlocked/8.png" id="11_qxa0g"]
@@ -167,6 +167,9 @@ shadow_size = 13
 
 [sub_resource type="Theme" id="Theme_0lo5u"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g44d6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lt0qo"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
@@ -292,7 +295,6 @@ theme = SubResource("Theme_1ed3j")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ql8km")
 
 [node name="HScrollContainer" type="ScrollContainer" parent="BuildInventoryPanel"]
-visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -300,8 +302,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 11.0
 offset_top = 37.0
-offset_right = -19.0
-offset_bottom = 5.0
+offset_right = -9.0
+offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -316,47 +318,987 @@ theme_override_constants/separation = 7
 layout_mode = 2
 texture_normal = ExtResource("4_yic6l")
 
+[node name="resourceAmount" type="Panel" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/MalacadabraBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.133
+anchor_top = 0.612
+anchor_right = 0.857
+anchor_bottom = 0.812
+offset_left = 0.0999985
+offset_top = 30.88
+offset_right = -0.100006
+offset_bottom = 0.0959778
+theme_override_styles/panel = SubResource("StyleBoxFlat_g44d6")
+
+[node name="stone" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/MalacadabraBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.235
+anchor_right = 0.217
+anchor_bottom = 0.691
+offset_left = 0.0649996
+offset_top = 0.0199986
+offset_right = -0.0890007
+offset_bottom = 0.0119972
+texture = ExtResource("21_f868t")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/MalacadabraBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.221
+anchor_right = 0.682
+anchor_bottom = 0.735
+offset_left = -0.0190048
+offset_top = -0.0280008
+offset_right = 0.0059967
+offset_bottom = 0.0200005
+texture = ExtResource("22_u0e8w")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/MalacadabraBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.206
+anchor_right = 0.424
+anchor_bottom = 0.721
+offset_left = -0.0800018
+offset_top = -0.00800133
+offset_right = -0.00800323
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "250"
+
+[node name="woodAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/MalacadabraBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.71
+anchor_top = 0.206
+anchor_right = 0.894
+anchor_bottom = 0.721
+offset_left = -0.0700073
+offset_top = -0.00800133
+offset_right = 0.00198364
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "300
+"
+
 [node name="KampoBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 texture_normal = ExtResource("5_bnhwa")
 
+[node name="resourceAmount" type="Panel" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KampoBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.133
+anchor_top = 0.673
+anchor_right = 0.867
+anchor_bottom = 0.807
+offset_left = 3.1
+offset_top = 0.0739746
+offset_right = -0.100006
+offset_bottom = -0.218018
+theme_override_styles/panel = SubResource("StyleBoxFlat_g44d6")
+
+[node name="stone" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KampoBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.235
+anchor_right = 0.217
+anchor_bottom = 0.691
+offset_left = 0.0649996
+offset_top = 0.0199986
+offset_right = -0.0890007
+offset_bottom = 0.0119972
+texture = ExtResource("21_f868t")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KampoBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.221
+anchor_right = 0.682
+anchor_bottom = 0.735
+offset_left = -0.0190048
+offset_top = -0.0280008
+offset_right = 0.0059967
+offset_bottom = 0.0200005
+texture = ExtResource("22_u0e8w")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KampoBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.206
+anchor_right = 0.424
+anchor_bottom = 0.721
+offset_left = -0.0800018
+offset_top = -0.00800133
+offset_right = -0.00800323
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "100"
+
+[node name="woodAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KampoBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.71
+anchor_top = 0.206
+anchor_right = 0.894
+anchor_bottom = 0.721
+offset_left = -0.0700073
+offset_top = -0.00800133
+offset_right = 0.00198364
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "150
+"
+
 [node name="BodegaBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("6_vihmr")
+
+[node name="resourceAmount" type="Panel" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/BodegaBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.137
+anchor_top = 0.682
+anchor_right = 0.857
+anchor_bottom = 0.816
+offset_left = -0.100002
+offset_top = -0.0840149
+offset_right = -1.10001
+offset_bottom = 0.00796509
+theme_override_styles/panel = SubResource("StyleBoxFlat_g44d6")
+
+[node name="stone" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/BodegaBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.235
+anchor_right = 0.217
+anchor_bottom = 0.691
+offset_left = 0.0649996
+offset_top = 0.0199986
+offset_right = -0.0890007
+offset_bottom = 0.0119972
+texture = ExtResource("21_f868t")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/BodegaBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.221
+anchor_right = 0.682
+anchor_bottom = 0.735
+offset_left = -0.0190048
+offset_top = -0.0280008
+offset_right = 0.0059967
+offset_bottom = 0.0200005
+texture = ExtResource("22_u0e8w")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/BodegaBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.206
+anchor_right = 0.424
+anchor_bottom = 0.721
+offset_left = -0.0800018
+offset_top = -0.00800133
+offset_right = -0.00800323
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "80"
+
+[node name="woodAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/BodegaBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.71
+anchor_top = 0.206
+anchor_right = 0.894
+anchor_bottom = 0.721
+offset_left = -0.0700073
+offset_top = -0.00800133
+offset_right = 0.00198364
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "120
+"
 
 [node name="SandatahangLakasBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("8_eruqp")
 
+[node name="resourceAmount" type="Panel" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/SandatahangLakasBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13
+anchor_top = 0.677
+anchor_right = 0.857
+anchor_bottom = 0.811
+offset_top = 0.225983
+offset_right = -1.10001
+offset_bottom = -0.06604
+theme_override_styles/panel = SubResource("StyleBoxFlat_g44d6")
+
+[node name="stone" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/SandatahangLakasBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.235
+anchor_right = 0.217
+anchor_bottom = 0.691
+offset_left = 0.0649996
+offset_top = 0.0199986
+offset_right = -0.0890007
+offset_bottom = 0.0119972
+texture = ExtResource("21_f868t")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/SandatahangLakasBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.221
+anchor_right = 0.682
+anchor_bottom = 0.735
+offset_left = -0.0190048
+offset_top = -0.0280008
+offset_right = 0.0059967
+offset_bottom = 0.0200005
+texture = ExtResource("22_u0e8w")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/SandatahangLakasBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.206
+anchor_right = 0.424
+anchor_bottom = 0.721
+offset_left = -0.0800018
+offset_top = -0.00800133
+offset_right = -0.00800323
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "150"
+
+[node name="woodAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/SandatahangLakasBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.71
+anchor_top = 0.206
+anchor_right = 0.894
+anchor_bottom = 0.721
+offset_left = -0.0700073
+offset_top = -0.00800133
+offset_right = 0.00198364
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "200
+"
+
 [node name="KawaBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 texture_normal = ExtResource("7_fy0qb")
+
+[node name="resourceAmount" type="Panel" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KawaBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.133
+anchor_top = 0.675
+anchor_right = 0.857
+anchor_bottom = 0.809
+offset_left = 0.0999985
+offset_top = 0.149994
+offset_right = -0.100006
+offset_bottom = -0.141998
+theme_override_styles/panel = SubResource("StyleBoxFlat_g44d6")
+
+[node name="stone" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KawaBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.235
+anchor_right = 0.217
+anchor_bottom = 0.691
+offset_left = 0.0649996
+offset_top = 0.0199986
+offset_right = -0.0890007
+offset_bottom = 0.0119972
+texture = ExtResource("21_f868t")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KawaBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.221
+anchor_right = 0.682
+anchor_bottom = 0.735
+offset_left = -0.0190048
+offset_top = -0.0280008
+offset_right = 0.0059967
+offset_bottom = 0.0200005
+texture = ExtResource("22_u0e8w")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KawaBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.206
+anchor_right = 0.424
+anchor_bottom = 0.721
+offset_left = -0.0800018
+offset_top = -0.00800133
+offset_right = -0.00800323
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "80"
+
+[node name="woodAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KawaBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.71
+anchor_top = 0.206
+anchor_right = 0.894
+anchor_bottom = 0.721
+offset_left = -0.0700073
+offset_top = -0.00800133
+offset_right = 0.00198364
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "120
+"
 
 [node name="EstakadaBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("9_kjmiu")
 
+[node name="resourceAmount" type="Panel" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/EstakadaBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.133
+anchor_top = 0.675
+anchor_right = 0.857
+anchor_bottom = 0.809
+offset_left = 0.0999985
+offset_top = 0.149994
+offset_right = -0.100006
+offset_bottom = -0.141998
+theme_override_styles/panel = SubResource("StyleBoxFlat_g44d6")
+
+[node name="stone" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/EstakadaBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.235
+anchor_right = 0.217
+anchor_bottom = 0.691
+offset_left = 0.0649996
+offset_top = 0.0199986
+offset_right = -0.0890007
+offset_bottom = 0.0119972
+texture = ExtResource("21_f868t")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/EstakadaBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.221
+anchor_right = 0.682
+anchor_bottom = 0.735
+offset_left = -0.0190048
+offset_top = -0.0280008
+offset_right = 0.0059967
+offset_bottom = 0.0200005
+texture = ExtResource("22_u0e8w")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/EstakadaBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.206
+anchor_right = 0.424
+anchor_bottom = 0.721
+offset_left = -0.0800018
+offset_top = -0.00800133
+offset_right = -0.00800323
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "20"
+
+[node name="woodAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/EstakadaBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.71
+anchor_top = 0.206
+anchor_right = 0.894
+anchor_bottom = 0.721
+offset_left = -0.0700073
+offset_top = -0.00800133
+offset_right = 0.00198364
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "10"
+
 [node name="BalwarteBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("10_dxsv1")
+
+[node name="resourceAmount" type="Panel" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/BalwarteBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.137
+anchor_top = 0.682
+anchor_right = 0.857
+anchor_bottom = 0.815
+offset_left = -0.100002
+offset_top = -0.0840149
+offset_right = 0.899994
+offset_bottom = 0.085968
+theme_override_styles/panel = SubResource("StyleBoxFlat_g44d6")
+
+[node name="stone" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/BalwarteBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.235
+anchor_right = 0.217
+anchor_bottom = 0.691
+offset_left = 0.0649996
+offset_top = 0.0199986
+offset_right = -0.0890007
+offset_bottom = 0.0119972
+texture = ExtResource("21_f868t")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/BalwarteBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.221
+anchor_right = 0.682
+anchor_bottom = 0.735
+offset_left = -0.0190048
+offset_top = -0.0280008
+offset_right = 0.0059967
+offset_bottom = 0.0200005
+texture = ExtResource("22_u0e8w")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/BalwarteBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.206
+anchor_right = 0.424
+anchor_bottom = 0.721
+offset_left = -0.0800018
+offset_top = -0.00800133
+offset_right = -0.00800323
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "120"
+
+[node name="woodAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/BalwarteBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.71
+anchor_top = 0.206
+anchor_right = 0.894
+anchor_bottom = 0.721
+offset_left = -0.0700073
+offset_top = -0.00800133
+offset_right = 0.00198364
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "180"
 
 [node name="KwitisBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("11_qxa0g")
 
+[node name="resourceAmount" type="Panel" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KwitisBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.133
+anchor_top = 0.686
+anchor_right = 0.857
+anchor_bottom = 0.82
+offset_left = 0.0999985
+offset_top = 0.0679626
+offset_right = -0.100006
+offset_bottom = -0.22403
+theme_override_styles/panel = SubResource("StyleBoxFlat_g44d6")
+
+[node name="stone" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KwitisBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.235
+anchor_right = 0.217
+anchor_bottom = 0.691
+offset_left = 0.0649996
+offset_top = 0.0199986
+offset_right = -0.0890007
+offset_bottom = 0.0119972
+texture = ExtResource("21_f868t")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KwitisBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.221
+anchor_right = 0.682
+anchor_bottom = 0.735
+offset_left = -0.0190048
+offset_top = -0.0280008
+offset_right = 0.0059967
+offset_bottom = 0.0200005
+texture = ExtResource("22_u0e8w")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KwitisBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.206
+anchor_right = 0.424
+anchor_bottom = 0.721
+offset_left = -0.0800018
+offset_top = -0.00800133
+offset_right = -0.00800323
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "180"
+
+[node name="woodAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KwitisBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.71
+anchor_top = 0.206
+anchor_right = 0.894
+anchor_bottom = 0.721
+offset_left = -0.0700073
+offset_top = -0.00800133
+offset_right = 0.00198364
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "140
+"
+
 [node name="KuboBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("12_rxc11")
+
+[node name="resourceAmount" type="Panel" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KuboBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.147
+anchor_top = 0.682
+anchor_right = 0.857
+anchor_bottom = 0.815
+offset_left = -0.0999985
+offset_top = -0.0840149
+offset_right = 3.89999
+offset_bottom = 0.085968
+theme_override_styles/panel = SubResource("StyleBoxFlat_g44d6")
+
+[node name="stone" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KuboBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.235
+anchor_right = 0.217
+anchor_bottom = 0.691
+offset_left = 0.0649996
+offset_top = 0.0199986
+offset_right = -0.0890007
+offset_bottom = 0.0119972
+texture = ExtResource("21_f868t")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KuboBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.221
+anchor_right = 0.682
+anchor_bottom = 0.735
+offset_left = -0.0190048
+offset_top = -0.0280008
+offset_right = 0.0059967
+offset_bottom = 0.0200005
+texture = ExtResource("22_u0e8w")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KuboBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.206
+anchor_right = 0.424
+anchor_bottom = 0.721
+offset_left = -0.0800018
+offset_top = -0.00800133
+offset_right = -0.00800323
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "50"
+
+[node name="woodAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KuboBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.71
+anchor_top = 0.206
+anchor_right = 0.894
+anchor_bottom = 0.721
+offset_left = -0.0700073
+offset_top = -0.00800133
+offset_right = 0.00198364
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "80"
 
 [node name="TanimBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("13_mhxnu")
 
+[node name="resourceAmount" type="Panel" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/TanimBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.143
+anchor_top = 0.688
+anchor_right = 0.857
+anchor_bottom = 0.822
+offset_left = 0.0999985
+offset_top = 0.143982
+offset_right = 2.89999
+offset_bottom = -0.14801
+theme_override_styles/panel = SubResource("StyleBoxFlat_g44d6")
+
+[node name="stone" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/TanimBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.235
+anchor_right = 0.217
+anchor_bottom = 0.691
+offset_left = 0.0649996
+offset_top = 0.0199986
+offset_right = -0.0890007
+offset_bottom = 0.0119972
+texture = ExtResource("21_f868t")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/TanimBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.221
+anchor_right = 0.682
+anchor_bottom = 0.735
+offset_left = -0.0190048
+offset_top = -0.0280008
+offset_right = 0.0059967
+offset_bottom = 0.0200005
+texture = ExtResource("22_u0e8w")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/TanimBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.206
+anchor_right = 0.424
+anchor_bottom = 0.721
+offset_left = -0.0800018
+offset_top = -0.00800133
+offset_right = -0.00800323
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "30"
+
+[node name="woodAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/TanimBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.71
+anchor_top = 0.206
+anchor_right = 0.894
+anchor_bottom = 0.721
+offset_left = -0.0700073
+offset_top = -0.00800133
+offset_right = 0.00198364
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "50
+"
+
 [node name="ImbakanBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("14_hj4q3")
+
+[node name="resourceAmount" type="Panel" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/ImbakanBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.14
+anchor_top = 0.675
+anchor_right = 0.857
+anchor_bottom = 0.809
+offset_top = 0.149994
+offset_right = 1.89999
+offset_bottom = -0.141998
+theme_override_styles/panel = SubResource("StyleBoxFlat_g44d6")
+
+[node name="stone" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/ImbakanBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.235
+anchor_right = 0.217
+anchor_bottom = 0.691
+offset_left = 0.0649996
+offset_top = 0.0199986
+offset_right = -0.0890007
+offset_bottom = 0.0119972
+texture = ExtResource("21_f868t")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/ImbakanBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.221
+anchor_right = 0.682
+anchor_bottom = 0.735
+offset_left = -0.0190048
+offset_top = -0.0280008
+offset_right = 0.0059967
+offset_bottom = 0.0200005
+texture = ExtResource("22_u0e8w")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/ImbakanBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.206
+anchor_right = 0.424
+anchor_bottom = 0.721
+offset_left = -0.0800018
+offset_top = -0.00800133
+offset_right = -0.00800323
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "60"
+
+[node name="woodAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/ImbakanBtn/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.71
+anchor_top = 0.206
+anchor_right = 0.894
+anchor_bottom = 0.721
+offset_left = -0.0700073
+offset_top = -0.00800133
+offset_right = 0.00198364
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 27
+text = "100
+"
 
 [node name="AttackPanel" type="Panel" parent="."]
 visible = false
