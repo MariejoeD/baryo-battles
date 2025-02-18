@@ -7,6 +7,11 @@ extends Control
 @onready var attack_panel = $AttackPanel
 @onready var settings_panel = $SettingsPanel
 
+
+@onready var check_button = $DescriptionPanel/Malacadabra/CheckButton
+@onready var english_description = $DescriptionPanel/Malacadabra/EnglishDescription
+@onready var tagalog_description = $DescriptionPanel/Malacadabra/TagalogDescription
+
 # Button textures for locked and unlocked states
 @onready var locked_textures = {
 	"MalacadabraBtn": preload("res://assets/buildings/locked/1.png"),
@@ -112,3 +117,17 @@ func _on_tree_exiting() -> void:
 	SignalManager.update_mats.disconnect(update_resource_display)
 	
 	pass # Replace with function body.
+	
+#for toggle
+	# Set default visibility
+	english_description.visible = true
+	tagalog_description.visible = false
+	
+func _on_check_button_toggled(button_pressed: bool) -> void:
+	if button_pressed:
+		english_description.visible = false
+		tagalog_description.visible = true
+	else:
+		english_description.visible = true
+		tagalog_description.visible = false
+	

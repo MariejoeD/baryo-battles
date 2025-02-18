@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://d4nb8cjrspohc"]
+[gd_scene load_steps=58 format=3 uid="uid://d4nb8cjrspohc"]
 
 [ext_resource type="Script" path="res://Script/attack scripts/Attack.gd" id="1_shcpm"]
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
@@ -25,6 +25,16 @@
 [ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="21_f868t"]
 [ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="22_u0e8w"]
 [ext_resource type="Texture2D" uid="uid://spocye4ssw8t" path="res://assets/game/settingsIcon.png" id="23_iau8l"]
+[ext_resource type="Texture2D" uid="uid://dj546n2w0r57a" path="res://assets/BuildingsRawPics/1.png" id="26_dx0v3"]
+[ext_resource type="Texture2D" uid="uid://dl2s57s3jegow" path="res://assets/BuildingsRawPics/2.png" id="27_5jsei"]
+[ext_resource type="Texture2D" uid="uid://3cct157onhcn" path="res://assets/BuildingsRawPics/5.png" id="28_gn438"]
+[ext_resource type="Texture2D" uid="uid://drfobag0b8rrn" path="res://assets/BuildingsRawPics/4.png" id="29_6eojo"]
+[ext_resource type="Texture2D" uid="uid://du3ak2u2td01c" path="res://assets/BuildingsRawPics/6.png" id="30_7t1ch"]
+[ext_resource type="Texture2D" uid="uid://bqi4v4rdmqr21" path="res://assets/BuildingsRawPics/7.png" id="31_8n5lm"]
+[ext_resource type="Texture2D" uid="uid://d0evviqd01egj" path="res://assets/BuildingsRawPics/8.png" id="32_kxflh"]
+[ext_resource type="Texture2D" uid="uid://t3odoxbrqmw8" path="res://assets/BuildingsRawPics/10.png" id="33_ggwh2"]
+[ext_resource type="Texture2D" uid="uid://bi0ah5owynja6" path="res://assets/BuildingsRawPics/11.png" id="34_me38f"]
+[ext_resource type="Texture2D" uid="uid://brmyn30fd8jqn" path="res://assets/BuildingsRawPics/3.png" id="35_u3j3a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtsk4"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -266,6 +276,10 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmljh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0, 0, 0, 1)
+
 [node name="Control2" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -331,6 +345,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_gr1ie")
 text = "Attack"
 
 [node name="BuildInventoryPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 offset_left = 19.0
 offset_top = 35.0
@@ -452,18 +467,18 @@ text = "300
 [node name="informationButton" type="Button" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/MalacadabraBtn"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.797
-anchor_top = 0.059
-anchor_right = 0.903
-anchor_bottom = 0.112
-offset_left = -0.100021
-offset_top = 0.213999
-offset_right = 0.0999756
-offset_bottom = 5.152
+anchor_left = 0.843
+anchor_top = 0.062
+anchor_right = 0.927
+anchor_bottom = 0.11
+offset_left = 0.0999908
+offset_top = -0.148001
+offset_right = -0.100006
+offset_bottom = 1.06
 theme_override_colors/font_outline_color = Color(0.205117, 0.205117, 0.205117, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 15
 theme_override_styles/hover = SubResource("StyleBoxFlat_rva0g")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2knsy")
 theme_override_styles/normal = SubResource("StyleBoxFlat_6iwvs")
@@ -560,6 +575,26 @@ theme_override_font_sizes/font_size = 27
 text = "150
 "
 
+[node name="informationButton" type="Button" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KampoBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.843
+anchor_top = 0.062
+anchor_right = 0.927
+anchor_bottom = 0.11
+offset_left = 0.0999908
+offset_top = -0.148001
+offset_right = -0.100006
+offset_bottom = 1.06
+theme_override_colors/font_outline_color = Color(0.205117, 0.205117, 0.205117, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_rva0g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2knsy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6iwvs")
+text = "i"
+
 [node name="BodegaBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("6_vihmr")
@@ -650,6 +685,26 @@ theme_override_font_sizes/font_size = 27
 text = "120
 "
 
+[node name="informationButton" type="Button" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/BodegaBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.843
+anchor_top = 0.062
+anchor_right = 0.927
+anchor_bottom = 0.11
+offset_left = 0.0999908
+offset_top = -0.148001
+offset_right = -0.100006
+offset_bottom = 1.06
+theme_override_colors/font_outline_color = Color(0.205117, 0.205117, 0.205117, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_rva0g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2knsy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6iwvs")
+text = "i"
+
 [node name="SandatahangLakasBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("8_eruqp")
@@ -738,6 +793,26 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 27
 text = "200
 "
+
+[node name="informationButton" type="Button" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/SandatahangLakasBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.843
+anchor_top = 0.062
+anchor_right = 0.927
+anchor_bottom = 0.11
+offset_left = 0.0999908
+offset_top = -0.148001
+offset_right = -0.100006
+offset_bottom = 1.06
+theme_override_colors/font_outline_color = Color(0.205117, 0.205117, 0.205117, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_rva0g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2knsy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6iwvs")
+text = "i"
 
 [node name="KawaBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
@@ -829,6 +904,26 @@ theme_override_font_sizes/font_size = 27
 text = "120
 "
 
+[node name="informationButton" type="Button" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KawaBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.843
+anchor_top = 0.062
+anchor_right = 0.927
+anchor_bottom = 0.11
+offset_left = 0.0999908
+offset_top = -0.148001
+offset_right = -0.100006
+offset_bottom = 1.06
+theme_override_colors/font_outline_color = Color(0.205117, 0.205117, 0.205117, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_rva0g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2knsy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6iwvs")
+text = "i"
+
 [node name="EstakadaBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("9_kjmiu")
@@ -918,6 +1013,26 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 27
 text = "10"
 
+[node name="informationButton" type="Button" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/EstakadaBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.843
+anchor_top = 0.062
+anchor_right = 0.927
+anchor_bottom = 0.11
+offset_left = 0.0999908
+offset_top = -0.148001
+offset_right = -0.100006
+offset_bottom = 1.06
+theme_override_colors/font_outline_color = Color(0.205117, 0.205117, 0.205117, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_rva0g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2knsy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6iwvs")
+text = "i"
+
 [node name="BalwarteBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("10_dxsv1")
@@ -1006,6 +1121,26 @@ theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 27
 text = "180"
+
+[node name="informationButton" type="Button" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/BalwarteBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.843
+anchor_top = 0.062
+anchor_right = 0.927
+anchor_bottom = 0.11
+offset_left = 0.0999908
+offset_top = -0.148001
+offset_right = -0.100006
+offset_bottom = 1.06
+theme_override_colors/font_outline_color = Color(0.205117, 0.205117, 0.205117, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_rva0g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2knsy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6iwvs")
+text = "i"
 
 [node name="KwitisBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
@@ -1097,6 +1232,26 @@ theme_override_font_sizes/font_size = 27
 text = "140
 "
 
+[node name="informationButton" type="Button" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KwitisBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.843
+anchor_top = 0.062
+anchor_right = 0.927
+anchor_bottom = 0.11
+offset_left = 0.0999908
+offset_top = -0.148001
+offset_right = -0.100006
+offset_bottom = 1.06
+theme_override_colors/font_outline_color = Color(0.205117, 0.205117, 0.205117, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_rva0g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2knsy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6iwvs")
+text = "i"
+
 [node name="KuboBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("12_rxc11")
@@ -1185,6 +1340,26 @@ theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 27
 text = "80"
+
+[node name="informationButton" type="Button" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KuboBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.843
+anchor_top = 0.062
+anchor_right = 0.927
+anchor_bottom = 0.11
+offset_left = 0.0999908
+offset_top = -0.148001
+offset_right = -0.100006
+offset_bottom = 1.06
+theme_override_colors/font_outline_color = Color(0.205117, 0.205117, 0.205117, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_rva0g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2knsy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6iwvs")
+text = "i"
 
 [node name="TanimBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
@@ -1276,6 +1451,26 @@ theme_override_font_sizes/font_size = 27
 text = "50
 "
 
+[node name="informationButton" type="Button" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/TanimBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.843
+anchor_top = 0.062
+anchor_right = 0.927
+anchor_bottom = 0.11
+offset_left = 0.0999908
+offset_top = -0.148001
+offset_right = -0.100006
+offset_bottom = 1.06
+theme_override_colors/font_outline_color = Color(0.205117, 0.205117, 0.205117, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_rva0g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2knsy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6iwvs")
+text = "i"
+
 [node name="ImbakanBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("14_hj4q3")
@@ -1364,6 +1559,26 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 27
 text = "100
 "
+
+[node name="informationButton" type="Button" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/ImbakanBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.843
+anchor_top = 0.062
+anchor_right = 0.927
+anchor_bottom = 0.11
+offset_left = 0.0999908
+offset_top = -0.148001
+offset_right = -0.100006
+offset_bottom = 1.06
+theme_override_colors/font_outline_color = Color(0.205117, 0.205117, 0.205117, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/hover = SubResource("StyleBoxFlat_rva0g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2knsy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6iwvs")
+text = "i"
 
 [node name="AttackPanel" type="Panel" parent="."]
 visible = false
@@ -1703,3 +1918,1254 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_rg8t3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_rg8t3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_066ap")
 text = " Back to Main Menu"
+
+[node name="DescriptionPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 4.15
+anchor_top = 1.95
+anchor_right = 28.2
+anchor_bottom = 15.025
+theme_override_styles/panel = SubResource("StyleBoxFlat_ql8km")
+
+[node name="Malacadabra" type="Panel" parent="DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.033
+anchor_right = 0.989
+anchor_bottom = 0.973
+offset_left = -4.202
+offset_top = -0.259001
+offset_right = -4.41803
+offset_bottom = -2.87903
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmljh")
+
+[node name="Img" type="TextureRect" parent="DescriptionPanel/Malacadabra"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.059
+anchor_right = 0.357
+anchor_bottom = 0.963
+offset_left = -29.447
+offset_top = 36.149
+offset_right = -9.367
+offset_bottom = -81.907
+texture = ExtResource("26_dx0v3")
+expand_mode = 4
+
+[node name="title" type="Label" parent="DescriptionPanel/Malacadabra"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53
+anchor_top = 0.039
+anchor_right = 0.865
+anchor_bottom = 0.172
+offset_left = -0.430054
+offset_top = -0.0709991
+offset_right = -0.315125
+offset_bottom = -0.108009
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 40
+text = "Malacadabra"
+
+[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Malacadabra"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.022
+anchor_right = 0.186
+anchor_bottom = 0.078
+offset_left = 0.0699997
+offset_top = 0.242
+offset_right = -0.166
+offset_bottom = -0.141998
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 200
+theme_override_constants/align_to_largest_stylebox = 2
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+text = "switch language"
+
+[node name="EnglishDescription" type="Label" parent="DescriptionPanel/Malacadabra"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "The heart of the village This mystical structure radiates power, guiding the community’s growth and prosperity. Defend it at all costs!"
+autowrap_mode = 3
+
+[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Malacadabra"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "Ang puso ng baryo.  Isang makapangyarihang gusali na nagsisilbing gabay sa paglago at kaligtasan ng pamayanan. Pangalagaan ito sa lahat ng oras!"
+autowrap_mode = 3
+
+[node name="Kampo" type="Panel" parent="DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.033
+anchor_right = 0.989
+anchor_bottom = 0.973
+offset_left = -4.202
+offset_top = -0.259001
+offset_right = -4.41803
+offset_bottom = -2.87903
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmljh")
+
+[node name="Img" type="TextureRect" parent="DescriptionPanel/Kampo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.059
+anchor_right = 0.357
+anchor_bottom = 0.963
+offset_left = -29.447
+offset_top = 36.149
+offset_right = -9.367
+offset_bottom = -81.907
+texture = ExtResource("27_5jsei")
+expand_mode = 4
+
+[node name="title" type="Label" parent="DescriptionPanel/Kampo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53
+anchor_top = 0.039
+anchor_right = 0.865
+anchor_bottom = 0.172
+offset_left = -0.430054
+offset_top = -0.0709991
+offset_right = -0.315125
+offset_bottom = -0.108009
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 40
+text = "Kampo"
+
+[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Kampo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.022
+anchor_right = 0.186
+anchor_bottom = 0.078
+offset_left = 0.0699997
+offset_top = 0.242
+offset_right = -0.166
+offset_bottom = -0.141998
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 200
+theme_override_constants/align_to_largest_stylebox = 2
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+text = "switch language"
+
+[node name="EnglishDescription" type="Label" parent="DescriptionPanel/Kampo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "A fortified ground where trained warriors gather, awaiting the call to battle. It serves as the rallying point for your forces before they march to reclaim the land.
+"
+autowrap_mode = 3
+
+[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Kampo"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "Isang matibay na kampo kung saan nagtitipon ang sinanay na mga mandirigma, handang lumaban para mabawi ang bayan mula sa mga nilalang ng kadiliman.
+"
+autowrap_mode = 3
+
+[node name="Kawa" type="Panel" parent="DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.033
+anchor_right = 0.989
+anchor_bottom = 0.973
+offset_left = -4.202
+offset_top = -0.259001
+offset_right = -4.41803
+offset_bottom = -2.87903
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmljh")
+
+[node name="Img" type="TextureRect" parent="DescriptionPanel/Kawa"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.059
+anchor_right = 0.357
+anchor_bottom = 0.963
+offset_left = -29.447
+offset_top = 36.149
+offset_right = -9.367
+offset_bottom = -81.907
+texture = ExtResource("28_gn438")
+expand_mode = 4
+
+[node name="title" type="Label" parent="DescriptionPanel/Kawa"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53
+anchor_top = 0.039
+anchor_right = 0.865
+anchor_bottom = 0.172
+offset_left = -0.430054
+offset_top = -0.0709991
+offset_right = -0.315125
+offset_bottom = -0.108009
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 40
+text = "Kawa"
+
+[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Kawa"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.022
+anchor_right = 0.186
+anchor_bottom = 0.078
+offset_left = 0.0699997
+offset_top = 0.242
+offset_right = -0.166
+offset_bottom = -0.141998
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 200
+theme_override_constants/align_to_largest_stylebox = 2
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+text = "switch language"
+
+[node name="EnglishDescription" type="Label" parent="DescriptionPanel/Kawa"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "A sacred forge of arcane energy where potent spells are brewed. Skilled Albularyos and mystics channel ancient magic to empower your army.
+
+"
+autowrap_mode = 3
+
+[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Kawa"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "Isang banal na pugon ng mahiwagang enerhiya kung saan niluluto ang mga makapangyarihang sumpa at agimat. Dito ginagawang sandata ng mga Albularyo ang sinaunang kaalaman sa salamangka."
+autowrap_mode = 3
+
+[node name="Sandatahang Lakas" type="Panel" parent="DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.033
+anchor_right = 0.989
+anchor_bottom = 0.973
+offset_left = -4.202
+offset_top = -0.259001
+offset_right = -4.41803
+offset_bottom = -2.87903
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmljh")
+
+[node name="Img" type="TextureRect" parent="DescriptionPanel/Sandatahang Lakas"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.059
+anchor_right = 0.357
+anchor_bottom = 0.963
+offset_left = -29.447
+offset_top = 36.149
+offset_right = -9.367
+offset_bottom = -81.907
+texture = ExtResource("29_6eojo")
+expand_mode = 4
+
+[node name="title" type="Label" parent="DescriptionPanel/Sandatahang Lakas"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53
+anchor_top = 0.039
+anchor_right = 0.865
+anchor_bottom = 0.172
+offset_left = -0.430054
+offset_top = -0.0709991
+offset_right = -0.315125
+offset_bottom = -0.108009
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 40
+text = "Sandatahang Lakas"
+
+[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Sandatahang Lakas"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.022
+anchor_right = 0.186
+anchor_bottom = 0.078
+offset_left = 0.0699997
+offset_top = 0.242
+offset_right = -0.166
+offset_bottom = -0.141998
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 200
+theme_override_constants/align_to_largest_stylebox = 2
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+text = "switch language"
+
+[node name="EnglishDescription" type="Label" parent="DescriptionPanel/Sandatahang Lakas"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "A prestigious training ground where elite warriors hone their skills. Unlocks advanced combat techniques, special abilities, and battle strategies to gain the upper hand against mythical foes.
+
+"
+autowrap_mode = 3
+
+[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Sandatahang Lakas"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "Isang kilalang paaralan kung saan hinahasa ang husay ng mga mandirigma. Nagbubukas ng mas mataas na antas ng pagsasanay, natatanging kakayahan, at taktikang pandigma upang magkaroon ng kalamangan sa labanan."
+autowrap_mode = 3
+
+[node name="Estakada" type="Panel" parent="DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.033
+anchor_right = 0.989
+anchor_bottom = 0.973
+offset_left = -4.202
+offset_top = -0.259001
+offset_right = -4.41803
+offset_bottom = -2.87903
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmljh")
+
+[node name="Img" type="TextureRect" parent="DescriptionPanel/Estakada"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.059
+anchor_right = 0.357
+anchor_bottom = 0.963
+offset_left = -29.447
+offset_top = 36.149
+offset_right = -9.367
+offset_bottom = -81.907
+texture = ExtResource("30_7t1ch")
+expand_mode = 4
+
+[node name="title" type="Label" parent="DescriptionPanel/Estakada"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53
+anchor_top = 0.039
+anchor_right = 0.865
+anchor_bottom = 0.172
+offset_left = -0.430054
+offset_top = -0.0709991
+offset_right = -0.315125
+offset_bottom = -0.108009
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 40
+text = "Estakada"
+
+[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Estakada"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.022
+anchor_right = 0.186
+anchor_bottom = 0.078
+offset_left = 0.0699997
+offset_top = 0.242
+offset_right = -0.166
+offset_bottom = -0.141998
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 200
+theme_override_constants/align_to_largest_stylebox = 2
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+text = "switch language"
+
+[node name="EnglishDescription" type="Label" parent="DescriptionPanel/Estakada"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "Sturdy defensive barriers built from hardened kawayan and enchanted stone. These walls slow down enemy advances and provide critical protection for the village.
+"
+autowrap_mode = 3
+
+[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Estakada"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "Matitibay na harang na yari sa kawayan at batong nilagyan ng mahika. Pinipigilan at pinapabagal nito ang pagsalakay ng mga kaaway upang maprotektahan ang baryo."
+autowrap_mode = 3
+
+[node name="Balwarte" type="Panel" parent="DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.033
+anchor_right = 0.989
+anchor_bottom = 0.973
+offset_left = -4.202
+offset_top = -0.259001
+offset_right = -4.41803
+offset_bottom = -2.87903
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmljh")
+
+[node name="Img" type="TextureRect" parent="DescriptionPanel/Balwarte"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.059
+anchor_right = 0.357
+anchor_bottom = 0.963
+offset_left = -29.447
+offset_top = 36.149
+offset_right = -9.367
+offset_bottom = -81.907
+texture = ExtResource("31_8n5lm")
+expand_mode = 4
+
+[node name="title" type="Label" parent="DescriptionPanel/Balwarte"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53
+anchor_top = 0.039
+anchor_right = 0.865
+anchor_bottom = 0.172
+offset_left = -0.430054
+offset_top = -0.0709991
+offset_right = -0.315125
+offset_bottom = -0.108009
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 40
+text = "Balwarte"
+
+[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Balwarte"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.022
+anchor_right = 0.186
+anchor_bottom = 0.078
+offset_left = 0.0699997
+offset_top = 0.242
+offset_right = -0.166
+offset_bottom = -0.141998
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 200
+theme_override_constants/align_to_largest_stylebox = 2
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+text = "switch language"
+
+[node name="EnglishDescription" type="Label" parent="DescriptionPanel/Balwarte"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "A towering lookout post that enhances visibility across the battlefield. Guards stationed here provide early warnings of incoming threats, ensuring the village is prepared for any attack."
+autowrap_mode = 3
+
+[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Balwarte"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "Isang matayog na bantayan na nagpapalawak ng tanaw sa paligid. Ang mga tagapagbantay rito ay nagbibigay ng babala sa nalalapit na panganib, kaya’t may sapat na oras ang baryo upang maghanda.
+"
+autowrap_mode = 3
+
+[node name="Kwitis" type="Panel" parent="DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.033
+anchor_right = 0.989
+anchor_bottom = 0.973
+offset_left = -4.202
+offset_top = -0.259001
+offset_right = -4.41803
+offset_bottom = -2.87903
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmljh")
+
+[node name="Img" type="TextureRect" parent="DescriptionPanel/Kwitis"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.059
+anchor_right = 0.357
+anchor_bottom = 0.963
+offset_left = -29.447
+offset_top = 36.149
+offset_right = -9.367
+offset_bottom = -81.907
+texture = ExtResource("32_kxflh")
+expand_mode = 4
+
+[node name="title" type="Label" parent="DescriptionPanel/Kwitis"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53
+anchor_top = 0.039
+anchor_right = 0.865
+anchor_bottom = 0.172
+offset_left = -0.430054
+offset_top = -0.0709991
+offset_right = -0.315125
+offset_bottom = -0.108009
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 40
+text = "Kwitis"
+
+[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Kwitis"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.022
+anchor_right = 0.186
+anchor_bottom = 0.078
+offset_left = 0.0699997
+offset_top = 0.242
+offset_right = -0.166
+offset_bottom = -0.141998
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 200
+theme_override_constants/align_to_largest_stylebox = 2
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+text = "switch language"
+
+[node name="EnglishDescription" type="Label" parent="DescriptionPanel/Kwitis"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "A powerful defensive weapon that launches explosive paputok (fireworks) into the sky, raining down destruction on enemy forces. Inspired by festive yet deadly Filipino pyrotechnics."
+autowrap_mode = 3
+
+[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Kwitis"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "Isang malakas na sandata na nagpapakawala ng paputok sa himpapawid, na sumasabog at sumusunog sa mga kaaway mula sa malayo. Hango sa mga makukulay ngunit mapanganib na paputok sa kulturang Pilipino."
+autowrap_mode = 3
+
+[node name="Kubo" type="Panel" parent="DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.033
+anchor_right = 0.989
+anchor_bottom = 0.973
+offset_left = -4.202
+offset_top = -0.259001
+offset_right = -4.41803
+offset_bottom = -2.87903
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmljh")
+
+[node name="Img" type="TextureRect" parent="DescriptionPanel/Kubo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.059
+anchor_right = 0.357
+anchor_bottom = 0.963
+offset_left = -29.447
+offset_top = 36.149
+offset_right = -9.367
+offset_bottom = -81.907
+texture = ExtResource("32_kxflh")
+expand_mode = 4
+
+[node name="title" type="Label" parent="DescriptionPanel/Kubo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53
+anchor_top = 0.039
+anchor_right = 0.865
+anchor_bottom = 0.172
+offset_left = -0.430054
+offset_top = -0.0709991
+offset_right = -0.315125
+offset_bottom = -0.108009
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 40
+text = "Kubo"
+
+[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Kubo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.022
+anchor_right = 0.186
+anchor_bottom = 0.078
+offset_left = 0.0699997
+offset_top = 0.242
+offset_right = -0.166
+offset_bottom = -0.141998
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 200
+theme_override_constants/align_to_largest_stylebox = 2
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+text = "switch language"
+
+[node name="EnglishDescription" type="Label" parent="DescriptionPanel/Kubo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "The source of all Sibilyan (villagers). A humble yet vital dwelling for the village’s master builders. These skilled craftsmen construct and upgrade buildings, ensuring the village thrives and withstands enemy sieges."
+autowrap_mode = 3
+
+[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Kubo"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "Pinagmumulan ng mga Sibilyan (mga taganayon). Payak ngunit mahalagang tirahan ng mga tagapagtayo ng baryo. Sila ang bumubuo at nagpapalakas ng mga gusali upang tiyakin ang paglago at katatagan ng pamayanan."
+autowrap_mode = 3
+
+[node name="Tanim" type="Panel" parent="DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.033
+anchor_right = 0.989
+anchor_bottom = 0.973
+offset_left = -4.202
+offset_top = -0.259001
+offset_right = -4.41803
+offset_bottom = -2.87903
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmljh")
+
+[node name="Img" type="TextureRect" parent="DescriptionPanel/Tanim"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.059
+anchor_right = 0.357
+anchor_bottom = 0.963
+offset_left = -29.447
+offset_top = 36.149
+offset_right = -9.367
+offset_bottom = -81.907
+texture = ExtResource("33_ggwh2")
+expand_mode = 4
+
+[node name="title" type="Label" parent="DescriptionPanel/Tanim"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53
+anchor_top = 0.039
+anchor_right = 0.865
+anchor_bottom = 0.172
+offset_left = -0.430054
+offset_top = -0.0709991
+offset_right = -0.315125
+offset_bottom = -0.108009
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 40
+text = "Tanim"
+
+[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Tanim"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.022
+anchor_right = 0.186
+anchor_bottom = 0.078
+offset_left = 0.0699997
+offset_top = 0.242
+offset_right = -0.166
+offset_bottom = -0.141998
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 200
+theme_override_constants/align_to_largest_stylebox = 2
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+text = "switch language"
+
+[node name="EnglishDescription" type="Label" parent="DescriptionPanel/Tanim"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "The lifeline of the community, where fertile fields yield an abundant harvest of food. Essential for feeding both villagers and warriors preparing for battle."
+autowrap_mode = 3
+
+[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Tanim"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "Ang pangunahing pinagkukunan ng pagkain ng baryo. Dito inaani ang masaganang trigo na bumubuhay sa mga taganayon at mandirigma bago sumabak sa laban."
+autowrap_mode = 3
+
+[node name="Imbakan" type="Panel" parent="DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.033
+anchor_right = 0.989
+anchor_bottom = 0.973
+offset_left = -4.202
+offset_top = -0.259001
+offset_right = -4.41803
+offset_bottom = -2.87903
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmljh")
+
+[node name="Img" type="TextureRect" parent="DescriptionPanel/Imbakan"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.059
+anchor_right = 0.357
+anchor_bottom = 0.963
+offset_left = -29.447
+offset_top = 36.149
+offset_right = -9.367
+offset_bottom = -81.907
+texture = ExtResource("34_me38f")
+expand_mode = 4
+
+[node name="title" type="Label" parent="DescriptionPanel/Imbakan"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53
+anchor_top = 0.039
+anchor_right = 0.865
+anchor_bottom = 0.172
+offset_left = -0.430054
+offset_top = -0.0709991
+offset_right = -0.315125
+offset_bottom = -0.108009
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 40
+text = "Imbakan"
+
+[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Imbakan"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.022
+anchor_right = 0.186
+anchor_bottom = 0.078
+offset_left = 0.0699997
+offset_top = 0.242
+offset_right = -0.166
+offset_bottom = -0.141998
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 200
+theme_override_constants/align_to_largest_stylebox = 2
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+text = "switch language"
+
+[node name="EnglishDescription" type="Label" parent="DescriptionPanel/Imbakan"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "A well-secured granary where harvested food is stored, preserving supplies to sustain the village during times of war and hardship."
+autowrap_mode = 3
+
+[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Imbakan"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "Isang ligtas na imbakan ng pagkain kung saan inilalagak ang mga ani upang may sapat na suplay sa panahon ng kagipitan at digmaan."
+autowrap_mode = 3
+
+[node name="Bodega" type="Panel" parent="DescriptionPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.033
+anchor_right = 0.989
+anchor_bottom = 0.973
+offset_left = -4.202
+offset_top = -0.259001
+offset_right = -4.41803
+offset_bottom = -2.87903
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmljh")
+
+[node name="Img" type="TextureRect" parent="DescriptionPanel/Bodega"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.059
+anchor_right = 0.357
+anchor_bottom = 0.963
+offset_left = -29.447
+offset_top = 36.149
+offset_right = -9.367
+offset_bottom = -81.907
+texture = ExtResource("35_u3j3a")
+expand_mode = 4
+
+[node name="title" type="Label" parent="DescriptionPanel/Bodega"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53
+anchor_top = 0.039
+anchor_right = 0.865
+anchor_bottom = 0.172
+offset_left = -0.430054
+offset_top = -0.0709991
+offset_right = -0.315125
+offset_bottom = -0.108009
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 40
+text = "Bodega"
+
+[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Bodega"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.022
+anchor_right = 0.186
+anchor_bottom = 0.078
+offset_left = 0.0699997
+offset_top = 0.242
+offset_right = -0.166
+offset_bottom = -0.141998
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 200
+theme_override_constants/align_to_largest_stylebox = 2
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 15
+text = "switch language"
+
+[node name="EnglishDescription" type="Label" parent="DescriptionPanel/Bodega"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "A fortified depot where harvested wood and quarried stones are stockpiled. These essential materials are used to build and reinforce the village’s defenses and structures"
+autowrap_mode = 3
+
+[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Bodega"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.162
+anchor_right = 0.974
+anchor_bottom = 0.963
+offset_left = -0.263031
+offset_top = -0.218002
+offset_right = 0.205994
+offset_bottom = 0.0929565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+text = "Isang matibay na kamalig kung saan iniipon ang inaning kahoy at batong ginagamit sa pagtatayo at pagpapalakas ng depensa ng baryo.
+"
+autowrap_mode = 3
+
+[connection signal="toggled" from="DescriptionPanel/Malacadabra/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="DescriptionPanel/Kampo/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="DescriptionPanel/Kawa/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="DescriptionPanel/Sandatahang Lakas/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="DescriptionPanel/Estakada/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="DescriptionPanel/Balwarte/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="DescriptionPanel/Kwitis/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="DescriptionPanel/Kubo/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="DescriptionPanel/Tanim/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="DescriptionPanel/Imbakan/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="DescriptionPanel/Bodega/CheckButton" to="." method="_on_check_button_toggled"]

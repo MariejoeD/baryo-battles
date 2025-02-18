@@ -1,5 +1,6 @@
 extends Node3D
 
+
 @export var hbox: HBoxContainer
 @export var build_button: Button
 @export var attack_button: Button
@@ -201,4 +202,5 @@ func get_tile_bounding_box_for_existing_tile(position:Vector3i, tile_instance: M
 	# Adjust the position of the tile in the grid
 	var grid_world_position = grid.map_to_local(position)
 	return AABB(grid_world_position - mesh_aabb.size / 2, mesh_aabb.size)
+	
 	

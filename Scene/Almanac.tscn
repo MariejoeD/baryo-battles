@@ -309,7 +309,6 @@ texture_normal = ExtResource("13_5hgy5")
 stretch_mode = 1
 
 [node name="DescriptionPanel" type="Panel" parent="mainPanel/picturePanel"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.014
@@ -1038,7 +1037,7 @@ offset_right = 894.0
 offset_bottom = 471.0
 theme_override_fonts/font = ExtResource("13_2rl07")
 theme_override_font_sizes/font_size = 20
-text = "character description here"
+text = "Lizardo is the most powerful enemy in Visayas. He is a powerful and evil sorcerer, inspired by the legendary Panday. He rules with fear and cruelty, making people suffer under his control. Men are punished harshly, women are treated terribly, and children are taken as his property from birth. As the final and strongest enemy, Lizardo challenges the heroes, pushing them to fight for hope and justice for their people."
 autowrap_mode = 2
 
 [node name="LinkButton" type="LinkButton" parent="mainPanel/picturePanel/DescriptionPanel/LizardoDescription"]
