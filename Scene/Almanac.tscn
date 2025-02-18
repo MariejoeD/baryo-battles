@@ -1055,7 +1055,7 @@ theme_override_fonts/font = ExtResource("13_2rl07")
 theme_override_font_sizes/font_size = 24
 text = "View more"
 underline = 1
-uri = "https://journals.lww.com/jfmpc/Fulltext/2020/09080/Role_of_Faith_healers__A_barrier_or_a_support.81.aspx"
+uri = "https://www.researchgate.net/publication/366501577_CHAPTER_IX_HOW_TO_FIGHT_MONSTERS_THROUGH_CINEMA_I_ANG_PANDAY"
 
 [node name="SuperIndayDescription" type="Panel" parent="mainPanel/picturePanel/DescriptionPanel"]
 visible = false
