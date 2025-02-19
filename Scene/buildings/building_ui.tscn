@@ -1,0 +1,992 @@
+[gd_scene load_steps=16 format=3 uid="uid://ds5tkv0ru6erq"]
+
+[ext_resource type="Script" path="res://Script/building scripts/building_ui.gd" id="1_qycyr"]
+[ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="2_hcgxw"]
+[ext_resource type="Texture2D" uid="uid://2lftuna7s6qb" path="res://assets/button/viewInformationClicked.png" id="3_81bm4"]
+[ext_resource type="Texture2D" uid="uid://62tq1mbindsr" path="res://assets/button/upgrade.png" id="4_tnc0f"]
+[ext_resource type="Texture2D" uid="uid://c4tob3e00rq5w" path="res://assets/button/upgradeClicked.png" id="5_phpak"]
+[ext_resource type="Texture2D" uid="uid://chachj8ebbrjx" path="res://assets/button/generateButton.png" id="6_fvjwa"]
+[ext_resource type="Texture2D" uid="uid://qvnqls3rn6g5" path="res://assets/button/generateButtonClicked.png" id="7_sjve1"]
+[ext_resource type="Texture2D" uid="uid://4k34udy14ee8" path="res://assets/Almanac/Allyunlocked/Sibilyan.png" id="8_sxhp3"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="9_u6gk8"]
+[ext_resource type="Texture2D" uid="uid://cn66uvxh4adkn" path="res://assets/game/foodIcon.png" id="10_vmm4l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mh4t5"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ex28v"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhd86"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhim5"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.266667, 0.137255, 0.0588235, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(1, 0.211765, 0.160784, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixepr"]
+bg_color = Color(0.764882, 0.18117, 0.15977, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.26777, 0.138217, 0.0582334, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0.999762, 0.213227, 0.160167, 0.6)
+shadow_size = 4
+
+[node name="buildingUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qycyr")
+
+[node name="Kubo" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.887
+anchor_right = 0.556
+anchor_bottom = 0.962
+offset_left = 0.199951
+offset_top = 0.359985
+offset_right = 0.319946
+offset_bottom = 0.359924
+theme_override_constants/separation = 10
+
+[node name="viewInformation" type="TextureButton" parent="Kubo"]
+layout_mode = 2
+texture_normal = ExtResource("2_hcgxw")
+texture_pressed = ExtResource("3_81bm4")
+
+[node name="Panel" type="Panel" parent="Kubo/viewInformation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.623
+anchor_top = 0.981
+anchor_right = 5.113
+anchor_bottom = 3.37
+offset_left = 0.0190048
+offset_top = 0.0259972
+offset_right = 0.0109863
+offset_bottom = 0.019989
+theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
+
+[node name="upgrade" type="TextureButton" parent="Kubo"]
+layout_mode = 2
+texture_normal = ExtResource("4_tnc0f")
+texture_pressed = ExtResource("5_phpak")
+
+[node name="Panel" type="Panel" parent="Kubo/upgrade"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.902
+anchor_top = 0.963
+anchor_right = 4.078
+anchor_bottom = 3.352
+offset_left = 0.00201416
+offset_top = -0.00200272
+offset_right = 0.0220032
+offset_bottom = -0.00801086
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex28v")
+
+[node name="generateCivilian" type="TextureButton" parent="Kubo"]
+layout_mode = 2
+texture_normal = ExtResource("6_fvjwa")
+texture_pressed = ExtResource("7_sjve1")
+
+[node name="Panel" type="Panel" parent="Kubo/generateCivilian"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.644
+anchor_top = -7.574
+anchor_right = 3.333
+anchor_bottom = -5.204
+offset_left = 3.98
+offset_top = -0.00396729
+offset_right = 0.0149841
+offset_bottom = 0.0160217
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhd86")
+
+[node name="civilianImg" type="TextureRect" parent="Kubo/generateCivilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.086
+anchor_right = 0.327
+anchor_bottom = 0.883
+offset_left = 0.0599995
+offset_top = -0.00800037
+offset_right = -0.0850067
+offset_bottom = -0.0240021
+texture = ExtResource("8_sxhp3")
+expand_mode = 2
+
+[node name="title" type="Label" parent="Kubo/generateCivilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.352
+anchor_top = 0.031
+anchor_right = 0.749
+anchor_bottom = 0.234
+offset_left = 0.0399933
+offset_top = 0.0319998
+offset_right = 0.10498
+offset_bottom = 0.0479984
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_u6gk8")
+theme_override_font_sizes/font_size = 20
+text = "Generate Civilian"
+
+[node name="current" type="Label" parent="Kubo/generateCivilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.786
+anchor_top = 0.062
+anchor_right = 0.963
+anchor_bottom = 0.219
+offset_left = -0.0299988
+offset_top = 0.0639997
+offset_right = 0.134979
+offset_bottom = -0.0320015
+theme_override_colors/font_color = Color(0.371496, 0.2269, 4.81308e-08, 1)
+theme_override_colors/font_shadow_color = Color(0.176419, 0.176419, 0.176419, 1)
+theme_override_colors/font_outline_color = Color(0.842407, 0.700941, 0.483231, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_u6gk8")
+theme_override_font_sizes/font_size = 15
+text = "Current: 0"
+
+[node name="max" type="Label" parent="Kubo/generateCivilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.806
+anchor_top = 0.219
+anchor_right = 0.983
+anchor_bottom = 0.375
+offset_left = -0.130005
+offset_top = -0.0320015
+offset_right = 0.0349731
+theme_override_colors/font_color = Color(0.371496, 0.2269, 4.81308e-08, 1)
+theme_override_colors/font_shadow_color = Color(0.176419, 0.176419, 0.176419, 1)
+theme_override_colors/font_outline_color = Color(0.842407, 0.700941, 0.483231, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_u6gk8")
+theme_override_font_sizes/font_size = 15
+text = "Max: 3"
+
+[node name="Button" type="Button" parent="Kubo/generateCivilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.623
+anchor_top = 0.602
+anchor_right = 0.972
+anchor_bottom = 0.937
+offset_left = -0.165009
+offset_top = -0.0560074
+offset_right = -0.0600281
+offset_bottom = 0.0639954
+theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
+theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
+theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_u6gk8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_yhim5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ixepr")
+text = "Add Civilian"
+
+[node name="TextureRect" type="TextureRect" parent="Kubo/generateCivilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.346
+anchor_top = 0.602
+anchor_right = 0.431
+anchor_bottom = 0.859
+offset_left = 0.169998
+offset_top = 0.943993
+offset_right = -0.00500488
+offset_bottom = 0.0479965
+texture = ExtResource("10_vmm4l")
+expand_mode = 1
+
+[node name="foodAmount" type="Label" parent="Kubo/generateCivilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.445
+anchor_top = 0.648
+anchor_right = 0.524
+anchor_bottom = 0.844
+offset_left = 0.0249939
+offset_top = 0.0559998
+offset_right = -0.0200195
+offset_bottom = -0.0320053
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.886262, 0.886261, 0.886262, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_u6gk8")
+theme_override_font_sizes/font_size = 20
+text = "60"
+
+[node name="Malacadabra" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.887
+anchor_right = 0.556
+anchor_bottom = 0.962
+offset_left = 0.199951
+offset_top = 0.359985
+offset_right = 0.319946
+offset_bottom = 0.359924
+theme_override_constants/separation = 10
+
+[node name="viewInformation" type="TextureButton" parent="Malacadabra"]
+layout_mode = 2
+texture_normal = ExtResource("2_hcgxw")
+texture_pressed = ExtResource("3_81bm4")
+
+[node name="Panel" type="Panel" parent="Malacadabra/viewInformation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.623
+anchor_top = 0.981
+anchor_right = 5.113
+anchor_bottom = 3.37
+offset_left = 0.0190048
+offset_top = 0.0259972
+offset_right = 0.0109863
+offset_bottom = 0.019989
+theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
+
+[node name="upgrade" type="TextureButton" parent="Malacadabra"]
+layout_mode = 2
+texture_normal = ExtResource("4_tnc0f")
+texture_pressed = ExtResource("5_phpak")
+
+[node name="Panel" type="Panel" parent="Malacadabra/upgrade"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.902
+anchor_top = 0.963
+anchor_right = 4.078
+anchor_bottom = 3.352
+offset_left = 0.00201416
+offset_top = -0.00200272
+offset_right = 0.0220032
+offset_bottom = -0.00801086
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex28v")
+
+[node name="generateCivilian" type="TextureButton" parent="Malacadabra"]
+layout_mode = 2
+texture_normal = ExtResource("6_fvjwa")
+texture_pressed = ExtResource("7_sjve1")
+
+[node name="Panel" type="Panel" parent="Malacadabra/generateCivilian"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.644
+anchor_top = -7.574
+anchor_right = 3.333
+anchor_bottom = -5.204
+offset_left = 3.98
+offset_top = -0.00396729
+offset_right = 0.0149841
+offset_bottom = 0.0160217
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhd86")
+
+[node name="Kampo" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.887
+anchor_right = 0.556
+anchor_bottom = 0.962
+offset_left = 0.199951
+offset_top = 0.359985
+offset_right = 0.319946
+offset_bottom = 0.359924
+theme_override_constants/separation = 10
+
+[node name="viewInformation" type="TextureButton" parent="Kampo"]
+layout_mode = 2
+texture_normal = ExtResource("2_hcgxw")
+texture_pressed = ExtResource("3_81bm4")
+
+[node name="Panel" type="Panel" parent="Kampo/viewInformation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.623
+anchor_top = 0.981
+anchor_right = 5.113
+anchor_bottom = 3.37
+offset_left = 0.0190048
+offset_top = 0.0259972
+offset_right = 0.0109863
+offset_bottom = 0.019989
+theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
+
+[node name="upgrade" type="TextureButton" parent="Kampo"]
+layout_mode = 2
+texture_normal = ExtResource("4_tnc0f")
+texture_pressed = ExtResource("5_phpak")
+
+[node name="Panel" type="Panel" parent="Kampo/upgrade"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.902
+anchor_top = 0.963
+anchor_right = 4.078
+anchor_bottom = 3.352
+offset_left = 0.00201416
+offset_top = -0.00200272
+offset_right = 0.0220032
+offset_bottom = -0.00801086
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex28v")
+
+[node name="generateCivilian" type="TextureButton" parent="Kampo"]
+layout_mode = 2
+texture_normal = ExtResource("6_fvjwa")
+texture_pressed = ExtResource("7_sjve1")
+
+[node name="Panel" type="Panel" parent="Kampo/generateCivilian"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.644
+anchor_top = -7.574
+anchor_right = 3.333
+anchor_bottom = -5.204
+offset_left = 3.98
+offset_top = -0.00396729
+offset_right = 0.0149841
+offset_bottom = 0.0160217
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhd86")
+
+[node name="Kawa" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.887
+anchor_right = 0.556
+anchor_bottom = 0.962
+offset_left = 0.199951
+offset_top = 0.359985
+offset_right = 0.319946
+offset_bottom = 0.359924
+theme_override_constants/separation = 10
+
+[node name="viewInformation" type="TextureButton" parent="Kawa"]
+layout_mode = 2
+texture_normal = ExtResource("2_hcgxw")
+texture_pressed = ExtResource("3_81bm4")
+
+[node name="Panel" type="Panel" parent="Kawa/viewInformation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.623
+anchor_top = 0.981
+anchor_right = 5.113
+anchor_bottom = 3.37
+offset_left = 0.0190048
+offset_top = 0.0259972
+offset_right = 0.0109863
+offset_bottom = 0.019989
+theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
+
+[node name="upgrade" type="TextureButton" parent="Kawa"]
+layout_mode = 2
+texture_normal = ExtResource("4_tnc0f")
+texture_pressed = ExtResource("5_phpak")
+
+[node name="Panel" type="Panel" parent="Kawa/upgrade"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.902
+anchor_top = 0.963
+anchor_right = 4.078
+anchor_bottom = 3.352
+offset_left = 0.00201416
+offset_top = -0.00200272
+offset_right = 0.0220032
+offset_bottom = -0.00801086
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex28v")
+
+[node name="generateCivilian" type="TextureButton" parent="Kawa"]
+layout_mode = 2
+texture_normal = ExtResource("6_fvjwa")
+texture_pressed = ExtResource("7_sjve1")
+
+[node name="Panel" type="Panel" parent="Kawa/generateCivilian"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.644
+anchor_top = -7.574
+anchor_right = 3.333
+anchor_bottom = -5.204
+offset_left = 3.98
+offset_top = -0.00396729
+offset_right = 0.0149841
+offset_bottom = 0.0160217
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhd86")
+
+[node name="Sandatahang Lakas" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.887
+anchor_right = 0.556
+anchor_bottom = 0.962
+offset_left = 0.199951
+offset_top = 0.359985
+offset_right = 0.319946
+offset_bottom = 0.359924
+theme_override_constants/separation = 10
+
+[node name="viewInformation" type="TextureButton" parent="Sandatahang Lakas"]
+layout_mode = 2
+texture_normal = ExtResource("2_hcgxw")
+texture_pressed = ExtResource("3_81bm4")
+
+[node name="Panel" type="Panel" parent="Sandatahang Lakas/viewInformation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.623
+anchor_top = 0.981
+anchor_right = 5.113
+anchor_bottom = 3.37
+offset_left = 0.0190048
+offset_top = 0.0259972
+offset_right = 0.0109863
+offset_bottom = 0.019989
+theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
+
+[node name="upgrade" type="TextureButton" parent="Sandatahang Lakas"]
+layout_mode = 2
+texture_normal = ExtResource("4_tnc0f")
+texture_pressed = ExtResource("5_phpak")
+
+[node name="Panel" type="Panel" parent="Sandatahang Lakas/upgrade"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.902
+anchor_top = 0.963
+anchor_right = 4.078
+anchor_bottom = 3.352
+offset_left = 0.00201416
+offset_top = -0.00200272
+offset_right = 0.0220032
+offset_bottom = -0.00801086
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex28v")
+
+[node name="generateCivilian" type="TextureButton" parent="Sandatahang Lakas"]
+layout_mode = 2
+texture_normal = ExtResource("6_fvjwa")
+texture_pressed = ExtResource("7_sjve1")
+
+[node name="Panel" type="Panel" parent="Sandatahang Lakas/generateCivilian"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.644
+anchor_top = -7.574
+anchor_right = 3.333
+anchor_bottom = -5.204
+offset_left = 3.98
+offset_top = -0.00396729
+offset_right = 0.0149841
+offset_bottom = 0.0160217
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhd86")
+
+[node name="Estakada" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.887
+anchor_right = 0.556
+anchor_bottom = 0.962
+offset_left = 0.199951
+offset_top = 0.359985
+offset_right = 0.319946
+offset_bottom = 0.359924
+theme_override_constants/separation = 10
+
+[node name="viewInformation" type="TextureButton" parent="Estakada"]
+layout_mode = 2
+texture_normal = ExtResource("2_hcgxw")
+texture_pressed = ExtResource("3_81bm4")
+
+[node name="Panel" type="Panel" parent="Estakada/viewInformation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.623
+anchor_top = 0.981
+anchor_right = 5.113
+anchor_bottom = 3.37
+offset_left = 0.0190048
+offset_top = 0.0259972
+offset_right = 0.0109863
+offset_bottom = 0.019989
+theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
+
+[node name="upgrade" type="TextureButton" parent="Estakada"]
+layout_mode = 2
+texture_normal = ExtResource("4_tnc0f")
+texture_pressed = ExtResource("5_phpak")
+
+[node name="Panel" type="Panel" parent="Estakada/upgrade"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.902
+anchor_top = 0.963
+anchor_right = 4.078
+anchor_bottom = 3.352
+offset_left = 0.00201416
+offset_top = -0.00200272
+offset_right = 0.0220032
+offset_bottom = -0.00801086
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex28v")
+
+[node name="generateCivilian" type="TextureButton" parent="Estakada"]
+layout_mode = 2
+texture_normal = ExtResource("6_fvjwa")
+texture_pressed = ExtResource("7_sjve1")
+
+[node name="Panel" type="Panel" parent="Estakada/generateCivilian"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.644
+anchor_top = -7.574
+anchor_right = 3.333
+anchor_bottom = -5.204
+offset_left = 3.98
+offset_top = -0.00396729
+offset_right = 0.0149841
+offset_bottom = 0.0160217
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhd86")
+
+[node name="Kwitis" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.887
+anchor_right = 0.556
+anchor_bottom = 0.962
+offset_left = 0.199951
+offset_top = 0.359985
+offset_right = 0.319946
+offset_bottom = 0.359924
+theme_override_constants/separation = 10
+
+[node name="viewInformation" type="TextureButton" parent="Kwitis"]
+layout_mode = 2
+texture_normal = ExtResource("2_hcgxw")
+texture_pressed = ExtResource("3_81bm4")
+
+[node name="Panel" type="Panel" parent="Kwitis/viewInformation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.623
+anchor_top = 0.981
+anchor_right = 5.113
+anchor_bottom = 3.37
+offset_left = 0.0190048
+offset_top = 0.0259972
+offset_right = 0.0109863
+offset_bottom = 0.019989
+theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
+
+[node name="upgrade" type="TextureButton" parent="Kwitis"]
+layout_mode = 2
+texture_normal = ExtResource("4_tnc0f")
+texture_pressed = ExtResource("5_phpak")
+
+[node name="Panel" type="Panel" parent="Kwitis/upgrade"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.902
+anchor_top = 0.963
+anchor_right = 4.078
+anchor_bottom = 3.352
+offset_left = 0.00201416
+offset_top = -0.00200272
+offset_right = 0.0220032
+offset_bottom = -0.00801086
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex28v")
+
+[node name="generateCivilian" type="TextureButton" parent="Kwitis"]
+layout_mode = 2
+texture_normal = ExtResource("6_fvjwa")
+texture_pressed = ExtResource("7_sjve1")
+
+[node name="Panel" type="Panel" parent="Kwitis/generateCivilian"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.644
+anchor_top = -7.574
+anchor_right = 3.333
+anchor_bottom = -5.204
+offset_left = 3.98
+offset_top = -0.00396729
+offset_right = 0.0149841
+offset_bottom = 0.0160217
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhd86")
+
+[node name="Tanim" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.887
+anchor_right = 0.556
+anchor_bottom = 0.962
+offset_left = 0.199951
+offset_top = 0.359985
+offset_right = 0.319946
+offset_bottom = 0.359924
+theme_override_constants/separation = 10
+
+[node name="viewInformation" type="TextureButton" parent="Tanim"]
+layout_mode = 2
+texture_normal = ExtResource("2_hcgxw")
+texture_pressed = ExtResource("3_81bm4")
+
+[node name="Panel" type="Panel" parent="Tanim/viewInformation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.623
+anchor_top = 0.981
+anchor_right = 5.113
+anchor_bottom = 3.37
+offset_left = 0.0190048
+offset_top = 0.0259972
+offset_right = 0.0109863
+offset_bottom = 0.019989
+theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
+
+[node name="upgrade" type="TextureButton" parent="Tanim"]
+layout_mode = 2
+texture_normal = ExtResource("4_tnc0f")
+texture_pressed = ExtResource("5_phpak")
+
+[node name="Panel" type="Panel" parent="Tanim/upgrade"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.902
+anchor_top = 0.963
+anchor_right = 4.078
+anchor_bottom = 3.352
+offset_left = 0.00201416
+offset_top = -0.00200272
+offset_right = 0.0220032
+offset_bottom = -0.00801086
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex28v")
+
+[node name="generateCivilian" type="TextureButton" parent="Tanim"]
+layout_mode = 2
+texture_normal = ExtResource("6_fvjwa")
+texture_pressed = ExtResource("7_sjve1")
+
+[node name="Panel" type="Panel" parent="Tanim/generateCivilian"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.644
+anchor_top = -7.574
+anchor_right = 3.333
+anchor_bottom = -5.204
+offset_left = 3.98
+offset_top = -0.00396729
+offset_right = 0.0149841
+offset_bottom = 0.0160217
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhd86")
+
+[node name="Imbakan" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.887
+anchor_right = 0.556
+anchor_bottom = 0.962
+offset_left = 0.199951
+offset_top = 0.359985
+offset_right = 0.319946
+offset_bottom = 0.359924
+theme_override_constants/separation = 10
+
+[node name="viewInformation" type="TextureButton" parent="Imbakan"]
+layout_mode = 2
+texture_normal = ExtResource("2_hcgxw")
+texture_pressed = ExtResource("3_81bm4")
+
+[node name="Panel" type="Panel" parent="Imbakan/viewInformation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.623
+anchor_top = 0.981
+anchor_right = 5.113
+anchor_bottom = 3.37
+offset_left = 0.0190048
+offset_top = 0.0259972
+offset_right = 0.0109863
+offset_bottom = 0.019989
+theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
+
+[node name="upgrade" type="TextureButton" parent="Imbakan"]
+layout_mode = 2
+texture_normal = ExtResource("4_tnc0f")
+texture_pressed = ExtResource("5_phpak")
+
+[node name="Panel" type="Panel" parent="Imbakan/upgrade"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.902
+anchor_top = 0.963
+anchor_right = 4.078
+anchor_bottom = 3.352
+offset_left = 0.00201416
+offset_top = -0.00200272
+offset_right = 0.0220032
+offset_bottom = -0.00801086
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex28v")
+
+[node name="generateCivilian" type="TextureButton" parent="Imbakan"]
+layout_mode = 2
+texture_normal = ExtResource("6_fvjwa")
+texture_pressed = ExtResource("7_sjve1")
+
+[node name="Panel" type="Panel" parent="Imbakan/generateCivilian"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.644
+anchor_top = -7.574
+anchor_right = 3.333
+anchor_bottom = -5.204
+offset_left = 3.98
+offset_top = -0.00396729
+offset_right = 0.0149841
+offset_bottom = 0.0160217
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhd86")
+
+[node name="Bodega" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.887
+anchor_right = 0.556
+anchor_bottom = 0.962
+offset_left = 0.199951
+offset_top = 0.359985
+offset_right = 0.319946
+offset_bottom = 0.359924
+theme_override_constants/separation = 10
+
+[node name="viewInformation" type="TextureButton" parent="Bodega"]
+layout_mode = 2
+texture_normal = ExtResource("2_hcgxw")
+texture_pressed = ExtResource("3_81bm4")
+
+[node name="Panel" type="Panel" parent="Bodega/viewInformation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.623
+anchor_top = 0.981
+anchor_right = 5.113
+anchor_bottom = 3.37
+offset_left = 0.0190048
+offset_top = 0.0259972
+offset_right = 0.0109863
+offset_bottom = 0.019989
+theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
+
+[node name="upgrade" type="TextureButton" parent="Bodega"]
+layout_mode = 2
+texture_normal = ExtResource("4_tnc0f")
+texture_pressed = ExtResource("5_phpak")
+
+[node name="Panel" type="Panel" parent="Bodega/upgrade"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.902
+anchor_top = 0.963
+anchor_right = 4.078
+anchor_bottom = 3.352
+offset_left = 0.00201416
+offset_top = -0.00200272
+offset_right = 0.0220032
+offset_bottom = -0.00801086
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex28v")
+
+[node name="generateCivilian" type="TextureButton" parent="Bodega"]
+layout_mode = 2
+texture_normal = ExtResource("6_fvjwa")
+texture_pressed = ExtResource("7_sjve1")
+
+[node name="Panel" type="Panel" parent="Bodega/generateCivilian"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.644
+anchor_top = -7.574
+anchor_right = 3.333
+anchor_bottom = -5.204
+offset_left = 3.98
+offset_top = -0.00396729
+offset_right = 0.0149841
+offset_bottom = 0.0160217
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhd86")
+
+[node name="Balwarte" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.887
+anchor_right = 0.556
+anchor_bottom = 0.962
+offset_left = 0.199951
+offset_top = 0.359985
+offset_right = 0.319946
+offset_bottom = 0.359924
+theme_override_constants/separation = 10
+
+[node name="viewInformation" type="TextureButton" parent="Balwarte"]
+layout_mode = 2
+texture_normal = ExtResource("2_hcgxw")
+texture_pressed = ExtResource("3_81bm4")
+
+[node name="Panel" type="Panel" parent="Balwarte/viewInformation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.623
+anchor_top = 0.981
+anchor_right = 5.113
+anchor_bottom = 3.37
+offset_left = 0.0190048
+offset_top = 0.0259972
+offset_right = 0.0109863
+offset_bottom = 0.019989
+theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
+
+[node name="upgrade" type="TextureButton" parent="Balwarte"]
+layout_mode = 2
+texture_normal = ExtResource("4_tnc0f")
+texture_pressed = ExtResource("5_phpak")
+
+[node name="Panel" type="Panel" parent="Balwarte/upgrade"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.902
+anchor_top = 0.963
+anchor_right = 4.078
+anchor_bottom = 3.352
+offset_left = 0.00201416
+offset_top = -0.00200272
+offset_right = 0.0220032
+offset_bottom = -0.00801086
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex28v")
+
+[node name="generateCivilian" type="TextureButton" parent="Balwarte"]
+layout_mode = 2
+texture_normal = ExtResource("6_fvjwa")
+texture_pressed = ExtResource("7_sjve1")
+
+[node name="Panel" type="Panel" parent="Balwarte/generateCivilian"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.644
+anchor_top = -7.574
+anchor_right = 3.333
+anchor_bottom = -5.204
+offset_left = 3.98
+offset_top = -0.00396729
+offset_right = 0.0149841
+offset_bottom = 0.0160217
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhd86")
