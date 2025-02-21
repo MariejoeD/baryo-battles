@@ -1,7 +1,7 @@
 [gd_scene load_steps=58 format=4 uid="uid://boknptc13ynpu"]
 
-[ext_resource type="PackedScene" uid="uid://cck64iovqw0yd" path="res://Scene/buildings/malacadabra.tscn" id="1_bx10a"]
-[ext_resource type="PackedScene" uid="uid://difpbc4uuvnxh" path="res://Scene/buildings/kampo_lv_1.tscn" id="2_0wgx8"]
+[ext_resource type="PackedScene" uid="uid://djl0d3hbyn7eo" path="res://Scene/buildings/malacadabra.tscn" id="1_bx10a"]
+[ext_resource type="PackedScene" uid="uid://ngmrdl4glq3" path="res://Scene/buildings/kampo_lv_1.tscn" id="2_0wgx8"]
 [ext_resource type="ArrayMesh" uid="uid://bjb1hy0hgmlb8" path="res://assets/building models/Imbakan-Lv1_Empty.obj" id="7_0v7m7"]
 [ext_resource type="ArrayMesh" uid="uid://c4kn8ehvhh2ad" path="res://assets/building models/Estakada-lvl1(Bamboo).obj" id="8_61wdr"]
 [ext_resource type="ArrayMesh" uid="uid://ksxawvkqfkp5" path="res://assets/building models/Bodega(Empty).obj" id="9_ew6c8"]

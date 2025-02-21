@@ -69,7 +69,14 @@ func _ready():
 	var back_to_main_menu_button = $SettingsPanel/BackToMainMenuButton
 	back_to_main_menu_button.connect("pressed", Callable(self, "_on_back_to_main_menu_pressed"))
 
+
+	# connect info button
+	for i in $BuildInventoryPanel/HScrollContainer/HBoxContainer.get_children():
+		i.get_node("informationButton").pressed.connect(description_show.bind(i))
+		pass
 	# Initialize the resource display and button visuals
+	
+	
 	update_resource_display()
 	update_button_visuals()
 
@@ -107,6 +114,22 @@ func update_button_visuals():
 		if button:
 			button.texture_normal = unlocked_textures[button_name] if button_states[button_name] else locked_textures[button_name]
 
+func description_show(building):
+	var building_name = building.name.trim_suffix("Btn")
+	build_inventory_panel.visible = false
+	$DescriptionPanel.visible = true
+	
+	# Hide all other description panels first
+	for child in $DescriptionPanel.get_children():
+		child.visible = false
+	$DescriptionPanel.get_node(building_name).visible = true
+	pass
+	
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and $DescriptionPanel.visible == true:
+		if not $DescriptionPanel.get_global_rect().has_point(event.position):
+			$DescriptionPanel.visible = false
+			build_inventory_panel.visible = true
 
 func _on_tree_entered() -> void:
 	SignalManager.update_mats.connect(update_resource_display)

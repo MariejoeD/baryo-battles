@@ -18,7 +18,8 @@ var button
 var mesh_instance: MeshInstance3D = null
 var camera: Camera3D = null  # Camera reference for projection
 var in_building_mode = false
-
+var stone_req
+var wood_req
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	parent = get_parent()
@@ -40,19 +41,26 @@ func _ready() -> void:
 func _on_btn_pressed(btn: TextureButton) -> void:
 	# Print the name of the button
 	button = btn
+	
+	stone_req =button.get_node("resourceAmount/stoneAmount").text
+	wood_req =button.get_node("resourceAmount/woodAmount").text
+	
+	if int(stone_req) > Global.stone_qty or int(wood_req) > Global.wood_qty:
+		print("not enough resource")
+		return
+	
+	
 	#print("Button pressed:", button.name)
-	build_button.visible = !build_button.visible
-	build_panel.visible = !build_panel.visible
-	print("Name: ",button.name)
+	
 	if !parent.button_states[button.name]:
-		attack_button.visible = !attack_button.visible
-		build_button.visible = !build_button.visible
 		return
 	if button.name == "MalacadabraBtn":
 		print("TRUE")
 		for key in parent.button_states.keys():
 			parent.button_states[key] = !parent.button_states[key]
 			print(parent.button_states[key])
+	build_button.visible = !build_button.visible
+	build_panel.visible = !build_panel.visible
 	# Create a new mesh instance and set it up
 	if mesh_instance:
 		mesh_instance.queue_free()  # Remove the previous instance if any
@@ -154,6 +162,9 @@ func follow_mouse():
 			mesh_instance = null
 			attack_button.visible = !attack_button.visible
 			build_button.visible = !build_button.visible
+			Global.stone_qty -= int(stone_req)
+			Global.wood_qty -= int(wood_req)
+			
 
 	pass
 	
