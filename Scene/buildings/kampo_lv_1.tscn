@@ -1,4 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://ngmrdl4glq3"]
+[gd_scene load_steps=10 format=4 uid="uid://ngmrdl4glq3"]
+
+[ext_resource type="Script" path="res://Script/building scripts/buildings.gd" id="1_kd2lq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kafqx"]
 resource_name = "Material.003"
@@ -123,6 +125,8 @@ points = PackedVector3Array(3.78812, 0.541555, 4.73564, -4.74885, 2.22045e-16, -
 
 [node name="Kampo-lv1" type="MeshInstance3D"]
 mesh = SubResource("ArrayMesh_x8xvh")
+script = ExtResource("1_kd2lq")
+building_name = "Kampo"
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 2

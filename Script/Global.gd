@@ -1,13 +1,13 @@
 extends Node
 
-var wood_qty :int = 300:
+var wood_qty :int = 3000:
 	set(wood):
 		wood_qty = wood
 		SignalManager.update_mats.emit()
 	get:
 		return wood_qty
 		
-var stone_qty :int = 300:
+var stone_qty :int = 3000:
 	set(stone):
 		stone_qty = stone
 		SignalManager.update_mats.emit()

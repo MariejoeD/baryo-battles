@@ -7,7 +7,7 @@ extends Node3D
 
 # Define the script library: associate tile IDs with their corresponding script paths
 @export var script_library: Dictionary = {
-	0: preload("res://Script/building scripts/Malacadabra.gd"),  # Example script for tile ID 0
+	0: preload("res://Script/building scripts/buildings.gd"),  # Example script for tile ID 0
 	#1: preload("res://scripts/TileScript2.gd"),  # Example script for tile ID 1
 	# Add more tile-to-script mappings as needed
 }

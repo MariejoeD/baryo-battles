@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://djl0d3hbyn7eo"]
 
-[ext_resource type="Script" path="res://Script/building scripts/malacadabra.gd" id="1_1qnlg"]
+[ext_resource type="Script" path="res://Script/building scripts/buildings.gd" id="1_1qnlg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v050q"]
 resource_name = "Stone"
@@ -1690,6 +1690,7 @@ size = Vector3(5.83398, 4.23755, 5.10547)
 layers = 3
 mesh = SubResource("ArrayMesh_esew3")
 script = ExtResource("1_1qnlg")
+building_name = "Malacadabra"
 
 [node name="Area3D" type="Area3D" parent="."]
 
