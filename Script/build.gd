@@ -16,6 +16,7 @@ var dup_tiles
 var buildings = {}
 var button
 var mesh_instance: MeshInstance3D = null
+var inst
 var camera: Camera3D = null  # Camera reference for projection
 var in_building_mode = false
 var stone_req
@@ -65,12 +66,12 @@ func _on_btn_pressed(btn: TextureButton) -> void:
 	if mesh_instance:
 		mesh_instance.queue_free()  # Remove the previous instance if any
 	mesh_instance = MeshInstance3D.new()
-	var inst = building_dict.building_assets[buildings[button.name]].instantiate()  # Get mesh from the library
+	inst = building_dict.building_assets[buildings[button.name]].instantiate()  # Get mesh from the library
 	var mesh = inst.mesh
-	inst = null
+	#inst = null
 	mesh_instance.mesh = mesh
 	
-	grid.add_child(mesh_instance)
+	grid.add_child(inst)
 	#add_collision_to_mesh(mesh_instance)
 	following = true  # Start following the mouse
 	pass
@@ -127,6 +128,7 @@ func follow_mouse():
 			var snapped_position = grid.map_to_local(cell)
 			snapped_position.y = 0.6
 			# Snap to integer positions
+			inst.transform.origin = snapped_position
 			mesh_instance.transform.origin = snapped_position
 			#print("Ray hit at position (snapped): ", mesh_instance.transform.origin)
 
@@ -146,7 +148,9 @@ func follow_mouse():
 			in_building_mode = false
 
 			# Snap final position to the grid and check for placement validity
-			var cell = grid.local_to_map(mesh_instance.transform.origin)  # Use local position for snapping
+			var cell = grid.local_to_map(inst.transform.origin)  # Use local position for snapping
+			
+			#var cell = grid.local_to_map(mesh_instance.transform.origin)  # Use local position for snapping
 			var snapped_position = grid.map_to_local(cell)
 			snapped_position.y = 0  # Align with the ground level
 			
@@ -157,7 +161,11 @@ func follow_mouse():
 			mesh_instance.transform.origin = snapped_position  # Set the position locally
 			grid.set_cell_item(cell, buildings[button.name])  # Place the tile
 
-			dup_tiles.duplicate_tiles_with_functionality()
+			#dup_tiles.duplicate_tiles_with_functionality()
+			
+			#inst.queue_free()
+			#inst=null
+			
 			mesh_instance.queue_free()
 			mesh_instance = null
 			attack_button.visible = !attack_button.visible

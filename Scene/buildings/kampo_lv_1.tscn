@@ -120,8 +120,8 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3f2dg"]
-points = PackedVector3Array(3.78812, 0.541555, 4.73564, -4.74885, 2.22045e-16, -4.74885, -4.74885, 2.22045e-16, 4.74885, -0.472773, 2.90967, 0.157261, 5.05214, 0.0679324, -5.05214, 5.05214, 0.0679324, 5.05214, -4.57838, 1.01518, -3.31534, 0.472773, 2.90967, 0.157261, -5.05214, 0.0679324, 5.05214, 4.74885, 2.22045e-16, -4.74885, -5.05214, 0.0679324, -5.05214, 4.74885, 2.22045e-16, 4.74885, -0.472773, 2.90967, 0, -4.42013, 1.17315, -2.52607, 0.157261, 2.90967, 0.315511, 3.31534, 0.38417, -4.57838, -4.73564, 0.857499, -3.15709, -0.157261, 2.90967, 0, 3.63085, 0.541555, 4.73564, 3.63085, 0.38417, -4.57838, -4.42013, 1.17315, -2.68333)
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbkpv"]
+size = Vector3(9.17725, 3.90436, 9.37622)
 
 [node name="Kampo-lv1" type="MeshInstance3D"]
 mesh = SubResource("ArrayMesh_x8xvh")
@@ -129,8 +129,9 @@ script = ExtResource("1_kd2lq")
 building_name = "Kampo"
 
 [node name="Area3D" type="Area3D" parent="."]
-collision_layer = 2
-collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("ConvexPolygonShape3D_3f2dg")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.109131, 1.8165, 0.126099)
+shape = SubResource("BoxShape3D_dbkpv")
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
