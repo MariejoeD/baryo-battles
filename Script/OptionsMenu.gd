@@ -6,8 +6,8 @@ extends Control
 @onready var about_button = $VBoxContainer/AboutButton
 @onready var reset_game_button = $ResetGameButton
 @onready var reset_dialog = $ResetDialog
-@onready var timer = Timer.new()
-@onready var reset_text_input = $ResetDialog/LineEdit  # Ensure this path is correct (change to TextEdit or LineEdit)
+@onready var reset_text_input = $ResetDialog/LineEdit
+@onready var language_button = $VBoxContainer/languageButton 
 
 var music_on_icon = preload("res://assets/game/musicOn.png")
 var music_off_icon = preload("res://assets/game/musicOff.png")
@@ -19,6 +19,7 @@ var about_icon = preload("res://assets/game/about.png")
 
 var is_music_on = true
 var is_sound_on = true
+var is_english = true  # Tracks the current language state
 
 func _ready():
 	var cursor_texture = preload("res://assets/game/cursor.png")
@@ -31,15 +32,16 @@ func _ready():
 	back_button.icon = back_icon
 	reset_game_button.icon = reset_icon
 	about_button.icon = about_icon
+	language_button.text = "Language: English"
 
 	back_button.pressed.connect(_on_back_button_pressed)
 	music_button.pressed.connect(_on_music_button_pressed)
 	sound_button.pressed.connect(_on_sound_button_pressed)
 	about_button.pressed.connect(_on_about_button_pressed)
 	reset_game_button.pressed.connect(_on_reset_game_button_pressed)
+	language_button.pressed.connect(_on_language_button_pressed)
 
 	reset_dialog.connect("confirmed", Callable(self, "_on_reset_confirmed"))
-	add_child(timer)
 
 func _on_music_button_pressed():
 	is_music_on = !is_music_on
@@ -59,6 +61,13 @@ func _on_sound_button_pressed():
 		sound_button.icon = sound_off_icon
 		sound_button.text = "Sound: Off"
 
+func _on_language_button_pressed():
+	is_english = !is_english
+	if is_english:
+		language_button.text = "Language: English"
+	else:
+		language_button.text = "Language: Tagalog"
+
 func _on_back_button_pressed():
 	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
 
@@ -68,12 +77,11 @@ func _on_about_button_pressed():
 func _on_reset_game_button_pressed():
 	reset_dialog.dialog_text = "Are you sure you want to reset the game? Type 'confirm reset' to proceed."
 	reset_dialog.popup_centered()
-
 	reset_text_input.text = ""  # Clear text field when the dialog pops up
 
 func _on_reset_confirmed():
 	if reset_text_input.text == "confirm reset":
-		get_tree().change_scene_to_file("res://Scene/loading.tscn")  # Transitions to loading screen
+		get_tree().change_scene_to_file("res://Scene/loading.tscn")
 	else:
 		print("Reset not confirmed. Please type 'confirm reset' to proceed.")
-		reset_dialog.hide()  # Hide dialog if reset is not confirmed
+		reset_dialog.hide()

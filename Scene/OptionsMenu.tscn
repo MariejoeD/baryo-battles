@@ -166,10 +166,10 @@ vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 0
-offset_left = 328.0
-offset_top = 346.0
-offset_right = 933.0
-offset_bottom = 611.0
+offset_left = 295.0
+offset_top = 282.0
+offset_right = 1007.0
+offset_bottom = 631.0
 theme = SubResource("Theme_a5x4j")
 theme_override_constants/separation = 29
 alignment = 1
@@ -248,6 +248,11 @@ offset_left = 0.195
 offset_top = -0.00800133
 offset_right = 0.264992
 offset_bottom = -0.0280037
+
+[node name="languageButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0i08j")
+text = "Language: tagalog/ English"
 
 [node name="backButton" type="Button" parent="Control"]
 layout_mode = 0
