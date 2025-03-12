@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=3 uid="uid://3erergkgttu2"]
+
+[ext_resource type="ArrayMesh" uid="uid://ksxawvkqfkp5" path="res://assets/building models/Bodega(Empty).obj" id="1_uyx4f"]
+[ext_resource type="Script" path="res://Script/building scripts/buildings.gd" id="2_piaff"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iauhs"]
+albedo_color = Color(0.203125, 0.108047, 0.0227745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uffbb"]
+albedo_color = Color(0.203125, 0.108047, 0.0227745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkdro"]
+albedo_color = Color(0.203125, 0.108047, 0.0227745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gg18"]
+albedo_color = Color(0.203125, 0.108047, 0.0227745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xlpf"]
+albedo_color = Color(0.203125, 0.108047, 0.0227745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqt85"]
+albedo_color = Color(0.203125, 0.108047, 0.0227745, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rr71q"]
+size = Vector3(2.98291, 3.89081, 7.00012)
+
+[node name="Bodega(empty)" type="MeshInstance3D"]
+mesh = ExtResource("1_uyx4f")
+surface_material_override/0 = SubResource("StandardMaterial3D_iauhs")
+surface_material_override/1 = SubResource("StandardMaterial3D_uffbb")
+surface_material_override/2 = SubResource("StandardMaterial3D_dkdro")
+surface_material_override/3 = SubResource("StandardMaterial3D_2gg18")
+surface_material_override/4 = SubResource("StandardMaterial3D_0xlpf")
+surface_material_override/5 = SubResource("StandardMaterial3D_tqt85")
+script = ExtResource("2_piaff")
+building_name = "Bodega"
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31323, 1.92009, -0.0827024)
+shape = SubResource("BoxShape3D_rr71q")
+
+[connection signal="input_event" from="Area3D" to="." method="clicked_building"]

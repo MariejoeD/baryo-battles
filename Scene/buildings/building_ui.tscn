@@ -503,7 +503,6 @@ theme_override_font_sizes/font_size = 20
 text = "60"
 
 [node name="Malacadabra" type="HBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.47
@@ -2350,12 +2349,12 @@ offset_bottom = 0.119934
 theme_override_constants/separation = 10
 
 [node name="viewInformation" type="TextureButton" parent="Imbakan"]
-visible = false
 layout_mode = 2
 texture_normal = ExtResource("2_hcgxw")
 texture_pressed = ExtResource("3_81bm4")
 
 [node name="InformationPanel" type="Panel" parent="Imbakan/viewInformation"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -1.849
@@ -2603,12 +2602,12 @@ offset_bottom = 0.119934
 theme_override_constants/separation = 10
 
 [node name="viewInformation" type="TextureButton" parent="Bodega"]
-visible = false
 layout_mode = 2
 texture_normal = ExtResource("2_hcgxw")
 texture_pressed = ExtResource("3_81bm4")
 
 [node name="InformationPanel" type="Panel" parent="Bodega/viewInformation"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -1.849
