@@ -1,14 +1,20 @@
-[gd_resource type="Resource" script_class="building_resource" load_steps=5 format=3 uid="uid://cw0w04fmunqv8"]
+[gd_resource type="Resource" script_class="building_resource" load_steps=8 format=3 uid="uid://cw0w04fmunqv8"]
 
 [ext_resource type="PackedScene" uid="uid://djl0d3hbyn7eo" path="res://Scene/buildings/malacadabra.tscn" id="1_su8pn"]
 [ext_resource type="Script" path="res://Script/resources/building_resources.gd" id="2_biiyf"]
 [ext_resource type="PackedScene" uid="uid://ngmrdl4glq3" path="res://Scene/buildings/kampo_lv_1.tscn" id="2_fjwgv"]
 [ext_resource type="PackedScene" uid="uid://3erergkgttu2" path="res://Scene/buildings/bodega(empty).tscn" id="3_m8tfc"]
+[ext_resource type="PackedScene" uid="uid://boxmykhsmisfq" path="res://Scene/buildings/sandatahang_lakas.tscn" id="4_3mwtg"]
+[ext_resource type="PackedScene" uid="uid://c355t02anfh15" path="res://Scene/buildings/kawa_lv_1.tscn" id="5_vki5m"]
+[ext_resource type="PackedScene" uid="uid://d154ueae2iqap" path="res://Scene/buildings/estakada_lvl_1(bamboo).tscn" id="6_ak6oq"]
 
 [resource]
 script = ExtResource("2_biiyf")
 building_assets = {
 0: ExtResource("1_su8pn"),
 1: ExtResource("2_fjwgv"),
-2: ExtResource("3_m8tfc")
+2: ExtResource("3_m8tfc"),
+3: ExtResource("4_3mwtg"),
+4: ExtResource("5_vki5m"),
+5: ExtResource("6_ak6oq")
 }

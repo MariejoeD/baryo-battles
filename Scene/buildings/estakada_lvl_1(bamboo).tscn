@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://d154ueae2iqap"]
+
+[ext_resource type="ArrayMesh" uid="uid://c4kn8ehvhh2ad" path="res://assets/building models/Estakada-lvl1(Bamboo).obj" id="1_e78nu"]
+[ext_resource type="Script" path="res://Script/building scripts/buildings.gd" id="2_y4ri3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ue1bp"]
+albedo_color = Color(0.173144, 0.207031, 0.0641744, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_enwtn"]
+albedo_color = Color(0.203125, 0.108047, 0.0227745, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xrrxb"]
+points = PackedVector3Array(-0.0602337, 4.23982, 3.43039, -0.178405, 0.694788, -4.13329, -0.178405, 0.340009, 3.31193, 0.294221, 1.87712, -3.89637, -0.296691, 4.35821, -3.54173, 0.175993, 1.64073, 3.43039, -0.296691, 4.23982, 3.43039, -0.296691, 0.813178, -2.24163, 0.175993, 0.340009, -3.89637, 0.0578216, 3.88505, -3.89637, 0.0578216, 4.00344, 3.31193, -0.296691, 0.813178, 3.31193, 0.0578216, 0.340009, 3.31193, -0.0602337, 4.35821, -3.66019, -0.296691, 3.05749, -4.01483, -0.178405, 0.340009, -3.89637, -0.0602337, 4.35821, 2.95729, 0.294221, 1.64073, -4.01483, -0.296691, 1.28595, -3.89637, 0.0578216, 4.00344, -3.54173, -0.178405, 0.694788, 3.43039, 0.0578216, 3.64866, -4.01483, 0.175993, 1.87712, 3.43039, -0.296691, 4.35821, 3.31193, 0.0578216, 0.931569, -4.13329, 0.175993, 0.340009, -3.54173, -0.0602337, 3.64866, -4.01483, 0.0578216, 0.340009, -4.01483, 0.0578216, 0.694788, 3.43039, 0.294221, 1.87712, -4.01483, -0.296691, 2.7031, 3.43039, 0.294221, 1.64073, -3.89637)
+
+[node name="Estakada-lvl1(bamboo)" type="MeshInstance3D"]
+mesh = ExtResource("1_e78nu")
+surface_material_override/0 = SubResource("StandardMaterial3D_ue1bp")
+surface_material_override/1 = SubResource("StandardMaterial3D_enwtn")
+script = ExtResource("2_y4ri3")
+building_name = "Estakada"
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("ConvexPolygonShape3D_xrrxb")
+
+[connection signal="input_event" from="Area3D" to="." method="clicked_building"]
