@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpo47nv4ah4wp"]
+
+[ext_resource type="ArrayMesh" uid="uid://bjb1hy0hgmlb8" path="res://assets/building models/Imbakan-Lv1_Empty.obj" id="1_dbcc5"]
+[ext_resource type="Script" path="res://Script/building scripts/buildings.gd" id="2_4k47x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u17gb"]
+albedo_color = Color(0.242188, 0.15299, 0.0136202, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3eja"]
+albedo_color = Color(0.117356, 0.171875, 0.0577077, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbo3q"]
+albedo_color = Color(0.242188, 0.15299, 0.0136202, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67si4"]
+albedo_color = Color(0.117356, 0.171875, 0.0577077, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7x1ve"]
+size = Vector3(4.29958, 3.78336, 5.11234)
+
+[node name="Imbakan-lv1Empty" type="MeshInstance3D"]
+mesh = ExtResource("1_dbcc5")
+surface_material_override/0 = SubResource("StandardMaterial3D_u17gb")
+surface_material_override/1 = SubResource("StandardMaterial3D_p3eja")
+surface_material_override/2 = SubResource("StandardMaterial3D_jbo3q")
+surface_material_override/3 = SubResource("StandardMaterial3D_67si4")
+script = ExtResource("2_4k47x")
+building_name = "Imbakan"
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.315269, 1.8058, 0.463486)
+shape = SubResource("BoxShape3D_7x1ve")
+
+[connection signal="input_event" from="Area3D" to="." method="clicked_building"]
