@@ -25,6 +25,7 @@ albedo_color = Color(0.203125, 0.108047, 0.0227745, 1)
 size = Vector3(2.98291, 3.89081, 7.00012)
 
 [node name="Bodega(empty)" type="MeshInstance3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = ExtResource("1_uyx4f")
 surface_material_override/0 = SubResource("StandardMaterial3D_iauhs")
 surface_material_override/1 = SubResource("StandardMaterial3D_uffbb")
