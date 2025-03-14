@@ -21,7 +21,6 @@ visible = false
 visible = false
 
 [node name="Bodega(empty)" parent="." instance=ExtResource("3_5f0a7")]
-visible = false
 
 [node name="Sandatahang Lakas" parent="." instance=ExtResource("4_3jtnn")]
 visible = false
@@ -42,6 +41,8 @@ visible = false
 visible = false
 
 [node name="Tanim" parent="." instance=ExtResource("10_tu4hc")]
+visible = false
 surface_material_override/0 = null
 
 [node name="Imbakan-lv1Empty" parent="." instance=ExtResource("11_p8lof")]
+visible = false
