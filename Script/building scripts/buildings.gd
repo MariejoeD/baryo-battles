@@ -2,7 +2,7 @@ extends MeshInstance3D
 
 @onready var ui_scene = preload("res://Scene/buildings/building_ui.tscn")
 @export var building_name: String
-var ui_instance: Control = null  
+var ui_instance:Control = null
 var building_ui
 var button_clicked:bool = false 
 
