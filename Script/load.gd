@@ -3,11 +3,11 @@ extends Node3D
 @onready var entities = $"../Entities"
 
 var save_data = {
-	"Panday" : 2
+	"Sibilyan" : 2
 }
 
 var char_scenes = {
-	"Panday" : "res://Scene/Characters/panday.tscn"
+	"Sibilyan" : "res://Scene/Characters/sibilyan.tscn"
 }
 
 func _ready():

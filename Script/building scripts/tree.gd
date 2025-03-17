@@ -63,7 +63,7 @@ func find_nearest_panday(ref_pos):
 	var nearest_panday: Node3D = null
 	var shortest_distance: float = INF
 	
-	for panday in get_tree().get_nodes_in_group("Pandays"):
+	for panday in get_tree().get_nodes_in_group("Sibilyan"):
 		var distance = ref_pos.distance_to(panday.global_transform.origin)
 		if distance < shortest_distance:
 			shortest_distance = distance

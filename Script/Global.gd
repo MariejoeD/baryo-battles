@@ -13,6 +13,13 @@ var stone_qty :int = 3000:
 		SignalManager.update_mats.emit()
 	get:
 		return stone_qty
+		
+var food_qty :int = 3000:
+	set(food):
+		food_qty = food
+		SignalManager.update_mats.emit()
+	get:
+		return food_qty
 var grid_size :int = 100
 
 var npc_discovered = {}

@@ -12,7 +12,7 @@ var moveb
 var animation
 var target_resource  # Can be a tree or stone
 var resource_type    # "tree" or "stone"
-
+var works
 func _ready():
 	SignalManager.discovered.emit(self.name)
 	parent = get_parent()
@@ -127,3 +127,8 @@ func set_path(target_pos: Vector3):
 	target_pos.y = 1
 	path = amap.find_path(current_pos, target_pos)
 	path_index = 0
+
+
+func get_workload():
+	
+	pass
