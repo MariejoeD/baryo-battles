@@ -1,6 +1,19 @@
-[gd_scene load_steps=13 format=4 uid="uid://bie2y84c6n0or"]
+[gd_scene load_steps=31 format=4 uid="uid://bie2y84c6n0or"]
 
 [ext_resource type="Script" path="res://Script/building scripts/buildings.gd" id="1_x0eca"]
+[ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="2_aj0oi"]
+[ext_resource type="Texture2D" uid="uid://2lftuna7s6qb" path="res://assets/button/viewInformationClicked.png" id="3_2kc73"]
+[ext_resource type="Texture2D" uid="uid://dap35sxrrgiar" path="res://assets/BuildingsRawPics/9.png" id="4_8bc4v"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="5_fns7k"]
+[ext_resource type="Texture2D" uid="uid://62tq1mbindsr" path="res://assets/button/upgrade.png" id="6_lsdx4"]
+[ext_resource type="Texture2D" uid="uid://c4tob3e00rq5w" path="res://assets/button/upgradeClicked.png" id="7_13e4x"]
+[ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="8_u1osr"]
+[ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="9_4cgw6"]
+[ext_resource type="Texture2D" uid="uid://b0sop4onfphy8" path="res://assets/button/upgradeButton.png" id="10_br1lm"]
+[ext_resource type="Texture2D" uid="uid://chachj8ebbrjx" path="res://assets/button/generateButton.png" id="11_ynjvs"]
+[ext_resource type="Texture2D" uid="uid://qvnqls3rn6g5" path="res://assets/button/generateButtonClicked.png" id="12_htmfo"]
+[ext_resource type="Texture2D" uid="uid://4k34udy14ee8" path="res://assets/Almanac/Allyunlocked/Sibilyan.png" id="13_quxsy"]
+[ext_resource type="Texture2D" uid="uid://cn66uvxh4adkn" path="res://assets/game/foodIcon.png" id="14_u6fll"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eiqdy"]
 resource_name = "Material.006"
@@ -269,6 +282,67 @@ shadow_mesh = SubResource("ArrayMesh_ir25w")
 [sub_resource type="BoxShape3D" id="BoxShape3D_xs3dh"]
 size = Vector3(4.69873, 4.93526, 4.5296)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvu4x"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ef2dm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0o44j"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ky7xt"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.266667, 0.137255, 0.0588235, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(1, 0.211765, 0.160784, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1x8p5"]
+bg_color = Color(0.764882, 0.18117, 0.15977, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.26777, 0.138217, 0.0582334, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0.999762, 0.213227, 0.160167, 0.6)
+shadow_size = 4
+
 [node name="Kubo-lv1" type="MeshInstance3D"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("ArrayMesh_vpdu2")
@@ -281,5 +355,410 @@ building_name = "Kubo"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.603, 0)
 shape = SubResource("BoxShape3D_xs3dh")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Kubo" type="HBoxContainer" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.887
+anchor_right = 0.556
+anchor_bottom = 0.962
+offset_left = 0.199951
+offset_top = 0.359985
+offset_right = 0.319946
+offset_bottom = 0.359924
+theme_override_constants/separation = 10
+
+[node name="viewInformation" type="TextureButton" parent="UI/Kubo"]
+layout_mode = 2
+texture_normal = ExtResource("2_aj0oi")
+texture_pressed = ExtResource("3_2kc73")
+
+[node name="InformationPanel" type="Panel" parent="UI/Kubo/viewInformation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.736
+anchor_top = -9.736
+anchor_right = 6.981
+anchor_bottom = -4.34
+offset_left = 0.00799561
+offset_top = 0.00799561
+offset_right = 0.00698853
+offset_bottom = 0.0200043
+theme_override_styles/panel = SubResource("StyleBoxFlat_pvu4x")
+
+[node name="TextureRect" type="TextureRect" parent="UI/Kubo/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.029
+anchor_top = 0.079
+anchor_right = 0.299
+anchor_bottom = 0.858
+offset_left = 0.125
+offset_top = -0.033
+offset_right = -0.125008
+offset_bottom = 0.0339966
+texture = ExtResource("4_8bc4v")
+expand_mode = 2
+
+[node name="title" type="Label" parent="UI/Kubo/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.445
+anchor_top = 0.052
+anchor_right = 0.865
+anchor_bottom = 0.257
+offset_left = 0.240036
+offset_top = 0.128007
+offset_right = 0.0960693
+offset_bottom = 0.0400009
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_fns7k")
+theme_override_font_sizes/font_size = 30
+text = "Kubo"
+
+[node name="Description" type="Label" parent="UI/Kubo/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.433
+anchor_top = 0.262
+anchor_right = 0.972
+anchor_bottom = 0.948
+offset_left = 0.0560455
+offset_top = -0.932007
+offset_right = 1.90405
+offset_bottom = -0.128021
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "The source of all Sibilyan (villagers). A humble yet vital dwelling for the village’s master builders. These skilled craftsmen construct and upgrade buildings, ensuring the village thrives and withstands enemy sieges."
+autowrap_mode = 2
+
+[node name="upgrade" type="TextureButton" parent="UI/Kubo"]
+layout_mode = 2
+texture_normal = ExtResource("6_lsdx4")
+texture_pressed = ExtResource("7_13e4x")
+
+[node name="upgradePanel" type="Panel" parent="UI/Kubo/upgrade"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -5.078
+anchor_top = -9.736
+anchor_right = 6.02
+anchor_bottom = -4.34
+offset_left = -0.0220032
+offset_top = 0.00799561
+offset_right = -0.0200195
+offset_bottom = 0.0200043
+theme_override_styles/panel = SubResource("StyleBoxFlat_pvu4x")
+
+[node name="upgradeDesign" type="TextureRect" parent="UI/Kubo/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.038
+anchor_top = 0.085
+anchor_right = 0.306
+anchor_bottom = 0.845
+offset_left = -0.039669
+offset_top = 0.0350027
+offset_right = -0.0038681
+offset_bottom = -0.00497437
+
+[node name="title" type="Label" parent="UI/Kubo/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.352
+anchor_top = 0.031
+anchor_right = 0.749
+anchor_bottom = 0.234
+offset_left = -3.136
+offset_top = -1.425
+offset_right = -3.07101
+offset_bottom = -1.409
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_fns7k")
+theme_override_font_sizes/font_size = 30
+text = "Upgrade Kubo"
+
+[node name="Description" type="Label" parent="UI/Kubo/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.325
+anchor_top = 0.24
+anchor_right = 0.95
+anchor_bottom = 0.897
+offset_left = 0.149994
+offset_top = 1.14441e-05
+offset_right = -0.100006
+offset_bottom = 2.02501
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Increases the number of available builders, allowing faster construction and upgrades across the village.
+"
+autowrap_mode = 3
+
+[node name="resourceAmount" type="Panel" parent="UI/Kubo/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.356
+anchor_top = 0.705
+anchor_right = 0.731
+anchor_bottom = 1.0
+offset_left = -0.161362
+offset_top = 0.0550156
+offset_right = 0.15741
+offset_bottom = 2.00003
+theme_override_styles/panel = SubResource("StyleBoxFlat_ef2dm")
+
+[node name="stone" type="TextureRect" parent="UI/Kubo/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.016
+anchor_top = 0.242
+anchor_right = 0.146
+anchor_bottom = 0.686
+offset_left = 0.0664999
+offset_top = -0.0204773
+offset_right = -0.0875053
+offset_bottom = 1.00022
+texture = ExtResource("8_u1osr")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="UI/Kubo/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.221
+anchor_right = 0.682
+anchor_bottom = 0.735
+offset_left = -0.0190048
+offset_top = -0.0280008
+offset_right = 0.0059967
+offset_bottom = 0.0200005
+texture = ExtResource("9_4cgw6")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="UI/Kubo/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.212
+anchor_top = 0.268
+anchor_right = 0.395
+anchor_bottom = 0.583
+offset_left = 2.93542
+offset_top = 3.0257
+offset_right = 3.03533
+offset_bottom = 3.02232
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("5_fns7k")
+theme_override_font_sizes/font_size = 20
+text = "250"
+
+[node name="woodAmount" type="Label" parent="UI/Kubo/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.732
+anchor_top = 0.288
+anchor_right = 0.894
+anchor_bottom = 0.673
+offset_left = 0.0650482
+offset_top = 0.0361729
+offset_right = 4.62892
+offset_bottom = 0.0320435
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("5_fns7k")
+theme_override_font_sizes/font_size = 20
+text = "300
+"
+
+[node name="upgradeButton" type="TextureButton" parent="UI/Kubo/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.76
+anchor_top = 0.643
+anchor_right = 0.952
+anchor_bottom = 0.944
+offset_left = -0.159973
+offset_top = 0.102005
+offset_right = 0.16803
+offset_bottom = 0.0159912
+texture_normal = ExtResource("10_br1lm")
+stretch_mode = 0
+
+[node name="generateCivilian" type="TextureButton" parent="UI/Kubo"]
+layout_mode = 2
+texture_normal = ExtResource("11_ynjvs")
+texture_pressed = ExtResource("12_htmfo")
+
+[node name="Panel" type="Panel" parent="UI/Kubo/generateCivilian"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -7.089
+anchor_top = -9.755
+anchor_right = 5.489
+anchor_bottom = -4.434
+offset_left = -0.994995
+offset_top = -3.98499
+offset_right = -0.00502014
+offset_bottom = 0.0019989
+theme_override_styles/panel = SubResource("StyleBoxFlat_0o44j")
+
+[node name="civilianImg" type="TextureRect" parent="UI/Kubo/generateCivilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.086
+anchor_right = 0.327
+anchor_bottom = 0.883
+offset_left = 0.0599995
+offset_top = -0.00800037
+offset_right = -0.0850067
+offset_bottom = -0.0240021
+texture = ExtResource("13_quxsy")
+expand_mode = 2
+
+[node name="title" type="Label" parent="UI/Kubo/generateCivilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.035
+anchor_right = 0.9
+anchor_bottom = 0.238
+offset_left = 1.50009
+offset_top = -0.0100031
+offset_right = -0.135925
+offset_bottom = 0.00598907
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_fns7k")
+theme_override_font_sizes/font_size = 30
+text = "Generate Civilian"
+
+[node name="current" type="Label" parent="UI/Kubo/generateCivilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.786
+anchor_top = 0.062
+anchor_right = 0.963
+anchor_bottom = 0.219
+offset_left = 2.33804
+offset_top = 48.268
+offset_right = 2.50299
+offset_bottom = 48.172
+theme_override_colors/font_color = Color(0.371496, 0.2269, 4.81308e-08, 1)
+theme_override_colors/font_shadow_color = Color(0.176419, 0.176419, 0.176419, 1)
+theme_override_colors/font_outline_color = Color(0.842407, 0.700941, 0.483231, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_fns7k")
+theme_override_font_sizes/font_size = 20
+text = "Current: 0"
+
+[node name="max" type="Label" parent="UI/Kubo/generateCivilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.806
+anchor_top = 0.395
+anchor_right = 0.982
+anchor_bottom = 0.551
+offset_left = -1.00195
+offset_top = 0.0300064
+offset_right = -0.27002
+offset_bottom = 0.0620117
+theme_override_colors/font_color = Color(0.371496, 0.2269, 4.81308e-08, 1)
+theme_override_colors/font_shadow_color = Color(0.176419, 0.176419, 0.176419, 1)
+theme_override_colors/font_outline_color = Color(0.842407, 0.700941, 0.483231, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_fns7k")
+theme_override_font_sizes/font_size = 20
+text = "Max: 3"
+
+[node name="Button" type="Button" parent="UI/Kubo/generateCivilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.522
+anchor_top = 0.612
+anchor_right = 0.871
+anchor_bottom = 0.947
+offset_left = 0.0260925
+offset_top = -0.0319977
+offset_right = 0.131012
+offset_bottom = 0.0880127
+theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
+theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
+theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_fns7k")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_ky7xt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1x8p5")
+text = "Add Civilian"
+
+[node name="TextureRect" type="TextureRect" parent="UI/Kubo/generateCivilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.455
+anchor_top = 0.241
+anchor_right = 0.571
+anchor_bottom = 0.497
+offset_left = 0.0150452
+offset_top = 0.0739975
+offset_right = 0.243042
+offset_bottom = -0.141998
+texture = ExtResource("14_u6fll")
+expand_mode = 1
+
+[node name="foodAmount" type="Label" parent="UI/Kubo/generateCivilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.601
+anchor_top = 0.318
+anchor_right = 0.681
+anchor_bottom = 0.451
+offset_left = 0.233032
+offset_top = 0.0519943
+offset_right = -0.127014
+offset_bottom = 0.0139923
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.886262, 0.886261, 0.886262, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_fns7k")
+theme_override_font_sizes/font_size = 30
+text = "60"
 
 [connection signal="input_event" from="Area3D" to="." method="clicked_building"]

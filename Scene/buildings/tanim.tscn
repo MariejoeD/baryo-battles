@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c4tob3e00rq5w" path="res://assets/button/upgradeClicked.png" id="8_m6sfl"]
 [ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="9_uoous"]
 [ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="10_7e5wc"]
+[ext_resource type="Texture2D" uid="uid://b0sop4onfphy8" path="res://assets/button/upgradeButton.png" id="11_3t8h4"]
 [ext_resource type="Texture2D" uid="uid://dpxcho1487quw" path="res://assets/button/harvest.png" id="11_3uno0"]
 [ext_resource type="Texture2D" uid="uid://bnyqver56hpka" path="res://assets/button/harvestClicked.png" id="12_ohgtq"]
 [ext_resource type="PackedScene" uid="uid://bpvvoulauyy4r" path="res://assets/building models/tanim.fbx" id="13_3oivw"]
@@ -54,7 +55,7 @@ albedo_texture = ExtResource("1_laq7s")
 [sub_resource type="BoxShape3D" id="BoxShape3D_xldft"]
 size = Vector3(0.0194864, 0.00990295, 0.0189228)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlh7f"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02oqs"]
 bg_color = Color(0.919668, 0.878001, 0.698229, 1)
 border_width_left = 3
 border_width_top = 3
@@ -69,36 +70,23 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
 shadow_size = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkvo7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vukmw"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lv646"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fexi"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.266667, 0.137255, 0.0588235, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-shadow_color = Color(1, 0.211765, 0.160784, 0.6)
-shadow_size = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jagku"]
-bg_color = Color(0.764882, 0.18117, 0.15977, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.26777, 0.138217, 0.0582334, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-shadow_color = Color(0.999762, 0.213227, 0.160167, 0.6)
-shadow_size = 4
 
 [node name="Tanim" type="MeshInstance3D"]
 transform = Transform3D(100, 0, 0, 0, 100, 7.54979e-06, 0, -7.54979e-06, 100, 0, 0, 0)
@@ -122,6 +110,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Tanim" type="HBoxContainer" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -145,15 +134,15 @@ texture_pressed = ExtResource("4_ufqio")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -1.849
-anchor_top = -8.358
-anchor_right = 5.226
-anchor_bottom = -5.962
-offset_left = -0.00293732
-offset_top = -0.0259705
-offset_right = 0.0220337
-offset_bottom = -0.0139771
-theme_override_styles/panel = SubResource("StyleBoxFlat_nlh7f")
+anchor_left = -3.698
+anchor_top = -9.698
+anchor_right = 7.019
+anchor_bottom = -4.302
+offset_left = -0.00593567
+offset_top = -0.00598145
+offset_right = -0.00695801
+offset_bottom = 0.0059967
+theme_override_styles/panel = SubResource("StyleBoxFlat_02oqs")
 
 [node name="TextureRect" type="TextureRect" parent="UI/Tanim/viewInformation/InformationPanel"]
 layout_mode = 1
@@ -172,36 +161,39 @@ expand_mode = 2
 [node name="title" type="Label" parent="UI/Tanim/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.772
-anchor_bottom = 0.238
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -0.103943
-offset_bottom = -0.436003
+anchor_left = 0.477
+anchor_top = 0.042
+anchor_right = 0.897
+anchor_bottom = 0.247
+offset_left = 0.0639954
+offset_top = -0.0120039
+offset_right = -0.0799255
+offset_bottom = 0.0919876
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("6_pn27k")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Tanim"
 
 [node name="Description" type="Label" parent="UI/Tanim/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.357
-anchor_top = 0.287
-anchor_right = 0.852
-anchor_bottom = 0.574
-offset_left = 0.00508118
-offset_top = -0.0229912
-offset_right = 0.145813
-offset_bottom = -0.0459824
+anchor_left = 0.444
+anchor_top = 0.353
+anchor_right = 0.939
+anchor_bottom = 0.867
+offset_left = -0.192001
+offset_top = 0.0419922
+offset_right = -0.0513306
+offset_bottom = -64.903
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "The lifeline of the community, where fertile fields yield an abundant harvest of food. Essential for feeding both villagers and warriors preparing for battle.
+
+"
+autowrap_mode = 3
 
 [node name="upgrade" type="TextureButton" parent="UI/Tanim"]
 layout_mode = 2
@@ -212,15 +204,15 @@ texture_pressed = ExtResource("8_m6sfl")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -3.255
-anchor_top = -7.377
-anchor_right = 3.474
-anchor_bottom = -4.981
-offset_left = 0.00497437
-offset_top = 0.358032
-offset_right = -0.0240784
-offset_bottom = -0.026001
-theme_override_styles/panel = SubResource("StyleBoxFlat_nlh7f")
+anchor_left = -5.098
+anchor_top = -9.736
+anchor_right = 6.039
+anchor_bottom = -4.34
+offset_left = -0.00192261
+offset_top = 0.00799561
+offset_right = 0.0110474
+offset_bottom = 0.0200043
+theme_override_styles/panel = SubResource("StyleBoxFlat_vukmw")
 
 [node name="upgradeDesign" type="TextureRect" parent="UI/Tanim/upgrade/upgradePanel"]
 layout_mode = 1
@@ -250,7 +242,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("6_pn27k")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Upgrade Tanim"
 
 [node name="Description" type="Label" parent="UI/Tanim/upgrade/upgradePanel"]
@@ -265,8 +257,9 @@ offset_top = -0.0229912
 offset_right = 0.145844
 offset_bottom = -0.0459824
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "Speed Up Growth Speed"
+theme_override_font_sizes/font_size = 15
+text = "Boosts food production rates and storage capacity to sustain your village’s growth and army needs."
+autowrap_mode = 3
 
 [node name="resourceAmount" type="Panel" parent="UI/Tanim/upgrade/upgradePanel"]
 layout_mode = 1
@@ -279,7 +272,7 @@ offset_left = -0.161362
 offset_top = 0.0550156
 offset_right = 0.15741
 offset_bottom = 2.00003
-theme_override_styles/panel = SubResource("StyleBoxFlat_qkvo7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_lv646")
 
 [node name="stone" type="TextureRect" parent="UI/Tanim/upgrade/upgradePanel/resourceAmount"]
 layout_mode = 1
@@ -354,26 +347,19 @@ theme_override_font_sizes/font_size = 17
 text = "300
 "
 
-[node name="upgradeButton" type="Button" parent="UI/Tanim/upgrade/upgradePanel"]
+[node name="upgradeButton" type="TextureButton" parent="UI/Tanim/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.737
-anchor_top = 0.713
-anchor_right = 1.0
-anchor_bottom = 0.946
-offset_left = 0.098465
-offset_top = 0.0230179
-offset_right = -4.14996
-offset_bottom = -0.0339737
-theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("6_pn27k")
-theme_override_font_sizes/font_size = 17
-theme_override_styles/hover = SubResource("StyleBoxFlat_7fexi")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jagku")
-text = "Upgrade"
+anchor_left = 0.738
+anchor_top = 0.65
+anchor_right = 0.958
+anchor_bottom = 0.93
+offset_left = -0.18396
+offset_top = 0.0999908
+offset_right = -0.143982
+offset_bottom = 0.019989
+texture_normal = ExtResource("11_3t8h4")
+stretch_mode = 0
 
 [node name="Harvest" type="TextureButton" parent="UI/Tanim"]
 layout_mode = 2

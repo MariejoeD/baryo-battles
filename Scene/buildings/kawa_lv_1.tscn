@@ -1,6 +1,17 @@
-[gd_scene load_steps=13 format=4 uid="uid://c355t02anfh15"]
+[gd_scene load_steps=28 format=4 uid="uid://c355t02anfh15"]
 
 [ext_resource type="Script" path="res://Script/building scripts/buildings.gd" id="1_j2nuy"]
+[ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="2_0b180"]
+[ext_resource type="Texture2D" uid="uid://2lftuna7s6qb" path="res://assets/button/viewInformationClicked.png" id="3_no6d1"]
+[ext_resource type="Texture2D" uid="uid://3cct157onhcn" path="res://assets/BuildingsRawPics/5.png" id="4_7dl2x"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="5_e0l4o"]
+[ext_resource type="Texture2D" uid="uid://62tq1mbindsr" path="res://assets/button/upgrade.png" id="6_br0ao"]
+[ext_resource type="Texture2D" uid="uid://c4tob3e00rq5w" path="res://assets/button/upgradeClicked.png" id="7_av40i"]
+[ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="8_5jnro"]
+[ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="9_y4pr0"]
+[ext_resource type="Texture2D" uid="uid://b0sop4onfphy8" path="res://assets/button/upgradeButton.png" id="10_elo3f"]
+[ext_resource type="Texture2D" uid="uid://cvo7ppbnso3o6" path="res://assets/button/brewAndManageSpells.png" id="11_lhkt1"]
+[ext_resource type="Texture2D" uid="uid://5q4suwxsou2j" path="res://assets/button/brewAndManageSpellsClicked.png" id="12_k7lck"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6imk"]
 resource_name = "Material.017"
@@ -174,6 +185,52 @@ blend_shape_mode = 0
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_82mc7"]
 points = PackedVector3Array(-0.258814, 1.30485, -1.79841, -0.257469, 0.128564, -1.41818, 1.51935, 1.66925, -0.0847826, -1.45918, 2.97289, 0.0195596, -0.993459, -0.00666399, 1.01598, 1.20271, 2.97464, 0.176265, 0.940758, -0.000932037, 0.854683, -1.55119, 1.15095, -1.01587, 0.209471, 2.97059, -1.43889, -0.207087, 2.9747, 1.22138, 0.944543, 0.0985574, -0.974626, -1.50034, 1.46079, 0.897844, 1.04224, 1.51234, 1.11239, -1.44782, 0.0127505, -0.188389, 1.08736, 1.46078, -1.27606, -0.978577, 2.95285, -1.16622, -1.81753, 1.66824, -0.29263, -0.415892, 0.991292, 1.4807, 0.984243, 2.96217, -0.913857, -0.876437, 2.95497, 0.996729, 1.25033, 0.106974, -0.188558, -1.34202, 1.4096, -1.37557, -0.883998, 1.40889, 1.42549, 0.0520156, 0.0102059, 1.26177, 0.42006, 2.97591, 1.11772, 0.46981, 1.1485, -1.64718, -0.985126, 0.111806, -1.12237, 0.315924, 1.40849, 1.43369, -1.72018, 1.35635, 0.489065, 1.29883, 1.3051, -0.967668, -1.60916, 2.13563, 0.589832, -1.33953, 2.95382, -0.703468)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxv85"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48s2n"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rhtq"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lc7i4"]
+bg_color = Color(0.812499, 0.0518025, 0.119025, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="Kawa-lv1" type="MeshInstance3D"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 mesh = SubResource("ArrayMesh_k8lkk")
@@ -184,5 +241,358 @@ building_name = "Kawa"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("ConvexPolygonShape3D_82mc7")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Kawa" type="HBoxContainer" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.887
+anchor_right = 0.556
+anchor_bottom = 0.962
+offset_left = 0.199951
+offset_top = 0.359985
+offset_right = 0.319946
+offset_bottom = 0.359924
+theme_override_constants/separation = 10
+
+[node name="viewInformation" type="TextureButton" parent="UI/Kawa"]
+layout_mode = 2
+texture_normal = ExtResource("2_0b180")
+texture_pressed = ExtResource("3_no6d1")
+
+[node name="InformationPanel" type="Panel" parent="UI/Kawa/viewInformation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.717
+anchor_top = -9.736
+anchor_right = 7.0
+anchor_bottom = -4.34
+offset_left = 0.00106812
+offset_top = 0.00799561
+offset_right = 3.05176e-05
+offset_bottom = 0.0200043
+theme_override_styles/panel = SubResource("StyleBoxFlat_yxv85")
+
+[node name="TextureRect" type="TextureRect" parent="UI/Kawa/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.029
+anchor_top = 0.079
+anchor_right = 0.299
+anchor_bottom = 0.858
+offset_left = 0.125
+offset_top = -0.033
+offset_right = -0.125008
+offset_bottom = 0.0339966
+texture = ExtResource("4_7dl2x")
+expand_mode = 2
+
+[node name="title" type="Label" parent="UI/Kawa/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.463
+anchor_top = 0.035
+anchor_right = 0.883
+anchor_bottom = 0.24
+offset_left = 0.0159912
+offset_top = -0.00999546
+offset_right = -0.12793
+offset_bottom = 0.0940018
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_e0l4o")
+theme_override_font_sizes/font_size = 30
+text = "Kawa"
+
+[node name="Description" type="Label" parent="UI/Kawa/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.456
+anchor_top = 0.308
+anchor_right = 0.951
+anchor_bottom = 0.734
+offset_left = -0.00802612
+offset_top = -0.0880051
+offset_right = 0.13269
+offset_bottom = 0.0759888
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "A sacred forge of arcane energy where potent spells are brewed. Skilled Albularyos and mystics channel ancient magic to empower your army"
+autowrap_mode = 3
+
+[node name="upgrade" type="TextureButton" parent="UI/Kawa"]
+layout_mode = 2
+texture_normal = ExtResource("6_br0ao")
+texture_pressed = ExtResource("7_av40i")
+
+[node name="upgradePanel" type="Panel" parent="UI/Kawa/upgrade"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -5.078
+anchor_top = -9.736
+anchor_right = 6.059
+anchor_bottom = -4.34
+offset_left = -0.0219421
+offset_top = 0.00799561
+offset_right = -0.00897217
+offset_bottom = 0.0200043
+theme_override_styles/panel = SubResource("StyleBoxFlat_yxv85")
+
+[node name="upgradeDesign" type="TextureRect" parent="UI/Kawa/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.038
+anchor_top = 0.085
+anchor_right = 0.306
+anchor_bottom = 0.845
+offset_left = -0.039669
+offset_top = 0.0350027
+offset_right = -0.0038681
+offset_bottom = -0.00497437
+
+[node name="title" type="Label" parent="UI/Kawa/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.426
+anchor_top = 0.035
+anchor_right = 0.876
+anchor_bottom = 0.238
+offset_left = 0.0319672
+offset_top = -0.00999546
+offset_right = -0.10202
+offset_bottom = 0.0059967
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_e0l4o")
+theme_override_font_sizes/font_size = 30
+text = "Upgrade Kawa"
+
+[node name="Description" type="Label" parent="UI/Kawa/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.428
+anchor_top = 0.287
+anchor_right = 0.923
+anchor_bottom = 0.574
+offset_left = -0.104004
+offset_top = -0.0820007
+offset_right = 0.0366821
+offset_bottom = -0.104996
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Unlocks new spells, boosts spell potency, and reduces brewing time."
+autowrap_mode = 3
+
+[node name="resourceAmount" type="Panel" parent="UI/Kawa/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.356
+anchor_top = 0.705
+anchor_right = 0.731
+anchor_bottom = 1.0
+offset_left = -0.161362
+offset_top = 0.0550156
+offset_right = 0.15741
+offset_bottom = 2.00003
+theme_override_styles/panel = SubResource("StyleBoxFlat_48s2n")
+
+[node name="stone" type="TextureRect" parent="UI/Kawa/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.235
+anchor_right = 0.217
+anchor_bottom = 0.691
+offset_left = 0.0649996
+offset_top = 0.0199986
+offset_right = -0.0890007
+offset_bottom = 0.0119972
+texture = ExtResource("8_5jnro")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="UI/Kawa/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.221
+anchor_right = 0.682
+anchor_bottom = 0.735
+offset_left = -0.0190048
+offset_top = -0.0280008
+offset_right = 0.0059967
+offset_bottom = 0.0200005
+texture = ExtResource("9_y4pr0")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="UI/Kawa/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.253
+anchor_top = 0.374
+anchor_right = 0.436
+anchor_bottom = 0.676
+offset_left = -0.0162849
+offset_top = 0.0331841
+offset_right = -0.0536194
+offset_bottom = -0.0339546
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("5_e0l4o")
+theme_override_font_sizes/font_size = 17
+text = "250"
+
+[node name="woodAmount" type="Label" parent="UI/Kawa/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.741
+anchor_top = 0.336
+anchor_right = 0.924
+anchor_bottom = 0.649
+offset_left = -0.0692291
+offset_top = -0.00184822
+offset_right = -0.106552
+offset_bottom = -0.0184517
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("5_e0l4o")
+theme_override_font_sizes/font_size = 17
+text = "300
+"
+
+[node name="upgradeButton" type="TextureButton" parent="UI/Kawa/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.738
+anchor_top = 0.65
+anchor_right = 0.958
+anchor_bottom = 0.93
+offset_left = -0.18396
+offset_top = 0.0999908
+offset_right = -0.143982
+offset_bottom = 0.019989
+texture_normal = ExtResource("10_elo3f")
+stretch_mode = 0
+
+[node name="BrewAndManageSpells" type="TextureButton" parent="UI/Kawa"]
+layout_mode = 2
+texture_normal = ExtResource("11_lhkt1")
+texture_pressed = ExtResource("12_k7lck")
+
+[node name="Panel" type="Panel" parent="UI/Kawa/BrewAndManageSpells"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -10.49
+anchor_top = -11.189
+anchor_right = 9.608
+anchor_bottom = -0.358
+offset_left = -0.0098877
+offset_top = 0.0170288
+offset_right = -0.00796509
+offset_bottom = -0.0259991
+theme_override_styles/panel = SubResource("StyleBoxFlat_5rhtq")
+
+[node name="troopsPanel" type="Panel" parent="UI/Kawa/BrewAndManageSpells/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.5
+anchor_right = 0.992
+anchor_bottom = 0.984
+offset_left = -0.200001
+offset_top = 2.0
+offset_right = 0.199951
+offset_bottom = 0.18396
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Kawa/BrewAndManageSpells/Panel/troopsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.999
+anchor_bottom = 1.0
+offset_right = 0.00891113
+offset_bottom = -4.0
+
+[node name="trainedTroops" type="Button" parent="UI/Kawa/BrewAndManageSpells/Panel/troopsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.809
+anchor_top = -0.286
+anchor_right = 0.983
+anchor_bottom = -0.054
+offset_left = -0.280945
+offset_top = -0.0639877
+offset_right = 0.153076
+offset_bottom = -0.0959997
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_e0l4o")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_lc7i4")
+text = "BOOST"
+
+[node name="trainingPanel" type="Panel" parent="UI/Kawa/BrewAndManageSpells/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.446
+anchor_right = 0.992
+anchor_bottom = 0.984
+offset_left = -0.200001
+offset_top = -248.004
+offset_right = 0.199951
+offset_bottom = -367.816
+
+[node name="trainedTroops" type="Label" parent="UI/Kawa/BrewAndManageSpells/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.076
+anchor_top = 0.376
+anchor_right = 0.179
+anchor_bottom = 0.476
+offset_left = 0.0999985
+offset_top = 0.17601
+offset_right = -0.475006
+offset_bottom = -0.223999
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_e0l4o")
+theme_override_font_sizes/font_size = 45
+text = "0/2"
+
+[node name="TextureRect" type="TextureRect" parent="UI/Kawa/BrewAndManageSpells/Panel"]
+layout_mode = 0
+offset_left = 21.9999
+offset_top = 222.0
+offset_right = 61.9999
+offset_bottom = 262.0
+texture = ExtResource("11_lhkt1")
 
 [connection signal="input_event" from="Area3D" to="." method="clicked_building"]

@@ -102,6 +102,7 @@ func perform_work(worker):
 	print("Harvest Complete")
 	Global.food_qty += 10
 	grow(duration)
+	#gray
 	worker.task_complete()
 	pass
 

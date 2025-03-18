@@ -1,6 +1,17 @@
-[gd_scene load_steps=10 format=4 uid="uid://ngmrdl4glq3"]
+[gd_scene load_steps=24 format=4 uid="uid://ngmrdl4glq3"]
 
 [ext_resource type="Script" path="res://Script/building scripts/buildings.gd" id="1_kd2lq"]
+[ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="2_yj4gm"]
+[ext_resource type="Texture2D" uid="uid://2lftuna7s6qb" path="res://assets/button/viewInformationClicked.png" id="3_08kdr"]
+[ext_resource type="Texture2D" uid="uid://dl2s57s3jegow" path="res://assets/BuildingsRawPics/2.png" id="4_4ra7k"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="5_ep854"]
+[ext_resource type="Texture2D" uid="uid://62tq1mbindsr" path="res://assets/button/upgrade.png" id="6_q6lec"]
+[ext_resource type="Texture2D" uid="uid://c4tob3e00rq5w" path="res://assets/button/upgradeClicked.png" id="7_wyx6v"]
+[ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="8_vjutc"]
+[ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="9_jlyyp"]
+[ext_resource type="Texture2D" uid="uid://b0sop4onfphy8" path="res://assets/button/upgradeButton.png" id="10_dayok"]
+[ext_resource type="Texture2D" uid="uid://mwe4idbjnfn4" path="res://assets/button/manageTroops.png" id="11_awa0a"]
+[ext_resource type="Texture2D" uid="uid://dvmsmlpomaddt" path="res://assets/button/manageTroopsClicked.png" id="12_hid37"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kafqx"]
 resource_name = "Material.003"
@@ -123,6 +134,39 @@ blend_shape_mode = 0
 [sub_resource type="BoxShape3D" id="BoxShape3D_dbkpv"]
 size = Vector3(9.17725, 3.90436, 9.37622)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7g7bq"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52ox0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5aet"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 6
+
 [node name="Kampo-lv1" type="MeshInstance3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_x8xvh")
@@ -134,5 +178,281 @@ building_name = "Kampo"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.109131, 1.8165, 0.126099)
 shape = SubResource("BoxShape3D_dbkpv")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Kampo" type="HBoxContainer" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.887
+anchor_right = 0.556
+anchor_bottom = 0.962
+offset_left = 0.199951
+offset_top = 0.359985
+offset_right = 0.319946
+offset_bottom = 0.359924
+theme_override_constants/separation = 10
+
+[node name="viewInformation" type="TextureButton" parent="UI/Kampo"]
+layout_mode = 2
+texture_normal = ExtResource("2_yj4gm")
+texture_pressed = ExtResource("3_08kdr")
+
+[node name="InformationPanel" type="Panel" parent="UI/Kampo/viewInformation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.717
+anchor_top = -9.774
+anchor_right = 6.925
+anchor_bottom = -4.377
+offset_left = 0.00100708
+offset_top = 0.0220337
+offset_right = 3.97498
+offset_bottom = -0.0189819
+theme_override_styles/panel = SubResource("StyleBoxFlat_7g7bq")
+
+[node name="TextureRect" type="TextureRect" parent="UI/Kampo/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.029
+anchor_top = 0.079
+anchor_right = 0.299
+anchor_bottom = 0.858
+offset_left = 0.125
+offset_top = -0.033
+offset_right = -0.125008
+offset_bottom = 0.0339966
+texture = ExtResource("4_4ra7k")
+expand_mode = 2
+
+[node name="title" type="Label" parent="UI/Kampo/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.462
+anchor_top = 0.071
+anchor_right = 0.882
+anchor_bottom = 0.277
+offset_left = 0.204041
+offset_top = 0.0490036
+offset_right = 0.0601196
+offset_bottom = -0.138008
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_ep854")
+theme_override_font_sizes/font_size = 30
+text = "Kampo"
+
+[node name="Description" type="Label" parent="UI/Kampo/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.457
+anchor_top = 0.306
+anchor_right = 0.952
+anchor_bottom = 0.74
+offset_left = -0.00593567
+offset_top = 0.0139923
+offset_right = 0.134766
+offset_bottom = 0.0599976
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "A fortified ground where trained warriors gather, awaiting the call to battle. It serves as the rallying point for your forces before they march to reclaim the land."
+autowrap_mode = 3
+
+[node name="upgrade" type="TextureButton" parent="UI/Kampo"]
+layout_mode = 2
+texture_normal = ExtResource("6_q6lec")
+texture_pressed = ExtResource("7_wyx6v")
+
+[node name="upgradePanel" type="Panel" parent="UI/Kampo/upgrade"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -5.059
+anchor_top = -9.83
+anchor_right = 5.941
+anchor_bottom = -4.321
+offset_left = 0.00900269
+offset_top = -0.00994873
+offset_right = 7.00897
+offset_bottom = -5.987
+theme_override_styles/panel = SubResource("StyleBoxFlat_7g7bq")
+
+[node name="upgradeDesign" type="TextureRect" parent="UI/Kampo/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.038
+anchor_top = 0.085
+anchor_right = 0.306
+anchor_bottom = 0.845
+offset_left = -0.039669
+offset_top = 0.0350027
+offset_right = -0.0038681
+offset_bottom = -0.00497437
+
+[node name="title" type="Label" parent="UI/Kampo/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.352
+anchor_top = 0.031
+anchor_right = 0.772
+anchor_bottom = 0.238
+offset_left = 0.0399933
+offset_top = 0.0319998
+offset_right = -0.103943
+offset_bottom = -0.436003
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_ep854")
+theme_override_font_sizes/font_size = 30
+text = "Upgrade Kampo"
+
+[node name="Description" type="Label" parent="UI/Kampo/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.287
+anchor_right = 0.868
+anchor_bottom = 0.574
+offset_left = 0.00508881
+offset_top = -0.0229912
+offset_right = 0.145844
+offset_bottom = -0.0459824
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Expands troop capacity, allowing you to send larger and stronger forces into battle.
+"
+autowrap_mode = 3
+
+[node name="resourceAmount" type="Panel" parent="UI/Kampo/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.356
+anchor_top = 0.705
+anchor_right = 0.731
+anchor_bottom = 1.0
+offset_left = -0.161362
+offset_top = 0.0550156
+offset_right = 0.15741
+offset_bottom = 2.00003
+theme_override_styles/panel = SubResource("StyleBoxFlat_52ox0")
+
+[node name="stone" type="TextureRect" parent="UI/Kampo/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.235
+anchor_right = 0.217
+anchor_bottom = 0.691
+offset_left = 0.0649996
+offset_top = 0.0199986
+offset_right = -0.0890007
+offset_bottom = 0.0119972
+texture = ExtResource("8_vjutc")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="UI/Kampo/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.221
+anchor_right = 0.682
+anchor_bottom = 0.735
+offset_left = -0.0190048
+offset_top = -0.0280008
+offset_right = 0.0059967
+offset_bottom = 0.0200005
+texture = ExtResource("9_jlyyp")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="UI/Kampo/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.254
+anchor_top = 0.342
+anchor_right = 0.439
+anchor_bottom = 0.648
+offset_left = -0.0707855
+offset_top = -0.0401115
+offset_right = -0.0491333
+offset_bottom = 0.00587463
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("5_ep854")
+theme_override_font_sizes/font_size = 17
+text = "250"
+
+[node name="woodAmount" type="Label" parent="UI/Kampo/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.743
+anchor_top = 0.319
+anchor_right = 0.928
+anchor_bottom = 0.591
+offset_left = -0.100037
+offset_top = -0.0141563
+offset_right = -0.0783997
+offset_bottom = 0.026722
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("5_ep854")
+theme_override_font_sizes/font_size = 17
+text = "300
+"
+
+[node name="upgradeButton" type="TextureButton" parent="UI/Kampo/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.738
+anchor_top = 0.65
+anchor_right = 0.958
+anchor_bottom = 0.93
+offset_left = -0.18396
+offset_top = 0.0999908
+offset_right = -0.143982
+offset_bottom = 0.019989
+texture_normal = ExtResource("10_dayok")
+stretch_mode = 0
+
+[node name="ManageTroops" type="TextureButton" parent="UI/Kampo"]
+layout_mode = 2
+texture_normal = ExtResource("11_awa0a")
+texture_pressed = ExtResource("12_hid37")
+
+[node name="manageTroopsPanel" type="Panel" parent="UI/Kampo/ManageTroops"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -6.275
+anchor_top = -9.83
+anchor_right = 4.863
+anchor_bottom = -4.434
+offset_left = 0.0249939
+offset_top = -0.00994873
+offset_right = -0.0130157
+offset_bottom = 0.0019989
+theme_override_styles/panel = SubResource("StyleBoxFlat_v5aet")
 
 [connection signal="input_event" from="Area3D" to="." method="clicked_building"]

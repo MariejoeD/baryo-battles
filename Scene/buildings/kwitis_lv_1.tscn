@@ -1,10 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjv1y1o2hrgx8"]
+[gd_scene load_steps=15 format=3 uid="uid://bjv1y1o2hrgx8"]
 
 [ext_resource type="ArrayMesh" uid="uid://bbxahgw6jkft1" path="res://assets/building models/Kwitis-Lv1.obj" id="1_vaqk3"]
 [ext_resource type="Script" path="res://Script/building scripts/buildings.gd" id="2_sk10o"]
+[ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="3_3ykxu"]
+[ext_resource type="Texture2D" uid="uid://2lftuna7s6qb" path="res://assets/button/viewInformationClicked.png" id="4_vxi5w"]
+[ext_resource type="Texture2D" uid="uid://d0evviqd01egj" path="res://assets/BuildingsRawPics/8.png" id="5_nsa5h"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="6_p412q"]
+[ext_resource type="Texture2D" uid="uid://62tq1mbindsr" path="res://assets/button/upgrade.png" id="7_ly6vi"]
+[ext_resource type="Texture2D" uid="uid://c4tob3e00rq5w" path="res://assets/button/upgradeClicked.png" id="8_l0dsr"]
+[ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="9_c1yhq"]
+[ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="10_daym3"]
+[ext_resource type="Texture2D" uid="uid://b0sop4onfphy8" path="res://assets/button/upgradeButton.png" id="11_lvefd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ylxe0"]
 size = Vector3(12.9449, 7.05612, 15.4128)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yx2o4"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kv0b1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Kwitis-lv1" type="MeshInstance3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -18,5 +45,262 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.581, 0)
 shape = SubResource("BoxShape3D_ylxe0")
+
+[node name="UI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Kwitis" type="HBoxContainer" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.411
+anchor_top = 0.887
+anchor_right = 0.502
+anchor_bottom = 0.962
+offset_left = -0.0800781
+offset_top = 0.359985
+offset_right = -0.560059
+offset_bottom = 0.359924
+theme_override_constants/separation = 10
+
+[node name="viewInformation" type="TextureButton" parent="UI/Kwitis"]
+layout_mode = 2
+texture_normal = ExtResource("3_3ykxu")
+texture_pressed = ExtResource("4_vxi5w")
+
+[node name="InformationPanel" type="Panel" parent="UI/Kwitis/viewInformation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.717
+anchor_top = -9.519
+anchor_right = 7.0
+anchor_bottom = -4.222
+offset_left = 0.00106812
+offset_top = 0.026001
+offset_right = 3.05176e-05
+offset_bottom = -0.0119934
+theme_override_styles/panel = SubResource("StyleBoxFlat_yx2o4")
+
+[node name="TextureRect" type="TextureRect" parent="UI/Kwitis/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.029
+anchor_top = 0.079
+anchor_right = 0.299
+anchor_bottom = 0.858
+offset_left = 0.125
+offset_top = -0.033
+offset_right = -0.125008
+offset_bottom = 0.0339966
+texture = ExtResource("5_nsa5h")
+expand_mode = 2
+
+[node name="title" type="Label" parent="UI/Kwitis/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.467
+anchor_top = 0.056
+anchor_right = 0.886
+anchor_bottom = 0.261
+offset_left = -0.256012
+offset_top = -0.0160036
+offset_right = 0.16806
+offset_bottom = 0.0879898
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("6_p412q")
+theme_override_font_sizes/font_size = 30
+text = "Kwitis"
+
+[node name="Description" type="Label" parent="UI/Kwitis/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.451
+anchor_top = 0.353
+anchor_right = 0.946
+anchor_bottom = 0.867
+offset_left = -0.16803
+offset_top = 0.0419922
+offset_right = -0.0272827
+offset_bottom = -64.903
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "A towering lookout post that enhances visibility across the battlefield. Guards stationed here provide early warnings of incoming threats, ensuring the village is prepared for any attack."
+autowrap_mode = 3
+
+[node name="upgrade" type="TextureButton" parent="UI/Kwitis"]
+layout_mode = 2
+texture_normal = ExtResource("7_ly6vi")
+texture_pressed = ExtResource("8_l0dsr")
+
+[node name="upgradePanel" type="Panel" parent="UI/Kwitis/upgrade"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -5.078
+anchor_top = -9.537
+anchor_right = 6.059
+anchor_bottom = -4.241
+offset_left = -0.0219421
+offset_top = -0.00195313
+offset_right = -0.00897217
+offset_bottom = 0.0140076
+theme_override_styles/panel = SubResource("StyleBoxFlat_yx2o4")
+
+[node name="upgradeDesign" type="TextureRect" parent="UI/Kwitis/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.038
+anchor_top = 0.085
+anchor_right = 0.306
+anchor_bottom = 0.845
+offset_left = -0.039669
+offset_top = 0.0350027
+offset_right = -0.0038681
+offset_bottom = -0.00497437
+
+[node name="title" type="Label" parent="UI/Kwitis/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.352
+anchor_top = 0.031
+anchor_right = 0.882
+anchor_bottom = 0.234
+offset_left = 0.0399933
+offset_top = 0.0319998
+offset_right = -45.534
+offset_bottom = 0.0479965
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("6_p412q")
+theme_override_font_sizes/font_size = 30
+text = "Upgrade Kwitis"
+
+[node name="Description" type="Label" parent="UI/Kwitis/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.287
+anchor_right = 0.868
+anchor_bottom = 0.574
+offset_left = 0.00508881
+offset_top = -0.0229912
+offset_right = 0.145844
+offset_bottom = -0.0459824
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Increases explosive power, blast radius, and reload speed, dealing greater damage to enemy forces."
+autowrap_mode = 3
+
+[node name="resourceAmount" type="Panel" parent="UI/Kwitis/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.356
+anchor_top = 0.705
+anchor_right = 0.731
+anchor_bottom = 1.0
+offset_left = -0.161362
+offset_top = 0.0550156
+offset_right = 0.15741
+offset_bottom = 2.00003
+theme_override_styles/panel = SubResource("StyleBoxFlat_kv0b1")
+
+[node name="stone" type="TextureRect" parent="UI/Kwitis/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.235
+anchor_right = 0.217
+anchor_bottom = 0.691
+offset_left = 0.0649996
+offset_top = 0.0199986
+offset_right = -0.0890007
+offset_bottom = 0.0119972
+texture = ExtResource("9_c1yhq")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="UI/Kwitis/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.221
+anchor_right = 0.682
+anchor_bottom = 0.735
+offset_left = -0.0190048
+offset_top = -0.0280008
+offset_right = 0.0059967
+offset_bottom = 0.0200005
+texture = ExtResource("10_daym3")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="UI/Kwitis/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.206
+anchor_right = 0.424
+anchor_bottom = 0.721
+offset_left = -0.0800018
+offset_top = -0.00800133
+offset_right = -0.00800323
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("6_p412q")
+theme_override_font_sizes/font_size = 17
+text = "250"
+
+[node name="woodAmount" type="Label" parent="UI/Kwitis/upgrade/upgradePanel/resourceAmount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.71
+anchor_top = 0.206
+anchor_right = 0.894
+anchor_bottom = 0.721
+offset_left = -0.0700073
+offset_top = -0.00800133
+offset_right = 0.00198364
+offset_bottom = -0.0279999
+theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
+theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("6_p412q")
+theme_override_font_sizes/font_size = 17
+text = "300
+"
+
+[node name="upgradeButton" type="TextureButton" parent="UI/Kwitis/upgrade/upgradePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.738
+anchor_top = 0.65
+anchor_right = 0.958
+anchor_bottom = 0.93
+offset_left = -0.18396
+offset_top = 0.0999908
+offset_right = -0.143982
+offset_bottom = 0.019989
+texture_normal = ExtResource("11_lvefd")
+stretch_mode = 0
 
 [connection signal="input_event" from="Area3D" to="." method="clicked_building"]
