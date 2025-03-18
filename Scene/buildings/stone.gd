@@ -49,7 +49,7 @@ func find_nearest_miner(ref_pos):
 	var nearest_miner: Node3D = null
 	var shortest_distance: float = INF
 
-	for miner in get_tree().get_nodes_in_group("Pandays"):
+	for miner in get_tree().get_nodes_in_group("Sibilyan"):
 		var distance = ref_pos.distance_to(miner.global_transform.origin)
 		if distance < shortest_distance:
 			shortest_distance = distance
