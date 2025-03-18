@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://d4nb8cjrspohc"]
+[gd_scene load_steps=51 format=3 uid="uid://d4nb8cjrspohc"]
 
 [ext_resource type="Script" path="res://Script/attack scripts/Attack.gd" id="1_shcpm"]
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
@@ -6,6 +6,8 @@
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_mlhjp"]
 [ext_resource type="Texture2D" uid="uid://b8dfdjsg6pnh3" path="res://assets/buildings/unlocked/1.png" id="4_yic6l"]
 [ext_resource type="Texture2D" uid="uid://dgjsl0syl3n2v" path="res://assets/buildings/unlocked/2.png" id="5_bnhwa"]
+[ext_resource type="Texture2D" uid="uid://rrmp8vesjab7" path="res://assets/button/buildButton.png" id="5_vlm0h"]
+[ext_resource type="Texture2D" uid="uid://cbe6lxhtyrt6w" path="res://assets/button/attackButton.png" id="6_p1gi5"]
 [ext_resource type="Texture2D" uid="uid://dniquwdp87ofk" path="res://assets/buildings/unlocked/3.png" id="6_vihmr"]
 [ext_resource type="Texture2D" uid="uid://dbb728rdx8d4l" path="res://assets/buildings/unlocked/5.png" id="7_fy0qb"]
 [ext_resource type="Texture2D" uid="uid://bhtyn7rl65c42" path="res://assets/buildings/unlocked/4.png" id="8_eruqp"]
@@ -35,128 +37,6 @@
 [ext_resource type="Texture2D" uid="uid://t3odoxbrqmw8" path="res://assets/BuildingsRawPics/10.png" id="33_ggwh2"]
 [ext_resource type="Texture2D" uid="uid://bi0ah5owynja6" path="res://assets/BuildingsRawPics/11.png" id="34_me38f"]
 [ext_resource type="Texture2D" uid="uid://brmyn30fd8jqn" path="res://assets/BuildingsRawPics/3.png" id="35_u3j3a"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtsk4"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.266667, 0.137255, 0.0588235, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-shadow_color = Color(0.698039, 0.588235, 0.309804, 0.6)
-shadow_size = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n67ky"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.266667, 0.137255, 0.0588235, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-shadow_color = Color(0.698039, 0.588235, 0.309804, 0.6)
-shadow_size = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nftat"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.266667, 0.137255, 0.0588235, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5bw3"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-shadow_color = Color(0.698039, 0.588235, 0.309804, 0.6)
-shadow_size = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_je6kh"]
-bg_color = Color(0.683579, 0.498823, 0.20816, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.266667, 0.137255, 0.0588235, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-shadow_color = Color(0.698139, 0.589152, 0.308484, 0.6)
-shadow_size = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6myes"]
-bg_color = Color(0.721569, 0.447059, 0.968627, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-shadow_color = Color(1, 0.211765, 0.160784, 0.6)
-shadow_size = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lo67v"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.266667, 0.137255, 0.0588235, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-shadow_color = Color(1, 0.211765, 0.160784, 0.6)
-shadow_size = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edsjt"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.266667, 0.137255, 0.0588235, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-shadow_color = Color(1, 0.211765, 0.160784, 0.6)
-shadow_size = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gr1ie"]
-bg_color = Color(0.764882, 0.18117, 0.15977, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.26777, 0.138217, 0.0582334, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-shadow_color = Color(0.999762, 0.213227, 0.160167, 0.6)
-shadow_size = 4
 
 [sub_resource type="Theme" id="Theme_1ed3j"]
 
@@ -290,59 +170,35 @@ script = ExtResource("1_soyno")
 [node name="Build" type="Node3D" parent="." node_paths=PackedStringArray("hbox", "build_button", "attack_button", "build_panel")]
 script = ExtResource("16_mvi3c")
 hbox = NodePath("../BuildInventoryPanel/HScrollContainer/HBoxContainer")
-build_button = NodePath("../BuildButton")
-attack_button = NodePath("../AttackButton")
+build_button = NodePath("")
+attack_button = NodePath("")
 build_panel = NodePath("../BuildInventoryPanel")
 building_dict = ExtResource("3_lca32")
 
 [node name="Attack" type="Node" parent="."]
 script = ExtResource("1_shcpm")
 
-[node name="BuildButton" type="Button" parent="."]
+[node name="BuildButton" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 26.0
-anchor_top = 15.25
-anchor_right = 31.65
-anchor_bottom = 17.274
+anchor_left = 26.625
+anchor_top = 14.4
+anchor_right = 31.375
+anchor_bottom = 17.475
 offset_left = -0.00012207
-offset_top = -6.10352e-05
-offset_bottom = 16.04
-theme_override_colors/font_hover_pressed_color = Color(0.682353, 0.498039, 0.207843, 1)
-theme_override_colors/font_hover_color = Color(0.682353, 0.498039, 0.207843, 1)
-theme_override_colors/font_pressed_color = Color(0.682353, 0.498039, 0.207843, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/focus = SubResource("StyleBoxFlat_wtsk4")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_n67ky")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nftat")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o5bw3")
-theme_override_styles/normal = SubResource("StyleBoxFlat_je6kh")
-text = "BUILD"
+offset_right = 4.99988
+texture_normal = ExtResource("5_vlm0h")
+stretch_mode = 0
 
-[node name="AttackButton" type="Button" parent="."]
+[node name="AttackButton" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 15.35
-anchor_right = 5.975
-anchor_bottom = 17.65
-offset_left = -4.0
-offset_top = -8.0
-offset_right = -1.52588e-05
-offset_bottom = -6.10352e-05
-theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/focus = SubResource("StyleBoxFlat_6myes")
-theme_override_styles/hover = SubResource("StyleBoxFlat_lo67v")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_edsjt")
-theme_override_styles/normal = SubResource("StyleBoxFlat_gr1ie")
-text = "Attack"
+anchor_left = 0.925
+anchor_top = 14.775
+anchor_right = 5.175
+anchor_bottom = 17.625
+texture_normal = ExtResource("6_p1gi5")
+stretch_mode = 0
 
 [node name="BuildInventoryPanel" type="Panel" parent="."]
 visible = false

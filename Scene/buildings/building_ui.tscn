@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ds5tkv0ru6erq"]
+[gd_scene load_steps=40 format=3 uid="uid://ds5tkv0ru6erq"]
 
 [ext_resource type="Script" path="res://Script/building scripts/building_ui.gd" id="1_qycyr"]
 [ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="2_hcgxw"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://4k34udy14ee8" path="res://assets/Almanac/Allyunlocked/Sibilyan.png" id="8_sxhp3"]
 [ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="9_gdbxm"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="9_u6gk8"]
+[ext_resource type="Texture2D" uid="uid://b0sop4onfphy8" path="res://assets/button/upgradeButton.png" id="10_4ir5q"]
 [ext_resource type="Texture2D" uid="uid://cn66uvxh4adkn" path="res://assets/game/foodIcon.png" id="10_vmm4l"]
 [ext_resource type="Texture2D" uid="uid://mwe4idbjnfn4" path="res://assets/button/manageTroops.png" id="11_cvkax"]
 [ext_resource type="Texture2D" uid="uid://dvmsmlpomaddt" path="res://assets/button/manageTroopsClicked.png" id="12_omscq"]
@@ -26,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bnyqver56hpka" path="res://assets/button/harvestClicked.png" id="18_b8aat"]
 [ext_resource type="Texture2D" uid="uid://drfobag0b8rrn" path="res://assets/BuildingsRawPics/4.png" id="21_heg0l"]
 [ext_resource type="Texture2D" uid="uid://du3ak2u2td01c" path="res://assets/BuildingsRawPics/6.png" id="24_btk8u"]
+[ext_resource type="Texture2D" uid="uid://c6m00i06ribbr" path="res://assets/game/trainingIcon.png" id="25_1xau3"]
 [ext_resource type="Texture2D" uid="uid://d0evviqd01egj" path="res://assets/BuildingsRawPics/8.png" id="25_ad73c"]
 [ext_resource type="Texture2D" uid="uid://t3odoxbrqmw8" path="res://assets/BuildingsRawPics/10.png" id="26_b80y7"]
 [ext_resource type="Texture2D" uid="uid://bi0ah5owynja6" path="res://assets/BuildingsRawPics/11.png" id="29_mae0r"]
@@ -49,6 +51,21 @@ shadow_size = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wh7x"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhd86"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhim5"]
 bg_color = Color(1, 1, 1, 1)
@@ -78,20 +95,18 @@ corner_radius_bottom_left = 50
 shadow_color = Color(0.999762, 0.213227, 0.160167, 0.6)
 shadow_size = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhd86"]
-bg_color = Color(0.919668, 0.878001, 0.698229, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.920885, 0.723552, 0.515144, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3csb"]
+bg_color = Color(0.812499, 0.0518025, 0.119025, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
 border_blend = true
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
-shadow_size = 6
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="buildingUI" type="Control"]
 layout_mode = 3
@@ -125,14 +140,14 @@ texture_pressed = ExtResource("3_81bm4")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -1.849
-anchor_top = -8.358
-anchor_right = 5.226
-anchor_bottom = -5.962
-offset_left = -0.00293732
-offset_top = -0.0259705
-offset_right = 0.0220337
-offset_bottom = -0.0139771
+anchor_left = -3.736
+anchor_top = -9.736
+anchor_right = 6.981
+anchor_bottom = -4.34
+offset_left = 0.00799561
+offset_top = 0.00799561
+offset_right = 0.00698853
+offset_bottom = 0.0200043
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="TextureRect" type="TextureRect" parent="Kubo/viewInformation/InformationPanel"]
@@ -152,36 +167,37 @@ expand_mode = 2
 [node name="title" type="Label" parent="Kubo/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.772
-anchor_bottom = 0.238
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -0.103943
-offset_bottom = -0.436003
+anchor_left = 0.445
+anchor_top = 0.052
+anchor_right = 0.865
+anchor_bottom = 0.257
+offset_left = 0.240036
+offset_top = 0.128007
+offset_right = 0.0960693
+offset_bottom = 0.0400009
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Kubo"
 
 [node name="Description" type="Label" parent="Kubo/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.357
-anchor_top = 0.287
-anchor_right = 0.852
-anchor_bottom = 0.574
-offset_left = 0.00508118
-offset_top = -0.0229912
-offset_right = 0.145813
-offset_bottom = -0.0459824
+anchor_left = 0.433
+anchor_top = 0.262
+anchor_right = 0.972
+anchor_bottom = 0.948
+offset_left = 0.0560455
+offset_top = -0.932007
+offset_right = 1.90405
+offset_bottom = -0.128021
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "The source of all Sibilyan (villagers). A humble yet vital dwelling for the village’s master builders. These skilled craftsmen construct and upgrade buildings, ensuring the village thrives and withstands enemy sieges."
+autowrap_mode = 2
 
 [node name="upgrade" type="TextureButton" parent="Kubo"]
 layout_mode = 2
@@ -192,14 +208,14 @@ texture_pressed = ExtResource("5_phpak")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -3.255
-anchor_top = -7.377
-anchor_right = 3.474
-anchor_bottom = -4.981
-offset_left = 0.00497437
-offset_top = 0.358032
-offset_right = -0.0240784
-offset_bottom = -0.026001
+anchor_left = -5.078
+anchor_top = -9.736
+anchor_right = 6.02
+anchor_bottom = -4.34
+offset_left = -0.0220032
+offset_top = 0.00799561
+offset_right = -0.0200195
+offset_bottom = 0.0200043
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="upgradeDesign" type="TextureRect" parent="Kubo/upgrade/upgradePanel"]
@@ -221,32 +237,33 @@ anchor_left = 0.352
 anchor_top = 0.031
 anchor_right = 0.749
 anchor_bottom = 0.234
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = 0.10498
-offset_bottom = 0.0479965
+offset_left = -3.136
+offset_top = -1.425
+offset_right = -3.07101
+offset_bottom = -1.409
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Upgrade Kubo"
 
 [node name="Description" type="Label" parent="Kubo/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.373
-anchor_top = 0.287
-anchor_right = 0.868
-anchor_bottom = 0.574
-offset_left = 0.00508881
-offset_top = -0.0229912
-offset_right = 0.145844
-offset_bottom = -0.0459824
+anchor_left = 0.325
+anchor_top = 0.24
+anchor_right = 0.95
+anchor_bottom = 0.897
+offset_left = 0.149994
+offset_top = 1.14441e-05
+offset_right = -0.100006
+offset_bottom = 2.02501
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "Enhances the village’s overall stability and unlocks new buildings, defenses, and troop levels. Higher levels increase hit points and improve resource capacity."
+autowrap_mode = 3
 
 [node name="resourceAmount" type="Panel" parent="Kubo/upgrade/upgradePanel"]
 layout_mode = 1
@@ -264,14 +281,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4wh7x")
 [node name="stone" type="TextureRect" parent="Kubo/upgrade/upgradePanel/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.055
-anchor_top = 0.235
-anchor_right = 0.217
-anchor_bottom = 0.691
-offset_left = 0.0649996
-offset_top = 0.0199986
-offset_right = -0.0890007
-offset_bottom = 0.0119972
+anchor_left = -0.016
+anchor_top = 0.242
+anchor_right = 0.146
+anchor_bottom = 0.686
+offset_left = 0.0664999
+offset_top = -0.0204773
+offset_right = -0.0875053
+offset_bottom = 1.00022
 texture = ExtResource("8_7efo6")
 expand_mode = 1
 
@@ -292,14 +309,14 @@ expand_mode = 1
 [node name="stoneAmount" type="Label" parent="Kubo/upgrade/upgradePanel/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.24
-anchor_top = 0.206
-anchor_right = 0.424
-anchor_bottom = 0.721
-offset_left = -0.0800018
-offset_top = -0.00800133
-offset_right = -0.00800323
-offset_bottom = -0.0279999
+anchor_left = 0.212
+anchor_top = 0.268
+anchor_right = 0.395
+anchor_bottom = 0.583
+offset_left = 2.93542
+offset_top = 3.0257
+offset_right = 3.03533
+offset_bottom = 3.02232
 theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
 theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
 theme_override_constants/line_spacing = 1
@@ -308,20 +325,20 @@ theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 1
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 20
 text = "250"
 
 [node name="woodAmount" type="Label" parent="Kubo/upgrade/upgradePanel/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.71
-anchor_top = 0.206
+anchor_left = 0.732
+anchor_top = 0.288
 anchor_right = 0.894
-anchor_bottom = 0.721
-offset_left = -0.0700073
-offset_top = -0.00800133
-offset_right = 0.00198364
-offset_bottom = -0.0279999
+anchor_bottom = 0.673
+offset_left = 0.0650482
+offset_top = 0.0361729
+offset_right = 4.62892
+offset_bottom = 0.0320435
 theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
 theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
 theme_override_constants/line_spacing = 1
@@ -330,30 +347,23 @@ theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 1
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 20
 text = "300
 "
 
-[node name="upgradeButton" type="Button" parent="Kubo/upgrade/upgradePanel"]
+[node name="upgradeButton" type="TextureButton" parent="Kubo/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.737
-anchor_top = 0.713
-anchor_right = 1.0
-anchor_bottom = 0.946
-offset_left = 0.098465
-offset_top = 0.0230179
-offset_right = -4.14996
-offset_bottom = -0.0339737
-theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 17
-theme_override_styles/hover = SubResource("StyleBoxFlat_yhim5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ixepr")
-text = "Upgrade"
+anchor_left = 0.76
+anchor_top = 0.643
+anchor_right = 0.952
+anchor_bottom = 0.944
+offset_left = -0.159973
+offset_top = 0.102005
+offset_right = 0.16803
+offset_bottom = 0.0159912
+texture_normal = ExtResource("10_4ir5q")
+stretch_mode = 0
 
 [node name="generateCivilian" type="TextureButton" parent="Kubo"]
 layout_mode = 2
@@ -364,14 +374,14 @@ texture_pressed = ExtResource("7_sjve1")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -4.644
-anchor_top = -7.574
-anchor_right = 3.333
-anchor_bottom = -5.204
-offset_left = 42.98
-offset_top = -0.0039978
-offset_right = 39.015
-offset_bottom = 0.0159912
+anchor_left = -7.089
+anchor_top = -9.755
+anchor_right = 5.489
+anchor_bottom = -4.434
+offset_left = -0.994995
+offset_top = -3.98499
+offset_right = -0.00502014
+offset_bottom = 0.0019989
 theme_override_styles/panel = SubResource("StyleBoxFlat_mhd86")
 
 [node name="civilianImg" type="TextureRect" parent="Kubo/generateCivilian/Panel"]
@@ -391,20 +401,20 @@ expand_mode = 2
 [node name="title" type="Label" parent="Kubo/generateCivilian/Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.749
-anchor_bottom = 0.234
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = 0.10498
-offset_bottom = 0.0479984
+anchor_left = 0.5
+anchor_top = 0.035
+anchor_right = 0.9
+anchor_bottom = 0.238
+offset_left = 1.50009
+offset_top = -0.0100031
+offset_right = -0.135925
+offset_bottom = 0.00598907
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Generate Civilian"
 
 [node name="current" type="Label" parent="Kubo/generateCivilian/Panel"]
@@ -414,10 +424,10 @@ anchor_left = 0.786
 anchor_top = 0.062
 anchor_right = 0.963
 anchor_bottom = 0.219
-offset_left = -0.0299988
-offset_top = 0.0639997
-offset_right = 0.134979
-offset_bottom = -0.0320015
+offset_left = 2.33804
+offset_top = 48.268
+offset_right = 2.50299
+offset_bottom = 48.172
 theme_override_colors/font_color = Color(0.371496, 0.2269, 4.81308e-08, 1)
 theme_override_colors/font_shadow_color = Color(0.176419, 0.176419, 0.176419, 1)
 theme_override_colors/font_outline_color = Color(0.842407, 0.700941, 0.483231, 1)
@@ -425,19 +435,20 @@ theme_override_constants/line_spacing = 0
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 20
 text = "Current: 0"
 
 [node name="max" type="Label" parent="Kubo/generateCivilian/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.806
-anchor_top = 0.219
-anchor_right = 0.983
-anchor_bottom = 0.375
-offset_left = -0.130005
-offset_top = -0.0320015
-offset_right = 0.0349731
+anchor_top = 0.395
+anchor_right = 0.982
+anchor_bottom = 0.551
+offset_left = -1.00195
+offset_top = 0.0300064
+offset_right = -0.27002
+offset_bottom = 0.0620117
 theme_override_colors/font_color = Color(0.371496, 0.2269, 4.81308e-08, 1)
 theme_override_colors/font_shadow_color = Color(0.176419, 0.176419, 0.176419, 1)
 theme_override_colors/font_outline_color = Color(0.842407, 0.700941, 0.483231, 1)
@@ -445,26 +456,26 @@ theme_override_constants/line_spacing = 0
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 20
 text = "Max: 3"
 
 [node name="Button" type="Button" parent="Kubo/generateCivilian/Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.623
-anchor_top = 0.602
-anchor_right = 0.972
-anchor_bottom = 0.937
-offset_left = -0.165009
-offset_top = -0.0560074
-offset_right = -0.0600281
-offset_bottom = 0.0639954
+anchor_left = 0.522
+anchor_top = 0.612
+anchor_right = 0.871
+anchor_bottom = 0.947
+offset_left = 0.0260925
+offset_top = -0.0319977
+offset_right = 0.131012
+offset_bottom = 0.0880127
 theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
 theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
 theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 theme_override_styles/hover = SubResource("StyleBoxFlat_yhim5")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ixepr")
 text = "Add Civilian"
@@ -472,47 +483,47 @@ text = "Add Civilian"
 [node name="TextureRect" type="TextureRect" parent="Kubo/generateCivilian/Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.346
-anchor_top = 0.602
-anchor_right = 0.431
-anchor_bottom = 0.859
-offset_left = 0.169998
-offset_top = 0.943993
-offset_right = -0.00500488
-offset_bottom = 0.0479965
+anchor_left = 0.455
+anchor_top = 0.241
+anchor_right = 0.571
+anchor_bottom = 0.497
+offset_left = 0.0150452
+offset_top = 0.0739975
+offset_right = 0.243042
+offset_bottom = -0.141998
 texture = ExtResource("10_vmm4l")
 expand_mode = 1
 
 [node name="foodAmount" type="Label" parent="Kubo/generateCivilian/Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.445
-anchor_top = 0.648
-anchor_right = 0.524
-anchor_bottom = 0.844
-offset_left = 0.0249939
-offset_top = 0.0559998
-offset_right = -0.0200195
-offset_bottom = -0.0320053
+anchor_left = 0.601
+anchor_top = 0.318
+anchor_right = 0.681
+anchor_bottom = 0.451
+offset_left = 0.233032
+offset_top = 0.0519943
+offset_right = -0.127014
+offset_bottom = 0.0139923
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.886262, 0.886261, 0.886262, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "60"
 
 [node name="Malacadabra" type="HBoxContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.47
-anchor_top = 0.883
-anchor_right = 0.56
+anchor_left = 0.41
+anchor_top = 0.889
+anchor_right = 0.501
 anchor_bottom = 0.958
-offset_left = -0.600037
-offset_top = 0.23999
-offset_right = 0.200012
+offset_left = 0.19989
+offset_top = -0.0800171
+offset_right = -0.28009
 offset_bottom = 0.239929
 theme_override_constants/separation = 10
 
@@ -525,14 +536,13 @@ texture_pressed = ExtResource("3_81bm4")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -1.849
-anchor_top = -8.358
-anchor_right = 5.226
-anchor_bottom = -5.962
-offset_left = -0.00293732
-offset_top = -0.0259705
-offset_right = 0.0220337
-offset_bottom = -0.0139771
+anchor_left = -3.698
+anchor_top = -10.3
+anchor_right = 7.019
+anchor_bottom = -4.58
+offset_left = -0.00593567
+offset_right = -0.00695801
+offset_bottom = 1.52588e-05
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="TextureRect" type="TextureRect" parent="Malacadabra/viewInformation/InformationPanel"]
@@ -552,36 +562,37 @@ expand_mode = 2
 [node name="title" type="Label" parent="Malacadabra/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.772
-anchor_bottom = 0.238
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -0.103943
-offset_bottom = -0.436003
+anchor_left = 0.501
+anchor_top = 0.032
+anchor_right = 0.921
+anchor_bottom = 0.225
+offset_left = -0.0629578
+offset_top = -0.0879955
+offset_right = -0.122986
+offset_bottom = -0.125999
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Malacadabra"
 
 [node name="Description" type="Label" parent="Malacadabra/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.357
-anchor_top = 0.287
-anchor_right = 0.852
-anchor_bottom = 0.574
-offset_left = 0.00508118
-offset_top = -0.0229912
-offset_right = 0.145813
-offset_bottom = -0.0459824
+anchor_left = 0.478
+anchor_top = 0.239
+anchor_right = 0.973
+anchor_bottom = 0.827
+offset_left = -0.113922
+offset_top = 0.124001
+offset_right = 0.0267944
+offset_bottom = 0.105972
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "The heart of the village This mystical structure radiates power, guiding the community’s growth and prosperity. Defend it at all costs!"
+autowrap_mode = 3
 
 [node name="upgrade" type="TextureButton" parent="Malacadabra"]
 layout_mode = 2
@@ -592,14 +603,13 @@ texture_pressed = ExtResource("5_phpak")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -3.255
-anchor_top = -7.377
-anchor_right = 3.474
-anchor_bottom = -4.981
-offset_left = 0.00497437
-offset_top = 0.358032
-offset_right = -0.0240784
-offset_bottom = -0.026001
+anchor_left = -5.059
+anchor_top = -10.34
+anchor_right = 6.078
+anchor_bottom = -4.62
+offset_left = 0.00906372
+offset_right = 0.0220642
+offset_bottom = 1.52588e-05
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="upgradeDesign" type="TextureRect" parent="Malacadabra/upgrade/upgradePanel"]
@@ -630,7 +640,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Upgrade Malacadabra"
 
 [node name="Description" type="Label" parent="Malacadabra/upgrade/upgradePanel"]
@@ -638,15 +648,16 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.373
 anchor_top = 0.287
-anchor_right = 0.868
-anchor_bottom = 0.574
-offset_left = 0.00508881
-offset_top = -0.0229912
-offset_right = 0.145844
-offset_bottom = -0.0459824
+anchor_right = 0.929
+anchor_bottom = 0.744
+offset_left = 0.125
+offset_top = -0.502998
+offset_right = 0.0960083
+offset_bottom = -0.115997
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
-text = "description"
+text = "Enhances the village’s overall stability and unlocks new buildings, defenses, and troop levels. Higher levels increase hit points and improve resource capacity."
+autowrap_mode = 3
 
 [node name="resourceAmount" type="Panel" parent="Malacadabra/upgrade/upgradePanel"]
 layout_mode = 1
@@ -678,28 +689,28 @@ expand_mode = 1
 [node name="wood" type="TextureRect" parent="Malacadabra/upgrade/upgradePanel/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.507
+anchor_left = 0.434
 anchor_top = 0.221
-anchor_right = 0.682
-anchor_bottom = 0.735
-offset_left = -0.0190048
-offset_top = -0.0280008
-offset_right = 0.0059967
-offset_bottom = 0.0200005
+anchor_right = 0.658
+anchor_bottom = 0.749
+offset_left = 0.0706482
+offset_top = 0.119967
+offset_right = -0.37677
+offset_bottom = 0.0129242
 texture = ExtResource("9_gdbxm")
 expand_mode = 1
 
 [node name="stoneAmount" type="Label" parent="Malacadabra/upgrade/upgradePanel/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.24
-anchor_top = 0.206
+anchor_left = 0.247
+anchor_top = 0.344
 anchor_right = 0.424
-anchor_bottom = 0.721
-offset_left = -0.0800018
-offset_top = -0.00800133
-offset_right = -0.00800323
-offset_bottom = -0.0279999
+anchor_bottom = 0.672
+offset_left = 0.0582047
+offset_top = 0.0420685
+offset_right = 1.56628
+offset_bottom = 0.0210228
 theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
 theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
 theme_override_constants/line_spacing = 1
@@ -714,14 +725,14 @@ text = "250"
 [node name="woodAmount" type="Label" parent="Malacadabra/upgrade/upgradePanel/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.71
-anchor_top = 0.206
-anchor_right = 0.894
-anchor_bottom = 0.721
-offset_left = -0.0700073
-offset_top = -0.00800133
-offset_right = 0.00198364
-offset_bottom = -0.0279999
+anchor_left = 0.708
+anchor_top = 0.339
+anchor_right = 0.892
+anchor_bottom = 0.609
+offset_left = 0.0323029
+offset_top = 0.0392265
+offset_right = 0.0576477
+offset_bottom = -0.0268784
 theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
 theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
 theme_override_constants/line_spacing = 1
@@ -734,26 +745,19 @@ theme_override_font_sizes/font_size = 17
 text = "300
 "
 
-[node name="upgradeButton" type="Button" parent="Malacadabra/upgrade/upgradePanel"]
+[node name="upgradeButton" type="TextureButton" parent="Malacadabra/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.737
-anchor_top = 0.713
-anchor_right = 1.0
-anchor_bottom = 0.946
-offset_left = 0.098465
-offset_top = 0.0230179
-offset_right = -4.14996
-offset_bottom = -0.0339737
-theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 17
-theme_override_styles/hover = SubResource("StyleBoxFlat_yhim5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ixepr")
-text = "Upgrade"
+anchor_left = 0.738
+anchor_top = 0.65
+anchor_right = 0.958
+anchor_bottom = 0.93
+offset_left = -0.18396
+offset_top = 0.0999908
+offset_right = -0.143982
+offset_bottom = 0.019989
+texture_normal = ExtResource("10_4ir5q")
+stretch_mode = 0
 
 [node name="Kampo" type="HBoxContainer" parent="."]
 visible = false
@@ -778,14 +782,14 @@ texture_pressed = ExtResource("3_81bm4")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -1.849
-anchor_top = -8.358
-anchor_right = 5.226
-anchor_bottom = -5.962
-offset_left = -0.00293732
-offset_top = -0.0259705
-offset_right = 0.0220337
-offset_bottom = -0.0139771
+anchor_left = -3.717
+anchor_top = -9.774
+anchor_right = 6.925
+anchor_bottom = -4.377
+offset_left = 0.00100708
+offset_top = 0.0220337
+offset_right = 3.97498
+offset_bottom = -0.0189819
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="TextureRect" type="TextureRect" parent="Kampo/viewInformation/InformationPanel"]
@@ -805,36 +809,37 @@ expand_mode = 2
 [node name="title" type="Label" parent="Kampo/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.772
-anchor_bottom = 0.238
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -0.103943
-offset_bottom = -0.436003
+anchor_left = 0.462
+anchor_top = 0.071
+anchor_right = 0.882
+anchor_bottom = 0.277
+offset_left = 0.204041
+offset_top = 0.0490036
+offset_right = 0.0601196
+offset_bottom = -0.138008
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Kampo"
 
 [node name="Description" type="Label" parent="Kampo/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.357
-anchor_top = 0.287
-anchor_right = 0.852
-anchor_bottom = 0.574
-offset_left = 0.00508118
-offset_top = -0.0229912
-offset_right = 0.145813
-offset_bottom = -0.0459824
+anchor_left = 0.457
+anchor_top = 0.306
+anchor_right = 0.952
+anchor_bottom = 0.74
+offset_left = -0.00593567
+offset_top = 0.0139923
+offset_right = 0.134766
+offset_bottom = 0.0599976
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "A fortified ground where trained warriors gather, awaiting the call to battle. It serves as the rallying point for your forces before they march to reclaim the land."
+autowrap_mode = 3
 
 [node name="upgrade" type="TextureButton" parent="Kampo"]
 layout_mode = 2
@@ -845,14 +850,14 @@ texture_pressed = ExtResource("5_phpak")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -3.255
-anchor_top = -7.377
-anchor_right = 3.474
-anchor_bottom = -4.981
-offset_left = 0.00500488
-offset_top = -7.01898
-offset_right = 69.826
-offset_bottom = -13.007
+anchor_left = -5.059
+anchor_top = -9.83
+anchor_right = 5.941
+anchor_bottom = -4.321
+offset_left = 0.00900269
+offset_top = -0.00994873
+offset_right = 7.00897
+offset_bottom = -5.987
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="upgradeDesign" type="TextureRect" parent="Kampo/upgrade/upgradePanel"]
@@ -883,7 +888,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Upgrade Kampo"
 
 [node name="Description" type="Label" parent="Kampo/upgrade/upgradePanel"]
@@ -898,8 +903,10 @@ offset_top = -0.0229912
 offset_right = 0.145844
 offset_bottom = -0.0459824
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "Expands troop capacity, allowing you to send larger and stronger forces into battle.
+"
+autowrap_mode = 3
 
 [node name="resourceAmount" type="Panel" parent="Kampo/upgrade/upgradePanel"]
 layout_mode = 1
@@ -945,14 +952,14 @@ expand_mode = 1
 [node name="stoneAmount" type="Label" parent="Kampo/upgrade/upgradePanel/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.24
-anchor_top = 0.206
-anchor_right = 0.424
-anchor_bottom = 0.721
-offset_left = -0.0800018
-offset_top = -0.00800133
-offset_right = -0.00800323
-offset_bottom = -0.0279999
+anchor_left = 0.254
+anchor_top = 0.342
+anchor_right = 0.439
+anchor_bottom = 0.648
+offset_left = -0.0707855
+offset_top = -0.0401115
+offset_right = -0.0491333
+offset_bottom = 0.00587463
 theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
 theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
 theme_override_constants/line_spacing = 1
@@ -967,14 +974,14 @@ text = "250"
 [node name="woodAmount" type="Label" parent="Kampo/upgrade/upgradePanel/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.71
-anchor_top = 0.206
-anchor_right = 0.894
-anchor_bottom = 0.721
-offset_left = -0.0700073
-offset_top = -0.00800133
-offset_right = 0.00198364
-offset_bottom = -0.0279999
+anchor_left = 0.743
+anchor_top = 0.319
+anchor_right = 0.928
+anchor_bottom = 0.591
+offset_left = -0.100037
+offset_top = -0.0141563
+offset_right = -0.0783997
+offset_bottom = 0.026722
 theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
 theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
 theme_override_constants/line_spacing = 1
@@ -987,26 +994,19 @@ theme_override_font_sizes/font_size = 17
 text = "300
 "
 
-[node name="upgradeButton" type="Button" parent="Kampo/upgrade/upgradePanel"]
+[node name="upgradeButton" type="TextureButton" parent="Kampo/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.737
-anchor_top = 0.713
-anchor_right = 1.0
-anchor_bottom = 0.946
-offset_left = 0.098465
-offset_top = 0.0230179
-offset_right = -4.14996
-offset_bottom = -0.0339737
-theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 17
-theme_override_styles/hover = SubResource("StyleBoxFlat_yhim5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ixepr")
-text = "Upgrade"
+anchor_left = 0.738
+anchor_top = 0.65
+anchor_right = 0.958
+anchor_bottom = 0.93
+offset_left = -0.18396
+offset_top = 0.0999908
+offset_right = -0.143982
+offset_bottom = 0.019989
+texture_normal = ExtResource("10_4ir5q")
+stretch_mode = 0
 
 [node name="ManageTroops" type="TextureButton" parent="Kampo"]
 layout_mode = 2
@@ -1017,14 +1017,14 @@ texture_pressed = ExtResource("12_omscq")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -10.333
-anchor_top = -11.472
-anchor_right = 9.745
-anchor_bottom = -0.491
-offset_left = -0.0169067
-offset_top = 0.0159912
-offset_right = 0.00500488
-offset_bottom = 0.0230007
+anchor_left = -6.275
+anchor_top = -9.83
+anchor_right = 4.863
+anchor_bottom = -4.434
+offset_left = 0.0249939
+offset_top = -0.00994873
+offset_right = -0.0130157
+offset_bottom = 0.0019989
 theme_override_styles/panel = SubResource("StyleBoxFlat_mhd86")
 
 [node name="Kawa" type="HBoxContainer" parent="."]
@@ -1050,14 +1050,14 @@ texture_pressed = ExtResource("3_81bm4")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -1.849
-anchor_top = -8.358
-anchor_right = 5.226
-anchor_bottom = -5.962
-offset_left = -0.00293732
-offset_top = -0.0259705
-offset_right = 0.0220337
-offset_bottom = -0.0139771
+anchor_left = -3.717
+anchor_top = -9.736
+anchor_right = 7.0
+anchor_bottom = -4.34
+offset_left = 0.00106812
+offset_top = 0.00799561
+offset_right = 3.05176e-05
+offset_bottom = 0.0200043
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="TextureRect" type="TextureRect" parent="Kawa/viewInformation/InformationPanel"]
@@ -1077,36 +1077,37 @@ expand_mode = 2
 [node name="title" type="Label" parent="Kawa/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.772
-anchor_bottom = 0.238
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -0.103943
-offset_bottom = -0.436003
+anchor_left = 0.463
+anchor_top = 0.035
+anchor_right = 0.883
+anchor_bottom = 0.24
+offset_left = 0.0159912
+offset_top = -0.00999546
+offset_right = -0.12793
+offset_bottom = 0.0940018
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Kawa"
 
 [node name="Description" type="Label" parent="Kawa/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.357
-anchor_top = 0.287
-anchor_right = 0.852
-anchor_bottom = 0.574
-offset_left = 0.00508118
-offset_top = -0.0229912
-offset_right = 0.145813
-offset_bottom = -0.0459824
+anchor_left = 0.456
+anchor_top = 0.308
+anchor_right = 0.951
+anchor_bottom = 0.734
+offset_left = -0.00802612
+offset_top = -0.0880051
+offset_right = 0.13269
+offset_bottom = 0.0759888
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "A sacred forge of arcane energy where potent spells are brewed. Skilled Albularyos and mystics channel ancient magic to empower your army"
+autowrap_mode = 3
 
 [node name="upgrade" type="TextureButton" parent="Kawa"]
 layout_mode = 2
@@ -1117,14 +1118,14 @@ texture_pressed = ExtResource("5_phpak")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -3.255
-anchor_top = -7.377
-anchor_right = 3.474
-anchor_bottom = -4.981
-offset_left = 0.00497437
-offset_top = 0.358032
-offset_right = -0.0240784
-offset_bottom = -0.026001
+anchor_left = -5.078
+anchor_top = -9.736
+anchor_right = 6.059
+anchor_bottom = -4.34
+offset_left = -0.0219421
+offset_top = 0.00799561
+offset_right = -0.00897217
+offset_bottom = 0.0200043
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="upgradeDesign" type="TextureRect" parent="Kawa/upgrade/upgradePanel"]
@@ -1142,36 +1143,37 @@ offset_bottom = -0.00497437
 [node name="title" type="Label" parent="Kawa/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.882
-anchor_bottom = 0.234
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -45.534
-offset_bottom = 0.0479965
+anchor_left = 0.426
+anchor_top = 0.035
+anchor_right = 0.876
+anchor_bottom = 0.238
+offset_left = 0.0319672
+offset_top = -0.00999546
+offset_right = -0.10202
+offset_bottom = 0.0059967
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Upgrade Kawa"
 
 [node name="Description" type="Label" parent="Kawa/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.373
+anchor_left = 0.428
 anchor_top = 0.287
-anchor_right = 0.868
+anchor_right = 0.923
 anchor_bottom = 0.574
-offset_left = 0.00508881
-offset_top = -0.0229912
-offset_right = 0.145844
-offset_bottom = -0.0459824
+offset_left = -0.104004
+offset_top = -0.0820007
+offset_right = 0.0366821
+offset_bottom = -0.104996
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "Unlocks new spells, boosts spell potency, and reduces brewing time."
+autowrap_mode = 3
 
 [node name="resourceAmount" type="Panel" parent="Kawa/upgrade/upgradePanel"]
 layout_mode = 1
@@ -1217,14 +1219,14 @@ expand_mode = 1
 [node name="stoneAmount" type="Label" parent="Kawa/upgrade/upgradePanel/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.24
-anchor_top = 0.206
-anchor_right = 0.424
-anchor_bottom = 0.721
-offset_left = -0.0800018
-offset_top = -0.00800133
-offset_right = -0.00800323
-offset_bottom = -0.0279999
+anchor_left = 0.253
+anchor_top = 0.374
+anchor_right = 0.436
+anchor_bottom = 0.676
+offset_left = -0.0162849
+offset_top = 0.0331841
+offset_right = -0.0536194
+offset_bottom = -0.0339546
 theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
 theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
 theme_override_constants/line_spacing = 1
@@ -1239,14 +1241,14 @@ text = "250"
 [node name="woodAmount" type="Label" parent="Kawa/upgrade/upgradePanel/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.71
-anchor_top = 0.206
-anchor_right = 0.894
-anchor_bottom = 0.721
-offset_left = -0.0700073
-offset_top = -0.00800133
-offset_right = 0.00198364
-offset_bottom = -0.0279999
+anchor_left = 0.741
+anchor_top = 0.336
+anchor_right = 0.924
+anchor_bottom = 0.649
+offset_left = -0.0692291
+offset_top = -0.00184822
+offset_right = -0.106552
+offset_bottom = -0.0184517
 theme_override_colors/font_shadow_color = Color(0.18359, 0.18359, 0.18359, 1)
 theme_override_colors/font_outline_color = Color(0.00580996, 0.00860382, 0.0119471, 1)
 theme_override_constants/line_spacing = 1
@@ -1259,26 +1261,19 @@ theme_override_font_sizes/font_size = 17
 text = "300
 "
 
-[node name="upgradeButton" type="Button" parent="Kawa/upgrade/upgradePanel"]
+[node name="upgradeButton" type="TextureButton" parent="Kawa/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.737
-anchor_top = 0.713
-anchor_right = 1.0
-anchor_bottom = 0.946
-offset_left = 0.098465
-offset_top = 0.0230179
-offset_right = -4.14996
-offset_bottom = -0.0339737
-theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 17
-theme_override_styles/hover = SubResource("StyleBoxFlat_yhim5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ixepr")
-text = "Upgrade"
+anchor_left = 0.738
+anchor_top = 0.65
+anchor_right = 0.958
+anchor_bottom = 0.93
+offset_left = -0.18396
+offset_top = 0.0999908
+offset_right = -0.143982
+offset_bottom = 0.019989
+texture_normal = ExtResource("10_4ir5q")
+stretch_mode = 0
 
 [node name="BrewAndManageSpells" type="TextureButton" parent="Kawa"]
 layout_mode = 2
@@ -1289,15 +1284,93 @@ texture_pressed = ExtResource("14_bestr")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -4.644
-anchor_top = -7.574
-anchor_right = 3.333
-anchor_bottom = -5.204
-offset_left = 3.98
-offset_top = -0.00396729
-offset_right = 0.0149841
-offset_bottom = 0.0160217
+anchor_left = -10.49
+anchor_top = -11.189
+anchor_right = 9.608
+anchor_bottom = -0.358
+offset_left = -0.0098877
+offset_top = 0.0170288
+offset_right = -0.00796509
+offset_bottom = -0.0259991
 theme_override_styles/panel = SubResource("StyleBoxFlat_mhd86")
+
+[node name="troopsPanel" type="Panel" parent="Kawa/BrewAndManageSpells/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.5
+anchor_right = 0.992
+anchor_bottom = 0.984
+offset_left = -0.200001
+offset_top = 2.0
+offset_right = 0.199951
+offset_bottom = 0.18396
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Kawa/BrewAndManageSpells/Panel/troopsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.999
+anchor_bottom = 1.0
+offset_right = 0.00891113
+offset_bottom = -4.0
+
+[node name="trainedTroops" type="Button" parent="Kawa/BrewAndManageSpells/Panel/troopsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.809
+anchor_top = -0.286
+anchor_right = 0.983
+anchor_bottom = -0.054
+offset_left = -0.280945
+offset_top = -0.0639877
+offset_right = 0.153076
+offset_bottom = -0.0959997
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_u6gk8")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_b3csb")
+text = "BOOST"
+
+[node name="trainingPanel" type="Panel" parent="Kawa/BrewAndManageSpells/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.446
+anchor_right = 0.992
+anchor_bottom = 0.984
+offset_left = -0.200001
+offset_top = -248.004
+offset_right = 0.199951
+offset_bottom = -367.816
+
+[node name="trainedTroops" type="Label" parent="Kawa/BrewAndManageSpells/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.076
+anchor_top = 0.376
+anchor_right = 0.179
+anchor_bottom = 0.476
+offset_left = 0.0999985
+offset_top = 0.17601
+offset_right = -0.475006
+offset_bottom = -0.223999
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_u6gk8")
+theme_override_font_sizes/font_size = 45
+text = "0/2"
+
+[node name="TextureRect" type="TextureRect" parent="Kawa/BrewAndManageSpells/Panel"]
+layout_mode = 0
+offset_left = 21.9999
+offset_top = 222.0
+offset_right = 61.9999
+offset_bottom = 262.0
+texture = ExtResource("13_qyd2s")
 
 [node name="Sandatahang Lakas" type="HBoxContainer" parent="."]
 visible = false
@@ -1322,14 +1395,14 @@ texture_pressed = ExtResource("3_81bm4")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -1.849
-anchor_top = -8.358
-anchor_right = 5.226
-anchor_bottom = -5.962
-offset_left = -0.00293732
-offset_top = -0.0259705
-offset_right = 0.0220337
-offset_bottom = -0.0139771
+anchor_left = -3.679
+anchor_top = -9.792
+anchor_right = 7.038
+anchor_bottom = -4.396
+offset_left = -0.0129242
+offset_top = -0.0239868
+offset_right = -0.0139465
+offset_bottom = -0.0119781
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="TextureRect" type="TextureRect" parent="Sandatahang Lakas/viewInformation/InformationPanel"]
@@ -1349,36 +1422,37 @@ expand_mode = 2
 [node name="title" type="Label" parent="Sandatahang Lakas/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.772
-anchor_bottom = 0.238
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -0.103943
-offset_bottom = -0.436003
+anchor_left = 0.456
+anchor_top = 0.028
+anchor_right = 0.876
+anchor_bottom = 0.233
+offset_left = -0.00802612
+offset_top = -0.00799561
+offset_right = -0.151947
+offset_bottom = 0.0960007
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Sandatahang Lakas"
 
 [node name="Description" type="Label" parent="Sandatahang Lakas/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.357
-anchor_top = 0.287
-anchor_right = 0.852
-anchor_bottom = 0.574
-offset_left = 0.00508118
-offset_top = -0.0229912
-offset_right = 0.145813
-offset_bottom = -0.0459824
+anchor_left = 0.454
+anchor_top = 0.28
+anchor_right = 0.949
+anchor_bottom = 0.794
+offset_left = 0.127991
+offset_top = -0.0800018
+offset_right = 0.268677
+offset_bottom = -0.0840149
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "A prestigious training ground where elite warriors hone their skills. Unlocks advanced combat techniques, special abilities, and battle strategies to gain the upper hand against mythical foes."
+autowrap_mode = 3
 
 [node name="upgrade" type="TextureButton" parent="Sandatahang Lakas"]
 layout_mode = 2
@@ -1389,14 +1463,14 @@ texture_pressed = ExtResource("5_phpak")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -3.255
-anchor_top = -7.377
-anchor_right = 3.474
-anchor_bottom = -4.981
-offset_left = 0.00497437
-offset_top = 0.358032
-offset_right = -0.0240784
-offset_bottom = -0.026001
+anchor_left = -5.059
+anchor_top = -9.83
+anchor_right = 6.078
+anchor_bottom = -4.434
+offset_left = 0.00906372
+offset_top = -0.00994873
+offset_right = 0.0220642
+offset_bottom = 0.0019989
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="upgradeDesign" type="TextureRect" parent="Sandatahang Lakas/upgrade/upgradePanel"]
@@ -1427,7 +1501,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 30
 text = "Upgrade Sandatahang Lakas"
 
 [node name="Description" type="Label" parent="Sandatahang Lakas/upgrade/upgradePanel"]
@@ -1435,15 +1509,16 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.373
 anchor_top = 0.287
-anchor_right = 0.868
-anchor_bottom = 0.574
-offset_left = 0.00508881
-offset_top = -0.0229912
-offset_right = 0.145844
-offset_bottom = -0.0459824
+anchor_right = 0.917
+anchor_bottom = 0.612
+offset_left = 0.136002
+offset_top = -0.0820007
+offset_right = 0.143982
+offset_bottom = -0.0320129
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "Grants access to advanced troop training, unlocking powerful skills and strategies for your warriors."
+autowrap_mode = 3
 
 [node name="resourceAmount" type="Panel" parent="Sandatahang Lakas/upgrade/upgradePanel"]
 layout_mode = 1
@@ -1531,26 +1606,19 @@ theme_override_font_sizes/font_size = 17
 text = "300
 "
 
-[node name="upgradeButton" type="Button" parent="Sandatahang Lakas/upgrade/upgradePanel"]
+[node name="upgradeButton" type="TextureButton" parent="Sandatahang Lakas/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.737
-anchor_top = 0.713
-anchor_right = 1.0
-anchor_bottom = 0.946
-offset_left = 0.098465
-offset_top = 0.0230179
-offset_right = -4.14996
-offset_bottom = -0.0339737
-theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 17
-theme_override_styles/hover = SubResource("StyleBoxFlat_yhim5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ixepr")
-text = "Upgrade"
+anchor_left = 0.738
+anchor_top = 0.65
+anchor_right = 0.958
+anchor_bottom = 0.93
+offset_left = -0.18396
+offset_top = 0.0999908
+offset_right = -0.143982
+offset_bottom = 0.019989
+texture_normal = ExtResource("10_4ir5q")
+stretch_mode = 0
 
 [node name="trainTroops" type="TextureButton" parent="Sandatahang Lakas"]
 layout_mode = 2
@@ -1561,28 +1629,106 @@ texture_pressed = ExtResource("16_141cl")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -4.644
-anchor_top = -7.574
-anchor_right = 3.333
-anchor_bottom = -5.204
-offset_left = 3.98
-offset_top = -0.00396729
-offset_right = 0.0149841
-offset_bottom = 0.0160217
+anchor_left = -10.49
+anchor_top = -11.189
+anchor_right = 9.608
+anchor_bottom = -0.358
+offset_left = -0.0098877
+offset_top = 0.0170288
+offset_right = -0.00796509
+offset_bottom = -0.0259991
 theme_override_styles/panel = SubResource("StyleBoxFlat_mhd86")
+
+[node name="troopsPanel" type="Panel" parent="Sandatahang Lakas/trainTroops/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.5
+anchor_right = 0.992
+anchor_bottom = 0.984
+offset_left = -0.200001
+offset_top = 2.0
+offset_right = 0.199951
+offset_bottom = 0.18396
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Sandatahang Lakas/trainTroops/Panel/troopsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.999
+anchor_bottom = 1.0
+offset_right = 0.00891113
+offset_bottom = -4.0
+
+[node name="trainedTroops" type="Button" parent="Sandatahang Lakas/trainTroops/Panel/troopsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.809
+anchor_top = -0.286
+anchor_right = 0.983
+anchor_bottom = -0.054
+offset_left = -0.280945
+offset_top = -0.0639877
+offset_right = 0.153076
+offset_bottom = -0.0959997
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_u6gk8")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_b3csb")
+text = "BOOST"
+
+[node name="trainingPanel" type="Panel" parent="Sandatahang Lakas/trainTroops/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.446
+anchor_right = 0.992
+anchor_bottom = 0.984
+offset_left = -0.200001
+offset_top = -248.004
+offset_right = 0.199951
+offset_bottom = -367.816
+
+[node name="trainedTroops" type="Label" parent="Sandatahang Lakas/trainTroops/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.076
+anchor_top = 0.376
+anchor_right = 0.179
+anchor_bottom = 0.476
+offset_left = 0.0999985
+offset_top = 0.17601
+offset_right = -0.475006
+offset_bottom = -0.223999
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_u6gk8")
+theme_override_font_sizes/font_size = 45
+text = "0/50"
+
+[node name="TextureRect" type="TextureRect" parent="Sandatahang Lakas/trainTroops/Panel"]
+layout_mode = 0
+offset_left = 21.9999
+offset_top = 222.0
+offset_right = 61.9999
+offset_bottom = 262.0
+texture = ExtResource("25_1xau3")
 
 [node name="Estakada" type="HBoxContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.446
+anchor_left = 0.409
 anchor_top = 0.887
-anchor_right = 0.538
+anchor_right = 0.502
 anchor_bottom = 0.962
-offset_left = 0.119934
+offset_left = 0.479919
 offset_top = 0.359985
-offset_right = 0.359863
-offset_bottom = 0.359924
+offset_right = -0.560181
+offset_bottom = 0.359863
 theme_override_constants/separation = 10
 
 [node name="viewInformation" type="TextureButton" parent="Estakada"]
@@ -1594,14 +1740,14 @@ texture_pressed = ExtResource("3_81bm4")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -1.849
-anchor_top = -8.358
-anchor_right = 5.226
-anchor_bottom = -5.962
-offset_left = -0.00293732
-offset_top = -0.0259705
-offset_right = 0.0220337
-offset_bottom = -0.0139771
+anchor_left = -3.66
+anchor_top = -9.717
+anchor_right = 7.057
+anchor_bottom = -4.321
+offset_left = -0.019928
+offset_top = 0.000976563
+offset_right = -0.0209351
+offset_bottom = 0.0130005
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="TextureRect" type="TextureRect" parent="Estakada/viewInformation/InformationPanel"]
@@ -1621,36 +1767,37 @@ expand_mode = 2
 [node name="title" type="Label" parent="Estakada/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.772
-anchor_bottom = 0.238
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -0.103943
-offset_bottom = -0.436003
+anchor_left = 0.488
+anchor_top = 0.049
+anchor_right = 0.907
+anchor_bottom = 0.254
+offset_left = -0.184021
+offset_top = -0.0140038
+offset_right = 0.240051
+offset_bottom = 0.0899887
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Estakada"
 
 [node name="Description" type="Label" parent="Estakada/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.357
-anchor_top = 0.287
-anchor_right = 0.852
-anchor_bottom = 0.574
-offset_left = 0.00508118
-offset_top = -0.0229912
-offset_right = 0.145813
-offset_bottom = -0.0459824
+anchor_left = 0.447
+anchor_top = 0.343
+anchor_right = 0.942
+anchor_bottom = 0.769
+offset_left = 0.104004
+offset_top = -0.0980072
+offset_right = 0.24469
+offset_bottom = -39.875
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "Sturdy defensive barriers built from hardened kawayan and enchanted stone. These walls slow down enemy advances and provide critical protection for the village."
+autowrap_mode = 3
 
 [node name="upgrade" type="TextureButton" parent="Estakada"]
 layout_mode = 2
@@ -1661,14 +1808,14 @@ texture_pressed = ExtResource("5_phpak")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -3.255
-anchor_top = -7.377
-anchor_right = 3.474
-anchor_bottom = -4.981
-offset_left = 0.00497437
-offset_top = 0.358032
-offset_right = -0.0240784
-offset_bottom = -0.026001
+anchor_left = -5.078
+anchor_top = -9.811
+anchor_right = 6.059
+anchor_bottom = -4.377
+offset_left = -0.0219421
+offset_top = 1.98303
+offset_right = -0.00897217
+offset_bottom = -0.0189819
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="upgradeDesign" type="TextureRect" parent="Estakada/upgrade/upgradePanel"]
@@ -1699,7 +1846,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Upgrade Estakada"
 
 [node name="Description" type="Label" parent="Estakada/upgrade/upgradePanel"]
@@ -1714,8 +1861,9 @@ offset_top = -0.0229912
 offset_right = 0.145844
 offset_bottom = -0.0459824
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "Strengthens wall durability, increasing their resistance to enemy attacks. Higher levels offer improved enchantments for added protection."
+autowrap_mode = 3
 
 [node name="resourceAmount" type="Panel" parent="Estakada/upgrade/upgradePanel"]
 layout_mode = 1
@@ -1803,39 +1951,32 @@ theme_override_font_sizes/font_size = 17
 text = "300
 "
 
-[node name="upgradeButton" type="Button" parent="Estakada/upgrade/upgradePanel"]
+[node name="upgradeButton" type="TextureButton" parent="Estakada/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.737
-anchor_top = 0.713
-anchor_right = 1.0
-anchor_bottom = 0.946
-offset_left = 0.098465
-offset_top = 0.0230179
-offset_right = -4.14996
-offset_bottom = -0.0339737
-theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 17
-theme_override_styles/hover = SubResource("StyleBoxFlat_yhim5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ixepr")
-text = "Upgrade"
+anchor_left = 0.738
+anchor_top = 0.65
+anchor_right = 0.958
+anchor_bottom = 0.93
+offset_left = -0.18396
+offset_top = 0.0999908
+offset_right = -0.143982
+offset_bottom = 0.019989
+texture_normal = ExtResource("10_4ir5q")
+stretch_mode = 0
 
 [node name="Kwitis" type="HBoxContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.447
+anchor_left = 0.411
 anchor_top = 0.887
-anchor_right = 0.537
-anchor_bottom = 0.961
-offset_left = -0.160034
-offset_top = -0.640015
-offset_right = 0.640015
-offset_bottom = 0.0799561
+anchor_right = 0.502
+anchor_bottom = 0.962
+offset_left = -0.0800781
+offset_top = 0.359985
+offset_right = -0.560059
+offset_bottom = 0.359924
 theme_override_constants/separation = 10
 
 [node name="viewInformation" type="TextureButton" parent="Kwitis"]
@@ -1847,14 +1988,14 @@ texture_pressed = ExtResource("3_81bm4")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -1.849
-anchor_top = -8.358
-anchor_right = 5.226
-anchor_bottom = -5.962
-offset_left = -0.00293732
-offset_top = -0.0259705
-offset_right = 0.0220337
-offset_bottom = -0.0139771
+anchor_left = -3.717
+anchor_top = -9.519
+anchor_right = 7.0
+anchor_bottom = -4.222
+offset_left = 0.00106812
+offset_top = 0.026001
+offset_right = 3.05176e-05
+offset_bottom = -0.0119934
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="TextureRect" type="TextureRect" parent="Kwitis/viewInformation/InformationPanel"]
@@ -1874,36 +2015,37 @@ expand_mode = 2
 [node name="title" type="Label" parent="Kwitis/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.772
-anchor_bottom = 0.238
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -0.103943
-offset_bottom = -0.436003
+anchor_left = 0.467
+anchor_top = 0.056
+anchor_right = 0.886
+anchor_bottom = 0.261
+offset_left = -0.256012
+offset_top = -0.0160036
+offset_right = 0.16806
+offset_bottom = 0.0879898
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Kwitis"
 
 [node name="Description" type="Label" parent="Kwitis/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.357
-anchor_top = 0.287
-anchor_right = 0.852
-anchor_bottom = 0.574
-offset_left = 0.00508118
-offset_top = -0.0229912
-offset_right = 0.145813
-offset_bottom = -0.0459824
+anchor_left = 0.451
+anchor_top = 0.353
+anchor_right = 0.946
+anchor_bottom = 0.867
+offset_left = -0.16803
+offset_top = 0.0419922
+offset_right = -0.0272827
+offset_bottom = -64.903
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "A towering lookout post that enhances visibility across the battlefield. Guards stationed here provide early warnings of incoming threats, ensuring the village is prepared for any attack."
+autowrap_mode = 3
 
 [node name="upgrade" type="TextureButton" parent="Kwitis"]
 layout_mode = 2
@@ -1914,14 +2056,14 @@ texture_pressed = ExtResource("5_phpak")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -3.255
-anchor_top = -7.377
-anchor_right = 3.474
-anchor_bottom = -4.981
-offset_left = 0.00497437
-offset_top = 0.358032
-offset_right = -0.0240784
-offset_bottom = -0.026001
+anchor_left = -5.078
+anchor_top = -9.537
+anchor_right = 6.059
+anchor_bottom = -4.241
+offset_left = -0.0219421
+offset_top = -0.00195313
+offset_right = -0.00897217
+offset_bottom = 0.0140076
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="upgradeDesign" type="TextureRect" parent="Kwitis/upgrade/upgradePanel"]
@@ -1952,7 +2094,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Upgrade Kwitis"
 
 [node name="Description" type="Label" parent="Kwitis/upgrade/upgradePanel"]
@@ -1967,8 +2109,9 @@ offset_top = -0.0229912
 offset_right = 0.145844
 offset_bottom = -0.0459824
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "Increases explosive power, blast radius, and reload speed, dealing greater damage to enemy forces."
+autowrap_mode = 3
 
 [node name="resourceAmount" type="Panel" parent="Kwitis/upgrade/upgradePanel"]
 layout_mode = 1
@@ -2056,26 +2199,19 @@ theme_override_font_sizes/font_size = 17
 text = "300
 "
 
-[node name="upgradeButton" type="Button" parent="Kwitis/upgrade/upgradePanel"]
+[node name="upgradeButton" type="TextureButton" parent="Kwitis/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.737
-anchor_top = 0.713
-anchor_right = 1.0
-anchor_bottom = 0.946
-offset_left = 0.098465
-offset_top = 0.0230179
-offset_right = -4.14996
-offset_bottom = -0.0339737
-theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 17
-theme_override_styles/hover = SubResource("StyleBoxFlat_yhim5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ixepr")
-text = "Upgrade"
+anchor_left = 0.738
+anchor_top = 0.65
+anchor_right = 0.958
+anchor_bottom = 0.93
+offset_left = -0.18396
+offset_top = 0.0999908
+offset_right = -0.143982
+offset_bottom = 0.019989
+texture_normal = ExtResource("10_4ir5q")
+stretch_mode = 0
 
 [node name="Tanim" type="HBoxContainer" parent="."]
 visible = false
@@ -2100,14 +2236,14 @@ texture_pressed = ExtResource("3_81bm4")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -1.849
-anchor_top = -8.358
-anchor_right = 5.226
-anchor_bottom = -5.962
-offset_left = -0.00293732
-offset_top = -0.0259705
-offset_right = 0.0220337
-offset_bottom = -0.0139771
+anchor_left = -3.698
+anchor_top = -9.698
+anchor_right = 7.019
+anchor_bottom = -4.302
+offset_left = -0.00593567
+offset_top = -0.00598145
+offset_right = -0.00695801
+offset_bottom = 0.0059967
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="TextureRect" type="TextureRect" parent="Tanim/viewInformation/InformationPanel"]
@@ -2127,36 +2263,39 @@ expand_mode = 2
 [node name="title" type="Label" parent="Tanim/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.772
-anchor_bottom = 0.238
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -0.103943
-offset_bottom = -0.436003
+anchor_left = 0.477
+anchor_top = 0.042
+anchor_right = 0.897
+anchor_bottom = 0.247
+offset_left = 0.0639954
+offset_top = -0.0120039
+offset_right = -0.0799255
+offset_bottom = 0.0919876
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Tanim"
 
 [node name="Description" type="Label" parent="Tanim/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.357
-anchor_top = 0.287
-anchor_right = 0.852
-anchor_bottom = 0.574
-offset_left = 0.00508118
-offset_top = -0.0229912
-offset_right = 0.145813
-offset_bottom = -0.0459824
+anchor_left = 0.444
+anchor_top = 0.353
+anchor_right = 0.939
+anchor_bottom = 0.867
+offset_left = -0.192001
+offset_top = 0.0419922
+offset_right = -0.0513306
+offset_bottom = -64.903
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "The lifeline of the community, where fertile fields yield an abundant harvest of food. Essential for feeding both villagers and warriors preparing for battle.
+
+"
+autowrap_mode = 3
 
 [node name="upgrade" type="TextureButton" parent="Tanim"]
 layout_mode = 2
@@ -2167,14 +2306,14 @@ texture_pressed = ExtResource("5_phpak")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -3.255
-anchor_top = -7.377
-anchor_right = 3.474
-anchor_bottom = -4.981
-offset_left = 0.00497437
-offset_top = 0.358032
-offset_right = -0.0240784
-offset_bottom = -0.026001
+anchor_left = -5.098
+anchor_top = -9.736
+anchor_right = 6.039
+anchor_bottom = -4.34
+offset_left = -0.00192261
+offset_top = 0.00799561
+offset_right = 0.0110474
+offset_bottom = 0.0200043
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="upgradeDesign" type="TextureRect" parent="Tanim/upgrade/upgradePanel"]
@@ -2205,7 +2344,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Upgrade Tanim"
 
 [node name="Description" type="Label" parent="Tanim/upgrade/upgradePanel"]
@@ -2220,8 +2359,9 @@ offset_top = -0.0229912
 offset_right = 0.145844
 offset_bottom = -0.0459824
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "Boosts food production rates and storage capacity to sustain your village’s growth and army needs."
+autowrap_mode = 3
 
 [node name="resourceAmount" type="Panel" parent="Tanim/upgrade/upgradePanel"]
 layout_mode = 1
@@ -2309,26 +2449,19 @@ theme_override_font_sizes/font_size = 17
 text = "300
 "
 
-[node name="upgradeButton" type="Button" parent="Tanim/upgrade/upgradePanel"]
+[node name="upgradeButton" type="TextureButton" parent="Tanim/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.737
-anchor_top = 0.713
-anchor_right = 1.0
-anchor_bottom = 0.946
-offset_left = 0.098465
-offset_top = 0.0230179
-offset_right = -4.14996
-offset_bottom = -0.0339737
-theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 17
-theme_override_styles/hover = SubResource("StyleBoxFlat_yhim5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ixepr")
-text = "Upgrade"
+anchor_left = 0.738
+anchor_top = 0.65
+anchor_right = 0.958
+anchor_bottom = 0.93
+offset_left = -0.18396
+offset_top = 0.0999908
+offset_right = -0.143982
+offset_bottom = 0.019989
+texture_normal = ExtResource("10_4ir5q")
+stretch_mode = 0
 
 [node name="Harvest" type="TextureButton" parent="Tanim"]
 layout_mode = 2
@@ -2339,14 +2472,14 @@ texture_pressed = ExtResource("18_b8aat")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.443
-anchor_top = 0.879
-anchor_right = 0.533
-anchor_bottom = 0.954
-offset_left = -0.0400391
-offset_top = 0.119934
-offset_right = -0.240051
-offset_bottom = 0.119934
+anchor_left = 0.41
+anchor_top = 0.886
+anchor_right = 0.5
+anchor_bottom = 0.961
+offset_left = 0.19989
+offset_top = 0.079895
+offset_right = -6.10352e-05
+offset_bottom = 0.079895
 theme_override_constants/separation = 10
 
 [node name="viewInformation" type="TextureButton" parent="Imbakan"]
@@ -2358,14 +2491,14 @@ texture_pressed = ExtResource("3_81bm4")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -1.849
-anchor_top = -8.358
-anchor_right = 5.226
-anchor_bottom = -5.962
-offset_left = -0.00293732
-offset_top = -0.0259705
-offset_right = 0.0220337
-offset_bottom = -0.0139771
+anchor_left = -3.698
+anchor_top = -9.5
+anchor_right = 7.019
+anchor_bottom = -4.204
+offset_left = -0.00593567
+offset_top = 6.10352e-05
+offset_right = -0.00695801
+offset_bottom = 0.0160675
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="TextureRect" type="TextureRect" parent="Imbakan/viewInformation/InformationPanel"]
@@ -2385,36 +2518,37 @@ expand_mode = 2
 [node name="title" type="Label" parent="Imbakan/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.772
-anchor_bottom = 0.238
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -0.103943
-offset_bottom = -0.436003
+anchor_left = 0.472
+anchor_top = 0.035
+anchor_right = 0.892
+anchor_bottom = 0.24
+offset_left = -0.0960083
+offset_top = -0.00999546
+offset_right = -0.239929
+offset_bottom = 0.0940018
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Imbakan"
 
 [node name="Description" type="Label" parent="Imbakan/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.357
-anchor_top = 0.287
-anchor_right = 0.852
-anchor_bottom = 0.574
-offset_left = 0.00508118
-offset_top = -0.0229912
-offset_right = 0.145813
-offset_bottom = -0.0459824
+anchor_left = 0.44
+anchor_top = 0.336
+anchor_right = 0.935
+anchor_bottom = 0.675
+offset_left = 0.0800018
+offset_top = -0.0960083
+offset_right = 0.220703
+offset_bottom = -14.991
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "A well-secured granary where harvested food is stored, preserving supplies to sustain the village during times of war and hardship."
+autowrap_mode = 3
 
 [node name="upgrade" type="TextureButton" parent="Imbakan"]
 layout_mode = 2
@@ -2425,14 +2559,14 @@ texture_pressed = ExtResource("5_phpak")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -3.255
-anchor_top = -7.377
-anchor_right = 3.474
-anchor_bottom = -4.981
-offset_left = 0.00497437
-offset_top = 0.358032
-offset_right = -0.0240784
-offset_bottom = -0.026001
+anchor_left = -5.059
+anchor_top = -9.5
+anchor_right = 6.078
+anchor_bottom = -4.204
+offset_left = 0.00906372
+offset_top = 6.10352e-05
+offset_right = 0.0220642
+offset_bottom = 0.0160675
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="upgradeDesign" type="TextureRect" parent="Imbakan/upgrade/upgradePanel"]
@@ -2450,36 +2584,37 @@ offset_bottom = -0.00497437
 [node name="title" type="Label" parent="Imbakan/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.781
-anchor_bottom = 0.234
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -10.8758
-offset_bottom = 0.0479965
+anchor_left = 0.415
+anchor_top = 0.038
+anchor_right = 0.825
+anchor_bottom = 0.242
+offset_left = 0.279968
+offset_top = 0.132004
+offset_right = 0.156158
+offset_bottom = -0.138008
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Upgrade Imbakan"
 
 [node name="Description" type="Label" parent="Imbakan/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.373
-anchor_top = 0.287
-anchor_right = 0.868
-anchor_bottom = 0.574
-offset_left = 0.00508881
-offset_top = -0.0229912
-offset_right = 0.145844
-offset_bottom = -0.0459824
+anchor_left = 0.421
+anchor_top = 0.294
+anchor_right = 0.916
+anchor_bottom = 0.581
+offset_left = -0.128006
+offset_top = -0.0839996
+offset_right = 0.0126953
+offset_bottom = -0.10701
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "Expands food storage capacity to ensure your village remains well-supplied during prolonged battles."
+autowrap_mode = 3
 
 [node name="resourceAmount" type="Panel" parent="Imbakan/upgrade/upgradePanel"]
 layout_mode = 1
@@ -2567,39 +2702,32 @@ theme_override_font_sizes/font_size = 17
 text = "300
 "
 
-[node name="upgradeButton" type="Button" parent="Imbakan/upgrade/upgradePanel"]
+[node name="upgradeButton" type="TextureButton" parent="Imbakan/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.737
-anchor_top = 0.713
-anchor_right = 1.0
-anchor_bottom = 0.946
-offset_left = 0.098465
-offset_top = 0.0230179
-offset_right = -4.14996
-offset_bottom = -0.0339737
-theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 17
-theme_override_styles/hover = SubResource("StyleBoxFlat_yhim5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ixepr")
-text = "Upgrade"
+anchor_left = 0.738
+anchor_top = 0.65
+anchor_right = 0.958
+anchor_bottom = 0.93
+offset_left = -0.18396
+offset_top = 0.0999908
+offset_right = -0.143982
+offset_bottom = 0.019989
+texture_normal = ExtResource("10_4ir5q")
+stretch_mode = 0
 
 [node name="Bodega" type="HBoxContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.443
-anchor_top = 0.879
-anchor_right = 0.533
-anchor_bottom = 0.954
-offset_left = -0.0400391
-offset_top = 0.119934
-offset_right = -0.240051
-offset_bottom = 0.119934
+anchor_left = 0.41
+anchor_top = 0.886
+anchor_right = 0.5
+anchor_bottom = 0.961
+offset_left = 0.19989
+offset_top = 0.079895
+offset_right = -6.10352e-05
+offset_bottom = 0.079895
 theme_override_constants/separation = 10
 
 [node name="viewInformation" type="TextureButton" parent="Bodega"]
@@ -2611,14 +2739,14 @@ texture_pressed = ExtResource("3_81bm4")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -1.849
-anchor_top = -8.358
-anchor_right = 5.226
-anchor_bottom = -5.962
-offset_left = -0.00293732
-offset_top = -0.0259705
-offset_right = 0.0220337
-offset_bottom = -0.0139771
+anchor_left = -3.755
+anchor_top = -9.519
+anchor_right = 6.962
+anchor_bottom = -4.222
+offset_left = 0.0150604
+offset_top = 0.026062
+offset_right = 0.0140381
+offset_bottom = -0.0119324
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="TextureRect" type="TextureRect" parent="Bodega/viewInformation/InformationPanel"]
@@ -2638,36 +2766,37 @@ expand_mode = 2
 [node name="title" type="Label" parent="Bodega/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.772
-anchor_bottom = 0.238
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -0.103943
-offset_bottom = -0.436003
+anchor_left = 0.5
+anchor_top = 0.045
+anchor_right = 0.914
+anchor_bottom = 0.251
+offset_left = -3.0
+offset_top = 0.130004
+offset_right = 0.264038
+offset_bottom = -0.052002
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Bodega"
 
 [node name="Description" type="Label" parent="Bodega/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.357
-anchor_top = 0.287
-anchor_right = 0.852
-anchor_bottom = 0.574
-offset_left = 0.00508118
-offset_top = -0.0229912
-offset_right = 0.145813
-offset_bottom = -0.0459824
+anchor_left = 0.458
+anchor_top = 0.332
+anchor_right = 0.953
+anchor_bottom = 0.759
+offset_left = -0.144012
+offset_top = 0.0479965
+offset_right = -0.0032959
+offset_bottom = -40.015
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "A fortified depot where harvested wood and quarried stones are stockpiled. These essential materials are used to build and reinforce the village’s defenses and structures."
+autowrap_mode = 3
 
 [node name="upgrade" type="TextureButton" parent="Bodega"]
 layout_mode = 2
@@ -2678,14 +2807,14 @@ texture_pressed = ExtResource("5_phpak")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -3.255
-anchor_top = -7.377
-anchor_right = 3.474
-anchor_bottom = -4.981
-offset_left = 0.00497437
-offset_top = 0.358032
-offset_right = -0.0240784
-offset_bottom = -0.026001
+anchor_left = -5.569
+anchor_top = -9.426
+anchor_right = 5.569
+anchor_bottom = -4.13
+offset_left = 0.0190735
+offset_top = 0.00408936
+offset_right = -0.0189514
+offset_bottom = 0.0200653
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="upgradeDesign" type="TextureRect" parent="Bodega/upgrade/upgradePanel"]
@@ -2703,36 +2832,37 @@ offset_bottom = -0.00497437
 [node name="title" type="Label" parent="Bodega/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.751
-anchor_bottom = 0.234
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -0.581329
-offset_bottom = 0.0479965
+anchor_left = 0.474
+anchor_top = 0.056
+anchor_right = 0.871
+anchor_bottom = 0.259
+offset_left = -0.232025
+offset_top = -0.0159969
+offset_right = 0.282654
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Upgrade Bodega"
 
 [node name="Description" type="Label" parent="Bodega/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.373
-anchor_top = 0.287
-anchor_right = 0.868
-anchor_bottom = 0.574
-offset_left = 0.00508881
-offset_top = -0.0229912
-offset_right = 0.145844
-offset_bottom = -0.0459824
+anchor_left = 0.451
+anchor_top = 0.325
+anchor_right = 0.946
+anchor_bottom = 0.612
+offset_left = -0.16803
+offset_top = 0.0499954
+offset_right = -0.0272827
+offset_bottom = 0.0269928
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "Increases storage limits for wood and stone, ensuring resources are readily available for construction and repairs.
+"
+autowrap_mode = 3
 
 [node name="resourceAmount" type="Panel" parent="Bodega/upgrade/upgradePanel"]
 layout_mode = 1
@@ -2820,39 +2950,32 @@ theme_override_font_sizes/font_size = 17
 text = "300
 "
 
-[node name="upgradeButton" type="Button" parent="Bodega/upgrade/upgradePanel"]
+[node name="upgradeButton" type="TextureButton" parent="Bodega/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.737
-anchor_top = 0.713
-anchor_right = 1.0
-anchor_bottom = 0.946
-offset_left = 0.098465
-offset_top = 0.0230179
-offset_right = -4.14996
-offset_bottom = -0.0339737
-theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 17
-theme_override_styles/hover = SubResource("StyleBoxFlat_yhim5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ixepr")
-text = "Upgrade"
+anchor_left = 0.738
+anchor_top = 0.65
+anchor_right = 0.958
+anchor_bottom = 0.93
+offset_left = -0.18396
+offset_top = 0.0999908
+offset_right = -0.143982
+offset_bottom = 0.019989
+texture_normal = ExtResource("10_4ir5q")
+stretch_mode = 0
 
 [node name="Balwarte" type="HBoxContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.443
-anchor_top = 0.879
-anchor_right = 0.533
-anchor_bottom = 0.954
-offset_left = -0.0400391
-offset_top = 0.119934
-offset_right = -0.240051
-offset_bottom = 0.119934
+anchor_left = 0.41
+anchor_top = 0.887
+anchor_right = 0.5
+anchor_bottom = 0.962
+offset_left = 0.19989
+offset_top = 0.359924
+offset_right = -6.10352e-05
+offset_bottom = 0.359863
 theme_override_constants/separation = 10
 
 [node name="viewInformation" type="TextureButton" parent="Balwarte"]
@@ -2864,14 +2987,14 @@ texture_pressed = ExtResource("3_81bm4")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -1.849
-anchor_top = -8.358
-anchor_right = 5.226
-anchor_bottom = -5.962
-offset_left = -0.00293732
-offset_top = -0.0259705
-offset_right = 0.0220337
-offset_bottom = -0.0139771
+anchor_left = -3.774
+anchor_top = -9.556
+anchor_right = 6.943
+anchor_bottom = -4.259
+offset_left = 0.0220642
+offset_top = 0.0241089
+offset_right = 0.0210571
+offset_bottom = -0.013916
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="TextureRect" type="TextureRect" parent="Balwarte/viewInformation/InformationPanel"]
@@ -2891,36 +3014,37 @@ expand_mode = 2
 [node name="title" type="Label" parent="Balwarte/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.772
-anchor_bottom = 0.238
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -0.103943
-offset_bottom = -0.436003
+anchor_left = 0.496
+anchor_top = 0.052
+anchor_right = 0.916
+anchor_bottom = 0.258
+offset_left = 0.271973
+offset_top = 0.128004
+offset_right = 0.128052
+offset_bottom = -0.0540009
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Balwarte"
 
 [node name="Description" type="Label" parent="Balwarte/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.357
-anchor_top = 0.287
-anchor_right = 0.852
-anchor_bottom = 0.574
-offset_left = 0.00508118
-offset_top = -0.0229912
-offset_right = 0.145813
-offset_bottom = -0.0459824
+anchor_left = 0.463
+anchor_top = 0.283
+anchor_right = 0.958
+anchor_bottom = 0.797
+offset_left = 0.0159912
+offset_top = 0.0619965
+offset_right = 0.156677
+offset_bottom = 0.0579834
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "A towering lookout post that enhances visibility across the battlefield. Guards stationed here provide early warnings of incoming threats, ensuring the village is prepared for any attack."
+autowrap_mode = 3
 
 [node name="upgrade" type="TextureButton" parent="Balwarte"]
 layout_mode = 2
@@ -2931,14 +3055,14 @@ texture_pressed = ExtResource("5_phpak")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -3.255
-anchor_top = -7.377
-anchor_right = 3.474
-anchor_bottom = -4.981
-offset_left = 0.00497437
-offset_top = 0.358032
-offset_right = -0.0240784
-offset_bottom = -0.026001
+anchor_left = -5.157
+anchor_top = -9.537
+anchor_right = 5.98
+anchor_bottom = -4.241
+offset_left = 0.00704956
+offset_top = -0.00189209
+offset_right = 0.02005
+offset_bottom = 0.0140686
 theme_override_styles/panel = SubResource("StyleBoxFlat_mh4t5")
 
 [node name="upgradeDesign" type="TextureRect" parent="Balwarte/upgrade/upgradePanel"]
@@ -2956,36 +3080,37 @@ offset_bottom = -0.00497437
 [node name="title" type="Label" parent="Balwarte/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.352
-anchor_top = 0.031
-anchor_right = 0.789
-anchor_bottom = 0.234
-offset_left = 0.0399933
-offset_top = 0.0319998
-offset_right = -13.621
-offset_bottom = 0.0479965
+anchor_left = 0.431
+anchor_top = 0.049
+anchor_right = 0.844
+anchor_bottom = 0.252
+offset_left = 0.191971
+offset_top = -0.0139961
+offset_right = 0.162933
+offset_bottom = 0.0019989
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Upgrade Balwarte"
 
 [node name="Description" type="Label" parent="Balwarte/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.373
-anchor_top = 0.287
-anchor_right = 0.868
-anchor_bottom = 0.574
-offset_left = 0.00508881
-offset_top = -0.0229912
-offset_right = 0.145844
-offset_bottom = -0.0459824
+anchor_left = 0.43
+anchor_top = 0.329
+anchor_right = 0.925
+anchor_bottom = 0.616
+offset_left = -0.23999
+offset_top = -0.0940094
+offset_right = -0.0993042
+offset_bottom = -0.117004
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "description"
+theme_override_font_sizes/font_size = 15
+text = "Extends vision range and improves attack speed, allowing guards to detect and strike enemies faster."
+autowrap_mode = 3
 
 [node name="resourceAmount" type="Panel" parent="Balwarte/upgrade/upgradePanel"]
 layout_mode = 1
@@ -3073,23 +3198,16 @@ theme_override_font_sizes/font_size = 17
 text = "300
 "
 
-[node name="upgradeButton" type="Button" parent="Balwarte/upgrade/upgradePanel"]
+[node name="upgradeButton" type="TextureButton" parent="Balwarte/upgrade/upgradePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.737
-anchor_top = 0.713
-anchor_right = 1.0
-anchor_bottom = 0.946
-offset_left = 0.098465
-offset_top = 0.0230179
-offset_right = -4.14996
-offset_bottom = -0.0339737
-theme_override_colors/font_hover_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_hover_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_pressed_color = Color(0.764706, 0.180392, 0.160784, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("9_u6gk8")
-theme_override_font_sizes/font_size = 17
-theme_override_styles/hover = SubResource("StyleBoxFlat_yhim5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ixepr")
-text = "Upgrade"
+anchor_left = 0.738
+anchor_top = 0.65
+anchor_right = 0.958
+anchor_bottom = 0.93
+offset_left = -0.18396
+offset_top = 0.0999908
+offset_right = -0.143982
+offset_bottom = 0.019989
+texture_normal = ExtResource("10_4ir5q")
+stretch_mode = 0
