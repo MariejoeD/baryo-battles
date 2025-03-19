@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://dpo47nv4ah4wp"]
 
 [ext_resource type="ArrayMesh" uid="uid://bjb1hy0hgmlb8" path="res://assets/building models/Imbakan-Lv1_Empty.obj" id="1_dbcc5"]
-[ext_resource type="Script" path="res://Script/building scripts/buildings.gd" id="2_4k47x"]
+[ext_resource type="Script" path="res://Script/building scripts/imbakan_lv_1_empty_script.gd" id="2_pkxnm"]
 [ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="3_a8svq"]
 [ext_resource type="Texture2D" uid="uid://2lftuna7s6qb" path="res://assets/button/viewInformationClicked.png" id="4_gct2u"]
 [ext_resource type="Texture2D" uid="uid://bi0ah5owynja6" path="res://assets/BuildingsRawPics/11.png" id="5_wxtcl"]
@@ -52,8 +52,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_u17gb")
 surface_material_override/1 = SubResource("StandardMaterial3D_p3eja")
 surface_material_override/2 = SubResource("StandardMaterial3D_jbo3q")
 surface_material_override/3 = SubResource("StandardMaterial3D_67si4")
-script = ExtResource("2_4k47x")
-building_name = "Imbakan"
+script = ExtResource("2_pkxnm")
 
 [node name="Area3D" type="Area3D" parent="."]
 
@@ -62,6 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.315269, 1.8058, 0.463486)
 shape = SubResource("BoxShape3D_7x1ve")
 
 [node name="UI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,7 +70,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Imbakan" type="HBoxContainer" parent="UI"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.41
@@ -316,5 +315,3 @@ offset_right = -0.143982
 offset_bottom = 0.019989
 texture_normal = ExtResource("11_887ih")
 stretch_mode = 0
-
-[connection signal="input_event" from="Area3D" to="." method="clicked_building"]

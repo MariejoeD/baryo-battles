@@ -3,13 +3,11 @@ extends Node3D
 # Dictionary to store popups for each tree
 
 # Reference to the popup and other nodes
-@onready var bounds = $UI/Panel
 @onready var panel = $UI
 @onready var cut_button = $UI/Cut
-@onready var uproot_button = $UI/Uproot
 @onready var area = $Area3D
 @onready var entities = $"../../Entities"
-
+var worker_assigned = false
 var is_panel_visible = false
 
 func _ready() -> void:
@@ -19,7 +17,7 @@ func _ready() -> void:
 
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	if $"../../Control/Build".in_building_mode:
+	if $"../../Control/Build".building_mode:
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -39,34 +37,50 @@ func _input(event: InputEvent) -> void:
 			var clicked_pos = viewport.get_mouse_position()
 			
 			#checked if the click is outside the panel
-			if not bounds.get_global_rect().has_point(clicked_pos):
+			if not cut_button.get_global_rect().has_point(clicked_pos):
 				panel.visible = false
 				is_panel_visible = false
 
 
 
 func pressed_cut():
-	panel.visible = false
-	is_panel_visible = false
-	var target_pos = global_transform.origin
-	var panday = find_nearest_panday(target_pos)
-	
-	var sibilyan = panday[0].get_child(0)
-	sibilyan.chop(target_pos,panday[1])
-	pass
+	if not worker_assigned:
+		panel.visible = false
+		is_panel_visible = false
+		worker_assigned = true
+		var sibilyan = find_nearest_sibilyan()
+		sibilyan.add_work(self)
+		pass
 
 func pressed_uproot():
 	
 	pass
 
-func find_nearest_panday(ref_pos):
-	var nearest_panday: Node3D = null
-	var shortest_distance: float = INF
 	
-	for panday in get_tree().get_nodes_in_group("Sibilyan"):
-		var distance = ref_pos.distance_to(panday.global_transform.origin)
-		if distance < shortest_distance:
-			shortest_distance = distance
-			nearest_panday = panday
+	
+	
+func perform_work(worker):
+	await get_tree().create_timer(5).timeout
+	print("Harvest Complete")
+	Global.wood_qty += 10
+	self.queue_free()
+	worker.task_complete()
+	pass
+
+func find_nearest_sibilyan() -> Node:
+	var sibilyans = get_tree().get_nodes_in_group("Sibilyan")  
+	var nearest_sibilyan = null
+	var min_distance = INF
+	var min_workload = INF
+
+	for sib in sibilyans:
 		
-	return [nearest_panday, self]
+		var distance = global_position.distance_to(sib.global_position)
+		var workload = sib.get_workload()  # Now stored per instance
+
+		if workload < min_workload or (workload == min_workload and distance < min_distance):
+			nearest_sibilyan = sib
+			min_distance = distance
+			min_workload = workload
+
+	return nearest_sibilyan

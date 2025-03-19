@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=4 uid="uid://cqaslongx5bxb"]
 
-[ext_resource type="Script" path="res://Scene/Characters/test_sibilyan.gd" id="1_8r5ia"]
+[ext_resource type="Script" path="res://Script/character script/sibilyan.gd" id="1_8r5ia"]
 [ext_resource type="Texture2D" uid="uid://s403wwl4h58a" path="res://assets/Anim/Panday/Breathing Idle_0.png" id="2_72q1e"]
 [ext_resource type="Animation" uid="uid://cg4a5dkjlsn2w" path="res://assets/Anim/Panday/idle.anim" id="3_qb5ps"]
 [ext_resource type="Animation" uid="uid://bofnm243s02iq" path="res://assets/Anim/Panday/walk.anim" id="4_tofs5"]

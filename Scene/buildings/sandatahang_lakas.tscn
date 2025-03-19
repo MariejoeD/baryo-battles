@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=4 uid="uid://boxmykhsmisfq"]
 
-[ext_resource type="Script" path="res://Script/building scripts/buildings.gd" id="1_dptmc"]
+[ext_resource type="Script" path="res://Script/building scripts/sandatahang_lakas_script.gd" id="1_17mrt"]
 [ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="2_gm6rr"]
 [ext_resource type="Texture2D" uid="uid://2lftuna7s6qb" path="res://assets/button/viewInformationClicked.png" id="3_u2u01"]
 [ext_resource type="Texture2D" uid="uid://drfobag0b8rrn" path="res://assets/BuildingsRawPics/4.png" id="4_ogtl6"]
@@ -282,8 +282,7 @@ corner_radius_bottom_left = 20
 [node name="Sandatahang Lakas" type="MeshInstance3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_d8amp")
-script = ExtResource("1_dptmc")
-building_name = "Sandatahang Lakas"
+script = ExtResource("1_17mrt")
 
 [node name="Area3D" type="Area3D" parent="."]
 
@@ -300,7 +299,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sandatahang Lakas" type="HBoxContainer" parent="UI"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.41
@@ -643,5 +641,3 @@ offset_top = 222.0
 offset_right = 61.9999
 offset_bottom = 262.0
 texture = ExtResource("13_pp0i1")
-
-[connection signal="input_event" from="Area3D" to="." method="clicked_building"]

@@ -1,0 +1,107 @@
+[gd_scene load_steps=17 format=3 uid="uid://ddwrhwm3otd8p"]
+
+[ext_resource type="Script" path="res://Script/day_cycle.gd" id="1_5bpij"]
+[ext_resource type="PackedScene" uid="uid://d4nb8cjrspohc" path="res://Scene/game.tscn" id="1_8noqr"]
+[ext_resource type="Script" path="res://Script/camera_3d.gd" id="1_ewtg3"]
+[ext_resource type="MeshLibrary" uid="uid://bkv7xtdr8msl7" path="res://assets/mesh/meshes.tres" id="3_j3x7l"]
+[ext_resource type="MeshLibrary" uid="uid://bqpxrt4ymmkn2" path="res://assets/mesh/floor_meshes.tres" id="3_ucrro"]
+[ext_resource type="Script" path="res://Script/floor_setup.gd" id="4_6i8of"]
+[ext_resource type="MeshLibrary" uid="uid://coyq64ubih6j1" path="res://assets/mesh/grid_dis.tres" id="5_74pts"]
+[ext_resource type="Script" path="res://Script/duplicated_tiles.gd" id="6_ttmot"]
+[ext_resource type="Resource" uid="uid://cw0w04fmunqv8" path="res://Scene/buildings/building_scenes.tres" id="7_5btd4"]
+[ext_resource type="Script" path="res://Script/load.gd" id="7_xwng1"]
+[ext_resource type="Script" path="res://Script/generate.gd" id="8_hwwmm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c05a2"]
+
+[sub_resource type="Sky" id="Sky_biuf7"]
+sky_material = SubResource("ProceduralSkyMaterial_c05a2")
+
+[sub_resource type="Environment" id="Environment_6klo0"]
+background_mode = 2
+sky = SubResource("Sky_biuf7")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o15vt"]
+albedo_color = Color(0.34902, 1, 0.313726, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kjyqw"]
+material = SubResource("StandardMaterial3D_o15vt")
+size = Vector2(500, 500)
+
+[node name="Root" type="CanvasLayer"]
+
+[node name="Base" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Base"]
+environment = SubResource("Environment_6klo0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Base"]
+transform = Transform3D(0.23005, 0.696497, 0.679683, -6.10574e-08, -0.698415, 0.715693, 0.973179, -0.164645, -0.16067, 0, 13.3756, 0)
+shadow_enabled = true
+script = ExtResource("1_5bpij")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Base"]
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="SubViewport" type="SubViewport" parent="Base/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Base/SubViewportContainer/SubViewport"]
+transform = Transform3D(0.707107, -0.5, 0.5, -2.55739e-08, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 39, 41, 40)
+script = ExtResource("1_ewtg3")
+
+[node name="Control" parent="Base" instance=ExtResource("1_8noqr")]
+
+[node name="AMap" type="Node3D" parent="Base"]
+
+[node name="GridMap" type="GridMap" parent="Base/AMap"]
+mesh_library = ExtResource("3_j3x7l")
+cell_size = Vector3(1, 1, 1)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Floor" type="GridMap" parent="Base/AMap"]
+mesh_library = ExtResource("3_ucrro")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 2
+collision_mask = 3
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Grid Display" type="GridMap" parent="Base/AMap"]
+visible = false
+mesh_library = ExtResource("5_74pts")
+cell_size = Vector3(1, 1, 1)
+
+[node name="floor setup" type="Node3D" parent="Base/AMap" groups=["pathscript"]]
+script = ExtResource("4_6i8of")
+
+[node name="DuplicatedTiles" type="Node3D" parent="Base/AMap"]
+script = ExtResource("6_ttmot")
+script_library = {}
+packed_building = ExtResource("7_5btd4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150, 0, -150)
+visible = false
+mesh = SubResource("PlaneMesh_kjyqw")
+
+[node name="Load" type="Node3D" parent="Base"]
+script = ExtResource("7_xwng1")
+
+[node name="Generate" type="Node3D" parent="Base"]
+script = ExtResource("8_hwwmm")
+
+[node name="Camera3D" type="Camera3D" parent="Base"]
+transform = Transform3D(0.707107, -0.5, 0.5, -2.55739e-08, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 39, 41, 40)
+
+[node name="Entities" type="Node" parent="Base"]
+
+[connection signal="tree_entered" from="Base/Control" to="Base/Control" method="_on_tree_entered"]
+[connection signal="tree_exiting" from="Base/Control" to="Base/Control" method="_on_tree_exiting"]
+[connection signal="tree_entered" from="Base/Generate" to="Base/Generate" method="_on_tree_entered"]
+[connection signal="tree_exiting" from="Base/Generate" to="Base/Generate" method="_on_tree_exiting"]

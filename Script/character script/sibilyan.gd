@@ -3,41 +3,27 @@ extends CharacterBody3D
 var speed = 10
 var path = []
 var path_index = 0
-var parent
-var gparent
-var base
-var camera
-var amap
-var moveb
-var animation
-var target_resource  # Can be a tree or stone
-var resource_type    # "tree" or "stone"
-var works
-func _ready():
-	SignalManager.discovered.emit(self.name)
-	parent = get_parent()
-	gparent = parent.get_parent()
-	base = gparent.get_parent()
-	amap = base.get_node("AMap/floor setup")
-	animation = $AnimationPlayer
-	animation.play("idle", -1, 1, true)
+@onready var amap = get_tree().get_first_node_in_group("pathscript")
+var workload = []  # Stores work tasks
 
+signal path_ready
+ # Emits when work is completed
 
-func _process(delta: float):
-	if moveb:
+func _ready() -> void:
+	$AnimationPlayer.play("idle")
+
+func _process(delta: float) -> void:
+	if path.size() > 0:
 		move(delta)
-		if animation.current_animation != "walk":
-			animation.play("walk", -1, 1, true)
-	else:
-		if animation.current_animation != "idle":
-			animation.play("idle", -1, 1, true)
-
+	
 
 func move(delta):
 	if path_index < path.size():
+		$Skeleton3D.show()
+		$AnimationPlayer.play("walk")
 		var move_vec = (path[path_index] - global_transform.origin)
-
-		if move_vec.length() < 2:
+		
+		if move_vec.length() < 2:  # NPC is close to the target waypoint
 			path_index += 1
 		else:
 			velocity = move_vec.normalized() * speed
@@ -46,89 +32,56 @@ func move(delta):
 			var direction = move_vec.normalized()
 			var target_rotation_y = atan2(direction.x, direction.z)
 			rotation.y = lerp_angle(rotation.y, target_rotation_y, delta * 5)
-	else:
-		if resource_type == "tree":
-			chop_tree()
-		elif resource_type == "stone":
-			mine_stone()
-		moveb = false
 
-
-func chop(target, resource):
-	target_resource = resource
-	resource_type = "tree"
-	moveb = true
-	set_path(target)
-
-
-func mine(target, resource):
-	target_resource = resource
-	resource_type = "stone"
-	moveb = true
-	set_path(target)
-
-
-func chop_tree():
-	print("Chopping tree...")
-	switch_to_sibilyan("chopping")
-	start_timer("_on_chopped_tree")
-
-
-func mine_stone():
-	print("Mining stone...")
-	switch_to_sibilyan("mining")
-	start_timer("_on_mined_stone")
-
-
-func switch_to_sibilyan(animation_name: String):
-	self.visible = false
-	var sibilyan = $"../sibilyanWithAxe"
-	sibilyan.transform = self.transform
-	sibilyan.visible = true
-	sibilyan.get_node("AnimationPlayer").play(animation_name, -1, 1, true)
-
-
-func start_timer(callback: String):
-	var timer = Timer.new()
-	add_child(timer)
-	timer.wait_time = 5
-	timer.one_shot = true
-	timer.connect("timeout", Callable(self, callback))
-	timer.start()
-
-
-func _on_chopped_tree():
-	if target_resource:
-		SignalManager.tree_remove.emit(target_resource)
-		target_resource.queue_free()
-	finalize_action("tree", 5)
-
-
-func _on_mined_stone():
-	if target_resource:
-		SignalManager.stone_remove.emit(target_resource)
-		target_resource.queue_free()
-	finalize_action("stone", 3)
-
-
-func finalize_action(resource_type: String, reward: int):
-	var sibilyan = $"../sibilyanWithAxe"
-	sibilyan.visible = false
-	self.visible = true
-	if resource_type == "tree":
-		Global.wood_qty += reward
-	elif resource_type == "stone":
-		Global.stone_qty += reward
-
+	if path_index >= path.size() and path.size() > 0:
+		path.clear()  # Clear path when target is reached
+		path_ready.emit()  # NPC has reached destination
 
 func set_path(target_pos: Vector3):
 	var current_pos = global_transform.origin
 	current_pos.y = 1
 	target_pos.y = 1
+	
 	path = amap.find_path(current_pos, target_pos)
 	path_index = 0
 
+func go_here(target):
+	set_path(target)
+	await path_ready  # Wait until NPC reaches the target
 
-func get_workload():
-	
+func add_work(task_target):
+	workload.append(task_target)
+	print("Added work:", task_target.name, "Current workload size:", workload.size())
+	if workload.size() == 1:  # Start immediately if idle
+		execute_next_work()
+
+
+func execute_next_work():
+	if workload.size() > 0:
+		var work = workload[0]  # Get first task in queue
+		#print("Going to:", work.name)
+		await go_here(work.global_transform.origin)  # Wait until NPC reaches the target location
+
+		#print("Reached target location:", work.name)  # Debugging line
+		if work.has_method("perform_work"):
+			$Skeleton3D.hide()
+			$Skeleton3D2.show()
+			$AnimationPlayer.play("chopping")
+			work.perform_work(self)  # Execute the task and wait for completion
+			
+		
+
+func task_complete():
+	$Skeleton3D2.hide()
+	$Skeleton3D.show()
+	$AnimationPlayer.play("idle")
+	workload.pop_front()  # Remove completed task
+	  # Signal work completion
+
+		# If more work remains, execute the next task
+	if workload.size() > 0:
+		execute_next_work()
 	pass
+
+func get_workload() -> int:
+	return workload.size()

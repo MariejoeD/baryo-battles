@@ -2,8 +2,8 @@ extends Node3D
 
 
 @export var hbox: HBoxContainer
-@export var build_button: Button
-@export var attack_button: Button
+@export var build_button: TextureButton
+@export var attack_button: TextureButton
 @export var build_panel: Panel
 var amap
 var grid

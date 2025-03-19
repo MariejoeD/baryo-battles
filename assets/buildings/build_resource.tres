@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="building_resource" load_steps=13 format=3 uid="uid://q1x85i1by7qk"]
+
+[ext_resource type="PackedScene" uid="uid://djl0d3hbyn7eo" path="res://Scene/buildings/malacadabra.tscn" id="1_3s8ou"]
+[ext_resource type="PackedScene" uid="uid://ngmrdl4glq3" path="res://Scene/buildings/kampo_lv_1.tscn" id="2_4u7fd"]
+[ext_resource type="Script" path="res://Script/resources/building_resources.gd" id="2_rk4r2"]
+[ext_resource type="PackedScene" uid="uid://3erergkgttu2" path="res://Scene/buildings/bodega(empty).tscn" id="3_fnsam"]
+[ext_resource type="PackedScene" uid="uid://boxmykhsmisfq" path="res://Scene/buildings/sandatahang_lakas.tscn" id="4_3skgg"]
+[ext_resource type="PackedScene" uid="uid://c355t02anfh15" path="res://Scene/buildings/kawa_lv_1.tscn" id="5_3hbo5"]
+[ext_resource type="PackedScene" uid="uid://d154ueae2iqap" path="res://Scene/buildings/estakada_lvl_1(bamboo).tscn" id="6_hklkq"]
+[ext_resource type="PackedScene" uid="uid://ce3w2f7bhpynu" path="res://Scene/buildings/balwarte.tscn" id="7_a1e6v"]
+[ext_resource type="PackedScene" uid="uid://bjv1y1o2hrgx8" path="res://Scene/buildings/kwitis_lv_1.tscn" id="8_ghtco"]
+[ext_resource type="PackedScene" uid="uid://bie2y84c6n0or" path="res://Scene/buildings/kubo_lv_1.tscn" id="9_yw3n2"]
+[ext_resource type="PackedScene" uid="uid://du2vgiukxku71" path="res://Scene/buildings/tanim.tscn" id="10_ukjgv"]
+[ext_resource type="PackedScene" uid="uid://dpo47nv4ah4wp" path="res://Scene/buildings/imbakan_lv_1_empty.tscn" id="11_xt2r7"]
+
+[resource]
+script = ExtResource("2_rk4r2")
+buildings = {
+"BalwarteBtn": ExtResource("7_a1e6v"),
+"BodegaBtn": ExtResource("3_fnsam"),
+"EstakadaBtn": ExtResource("6_hklkq"),
+"ImbakanBtn": ExtResource("11_xt2r7"),
+"KampoBtn": ExtResource("2_4u7fd"),
+"KawaBtn": ExtResource("5_3hbo5"),
+"KuboBtn": ExtResource("9_yw3n2"),
+"KwitisBtn": ExtResource("8_ghtco"),
+"MalacadabraBtn": ExtResource("1_3s8ou"),
+"SandatahangLakasBtn": ExtResource("4_3skgg"),
+"TanimBtn": ExtResource("10_ukjgv")
+}

@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://d154ueae2iqap"]
 
 [ext_resource type="ArrayMesh" uid="uid://c4kn8ehvhh2ad" path="res://assets/building models/Estakada-lvl1(Bamboo).obj" id="1_e78nu"]
-[ext_resource type="Script" path="res://Script/building scripts/buildings.gd" id="2_y4ri3"]
+[ext_resource type="Script" path="res://Script/building scripts/estakada_lvl_1(bamboo)_script.gd" id="2_csinu"]
 [ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="3_td3qn"]
 [ext_resource type="Texture2D" uid="uid://2lftuna7s6qb" path="res://assets/button/viewInformationClicked.png" id="4_tbjl3"]
 [ext_resource type="Texture2D" uid="uid://du3ak2u2td01c" path="res://assets/BuildingsRawPics/6.png" id="5_bseas"]
@@ -43,8 +43,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 mesh = ExtResource("1_e78nu")
 surface_material_override/0 = SubResource("StandardMaterial3D_ue1bp")
 surface_material_override/1 = SubResource("StandardMaterial3D_enwtn")
-script = ExtResource("2_y4ri3")
-building_name = "Estakada"
+script = ExtResource("2_csinu")
 
 [node name="Area3D" type="Area3D" parent="."]
 
@@ -61,7 +60,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Estakada" type="HBoxContainer" parent="UI"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.409
@@ -307,5 +305,3 @@ offset_right = -0.143982
 offset_bottom = 0.019989
 texture_normal = ExtResource("11_c5hsv")
 stretch_mode = 0
-
-[connection signal="input_event" from="Area3D" to="." method="clicked_building"]

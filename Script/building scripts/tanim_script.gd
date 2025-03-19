@@ -101,6 +101,7 @@ func perform_work(worker):
 	await get_tree().create_timer(5).timeout
 	print("Harvest Complete")
 	Global.food_qty += 10
+	#Change  Indicator
 	grow(duration)
 	#gray
 	worker.task_complete()

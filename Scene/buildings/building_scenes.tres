@@ -1,30 +1,7 @@
-[gd_resource type="Resource" script_class="building_resource" load_steps=13 format=3 uid="uid://cw0w04fmunqv8"]
+[gd_resource type="Resource" script_class="building_resource" load_steps=2 format=3 uid="uid://cw0w04fmunqv8"]
 
-[ext_resource type="PackedScene" uid="uid://djl0d3hbyn7eo" path="res://Scene/buildings/malacadabra.tscn" id="1_su8pn"]
 [ext_resource type="Script" path="res://Script/resources/building_resources.gd" id="2_biiyf"]
-[ext_resource type="PackedScene" uid="uid://ngmrdl4glq3" path="res://Scene/buildings/kampo_lv_1.tscn" id="2_fjwgv"]
-[ext_resource type="PackedScene" uid="uid://3erergkgttu2" path="res://Scene/buildings/bodega(empty).tscn" id="3_m8tfc"]
-[ext_resource type="PackedScene" uid="uid://boxmykhsmisfq" path="res://Scene/buildings/sandatahang_lakas.tscn" id="4_3mwtg"]
-[ext_resource type="PackedScene" uid="uid://c355t02anfh15" path="res://Scene/buildings/kawa_lv_1.tscn" id="5_vki5m"]
-[ext_resource type="PackedScene" uid="uid://d154ueae2iqap" path="res://Scene/buildings/estakada_lvl_1(bamboo).tscn" id="6_ak6oq"]
-[ext_resource type="PackedScene" uid="uid://ce3w2f7bhpynu" path="res://Scene/buildings/balwarte.tscn" id="7_wcsqc"]
-[ext_resource type="PackedScene" uid="uid://bjv1y1o2hrgx8" path="res://Scene/buildings/kwitis_lv_1.tscn" id="8_fy4jb"]
-[ext_resource type="PackedScene" uid="uid://bie2y84c6n0or" path="res://Scene/buildings/kubo_lv_1.tscn" id="9_dxgeq"]
-[ext_resource type="PackedScene" uid="uid://du2vgiukxku71" path="res://Scene/buildings/tanim.tscn" id="10_jlwng"]
-[ext_resource type="PackedScene" uid="uid://dpo47nv4ah4wp" path="res://Scene/buildings/imbakan_lv_1_empty.tscn" id="11_fiipn"]
 
 [resource]
 script = ExtResource("2_biiyf")
-building_assets = {
-0: ExtResource("1_su8pn"),
-1: ExtResource("2_fjwgv"),
-2: ExtResource("3_m8tfc"),
-3: ExtResource("4_3mwtg"),
-4: ExtResource("5_vki5m"),
-5: ExtResource("6_ak6oq"),
-6: ExtResource("7_wcsqc"),
-7: ExtResource("8_fy4jb"),
-8: ExtResource("9_dxgeq"),
-9: ExtResource("10_jlwng"),
-10: ExtResource("11_fiipn")
-}
+buildings = {}

@@ -1,11 +1,11 @@
 extends Node3D
 
-@onready var bounds = $UI/Panel
+
 @onready var panel = $UI
 @onready var mine_button = $UI/Mine
 @onready var area = $Area3D
 @onready var entities = $"../../Entities"
-
+@onready var worker_assigned = false
 var is_panel_visible = false
 
 func _ready() -> void:
@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	if $"../../Control/Build".in_building_mode:
+	if $"../../Control/Build".building_mode:
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -31,28 +31,44 @@ func _input(event: InputEvent) -> void:
 		if is_panel_visible:
 			var viewport = get_viewport()
 			var clicked_pos = viewport.get_mouse_position()
-			if not bounds.get_global_rect().has_point(clicked_pos):
+			if not mine_button.get_global_rect().has_point(clicked_pos):
 				panel.visible = false
 				is_panel_visible = false
 
 
 func pressed_mine():
-	panel.visible = false
-	is_panel_visible = false
-	var target_pos = global_transform.origin
-	var miner = find_nearest_miner(target_pos)
-	var worker = miner[0].get_child(0)
-	worker.mine(target_pos, miner[1])
+	if not worker_assigned:
+		panel.visible = false
+		is_panel_visible = false
+		worker_assigned = true
+		var sibilyan = find_nearest_sibilyan()
+		sibilyan.add_work(self)
 
 
-func find_nearest_miner(ref_pos):
-	var nearest_miner: Node3D = null
-	var shortest_distance: float = INF
+	
+	
+func perform_work(worker):
+	await get_tree().create_timer(5).timeout
+	print("Harvest Complete")
+	Global.stone_qty += 10
+	self.queue_free()
+	worker.task_complete()
+	pass
 
-	for miner in get_tree().get_nodes_in_group("Sibilyan"):
-		var distance = ref_pos.distance_to(miner.global_transform.origin)
-		if distance < shortest_distance:
-			shortest_distance = distance
-			nearest_miner = miner
+func find_nearest_sibilyan() -> Node:
+	var sibilyans = get_tree().get_nodes_in_group("Sibilyan")  
+	var nearest_sibilyan = null
+	var min_distance = INF
+	var min_workload = INF
 
-	return [nearest_miner, self]
+	for sib in sibilyans:
+		
+		var distance = global_position.distance_to(sib.global_position)
+		var workload = sib.get_workload()  # Now stored per instance
+
+		if workload < min_workload or (workload == min_workload and distance < min_distance):
+			nearest_sibilyan = sib
+			min_distance = distance
+			min_workload = workload
+
+	return nearest_sibilyan

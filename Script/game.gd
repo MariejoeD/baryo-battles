@@ -113,9 +113,13 @@ func update_button_visuals():
 	for button_name in button_states.keys():
 		var button = grid_container.get_node_or_null(button_name)
 		if button:
+			button.get_node("resourceAmount").visible = true if button_states[button_name] else false
 			button.texture_normal = unlocked_textures[button_name] if button_states[button_name] else locked_textures[button_name]
 
 func description_show(building):
+	if not button_states[building.name]:
+		return
+	
 	var building_name = building.name.trim_suffix("Btn")
 	build_inventory_panel.visible = false
 	$DescriptionPanel.visible = true
@@ -123,6 +127,7 @@ func description_show(building):
 	# Hide all other description panels first
 	for child in $DescriptionPanel.get_children():
 		child.visible = false
+	
 	$DescriptionPanel.get_node(building_name).visible = true
 	pass
 	

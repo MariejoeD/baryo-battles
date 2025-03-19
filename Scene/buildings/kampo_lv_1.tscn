@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=4 uid="uid://ngmrdl4glq3"]
 
-[ext_resource type="Script" path="res://Script/building scripts/buildings.gd" id="1_kd2lq"]
+[ext_resource type="Script" path="res://Script/building scripts/kampo_lv_1_script.gd" id="1_amsd2"]
 [ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="2_yj4gm"]
 [ext_resource type="Texture2D" uid="uid://2lftuna7s6qb" path="res://assets/button/viewInformationClicked.png" id="3_08kdr"]
 [ext_resource type="Texture2D" uid="uid://dl2s57s3jegow" path="res://assets/BuildingsRawPics/2.png" id="4_4ra7k"]
@@ -170,8 +170,7 @@ shadow_size = 6
 [node name="Kampo-lv1" type="MeshInstance3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_x8xvh")
-script = ExtResource("1_kd2lq")
-building_name = "Kampo"
+script = ExtResource("1_amsd2")
 
 [node name="Area3D" type="Area3D" parent="."]
 
@@ -180,6 +179,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.109131, 1.8165, 0.12
 shape = SubResource("BoxShape3D_dbkpv")
 
 [node name="UI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -188,7 +188,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Kampo" type="HBoxContainer" parent="UI"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.41
