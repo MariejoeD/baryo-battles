@@ -28,6 +28,7 @@ const DAY_DURATION = 600
 var current_time = 0.0
 var time_of_day: float
 
+
 #Kubo Tracking
 var all_kubos: Array = []  # Stores all Kubo nodes
 
@@ -49,12 +50,14 @@ func _process(delta: float) -> void:
 func get_current_civilian_count() -> int:
 	return get_tree().get_nodes_in_group("Sibilyan").size()
 
+
 # Get the total max civilians from all built Kubos
 func get_max_civilians() -> int:
 	var max_civilians = 0
 	for kubo in all_kubos:
 		if is_instance_valid(kubo):  # Ensure Kubo is still valid
 			max_civilians += kubo.max_sibilyans
+	print(max_civilians)
 	return max_civilians
 
 # Check if we can generate a new civilian

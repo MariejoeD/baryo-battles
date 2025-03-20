@@ -5,15 +5,21 @@ var active_panel
 var built: bool =false
 @onready var building_name = $UI.get_child(0)
 @export var sibilyan_scene: PackedScene
-var max_sibilyans: int = 3
+@onready var current_sibilyan: int = int($UI/Kubo/generateCivilian/Panel/current.text)
+@onready var max_sibilyans: int = int($UI/Kubo/generateCivilian/Panel/max.text)
+@onready var Entities = get_tree().get_root().get_node("Root/Base/Entities")
+@onready var stored_sibilyans: Array = []
 func _ready() -> void: 
+
+
 	Global.all_kubos.append(self)  # Register this Kubo in Global
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
 	building_name.get_node("upgrade").pressed.connect(_on_upgrade_pressed)
 	building_name.get_node("generateCivilian").pressed.connect(_on_generate_civilian_pressed)
 	building_name.get_node("generateCivilian/Panel/Button").pressed.connect(generate_civilian)
-
+	# Initialize sibilyan values (avoid crashing if text isn't set yet)
+	
 	pass
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
@@ -67,19 +73,33 @@ func _on_generate_civilian_pressed() -> void:
 	if active_panel:
 		active_panel.hide()
 	active_panel = building_name.get_node_or_null("generateCivilian/Panel")
+	update_value()
 	active_panel.show()
 	pass
 func generate_civilian() -> void:
-	if Global.food_qty < int(active_panel.get_node("foodAmount").text):
+	if Global.food_qty < 60:
 		print("Not Enough Food")
 		return
 	# Check if we can generate a new civilian
 	if Global.can_generate_civilian():
 		print("Civilian generated!")
+		if current_sibilyan >= max_sibilyans:
+			add_sibilyan_to_other_kubo()
+			return
+		current_sibilyan += 1
+		store_sibilyans()
+		update_value()
+		
 	else:
 		print("Max civilians reached!")
 		return
 	
+	pass
+	
+func store_sibilyans():
+	var sib_inst = sibilyan_scene.instantiate()
+	stored_sibilyans.append(sib_inst)
+	sib_inst.assigned_kubo = self
 	pass
 func build():
 	var sibilyan = find_nearest_sibilyan()
@@ -97,15 +117,24 @@ func perform_work(worker):
 	pass
 
 func find_nearest_sibilyan() -> Node:
-	var sibilyans = get_tree().get_nodes_in_group("Sibilyan")  
+	# First, check if we have stored Sibilyans in any Kubo
+	for kubo in Global.all_kubos:
+		if kubo.stored_sibilyans.size() > 0:
+			var sib = kubo.stored_sibilyans.pop_front()  # Take the first stored Sibilyan
+			Entities.add_child(sib)  # Add to the scene
+			sib.global_transform.origin = kubo.global_transform.origin  # Spawn near the Kubo
+			print("Spawned stored Sibilyan from Kubo:", kubo)
+			return sib  # Return this Sibilyan for work
+
+	# If no stored Sibilyans, find the nearest active one
+	var sibilyans = get_tree().get_nodes_in_group("Sibilyan")
 	var nearest_sibilyan = null
 	var min_distance = INF
 	var min_workload = INF
 
 	for sib in sibilyans:
-		
 		var distance = global_position.distance_to(sib.global_position)
-		var workload = sib.get_workload()  # Now stored per instance
+		var workload = sib.get_workload()
 
 		if workload < min_workload or (workload == min_workload and distance < min_distance):
 			nearest_sibilyan = sib
@@ -113,7 +142,16 @@ func find_nearest_sibilyan() -> Node:
 			min_workload = workload
 
 	return nearest_sibilyan
+
+func update_value() -> void:
+	building_name.get_node("generateCivilian/Panel").get_node("current").text = "Current: " + str(current_sibilyan)
 	
+func add_sibilyan_to_other_kubo() -> void:
+	for kubo in Global.all_kubos:
+		if kubo.current_sibilyan < kubo.max_sibilyans:
+			kubo.generate_civilian()
+			return
+		
 	
 func remove_material_override(mesh_instance) -> void:
 	for i in range(mesh_instance.mesh.get_surface_count()):

@@ -5,8 +5,9 @@ var path = []
 var path_index = 0
 @onready var amap = get_tree().get_first_node_in_group("pathscript")
 var workload = []  # Stores work tasks
-
+var assigned_kubo
 signal path_ready
+var returning = false
  # Emits when work is completed
 
 func _ready() -> void:
@@ -15,7 +16,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if path.size() > 0:
 		move(delta)
-	
+	if returning and assigned_kubo and global_position.distance_to(assigned_kubo.global_position) < 3:
+		store_in_kubo()
 
 func move(delta):
 	if path_index < path.size():
@@ -50,6 +52,7 @@ func go_here(target):
 	await path_ready  # Wait until NPC reaches the target
 
 func add_work(task_target):
+	returning = false
 	workload.append(task_target)
 	print("Added work:", task_target.name, "Current workload size:", workload.size())
 	if workload.size() == 1:  # Start immediately if idle
@@ -69,7 +72,7 @@ func execute_next_work():
 			$AnimationPlayer.play("chopping")
 			work.perform_work(self)  # Execute the task and wait for completion
 			
-		
+	
 
 func task_complete():
 	$Skeleton3D2.hide()
@@ -81,7 +84,45 @@ func task_complete():
 		# If more work remains, execute the next task
 	if workload.size() > 0:
 		execute_next_work()
-	pass
+	else:
+		returning = true
+		return_to_kubo()
+		pass
+
+
+func return_to_kubo():
+	if assigned_kubo:
+		print("Returning to Kubo:", assigned_kubo.name)
+		set_path(assigned_kubo.global_transform.origin)  # Move to the Kubo position
+	else:
+		print("No assigned Kubo! Searching for the nearest one...")
+		assigned_kubo = find_nearest_kubo()
+		
+		
+		if assigned_kubo:
+			assigned_kubo.current_sibilyan += 1
+			assigned_kubo.update_value()
+			set_path(assigned_kubo.global_transform.origin)
+
+
+
+func store_in_kubo():
+	print("Sibilyan stored in Kubo:", assigned_kubo.name)
+	assigned_kubo.stored_sibilyans.append(self)
+	
+	get_parent().remove_child(self)  # Remove Sibilyan from the world
+	
+func find_nearest_kubo() -> Node:
+	var nearest_kubo = null
+	var min_distance = INF
+
+	for kubo in Global.all_kubos:
+		var distance = global_position.distance_to(kubo.global_position)
+		if distance < min_distance and kubo.current_sibilyan < kubo.max_sibilyans:
+			nearest_kubo = kubo
+			min_distance = distance
+
+	return nearest_kubo
 
 func get_workload() -> int:
 	return workload.size()
