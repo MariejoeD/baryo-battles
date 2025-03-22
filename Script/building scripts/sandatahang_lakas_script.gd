@@ -9,10 +9,20 @@ func _ready() -> void:
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
 	building_name.get_node("upgrade").pressed.connect(_on_upgrade_pressed)
-	
-	
+	building_name.get_node("trainTroops").pressed.connect(_on_train_troops_pressed)
+	for troop in building_name.get_node("trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer").get_children():
+		troop.pressed.connect(_on_troop_pressed.bind(troop.duplicate()))
 
 	pass
+	
+
+func _on_troop_pressed(troop) -> void:
+	var training_panel = active_panel.get_node("trainingPanel/ScrollContainer/HBoxContainer")
+	training_panel.add_child(troop.duplicate())
+	pass
+
+
+
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if built and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -60,6 +70,13 @@ func _on_upgrade_pressed() -> void:
 	active_panel = building_name.get_node_or_null("upgrade/upgradePanel")
 	active_panel.show()
 	pass # Replace with function body.
+	
+func _on_train_troops_pressed() -> void:
+	if active_panel:
+		active_panel.hide()
+	active_panel = building_name.get_node_or_null("trainTroops/mainPanel")
+	active_panel.show()
+	
 
 func build():
 	var sibilyan = find_nearest_sibilyan()

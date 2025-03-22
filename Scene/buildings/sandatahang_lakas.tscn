@@ -633,6 +633,8 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = -5.99084
 offset_bottom = -9.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer"]
 layout_mode = 2
@@ -1401,6 +1403,9 @@ offset_left = -0.0810604
 offset_top = 0.0619979
 offset_right = 0.108093
 offset_bottom = 0.0409546
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/trainingPanel/ScrollContainer"]
+layout_mode = 2
 
 [node name="cost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel"]
 layout_mode = 1

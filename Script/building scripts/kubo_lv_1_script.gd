@@ -3,6 +3,7 @@ extends MeshInstance3D
 
 var active_panel
 var built: bool =false
+var food_req = 60
 @onready var building_name = $UI.get_child(0)
 @export var sibilyan_scene: PackedScene
 @onready var current_sibilyan: int = int($UI/Kubo/generateCivilian/Panel/current.text)
@@ -77,7 +78,7 @@ func _on_generate_civilian_pressed() -> void:
 	active_panel.show()
 	pass
 func generate_civilian() -> void:
-	if Global.food_qty < 60:
+	if Global.food_qty < food_req:
 		print("Not Enough Food")
 		return
 	# Check if we can generate a new civilian
@@ -100,6 +101,7 @@ func store_sibilyans():
 	var sib_inst = sibilyan_scene.instantiate()
 	stored_sibilyans.append(sib_inst)
 	sib_inst.assigned_kubo = self
+	Global.food_qty -= food_req
 	pass
 func build():
 	var sibilyan = find_nearest_sibilyan()
