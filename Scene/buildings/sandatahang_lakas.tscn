@@ -337,7 +337,6 @@ script = ExtResource("1_17mrt")
 shape = SubResource("ConvexPolygonShape3D_a8obp")
 
 [node name="UI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -598,7 +597,6 @@ texture_normal = ExtResource("11_1e2rt")
 texture_pressed = ExtResource("12_acdhg")
 
 [node name="mainPanel" type="Panel" parent="UI/Sandatahang Lakas/trainTroops"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -10.49
