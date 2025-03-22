@@ -83,9 +83,9 @@ func grow(duration: float = 5.0):
 	
 func make_harvestable():
 	is_harvestable = true
-	#indicator.show()  # Show indicator when ready
+	$TextureButton.texture_normal = preload("res://assets/button/ready_to_harvest.png") # Update texture
 	print("Ready to harvest!")
-	pass
+
 
 
 func harvest() -> void:

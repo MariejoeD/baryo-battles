@@ -169,7 +169,6 @@ script = ExtResource("1_soyno")
 
 [node name="Build" type="Node3D" parent="."]
 script = ExtResource("2_0jknw")
-instant_build = true
 building_data = ExtResource("3_j1245")
 
 [node name="Attack" type="Node" parent="."]

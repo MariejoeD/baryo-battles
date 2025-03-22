@@ -42,7 +42,6 @@ visible = false
 
 [node name="Tanim" parent="." instance=ExtResource("10_tu4hc")]
 visible = false
-surface_material_override/0 = null
 
 [node name="Imbakan-lv1Empty" parent="." instance=ExtResource("11_p8lof")]
 visible = false
