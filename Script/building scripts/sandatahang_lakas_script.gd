@@ -29,49 +29,64 @@ func _ready() -> void:
 	
 
 func _on_troop_pressed(troop) -> void:
-	# Count active Sibilyans
+	# Check available Sibilyans
 	var active_sibilyans = Global.get_current_civilian_count()
-	
-	# Count stored Sibilyans in all Kubos
 	var stored_sibilyans = 0
 	for kubo in Global.all_kubos:
 		stored_sibilyans += kubo.stored_sibilyans.size()
-
-	# Get total available Sibilyans
 	var total_sibilyans = active_sibilyans + stored_sibilyans
-	
-	# Ensure there's at least one available Sibilyan
+
 	if sacrificeSib.size() >= total_sibilyans:
 		print("No available Sibilyan to sacrifice!")
 		return
 
 	var sib = find_nearest_sibilyan()
-
-	# If no valid Sibilyan is found, stop the function
 	if sib == null:
 		print("No valid Sibilyan found!")
 		return
 
 	sacrificeSib.append(sib)
-	if sib:
-		if sib.assigned_kubo:
-			var kubo = sib.assigned_kubo
-			kubo.current_sibilyan -= 1
-			kubo.stored_sibilyans.erase(sib)
+	if sib.assigned_kubo:
+		var kubo = sib.assigned_kubo
+		kubo.current_sibilyan -= 1
+		kubo.stored_sibilyans.erase(sib)
 
-		await sib.go_here(self.global_transform.origin)
-		sib.queue_free()
+	await sib.go_here(self.global_transform.origin)
+	sib.queue_free()
 
+	# Check if the troop already exists in the training panel
+	var existing_entry = training_panel.get_node_or_null(troop.name)
+	
+	if existing_entry:
+		# If the troop already exists, increase the count
+		var count_label = existing_entry.get_node("CountLabel")
+		count_label.text = "x" + str(int(count_label.text.substr(1)) + 1)  # Increment count
+	else:
+		# Create a new entry if it doesn't exist
 		var textureBtn = TextureButton.new()
 		textureBtn.name = troop.name
 		textureBtn.texture_normal = load(troopImagePath + troop.name + ".png")
-		training_panel.add_child(textureBtn)
 
-		var duration = troopsDict[troop.name]["trainingTime"]
-		trainingTroops.append({"name": troop.name, "duration": duration})
+		var count_label = Label.new()
+		count_label.name = "CountLabel"
+		count_label.text = "x1"  # Initialize count
+		count_label.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+		count_label.add_theme_font_size_override("font_size", 20)
+		count_label.add_theme_color_override("font_color", Color(1, 1, 1))
 
-		if trainingTroops.size() == 1:
-			training()
+		var container = VBoxContainer.new()  # Container to hold button & label
+		container.name = troop.name
+		container.add_child(textureBtn)
+		container.add_child(count_label)
+
+		training_panel.add_child(container)
+
+	var duration = troopsDict[troop.name]["trainingTime"]
+	trainingTroops.append({"name": troop.name, "duration": duration})
+
+	if trainingTroops.size() == 1:
+		training()
+
 
 func training() -> void:
 	if trainingTroops.is_empty():

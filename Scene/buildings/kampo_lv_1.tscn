@@ -179,7 +179,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.109131, 1.8165, 0.12
 shape = SubResource("BoxShape3D_dbkpv")
 
 [node name="UI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -441,31 +440,55 @@ texture_normal = ExtResource("11_awa0a")
 texture_pressed = ExtResource("12_hid37")
 
 [node name="manageTroopsPanel" type="Panel" parent="UI/Kampo/ManageTroops"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -6.275
-anchor_top = -9.83
-anchor_right = 4.863
-anchor_bottom = -4.434
-offset_left = 0.0249939
-offset_top = -0.00994873
-offset_right = -0.0130157
-offset_bottom = 0.0019989
+anchor_left = -7.451
+anchor_top = -9.717
+anchor_right = 7.353
+anchor_bottom = -5.132
+offset_left = 0.00106812
+offset_top = 0.000976563
+offset_right = -0.00296021
+offset_bottom = -0.00396729
 theme_override_styles/panel = SubResource("StyleBoxFlat_v5aet")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/Kampo/ManageTroops/manageTroopsPanel"]
+[node name="ScrollContainer" type="Panel" parent="UI/Kampo/ManageTroops/manageTroopsPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.011
-anchor_top = 0.024
-anchor_right = 1.0
-anchor_bottom = 0.969
-offset_left = -0.248001
-offset_top = 0.136002
-offset_right = -7.0
-offset_bottom = -0.133942
+anchor_left = 0.034
+anchor_top = 0.213
+anchor_right = 0.947
+anchor_bottom = 0.763
+offset_left = 0.357998
+offset_top = 0.149994
+offset_right = 0.0889893
+offset_bottom = 34.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Kampo/ManageTroops/manageTroopsPanel/ScrollContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="UI/Kampo/ManageTroops/manageTroopsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.367
+anchor_top = 0.04
+anchor_right = 0.616
+anchor_bottom = 0.16
+offset_left = -0.371002
+offset_right = 0.191956
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_ep854")
+theme_override_font_sizes/font_size = 30
+text = "Available Troops"
 
 [connection signal="input_event" from="Area3D" to="." method="clicked_building"]
