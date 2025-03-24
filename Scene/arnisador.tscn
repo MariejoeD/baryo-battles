@@ -1,9 +1,9 @@
-[gd_scene load_steps=23 format=4 uid="uid://do0ag0s6g57v7"]
+[gd_scene load_steps=23 format=4 uid="uid://ck3ms4pdst72f"]
 
 [ext_resource type="Texture2D" uid="uid://tc6g0otf408d" path="res://assets/Anim/Arnisador/Arnisador-Run_0.png" id="2_scqp2"]
-[ext_resource type="Animation" path="res://assets/Anim/Arnisador/idle.anim" id="3_ajlyb"]
+[ext_resource type="Animation" uid="uid://b3m33wxsmqvu1" path="res://assets/Anim/Arnisador/idle.anim" id="3_ajlyb"]
 [ext_resource type="Texture2D" uid="uid://b1bcijj4mhxqy" path="res://assets/Anim/Arnisador/Arnisador-fighting_0.png" id="3_najyj"]
-[ext_resource type="Animation" path="res://assets/Anim/Arnisador/run.anim" id="4_mt73t"]
+[ext_resource type="Animation" uid="uid://d2h68qlihxnhx" path="res://assets/Anim/Arnisador/run.anim" id="4_mt73t"]
 [ext_resource type="Animation" uid="uid://qjs28i3tb3v2" path="res://assets/Anim/Arnisador/attack.tres" id="6_cirbu"]
 [ext_resource type="PackedScene" uid="uid://chfyar41tdneb" path="res://Scene/Components/fsm.tscn" id="6_s42bx"]
 [ext_resource type="PackedScene" uid="uid://cir4xu05qnmre" path="res://Scene/Components/targeting_component.tscn" id="7_xer2s"]
@@ -309,7 +309,6 @@ _data = {
 }
 
 [node name="Arnisador" type="CharacterBody3D" groups=["Good"]]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -831,7 +830,7 @@ bones/38/rotation = Quaternion(0, 0, 0, 1)
 bones/38/scale = Vector3(1, 1, 1)
 
 [node name="Cylinder_000" type="BoneAttachment3D" parent="Skeleton3D2"]
-transform = Transform3D(-8.16922, -9.37227, -1.60724, 6.13715, -3.57801, -10.3292, 7.26348, -7.5178, 6.91979, -0.428433, 1.92344, 0.497141)
+transform = Transform3D(-8.16922, -9.37227, -1.60724, 6.13714, -3.57801, -10.3292, 7.26348, -7.51779, 6.91979, -0.428433, 1.92344, 0.497141)
 bone_name = "Cylinder.000"
 bone_idx = 23
 
