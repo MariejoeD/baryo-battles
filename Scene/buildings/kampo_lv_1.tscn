@@ -179,6 +179,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.109131, 1.8165, 0.12
 shape = SubResource("BoxShape3D_dbkpv")
 
 [node name="UI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -440,6 +441,7 @@ texture_normal = ExtResource("11_awa0a")
 texture_pressed = ExtResource("12_hid37")
 
 [node name="manageTroopsPanel" type="Panel" parent="UI/Kampo/ManageTroops"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -7.451
