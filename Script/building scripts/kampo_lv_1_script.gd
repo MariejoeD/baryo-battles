@@ -6,6 +6,7 @@ var built: bool =false
 @onready var building_name = $UI.get_child(0)
 
 func _ready() -> void:
+	Global.all_kampo.append(self)
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
 	building_name.get_node("upgrade").pressed.connect(_on_upgrade_pressed)

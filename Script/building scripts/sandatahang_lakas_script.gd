@@ -9,7 +9,7 @@ var sacrificeSib: Array = []
 @onready var building_name = $UI.get_child(0)
 var training_panel
 var troopsDict = {
-	"arnisador": {"trainingTime": 5},
+	"arnisador": {"trainingTime": 5, "scene" : "res://Scene/arnisador.tscn"},
 	"lakanWarrior": {"trainingTime": 10},
 	"tirador": {"trainingTime": 10},
 	"manggagamot": {"trainingTime": 15},
@@ -35,6 +35,7 @@ func _on_troop_pressed(troop) -> void:
 	for kubo in Global.all_kubos:
 		stored_sibilyans += kubo.stored_sibilyans.size()
 	var total_sibilyans = active_sibilyans + stored_sibilyans
+	print("Total Sibilyans: ", total_sibilyans, " active sibilyan: ", active_sibilyans ," stored sibilyans: ",stored_sibilyans)
 
 	if sacrificeSib.size() >= total_sibilyans:
 		print("No available Sibilyan to sacrifice!")
@@ -52,10 +53,11 @@ func _on_troop_pressed(troop) -> void:
 		kubo.stored_sibilyans.erase(sib)
 
 	await sib.go_here(self.global_transform.origin)
+	sacrificeSib.erase(sib)
 	sib.queue_free()
 
 	# Check if the troop already exists in the training panel
-	var existing_entry = training_panel.get_node_or_null(troop.name)
+	var existing_entry = training_panel.get_node_or_null(NodePath(str(troop.name)))
 	
 	if existing_entry:
 		# If the troop already exists, increase the count
@@ -63,26 +65,36 @@ func _on_troop_pressed(troop) -> void:
 		count_label.text = "x" + str(int(count_label.text.substr(1)) + 1)  # Increment count
 	else:
 		# Create a new entry if it doesn't exist
+		# Create TextureButton
 		var textureBtn = TextureButton.new()
 		textureBtn.name = troop.name
 		textureBtn.texture_normal = load(troopImagePath + troop.name + ".png")
 
+		# Create Count Label as a child of TextureButton
 		var count_label = Label.new()
 		count_label.name = "CountLabel"
 		count_label.text = "x1"  # Initialize count
-		count_label.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 		count_label.add_theme_font_size_override("font_size", 20)
 		count_label.add_theme_color_override("font_color", Color(1, 1, 1))
 
-		var container = VBoxContainer.new()  # Container to hold button & label
-		container.name = troop.name
-		container.add_child(textureBtn)
-		container.add_child(count_label)
+		# Correct Positioning: Anchor to top-right inside TextureButton
+		count_label.anchor_right = 1.0
+		count_label.anchor_top = 0.0
+		count_label.anchor_left = 1.0
+		count_label.anchor_bottom = 0.0
 
-		training_panel.add_child(container)
+		# Use `position` instead of `margin` to place it inside the button
+		count_label.position = Vector2(-30, 5)  # Adjust X and Y to fit inside
+		
+		# Add Count Label to TextureButton
+		textureBtn.add_child(count_label)
+
+		# Add TextureButton to training panel
+		training_panel.add_child(textureBtn)
 
 	var duration = troopsDict[troop.name]["trainingTime"]
-	trainingTroops.append({"name": troop.name, "duration": duration})
+	var scene = troopsDict[troop.name]["scene"]
+	trainingTroops.append({"name": troop.name, "duration": duration, "scene":scene})
 
 	if trainingTroops.size() == 1:
 		training()
@@ -95,14 +107,29 @@ func training() -> void:
 	var currentTroop = trainingTroops.front()
 	await get_tree().create_timer(currentTroop["duration"]).timeout
 
-	if training_panel.get_child_count() > 0:
-		training_panel.get_child(0).queue_free()
-
-	trainingTroops.pop_front()
-
+	# Find the troop entry in the training panel
+	var troop_entry = training_panel.get_node_or_null(NodePath(currentTroop["name"]))
+	if troop_entry:
+		var count_label = troop_entry.get_node("CountLabel")
+		var count = int(count_label.text.substr(1))  # Extract number from "xN"
+		
+		if count > 1:
+			count_label.text = "x" + str(count - 1)  # Decrease count
+		else:
+			troop_entry.queue_free()  # Remove when count reaches 0
+	send_to_kampo(currentTroop)
+	trainingTroops.pop_front()  # Remove the troop from the queue
+	
 	if not trainingTroops.is_empty():
-		training()
+		training()  # Continue training the next troop
 
+func send_to_kampo(troop):
+	var troop_inst = load(troop["scene"]).instantiate()
+	get_tree().get_root().get_node("Root/Base/Entities").add_child(troop_inst)
+	troop_inst.global_transform.origin = self.global_transform.origin
+	troop_inst.get_node("GoToCamp").go_to_camp()
+	pass
+	
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if built and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

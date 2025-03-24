@@ -31,7 +31,7 @@ var time_of_day: float
 
 #Kubo Tracking
 var all_kubos: Array = []  # Stores all Kubo nodes
-
+var all_kampo: Array = []
 func _ready() -> void:
 	SignalManager.discovered.connect(npc)
 
