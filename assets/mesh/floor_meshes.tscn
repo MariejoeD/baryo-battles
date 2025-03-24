@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpas4g84qld1c"]
+[gd_scene load_steps=6 format=3 uid="uid://cpas4g84qld1c"]
+
+[ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="1_kx3lv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhted"]
+albedo_texture = ExtResource("1_kx3lv")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jxhvx"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1euv6"]
-albedo_color = Color(0.347702, 1, 0.315169, 1)
+material = SubResource("StandardMaterial3D_qhted")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vaoap"]
 points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
@@ -14,7 +17,6 @@ points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.
 
 [node name="Grass Floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_jxhvx")
-surface_material_override/0 = SubResource("StandardMaterial3D_1euv6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Grass Floor"]
 

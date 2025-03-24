@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://ddwrhwm3otd8p"]
+[gd_scene load_steps=18 format=3 uid="uid://ddwrhwm3otd8p"]
 
 [ext_resource type="Script" path="res://Script/day_cycle.gd" id="1_5bpij"]
 [ext_resource type="PackedScene" uid="uid://d4nb8cjrspohc" path="res://Scene/game.tscn" id="1_8noqr"]
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="1_ewtg3"]
 [ext_resource type="MeshLibrary" uid="uid://bkv7xtdr8msl7" path="res://assets/mesh/meshes.tres" id="3_j3x7l"]
-[ext_resource type="MeshLibrary" uid="uid://bls4eg7ajfbbl" path="res://assets/mesh/floor_meshes.tres" id="3_ucrro"]
+[ext_resource type="MeshLibrary" uid="uid://xnhjswii62lr" path="res://assets/mesh/floor_meshes.tres" id="3_ucrro"]
 [ext_resource type="Script" path="res://Script/floor_setup.gd" id="4_6i8of"]
 [ext_resource type="MeshLibrary" uid="uid://coyq64ubih6j1" path="res://assets/mesh/grid_dis.tres" id="5_74pts"]
 [ext_resource type="Script" path="res://Script/duplicated_tiles.gd" id="6_ttmot"]
@@ -12,10 +12,84 @@
 [ext_resource type="Script" path="res://Script/load.gd" id="7_xwng1"]
 [ext_resource type="Script" path="res://Script/generate.gd" id="8_hwwmm"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c05a2"]
+[sub_resource type="Shader" id="Shader_o0vlo"]
+code = "shader_type sky;
+render_mode use_debanding;
+
+uniform vec4 sky_top_color : source_color = vec4(0.385, 0.454, 0.55, 1.0);
+uniform vec4 sky_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float sky_curve : hint_range(0, 1) = 0.15;
+uniform float sky_energy = 1.0; // In Lux.
+uniform sampler2D sky_cover : filter_linear, source_color, hint_default_black;
+uniform vec4 sky_cover_modulate : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+
+uniform vec4 ground_bottom_color : source_color = vec4(0.1, 0.35, 0.1, 1.0); // Grass Green
+uniform vec4 ground_horizon_color : source_color = vec4(0.4, 0.3, 0.15, 1.0); // Dirt/Soil
+uniform float ground_curve : hint_range(0, 1) = 0.02;
+uniform float ground_energy = 1.0;
+uniform float sun_angle_max = 30.0;
+uniform float sun_curve : hint_range(0, 1) = 0.15;
+uniform float exposure : hint_range(0, 128) = 1.0;
+
+// Noise function for terrain variation
+float hash(vec2 p) {
+    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+}
+
+float smoothNoise(vec2 uv) {
+    vec2 i = floor(uv);
+    vec2 f = fract(uv);
+    float a = hash(i);
+    float b = hash(i + vec2(1.0, 0.0));
+    float c = hash(i + vec2(0.0, 1.0));
+    float d = hash(i + vec2(1.0, 1.0));
+    vec2 u = f * f * (3.0 - 2.0 * f);
+    return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
+}
+
+void sky() {
+    float v_angle = acos(clamp(EYEDIR.y, -1.0, 1.0));
+    float c = (1.0 - v_angle / (PI * 0.5));
+
+    vec3 sky = mix(sky_horizon_color.rgb, sky_top_color.rgb, clamp(1.0 - pow(1.0 - c, 1.0 / sky_curve), 0.0, 1.0));
+    sky *= sky_energy;
+
+    vec4 sky_cover_texture = texture(sky_cover, SKY_COORDS);
+    sky += (sky_cover_texture.rgb * sky_cover_modulate.rgb) * sky_cover_texture.a * sky_cover_modulate.a * sky_energy;
+
+    // Terrain simulation
+    vec2 uv = vec2(EYEDIR.x, EYEDIR.z) * 5.0;
+    float terrainHeight = smoothNoise(uv) * 0.5 + 0.5; // Height variation
+
+    c = (v_angle - (PI * 0.5)) / (PI * 0.5);
+    vec3 grassColor = vec3(0.1, 0.3, 0.2);  // Lush green grass
+    vec3 dirtColor = vec3(0.30, 0.3, 0.15);  // Brown soil patches
+
+    vec3 ground = mix(dirtColor, grassColor, terrainHeight); // Blending grass and soil
+    ground *= ground_energy;
+
+    // Final mix of ground and sky
+    COLOR = mix(ground, sky, step(0.0, EYEDIR.y)) * exposure;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ftghq"]
+shader = SubResource("Shader_o0vlo")
+shader_parameter/sky_top_color = Color(0.283748, 0.696446, 0.884323, 1)
+shader_parameter/sky_horizon_color = Color(0.892591, 0.96994, 0.879414, 1)
+shader_parameter/sky_curve = 0.15
+shader_parameter/sky_energy = 1.0
+shader_parameter/sky_cover_modulate = Color(1, 1, 1, 1)
+shader_parameter/ground_bottom_color = Color(0.1, 0.35, 0.1, 1)
+shader_parameter/ground_horizon_color = Color(0.418232, 0.84329, 0.655603, 1)
+shader_parameter/ground_curve = 0.02
+shader_parameter/ground_energy = 1.0
+shader_parameter/sun_angle_max = 3.39589
+shader_parameter/sun_curve = 0.15
+shader_parameter/exposure = 1.0
 
 [sub_resource type="Sky" id="Sky_biuf7"]
-sky_material = SubResource("ProceduralSkyMaterial_c05a2")
+sky_material = SubResource("ShaderMaterial_ftghq")
 
 [sub_resource type="Environment" id="Environment_6klo0"]
 background_mode = 2
