@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://d4nb8cjrspohc"]
+[gd_scene load_steps=56 format=3 uid="uid://d4nb8cjrspohc"]
 
 [ext_resource type="Script" path="res://Script/attack scripts/Attack.gd" id="1_shcpm"]
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
@@ -37,6 +37,9 @@
 [ext_resource type="Texture2D" uid="uid://t3odoxbrqmw8" path="res://assets/BuildingsRawPics/10.png" id="33_ggwh2"]
 [ext_resource type="Texture2D" uid="uid://bi0ah5owynja6" path="res://assets/BuildingsRawPics/11.png" id="34_me38f"]
 [ext_resource type="Texture2D" uid="uid://brmyn30fd8jqn" path="res://assets/BuildingsRawPics/3.png" id="35_u3j3a"]
+[ext_resource type="Texture2D" uid="uid://bdqdv3hmgitmb" path="res://assets/game/person.png" id="38_h1f6k"]
+[ext_resource type="Script" path="res://Script/progress_bar.gd" id="39_hjfwg"]
+[ext_resource type="Texture2D" uid="uid://dpolk05qyjbd1" path="res://assets/game/clock.png" id="40_maiyq"]
 
 [sub_resource type="Theme" id="Theme_1ed3j"]
 
@@ -159,6 +162,30 @@ corner_radius_bottom_left = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmljh"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa3kr"]
+bg_color = Color(0.610067, 0.486057, 0.314577, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.331814, 0.258218, 0.113399, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_duncu"]
+bg_color = Color(0.364211, 0.595717, 0.278599, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.331814, 0.258218, 0.113399, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Control2" type="Control"]
 layout_mode = 3
@@ -1686,11 +1713,14 @@ texture_normal = ExtResource("20_b3tbn")
 texture_pressed = ExtResource("21_a4jmo")
 
 [node name="ResourcePanel" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 272.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 5.975
+anchor_right = 23.625
+anchor_bottom = 1.1
+offset_left = -1.52588e-05
 offset_top = 3.0
-offset_right = 978.0
-offset_bottom = 44.0
+offset_right = -6.10352e-05
 theme_override_constants/separation = 200
 
 [node name="FoodContainer" type="HBoxContainer" parent="ResourcePanel"]
@@ -3011,6 +3041,62 @@ theme_override_font_sizes/font_size = 25
 text = "Isang matibay na kamalig kung saan iniipon ang inaning kahoy at batong ginagamit sa pagtatayo at pagpapalakas ng depensa ng baryo.
 "
 autowrap_mode = 3
+
+[node name="availableCivilian" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.3
+anchor_top = 0.1
+anchor_right = 4.25
+anchor_bottom = 1.45
+
+[node name="civilianIcon" type="TextureRect" parent="availableCivilian"]
+layout_mode = 2
+texture = ExtResource("38_h1f6k")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="availableCivilian"]
+layout_mode = 2
+text = "0/3"
+
+[node name="ProgressBar" type="ProgressBar" parent="." node_paths=PackedStringArray("time_label")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 24.725
+anchor_top = 0.275
+anchor_right = 29.45
+anchor_bottom = 1.0
+theme_override_styles/background = SubResource("StyleBoxFlat_oa3kr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_duncu")
+max_value = 24.0
+show_percentage = false
+script = ExtResource("39_hjfwg")
+time_label = NodePath("time_label")
+
+[node name="time_label" type="Label" parent="ProgressBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164
+anchor_right = 0.825
+anchor_bottom = 0.897
+offset_left = 0.00399971
+offset_top = 2.0
+offset_right = 0.0749969
+offset_bottom = -0.0130005
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 23.35
+anchor_top = -0.069
+anchor_right = 24.45
+anchor_bottom = 1.175
+offset_left = 33.0
+offset_top = 5.76
+offset_right = 33.0
+texture = ExtResource("40_maiyq")
+expand_mode = 1
 
 [connection signal="toggled" from="DescriptionPanel/Malacadabra/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="toggled" from="DescriptionPanel/Kampo/CheckButton" to="." method="_on_check_button_toggled"]
