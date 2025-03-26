@@ -48,5 +48,9 @@ func go_here(target):
 func go_to_camp():
 	for kampo in Global.all_kampo:
 		if kampo:
-			go_here(kampo.global_transform.origin)
+			await go_here(kampo.global_transform.origin)
+			print("Arrive")
+			character_body.get_node("AnimationPlayer").play("idle")
+			
+			return kampo
 	pass

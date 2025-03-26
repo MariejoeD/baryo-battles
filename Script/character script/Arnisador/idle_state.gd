@@ -18,4 +18,5 @@ func update(_delta: float) -> void:
 		print("Transitioning to RunningState")
 		
 	else:
-		fsm.anim_player.play("idle")
+		#fsm.anim_player.play("idle")
+		pass

@@ -1,3 +1,4 @@
+#Global.gd a global script
 extends Node
 
 var wood_qty :int = 3000:

@@ -10,10 +10,10 @@ var sacrificeSib: Array = []
 var training_panel
 var troopsDict = {
 	"arnisador": {"trainingTime": 5, "scene" : "res://Scene/arnisador.tscn"},
-	"lakanWarrior": {"trainingTime": 10},
-	"tirador": {"trainingTime": 10},
-	"manggagamot": {"trainingTime": 15},
-	"marites": {"trainingTime": 15},
+	"lakanWarrior": {"trainingTime": 10, "scene" : "res://Scene/arnisador.tscn"},
+	"tirador": {"trainingTime": 10, "scene" : "res://Scene/arnisador.tscn"},
+	"manggagamot": {"trainingTime": 15, "scene" : "res://Scene/arnisador.tscn"},
+	"marites": {"trainingTime": 15, "scene" : "res://Scene/arnisador.tscn"},
 }
 
 func _ready() -> void:
@@ -127,7 +127,11 @@ func send_to_kampo(troop):
 	var troop_inst = load(troop["scene"]).instantiate()
 	get_tree().get_root().get_node("Root/Base/Entities").add_child(troop_inst)
 	troop_inst.global_transform.origin = self.global_transform.origin
-	troop_inst.get_node("GoToCamp").go_to_camp()
+	troop_inst.get_node("Detection/CollisionShape3D").shape.radius *= 0.1
+	
+	var kampo = await troop_inst.get_node("GoToCamp").go_to_camp()
+	kampo.troops.append(troop)
+	kampo.update_ui_container()
 	pass
 	
 

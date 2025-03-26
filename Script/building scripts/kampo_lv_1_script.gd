@@ -4,6 +4,53 @@ extends MeshInstance3D
 var active_panel
 var built: bool =false
 @onready var building_name = $UI.get_child(0)
+var troops: Array = []
+@export var troopImagePath : String
+@onready var container = get_node("UI/Kampo/ManageTroops/manageTroopsPanel/ScrollContainer/ScrollContainer")
+
+func update_ui_container():
+	
+	for child in container.get_children():
+		child.queue_free()
+	await get_tree().process_frame
+	for troop in troops:
+		
+		var existing_entry = container.get_node_or_null(NodePath(str(troop.name)))
+		
+		if existing_entry:
+			
+			var count_label = existing_entry.get_node("qty_label")
+			count_label.text = "x" + str(int(count_label.text.substr(1))+1)
+		else:
+			
+			var troop_display = TextureRect.new()
+			troop_display.name = troop.name
+			troop_display.texture =  load(troopImagePath + troop.name + ".png")
+			var qty_label = Label.new()
+			qty_label.name = "qty_label"
+			qty_label.text = "x1"
+			qty_label.add_theme_font_size_override("font_size", 20)
+			qty_label.add_theme_color_override("font_color", Color(1, 1, 1))
+		
+			container.add_child(troop_display)
+		
+#
+			# Correct Positioning: Anchor to top-right inside TextureButton
+			qty_label.anchor_right = 1.0
+			qty_label.anchor_top = 0.0
+			qty_label.anchor_left = 1.0
+			qty_label.anchor_bottom = 0.0
+	
+			# Use `position` instead of `margin` to place it inside the button
+			qty_label.position = Vector2(-30, 5)  # Adjust X and Y to fit inside
+			
+			# Add Count Label to TextureButton
+			troop_display.add_child(qty_label)
+	
+			# Add TextureButton to training panel
+			container.add_child(troop_display)
+		pass
+	pass
 
 func _ready() -> void:
 	Global.all_kampo.append(self)
