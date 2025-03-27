@@ -72,6 +72,7 @@ func _on_back_button_pressed():
 	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
 
 func _on_about_button_pressed():
+	
 	print("About button pressed!")
 
 func _on_reset_game_button_pressed():
