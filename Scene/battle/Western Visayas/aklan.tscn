@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://drpf1hpcd61c"]
+[gd_scene load_steps=25 format=3 uid="uid://drpf1hpcd61c"]
 
 [ext_resource type="MeshLibrary" uid="uid://xnhjswii62lr" path="res://assets/mesh/floor_meshes.tres" id="1_s7gc2"]
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="2_3lqeh"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c6xh6vspiq5nr" path="res://assets/enemybase/deployTroops/5.png" id="14_q61wy"]
 [ext_resource type="Texture2D" uid="uid://ys018x43gph4" path="res://assets/enemybase/deployTroops/6.png" id="15_rwm7i"]
 [ext_resource type="Texture2D" uid="uid://kwimgnavlvph" path="res://assets/enemybase/deployTroops/7.png" id="16_0cohh"]
+[ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="18_d4bkn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_von4y"]
 bg_color = Color(0.99973, 0.192196, 0.169605, 1)
@@ -74,6 +75,18 @@ corner_radius_bottom_left = 20
 shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
 shadow_size = 5
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_u0otr"]
+panorama = ExtResource("18_d4bkn")
+energy_multiplier = 1.7
+
+[sub_resource type="Sky" id="Sky_tn53m"]
+sky_material = SubResource("PanoramaSkyMaterial_u0otr")
+
+[sub_resource type="Environment" id="Environment_78frx"]
+background_mode = 2
+background_energy_multiplier = 0.4
+sky = SubResource("Sky_tn53m")
+
 [node name="Aklan" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -118,10 +131,19 @@ skeleton = NodePath("../..")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0958457, 0.995396, 0, -0.995396, -0.0958457, 0, 208.87, 0)
-light_energy = 100.0
+light_energy = 70.0
 light_indirect_energy = 1.704
-light_size = 0.176
+light_size = 0.057
+light_specular = 0.0
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 7.966
+shadow_opacity = 0.52
+shadow_blur = 3.881
+distance_fade_begin = 1914.44
+distance_fade_shadow = 51.35
 spot_range = 4096.0
+spot_angle_attenuation = 0.0915064
 
 [node name="Tree" type="Node" parent="."]
 
@@ -317,3 +339,6 @@ texture_normal = ExtResource("15_rwm7i")
 [node name="superInday" type="TextureButton" parent="UI/allyPanel/allyContainer"]
 layout_mode = 2
 texture_normal = ExtResource("16_0cohh")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_78frx")
