@@ -33,9 +33,12 @@ func _process(_delta):
 	else:
 		modulate = Color(0.0, 1.0, 0.0)  # Morning (Green)
 
-# Function to update the time label (HH:MM format)
+# Function to update the time label (12-hour HH:MM AM/PM format)
 func update_time_label(game_hours: float):
-	var hours = int(game_hours) % 24
-	var minutes = int((game_hours - hours) * 60)  # Convert fraction to minutes
+	var hours = int(game_hours) % 12
+	if hours == 0:
+		hours = 12  # Convert 0 to 12 for 12-hour format
+	var minutes = int((game_hours - int(game_hours)) * 60)  # Convert fraction to minutes
+	var period = "AM" if game_hours < 12 else "PM"
 	if time_label:
-		time_label.text = "%02d:%02d" % [hours, minutes]  # Format as HH:MM
+		time_label.text = "%02d:%02d %s" % [hours, minutes, period]  # Format as HH:MM AM/PM

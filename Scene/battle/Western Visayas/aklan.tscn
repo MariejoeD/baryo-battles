@@ -79,13 +79,13 @@ shadow_size = 5
 panorama = ExtResource("18_d4bkn")
 energy_multiplier = 1.7
 
-[sub_resource type="Sky" id="Sky_tn53m"]
+[sub_resource type="Sky" id="Sky_timiy"]
 sky_material = SubResource("PanoramaSkyMaterial_u0otr")
 
 [sub_resource type="Environment" id="Environment_78frx"]
 background_mode = 2
 background_energy_multiplier = 0.4
-sky = SubResource("Sky_tn53m")
+sky = SubResource("Sky_timiy")
 
 [node name="Aklan" type="Node3D"]
 

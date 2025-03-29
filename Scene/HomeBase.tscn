@@ -13,18 +13,17 @@
 [ext_resource type="Script" path="res://Script/load.gd" id="7_xwng1"]
 [ext_resource type="Script" path="res://Script/generate.gd" id="8_hwwmm"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_c37rl"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ihp4q"]
 panorama = ExtResource("1_cjqhy")
+energy_multiplier = 1.7
 
-[sub_resource type="Sky" id="Sky_biuf7"]
-sky_material = SubResource("PanoramaSkyMaterial_c37rl")
+[sub_resource type="Sky" id="Sky_cjdic"]
+sky_material = SubResource("PanoramaSkyMaterial_ihp4q")
 
-[sub_resource type="Environment" id="Environment_6klo0"]
+[sub_resource type="Environment" id="Environment_dkw2b"]
 background_mode = 2
-sky = SubResource("Sky_biuf7")
-ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 16.0
+background_energy_multiplier = 0.4
+sky = SubResource("Sky_cjdic")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o15vt"]
 albedo_color = Color(0.34902, 1, 0.313726, 1)
@@ -38,7 +37,7 @@ size = Vector2(500, 500)
 [node name="Base" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Base"]
-environment = SubResource("Environment_6klo0")
+environment = SubResource("Environment_dkw2b")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Base"]
 transform = Transform3D(0.23005, 0.696497, 0.679683, -6.10574e-08, -0.698415, 0.715693, 0.973179, -0.164645, -0.16067, 0, 13.3756, 0)
