@@ -1490,7 +1490,7 @@ layout_mode = 2
 texture = ExtResource("17_gi6q2")
 stretch_mode = 3
 
-[node name="Button" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="Ilo-Ilo" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.183
@@ -1504,7 +1504,7 @@ offset_bottom = 0.200989
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
-[node name="Button2" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="antique" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.097
@@ -1518,7 +1518,7 @@ offset_bottom = 0.0649872
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
-[node name="Button3" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="aklan" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.125
@@ -1532,7 +1532,7 @@ offset_bottom = 0.201996
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
-[node name="Button4" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="guimaras" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.203
@@ -1546,7 +1546,7 @@ offset_bottom = -0.0990295
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
-[node name="Button5" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="bohol" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.537
@@ -1560,7 +1560,7 @@ offset_bottom = 0.0289917
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
-[node name="Button6" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="cebu" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.463
@@ -1574,7 +1574,7 @@ offset_bottom = -0.140015
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
-[node name="Button7" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="negrosOriental" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.277
@@ -1588,7 +1588,7 @@ offset_bottom = 0.00796509
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
-[node name="Button8" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="negrosOccidental" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.281
@@ -1602,7 +1602,7 @@ offset_bottom = -0.18103
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
-[node name="Button9" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="siquijor" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.408
@@ -1616,7 +1616,7 @@ offset_bottom = 0.0889587
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
-[node name="Button11" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="northernSamar" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.678
@@ -1628,7 +1628,7 @@ offset_bottom = 0.148998
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
-[node name="Button12" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="samar" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.708
@@ -1642,7 +1642,7 @@ offset_bottom = -0.158005
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
-[node name="Button13" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="easternSamar" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.788
@@ -1656,7 +1656,7 @@ offset_bottom = -0.0429993
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
-[node name="Button14" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="biliran" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.602
@@ -1670,7 +1670,7 @@ offset_bottom = 0.235992
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
-[node name="Button15" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="leyte" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.665
@@ -1684,7 +1684,7 @@ offset_bottom = -0.105011
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
-[node name="Button16" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="southernLeyte" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.729
