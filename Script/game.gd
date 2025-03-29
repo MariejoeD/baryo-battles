@@ -97,7 +97,16 @@ func _on_settings_button_pressed():
 
 func _on_back_to_main_menu_pressed():
 	#print("Back to Main Menu button pressed!")
+	save_troops_to_file()
 	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
+func save_troops_to_file():
+	var save_dict = {}
+	for kampo in Global.all_kampo:
+		save_dict[kampo.get_instance_id()] = kampo.troops  # Save all troops
+
+	var file = FileAccess.open("user://troops_data.save", FileAccess.WRITE)
+	file.store_string(JSON.stringify(save_dict))
+	file.close()
 
 # Update the resource display
 func update_resource_display():

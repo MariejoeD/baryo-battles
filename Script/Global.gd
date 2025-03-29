@@ -1,6 +1,8 @@
 #Global.gd a global script
 extends Node
 
+
+
 var wood_qty :int = 3000:
 	set(wood):
 		wood_qty = wood
@@ -25,7 +27,7 @@ var food_qty :int = 3000:
 var grid_size :int = 100
 var npc_discovered = {}
 
-const DAY_DURATION = 600
+const DAY_DURATION = 1200
 var current_time = 0.0
 var time_of_day: float
 
@@ -33,8 +35,10 @@ var time_of_day: float
 #Kubo Tracking
 var all_kubos: Array = []  # Stores all Kubo nodes
 var all_kampo: Array = []
+var kampo_troops: Dictionary = {}
 func _ready() -> void:
 	SignalManager.discovered.connect(npc)
+	load_troops_from_file()
 
 func npc(name):
 	npc_discovered[name] = true
@@ -64,3 +68,14 @@ func get_max_civilians() -> int:
 # Check if we can generate a new civilian
 func can_generate_civilian() -> bool:
 	return get_current_civilian_count() < get_max_civilians()
+func load_troops_from_file():
+	if not FileAccess.file_exists("user://troops_data.save"):
+		print("dont exist")
+		return
+
+	var file = FileAccess.open("user://troops_data.save", FileAccess.READ)
+	var save_data = JSON.parse_string(file.get_as_text())
+	file.close()
+
+	if save_data:
+		Global.kampo_troops = save_data

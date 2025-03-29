@@ -36,13 +36,18 @@ size = Vector2(500, 500)
 
 [node name="Base" type="Node3D" parent="."]
 
+[node name="DayLightCycle" type="Node3D" parent="Base"]
+script = ExtResource("1_5bpij")
+
+[node name="SunLight" type="DirectionalLight3D" parent="Base/DayLightCycle"]
+transform = Transform3D(0.23005, 2.01116e-08, 0.973179, 8.74228e-08, -1, -1.77636e-15, 0.973179, 8.5078e-08, -0.23005, 0, 13.3756, 0)
+shadow_enabled = true
+
+[node name="MoonLight" type="DirectionalLight3D" parent="Base/DayLightCycle"]
+transform = Transform3D(0.23005, 3.47365e-08, 0.973179, 1.50996e-07, -1, -1.77636e-15, 0.973179, 1.46946e-07, -0.23005, 0, 13.3756, 0)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Base"]
 environment = SubResource("Environment_dkw2b")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Base"]
-transform = Transform3D(0.23005, 0.696497, 0.679683, -6.10574e-08, -0.698415, 0.715693, 0.973179, -0.164645, -0.16067, 0, 13.3756, 0)
-shadow_enabled = true
-script = ExtResource("1_5bpij")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Base"]
 offset_right = 1280.0

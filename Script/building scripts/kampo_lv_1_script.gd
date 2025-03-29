@@ -54,6 +54,10 @@ func update_ui_container():
 
 func _ready() -> void:
 	Global.all_kampo.append(self)
+	# Restore troops if saved
+	if Global.kampo_troops.has(self.get_instance_id()):
+		troops = Global.kampo_troops[self.get_instance_id()]
+		update_ui_container()  # Refresh UI after restoring troops
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
 	building_name.get_node("upgrade").pressed.connect(_on_upgrade_pressed)

@@ -1,0 +1,157 @@
+[gd_scene load_steps=14 format=3 uid="uid://bb7bjegmerfbt"]
+
+[ext_resource type="Script" path="res://Script/deploy.gd" id="1_dk4n7"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_oaiwf"]
+[ext_resource type="Texture2D" uid="uid://cj8mpcn1jhj3f" path="res://assets/enemybase/deployTroops/1.png" id="2_yixm7"]
+[ext_resource type="Texture2D" uid="uid://daj78fyu8dmvm" path="res://assets/enemybase/deployTroops/2.png" id="3_giv6o"]
+[ext_resource type="Texture2D" uid="uid://b4krcbcbs7vy3" path="res://assets/enemybase/deployTroops/3.png" id="4_q5aik"]
+[ext_resource type="Texture2D" uid="uid://cwd0wnwk6xxk0" path="res://assets/enemybase/deployTroops/4.png" id="5_brc5q"]
+[ext_resource type="Texture2D" uid="uid://c6xh6vspiq5nr" path="res://assets/enemybase/deployTroops/5.png" id="6_1te5m"]
+[ext_resource type="Texture2D" uid="uid://ys018x43gph4" path="res://assets/enemybase/deployTroops/6.png" id="7_q48x7"]
+[ext_resource type="Texture2D" uid="uid://kwimgnavlvph" path="res://assets/enemybase/deployTroops/7.png" id="8_ymscb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_von4y"]
+bg_color = Color(0.99973, 0.192196, 0.169605, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbted"]
+bg_color = Color(0.999935, 0.501281, 0.44437, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwneg"]
+bg_color = Color(0.99973, 0.192196, 0.169605, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mq55b"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 5
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dk4n7")
+
+[node name="surrenderButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042
+anchor_top = 0.825
+anchor_right = 0.187
+anchor_bottom = 0.931
+offset_left = 0.239998
+offset_top = -6.10352e-05
+offset_right = 0.639984
+offset_bottom = -0.320068
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_von4y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pbted")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dwneg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dwneg")
+text = "SURRENDER"
+
+[node name="allyPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.254
+anchor_top = 0.778
+anchor_right = 0.817
+anchor_bottom = 0.983
+offset_left = -0.119995
+offset_top = -0.160034
+offset_right = 0.23999
+offset_bottom = 0.23999
+theme_override_styles/panel = SubResource("StyleBoxFlat_mq55b")
+
+[node name="allyContainer" type="HBoxContainer" parent="allyPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.015
+anchor_right = 0.988
+anchor_bottom = 1.0
+offset_left = -0.0249996
+offset_top = 11.0
+offset_right = -0.179993
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="arnisador" type="TextureButton" parent="allyPanel/allyContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("2_yixm7")
+
+[node name="lakanWarrior" type="TextureButton" parent="allyPanel/allyContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("3_giv6o")
+
+[node name="tirador" type="TextureButton" parent="allyPanel/allyContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("4_q5aik")
+
+[node name="manggagamot" type="TextureButton" parent="allyPanel/allyContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("5_brc5q")
+
+[node name="marites" type="TextureButton" parent="allyPanel/allyContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("6_1te5m")
+
+[node name="kapitanMakoy" type="TextureButton" parent="allyPanel/allyContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("7_q48x7")
+
+[node name="superInday" type="TextureButton" parent="allyPanel/allyContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("8_ymscb")
