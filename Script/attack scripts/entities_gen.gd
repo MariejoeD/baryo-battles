@@ -3,11 +3,15 @@ extends Node3D
 @export var enemies: Array[PackedScene]
 @export var troops: Dictionary
 @onready var UI = $"../UI"
+@onready var container = UI.get_node("allyPanel/allyContainer")
 @onready var camera = $"../SubViewportContainer/SubViewport/Camera3D"  # Ensure you reference your main Camera3D
+@export var Objects: Array[Node]
 var in_area = false
 
+func _ready() -> void:
+	create_area_and_collision()
 func _input(event: InputEvent) -> void:
-	if UI.selected_troop:
+	if get_selected_troop() != "":
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			var target_pos = get_mouse_floor_position()
 			if target_pos == Vector3.ZERO or target_pos == Vector3.INF:
@@ -32,12 +36,26 @@ func get_mouse_floor_position() -> Vector3:
 	return Vector3.INF
 
 func spawn_troop(target_position: Vector3):
-	# Create a temporary instance to get the collision shape
-	var Troop_Scene = troops.get(UI.selected_troop, null)
+	# Find the selected troop
+	var selected_troop = get_selected_troop()
+	if selected_troop == "":
+		print("[ERROR] No troop selected!")
+		return
+
+	# Get troop count
+	var troop_count = UI.troop_data[selected_troop][0]
+
+	if troop_count <= 0:
+		print("[ERROR] No more", selected_troop, "available!")
+		return
+
+	# Get troop scene
+	var Troop_Scene = troops.get(selected_troop, null)
 	if not Troop_Scene:
 		print("[ERROR] Null troop scene!")
 		return
 
+	# Create a temporary instance to check collision
 	var temp_instance = Troop_Scene.instantiate()
 	temp_instance.get_node("Detection/CollisionShape3D").shape.radius *= 0.001
 	var collision_shape = temp_instance.get_node_or_null("CollisionShape3D")
@@ -52,10 +70,21 @@ func spawn_troop(target_position: Vector3):
 		temp_instance.queue_free()
 		return
 
-	# Position is valid, spawn troop
+	# Position is valid, decrease troop count
+	UI.troop_data[selected_troop][0] -= 1
+	UI.update_troop_count_label(container.get_node(selected_troop), UI.troop_data[selected_troop][0])
+	# Spawn troop
 	temp_instance.position = target_position
 	add_child(temp_instance)
-	print("[SUCCESS] Troop deployed at:", target_position)
+	print("[SUCCESS] Deployed", selected_troop, "at", target_position)
+	print("[INFO] Remaining", selected_troop, ":", UI.troop_data[selected_troop][0])
+
+func get_selected_troop() -> String:
+	for troop_name in UI.troop_data.keys():
+		if UI.troop_data[troop_name][1]:  # If is_selected is true
+			return troop_name
+	return ""  # No troop selected
+
 
 func is_position_valid(position: Vector3, collision_shape: CollisionShape3D) -> bool:
 	var temp_area = Area3D.new()
@@ -93,3 +122,42 @@ func is_position_valid(position: Vector3, collision_shape: CollisionShape3D) -> 
 
 	return valid  # Return True if no unwanted collisions
 	
+func create_area_and_collision():
+	for group in Objects:
+		for child in group.get_children():
+			# Find all MeshInstance3D children
+			var mesh_instances: Array[MeshInstance3D] = []
+			
+			if child is MeshInstance3D:
+				mesh_instances.append(child)  # Directly add if it's a MeshInstance3D
+			else:
+				# Search for MeshInstance3D children inside the node
+				for sub_child in child.get_children():
+					if sub_child is MeshInstance3D:
+						mesh_instances.append(sub_child)
+
+			# Process each MeshInstance3D found
+			for mesh_inst in mesh_instances:
+				# Ensure the mesh instance has a valid AABB
+				var aabb = mesh_inst.get_aabb()
+				if aabb.size == Vector3.ZERO:
+					print("[WARNING] Skipping", mesh_inst.name, "- AABB is empty.")
+					continue
+
+				# Create Area3D and CollisionShape3D
+				var area = Area3D.new()
+				var collision = CollisionShape3D.new()
+				var box = BoxShape3D.new()
+
+				box.extents = aabb.size / 2  # Correct way to set box size
+				collision.shape = box
+
+				# Attach the collision shape
+				area.add_child(collision)
+				collision.owner = mesh_inst.owner  # Set owner for scene compatibility
+				area.owner = mesh_inst.owner  # Prevents issues when saving scene
+
+				# Add Area3D to the MeshInstance3D
+				mesh_inst.add_child(area)
+
+				print("[INFO] Added Area3D to:", mesh_inst.name)
