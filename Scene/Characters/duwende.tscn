@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dcyy578mne1kp"]
+[gd_scene load_steps=16 format=4 uid="uid://dcyy578mne1kp"]
 
 [ext_resource type="Texture2D" uid="uid://dkt74hha5gxtk" path="res://assets/Anim/Duwende/Duwende-Idle_0.png" id="1_svxaw"]
 [ext_resource type="Animation" uid="uid://csfejyw0q0xxq" path="res://assets/Anim/Duwende/run.res" id="2_7hsr1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cir4xu05qnmre" path="res://Scene/Components/targeting_component.tscn" id="5_bfocj"]
 [ext_resource type="PackedScene" uid="uid://cp2vi4c5mg38k" path="res://Scene/Components/pathfinder_component.tscn" id="6_dxh4u"]
 [ext_resource type="PackedScene" uid="uid://ddus7m2bshw8c" path="res://Scene/Components/health_component.tscn" id="7_mkoak"]
+[ext_resource type="PackedScene" uid="uid://o7lqup8rddo1" path="res://Scene/Attack/stats.tscn" id="8_10n6q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nl6xy"]
 
@@ -339,8 +340,7 @@ _data = {
 radius = 20.0
 
 [node name="Duwende" type="CharacterBody3D" groups=["Enemy"]]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
-collision_layer = 2
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0.805, 0)
@@ -602,6 +602,7 @@ target_group = "Good"
 [node name="Pathfinder" parent="." instance=ExtResource("6_dxh4u")]
 
 [node name="Detection" type="Area3D" parent="."]
+collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection"]
@@ -609,3 +610,9 @@ shape = SubResource("CylinderShape3D_qr8dd")
 
 [node name="Health Component" parent="." instance=ExtResource("7_mkoak")]
 health = 100.0
+
+[node name="Stats" parent="." instance=ExtResource("8_10n6q")]
+hp = 200
+damage = 30
+attack_speed = 1.0
+movement_speed = 3.0

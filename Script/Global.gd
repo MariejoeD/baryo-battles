@@ -69,13 +69,17 @@ func get_max_civilians() -> int:
 func can_generate_civilian() -> bool:
 	return get_current_civilian_count() < get_max_civilians()
 func load_troops_from_file():
-	if not FileAccess.file_exists("user://troops_data.save"):
-		print("dont exist")
+	var file_path = "user://troops_data.save"
+	print("Checking file at:", ProjectSettings.globalize_path(file_path))
+
+	if not FileAccess.file_exists(file_path):
+		print("File does not exist:", file_path)
 		return
 
-	var file = FileAccess.open("user://troops_data.save", FileAccess.READ)
+	var file = FileAccess.open(file_path, FileAccess.READ)
 	var save_data = JSON.parse_string(file.get_as_text())
 	file.close()
 
 	if save_data:
 		Global.kampo_troops = save_data
+		print("Loaded troops successfully from", ProjectSettings.globalize_path(file_path))
