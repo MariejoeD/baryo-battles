@@ -1,9 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://wmlkmm2xve0t"]
+[gd_scene load_steps=13 format=3 uid="uid://wmlkmm2xve0t"]
 
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="1_j1let"]
 [ext_resource type="MeshLibrary" uid="uid://xnhjswii62lr" path="res://assets/mesh/floor_meshes.tres" id="2_7hunm"]
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="3_faboi"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="4_3xa82"]
+[ext_resource type="PackedScene" uid="uid://drt8hgj6q12um" path="res://assets/enemybase/Kapre-Baliti.fbx" id="5_xp5ve"]
+[ext_resource type="PackedScene" uid="uid://b8jt61msa1y3c" path="res://assets/enemybase/Sigbin-Kweba.fbx" id="6_pj1hi"]
+[ext_resource type="PackedScene" uid="uid://dwe0ymch1gvyv" path="res://assets/enemybase/Tikbalang-bamboo.fbx" id="7_siwqk"]
+[ext_resource type="PackedScene" uid="uid://fr5aar7s3hou" path="res://assets/enemybase/Manananggal-Gubat.fbx" id="8_l4qnt"]
+[ext_resource type="ArrayMesh" uid="uid://cpfb2x0omp3pv" path="res://assets/enemybase/Duwende-Punso.obj" id="9_xqf08"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rdcqw"]
 panorama = ExtResource("1_j1let")
@@ -65,6 +70,22 @@ script = ExtResource("3_faboi")
 [node name="UI" parent="." instance=ExtResource("4_3xa82")]
 
 [node name="Buildings" type="Node" parent="."]
+
+[node name="Kapre-Baliti" parent="Buildings" instance=ExtResource("5_xp5ve")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -77.759, -13.9506, 12.0313)
+
+[node name="Sigbin-Kweba" parent="Buildings" instance=ExtResource("6_pj1hi")]
+transform = Transform3D(-4.70637, 0, -7.67138, 0, 9, 0, 7.67138, 0, -4.70637, -4.82874, 0, -50.8573)
+
+[node name="Tikbalang-bamboo" parent="Buildings" instance=ExtResource("7_siwqk")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 50.4327, 0, 71.2565)
+
+[node name="Manananggal-Gubat" parent="Buildings" instance=ExtResource("8_l4qnt")]
+transform = Transform3D(-4.12793, 0, -2.82138, 0, 5, 0, 2.82138, 0, -4.12793, 60.381, 0, 12.6692)
+
+[node name="Duwende-punso" type="MeshInstance3D" parent="Buildings"]
+transform = Transform3D(5.97238, 0, 0.575074, 0, 6, 0, -0.575074, 0, 5.97238, 0.0509796, -1.37014, 73.459)
+mesh = ExtResource("9_xqf08")
 
 [node name="Trees" type="Node" parent="."]
 
