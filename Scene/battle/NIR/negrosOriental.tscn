@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="2_uex1b"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="3_cdw0c"]
 [ext_resource type="MeshLibrary" uid="uid://xnhjswii62lr" path="res://assets/mesh/floor_meshes.tres" id="4_jnqcc"]
-[ext_resource type="PackedScene" uid="uid://b8jt61msa1y3c" path="res://assets/enemybase/Sigbin-Kweba.fbx" id="5_bumf3"]
-[ext_resource type="PackedScene" uid="uid://drt8hgj6q12um" path="res://assets/enemybase/Kapre-Baliti.fbx" id="6_gtgdt"]
-[ext_resource type="ArrayMesh" uid="uid://cpfb2x0omp3pv" path="res://assets/enemybase/Duwende-Punso.obj" id="7_70rd6"]
+[ext_resource type="PackedScene" uid="uid://buur5k7xhj1t4" path="res://assets/enemybase/Sigbin-Kweba.fbx" id="5_bumf3"]
+[ext_resource type="PackedScene" uid="uid://dc6ql3e0xfe3j" path="res://assets/enemybase/Kapre-Baliti.fbx" id="6_gtgdt"]
+[ext_resource type="PackedScene" uid="uid://cxw4s8qhjn4ve" path="res://assets/enemybase/Duwende-Punso.fbx" id="7_kk52c"]
 [ext_resource type="PackedScene" uid="uid://u7bowpv5cs5w" path="res://assets/building models/tree2.fbx" id="8_deala"]
 [ext_resource type="PackedScene" uid="uid://cibaoi8abw80r" path="res://assets/building models/stone1.fbx" id="9_yao3m"]
 [ext_resource type="PackedScene" uid="uid://cs0wlb26i2c18" path="res://assets/building models/stone2.fbx" id="10_7oo2n"]
@@ -82,9 +82,8 @@ transform = Transform3D(-9.37277, 0, -3.53681, 0, 10.0179, 0, 3.53681, 0, -9.372
 [node name="Kapre-Baliti" parent="Buildings" instance=ExtResource("6_gtgdt")]
 transform = Transform3D(4.59444, 0, 6.54913, 0, 8, 0, -6.54913, 0, 4.59444, -64.8682, -12.0895, -42.9214)
 
-[node name="Duwende-punso" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 49.154, -0.53966, 46.708)
-mesh = ExtResource("7_70rd6")
+[node name="Duwende-Punso" parent="Buildings" instance=ExtResource("7_kk52c")]
+transform = Transform3D(5.37552, 0, -5.92484, 0, 8, 0, 5.92484, 0, 5.37552, 48.8708, 0, 54.7117)
 
 [node name="Trees" type="Node" parent="."]
 

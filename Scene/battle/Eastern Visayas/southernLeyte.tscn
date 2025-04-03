@@ -3,12 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="1_j1let"]
 [ext_resource type="MeshLibrary" uid="uid://xnhjswii62lr" path="res://assets/mesh/floor_meshes.tres" id="2_7hunm"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="4_3xa82"]
-[ext_resource type="PackedScene" uid="uid://drt8hgj6q12um" path="res://assets/enemybase/Kapre-Baliti.fbx" id="5_xp5ve"]
-[ext_resource type="PackedScene" uid="uid://b8jt61msa1y3c" path="res://assets/enemybase/Sigbin-Kweba.fbx" id="6_pj1hi"]
+[ext_resource type="PackedScene" uid="uid://dc6ql3e0xfe3j" path="res://assets/enemybase/Kapre-Baliti.fbx" id="5_xp5ve"]
+[ext_resource type="PackedScene" uid="uid://buur5k7xhj1t4" path="res://assets/enemybase/Sigbin-Kweba.fbx" id="6_pj1hi"]
 [ext_resource type="PackedScene" uid="uid://dwe0ymch1gvyv" path="res://assets/enemybase/Tikbalang-bamboo.fbx" id="7_siwqk"]
-[ext_resource type="PackedScene" uid="uid://fr5aar7s3hou" path="res://assets/enemybase/Manananggal-Gubat.fbx" id="8_l4qnt"]
+[ext_resource type="PackedScene" uid="uid://tffij4q8qovn" path="res://assets/enemybase/Manananggal-Gubat.fbx" id="8_l4qnt"]
+[ext_resource type="PackedScene" uid="uid://cxw4s8qhjn4ve" path="res://assets/enemybase/Duwende-Punso.fbx" id="8_rrjot"]
 [ext_resource type="PackedScene" uid="uid://e5tgdstbnbut" path="res://assets/building models/tree1.fbx" id="9_5unse"]
-[ext_resource type="ArrayMesh" uid="uid://cpfb2x0omp3pv" path="res://assets/enemybase/Duwende-Punso.obj" id="9_xqf08"]
 [ext_resource type="PackedScene" uid="uid://cibaoi8abw80r" path="res://assets/building models/stone1.fbx" id="10_pebii"]
 [ext_resource type="PackedScene" uid="uid://cs0wlb26i2c18" path="res://assets/building models/stone2.fbx" id="11_s18o7"]
 [ext_resource type="PackedScene" uid="uid://dkbavgjcgvhpl" path="res://assets/enemybase/bushWFruit.fbx" id="12_miwh8"]
@@ -87,12 +87,11 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 50.4327, 0, 71.2565)
 [node name="Manananggal-Gubat" parent="Buildings" instance=ExtResource("8_l4qnt")]
 transform = Transform3D(-4.12793, 0, -2.82138, 0, 5, 0, 2.82138, 0, -4.12793, 60.381, 0, 12.6692)
 
-[node name="Duwende-punso" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(5.97238, 0, 0.575074, 0, 6, 0, -0.575074, 0, 5.97238, 0.0509796, -0.0421408, 73.459)
-mesh = ExtResource("9_xqf08")
-
 [node name="Tikbalang-bamboo2" parent="Buildings" instance=ExtResource("7_siwqk")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 71.6943, 0, 71.2565)
+
+[node name="Duwende-Punso" parent="Buildings" instance=ExtResource("8_rrjot")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 5.85396, 0.708214, 69.6053)
 
 [node name="Trees" type="Node" parent="."]
 
