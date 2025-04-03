@@ -1,4 +1,4 @@
-[gd_resource type="MeshLibrary" load_steps=11 format=3 uid="uid://bcqqed14hyr4a"]
+[gd_resource type="MeshLibrary" load_steps=10 format=3 uid="uid://bcqqed14hyr4a"]
 
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="1_u7t48"]
 
@@ -23,12 +23,7 @@ image = SubResource("Image_7d8ek")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vaoap"]
 points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uoe1s"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0)
-
 [sub_resource type="BoxMesh" id="BoxMesh_m3uyc"]
-material = SubResource("StandardMaterial3D_uoe1s")
 
 [sub_resource type="Image" id="Image_pkkew"]
 data = {
