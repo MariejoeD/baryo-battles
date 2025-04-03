@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://drt8hgj6q12um"
+uid="uid://dc6ql3e0xfe3j"
 path="res://.godot/imported/Kapre-Baliti.fbx-500e4f86ed9dd04ca3b233cabb7c9523.scn"
 
 [deps]
@@ -31,16 +31,7 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Camera": {
-"import/skip_import": true
-},
-"PATH:Light": {
-"import/skip_import": true
-}
-}
-}
+_subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

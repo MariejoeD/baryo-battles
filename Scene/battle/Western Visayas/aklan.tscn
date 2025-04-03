@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://drpf1hpcd61c"]
 
 [ext_resource type="MeshLibrary" uid="uid://xnhjswii62lr" path="res://assets/mesh/floor_meshes.tres" id="1_s7gc2"]
-[ext_resource type="ArrayMesh" uid="uid://cpfb2x0omp3pv" path="res://assets/enemybase/Duwende-Punso.obj" id="3_4xpff"]
+[ext_resource type="PackedScene" uid="uid://cxw4s8qhjn4ve" path="res://assets/enemybase/Duwende-Punso.fbx" id="4_7t3cp"]
 [ext_resource type="PackedScene" uid="uid://y3ykhag1nqi" path="res://assets/building models/tree3.fbx" id="4_xdklk"]
 [ext_resource type="PackedScene" uid="uid://dcyy578mne1kp" path="res://Scene/Characters/duwende.tscn" id="5_eix77"]
 [ext_resource type="PackedScene" uid="uid://cs0wlb26i2c18" path="res://assets/building models/stone2.fbx" id="5_imfes"]
@@ -66,20 +66,14 @@ fov = 53.4
 
 [node name="Buildings" type="Node" parent="."]
 
-[node name="Duwende-punso" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 7.29406, -1.72122, -6.19275)
-mesh = ExtResource("3_4xpff")
-skeleton = NodePath("../..")
+[node name="Duwende-Punso2" parent="Buildings" instance=ExtResource("4_7t3cp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 7.29406, 2.87101, -6.19275)
 
-[node name="Duwende-punso2" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -56.6555, 0.127602, -6.19275)
-mesh = ExtResource("3_4xpff")
-skeleton = NodePath("../..")
+[node name="Duwende-Punso3" parent="Buildings" instance=ExtResource("4_7t3cp")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -58.6352, 1.05505, -6.19275)
 
-[node name="Duwende-punso3" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 7.29406, 0.127602, 55.5912)
-mesh = ExtResource("3_4xpff")
-skeleton = NodePath("../..")
+[node name="Duwende-Punso4" parent="Buildings" instance=ExtResource("4_7t3cp")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 13.8935, 1.05505, 53.2834)
 
 [node name="Trees" type="Node" parent="."]
 
