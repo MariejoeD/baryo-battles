@@ -16,6 +16,7 @@ func _ready():
 # Called when a body enters the detection area
 func _on_body_entered(body: Node3D) -> void:
 	#print(get_parent().name,"Body entered: ", body.name)  # Debug to check if this is triggered
+	print(get_parent().name," Detected ",body.name)
 	if body.is_in_group(target_group):  # Check if body belongs to the target group
 		_find_nearest_target()
 

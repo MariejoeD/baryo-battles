@@ -9,7 +9,7 @@ var sacrificeSib: Array = []
 @onready var building_name = $UI.get_child(0)
 var training_panel
 var troopsDict = {
-	"arnisador": {"trainingTime": 5, "scene" : "res://Scene/arnisador.tscn"},
+	"arnisador": {"trainingTime": .1, "scene" : "res://Scene/arnisador.tscn"},
 	"lakanWarrior": {"trainingTime": 10, "scene" : "res://Scene/arnisador.tscn"},
 	"tirador": {"trainingTime": 10, "scene" : "res://Scene/arnisador.tscn"},
 	"manggagamot": {"trainingTime": 15, "scene" : "res://Scene/arnisador.tscn"},

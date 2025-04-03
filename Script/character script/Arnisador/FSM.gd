@@ -10,11 +10,12 @@ class_name StateMachine extends Node
 ## The initial state of the state machine. If not set, the first child node is used.
 @export var initial_state: NpcState = null
 ## The current state of the state machine.
-@onready var current_state: NpcState = (func get_initial_state() -> NpcState:
-	return initial_state if initial_state != null else get_child(0)
-).call()
+@onready var current_state: NpcState
 
 func _ready() -> void:
+	current_state = (func get_initial_state() -> NpcState:
+		return initial_state if initial_state != null else get_child(0)
+	).call()
 	# Give every state a reference to the state machine.
 	for state_node: NpcState in get_children():
 		state_node.finished.connect(_transition_to_next_state)
@@ -42,6 +43,7 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 		return
 
 	var previous_state_path := current_state.name
-	current_state.exit()
-	current_state = get_node(target_state_path)
-	current_state.enter(previous_state_path, data)
+	if current_state:
+		current_state.exit()
+		current_state = get_node(target_state_path)
+		current_state.enter(previous_state_path, data)

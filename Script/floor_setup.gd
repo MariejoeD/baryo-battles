@@ -10,10 +10,12 @@ var aS = null
 @onready var other_map = parent.get_node("GridMap")
 @onready var grid_display = $"../Grid Display"
 @export var grid_size: int = Global.grid_size
+@export var fill_the_map: bool = true
 var grid_range = floor(grid_size/2.0)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	fill_map()
+	if fill_the_map:
+		fill_map()
 	create_AStar_map()
 	check_for_tile_collision()
 	pass # Replace with function body.

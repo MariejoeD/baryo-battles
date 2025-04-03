@@ -53,7 +53,7 @@ corner_radius_bottom_left = 30
 shadow_size = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mq55b"]
-bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+bg_color = Color(0.92, 0.878, 0.698, 0)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -64,7 +64,7 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_color = Color(0.506, 0.435, 0.2, 0)
 shadow_size = 5
 
 [node name="UI" type="Control"]

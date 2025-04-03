@@ -51,12 +51,14 @@ func spawn_troop(target_position: Vector3):
 	if troop_count <= 0:
 		return
 
-	var Troop_Scene = troops.get(selected_troop, null)
+	var Troop_Scene = load(troops[selected_troop])
+	print("Troop scene for selected troop: ", Troop_Scene)
+
 	if not Troop_Scene:
 		return
 
 	var temp_instance = Troop_Scene.instantiate()
-	temp_instance.get_node("Detection/CollisionShape3D").shape.radius *= 0.001
+	
 	var collision_shape = temp_instance.get_node_or_null("CollisionShape3D")
 	if not collision_shape:
 		temp_instance.queue_free()
@@ -69,6 +71,7 @@ func spawn_troop(target_position: Vector3):
 	UI.troop_data[selected_troop][0] -= 1
 	UI.update_troop_count_label(container.get_node(selected_troop), UI.troop_data[selected_troop][0])
 	temp_instance.position = target_position
+	#temp_instance.scale *= 1.5
 	add_child(temp_instance)
 
 func get_selected_troop() -> String:
@@ -139,7 +142,7 @@ func calculate_player_total_cp():
 	var total_cp = 0
 	for troop_name in UI.troop_data.keys():
 		if troop_name in troops:
-			var troop_scene = troops[troop_name]
+			var troop_scene = load(troops[troop_name])
 			var troop_instance = troop_scene.instantiate()
 
 			if troop_instance.has_node("Stats"):
@@ -239,9 +242,9 @@ func spawn_enemy(enemies):
 				print("[ERROR] No valid position found for enemy!")
 
 func get_random_position() -> Vector3:
-	var x = randf_range(-75, 75)
+	var x = randf_range(-50, 50)
 	var y = 0
-	var z = randf_range(-75, 75)
+	var z = randf_range(-50, 50)
 	return Vector3(x, y, z)
 
 func sum_array(arr: Array) -> float:

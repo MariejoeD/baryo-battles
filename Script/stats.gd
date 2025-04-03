@@ -3,6 +3,7 @@ extends Node
 # Exported variables to adjust stats in the editor
 @export var hp: int = 150  # Average health
 @export var damage: int = 25  # Moderate damage
+@export var attack_range: float = 2
 @export var attack_speed: float = 1.2  # Average attack speed (attacks per second)
 @export var movement_speed: float = 3.5  # Average movement speed
 @export var level: int = 1  # Starting at level 1
@@ -31,6 +32,11 @@ func calculate_cp() -> float:
 	
 	return cp
 
+func _on_attacked(damage):
+	hp -= damage
+	if hp < 0:
+		hp = 0
+		get_parent().queue_free()
 func _ready():
 	# Test the CP calculation for Arnisador
 	var cp = calculate_cp()
