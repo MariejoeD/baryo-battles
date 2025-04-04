@@ -42,6 +42,7 @@ func _ready():
 
 func _on_music_button_pressed():
 	MusicController.toggle_music()
+	MusicController.play_click_sound()
 	is_music_on = MusicController.is_music_on
 
 	if is_music_on:
@@ -52,7 +53,10 @@ func _on_music_button_pressed():
 		music_button.text = "Music: Off"
 
 func _on_sound_button_pressed():
-	is_sound_on = !is_sound_on
+	MusicController.toggle_sound()
+	MusicController.play_click_sound()
+	is_sound_on = MusicController.is_sound_on
+
 	if is_sound_on:
 		sound_button.icon = sound_on_icon
 		sound_button.text = "Sound: On"
@@ -60,19 +64,24 @@ func _on_sound_button_pressed():
 		sound_button.icon = sound_off_icon
 		sound_button.text = "Sound: Off"
 
+
 func _on_back_button_pressed():
+	MusicController.play_click_sound()
 	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
 
 func _on_about_button_pressed():
+	MusicController.play_click_sound()
 	get_tree().change_scene_to_file("res://Scene/about.tscn")
 	print("About button pressed!")
 
 func _on_reset_game_button_pressed():
+	MusicController.play_click_sound()
 	reset_dialog.dialog_text = "Are you sure you want to reset the game? Type 'confirm reset' to proceed."
 	reset_dialog.popup_centered()
 	reset_text_input.text = ""  # Clear text field when the dialog pops up
 
 func _on_reset_confirmed():
+	MusicController.play_click_sound()
 	if reset_text_input.text == "confirm reset":
 		get_tree().change_scene_to_file("res://Scene/loading.tscn")
 	else:

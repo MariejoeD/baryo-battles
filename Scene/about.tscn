@@ -1,10 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://fcgbv1bg2caw"]
+[gd_scene load_steps=8 format=3 uid="uid://fcgbv1bg2caw"]
 
 [ext_resource type="Texture2D" uid="uid://bfxkhcmtlxb7g" path="res://assets/game/almanacBackground.png" id="1_equq6"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="2_246qx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ta5fc"]
 texture = ExtResource("1_equq6")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow8tj"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0.396078, 0.333333, 0.560784, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.396078, 0.333333, 0.560784, 1)
+shadow_size = 3
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxlqa"]
+bg_color = Color(0.396078, 0.333333, 0.560784, 1)
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pp60x"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_8iya1"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.396078, 0.333333, 0.560784, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_ow8tj")
+Button/styles/normal = SubResource("StyleBoxFlat_bxlqa")
+Button/styles/pressed = SubResource("StyleBoxFlat_pp60x")
 
 [node name="About" type="Control"]
 layout_mode = 3
@@ -93,3 +130,25 @@ Territory Reclamation: Players liberate and defend villages (baryos), each with 
 
 Through teamwork, strategy, and the power of Philippine folklore, players will prove that unity and resilience can overcome any challenge. The ultimate goal is to protect the entire Philippines from the looming mythical threat and restore peace to the land."
 autowrap_mode = 2
+
+[node name="backButton" type="Button" parent="."]
+offset_left = 30.0
+offset_top = 33.0
+offset_right = 126.0
+offset_bottom = 70.0
+theme = SubResource("Theme_8iya1")
+theme_override_fonts/font = ExtResource("2_246qx")
+text = "BACK  "
+alignment = 2
+
+[node name="backButton" type="TextureRect" parent="backButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.081
+anchor_right = 0.289
+anchor_bottom = 0.892
+offset_left = 0.312
+offset_top = 0.00300002
+offset_right = 10.256
+offset_bottom = -0.00400162
