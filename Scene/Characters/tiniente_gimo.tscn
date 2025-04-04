@@ -191,6 +191,8 @@ height = 5.0
 radius = 12.0
 
 [node name="Tiniente Gimo" type="CharacterBody3D" groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -618,7 +620,7 @@ target_group = "Good"
 
 [node name="Detection" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection"]
 shape = SubResource("CylinderShape3D_y1ppn")
