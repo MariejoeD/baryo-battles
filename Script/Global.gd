@@ -17,7 +17,7 @@ var stone_qty :int = 3000:
 	get:
 		return stone_qty
 		
-var food_qty :int = 300:
+var food_qty :int = 3000:
 	set(food):
 		food_qty = food
 		SignalManager.update_mats.emit()
@@ -53,7 +53,10 @@ func _process(delta: float) -> void:
 
 # Count actual number of civilians in the scene dynamically
 func get_current_civilian_count() -> int:
-	return get_tree().get_nodes_in_group("Sibilyan").size()
+	var stored_civ = 0
+	for kubo in all_kubos:
+		stored_civ += kubo.stored_sibilyans.size()
+	return get_tree().get_nodes_in_group("Sibilyan").size() + stored_civ
 
 
 # Get the total max civilians from all built Kubos
@@ -62,11 +65,11 @@ func get_max_civilians() -> int:
 	for kubo in all_kubos:
 		if is_instance_valid(kubo):  # Ensure Kubo is still valid
 			max_civilians += kubo.max_sibilyans
-	print(max_civilians)
 	return max_civilians
 
 # Check if we can generate a new civilian
 func can_generate_civilian() -> bool:
+	print(get_current_civilian_count(),"/",get_max_civilians())
 	return get_current_civilian_count() < get_max_civilians()
 func load_troops_from_file():
 	var file_path = "user://troops_data.save"

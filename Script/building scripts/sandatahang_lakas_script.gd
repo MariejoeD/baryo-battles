@@ -44,12 +44,9 @@ func show_warning_label(label_name: String) -> void:
 
 func _on_troop_pressed(troop) -> void:
 	# Check available Sibilyans
-	var active_sibilyans = Global.get_current_civilian_count()
-	var stored_sibilyans = 0
-	for kubo in Global.all_kubos:
-		stored_sibilyans += kubo.stored_sibilyans.size()
-	var total_sibilyans = active_sibilyans + stored_sibilyans
-	print("Total Sibilyans: ", total_sibilyans, " active sibilyan: ", active_sibilyans ," stored sibilyans: ",stored_sibilyans)
+	var total_sibilyans = Global.get_current_civilian_count()
+	
+	print("Total Sibilyans: ", total_sibilyans)
 
 		
 	if sacrificeSib.size() >= total_sibilyans:
