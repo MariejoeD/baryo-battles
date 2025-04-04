@@ -79,8 +79,9 @@ func _on_generate_civilian_pressed() -> void:
 	pass
 func generate_civilian() -> void:
 	if Global.food_qty < food_req:
-		print("Not Enough Food")
+		display_warning()
 		return
+
 	# Check if we can generate a new civilian
 	if Global.can_generate_civilian():
 		print("Civilian generated!")
@@ -90,12 +91,17 @@ func generate_civilian() -> void:
 		current_sibilyan += 1
 		store_sibilyans()
 		update_value()
-		
 	else:
 		print("Max civilians reached!")
 		return
-	
-	pass
+
+func display_warning() -> void:
+	var warning_label = get_tree().current_scene.find_child("notEnoughFood")
+	warning_label.visible = true  # Show warning label
+
+	# Hide after 3 seconds
+	await get_tree().create_timer(3.0).timeout
+	warning_label.visible = false  # Hide warning label
 	
 func store_sibilyans():
 	var sib_inst = sibilyan_scene.instantiate()

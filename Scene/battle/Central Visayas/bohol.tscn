@@ -1,11 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://bepm3hw0ekuu8"]
+[gd_scene load_steps=17 format=3 uid="uid://bepm3hw0ekuu8"]
 
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="1_nlhtw"]
-[ext_resource type="MeshLibrary" uid="uid://xnhjswii62lr" path="res://assets/mesh/floor_meshes.tres" id="2_jwpy5"]
+[ext_resource type="MeshLibrary" uid="uid://bcqqed14hyr4a" path="res://assets/mesh/floor_meshes.tres" id="2_jwpy5"]
 [ext_resource type="PackedScene" uid="uid://dc6ql3e0xfe3j" path="res://assets/enemybase/Kapre-Baliti.fbx" id="4_1awxo"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="4_axll3"]
 [ext_resource type="PackedScene" uid="uid://buur5k7xhj1t4" path="res://assets/enemybase/Sigbin-Kweba.fbx" id="5_e2rq1"]
 [ext_resource type="PackedScene" uid="uid://dwe0ymch1gvyv" path="res://assets/enemybase/Tikbalang-bamboo.fbx" id="6_pas8v"]
+[ext_resource type="PackedScene" uid="uid://cxw4s8qhjn4ve" path="res://assets/enemybase/Duwende-Punso.fbx" id="7_1dv68"]
 [ext_resource type="PackedScene" uid="uid://y3ykhag1nqi" path="res://assets/building models/tree3.fbx" id="8_xrdua"]
 [ext_resource type="PackedScene" uid="uid://cipwkvjlafbhu" path="res://assets/enemybase/bushSimple.fbx" id="9_dv53g"]
 [ext_resource type="PackedScene" uid="uid://cibaoi8abw80r" path="res://assets/building models/stone1.fbx" id="9_u43lb"]
@@ -82,11 +83,11 @@ transform = Transform3D(-9.70907, 0, -7.05224, 0, 12, 0, 7.05224, 0, -9.70907, 4
 [node name="Tikbalang-bamboo" parent="Buildings" instance=ExtResource("6_pas8v")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 73.2035, 0, 38.7345)
 
-[node name="Duwende-punso" type="MeshInstance3D" parent="Buildings"]
-transform = Transform3D(9.99803, 0, -0.198605, 0, 10, 0, 0.198605, 0, 9.99803, -12.6925, -0.177509, 22.2038)
-
 [node name="Tikbalang-bamboo2" parent="Buildings" instance=ExtResource("6_pas8v")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 73.2035, 0, -4.88249)
+
+[node name="Duwende-Punso" parent="Buildings" instance=ExtResource("7_1dv68")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -11.5469, 0.475399, 17.0448)
 
 [node name="Trees" type="Node" parent="."]
 
