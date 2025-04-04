@@ -77,6 +77,11 @@ func _on_generate_civilian_pressed() -> void:
 	update_value()
 	active_panel.show()
 	pass
+func generate_civilian() -> void:
+	if Global.food_qty < food_req:
+		display_warning()
+		return
+
 	# Check if we can generate a new civilian
 func show_max_civilian_warning() -> void:
 	var warning_label = get_tree().current_scene.find_child("maxCivilianReached")
@@ -85,10 +90,7 @@ func show_max_civilian_warning() -> void:
 	# Hide after 3 seconds
 	await get_tree().create_timer(3.0).timeout
 	warning_label.visible = false  # Hide warning label
-func generate_civilian() -> void:
-	if Global.food_qty < food_req:
-		display_warning()
-		return
+
 	if Global.can_generate_civilian():
 		print("Civilian generated!")
 		if current_sibilyan >= max_sibilyans:
