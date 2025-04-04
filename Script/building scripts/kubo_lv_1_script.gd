@@ -83,9 +83,18 @@ func generate_civilian() -> void:
 		return
 
 	# Check if we can generate a new civilian
+func show_max_civilian_warning() -> void:
+	var warning_label = get_tree().current_scene.find_child("maxCivilianReached")
+	warning_label.visible = true  # Show warning label
+
+	# Hide after 3 seconds
+	await get_tree().create_timer(3.0).timeout
+	warning_label.visible = false  # Hide warning label
+
 	if Global.can_generate_civilian():
 		print("Civilian generated!")
 		if current_sibilyan >= max_sibilyans:
+			show_max_civilian_warning()  # Show warning for 3 seconds
 			add_sibilyan_to_other_kubo()
 			return
 		current_sibilyan += 1
@@ -93,7 +102,10 @@ func generate_civilian() -> void:
 		update_value()
 	else:
 		print("Max civilians reached!")
+		show_max_civilian_warning()
 		return
+
+
 
 func display_warning() -> void:
 	var warning_label = get_tree().current_scene.find_child("notEnoughFood")
