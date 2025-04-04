@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var Show_Debug: bool
 @export var required_cp: int = 100
 @export var enemies: Array[PackedScene]
 @export var preferred_enemies: Array[PackedScene]
@@ -15,12 +16,16 @@ extends Node3D
 @onready var player_cp = 0
 
 var in_area = false
-
+signal finished
 func _ready() -> void:
-	create_area_and_collision()
 	player_cp = calculate_player_total_cp()
 	var enemies = select_enemies_to_spawn()
-	spawn_enemy(enemies)
+	await get_tree().physics_frame
+	$".".finished.connect($"../Path Generator".create_path_node)
+	$"../Path Generator".finished.connect($"../AStar".create_astar)
+	$"../AStar".finished.connect($".".spawn_enemy.bind(enemies))
+	create_area_and_collision()
+	
 
 func _input(event: InputEvent) -> void:
 	if get_selected_troop() != "":
@@ -65,6 +70,7 @@ func spawn_troop(target_position: Vector3):
 		return
 
 	if not await is_position_valid(target_position, collision_shape):
+		
 		temp_instance.queue_free()
 		return
 
@@ -127,16 +133,37 @@ func create_area_and_collision():
 				if aabb.size == Vector3.ZERO:
 					continue
 
+				# Create the area and collision shape
 				var area = Area3D.new()
 				var collision = CollisionShape3D.new()
 				var box = BoxShape3D.new()
 
+				# Set the extents (half of the AABB size)
 				box.extents = aabb.size / 2
 				collision.shape = box
+				
+				# Calculate the center of the AABB and position the collision shape
+				var center = aabb.position + aabb.size / 2
+				collision.position = mesh_inst.position + center
+
 				area.add_child(collision)
-				collision.owner = mesh_inst.owner
-				area.owner = mesh_inst.owner
+
+				if Show_Debug:
+					# Optionally add a debug visualizer to see the collision bounds in the editor
+					var debug_mesh = MeshInstance3D.new()
+					debug_mesh.mesh = BoxMesh.new()
+					debug_mesh.scale = aabb.size
+					debug_mesh.position = aabb.position + aabb.size / 2  # Position the debug mesh at the center of the AABB
+					debug_mesh.material_override = preload("res://materials/debug_material.tres")  # Add your debug material
+					area.add_child(debug_mesh)
+
+				# Add the area as a child of the mesh instance (or its parent)
 				mesh_inst.add_child(area)
+
+	emit_signal("finished")
+
+
+
 
 func calculate_player_total_cp():
 	var total_cp = 0

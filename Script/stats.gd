@@ -40,4 +40,4 @@ func _on_attacked(damage):
 func _ready():
 	# Test the CP calculation for Arnisador
 	var cp = calculate_cp()
-	print(get_parent().name," Combat Power: ", cp)
+	#print(get_parent().name," Combat Power: ", cp)
