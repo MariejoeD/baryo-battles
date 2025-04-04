@@ -19,15 +19,17 @@ func _on_timer_timeout():
 	# After the timer is done, we can safely access the AStar node
 	pathfinding = get_tree().current_scene.find_child("AStar")
 	if pathfinding:
-		print("Updated AStar:", pathfinding.get_parent().name)
+		#print("Updated AStar:", pathfinding.get_parent().name)
+		pass
 	else:
-		print("AStar not found.")
+		#print("AStar not found.")
+		pass
 
 func findpaths(start: Vector3, end: Vector3) -> Array:
 	if pathfinding:
 		var path = pathfinding.find_path(start, end)
-		print(name, "Path:", path)
+		#print(name, "Path:", path)
 		return path
 	else:
-		print("No valid pathfinding node.")
+		#print("No valid pathfinding node.")
 		return []

@@ -38,7 +38,7 @@ size = Vector2(500, 500)
 script = ExtResource("1_5bpij")
 
 [node name="SunLight" type="DirectionalLight3D" parent="Base/DayLightCycle"]
-transform = Transform3D(0.23005, 2.01116e-08, 0.973179, 8.74228e-08, -1, -1.77636e-15, 0.973179, 8.5078e-08, -0.23005, 0, 13.3756, 0)
+transform = Transform3D(0.23005, 2.01116e-08, 0.973179, 8.74228e-08, -1, -7.10543e-15, 0.973179, 8.5078e-08, -0.23005, 0, 13.3756, 2.10596)
 shadow_enabled = true
 
 [node name="MoonLight" type="DirectionalLight3D" parent="Base/DayLightCycle"]
@@ -64,7 +64,6 @@ transform = Transform3D(0.707107, -0.5, 0.5, -2.55739e-08, 0.707107, 0.707107, -
 [node name="AMap" type="Node3D" parent="Base"]
 
 [node name="GridMap" type="GridMap" parent="Base/AMap"]
-mesh_library = ExtResource("6_vs85m")
 cell_size = Vector3(1, 1, 1)
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 

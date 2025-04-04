@@ -2,9 +2,8 @@ extends Node3D
 @onready var floor_map = $"../GridMap"
 var aS = null
 var all_points = {}
+signal  finished
 
-func _ready() -> void:
-	create_astar()
 
 func create_astar():
 	aS = AStar3D.new()
@@ -43,6 +42,7 @@ func create_astar():
 					aS.connect_points(index, neighbor_index)  # Connect the points
 
 	print("AStar3D created and cells added with connections.")
+	emit_signal("finished")
 
 func v3_to_index(v3: Vector3i) -> String:
 	# Convert Vector3i to a string key with x,y,z values

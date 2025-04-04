@@ -18,6 +18,7 @@ extends Node
 # Multipliers to adjust stats for level scaling or buffs
 @export var hp_multiplier: float = 1.0
 @export var damage_multiplier: float = 1.0
+@export var spawn_scale: Vector3 = Vector3(3, 3, 3)
 
 # Method to calculate combat power (CP)
 func calculate_cp() -> float:
@@ -40,4 +41,7 @@ func _on_attacked(damage):
 func _ready():
 	# Test the CP calculation for Arnisador
 	var cp = calculate_cp()
-	print(get_parent().name," Combat Power: ", cp)
+	#print(get_parent().name," Combat Power: ", cp)
+
+func apply_spawn_scaling():
+	get_parent().scale = spawn_scale

@@ -53,11 +53,13 @@ func update(delta: float) -> void:
 	if path_recalculation_timer > 0:
 		path_recalculation_timer -= delta
 
+	# If no target or invalid target, find a new one
 	if not is_instance_valid(target):
 		print("Lost target.")
 		fsm._transition_to_next_state("Idle")  # Change to idle or another state if the target is lost
+		fsm.targeting_component._find_nearest_target()  # Try to acquire a new target
 		return
-
+	
 	# Step 1: Check if the target has moved significantly to recalculate the path
 	var target_position = target.global_transform.origin
 	if target_position.distance_to(last_target_position) > npc_size * 1.0:  # Adjust threshold if needed
@@ -93,8 +95,11 @@ func update(delta: float) -> void:
 
 			# Step 4: Stop once we are in attack range of the target
 			if current_target_index >= len(path):  # If we have no more points to follow
-				if npc_position.distance_to(target_position) <= npc_size*stats.attack_range:  # Check if we're within attack range
+				if npc_position.distance_to(target_position) <= npc_size * stats.attack_range:  # Check if we're within attack range
 					print("Target within attack range! Stopping movement and transitioning to Attack state.")
 					fsm._transition_to_next_state("Attack", {"target" : target})  # Transition to attack state once in range
 				else:
 					print("Reached end of path, but target is out of attack range.")
+	
+	# Check for a new target every update while following the path
+	fsm.targeting_component._find_nearest_target()  # This ensures the Arnisador will always be aware of the closest target
