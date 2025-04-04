@@ -62,7 +62,7 @@ func _on_troop_pressed(troop) -> void:
 		print("No valid Sibilyan found!")
 		show_warning_label("noValidSibilyanFound")
 		return
-
+	
 	sacrificeSib.append(sib)
 	if sib.assigned_kubo:
 		var kubo = sib.assigned_kubo

@@ -9,13 +9,24 @@ extends Node3D
 @export var max_enemies: int = 10
 @export var troops: Dictionary
 @export var Objects: Array[Node]
+@export var boss_scene: PackedScene  # Reference to the boss scene
+
+# Enum for spawn conditions
+enum BossSpawnCondition {
+	SpawnOnLoad = 0,
+	SpawnAfterAllEnemiesDead,
+	SpawnAfterRandomDelay
+}
+
+@export var boss_spawn_condition: BossSpawnCondition = BossSpawnCondition.SpawnOnLoad  # Default to "Spawn on load"
+
 
 @onready var UI = $"../UI"
 @onready var container = UI.get_node("allyPanel/allyContainer")
 @onready var camera = $"../SubViewportContainer/SubViewport/Camera3D"
 @onready var player_cp = 0
 
-var in_area = false
+var boss_spawned = false
 signal finished
 func _ready() -> void:
 	player_cp = calculate_player_total_cp()
@@ -26,7 +37,8 @@ func _ready() -> void:
 	$"../AStar".finished.connect($".".spawn_enemy.bind(enemies))
 	create_area_and_collision()
 	
-
+# Call spawn boss function based on different conditions
+	_spawn_boss_conditionally()
 func _input(event: InputEvent) -> void:
 	if get_selected_troop() != "":
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -163,7 +175,45 @@ func create_area_and_collision():
 	emit_signal("finished")
 
 
+func _spawn_boss_conditionally() -> void:
+	match boss_spawn_condition:
+		# Condition 0: Spawn boss on load
+		BossSpawnCondition.SpawnOnLoad:
+			if !boss_spawned:
+				spawn_boss()
 
+		# Condition 1: Spawn boss after all enemies are dead
+		BossSpawnCondition.SpawnAfterAllEnemiesDead:
+			if all_enemies_defeated() and !boss_spawned:
+				spawn_boss()
+
+		# Condition 2: Spawn boss after a random delay
+		BossSpawnCondition.SpawnAfterRandomDelay:
+			if randf() < 0.1 and !boss_spawned:  # 10% chance on each frame to spawn the boss
+				spawn_boss()
+
+func spawn_boss() -> void:
+	if not boss_spawned and boss_scene:
+		var boss = boss_scene.instantiate()
+		# Find a valid position to spawn the boss
+		var valid_position = get_random_position()
+		boss.position = valid_position
+		boss.position = get_random_position()
+		if boss.find_child("Stats").has_method("apply_spawn_scaling"):
+			boss.find_child("Stats").apply_spawn_scaling()
+		add_child(boss)
+		boss_spawned = true
+		print("Boss spawned at position: ", valid_position)
+
+func all_enemies_defeated() -> bool:
+	# Logic to check if all enemies are defeated
+	# You can implement this by checking the active enemies in the scene
+	# This is a placeholder implementation
+	var enemies_remaining = get_tree().get_nodes_in_group("enemies")  # Assuming enemies are in the "enemies" group
+	for enemy in enemies_remaining:
+		if enemy.is_instance_valid() and enemy.visible:  # Example check if the enemy is still alive
+			return false
+	return true
 
 func calculate_player_total_cp():
 	var total_cp = 0
@@ -226,7 +276,14 @@ func select_enemies_to_spawn():
 	var selected_enemies = []
 	var total_cp = 0
 	var selected_enemy_types = {}
-
+	
+	# Add boss's CP to the total CP
+	if boss_scene:
+		var boss = boss_scene.instantiate()
+		var boss_stats_node = boss.get_node_or_null("Stats")
+		if boss_stats_node:
+			total_cp += boss_stats_node.calculate_cp()
+			
 	for enemy_scene in enemies:
 		if not selected_enemy_types.has(enemy_scene):
 			var temp_enemy = enemy_scene.instantiate()
