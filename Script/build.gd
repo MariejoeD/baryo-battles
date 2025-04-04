@@ -38,19 +38,34 @@ func _ready() -> void:
 			child.connect("pressed", Callable(self, "_on_btn_pressed").bind(child))  # Use Callable and bind the button
 	pass
 
+func show_warning_label(label_name: String) -> void:
+	var warning_label = get_tree().current_scene.find_child(label_name, true, false)
+	if warning_label:
+		warning_label.visible = true
+		
+		# Ensure the label is on top by setting its Z-Index to a high value
+		warning_label.z_index = 10  # Adjust this value to suit your needs
+		
+		await get_tree().create_timer(3.0).timeout
+		warning_label.visible = false
+	else:
+		print("Warning label NOT found:", label_name)
+
 # Function called when a button is pressed
 func _on_btn_pressed(btn: TextureButton) -> void:
 	# Print the name of the button
-	button = btn
+	var button = btn
 	
-	stone_req =button.get_node("resourceAmount/stoneAmount").text
-	wood_req =button.get_node("resourceAmount/woodAmount").text
+	var stone_req = button.get_node("resourceAmount/stoneAmount").text
+	var wood_req = button.get_node("resourceAmount/woodAmount").text
 	
 	if int(stone_req) > Global.stone_qty or int(wood_req) > Global.wood_qty:
-		print("not enough resource")
+		print("Not enough resources")
+		
+		# Call the function to show the warning label
+		show_warning_label("warningText/notEnoughResources")
+		
 		return
-	
-	
 	#print("Button pressed:", button.name)
 	
 	if !parent.button_states[button.name]:
