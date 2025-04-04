@@ -1,3 +1,95 @@
-[gd_scene format=3 uid="uid://c071gkgnal14k"]
+[gd_scene load_steps=4 format=3 uid="uid://fcgbv1bg2caw"]
 
-[node name="About" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://bfxkhcmtlxb7g" path="res://assets/game/almanacBackground.png" id="1_equq6"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="2_246qx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ta5fc"]
+texture = ExtResource("1_equq6")
+
+[node name="About" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ta5fc")
+
+[node name="Label" type="Label" parent="panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.362
+anchor_top = 0.021
+anchor_right = 0.616
+anchor_bottom = 0.16
+offset_left = 0.639984
+offset_top = -0.120001
+offset_right = 0.519897
+offset_bottom = -0.200005
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.517803, 0.450938, 0.268382, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 7
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("2_246qx")
+theme_override_font_sizes/font_size = 80
+text = "ABOUT"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.208
+anchor_right = 0.962
+anchor_bottom = 0.911
+offset_left = 0.599998
+offset_top = 0.23999
+offset_right = 0.639893
+offset_bottom = 0.0799561
+horizontal_scroll_mode = 0
+
+[node name="Label" type="Label" parent="ScrollContainer"]
+custom_minimum_size = Vector2(1185, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("2_246qx")
+theme_override_font_sizes/font_size = 40
+text = "In Baryo Battles, players are immersed in a unique adventure where Philippine folklore meets strategy and resource management. Set in Capiz, a province rich in myths and history, the game begins with the peaceful settlement of brave individuals who face an unexpected invasion by mythical creatures such as the Tikbalang, Kapre, Manananggal, and others. These creatures threaten the safety of the nation, and it is up to the people of Capiz to unite, defend their land, and reclaim their heritage.
+
+Players assume the role of community leaders tasked with transforming their province into a fortified stronghold. Using Capiz’s strategic location and natural defenses, players will train civilians, build vital structures, and prepare for battle. The game’s primary objective is to liberate regions across the Philippines by defeating the mythical invaders and securing key territories.
+
+Key features of Baryo Battles include:
+
+Base Building: Players gather resources, build and upgrade structures like the Malacadabra Palace, Barracks, Forge, and War Academy to prepare for battle.
+
+Troop Training: Civilians are trained into various specialized units such as Manggagamot (healers), Lakan Warriors (elite fighters), and Tiradors (ranged attackers) to fight back the mythical creatures.
+
+Mythical Creatures: Encounter and defeat diverse creatures from Philippine folklore, including the Tikbalang, Kapre, Manananggal, and others, each with unique abilities.
+
+Spells and Enhancements: Craft powerful spells like Kulam (Hex), Liwanag (Light), and Luntiang Puso (Verdant Heart) to support your forces and turn the tide of battle.
+
+Territory Reclamation: Players liberate and defend villages (baryos), each with distinct environmental challenges. Defending against re-attacks is key to maintaining control over reclaimed lands.
+
+Through teamwork, strategy, and the power of Philippine folklore, players will prove that unity and resilience can overcome any challenge. The ultimate goal is to protect the entire Philippines from the looming mythical threat and restore peace to the land."
+autowrap_mode = 2
