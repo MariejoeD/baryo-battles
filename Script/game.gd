@@ -57,6 +57,9 @@ var button_states = {
 }
 
 func _ready():
+	
+	if MusicController.is_music_on and !MusicController.music_player.playing:
+		MusicController.music_player.play()
 	# Connect main buttons
 	attack_button.connect("pressed", Callable(self, "_on_attack_button_pressed"))
 	build_button.connect("pressed", Callable(self, "_on_build_button_pressed"))

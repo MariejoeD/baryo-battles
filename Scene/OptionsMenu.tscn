@@ -249,11 +249,6 @@ offset_top = -0.00800133
 offset_right = 0.264992
 offset_bottom = -0.0280037
 
-[node name="languageButton" type="Button" parent="Control/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_0i08j")
-text = "Language: tagalog/ English"
-
 [node name="backButton" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = 30.0

@@ -7,7 +7,7 @@ extends Control
 @onready var reset_game_button = $ResetGameButton
 @onready var reset_dialog = $ResetDialog
 @onready var reset_text_input = $ResetDialog/LineEdit
-@onready var language_button = $VBoxContainer/languageButton 
+@onready var background_music = $"../AudioStreamPlayer2D"
 
 var music_on_icon = preload("res://assets/game/musicOn.png")
 var music_off_icon = preload("res://assets/game/musicOff.png")
@@ -19,7 +19,6 @@ var about_icon = preload("res://assets/game/about.png")
 
 var is_music_on = true
 var is_sound_on = true
-var is_english = true  # Tracks the current language state
 
 func _ready():
 	var cursor_texture = preload("res://assets/game/cursor.png")
@@ -32,19 +31,19 @@ func _ready():
 	back_button.icon = back_icon
 	reset_game_button.icon = reset_icon
 	about_button.icon = about_icon
-	language_button.text = "Language: English"
 
 	back_button.pressed.connect(_on_back_button_pressed)
 	music_button.pressed.connect(_on_music_button_pressed)
 	sound_button.pressed.connect(_on_sound_button_pressed)
 	about_button.pressed.connect(_on_about_button_pressed)
 	reset_game_button.pressed.connect(_on_reset_game_button_pressed)
-	language_button.pressed.connect(_on_language_button_pressed)
 
 	reset_dialog.connect("confirmed", Callable(self, "_on_reset_confirmed"))
 
 func _on_music_button_pressed():
-	is_music_on = !is_music_on
+	MusicController.toggle_music()
+	is_music_on = MusicController.is_music_on
+
 	if is_music_on:
 		music_button.icon = music_on_icon
 		music_button.text = "Music: On"
@@ -61,18 +60,11 @@ func _on_sound_button_pressed():
 		sound_button.icon = sound_off_icon
 		sound_button.text = "Sound: Off"
 
-func _on_language_button_pressed():
-	is_english = !is_english
-	if is_english:
-		language_button.text = "Language: English"
-	else:
-		language_button.text = "Language: Tagalog"
-
 func _on_back_button_pressed():
 	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
 
 func _on_about_button_pressed():
-	
+	get_tree().change_scene_to_file("res://Scene/about.tscn")
 	print("About button pressed!")
 
 func _on_reset_game_button_pressed():

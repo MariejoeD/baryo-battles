@@ -17,7 +17,7 @@ var stone_qty :int = 3000:
 	get:
 		return stone_qty
 		
-var food_qty :int = 0:
+var food_qty :int = 300:
 	set(food):
 		food_qty = food
 		SignalManager.update_mats.emit()
