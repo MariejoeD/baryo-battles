@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://dx5snr0k23nd0"]
 
-[ext_resource type="MeshLibrary" uid="uid://xnhjswii62lr" path="res://assets/mesh/floor_meshes.tres" id="1_h6yti"]
+[ext_resource type="MeshLibrary" uid="uid://bcqqed14hyr4a" path="res://assets/mesh/floor_meshes.tres" id="1_h6yti"]
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="2_52160"]
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="3_ww4lx"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="4_tt0am"]

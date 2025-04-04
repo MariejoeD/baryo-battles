@@ -26,7 +26,21 @@ func _ready() -> void:
 		troop.pressed.connect(_on_troop_pressed.bind(troop))
 
 	pass
-	
+
+func show_warning_label(label_name: String) -> void:
+	var warning_label = get_tree().current_scene.find_child(label_name, true, false)
+	if warning_label:
+		warning_label.visible = true
+		
+		# Ensure the label is on top by setting its Z-Index to a high value
+		warning_label.z_index = 10  # Adjust this value to suit your needs
+		
+		await get_tree().create_timer(3.0).timeout
+		warning_label.visible = false
+	else:
+		print("Warning label NOT found:", label_name)
+
+
 
 func _on_troop_pressed(troop) -> void:
 	# Check available Sibilyans
@@ -37,13 +51,16 @@ func _on_troop_pressed(troop) -> void:
 	var total_sibilyans = active_sibilyans + stored_sibilyans
 	print("Total Sibilyans: ", total_sibilyans, " active sibilyan: ", active_sibilyans ," stored sibilyans: ",stored_sibilyans)
 
+		
 	if sacrificeSib.size() >= total_sibilyans:
 		print("No available Sibilyan to sacrifice!")
+		show_warning_label("noAvailableCivilian")
 		return
 
-	var sib = find_nearest_sibilyan()
+	var sib = find_nearest_sibilyan()	
 	if sib == null:
 		print("No valid Sibilyan found!")
+		show_warning_label("noValidSibilyanFound")
 		return
 
 	sacrificeSib.append(sib)

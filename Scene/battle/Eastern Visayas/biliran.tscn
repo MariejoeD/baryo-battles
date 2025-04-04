@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://cd07udqxh4b2r"]
 
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="1_yoihr"]
-[ext_resource type="MeshLibrary" uid="uid://xnhjswii62lr" path="res://assets/mesh/floor_meshes.tres" id="2_hxrpn"]
+[ext_resource type="MeshLibrary" uid="uid://bcqqed14hyr4a" path="res://assets/mesh/floor_meshes.tres" id="2_hxrpn"]
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="3_pndne"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="4_r4v33"]
 [ext_resource type="PackedScene" uid="uid://dc6ql3e0xfe3j" path="res://assets/enemybase/Kapre-Baliti.fbx" id="5_4aqcr"]

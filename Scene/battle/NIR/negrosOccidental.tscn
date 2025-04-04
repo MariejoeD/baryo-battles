@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://da2fvbkssjreq"]
 
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="1_hqmp8"]
-[ext_resource type="MeshLibrary" uid="uid://xnhjswii62lr" path="res://assets/mesh/floor_meshes.tres" id="2_0ddw1"]
+[ext_resource type="MeshLibrary" uid="uid://bcqqed14hyr4a" path="res://assets/mesh/floor_meshes.tres" id="2_0ddw1"]
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="3_ar6c1"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="4_wcfb6"]
 [ext_resource type="PackedScene" uid="uid://buur5k7xhj1t4" path="res://assets/enemybase/Sigbin-Kweba.fbx" id="5_a6vtm"]
