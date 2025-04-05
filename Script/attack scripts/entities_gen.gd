@@ -210,7 +210,7 @@ func spawn_boss() -> void:
 		add_child(boss)
 		boss.add_to_group("boss")  # ✅ Add boss to group for tracking
 		boss_spawned = true
-		print("Boss spawned at position: ", valid_position)
+		#print("Boss spawned at position: ", valid_position)
 
 func all_enemies_defeated() -> bool:
 	# Logic to check if all enemies are defeated
@@ -302,7 +302,7 @@ func calculate_enemy_count():
 		min_enemies,
 		max_enemies
 	)
-
+	#print(enemy_count)
 	return int(enemy_count)
 
 func pick_weighted_enemy(preferred_enemies: Array, remaining_enemies: Array) -> PackedScene:
@@ -351,14 +351,15 @@ func select_enemies_to_spawn():
 	for enemy_scene in enemies:
 		if not selected_enemy_types.has(enemy_scene):
 			var temp_enemy = enemy_scene.instantiate()
+			#print(temp_enemy.name)
 			var stats_node = temp_enemy.get_node_or_null("Stats")
 			if stats_node:
 				var enemy_cp = stats_node.calculate_cp()
 				total_cp += enemy_cp
 				selected_enemies.append(temp_enemy)
 				selected_enemy_types[enemy_scene] = true
-
 	while selected_enemies.size() < enemy_count:
+		print(selected_enemies.size())
 		var next_enemy_scene = pick_weighted_enemy(preferred_enemies, remaining_enemies)
 
 		var next_enemy = next_enemy_scene.instantiate()
@@ -370,11 +371,12 @@ func select_enemies_to_spawn():
 
 		if total_cp >= target_cp:
 			break
-
 	return selected_enemies
 
 func spawn_enemy(enemies):
+	#print(enemies)
 	for enemy in enemies:
+		print(enemy)
 		if enemy and is_instance_valid(enemy):
 			var found_pos = false
 			for i in range(max_enemies * 5):
@@ -382,12 +384,15 @@ func spawn_enemy(enemies):
 				var collision_shape = enemy.get_node_or_null("CollisionShape3D")
 				if collision_shape and await is_position_valid(random_position, collision_shape):
 					enemy.position = random_position
+					if enemy.find_child("Stats").has_method("apply_spawn_scaling"):
+						enemy.find_child("Stats").apply_spawn_scaling()
 					add_child(enemy)
 					found_pos = true
 					break
 
 			if not found_pos:
-				print("[ERROR] No valid position found for enemy!")
+				#print("[ERROR] No valid position found for enemy!")
+				pass
 
 func get_random_position() -> Vector3:
 	var x = randf_range(-50, 50)

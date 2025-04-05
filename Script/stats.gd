@@ -45,6 +45,15 @@ func _ready():
 
 func apply_spawn_scaling():
 	get_parent().scale = spawn_scale
+	if $"../Smoke/GPUParticles3D":
+		var particle = $"../Smoke/GPUParticles3D"
+		if particle is GPUParticles3D:
+			var mat : ParticleProcessMaterial = particle.process_material
+			if mat is ParticleProcessMaterial:
+				print(mat.scale_min)
+				mat.scale_min *= spawn_scale.x
+				print(mat.scale_max)
+
 func _on_death():
 	print(get_parent().name,"Died")
 	get_parent().queue_free()

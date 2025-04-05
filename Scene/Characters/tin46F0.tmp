@@ -659,6 +659,15 @@ damage = 90
 attack_range = 2.5
 attack_speed = 1.5
 movement_speed = 2.8
+level = null
+special_ability = null
+weight_hp = null
+weight_damage = null
+weight_attack_speed = null
+weight_movement_speed = null
+hp_multiplier = null
+damage_multiplier = null
+spawn_scale = null
 
 [node name="Smoke" type="Node3D" parent="."]
 

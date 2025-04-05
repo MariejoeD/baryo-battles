@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://drpf1hpcd61c"]
+[gd_scene load_steps=44 format=4 uid="uid://drpf1hpcd61c"]
 
 [ext_resource type="PackedScene" uid="uid://y3ykhag1nqi" path="res://assets/building models/tree3.fbx" id="4_xdklk"]
 [ext_resource type="PackedScene" uid="uid://dcyy578mne1kp" path="res://Scene/Characters/duwende.tscn" id="5_eix77"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d05ndib0068d4" path="res://assets/enemybase/grasssss.fbx" id="7_ohb3d"]
 [ext_resource type="PackedScene" uid="uid://dkbavgjcgvhpl" path="res://assets/enemybase/bushWFruit.fbx" id="8_4jpti"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="9_ryl7j"]
+[ext_resource type="PackedScene" uid="uid://685fof7wdp38" path="res://Scene/Characters/kapre.tscn" id="10_xn7y5"]
 [ext_resource type="Script" path="res://Script/attack scripts/entities_gen.gd" id="11_g6s22"]
 [ext_resource type="Script" path="res://Script/attack scripts/path_generator.gd" id="12_y5kxr"]
 [ext_resource type="Script" path="res://Script/attack scripts/pathfindiing_in _attack.gd" id="13_nphp3"]
@@ -745,9 +746,11 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 43.0725, -8.46482, -53.882
 
 [node name="Entities" type="Node3D" parent="." node_paths=PackedStringArray("Objects")]
 script = ExtResource("11_g6s22")
-required_cp = 1000
-enemies = Array[PackedScene]([ExtResource("5_eix77")])
+required_cp = 20000
+enemies = Array[PackedScene]([ExtResource("5_eix77"), ExtResource("10_xn7y5")])
 preferred_enemies = Array[PackedScene]([ExtResource("5_eix77")])
+base_enemy_count = 20
+max_enemies = 20
 troops = {
 "arnisador": "res://Scene/Characters/arnisador.tscn",
 "lakanWarrior": "res://Scene/Characters/lakan_warrior.tscn",

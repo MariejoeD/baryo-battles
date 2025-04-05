@@ -4,7 +4,7 @@ var target : CharacterBody3D = null
 @onready var fsm = get_parent() as StateMachine  # Reference to the FSM for state changes
 
 func enter(_previous_state_path: String, data := {}) -> void:
-	print("entered idle")
+	#print("entered idle")
 	fsm.anim_player.play("idle")
 
 func update(_delta: float) -> void:

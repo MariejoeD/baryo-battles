@@ -248,7 +248,7 @@ required_cp = 800
 enemies = Array[PackedScene]([ExtResource("22_g8nc2")])
 preferred_enemies = Array[PackedScene]([ExtResource("22_g8nc2")])
 troops = {
-"arnisador": "res://Scene/arnisador.tscn"
+"arnisador": "res://Scene/Characters/arnisador.tscn"
 }
 Objects = [NodePath("../trees"), NodePath("../stone"), NodePath("../bush"), NodePath("../bush")]
 boss_scene = ExtResource("20_8bv0x")
