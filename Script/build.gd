@@ -11,7 +11,6 @@ var parent
 var grand_parent
 var following
 var dup_tiles
-@onready var mesh_lib: MeshLibrary = preload("res://assets/mesh/meshes.tres")  # Load the MeshLibrary resource
 @export var building_dict: building_resource
 var buildings = {}
 var button

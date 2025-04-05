@@ -37,7 +37,7 @@ func _on_attacked(damage):
 	hp -= damage
 	if hp < 0:
 		hp = 0
-		get_parent().queue_free()
+		_on_death()
 func _ready():
 	# Test the CP calculation for Arnisador
 	var cp = calculate_cp()
@@ -45,3 +45,8 @@ func _ready():
 
 func apply_spawn_scaling():
 	get_parent().scale = spawn_scale
+func _on_death():
+	print(get_parent().name,"Died")
+	get_parent().queue_free()
+	find_parent("Entities").win_lose_check()
+	

@@ -17,14 +17,14 @@ func _ready():
 func _on_body_entered(body: Node3D) -> void:
 	#print(get_parent().name,"Body entered: ", body.name)  # Debug to check if this is triggered
 	if body.is_in_group(target_group):  # Check if body belongs to the target group
-		print(get_parent().name," Detected ",body.name)
+		#print(get_parent().name," Detected ",body.name)
 		_find_nearest_target()
 
 # Called when a body exits the detection area
 func _on_body_exited(body: Node3D) -> void:
-	print("Body exited: ", body.name)  # Debug to check if this is triggered
+	#print("Body exited: ", body.name)  # Debug to check if this is triggered
 	if body == target:
-		print("Target lost: ", target.name)
+		#print("Target lost: ", target.name)
 		target = null  # Reset target when it's lost
 		_find_nearest_target()  # Find a new target immediately when the current target is lost
 
@@ -45,7 +45,7 @@ func _find_nearest_target() -> void:
 
 	# Update the target if a new nearest target is found
 	if nearest_target != target:  # Only update if the new target is different
-		print("New target acquired: ", nearest_target.name)
+		#print("New target acquired: ", nearest_target.name)
 		target = nearest_target
 		# If you want to trigger a state transition or update NPC's state, do it here:
 		# e.g., fsm._transition_to_next_state("Chase", {"target": target})

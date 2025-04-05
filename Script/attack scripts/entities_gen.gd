@@ -11,6 +11,7 @@ extends Node3D
 @export var Objects: Array[Node]
 @export var boss_scene: PackedScene  # Reference to the boss scene
 
+
 # Enum for spawn conditions
 enum BossSpawnCondition {
 	SpawnOnLoad = 0,
@@ -26,9 +27,13 @@ enum BossSpawnCondition {
 @onready var camera = $"../SubViewportContainer/SubViewport/Camera3D"
 @onready var player_cp = 0
 
+var troop_scenes: Dictionary = {}
 var boss_spawned = false
 signal finished
 func _ready() -> void:
+	UI.get_node("surrenderButton").pressed.connect(surrender)
+	for troop_name in troops.keys():
+		troop_scenes[troop_name] = load(troops[troop_name])
 	player_cp = calculate_player_total_cp()
 	var enemies = select_enemies_to_spawn()
 	await get_tree().physics_frame
@@ -56,6 +61,7 @@ func get_mouse_floor_position() -> Vector3:
 	var result = space_state.intersect_ray(query)
 
 	if result:
+		result.position.y = 0
 		return result.position
 	return Vector3.INF
 
@@ -68,8 +74,8 @@ func spawn_troop(target_position: Vector3):
 	if troop_count <= 0:
 		return
 
-	var Troop_Scene = load(troops[selected_troop])
-	print("Troop scene for selected troop: ", Troop_Scene)
+	var Troop_Scene = troop_scenes.get(selected_troop)
+	#print("Troop scene for selected troop: ", Troop_Scene)
 
 	if not Troop_Scene:
 		return
@@ -202,6 +208,7 @@ func spawn_boss() -> void:
 		if boss.find_child("Stats").has_method("apply_spawn_scaling"):
 			boss.find_child("Stats").apply_spawn_scaling()
 		add_child(boss)
+		boss.add_to_group("boss")  # ✅ Add boss to group for tracking
 		boss_spawned = true
 		print("Boss spawned at position: ", valid_position)
 
@@ -214,6 +221,57 @@ func all_enemies_defeated() -> bool:
 		if enemy.is_instance_valid() and enemy.visible:  # Example check if the enemy is still alive
 			return false
 	return true
+
+func win_lose_check():
+	# Wait for the next frame to ensure nodes have been processed (queue_free is done)
+	await get_tree().process_frame
+
+	# Get all enemies and troops
+	var enemies_remaining = get_tree().get_nodes_in_group("Enemy")
+	var troops_remaining = get_tree().get_nodes_in_group("Good")
+
+	# Check if any enemies are alive
+	var all_enemies_defeat = true
+	var boss_dead = true
+
+	for enemy in enemies_remaining:
+		# Skip boss check for now
+		if enemy.is_in_group("boss"):
+			if enemy.is_inside_tree():
+				boss_dead = false
+			continue
+		
+		# For regular enemies, check if they are still alive
+		if enemy.is_inside_tree() and enemy.visible:
+			all_enemies_defeat = false
+			break  # If one is alive, no need to continue checking
+
+	# Determine win or lose
+	if all_enemies_defeat and boss_dead:
+		print("✅ WIN!")
+		show_result("win")
+	elif troops_remaining.size() == 0:
+		print("❌ LOSE!")
+		show_result("lose")
+
+
+
+
+
+
+
+func show_result(result: String):
+	if result == "win":
+		print("YOU WIN!")
+	elif result == "lose":
+		print("YOU LOSE!")
+	await get_tree().create_timer(2.0).timeout
+	get_tree().change_scene_to_file("res://Scene/HomeBase.tscn")
+
+
+func surrender():
+	print("Surrender")
+	get_tree().change_scene_to_file("res://Scene/HomeBase.tscn")
 
 func calculate_player_total_cp():
 	var total_cp = 0
