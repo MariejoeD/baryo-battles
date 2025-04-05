@@ -246,11 +246,17 @@ func win_lose_check():
 			all_enemies_defeat = false
 			break  # If one is alive, no need to continue checking
 
+	# New logic to check if the player has any troops left to spawn
+	var no_more_troops = true
+	for troop in UI.troop_data.values():
+		if troop[0] > 0:  # troop[0] = available count
+			no_more_troops = false
+			break
 	# Determine win or lose
 	if all_enemies_defeat and boss_dead:
 		print("✅ WIN!")
 		show_result("win")
-	elif troops_remaining.size() == 0:
+	elif troops_remaining.size() == 0 and no_more_troops:
 		print("❌ LOSE!")
 		show_result("lose")
 
@@ -265,8 +271,8 @@ func show_result(result: String):
 		print("YOU WIN!")
 	elif result == "lose":
 		print("YOU LOSE!")
-	await get_tree().create_timer(2.0).timeout
 	get_tree().change_scene_to_file("res://Scene/HomeBase.tscn")
+
 
 
 func surrender():

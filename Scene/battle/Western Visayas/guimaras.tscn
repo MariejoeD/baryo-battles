@@ -244,19 +244,14 @@ transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 55.8508, 0, 60.4818)
 
 [node name="Entities" type="Node3D" parent="." node_paths=PackedStringArray("Objects")]
 script = ExtResource("21_kkirv")
-Show_Debug = null
 required_cp = 800
 enemies = Array[PackedScene]([ExtResource("22_g8nc2")])
 preferred_enemies = Array[PackedScene]([ExtResource("22_g8nc2")])
-base_enemy_count = null
-min_enemies = null
-max_enemies = null
 troops = {
 "arnisador": "res://Scene/arnisador.tscn"
 }
 Objects = [NodePath("../trees"), NodePath("../stone"), NodePath("../bush"), NodePath("../bush")]
 boss_scene = ExtResource("20_8bv0x")
-boss_spawn_condition = null
 
 [node name="Path Generator" type="Node3D" parent="."]
 script = ExtResource("23_6btng")

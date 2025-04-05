@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://de847xsb56s02"
-path="res://.godot/imported/Lakan-Run.fbx-97764482ba31eed7ce8217e59e74666e.scn"
+uid="uid://4ltc6afg658w"
+path="res://.godot/imported/tirador-fight.fbx-619772f05ee2f0ae2c9a2d4e1434bcd3.scn"
 
 [deps]
 
-source_file="res://assets/Anim/Lakan warrior/Lakan-Run.fbx"
-dest_files=["res://.godot/imported/Lakan-Run.fbx-97764482ba31eed7ce8217e59e74666e.scn"]
+source_file="res://assets/Anim/Tirador/tirador-fight.fbx"
+dest_files=["res://.godot/imported/tirador-fight.fbx-619772f05ee2f0ae2c9a2d4e1434bcd3.scn"]
 
 [params]
 
@@ -31,16 +31,7 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Camera": {
-"import/skip_import": true
-},
-"PATH:Light": {
-"import/skip_import": true
-}
-}
-}
+_subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

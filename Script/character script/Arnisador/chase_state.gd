@@ -3,7 +3,6 @@ extends NpcState
 var target : CharacterBody3D = null
 var path = []
 var current_target_index = 0
-# Access the movement_speed from the Stats node
 var path_recalculation_cooldown: float = 1.0  # Time in seconds before recalculating the path (adjust as needed)
 var path_recalculation_timer: float = 0.0  # Timer to track the cooldown
 
@@ -76,11 +75,17 @@ func update(delta: float) -> void:
 		path_recalculation_timer = path_recalculation_cooldown  # Reset the cooldown timer
 		last_target_position = target_position  # Update the last target position after recalculation
 
-	# Step 2: Follow the path
+	# Step 2: Check if we are in attack range
+	var npc_position = fsm.npc_root_node.global_transform.origin
+	if npc_position.distance_to(target_position) <= npc_size * stats.attack_range:  # Check if within attack range
+		print("Target within attack range! Stopping movement and transitioning to Attack state.")
+		fsm._transition_to_next_state("Attack", {"target" : target})  # Transition to attack state once in range
+		return
+	
+	# Step 3: Continue moving along the path if not in attack range
 	if path and current_target_index < len(path):
 		var path_target_position = path[current_target_index]  # Get the next target point
 		path_target_position.y = 0  # Ensure the target stays on the ground level
-		var npc_position = fsm.npc_root_node.global_transform.origin
 		
 		# Move smoothly towards the target position
 		var direction = (path_target_position - npc_position).normalized()  # Get the direction towards the target
@@ -89,17 +94,9 @@ func update(delta: float) -> void:
 		# Smooth movement towards the target point
 		fsm.npc_root_node.global_transform.origin = npc_position.lerp(path_target_position, 0.1)  # Smooth movement with interpolation
 
-		# Step 3: Check if we've reached the current target point
+		# Step 4: Check if we've reached the current target point
 		if npc_position.distance_to(path_target_position) < distance_threshold:
 			current_target_index += 1  # Move to the next target in the path
-
-			# Step 4: Stop once we are in attack range of the target
-			if current_target_index >= len(path):  # If we have no more points to follow
-				if npc_position.distance_to(target_position) <= npc_size * stats.attack_range:  # Check if we're within attack range
-					print("Target within attack range! Stopping movement and transitioning to Attack state.")
-					fsm._transition_to_next_state("Attack", {"target" : target})  # Transition to attack state once in range
-				else:
-					print("Reached end of path, but target is out of attack range.")
 	
 	# Check for a new target every update while following the path
-	fsm.targeting_component._find_nearest_target()  # This ensures the Arnisador will always be aware of the closest target
+	fsm.targeting_component._find_nearest_target()  # This ensures the Tirador will always be aware of the closest target
