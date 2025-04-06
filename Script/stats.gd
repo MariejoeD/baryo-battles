@@ -6,6 +6,7 @@ extends Node
 @export var attack_range: float = 2
 @export var attack_speed: float = 1.2  # Average attack speed (attacks per second)
 @export var movement_speed: float = 3.5  # Average movement speed
+@export var evasion_chance: float = 0.0 # Average dodge chance
 @export var level: int = 1  # Starting at level 1
 @export var special_ability: bool = false  # No special ability for now
 
@@ -18,30 +19,52 @@ extends Node
 # Multipliers to adjust stats for level scaling or buffs
 @export var hp_multiplier: float = 1.0
 @export var damage_multiplier: float = 1.0
-@export var spawn_scale: Vector3 = Vector3(3, 3, 3)
+@export var spawn_scale: Vector3 = Vector3(1, 1, 1)
+@export var is_healer: bool = false
+var current_hp
 
-# Method to calculate combat power (CP)
+
+func get_scaled_hp() -> float:
+	return hp * (1 + weight_hp * (level - 1)) * hp_multiplier
+
+func get_scaled_damage() -> float:
+	return damage * (1 + weight_damage * (level - 1)) * damage_multiplier
+
+func get_scaled_attack_speed() -> float:
+	return attack_speed * (1 + weight_attack_speed * (level - 1))
+
+func get_scaled_movement_speed() -> float:
+	return movement_speed * (1 + weight_movement_speed * (level - 1))
+
+
+
 func calculate_cp() -> float:
-	# Normalize stats if needed and apply weights
-	var normalized_hp = hp * hp_multiplier
-	var normalized_damage = damage * damage_multiplier
-	var normalized_attack_speed = attack_speed
-	var normalized_movement_speed = movement_speed
-	
-	# Combat Power formula (simple weighted sum)
-	var cp = (normalized_hp * weight_hp) + (normalized_damage * weight_damage) + (normalized_attack_speed * weight_attack_speed) + (normalized_movement_speed * weight_movement_speed)
-	
+	var cp = (
+		get_scaled_hp() * weight_hp +
+		get_scaled_damage() * weight_damage +
+		get_scaled_attack_speed() * weight_attack_speed +
+		get_scaled_movement_speed() * weight_movement_speed
+	)
 	return cp
 
+
 func _on_attacked(damage):
-	hp -= damage
-	if hp < 0:
-		hp = 0
+	if randf() < evasion_chance:
+		print(get_parent().name, " dodged the attack!")
+		return
+	current_hp -= damage
+	if current_hp < 0:
+		current_hp = 0
 		_on_death()
+func _on_heal(heal):
+	current_hp += heal
+	if current_hp >= get_scaled_hp():
+		current_hp = get_scaled_hp()
 func _ready():
 	# Test the CP calculation for Arnisador
 	var cp = calculate_cp()
 	#print(get_parent().name," Combat Power: ", cp)
+	current_hp = get_scaled_hp() # Optional if you want to start full health
 
 func apply_spawn_scaling():
 	get_parent().scale = spawn_scale

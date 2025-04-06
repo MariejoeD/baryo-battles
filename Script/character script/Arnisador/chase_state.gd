@@ -9,7 +9,7 @@ var path_recalculation_timer: float = 0.0  # Timer to track the cooldown
 var end
 @onready var fsm = get_parent() as StateMachine  # Reference to the FSM for state changes
 @onready var stats = fsm.get_parent().get_node("Stats")
-@onready var speed = stats.movement_speed
+@onready var speed = stats.get_scaled_movement_speed()
 var start
 
 # Get the NPC's size (assuming it uses a CollisionShape3D)
@@ -90,6 +90,16 @@ func update(delta: float) -> void:
 		# Move smoothly towards the target position
 		var direction = (path_target_position - npc_position).normalized()  # Get the direction towards the target
 		var movement = direction * speed * delta  # Calculate the movement step
+		# Rotate the NPC to face the direction it's walking
+		if direction.length() > 0.1:
+			var npc_pos = fsm.npc_root_node.global_transform.origin
+			var target_pos = npc_position + direction
+
+			# Make the NPC look at the target position while preserving its scale
+			var look_rotation = fsm.npc_root_node
+			look_rotation.look_at(target_position, Vector3.UP)
+			# Rotate 180 degrees on the Y-axis
+			look_rotation.rotate_y(deg_to_rad(180))
 
 		# Smooth movement towards the target point
 		fsm.npc_root_node.global_transform.origin = npc_position.lerp(path_target_position, 0.1)  # Smooth movement with interpolation

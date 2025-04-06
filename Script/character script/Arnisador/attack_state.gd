@@ -10,31 +10,49 @@ var target
 func _ready():
 	timer = Timer.new()
 	add_child(timer)
-	timer.timeout.connect(_attack)
+	if !stats.is_healer:
+		timer.timeout.connect(_attack)
+	else:
+		timer.timeout.connect(_heal)
 #Called when the node enters the scene tree for the first time.
 func enter(_previous_state_path: String, data := {}) -> void:
 	two_models = fsm.two_models
-	var attack_speed = stats.attack_speed
+	var attack_speed = stats.get_scaled_attack_speed()
 	target = data.get("target",null)
 	timer.wait_time = 1.0 / attack_speed
 	print("entered attack state")
+	if not timer.is_stopped():
+		timer.stop()
 	timer.start()
+
 	if two_models:
 		fsm.npc_root_node.get_child(2).visible = true
 		fsm.npc_root_node.get_child(1).visible = false
 		
-	fsm.anim_player.play("attack")
 	
 # Function to handle the attack logic
 func _attack():
 	if target and is_instance_valid(target):
 		# Deal damage to the target
-		target.get_node("Stats")._on_attacked(stats.damage)
+		fsm.anim_player.play("attack")
+		#fsm.anim_player.playback_speed = stats.attack_speed
+		target.get_node("Stats")._on_attacked(stats.get_scaled_damage())
 		# After attack, check if the target is dead
-		if target.get_node("Stats").hp <= 0:
+		if target.get_node("Stats").current_hp <= 0:
 			print("Target is dead. Looking for new target.")
 			_find_new_target()
 
+func _heal():
+	if target and is_instance_valid(target):
+		# Deal damage to the target
+		fsm.anim_player.play("attack")
+		#fsm.anim_player.playback_speed = stats.attack_speed
+		target.get_node("Stats")._on_attacked(stats.get_scaled_damage())
+		# After attack, check if the target is dead
+		if target.get_node("Stats").current_hp >= target.get_node("Stats").get_scaled_hp():
+			print("Target is full health. Looking for new target.")
+			_find_new_target()
+	pass
 # Function to check if there's a new target and retarget
 func _find_new_target():
 	fsm.targeting_component._find_nearest_target()
@@ -50,3 +68,7 @@ func _find_new_target():
 func update(_delta: float):
 	if not is_instance_valid(target) and not target:
 		fsm._transition_to_next_state("Idle")
+
+func exit():
+	if timer:
+		timer.stop()

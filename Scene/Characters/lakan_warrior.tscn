@@ -15,7 +15,6 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e532p"]
 resource_name = "Material.001"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("1_70ux6")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
@@ -168,7 +167,6 @@ bind/39/pose = Transform3D(-14.5884, 36.8939, 203.789, 8.61435, -204.009, 37.550
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cccj"]
 resource_name = "Material.002"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("2_s882y")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
@@ -211,7 +209,6 @@ shadow_mesh = SubResource("ArrayMesh_bl8mu")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2q3l1"]
 resource_name = "Material.001"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("2_s882y")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
@@ -1173,7 +1170,7 @@ bones/58/rotation = Quaternion(0, 0, 0, 1)
 bones/58/scale = Vector3(1, 1, 1)
 
 [node name="model_001" type="BoneAttachment3D" parent="Skeleton3D2"]
-transform = Transform3D(20.5686, -39.0956, 21.1324, 29.2712, 29.4394, 25.9736, -33.4401, 1.72207, 35.7338, -0.431384, 2.29628, 0.157761)
+transform = Transform3D(20.5686, -39.0956, 21.1324, 29.2712, 29.4394, 25.9736, -33.4401, 1.72205, 35.7338, -0.431384, 2.29628, 0.15776)
 bone_name = "model.001"
 bone_idx = 31
 

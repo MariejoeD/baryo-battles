@@ -877,5 +877,6 @@ shape = SubResource("CylinderShape3D_m50gx")
 script = ExtResource("11_f1jef")
 
 [node name="Stats" parent="." instance=ExtResource("12_mx8gt")]
+spawn_scale = Vector3(3, 3, 3)
 
 [editable path="FSM"]

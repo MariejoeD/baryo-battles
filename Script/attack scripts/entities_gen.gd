@@ -95,7 +95,7 @@ func spawn_troop(target_position: Vector3):
 	UI.troop_data[selected_troop][0] -= 1
 	UI.update_troop_count_label(container.get_node(selected_troop), UI.troop_data[selected_troop][0])
 	temp_instance.position = target_position
-	#temp_instance.scale *= 1.5
+	temp_instance.find_child("Stats").apply_spawn_scaling()
 	add_child(temp_instance)
 
 func get_selected_troop() -> String:
