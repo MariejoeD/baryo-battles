@@ -225,10 +225,19 @@ func all_enemies_defeated() -> bool:
 func win_lose_check():
 	# Wait for the next frame to ensure nodes have been processed (queue_free is done)
 	await get_tree().process_frame
-
+	var enemies_remaining
+	var troops_remaining
 	# Get all enemies and troops
-	var enemies_remaining = get_tree().get_nodes_in_group("Enemy")
-	var troops_remaining = get_tree().get_nodes_in_group("Good")
+	if get_tree() and get_tree().has_group("Enemy"):
+		enemies_remaining = get_tree().get_nodes_in_group("Enemy")
+	else:
+		enemies_remaining = []
+
+	if get_tree() and get_tree().has_group("Good"):
+		troops_remaining = get_tree().get_nodes_in_group("Good")
+	else:
+		troops_remaining = []
+
 
 	# Check if any enemies are alive
 	var all_enemies_defeat = true
