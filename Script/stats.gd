@@ -8,7 +8,11 @@ extends Node
 @export var movement_speed: float = 3.5  # Average movement speed
 @export var evasion_chance: float = 0.0 # Average dodge chance
 @export var level: int = 1  # Starting at level 1
-@export var special_ability: bool = false  # No special ability for now
+@export_group("Special Ability")
+@export var has_ability: bool = false
+@export var ability_name: String = ""
+@export_group("")  # Ends the group
+  # No special ability for now
 
 # Exported weights for each stat
 @export var weight_hp: float = 0.3  # Weight for HP
@@ -21,7 +25,6 @@ extends Node
 @export var damage_multiplier: float = 1.0
 @export var spawn_scale: Vector3 = Vector3(1, 1, 1)
 @export var is_healer: bool = false
-@export var is_flying: bool = false
 var current_hp
 
 
@@ -37,6 +40,8 @@ func get_scaled_attack_speed() -> float:
 func get_scaled_movement_speed() -> float:
 	return movement_speed * (1 + weight_movement_speed * (level - 1))
 
+func get_scaled_attack_ranged() -> float:
+	return attack_range * (1 + .2 * (level - 1))
 
 
 func calculate_cp() -> float:

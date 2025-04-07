@@ -33,13 +33,35 @@ func enter(_previous_state_path: String, data := {}) -> void:
 	
 # Function to handle the attack logic
 func _attack():
+	var target_distance = fsm.npc_root_node.global_position.distance_to(target.global_position)
+	if target_distance > stats.get_scaled_attack_ranged():
+		fsm._transition_to_next_state("Chase", {"target" : target})
 	if target and is_instance_valid(target):
-		# Deal damage to the target
 		fsm.anim_player.play("attack")
-		#fsm.anim_player.playback_speed = stats.attack_speed
-		target.get_node("Stats")._on_attacked(stats.get_scaled_damage())
-		# After attack, check if the target is dead
-		if target.get_node("Stats").current_hp <= 0:
+		var target_stats = target.get_node("Stats")
+		if stats.has_ability and stats.ability_name == "Rage Mode":
+			var rage_threshold = 0.3  # Rage Mode activates when HP is below 30%
+			var rage_multiplier = 1.5  # Increase damage and attack speed by 50%
+			if stats.current_hp / stats.get_scaled_hp() <= rage_threshold:
+				print("Rage Mode activated!")
+				stats.damage_multiplier = rage_multiplier
+				timer.wait_time = 1 / stats.get_scaled_attack_speed() * rage_multiplier
+			else:
+				stats.damage_multiplier = 1
+				timer.wait_time = 1 / stats.get_scaled_attack_speed()
+		target_stats._on_attacked(stats.get_scaled_damage())
+
+		# If this unit has a taunt ability, force the target to target us
+		if stats.has_ability and stats.ability_name == "taunt":
+			var target_fsm = target.get_node_or_null("FSM")
+			if target_fsm:
+				var targeting = target_fsm.targeting_component
+				if targeting:
+					if targeting.forced_target == null:
+						targeting.forced_target = fsm.get_parent()
+						print("Taunted ", target.name, " into targeting ", fsm.get_parent().name)
+						target_fsm._transition_to_next_state("Chase", {"target": fsm.get_parent()})
+		if target_stats.current_hp <= 0:
 			print("Target is dead. Looking for new target.")
 			_find_new_target()
 
@@ -61,14 +83,21 @@ func _find_new_target():
 	if is_instance_valid(new_target) and new_target != target:
 		target = new_target
 		print("New target found: ", target.name)
-		fsm._transition_to_next_state("Attack", {"target": target})
+		fsm._transition_to_next_state("Chase", {"target": target})
 	else:
 		print("No new target. Transitioning to Idle.")
 		fsm._transition_to_next_state("Idle")
-
+var transform : bool = false
 func update(_delta: float):
 	if not is_instance_valid(target) and not target:
 		fsm._transition_to_next_state("Idle")
+	if stats.has_ability and stats.ability_name == "Transform":
+		if stats.current_hp < stats.get_scaled_hp() *.5 and !transform:
+			transform =true
+			fsm.npc_root_node.get_child(2).visible = true
+			fsm.npc_root_node.get_child(1).visible = false
+			stats.damage_multiplier = 2
+		pass
 
 func exit():
 	if timer:

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6hj23wbghleq"
-path.s3tc="res://.godot/imported/Kapitan_Bong_0.png-043320e866c9c2b84f3b2b1900b251bc.s3tc.ctex"
+uid="uid://bojgvvu5yaq3b"
+path.s3tc="res://.godot/imported/Running_0.png-e729fff07bc90fd051b6066af95d2089.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "17bb02fb6ee9af9aa6a9d44a4e1942c9"
+"md5": "d2ae8607a9cae23a154821695d3dd50f"
 }
 
 [deps]
 
-source_file="res://assets/Anim/Kapitan Bong/Kapitan_Bong_0.png"
-dest_files=["res://.godot/imported/Kapitan_Bong_0.png-043320e866c9c2b84f3b2b1900b251bc.s3tc.ctex"]
+source_file="res://assets/Anim/marites/Running_0.png"
+dest_files=["res://.godot/imported/Running_0.png-e729fff07bc90fd051b6066af95d2089.s3tc.ctex"]
 
 [params]
 

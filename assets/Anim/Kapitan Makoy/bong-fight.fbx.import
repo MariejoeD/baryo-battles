@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://1cvu1u6uht7h"
-path="res://.godot/imported/KAPITAN MAKOY.fbx-1c0ed429d583847707cb525063b5a5ad.scn"
+uid="uid://bq5wipoedwreo"
+path="res://.godot/imported/bong-fight.fbx-9436ad4de2ecdf8b5b7e5beca42930c6.scn"
 
 [deps]
 
-source_file="res://assets/Anim/Kapitan Bong/KAPITAN MAKOY.fbx"
-dest_files=["res://.godot/imported/KAPITAN MAKOY.fbx-1c0ed429d583847707cb525063b5a5ad.scn"]
+source_file="res://assets/Anim/Kapitan Makoy/bong-fight.fbx"
+dest_files=["res://.godot/imported/bong-fight.fbx-9436ad4de2ecdf8b5b7e5beca42930c6.scn"]
 
 [params]
 

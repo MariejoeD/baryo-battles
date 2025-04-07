@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c8u1mj3vh5jal"
-path="res://.godot/imported/bong-run.fbx-0e1867a5491f349331496b2a5acf9547.scn"
+uid="uid://bohj4tkblehgf"
+path="res://.godot/imported/Running.fbx-c5356b16decad8e58d7b4f7675df2e02.scn"
 
 [deps]
 
-source_file="res://assets/Anim/Kapitan Bong/bong-run.fbx"
-dest_files=["res://.godot/imported/bong-run.fbx-0e1867a5491f349331496b2a5acf9547.scn"]
+source_file="res://assets/Anim/marites/Running.fbx"
+dest_files=["res://.godot/imported/Running.fbx-c5356b16decad8e58d7b4f7675df2e02.scn"]
 
 [params]
 

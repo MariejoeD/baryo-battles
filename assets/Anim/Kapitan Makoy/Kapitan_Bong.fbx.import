@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bq5wipoedwreo"
-path="res://.godot/imported/bong-fight.fbx-fc6398074ea6e3b77accbcba7939b41c.scn"
+uid="uid://cc8174tmds80"
+path="res://.godot/imported/Kapitan_Bong.fbx-147307a244263e1131dbef49859db881.scn"
 
 [deps]
 
-source_file="res://assets/Anim/Kapitan Bong/bong-fight.fbx"
-dest_files=["res://.godot/imported/bong-fight.fbx-fc6398074ea6e3b77accbcba7939b41c.scn"]
+source_file="res://assets/Anim/Kapitan Makoy/Kapitan_Bong.fbx"
+dest_files=["res://.godot/imported/Kapitan_Bong.fbx-147307a244263e1131dbef49859db881.scn"]
 
 [params]
 
@@ -31,7 +31,16 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Camera": {
+"import/skip_import": true
+},
+"PATH:Light": {
+"import/skip_import": true
+}
+}
+}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

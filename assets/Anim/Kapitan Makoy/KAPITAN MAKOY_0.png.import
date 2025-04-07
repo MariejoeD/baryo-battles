@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ptjr6ryag4dy"
-path.s3tc="res://.godot/imported/bong-fight_0.png-0ad1b4eaf4c2f11f200a33ebe1d7b2b3.s3tc.ctex"
+uid="uid://b8tlcpyccv4i3"
+path.s3tc="res://.godot/imported/KAPITAN MAKOY_0.png-cc9f123cdd748e5515f35ab575c81d8f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/Anim/Kapitan Bong/bong-fight_0.png"
-dest_files=["res://.godot/imported/bong-fight_0.png-0ad1b4eaf4c2f11f200a33ebe1d7b2b3.s3tc.ctex"]
+source_file="res://assets/Anim/Kapitan Makoy/KAPITAN MAKOY_0.png"
+dest_files=["res://.godot/imported/KAPITAN MAKOY_0.png-cc9f123cdd748e5515f35ab575c81d8f.s3tc.ctex"]
 
 [params]
 

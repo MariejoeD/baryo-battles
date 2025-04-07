@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3uckn0rjmscq"
-path.s3tc="res://.godot/imported/bong-walk_0.png-76c57f396536d64bd337aeba93146b83.s3tc.ctex"
+uid="uid://dxjb31vkow38v"
+path.s3tc="res://.godot/imported/CaptainMakoy-Jumping_0.png-5bf8c441952203a9c73417da03564d5b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/Anim/Kapitan Bong/bong-walk_0.png"
-dest_files=["res://.godot/imported/bong-walk_0.png-76c57f396536d64bd337aeba93146b83.s3tc.ctex"]
+source_file="res://assets/Anim/Kapitan Makoy/CaptainMakoy-Jumping_0.png"
+dest_files=["res://.godot/imported/CaptainMakoy-Jumping_0.png-5bf8c441952203a9c73417da03564d5b.s3tc.ctex"]
 
 [params]
 

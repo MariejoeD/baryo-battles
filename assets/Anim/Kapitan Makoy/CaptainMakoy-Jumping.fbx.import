@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ds7f87spbaim8"
-path="res://.godot/imported/bong-walk.fbx-f57dd38365863750f0694a537a364343.scn"
+uid="uid://chf3w2j1mca4k"
+path="res://.godot/imported/CaptainMakoy-Jumping.fbx-0a9960a400ca1cedcba060101a1de593.scn"
 
 [deps]
 
-source_file="res://assets/Anim/Kapitan Bong/bong-walk.fbx"
-dest_files=["res://.godot/imported/bong-walk.fbx-f57dd38365863750f0694a537a364343.scn"]
+source_file="res://assets/Anim/Kapitan Makoy/CaptainMakoy-Jumping.fbx"
+dest_files=["res://.godot/imported/CaptainMakoy-Jumping.fbx-0a9960a400ca1cedcba060101a1de593.scn"]
 
 [params]
 

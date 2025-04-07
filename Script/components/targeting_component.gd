@@ -3,6 +3,7 @@ extends Node3D
 @export var detection_area: Area3D  # Exported Area3D to check for bodies
 @export var target_group: String  # Target group to find, e.g., "enemies"
 var target: CharacterBody3D = null  # Current target
+var forced_target: CharacterBody3D = null
 @onready var healer:bool = get_parent().find_child("Stats").is_healer
 @onready var targeting_enabled: bool = true
 func _ready():
@@ -32,6 +33,9 @@ func _on_body_exited(body: Node3D) -> void:
 # Method to find the nearest target within the area
 func _find_nearest_target() -> void:
 	if not targeting_enabled:
+		return
+	if forced_target and is_instance_valid(forced_target):
+		target = forced_target
 		return
 	var nearest_target: CharacterBody3D = null
 	var nearest_distance: float = INF  # Initialize to a very large number

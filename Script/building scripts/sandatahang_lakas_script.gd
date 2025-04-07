@@ -13,7 +13,7 @@ var troopsDict = {
 	"lakanWarrior": {"trainingTime": 1, "scene" : "res://Scene/Characters/lakan_warrior.tscn"},
 	"tirador": {"trainingTime": 1, "scene" : "res://Scene/Characters/tirador.tscn"},
 	"manggagamot": {"trainingTime": 1, "scene" : "res://Scene/Characters/manggagamot.tscn"},
-	"marites": {"trainingTime": 1, "scene" : "res://Scene/arnisador.tscn"},
+	"marites": {"trainingTime": 1, "scene" : "res://Scene/Characters/marites.tscn"},
 }
 
 func _ready() -> void:
