@@ -132,6 +132,7 @@ Through teamwork, strategy, and the power of Philippine folklore, players will p
 autowrap_mode = 2
 
 [node name="backButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 33.0
 offset_right = 126.0
