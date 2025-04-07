@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Script/attack scripts/Attack.gd" id="1_shcpm"]
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
-[ext_resource type="Script" path="res://Scene/test_build.gd" id="2_0jknw"]
+[ext_resource type="Script" path="res://Script/building scripts/build.gd" id="2_0jknw"]
 [ext_resource type="Resource" uid="uid://q1x85i1by7qk" path="res://assets/buildings/build_resource.tres" id="3_j1245"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_mlhjp"]
 [ext_resource type="Texture2D" uid="uid://b8dfdjsg6pnh3" path="res://assets/buildings/unlocked/1.png" id="4_yic6l"]

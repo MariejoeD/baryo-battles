@@ -21,6 +21,7 @@ extends Node
 @export var damage_multiplier: float = 1.0
 @export var spawn_scale: Vector3 = Vector3(1, 1, 1)
 @export var is_healer: bool = false
+@export var is_flying: bool = false
 var current_hp
 
 
@@ -57,7 +58,10 @@ func _on_attacked(damage):
 		current_hp = 0
 		_on_death()
 func _on_heal(heal):
+	print("before: ",current_hp)
 	current_hp += heal
+	print("after: ",current_hp)
+	
 	if current_hp >= get_scaled_hp():
 		current_hp = get_scaled_hp()
 func _ready():

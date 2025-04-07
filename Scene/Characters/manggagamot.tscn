@@ -13,7 +13,6 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iv4fb"]
 resource_name = "Material.002"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("1_3s0hj")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
@@ -716,7 +715,6 @@ npc_root_node = NodePath("..")
 targeting_component = NodePath("../Targeting Component")
 anim_player = NodePath("../AnimationPlayer")
 pathfinder_component = NodePath("../Pathfinder")
-speed = 2.0
 
 [node name="Targeting Component" parent="." node_paths=PackedStringArray("detection_area") instance=ExtResource("4_luwu3")]
 detection_area = NodePath("../Detection")
@@ -737,7 +735,7 @@ script = ExtResource("6_7id4d")
 [node name="Stats" parent="." instance=ExtResource("7_owks2")]
 hp = 130
 damage = 35
-attack_range = 5.0
+attack_range = 30.0
 attack_speed = 1.5
 movement_speed = 3.2
 spawn_scale = Vector3(2.5, 2.5, 2.5)

@@ -407,7 +407,7 @@ _data = {
 height = 5.0
 radius = 150.0
 
-[node name="Tirador" type="CharacterBody3D" groups=["Good"]]
+[node name="Tirador" type="CharacterBody3D" groups=["Good", "range"]]
 collision_layer = 2
 collision_mask = 0
 
@@ -1057,7 +1057,7 @@ bones/48/rotation = Quaternion(0, 0, 0, 1)
 bones/48/scale = Vector3(1, 1, 1)
 
 [node name="Cylinder_Cylinder_012" type="BoneAttachment3D" parent="Skeleton3D2"]
-transform = Transform3D(9.34486, -22.1856, -96.0467, -87.8996, 23.0777, -52.3742, 94.7925, 23.5867, -39.0973, 0.00725007, 4.52386, -2.13963)
+transform = Transform3D(9.34486, -22.1856, -96.0467, -87.8996, 23.0777, -52.3742, 94.7925, 23.5867, -39.0973, 0.00724983, 4.52386, -2.13963)
 bone_name = "Cylinder_Cylinder.012"
 bone_idx = 21
 
@@ -1081,7 +1081,6 @@ npc_root_node = NodePath("..")
 targeting_component = NodePath("../Targeting Component")
 anim_player = NodePath("../AnimationPlayer")
 pathfinder_component = NodePath("../Pathfinder")
-speed = 2.0
 
 [node name="Targeting Component" parent="." node_paths=PackedStringArray("detection_area") instance=ExtResource("6_imm00")]
 detection_area = NodePath("../Detection")
