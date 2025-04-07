@@ -1194,7 +1194,6 @@ npc_root_node = NodePath("..")
 targeting_component = NodePath("../Targeting Component")
 anim_player = NodePath("../AnimationPlayer")
 pathfinder_component = NodePath("../Pathfinder")
-speed = 2.0
 
 [node name="Targeting Component" parent="." node_paths=PackedStringArray("detection_area") instance=ExtResource("6_1844w")]
 detection_area = NodePath("../Detection")
@@ -1220,5 +1219,6 @@ movement_speed = 4.0
 weight_hp = 0.5
 weight_damage = 0.3
 weight_attack_speed = 0.1
+spawn_scale = Vector3(2.5, 2.5, 2.5)
 
 [editable path="FSM"]

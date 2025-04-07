@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://685fof7wdp38"]
+[gd_scene load_steps=16 format=4 uid="uid://685fof7wdp38"]
 
 [ext_resource type="Texture2D" uid="uid://0q1lv5lwiavu" path="res://assets/Anim/Kapre/Kapre-Idle_0.png" id="1_m1v35"]
 [ext_resource type="Animation" uid="uid://cn0a7qvhe84du" path="res://assets/Anim/Kapre/run.tres" id="2_4tp7k"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://chfyar41tdneb" path="res://Scene/Components/fsm.tscn" id="5_an4nw"]
 [ext_resource type="PackedScene" uid="uid://cir4xu05qnmre" path="res://Scene/Components/targeting_component.tscn" id="6_xtjaf"]
 [ext_resource type="PackedScene" uid="uid://cp2vi4c5mg38k" path="res://Scene/Components/pathfinder_component.tscn" id="7_d146m"]
-[ext_resource type="Script" path="res://Script/components/go_to_camp.gd" id="8_gx12s"]
 [ext_resource type="PackedScene" uid="uid://o7lqup8rddo1" path="res://Scene/Attack/stats.tscn" id="9_5r014"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y82k1"]
@@ -578,8 +577,7 @@ _data = {
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3lklv"]
-height = 5.0
-radius = 150.0
+radius = 4.0
 
 [node name="Kapre" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 4
@@ -1060,7 +1058,6 @@ npc_root_node = NodePath("..")
 targeting_component = NodePath("../Targeting Component")
 anim_player = NodePath("../AnimationPlayer")
 pathfinder_component = NodePath("../Pathfinder")
-speed = 2.0
 
 [node name="Targeting Component" parent="." node_paths=PackedStringArray("detection_area") instance=ExtResource("6_xtjaf")]
 detection_area = NodePath("../Detection")
@@ -1075,19 +1072,16 @@ shape = SubResource("CylinderShape3D_3lklv")
 
 [node name="Pathfinder" parent="." instance=ExtResource("7_d146m")]
 
-[node name="GoToCamp" type="Node3D" parent="."]
-script = ExtResource("8_gx12s")
-
 [node name="Stats" parent="." instance=ExtResource("9_5r014")]
 hp = 500
 damage = 60
-attack_range = 3.5
+attack_range = 5.0
 attack_speed = 0.6
 movement_speed = 2.0
 weight_hp = 0.4
 weight_damage = 0.3
 weight_attack_speed = 0.1
 weight_movement_speed = 0.2
-spawn_scale = Vector3(12, 12, 12)
+spawn_scale = Vector3(15, 15, 15)
 
 [editable path="FSM"]

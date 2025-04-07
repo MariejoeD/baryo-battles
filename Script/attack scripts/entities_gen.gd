@@ -46,7 +46,8 @@ func _ready() -> void:
 	_spawn_boss_conditionally()
 func _input(event: InputEvent) -> void:
 	if get_selected_troop() != "":
-		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		var mouse_pos = get_viewport().get_mouse_position()
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not UI.get_node("allyPanel").get_global_rect().has_point(mouse_pos):
 			var target_pos = get_mouse_floor_position()
 			if target_pos == Vector3.ZERO or target_pos == Vector3.INF:
 				return
@@ -280,6 +281,7 @@ func show_result(result: String):
 		print("YOU WIN!")
 	elif result == "lose":
 		print("YOU LOSE!")
+	await get_tree().create_timer(0.1).timeout
 	get_tree().change_scene_to_file("res://Scene/HomeBase.tscn")
 
 

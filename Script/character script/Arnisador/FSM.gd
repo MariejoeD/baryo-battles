@@ -6,7 +6,6 @@ class_name StateMachine extends Node
 @export var targeting_component: Node3D
 @export var anim_player: AnimationPlayer
 @export var pathfinder_component: Node3D
-@export var speed: float
 ## The initial state of the state machine. If not set, the first child node is used.
 @export var initial_state: NpcState = null
 ## The current state of the state machine.

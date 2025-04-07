@@ -50,7 +50,12 @@ func _find_nearest_target() -> void:
 					if target_stats.current_hp < target_stats.get_scaled_hp() and distance < nearest_distance:
 						nearest_distance = distance
 						nearest_target = body
-				elif distance < nearest_distance:
+				elif body.is_in_group("flying") and get_parent().is_in_group("range"):
+					# If flying and this is a ranged unit, proceed with targeting
+					if distance < nearest_distance:
+						nearest_distance = distance
+						nearest_target = body 
+				elif not body.is_in_group("flying") and distance < nearest_distance:
 					nearest_distance = distance
 					nearest_target = body
 
