@@ -33,7 +33,7 @@ background_energy_multiplier = 0.4
 sky = SubResource("Sky_yh4id")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xg6ui"]
-size = Vector3(0.732666, 2.30054, 1.85742)
+size = Vector3(0.708771, 2.18347, 1.85742)
 
 [node name="Biliran" type="Node3D"]
 
@@ -98,13 +98,19 @@ shape = SubResource("BoxShape3D_xg6ui")
 [node name="Tikbalang-bamboo" parent="Buildings" instance=ExtResource("7_5hxgq")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 50.4327, 0, 71.2565)
 
+[node name="Area3D" type="Area3D" parent="Buildings/Tikbalang-bamboo"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Tikbalang-bamboo/Area3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.201645, 5.548, -0.67871)
+shape = SubResource("BoxShape3D_xg6ui")
+
 [node name="Manananggal-Gubat" parent="Buildings" instance=ExtResource("8_1tab0")]
 transform = Transform3D(-3.03098, 0, -3.97657, 0, 5, 0, 3.97657, 0, -3.03098, -25.7202, 0, -5.40984)
 
 [node name="Area3D" type="Area3D" parent="Buildings/Manananggal-Gubat"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Manananggal-Gubat/Area3D"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -2.09076, 5.25533, -0.67871)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.93069, 5.25533, -0.67871)
 shape = SubResource("BoxShape3D_xg6ui")
 
 [node name="Tikbalang-bamboo2" parent="Buildings" instance=ExtResource("7_5hxgq")]

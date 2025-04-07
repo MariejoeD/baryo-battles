@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://1rtyhdocfi6p"]
+[gd_scene load_steps=22 format=3 uid="uid://1rtyhdocfi6p"]
 
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="1_y0js1"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="4_o6fjd"]
@@ -29,6 +29,9 @@ sky_material = SubResource("PanoramaSkyMaterial_2ejnl")
 background_mode = 2
 background_energy_multiplier = 0.4
 sky = SubResource("Sky_cidrb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ghrdi"]
+size = Vector3(0.807874, 1.34646, 0.942564)
 
 [node name="Siquijor" type="Node3D"]
 
@@ -80,6 +83,12 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 [node name="Sigbin-Kweba" parent="Buildings" instance=ExtResource("6_h6u75")]
 transform = Transform3D(-4.5174, 0, -7.78416, 0, 9, 0, 7.78416, 0, -4.5174, -3.46711, 0, -58.0596)
 
+[node name="Area3D" type="Area3D" parent="Buildings/Sigbin-Kweba"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Sigbin-Kweba/Area3D"]
+transform = Transform3D(5, 0, -2.38419e-07, 0, 5, 0, 2.38419e-07, 0, 5, -1.2122, 0.798556, 0.0988731)
+shape = SubResource("BoxShape3D_ghrdi")
+
 [node name="Tikbalang-bamboo" parent="Buildings" instance=ExtResource("7_0h2df")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 84.1313, 0, -74.1274)
 
@@ -94,6 +103,12 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 46.1133, 0, -37.1115)
 
 [node name="Duwende-Punso" parent="Buildings" instance=ExtResource("8_fd2ch")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -65.831, 0.475399, -68.9971)
+
+[node name="Area3D" type="Area3D" parent="Buildings/Duwende-Punso"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Duwende-Punso/Area3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.630418, 1.40001, 0.127718)
+shape = SubResource("BoxShape3D_ghrdi")
 
 [node name="Trees" type="Node" parent="."]
 
@@ -242,7 +257,7 @@ required_cp = 800
 enemies = Array[PackedScene]([ExtResource("13_kd7ne")])
 preferred_enemies = Array[PackedScene]([ExtResource("13_kd7ne")])
 troops = {
-"arnisador": "res://Scene/arnisador.tscn"
+"arnisador": "res://Scene/Characters/arnisador.tscn"
 }
 Objects = [NodePath("../Buildings"), NodePath("../Trees"), NodePath("../Stones"), NodePath("../Bushes")]
 boss_scene = ExtResource("14_rggcx")
