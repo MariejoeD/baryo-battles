@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dblguli3l5xj0"]
+[gd_scene load_steps=18 format=3 uid="uid://dblguli3l5xj0"]
 
 [ext_resource type="Script" path="res://Script/OptionsMenu.gd" id="1_d3ey0"]
 [ext_resource type="Texture2D" uid="uid://ccargimus72s" path="res://assets/game/bg2.png" id="1_i0kiq"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_0i08j"]
+[ext_resource type="Texture2D" uid="uid://b7yhj5kgl2ydv" path="res://assets/game/backButton.png" id="4_n8vic"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ylpkr"]
 texture = ExtResource("1_i0kiq")
@@ -271,6 +272,8 @@ offset_left = 0.312
 offset_top = 0.00300002
 offset_right = 10.256
 offset_bottom = -0.00400162
+texture = ExtResource("4_n8vic")
+expand_mode = 1
 
 [node name="ResetGameButton" type="Button" parent="Control"]
 layout_mode = 0
