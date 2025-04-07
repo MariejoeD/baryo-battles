@@ -1,0 +1,465 @@
+[gd_scene load_steps=12 format=3 uid="uid://mi6y4kjak5ci"]
+
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_pt8hn"]
+[ext_resource type="Texture2D" uid="uid://cn66uvxh4adkn" path="res://assets/game/foodIcon.png" id="2_ap2wo"]
+[ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="3_2v5b6"]
+[ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="4_e0gtc"]
+[ext_resource type="Texture2D" uid="uid://b1trcwc1mf1d0" path="res://assets/game/trophy.png" id="5_4nkpe"]
+[ext_resource type="Texture2D" uid="uid://dhl7auru2cqeg" path="res://assets/game/lose.png" id="6_huod0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xww5h"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 13
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4u03"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38gvo"]
+bg_color = Color(0.99973, 0.192196, 0.169605, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afxt4"]
+bg_color = Color(0.999935, 0.501281, 0.44437, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p640j"]
+bg_color = Color(0.99973, 0.192196, 0.169605, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 3
+
+[node name="WinLosePanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="winPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.213
+anchor_top = 0.131
+anchor_right = 0.798
+anchor_bottom = 0.718
+offset_left = 0.359985
+offset_top = -0.320007
+offset_right = -0.440063
+offset_bottom = 0.039978
+theme_override_styles/panel = SubResource("StyleBoxFlat_xww5h")
+
+[node name="victory" type="Label" parent="winPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.285
+anchor_top = 0.005
+anchor_right = 0.734
+anchor_bottom = 0.3
+offset_left = 0.199982
+offset_top = -0.115
+offset_right = 0.0799561
+offset_bottom = 0.0999985
+theme_override_colors/font_color = Color(0.600252, 0.31669, 6.73831e-07, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("1_pt8hn")
+theme_override_font_sizes/font_size = 100
+text = "VICTORY!"
+
+[node name="Label" type="Label" parent="winPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.487
+anchor_top = 0.305
+anchor_right = 0.639
+anchor_bottom = 0.397
+offset_left = -0.27597
+offset_top = -0.0149994
+offset_right = 0.0279846
+offset_bottom = 0.0690002
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_pt8hn")
+theme_override_font_sizes/font_size = 30
+text = "Rewards:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="winPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.439
+anchor_top = 0.428
+anchor_right = 0.775
+anchor_bottom = 0.752
+offset_left = -0.372009
+offset_top = -0.0440063
+offset_right = 0.299988
+offset_bottom = -0.0960083
+
+[node name="foodReward" type="Panel" parent="winPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h4u03")
+
+[node name="TextureRect" type="TextureRect" parent="winPanel/VBoxContainer/foodReward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.183
+anchor_bottom = 1.0
+offset_right = 0.105999
+texture = ExtResource("2_ap2wo")
+expand_mode = 1
+
+[node name="foodAmount" type="Label" parent="winPanel/VBoxContainer/foodReward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.294
+anchor_top = 0.075
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.0920029
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_pt8hn")
+theme_override_font_sizes/font_size = 30
+text = "500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="stoneReward" type="Panel" parent="winPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h4u03")
+
+[node name="TextureRect" type="TextureRect" parent="winPanel/VBoxContainer/stoneReward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.183
+anchor_bottom = 1.0
+offset_right = 0.105999
+texture = ExtResource("3_2v5b6")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="winPanel/VBoxContainer/stoneReward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.294
+anchor_top = 0.075
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.0920029
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_pt8hn")
+theme_override_font_sizes/font_size = 30
+text = "500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="woodReward" type="Panel" parent="winPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h4u03")
+
+[node name="TextureRect" type="TextureRect" parent="winPanel/VBoxContainer/woodReward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.183
+anchor_bottom = 1.0
+offset_right = 0.105999
+texture = ExtResource("4_e0gtc")
+expand_mode = 1
+
+[node name="woodAmount" type="Label" parent="winPanel/VBoxContainer/woodReward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.294
+anchor_top = 0.075
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.0920029
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_pt8hn")
+theme_override_font_sizes/font_size = 30
+text = "500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="trophy" type="TextureRect" parent="winPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.059
+anchor_top = 0.326
+anchor_right = 0.324
+anchor_bottom = 0.79
+offset_left = 0.079998
+offset_top = 0.102005
+offset_right = -0.119995
+offset_bottom = -0.170013
+texture = ExtResource("5_4nkpe")
+expand_mode = 1
+
+[node name="goHome" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.428
+anchor_top = 0.739
+anchor_right = 0.573
+anchor_bottom = 0.844
+offset_left = 0.159973
+offset_top = -0.0800171
+offset_right = 0.559998
+offset_bottom = 0.319946
+theme_override_fonts/font = ExtResource("1_pt8hn")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_38gvo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_afxt4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p640j")
+theme_override_styles/normal = SubResource("StyleBoxFlat_p640j")
+text = "Go Home"
+
+[node name="losePanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.213
+anchor_top = 0.131
+anchor_right = 0.798
+anchor_bottom = 0.718
+offset_left = 0.359985
+offset_top = -0.320007
+offset_right = -0.440063
+offset_bottom = 0.039978
+theme_override_styles/panel = SubResource("StyleBoxFlat_xww5h")
+
+[node name="victory" type="Label" parent="losePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.285
+anchor_top = 0.005
+anchor_right = 0.734
+anchor_bottom = 0.3
+offset_left = 0.199982
+offset_top = -0.115
+offset_right = 0.0799561
+offset_bottom = 0.0999985
+theme_override_colors/font_color = Color(0.760784, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("1_pt8hn")
+theme_override_font_sizes/font_size = 100
+text = "DEFEAT"
+
+[node name="Label" type="Label" parent="losePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.487
+anchor_top = 0.305
+anchor_right = 0.639
+anchor_bottom = 0.397
+offset_left = -0.27597
+offset_top = -0.0149994
+offset_right = 0.0279846
+offset_bottom = 0.0690002
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_pt8hn")
+theme_override_font_sizes/font_size = 30
+text = "Rewards:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="losePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.439
+anchor_top = 0.428
+anchor_right = 0.775
+anchor_bottom = 0.752
+offset_left = -0.372009
+offset_top = -0.0440063
+offset_right = 0.299988
+offset_bottom = -0.0960083
+
+[node name="foodReward" type="Panel" parent="losePanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h4u03")
+
+[node name="TextureRect" type="TextureRect" parent="losePanel/VBoxContainer/foodReward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.183
+anchor_bottom = 1.0
+offset_right = 0.105999
+texture = ExtResource("2_ap2wo")
+expand_mode = 1
+
+[node name="foodAmount" type="Label" parent="losePanel/VBoxContainer/foodReward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.294
+anchor_top = 0.075
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.0920029
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_pt8hn")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="stoneReward" type="Panel" parent="losePanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h4u03")
+
+[node name="TextureRect" type="TextureRect" parent="losePanel/VBoxContainer/stoneReward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.183
+anchor_bottom = 1.0
+offset_right = 0.105999
+texture = ExtResource("3_2v5b6")
+expand_mode = 1
+
+[node name="stoneAmount" type="Label" parent="losePanel/VBoxContainer/stoneReward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.294
+anchor_top = 0.075
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.0920029
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_pt8hn")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="woodReward" type="Panel" parent="losePanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h4u03")
+
+[node name="TextureRect" type="TextureRect" parent="losePanel/VBoxContainer/woodReward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.183
+anchor_bottom = 1.0
+offset_right = 0.105999
+texture = ExtResource("4_e0gtc")
+expand_mode = 1
+
+[node name="woodAmount" type="Label" parent="losePanel/VBoxContainer/woodReward"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.294
+anchor_top = 0.075
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.0920029
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_pt8hn")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="loserSkull" type="TextureRect" parent="losePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.059
+anchor_top = 0.326
+anchor_right = 0.324
+anchor_bottom = 0.79
+offset_left = 0.079998
+offset_top = 0.102005
+offset_right = -0.119995
+offset_bottom = -0.170013
+texture = ExtResource("6_huod0")
+expand_mode = 1
