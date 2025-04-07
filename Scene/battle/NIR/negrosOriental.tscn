@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cblc3ijjhscy"]
+[gd_scene load_steps=22 format=3 uid="uid://cblc3ijjhscy"]
 
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="1_eci0f"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="3_cdw0c"]
@@ -29,6 +29,9 @@ sky_material = SubResource("PanoramaSkyMaterial_ir7g7")
 background_mode = 2
 background_energy_multiplier = 0.4
 sky = SubResource("Sky_minli")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qjeuu"]
+size = Vector3(1.21472, 1.13795, 1.07275)
 
 [node name="NegrosOriental" type="Node3D"]
 
@@ -75,18 +78,36 @@ transform = Transform3D(0.71934, 0.40831, -0.56199, 0, 0.809017, 0.587785, 0.694
 fov = 53.4
 
 [node name="UI" parent="." instance=ExtResource("3_cdw0c")]
-visible = false
 
 [node name="Buildings" type="Node" parent="."]
 
 [node name="Sigbin-Kweba" parent="Buildings" instance=ExtResource("5_bumf3")]
 transform = Transform3D(-9.37277, 0, -3.53681, 0, 10.0179, 0, 3.53681, 0, -9.37277, 13.4812, 1.28521, -12.2374)
 
+[node name="Area3D" type="Area3D" parent="Buildings/Sigbin-Kweba"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -1.60688, 0, 0.489808)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Sigbin-Kweba/Area3D"]
+transform = Transform3D(4, 0, -1.19209e-07, 0, 3.99996, 0, 1.19209e-07, 0, 4, -0.045167, 1.48071, -0.0693361)
+shape = SubResource("BoxShape3D_qjeuu")
+
 [node name="Kapre-Baliti" parent="Buildings" instance=ExtResource("6_gtgdt")]
 transform = Transform3D(4.59444, 0, 6.54913, 0, 8, 0, -6.54913, 0, 4.59444, -64.8682, -12.0895, -42.9214)
 
+[node name="Area3D" type="Area3D" parent="Buildings/Kapre-Baliti"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Kapre-Baliti/Area3D"]
+transform = Transform3D(4, 0, -1.19209e-07, 0, 4, 0, 1.19209e-07, 0, 4, 0.285972, 3.0741, -1.24848)
+shape = SubResource("BoxShape3D_qjeuu")
+
 [node name="Duwende-Punso" parent="Buildings" instance=ExtResource("7_kk52c")]
 transform = Transform3D(5.37552, 0, -5.92484, 0, 8, 0, 5.92484, 0, 5.37552, 48.8708, 0, 54.7117)
+
+[node name="Area3D" type="Area3D" parent="Buildings/Duwende-Punso"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Duwende-Punso/Area3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.732476, 0)
+shape = SubResource("BoxShape3D_qjeuu")
 
 [node name="Trees" type="Node" parent="."]
 
@@ -253,14 +274,13 @@ required_cp = 800
 enemies = Array[PackedScene]([ExtResource("15_wisgq")])
 preferred_enemies = Array[PackedScene]([ExtResource("15_wisgq")])
 troops = {
-"arnisador": "res://Scene/arnisador.tscn"
+"arnisador": "res://Scene/Characters/arnisador.tscn"
 }
 Objects = [NodePath("../Buildings"), NodePath("../Trees"), NodePath("../Stones"), NodePath("../Bushes")]
 boss_scene = ExtResource("16_cub84")
 
 [node name="Path Generator" type="Node3D" parent="."]
 script = ExtResource("17_iod43")
-Create_path = true
 
 [node name="AStar" type="Node3D" parent="."]
 script = ExtResource("18_r23ju")

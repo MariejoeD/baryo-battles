@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ygktmy4h48q3"]
+[gd_scene load_steps=24 format=3 uid="uid://ygktmy4h48q3"]
 
 [ext_resource type="MeshLibrary" uid="uid://bcqqed14hyr4a" path="res://assets/mesh/floor_meshes.tres" id="1_o31sp"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="3_e83xp"]
@@ -28,6 +28,15 @@ sky_material = SubResource("PanoramaSkyMaterial_s0na0")
 background_mode = 2
 background_energy_multiplier = 0.4
 sky = SubResource("Sky_4gqxt")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvhld"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tftky"]
+size = Vector3(1, 1.15442, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m5ouc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jjgbb"]
 
 [node name="Guimaras" type="Node3D"]
 
@@ -233,14 +242,38 @@ transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -50.9394, 1.01587, 58.9949)
 [node name="Duwende-Punso" parent="buildings" instance=ExtResource("19_eq0ny")]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -59.2593, 0, -32.9551)
 
+[node name="Area3D" type="Area3D" parent="buildings/Duwende-Punso"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="buildings/Duwende-Punso/Area3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("BoxShape3D_yvhld")
+
 [node name="Duwende-Punso2" parent="buildings" instance=ExtResource("19_eq0ny")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -3.2137, 0, -39.9035)
+
+[node name="Area3D" type="Area3D" parent="buildings/Duwende-Punso2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="buildings/Duwende-Punso2/Area3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.308838, 0)
+shape = SubResource("BoxShape3D_tftky")
 
 [node name="Duwende-Punso3" parent="buildings" instance=ExtResource("19_eq0ny")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 14.1866, 0, 19.6581)
 
+[node name="Area3D" type="Area3D" parent="buildings/Duwende-Punso3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="buildings/Duwende-Punso3/Area3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("BoxShape3D_m5ouc")
+
 [node name="Duwende-Punso4" parent="buildings" instance=ExtResource("19_eq0ny")]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 55.8508, 0, 60.4818)
+
+[node name="Area3D" type="Area3D" parent="buildings/Duwende-Punso4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="buildings/Duwende-Punso4/Area3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+shape = SubResource("BoxShape3D_jjgbb")
 
 [node name="Entities" type="Node3D" parent="." node_paths=PackedStringArray("Objects")]
 script = ExtResource("21_kkirv")
