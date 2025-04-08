@@ -10,11 +10,11 @@ extends Node3D
 @export var troops: Dictionary
 @export var Objects: Array[Node]
 @export var boss_scene: PackedScene  # Reference to the boss scene
-
+var enemies_spawned: bool = false
 
 # Enum for spawn conditions
 enum BossSpawnCondition {
-	SpawnOnLoad = 0,
+	SpawnOnLoad,
 	SpawnAfterAllEnemiesDead,
 	SpawnAfterRandomDelay
 }
@@ -41,9 +41,12 @@ func _ready() -> void:
 	$"../Path Generator".finished.connect($"../AStar".create_astar)
 	$"../AStar".finished.connect($".".spawn_enemy.bind(enemies))
 	create_area_and_collision()
+	print(boss_spawn_condition)
 	
+func _process(delta: float) -> void:
 # Call spawn boss function based on different conditions
-	_spawn_boss_conditionally()
+	if enemies_spawned:
+		_spawn_boss_conditionally()
 func _input(event: InputEvent) -> void:
 	if get_selected_troop() != "":
 		var mouse_pos = get_viewport().get_mouse_position()
@@ -183,19 +186,24 @@ func create_area_and_collision():
 
 
 func _spawn_boss_conditionally() -> void:
+	if boss_spawned:
+		return
 	match boss_spawn_condition:
 		# Condition 0: Spawn boss on load
 		BossSpawnCondition.SpawnOnLoad:
+			print("on load")
 			if !boss_spawned:
 				spawn_boss()
 
 		# Condition 1: Spawn boss after all enemies are dead
 		BossSpawnCondition.SpawnAfterAllEnemiesDead:
+			print("all_defeated")
 			if all_enemies_defeated() and !boss_spawned:
 				spawn_boss()
 
 		# Condition 2: Spawn boss after a random delay
 		BossSpawnCondition.SpawnAfterRandomDelay:
+			print("random")
 			if randf() < 0.1 and !boss_spawned:  # 10% chance on each frame to spawn the boss
 				spawn_boss()
 
@@ -217,15 +225,16 @@ func all_enemies_defeated() -> bool:
 	# Logic to check if all enemies are defeated
 	# You can implement this by checking the active enemies in the scene
 	# This is a placeholder implementation
-	var enemies_remaining = get_tree().get_nodes_in_group("enemies")  # Assuming enemies are in the "enemies" group
+	var enemies_remaining = get_tree().get_nodes_in_group("Enemy")  # Assuming enemies are in the "enemies" group
 	for enemy in enemies_remaining:
-		if enemy.is_instance_valid() and enemy.visible:  # Example check if the enemy is still alive
+		if enemy.is_inside_tree() and enemy.visible:  # Example check if the enemy is still alive
 			return false
 	return true
 
 func win_lose_check():
 	# Wait for the next frame to ensure nodes have been processed (queue_free is done)
 	await get_tree().process_frame
+	_spawn_boss_conditionally()
 	var enemies_remaining
 	var troops_remaining
 	# Get all enemies and troops
@@ -281,14 +290,13 @@ func show_result(result: String):
 		print("YOU WIN!")
 	elif result == "lose":
 		print("YOU LOSE!")
-	await get_tree().create_timer(0.1).timeout
-	get_tree().change_scene_to_file("res://Scene/HomeBase.tscn")
+	SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
 
 
 
 func surrender():
 	print("Surrender")
-	get_tree().change_scene_to_file("res://Scene/HomeBase.tscn")
+	SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
 
 func calculate_player_total_cp():
 	var total_cp = 0
@@ -404,6 +412,7 @@ func spawn_enemy(enemies):
 			if not found_pos:
 				#print("[ERROR] No valid position found for enemy!")
 				pass
+	enemies_spawned = true
 
 func get_random_position() -> Vector3:
 	var x = randf_range(-50, 50)

@@ -4,11 +4,13 @@ extends NpcState
 var two_models: bool
 @onready var stats = fsm.get_parent().get_node("Stats")
 
+
 var timer
 var target
 
 func _ready():
 	timer = Timer.new()
+	
 	add_child(timer)
 	if !stats.is_healer:
 		timer.timeout.connect(_attack)
@@ -25,17 +27,19 @@ func enter(_previous_state_path: String, data := {}) -> void:
 	if not timer.is_stopped():
 		timer.stop()
 	timer.start()
-
+	
 	if two_models:
 		fsm.npc_root_node.get_child(2).visible = true
 		fsm.npc_root_node.get_child(1).visible = false
 		
+
 	
 # Function to handle the attack logic
 func _attack():
 	var target_distance = fsm.npc_root_node.global_position.distance_to(target.global_position)
 	if target_distance > stats.get_scaled_attack_ranged():
 		fsm._transition_to_next_state("Chase", {"target" : target})
+	
 	if target and is_instance_valid(target):
 		fsm.anim_player.play("attack")
 		var target_stats = target.get_node("Stats")
@@ -68,7 +72,7 @@ func _attack():
 func _heal():
 	if target and is_instance_valid(target):
 		# Deal damage to the target
-		fsm.anim_player.play("attack")
+		fsm.anim_player.play("attack", -1, stats.get_scaled_attack_speed())
 		#fsm.anim_player.playback_speed = stats.attack_speed
 		target.get_node("Stats")._on_heal(stats.get_scaled_damage())
 		# After attack, check if the target is dead
@@ -76,6 +80,18 @@ func _heal():
 			print("Target is full health. Looking for new target.")
 			_find_new_target()
 	pass
+# Function to handle the wolf transform and the return cycle
+
+
+# Function to toggle between wolf and human form
+func wolf_transform():
+	var is_wolf = fsm.npc_root_node.get_child(2).visible
+	fsm.npc_root_node.get_child(1).visible = is_wolf  # Human form
+	fsm.npc_root_node.get_child(2).visible = !is_wolf  # Wolf form
+
+	# Toggle evasion
+	stats.evasion_chance = 0.3
+	
 # Function to check if there's a new target and retarget
 func _find_new_target():
 	fsm.targeting_component._find_nearest_target()
@@ -91,12 +107,10 @@ var transform : bool = false
 func update(_delta: float):
 	if not is_instance_valid(target) and not target:
 		fsm._transition_to_next_state("Idle")
-	if stats.has_ability and stats.ability_name == "Transform":
-		if stats.current_hp < stats.get_scaled_hp() *.5 and !transform:
-			transform =true
-			fsm.npc_root_node.get_child(2).visible = true
-			fsm.npc_root_node.get_child(1).visible = false
-			stats.damage_multiplier = 2
+	if stats.has_ability and stats.ability_name == "Wolf Transform":
+		if stats.current_hp <= stats.get_scaled_hp() * .3 and !transform:
+			transform = true
+			wolf_transform()
 		pass
 
 func exit():

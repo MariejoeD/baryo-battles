@@ -1265,13 +1265,13 @@ shape = SubResource("CylinderShape3D_y1ppn")
 [node name="Pathfinder" parent="." instance=ExtResource("5_5j1j8")]
 
 [node name="Stats" parent="." instance=ExtResource("8_pr860")]
-hp = 1100
+hp = 2000
 damage = 90
 attack_range = 5.0
 attack_speed = 1.5
 movement_speed = 2.8
 has_ability = true
-ability_name = "Transform"
+ability_name = "Wolf Transform"
 spawn_scale = Vector3(5, 5, 5)
 
 [node name="Smoke" type="Node3D" parent="."]
