@@ -83,7 +83,7 @@ func grow(duration: float = 5.0):
 	
 func make_harvestable():
 	is_harvestable = true
-	$TextureButton.texture_normal = preload("res://assets/button/ready_to_harvest.png") # Update texture
+	$UI/Tanim/Harvest.texture_normal = load("res://assets/button/ready_to_harvest.png") # Update texture
 	print("Ready to harvest!")
 
 
@@ -99,6 +99,7 @@ func harvest() -> void:
 
 func perform_work(worker):
 	await get_tree().create_timer(5).timeout
+	$UI/Tanim/Harvest.texture_normal = load("res://assets/button/harvest.png")
 	print("Harvest Complete")
 	Global.food_qty += 10
 	#Change  Indicator

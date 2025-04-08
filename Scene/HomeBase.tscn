@@ -83,6 +83,7 @@ cell_size = Vector3(1, 1, 1)
 script = ExtResource("4_6i8of")
 
 [node name="DuplicatedTiles" type="Node3D" parent="Base/AMap"]
+visible = false
 script = ExtResource("6_ttmot")
 script_library = {}
 packed_building = ExtResource("7_5btd4")
