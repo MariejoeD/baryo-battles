@@ -255,7 +255,7 @@ theme_override_font_sizes/font_size = 30
 text = "300
 "
 
-[node name="currentAmount" type="Label" parent="UI/Bodega/viewInformation/InformationPanel"]
+[node name="maxAmount" type="Label" parent="UI/Bodega/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.585
@@ -271,7 +271,7 @@ theme_override_colors/font_shadow_color = Color(0.986752, 0.986752, 0.986752, 1)
 theme_override_colors/font_outline_color = Color(0.982343, 0.982342, 0.982342, 1)
 theme_override_fonts/font = ExtResource("5_wct1u")
 theme_override_font_sizes/font_size = 15
-text = "current amount"
+text = "Max Amount"
 
 [node name="upgrade" type="TextureButton" parent="UI/Bodega"]
 layout_mode = 2

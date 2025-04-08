@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dpo47nv4ah4wp"]
+[gd_scene load_steps=20 format=3 uid="uid://dpo47nv4ah4wp"]
 
 [ext_resource type="ArrayMesh" uid="uid://bjb1hy0hgmlb8" path="res://assets/building models/Imbakan-Lv1_Empty.obj" id="1_dbcc5"]
 [ext_resource type="Script" path="res://Script/building scripts/imbakan_lv_1_empty_script.gd" id="2_pkxnm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bi0ah5owynja6" path="res://assets/BuildingsRawPics/11.png" id="5_wxtcl"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="6_75sm4"]
 [ext_resource type="Texture2D" uid="uid://62tq1mbindsr" path="res://assets/button/upgrade.png" id="7_mgxrs"]
+[ext_resource type="Texture2D" uid="uid://cn66uvxh4adkn" path="res://assets/game/foodIcon.png" id="7_qslnd"]
 [ext_resource type="Texture2D" uid="uid://c4tob3e00rq5w" path="res://assets/button/upgradeClicked.png" id="8_umsyl"]
 [ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="9_xm7et"]
 [ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="10_38cb3"]
@@ -61,7 +62,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.315269, 1.8058, 0.463486)
 shape = SubResource("BoxShape3D_7x1ve")
 
 [node name="UI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,7 +88,6 @@ texture_normal = ExtResource("3_a8svq")
 texture_pressed = ExtResource("4_gct2u")
 
 [node name="InformationPanel" type="Panel" parent="UI/Imbakan/viewInformation"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -3.698
@@ -137,18 +136,64 @@ text = "Imbakan"
 [node name="Description" type="Label" parent="UI/Imbakan/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.44
-anchor_top = 0.336
-anchor_right = 0.935
-anchor_bottom = 0.675
-offset_left = 0.0800018
-offset_top = -0.0960083
-offset_right = 0.220703
-offset_bottom = -14.991
+anchor_left = 0.458
+anchor_top = 0.203
+anchor_right = 0.953
+anchor_bottom = 0.542
+offset_left = -0.143951
+offset_top = -0.0579491
+offset_right = -0.00323486
+offset_bottom = -0.0119476
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
 text = "A well-secured granary where harvested food is stored, preserving supplies to sustain the village during times of war and hardship."
 autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Imbakan/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.555
+anchor_top = 0.706
+anchor_right = 0.785
+anchor_bottom = 0.881
+offset_left = -0.239929
+offset_top = 0.0840302
+offset_right = 0.120056
+offset_bottom = 0.0340271
+theme_override_constants/separation = 20
+
+[node name="foodIcon" type="TextureRect" parent="UI/Imbakan/viewInformation/InformationPanel/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_qslnd")
+expand_mode = 3
+
+[node name="foodAmount" type="Label" parent="UI/Imbakan/viewInformation/InformationPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.986752, 0.986752, 0.986752, 1)
+theme_override_colors/font_outline_color = Color(0.982343, 0.982342, 0.982342, 1)
+theme_override_fonts/font = ExtResource("6_75sm4")
+theme_override_font_sizes/font_size = 30
+text = "300
+"
+
+[node name="currentAmount" type="Label" parent="UI/Imbakan/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.585
+anchor_top = 0.892
+anchor_right = 0.752
+anchor_bottom = 0.958
+offset_left = -0.279968
+offset_top = -0.111938
+offset_right = -0.135956
+offset_bottom = 0.0120544
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.986752, 0.986752, 0.986752, 1)
+theme_override_colors/font_outline_color = Color(0.982343, 0.982342, 0.982342, 1)
+theme_override_fonts/font = ExtResource("6_75sm4")
+theme_override_font_sizes/font_size = 15
+text = "current amount"
 
 [node name="upgrade" type="TextureButton" parent="UI/Imbakan"]
 layout_mode = 2

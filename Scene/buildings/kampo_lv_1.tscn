@@ -132,7 +132,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dbkpv"]
-size = Vector3(9.17725, 3.90436, 9.37622)
+size = Vector3(16.106, 6.10257, 16.6024)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7g7bq"]
 bg_color = Color(0.919668, 0.878001, 0.698229, 1)
@@ -176,7 +176,7 @@ troopImagePath = "res://assets/trainTroops/trainingTroops/"
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.109131, 1.8165, 0.126099)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.205216, 1.26695, 0.258621)
 shape = SubResource("BoxShape3D_dbkpv")
 
 [node name="UI" type="Control" parent="."]
