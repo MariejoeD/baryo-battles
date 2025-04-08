@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://3erergkgttu2"]
+[gd_scene load_steps=17 format=4 uid="uid://3erergkgttu2"]
 
 [ext_resource type="Script" path="res://Script/building scripts/bodega(empty)_script.gd" id="1_hcjpo"]
 [ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="2_gjaj0"]
@@ -93,6 +93,18 @@ blend_shape_mode = 0
 [sub_resource type="BoxShape3D" id="BoxShape3D_rr71q"]
 size = Vector3(2.98291, 3.89081, 7.00012)
 
+[sub_resource type="GDScript" id="GDScript_l6k7h"]
+script/source = "extends Control
+
+@onready var wood_label = $woodAmount
+@onready var stone_label = $stoneAmount
+@onready var global = Global
+
+func _process(delta):
+	wood_label.text = \" %d\" % global.wood_qty
+	stone_label.text = \" %d\" % global.stone_qty
+"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_po6pa"]
 bg_color = Color(0.919668, 0.878001, 0.698229, 1)
 border_width_left = 3
@@ -123,13 +135,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31323, 1.92009, -0.0827024
 shape = SubResource("BoxShape3D_rr71q")
 
 [node name="UI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_l6k7h")
 
 [node name="Bodega" type="HBoxContainer" parent="UI"]
 layout_mode = 1
@@ -150,7 +162,6 @@ texture_normal = ExtResource("2_gjaj0")
 texture_pressed = ExtResource("3_83vpr")
 
 [node name="InformationPanel" type="Panel" parent="UI/Bodega/viewInformation"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -3.755
@@ -200,17 +211,78 @@ text = "Bodega"
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.458
-anchor_top = 0.332
+anchor_top = 0.238
 anchor_right = 0.953
-anchor_bottom = 0.759
-offset_left = -0.144012
-offset_top = 0.0479965
-offset_right = -0.0032959
-offset_bottom = -40.015
+anchor_bottom = 0.664
+offset_left = -0.143951
+offset_top = -0.0679474
+offset_right = -0.00323486
+offset_bottom = 0.0960541
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
 text = "A fortified depot where harvested wood and quarried stones are stockpiled. These essential materials are used to build and reinforce the village’s defenses and structures."
 autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Bodega/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.447
+anchor_top = 0.696
+anchor_right = 0.963
+anchor_bottom = 0.871
+offset_left = 0.10405
+offset_top = -0.055954
+offset_right = 0.0160522
+offset_bottom = -0.105957
+theme_override_constants/separation = 20
+
+[node name="woodIcon" type="TextureRect" parent="UI/Bodega/viewInformation/InformationPanel/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_o241x")
+expand_mode = 3
+
+[node name="woodAmount" type="Label" parent="UI/Bodega/viewInformation/InformationPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.986752, 0.986752, 0.986752, 1)
+theme_override_colors/font_outline_color = Color(0.982343, 0.982342, 0.982342, 1)
+theme_override_fonts/font = ExtResource("5_wct1u")
+theme_override_font_sizes/font_size = 30
+text = "300
+"
+
+[node name="stoneIcon" type="TextureRect" parent="UI/Bodega/viewInformation/InformationPanel/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_mi1vl")
+expand_mode = 3
+
+[node name="stoneAmount" type="Label" parent="UI/Bodega/viewInformation/InformationPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.986752, 0.986752, 0.986752, 1)
+theme_override_colors/font_outline_color = Color(0.982343, 0.982342, 0.982342, 1)
+theme_override_fonts/font = ExtResource("5_wct1u")
+theme_override_font_sizes/font_size = 30
+text = "300
+"
+
+[node name="currentAmount" type="Label" parent="UI/Bodega/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.585
+anchor_top = 0.892
+anchor_right = 0.752
+anchor_bottom = 0.958
+offset_left = -0.279968
+offset_top = -0.111938
+offset_right = -0.135956
+offset_bottom = 0.0120544
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.986752, 0.986752, 0.986752, 1)
+theme_override_colors/font_outline_color = Color(0.982343, 0.982342, 0.982342, 1)
+theme_override_fonts/font = ExtResource("5_wct1u")
+theme_override_font_sizes/font_size = 15
+text = "current amount"
 
 [node name="upgrade" type="TextureButton" parent="UI/Bodega"]
 layout_mode = 2
