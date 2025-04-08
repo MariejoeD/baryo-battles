@@ -464,7 +464,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 shape = SubResource("BoxShape3D_fetpc")
 
 [node name="UI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -473,6 +472,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Balwarte" type="HBoxContainer" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.41
@@ -583,6 +583,8 @@ offset_left = -0.039669
 offset_top = 0.0350027
 offset_right = -0.0038681
 offset_bottom = -0.00497437
+texture = ExtResource("4_c1334")
+expand_mode = 1
 
 [node name="title" type="Label" parent="UI/Balwarte/upgrade/upgradePanel"]
 layout_mode = 1

@@ -170,6 +170,8 @@ offset_left = -0.039669
 offset_top = 0.0350027
 offset_right = -0.0038681
 offset_bottom = -0.00497437
+texture = ExtResource("5_bseas")
+expand_mode = 1
 
 [node name="title" type="Label" parent="UI/Estakada/upgrade/upgradePanel"]
 layout_mode = 1
