@@ -22,6 +22,8 @@ sky_material = SubResource("PanoramaSkyMaterial_ihp4q")
 background_mode = 2
 background_energy_multiplier = 0.4
 sky = SubResource("Sky_cjdic")
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.3273
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o15vt"]
 albedo_color = Color(0.34902, 1, 0.313726, 1)

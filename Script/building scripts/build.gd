@@ -14,27 +14,39 @@ func _ready() -> void:
 		if btn is TextureButton:
 			btn.pressed.connect(_on_btn_pressed.bind(btn))
 
+func show_warning_label(label_name: String) -> void:
+	var warning_label = get_tree().current_scene.find_child(label_name, true, false)
+	if warning_label:
+		warning_label.visible = true
+		warning_label.z_index = 10  # Ensure it's on top
+		await get_tree().create_timer(3.0).timeout
+		warning_label.visible = false
+	else:
+		print("Warning label NOT found:", label_name)
+
 func _on_btn_pressed(btn: TextureButton) -> void:
 	stone_req = int(btn.get_node("resourceAmount/stoneAmount").text)
 	wood_req = int(btn.get_node("resourceAmount/woodAmount").text)
-	
+
+	# Building not unlocked
 	if not get_parent().button_states[btn.name]:
-		print("Building Not Yet Unlock")
+		show_warning_label("buildingNotYetUnlocked")
 		return
-	
+
+	# Not enough resources
 	if Global.wood_qty < wood_req or Global.stone_qty < stone_req:
-		print("Not Enough Resource")
+		show_warning_label("notEnoughResources")
 		return
-	
+
 	var scene = building_data.buildings[btn.name]
 	current_building = scene.instantiate()
-	
+
 	grid_map.add_child(current_building)
 	$"../BuildInventoryPanel".hide()
 	$"../BuildButton".hide()
-	
-	building_mode = true
 
+	building_mode = true
+	
 func _process(delta: float) -> void:
 	if building_mode and current_building:
 		follow_mouse()
