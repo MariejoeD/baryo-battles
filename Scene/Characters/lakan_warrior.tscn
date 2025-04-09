@@ -1219,6 +1219,7 @@ movement_speed = 4.0
 weight_hp = 0.5
 weight_damage = 0.3
 weight_attack_speed = 0.1
+space_cost = 10
 spawn_scale = Vector3(2.5, 2.5, 2.5)
 
 [editable path="FSM"]

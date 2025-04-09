@@ -41,7 +41,10 @@ func _attack():
 		fsm._transition_to_next_state("Chase", {"target" : target})
 	
 	if target and is_instance_valid(target):
-		fsm.anim_player.play("attack")
+		var desired_duration = 1.0 / stats.get_scaled_attack_speed()
+		var anim_length = fsm.anim_player.get_animation("attack").length
+		var speed_scale = anim_length / desired_duration
+		fsm.anim_player.play("attack", -1.0, speed_scale)
 		var target_stats = target.get_node("Stats")
 		if stats.has_ability and stats.ability_name == "Rage Mode":
 			var rage_threshold = 0.3  # Rage Mode activates when HP is below 30%
@@ -86,6 +89,7 @@ func _heal():
 # Function to toggle between wolf and human form
 func wolf_transform():
 	var is_wolf = fsm.npc_root_node.get_child(2).visible
+	# make smoke visible when turn wolf
 	fsm.npc_root_node.get_child(1).visible = is_wolf  # Human form
 	fsm.npc_root_node.get_child(2).visible = !is_wolf  # Wolf form
 

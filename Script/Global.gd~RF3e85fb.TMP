@@ -27,21 +27,14 @@ var food_qty :int = 3000:
 var grid_size :int = 100
 var npc_discovered = {}
 
-
-const DAY_DURATION := 10.0
-const HALF_DAY := DAY_DURATION / 2.0
-
-var current_time := 0.0
-var time_of_day := 0.0
-var has_emitted_night_time := false
-var total_game_time := 0.0
+const DAY_DURATION = 1200
+var current_time = 0.0
+var time_of_day: float
 
 
 #Kubo Tracking
 var all_kubos: Array = []  # Stores all Kubo nodes
 var all_kampo: Array = []
-var all_imbakan: Array =[]
-var all_bodega: Array = []
 var kampo_troops: Dictionary = {}
 func _ready() -> void:
 	SignalManager.discovered.connect(npc)
@@ -50,42 +43,18 @@ func _ready() -> void:
 func npc(name):
 	npc_discovered[name] = true
 
-
 func _process(delta: float) -> void:
 	current_time += delta
-	total_game_time += delta
-
-	# Emit new day signal when full day duration is reached
 	if current_time >= DAY_DURATION:
 		SignalManager.new_day.emit()
 		current_time = 0.0
-		has_emitted_night_time = false  # Reset for next day
-
-	# ✅ Recommended: Safe floating point comparison
-	if not has_emitted_night_time and abs(current_time - HALF_DAY) < delta:
-		print("Halfway reached (accurate): ", current_time)
+		
+	if current_time == DAY_DURATION/2:
+		print("current_time")
 		SignalManager.night_time.emit()
-		has_emitted_night_time = true
+	time_of_day = current_time / DAY_DURATION
 
 
-func get_food_cap():
-	var total_food_cap = 0
-	print("Imbakan")
-	print(all_imbakan)
-	for imbakan in all_imbakan:
-		print("Imbakan:" ,imbakan.food_cap)
-		total_food_cap += imbakan.food_cap
-	return total_food_cap
-func get_wood_cap():
-	var total_wood_cap = 0
-	for bodega in all_bodega:
-		total_wood_cap += bodega.wood_cap
-	return total_wood_cap
-func get_stone_cap():
-	var total_stone_cap = 0
-	for bodega in all_bodega:
-		total_stone_cap += bodega.stone_cap
-	return total_stone_cap
 # Count actual number of civilians in the scene dynamically
 func get_current_civilian_count() -> int:
 	var stored_civ = 0

@@ -23,6 +23,7 @@ extends Node
 # Multipliers to adjust stats for level scaling or buffs
 @export var hp_multiplier: float = 1.0
 @export var damage_multiplier: float = 1.0
+@export var space_cost: int = 1
 @export var spawn_scale: Vector3 = Vector3(1, 1, 1)
 @export var is_healer: bool = false
 var current_hp

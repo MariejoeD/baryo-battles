@@ -1,10 +1,9 @@
 extends Label
 
-@onready var global = Global  # Access the Global singleton directly
 
 func _process(delta):
 	# Get the current civilian count from the Global script
-	var civilian_count = global.get_current_civilian_count()
-	
+	var civilian_count = Global.get_current_civilian_count()
+	var max = Global.get_max_civilians()
 	# Update the label text with the current count
-	text = ": %d" % civilian_count
+	text = str(civilian_count) + " : " + str(max)

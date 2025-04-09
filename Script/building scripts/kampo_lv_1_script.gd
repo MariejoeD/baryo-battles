@@ -7,7 +7,7 @@ var built: bool =false
 var troops: Array = []
 @export var troopImagePath : String
 @onready var container = get_node("UI/Kampo/ManageTroops/manageTroopsPanel/ScrollContainer/ScrollContainer")
-
+var spaces = 100
 func update_ui_container():
 	
 	for child in container.get_children():

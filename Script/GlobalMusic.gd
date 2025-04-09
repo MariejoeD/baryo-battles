@@ -3,7 +3,7 @@ extends Node
 @onready var music_player := AudioStreamPlayer2D.new()
 @onready var sfx_player := AudioStreamPlayer2D.new()  # Sound effects player
 
-var is_music_on := true
+var is_music_on := false
 var is_sound_on := true  # New: toggle for sound effects
 
 func _ready():
