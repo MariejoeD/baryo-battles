@@ -389,32 +389,24 @@ distance_fade_mode = 1
 distance_fade_max_distance = 50.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g3pt8"]
-particle_flag_align_y = true
-angle_min = 1.07288e-05
-angle_max = 174.4
-inherit_velocity_ratio = 0.475
-velocity_pivot = Vector3(50, 50, 0)
-spread = 178.985
-flatness = 0.278
-initial_velocity_max = 12.89
-angular_velocity_min = -51.96
-angular_velocity_max = -51.96
+inherit_velocity_ratio = 0.606
+spread = 180.0
+flatness = 0.356
 gravity = Vector3(45, 50, 0)
 linear_accel_min = 14.43
 linear_accel_max = 14.43
 scale_min = 8.09
 scale_max = 72.04
-scale_over_velocity_min = 36.08
-scale_over_velocity_max = 36.08
+scale_over_velocity_max = 105.67
 color = Color(0.313626, 0.223149, 0.31792, 1)
 hue_variation_min = -0.04
 hue_variation_max = 0.17
-anim_speed_min = 1.0
-anim_speed_max = 1.0
+anim_speed_min = 0.01
+anim_speed_max = 0.63
 turbulence_enabled = true
-turbulence_noise_strength = 20.0
+turbulence_noise_strength = 16.53
 turbulence_noise_scale = 7.167
-turbulence_noise_speed = Vector3(20, 0, 0)
+turbulence_noise_speed = Vector3(30, 0, 0)
 turbulence_influence_min = 0.0
 turbulence_influence_max = 0.165
 
@@ -1275,15 +1267,15 @@ ability_name = "Wolf Transform"
 spawn_scale = Vector3(5, 5, 5)
 
 [node name="Smoke" type="Node3D" parent="."]
-visible = false
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6098, 0.344537, 7.64723)
+transform = Transform3D(0.78079, -0.624793, 0, 0.624793, 0.78079, 0, 0, 0, 1, 0, 0, 0.0131512)
 visible = false
 material_override = SubResource("StandardMaterial3D_1cr1e")
 amount = 30
 lifetime = 2.0
 fixed_fps = 52
+visibility_aabb = AABB(0, 0, 0, 0, 0, 0)
 draw_order = 3
 process_material = SubResource("ParticleProcessMaterial_g3pt8")
 draw_pass_1 = SubResource("QuadMesh_pmilc")

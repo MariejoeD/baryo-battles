@@ -89,12 +89,18 @@ func _heal():
 # Function to toggle between wolf and human form
 func wolf_transform():
 	var is_wolf = fsm.npc_root_node.get_child(2).visible
-	# make smoke visible when turn wolf
+	
+	# Toggle visibility
 	fsm.npc_root_node.get_child(1).visible = is_wolf  # Human form
 	fsm.npc_root_node.get_child(2).visible = !is_wolf  # Wolf form
 
-	# Toggle evasion
+	# Play smoke particles once when transforming
+	var smoke = fsm.npc_root_node.get_child(0)
+	smoke.restart()  # Restarts the smoke particle system
+	
+	# Change evasion stat
 	stats.evasion_chance = 0.3
+
 	
 # Function to check if there's a new target and retarget
 func _find_new_target():
