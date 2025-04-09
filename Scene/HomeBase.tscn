@@ -33,7 +33,7 @@ albedo_color = Color(0.34902, 1, 0.313726, 1)
 material = SubResource("StandardMaterial3D_o15vt")
 size = Vector2(500, 500)
 
-[node name="Root" type="CanvasLayer"]
+[node name="HomeBase" type="CanvasLayer"]
 
 [node name="Base" type="Node3D" parent="."]
 

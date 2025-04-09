@@ -52,6 +52,12 @@ func npc(name):
 
 
 func _process(delta: float) -> void:
+	var current_scene = get_tree().current_scene
+
+	# If we're not in the main scene, skip time progression
+	#print(current_scene.name)
+	if current_scene == null or current_scene.name != "HomeBase":
+		return
 	current_time += delta
 	total_game_time += delta
 

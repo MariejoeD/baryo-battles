@@ -10,10 +10,19 @@ var TH_level = 1
 	"marites" : [preload("res://Scene/Characters/marites.tscn"), 3]
 	
 }
+@onready var enemies: Dictionary = {
+	"duwende" : [preload("res://Scene/Characters/duwende.tscn"), 1],
+	"sigbin" : [preload("res://Scene/Characters/sigbin.tscn"), 2],
+	"kapre" : [preload("res://Scene/Characters/kapre.tscn"), 2],
+	"tikbalang" : [preload("res://Scene/Characters/tikbalang.tscn"), 3],
+	"mananaggal" : [preload("res://Scene/Characters/manananggal.tscn"), 3]
+}
 
 func _ready() -> void:
 	SignalManager.TH_upgrade.connect(th_on_upgrade)
 	SignalManager.night_time.connect(troop)
+	SignalManager.night_time.connect(enemy)
+	
 	#troop()
 
 func th_on_upgrade():
@@ -30,4 +39,16 @@ func troop():
 			var value = {"name":i,"cp":stats.calculate_cp(), "space": stats.space_cost}
 			if not Defend_Mechanism.unlocked_defenders.has(value):
 				Defend_Mechanism.unlocked_defenders.append(value)
+			temp_inst.queue_free()
+			
+
+func enemy():
+	for i in enemies:
+		if enemies[i][1]  <= TH_level:
+			var Defend_Mechanism = get_tree().current_scene.find_child("Defend Mechanism")
+			#print(i, ": ", "cp: ",stats.calculate_cp(), " space: ", stats.space_cost)
+			var value = enemies[i][0]
+			if not Defend_Mechanism.enemies.has(value):
+				Defend_Mechanism.enemies.append(value)
+			
 #func 
