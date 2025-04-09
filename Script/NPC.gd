@@ -1,6 +1,6 @@
 extends Node
 
-var TH_level = 1
+var TH_level = 0
 
 @onready var Troops_unlocked: Dictionary = {
 	"arnisador" : [preload("res://Scene/Characters/arnisador.tscn"), 1],

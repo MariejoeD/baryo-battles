@@ -43,6 +43,8 @@ var all_kampo: Array = []
 var all_imbakan: Array =[]
 var all_bodega: Array = []
 var kampo_troops: Dictionary = {}
+
+var prologue_played = false
 func _ready() -> void:
 	SignalManager.discovered.connect(npc)
 	load_troops_from_file()

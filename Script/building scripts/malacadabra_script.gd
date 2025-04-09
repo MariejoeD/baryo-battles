@@ -4,13 +4,13 @@ extends MeshInstance3D
 var active_panel
 var built: bool =false
 @onready var building_name = $UI.get_child(0)
-
+var level = 1
 func _ready() -> void:
+	Npc.TH_level = level
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
 	building_name.get_node("upgrade").pressed.connect(_on_upgrade_pressed)
-	
-	
+	building_name.find_child("upgradeButton").pressed.connect(_upgrade)
 
 	pass
 
@@ -59,6 +59,7 @@ func _on_upgrade_pressed() -> void:
 		active_panel.hide()
 	active_panel = building_name.get_node_or_null("upgrade/upgradePanel")
 	active_panel.show()
+	
 	pass # Replace with function body.
 
 func build():
@@ -107,6 +108,13 @@ func find_nearest_sibilyan() -> Node:
 func remove_material_override(mesh_instance) -> void:
 	for i in range(mesh_instance.mesh.get_surface_count()):
 		mesh_instance.set_surface_override_material(i, null)
+
+func _upgrade():
+	#still need condition
+	if level < 3:
+		level += 1
+		SignalManager.TH_upgrade.emit()
+	pass
 
 func change_states(build_states):
 	build_states["MalacadabraBtn"] = false

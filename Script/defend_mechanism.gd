@@ -6,15 +6,17 @@ var enemies = []
 
 func _ready() -> void:
 	SignalManager.night_time.connect(enemy_attack_check)
+	
 
 func enemy_attack_check():
 	await get_tree().create_timer(1).timeout
-
-	# Gather all scores
+	TH_level = Npc.TH_level
+	print("\n[enemy_attack_check] --- BEGIN NIGHT CHECK ---")
+	
 	var seconds_passed = Global.total_game_time
 	var time_score = get_time_points(seconds_passed)
+	print("[Time] Seconds passed:", seconds_passed, " => Time Score:", time_score)
 	
-	# Get wealth score
 	var food = Global.food_qty
 	var food_cap = Global.get_food_cap()
 	var wood = Global.wood_qty
@@ -22,28 +24,34 @@ func enemy_attack_check():
 	var stone = Global.stone_qty
 	var stone_cap = Global.get_stone_cap()
 	var wealth_score = calculate_wealth_score(food, food_cap, wood, wood_cap, stone, stone_cap)
+	print("[Wealth] Score:", wealth_score)
 
-	# Get NPC (worker + defender) score
 	var npc_score = get_npc_score()
-	# Combine all scores with custom weights
+	print("[NPC] Total NPC Score:", npc_score)
+
 	var total_score = (time_score * 0.4) + (wealth_score * 0.3) + (npc_score * 0.3)
-	
-	# Random roll to decide attack
+	print("[TOTAL SCORE] Combined Score:", total_score)
+
 	var chance = randf_range(0.0, 100.0)
-	print("Enemy Attack Chance Roll: ", chance, " / Threshold: ", total_score)
+	print("[Chance] Roll:", chance, " vs Threshold:", total_score)
+	
 	total_score = 100
 	if chance < total_score:
 		print("⚠️ Enemy Attack Triggered!")
-		var raid_strength = determine_enemy_total_cp(wealth_score, get_defender_score())
+		var defender_score = get_defender_score()
+		var raid_strength = determine_enemy_total_cp(wealth_score, defender_score)
 		var selected = select_enemies_to_spawn(raid_strength)
-		print(selected)
-		
+		print("[ENEMIES SELECTED]", selected)
+		spawn_enemy(selected)
 	else:
 		print("🌙 Quiet night. No attack.")
+	print("[enemy_attack_check] --- END ---\n")
 
 func get_time_points(seconds_passed: float) -> float:
 	var minutes = seconds_passed / 60.0
-	return clamp(pow(minutes, 0.8) * 2.0, 0, 100)
+	var score = clamp(pow(minutes, 0.8) * 2.0, 0, 100)
+	print("[get_time_points] Minutes:", minutes, " => Score:", score)
+	return score
 
 func calculate_wealth_score(
 	food: int, food_cap: int,
@@ -53,90 +61,151 @@ func calculate_wealth_score(
 	var food_ratio = float(food) / food_cap if food_cap != 0 else 0
 	var wood_ratio = float(wood) / wood_cap if wood_cap != 0 else 0
 	var stone_ratio = float(stone) / stone_cap if stone_cap != 0 else 0
-	
-	# Weighted contribution, same as before
+
 	var raw_score = food_ratio * 1.0 + wood_ratio * 1.5 + stone_ratio * 2.0
-	
-	# Normalize against max possible (which is 4.5 if all are at 100%)
-	raw_score /= 4.5
-	
-	# Add main_building_level multiplier (e.g., from 1 to 3)
-	return clamp(raw_score * (TH_level * 0.25) * 100, 0, 100)
+	var normalized = raw_score / 4.5
+	var final_score = clamp(normalized * 100, 0, 100)
+
+	print("[calculate_wealth_score]")
+	print(" Food:", food, "/", food_cap, "=>", food_ratio)
+	print(" Wood:", wood, "/", wood_cap, "=>", wood_ratio)
+	print(" Stone:", stone, "/", stone_cap, "=>", stone_ratio)
+	print(" Raw Score:", raw_score, " Normalized:", normalized, " => Final Score:", final_score)
+
+	return final_score
 
 func get_npc_score() -> float:
-	# We can weight the importance of defenders vs workers
-	var defender_weight = 0.7
-	var worker_weight = 0.3
-	return (get_defender_score() * defender_weight) + (get_worker_score() * worker_weight)
+	var defender_score = get_defender_score()
+	var worker_score = get_worker_score()
+	var total = (defender_score * 0.7) + (worker_score * 0.3)
+	print("[get_npc_score] Defenders:", defender_score, " Workers:", worker_score, " => NPC Score:", total)
+	return total
 	
 func get_worker_score():
 	if Global.get_max_civilians() == 0:
+		print("[get_worker_score] Max civilians is 0!")
 		return 0.0
-	return clamp(float(Global.get_current_civilian_count()) / Global.get_max_civilians(), 0, 100)
+	var ratio = float(Global.get_current_civilian_count()) / Global.get_max_civilians()
+	var result = clamp(ratio * 100, 0, 100)
+	print("[get_worker_score] Civilians:", Global.get_current_civilian_count(), "/", Global.get_max_civilians(), "=>", result)
+	return result
 
 func get_defender_score() -> float:
 	var current_cp = get_current_cp()
 	var max_cp = estimate_max_cp()
 	if max_cp == 0:
+		print("[get_defender_score] Max CP is 0!")
 		return 0.0
-	return clamp(float(current_cp) / max_cp, 0, 100)
+	var score = clamp((float(current_cp) / max_cp) * 100, 0, 100)
+	print("[get_defender_score] Current CP:", current_cp, " Max CP:", max_cp, " => Score:", score)
+	return score
 
 func get_current_cp(with_space:= true) -> int:
 	var total_cp = 0
 	for entities in $"../Base/Entities".get_children():
 		if entities.has_node("Stats"):
-			if with_space:
-				total_cp += entities.find_child("Stats").calculate_cp() * entities.find_child("Stats").space_cost
-			else:
-				total_cp += entities.find_child("Stats").calculate_cp()
+			var cp = entities.find_child("Stats").calculate_cp()
+			var space = entities.find_child("Stats").space_cost if with_space else 1
+			total_cp += cp * space
+	print("[get_current_cp] with_space =", with_space, " => Total CP:", total_cp)
 	return total_cp
 	
 func estimate_max_cp() -> int:
-	
 	var remaining_space = 0
 	for kampo in Global.all_kampo:
 		remaining_space += kampo.spaces
-	var estimated_cp = 0
-
-	# Sort defenders by CP per space, descending
+	
 	unlocked_defenders.sort_custom(func(a, b): return (b.cp / b.space) - (a.cp / a.space))
-	#print(unlocked_defenders)
+	
+	var estimated_cp = 0
 	for unit in unlocked_defenders:
 		var count = remaining_space / unit.space
 		estimated_cp += int(count) * unit.cp
 		remaining_space -= int(count) * unit.space
 		if remaining_space <= 0:
 			break
-	#print (estimated_cp)
+	print("[estimate_max_cp] Estimated CP:", estimated_cp)
 	return estimated_cp
 
 func determine_enemy_total_cp(wealth, defenders):
-	var raid_strength = get_current_cp(false)
-	var ratio = defenders/wealth if wealth != 0 else 1
-	print("base cp: ",get_current_cp(false))
+	var base_cp = get_current_cp(false)
+	var ratio = defenders / wealth if wealth != 0 else 1.0
+	var raid_strength = base_cp
+
 	if ratio < 1:
-		raid_strength *= defenders/wealth
-	print("defenders: ", defenders, " wealth: ", wealth, " ratio: ", ratio," cp: ", raid_strength)
+		# Base aggression factor
+		var aggression = 1.0 + (1.0 - ratio)
+
+		# 🧱 Cap aggression early to prevent wipeouts
+		var max_aggression = 1.25 if TH_level <= 2 else 2.0
+		aggression = clamp(aggression, 1.0, max_aggression)
+
+		raid_strength *= aggression
+
+		print("[determine_enemy_total_cp] AGGRESSION Applied")
+		print(" Base CP:", base_cp)
+		print(" Defenders:", defenders, " Wealth:", wealth, " Ratio:", ratio)
+		print(" Aggression Multiplier:", aggression)
+		print(" => Final Raid Strength:", raid_strength)
+
+		# 🛡️ Optional: Safety net for early-game players with really low CP
+		if base_cp < estimate_max_cp() * 0.2 and TH_level <= 2:
+			print("⚠️ [Early Game Safety Net Triggered] Raid Strength Reduced!")
+			raid_strength *= 0.75  # Give them a slim chance to survive
+
+	else:
+		print("[determine_enemy_total_cp] NO Aggression (Balanced or Over-defended)")
+		print(" Base CP:", base_cp)
+		print(" => Final Raid Strength:", raid_strength)
+
 	return raid_strength
-	pass
+
 
 func select_enemies_to_spawn(target_cp):
 	var selected_enemies = []
 	var total_cp = 0
+	print("[select_enemies_to_spawn] Target CP:", target_cp)
 	
-	while total_cp < target_cp:
+	var attempts = 0
+	while total_cp < target_cp and attempts < 100:
+		attempts += 1
 		var random_enemy = enemies.pick_random()
 		var temp_inst = random_enemy.instantiate()
 		var stats = temp_inst.find_child("Stats")
-		print(stats.calculate_cp())
-		total_cp += stats.calculate_cp()
-		if total_cp > target_cp:
-			total_cp -= stats.calculate_cp()
-			break
+		var cp = stats.calculate_cp()
+
+		if total_cp + cp > target_cp:
+			continue # Skip this and try another enemy
+
+		total_cp += cp
 		selected_enemies.append(temp_inst)
-	print(total_cp)
+		print(" +", cp, "=> Current Total CP:", total_cp)
+
+	
+	print("[select_enemies_to_spawn] Final Total CP:", total_cp)
 	return selected_enemies
 	
 func spawn_enemy(sel_enemies):
+	var gridmap = $"../Base/AMap/Floor"  # Your GridMap node
+	var entities_parent = $"../Base/Entities"
+	var grid_range = floor(Global.grid_size / 2.0)  # Grid size range
+	var used_cells = gridmap.get_used_cells()  # Get used cells from the GridMap
+
+	# Step 1: Find the outer edges
+	var edge_cells = []
+	for cell in used_cells:
+		# Check if it's on the edge (min/max x or z)
+		if abs(cell.x) == grid_range or abs(cell.z) == grid_range:
+			edge_cells.append(cell)
+
+	if edge_cells.is_empty():
+		print("⚠️ No edge cells found!")
+		return
+
+	# Step 2: Spawn enemies at random edge cells
 	for enemy in sel_enemies:
-		$"../Base/Entities".add_child(enemy)
+		var spawn_cell = edge_cells.pick_random()  # Pick a random edge cell
+		var spawn_pos = gridmap.map_to_local(spawn_cell)  # Get the world position of the cell
+		enemy.global_transform.origin = spawn_pos  # Set the enemy's position
+		entities_parent.add_child(enemy)  # Add the enemy to the scene
+		print("👹 Spawned enemy at:", spawn_cell, "=>", spawn_pos)

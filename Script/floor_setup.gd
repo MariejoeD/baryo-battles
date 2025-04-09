@@ -9,7 +9,7 @@ var aS = null
 @onready var floor_map = parent.get_node("Floor")
 @onready var other_map = parent.get_node("GridMap")
 @onready var grid_display = $"../Grid Display"
-@export var grid_size: int = Global.grid_size
+@export var grid_size: int = Global.grid_size #100
 @export var fill_the_map: bool = true
 var grid_range = floor(grid_size/2.0)
 # Called when the node enters the scene tree for the first time.

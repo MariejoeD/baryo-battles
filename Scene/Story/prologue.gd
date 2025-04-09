@@ -9,6 +9,7 @@ func _ready():
 
 	# Connect the video finished signal
 	if video_player:
+		Global.prologue_played = true
 		video_player.finished.connect(_on_video_finished)
 		video_player.play()
 
