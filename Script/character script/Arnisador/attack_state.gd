@@ -114,6 +114,7 @@ func update(_delta: float):
 	if stats.has_ability and stats.ability_name == "Wolf Transform":
 		if stats.current_hp <= stats.get_scaled_hp() * .3 and !transform:
 			transform = true
+			# show smoke
 			wolf_transform()
 		pass
 

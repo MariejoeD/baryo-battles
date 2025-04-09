@@ -5,7 +5,7 @@ var building_mode = false
 var current_building: Node3D = null
 @export var instant_build: bool = false
 @export var building_data: building_resource
-@onready var grid_map = get_node("/root/Root/Base/AMap/GridMap")  # Reference to your GridMap node
+@onready var grid_map = get_tree().current_scene.find_child("GridMap")  # Reference to your GridMap node
 @export var fixed_y: float = 1.0  # The Y position where the building will stay
 var stone_req
 var wood_req
