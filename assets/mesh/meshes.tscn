@@ -21,6 +21,7 @@ visible = false
 visible = false
 
 [node name="Bodega(empty)" parent="." instance=ExtResource("3_5f0a7")]
+visible = false
 
 [node name="Sandatahang Lakas" parent="." instance=ExtResource("4_3jtnn")]
 visible = false

@@ -27,6 +27,7 @@ func _ready() -> void:
 
 	pass
 
+
 func show_warning_label(label_name: String) -> void:
 	var warning_label = get_tree().current_scene.find_child(label_name, true, false)
 	if warning_label:
@@ -142,7 +143,7 @@ func send_to_kampo(troop):
 	troop_inst.find_child("Targeting Component").targeting_enabled = false
 	get_tree().current_scene.find_child("Entities").add_child(troop_inst)
 	troop_inst.global_transform.origin = self.global_transform.origin
-	troop_inst.get_node("Detection/CollisionShape3D").shape.radius *= 0.1
+	troop_inst.get_node("Detection/CollisionShape3D").shape.radius *= 0.2
 	
 	var kampo = await troop_inst.get_node("GoToCamp").go_to_camp()
 	kampo.troops.append(troop)
@@ -203,11 +204,16 @@ func build() -> void:
 	if sibilyan:
 		sibilyan.add_work(self)
 
+func instant_build():
+	built = true
+	add_to_group("Buildings")
+	pass
+
 func perform_work(worker) -> void:
 	await get_tree().create_timer(10).timeout
 	print("Build Complete")
 	remove_material_override(self)
-	built = true
+	instant_build()
 	worker.task_complete()
 
 func find_nearest_sibilyan() -> Node:

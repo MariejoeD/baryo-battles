@@ -8,12 +8,11 @@ var food_req = 60
 @export var sibilyan_scene: PackedScene
 @onready var current_sibilyan: int = int($UI/Kubo/generateCivilian/Panel/current.text)
 @onready var max_sibilyans: int = int($UI/Kubo/generateCivilian/Panel/max.text)
-@onready var Entities = get_tree().get_root().get_node("Root/Base/Entities")
+@onready var Entities = get_tree().current_scene.find_child("Entities")
 @onready var stored_sibilyans: Array = []
 func _ready() -> void: 
 
 
-	Global.all_kubos.append(self)  # Register this Kubo in Global
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
 	building_name.get_node("upgrade").pressed.connect(_on_upgrade_pressed)
@@ -126,13 +125,18 @@ func build():
 	sibilyan.add_work(self)
 	pass
 
+func instant_build():
+	built = true
+	add_to_group("Buildings")
+	Global.all_kubos.append(self)  # Register this Kubo in Global
+	pass
+
 func perform_work(worker):
 	await get_tree().create_timer(10).timeout
 	print("Build Complete")
 	#Change  Indicator
 	remove_material_override(self)
-	built = true
-	
+	instant_build()
 	worker.task_complete()
 	pass
 

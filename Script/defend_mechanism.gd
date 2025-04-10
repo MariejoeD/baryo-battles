@@ -35,7 +35,7 @@ func enemy_attack_check():
 	var chance = randf_range(0.0, 100.0)
 	print("[Chance] Roll:", chance, " vs Threshold:", total_score)
 	
-	total_score = 100
+	#total_score = 100
 	if chance < total_score:
 		print("⚠️ Enemy Attack Triggered!")
 		var defender_score = get_defender_score()
@@ -165,7 +165,11 @@ func select_enemies_to_spawn(target_cp):
 	var selected_enemies = []
 	var total_cp = 0
 	print("[select_enemies_to_spawn] Target CP:", target_cp)
-	
+	if target_cp == 0:
+		var random_enemy = enemies.pick_random()
+		var temp_inst = random_enemy.instantiate()
+		selected_enemies.append(temp_inst)
+		
 	var attempts = 0
 	while total_cp < target_cp and attempts < 100:
 		attempts += 1
@@ -207,5 +211,6 @@ func spawn_enemy(sel_enemies):
 		var spawn_cell = edge_cells.pick_random()  # Pick a random edge cell
 		var spawn_pos = gridmap.map_to_local(spawn_cell)  # Get the world position of the cell
 		enemy.global_transform.origin = spawn_pos  # Set the enemy's position
-		entities_parent.add_child(enemy)  # Add the enemy to the scene
+		entities_parent.add_child(enemy)
+		enemy.get_node("Detection/CollisionShape3D").shape.radius = 150  # Add the enemy to the scene
 		print("👹 Spawned enemy at:", spawn_cell, "=>", spawn_pos)

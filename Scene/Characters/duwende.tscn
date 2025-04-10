@@ -596,11 +596,10 @@ npc_root_node = NodePath("..")
 targeting_component = NodePath("../Targeting Component")
 anim_player = NodePath("../AnimationPlayer")
 pathfinder_component = NodePath("../Pathfinder")
-speed = 1.0
 
 [node name="Targeting Component" parent="." node_paths=PackedStringArray("detection_area") instance=ExtResource("5_bfocj")]
 detection_area = NodePath("../Detection")
-target_group = "Good"
+target_group = Array[String](["Good", "Buildings"])
 
 [node name="Pathfinder" parent="." instance=ExtResource("6_dxh4u")]
 
@@ -620,3 +619,5 @@ damage = 30
 attack_speed = 1.0
 movement_speed = 3.0
 spawn_scale = Vector3(5, 5, 5)
+
+[editable path="FSM"]

@@ -28,7 +28,7 @@ var grid_size :int = 100
 var npc_discovered = {}
 
 
-const DAY_DURATION := 10.0
+const DAY_DURATION := 1200.0
 const HALF_DAY := DAY_DURATION / 2.0
 
 var current_time := 0.0
@@ -74,6 +74,7 @@ func _process(delta: float) -> void:
 		print("Halfway reached (accurate): ", current_time)
 		SignalManager.night_time.emit()
 		has_emitted_night_time = true
+	time_of_day = current_time / DAY_DURATION
 
 
 func get_food_cap():

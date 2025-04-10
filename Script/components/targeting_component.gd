@@ -1,9 +1,10 @@
 extends Node3D
 
 @export var detection_area: Area3D  # Exported Area3D to check for bodies
-@export var target_group: String  # Target group to find, e.g., "enemies"
-var target: CharacterBody3D = null  # Current target
-var forced_target: CharacterBody3D = null
+@export var target_group: Array[String] = []  # Target group to find, e.g., "enemies"
+
+var target: Node3D = null  # Current target
+var forced_target: Node3D = null
 @onready var healer:bool = get_parent().find_child("Stats").is_healer
 @onready var targeting_enabled: bool = true
 func _ready():
@@ -18,9 +19,12 @@ func _ready():
 # Called when a body enters the detection area
 func _on_body_entered(body: Node3D) -> void:
 	#print(get_parent().name,"Body entered: ", body.name)  # Debug to check if this is triggered
-	if body.is_in_group(target_group):  # Check if body belongs to the target group
-		#print(get_parent().name," Detected ",body.name)
-		_find_nearest_target()
+	for group in target_group:
+		if body.is_in_group(group):
+			# This body is a valid target
+			_find_nearest_target()
+			# Continue processing logic here
+			break  # No need to check other groups
 
 # Called when a body exits the detection area
 func _on_body_exited(body: Node3D) -> void:
@@ -37,31 +41,40 @@ func _find_nearest_target() -> void:
 	if forced_target and is_instance_valid(forced_target):
 		target = forced_target
 		return
-	var nearest_target: CharacterBody3D = null
+	var nearest_target: Node3D = null
 	var nearest_distance: float = INF  # Initialize to a very large number
 
 	# Get overlapping bodies in the detection area
 	for body in detection_area.get_overlapping_bodies():
-		if body.is_in_group(target_group):  # Filter only valid target group members
-			# Cast the body to CharacterBody3D, assuming it's a CharacterBody3D
-			if body is CharacterBody3D:
-				if body == get_parent():
-					continue
-				
-				var distance = get_global_transform().origin.distance_to(body.get_global_transform().origin)
-				if healer:
-					var target_stats = body.get_node("Stats")
-					if target_stats.current_hp < target_stats.get_scaled_hp() and distance < nearest_distance:
-						nearest_distance = distance
-						nearest_target = body
-				elif body.is_in_group("flying") and get_parent().is_in_group("range"):
-					# If flying and this is a ranged unit, proceed with targeting
-					if distance < nearest_distance:
-						nearest_distance = distance
-						nearest_target = body 
-				elif not body.is_in_group("flying") and distance < nearest_distance:
+		if body == get_parent():
+			continue
+		var is_valid_target = false
+		for group in target_group:
+			if body.is_in_group(group):
+				is_valid_target = true
+				break
+
+		if not is_valid_target:
+			continue
+		
+		var distance = get_global_transform().origin.distance_to(body.get_global_transform().origin)
+		if healer and body is CharacterBody3D:
+			var target_stats = body.get_node("Stats")
+			if target_stats.current_hp < target_stats.get_scaled_hp() and distance < nearest_distance:
+				nearest_distance = distance
+				nearest_target = body
+		elif body is CharacterBody3D:
+			if body.is_in_group("flying") and get_parent().is_in_group("range"):
+				if distance < nearest_distance:
 					nearest_distance = distance
 					nearest_target = body
+			elif not body.is_in_group("flying") and distance < nearest_distance:
+				nearest_distance = distance
+				nearest_target = body
+		elif body is Area3D:  # Probably a building
+			if distance < nearest_distance:
+				nearest_distance = distance
+				nearest_target = body
 
 	# Update the target if a new nearest target is found
 	if nearest_target != target:  # Only update if the new target is different

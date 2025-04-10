@@ -8,11 +8,12 @@ var multiplier = .08
 var duration = base_grow_duration * pow(multiplier, plot_level-1)
 var is_harvestable:bool = false
 var initial_pos
+var built = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	initial_pos = $tanim.position
-	grow(duration)  # Grow to the computed height over 3 seconds
+	
 	pass # Replace with function body.
 
 
@@ -96,24 +97,42 @@ func harvest() -> void:
 	#	add work to it
 		sibilyan.add_work(self)
 	pass
+	
+func build():
+	var sibilyan = find_nearest_sibilyan()
+	sibilyan.add_work(self)
+	pass
+
+func instant_build():
+	built = true
+	add_to_group("Buildings")
+	grow(duration)  # Grow to the computed height over 3 seconds
+	pass
 
 func perform_work(worker):
-	await get_tree().create_timer(5).timeout
-	$UI/Tanim/Harvest.texture_normal = load("res://assets/button/harvest.png")
-	print("Harvest Complete")
-	Global.food_qty += 10
-	#Change  Indicator
-	grow(duration)
-	#gray
-	worker.task_complete()
-	pass
+	if built:
+		await get_tree().create_timer(5).timeout
+		$UI/Tanim/Harvest.texture_normal = load("res://assets/button/harvest.png")
+		print("Harvest Complete")
+		Global.food_qty += 10
+		#Change  Indicator
+		grow(duration)
+		#gray
+		worker.task_complete()
+	else:
+		await get_tree().create_timer(10).timeout
+		print("Build Complete")
+		#Change  Indicator
+		remove_material_override(self)
+		instant_build()
+		worker.task_complete()
 
 func find_nearest_sibilyan() -> Node:
 	# First, check if we have stored Sibilyans in any Kubo
 	for kubo in Global.all_kubos:
 		if kubo.stored_sibilyans.size() > 0:
 			var sib = kubo.stored_sibilyans.pop_front()  # Take the first stored Sibilyan
-			get_tree().get_root().get_node("Root/Base/Entities").add_child(sib)  # Add to the scene
+			get_tree().current_scene.find_child("Entities").add_child(sib)  # Add to the scene
 			sib.global_transform.origin = kubo.global_transform.origin  # Spawn near the Kubo
 			print("Spawned stored Sibilyan from Kubo:", kubo)
 			return sib  # Return this Sibilyan for work
@@ -134,3 +153,7 @@ func find_nearest_sibilyan() -> Node:
 			min_workload = workload
 
 	return nearest_sibilyan
+
+func remove_material_override(mesh_instance) -> void:
+	for i in range(mesh_instance.mesh.get_surface_count()):
+		mesh_instance.set_surface_override_material(i, null)

@@ -1,6 +1,6 @@
 extends NpcState
 
-var target : CharacterBody3D = null
+var target : Node3D = null
 @onready var fsm = get_parent() as StateMachine  # Reference to the FSM for state changes
 
 func enter(_previous_state_path: String, data := {}) -> void:

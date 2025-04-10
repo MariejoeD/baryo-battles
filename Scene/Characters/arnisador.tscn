@@ -861,7 +861,7 @@ pathfinder_component = NodePath("../Pathfinder")
 
 [node name="Targeting Component" parent="." node_paths=PackedStringArray("detection_area") instance=ExtResource("7_xer2s")]
 detection_area = NodePath("../Detection")
-target_group = "Enemy"
+target_group = ["Enemy"]
 
 [node name="Detection" type="Area3D" parent="."]
 collision_layer = 0

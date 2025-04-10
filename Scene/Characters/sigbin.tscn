@@ -710,11 +710,10 @@ npc_root_node = NodePath("..")
 targeting_component = NodePath("../Targeting Component")
 anim_player = NodePath("../AnimationPlayer")
 pathfinder_component = NodePath("../Pathfinder")
-speed = 2.0
 
 [node name="Targeting Component" parent="." node_paths=PackedStringArray("detection_area") instance=ExtResource("5_vjyh1")]
 detection_area = NodePath("../Detection")
-target_group = "Good"
+target_group = Array[String](["Good", "Buildings"])
 
 [node name="Detection" type="Area3D" parent="."]
 collision_layer = 0

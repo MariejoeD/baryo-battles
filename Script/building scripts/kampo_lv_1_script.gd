@@ -8,6 +8,7 @@ var troops: Array = []
 @export var troopImagePath : String
 @onready var container = get_node("UI/Kampo/ManageTroops/manageTroopsPanel/ScrollContainer/ScrollContainer")
 var spaces = 100
+
 func update_ui_container():
 	
 	for child in container.get_children():
@@ -53,11 +54,6 @@ func update_ui_container():
 	pass
 
 func _ready() -> void:
-	Global.all_kampo.append(self)
-	# Restore troops if saved
-	if Global.kampo_troops.has(self.get_instance_id()):
-		troops = Global.kampo_troops[self.get_instance_id()]
-		update_ui_container()  # Refresh UI after restoring troops
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
 	building_name.get_node("upgrade").pressed.connect(_on_upgrade_pressed)
@@ -65,7 +61,15 @@ func _ready() -> void:
 	
 
 	pass
-
+func instant_build():
+	built = true
+	add_to_group("Buildings")
+	Global.all_kampo.append(self)
+	# Restore troops if saved
+	if Global.kampo_troops.has(self.get_instance_id()):
+		troops = Global.kampo_troops[self.get_instance_id()]
+		update_ui_container()  # Refresh UI after restoring troops
+	pass
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if built and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if not $UI.visible:
@@ -130,7 +134,7 @@ func perform_work(worker):
 	print("Build Complete")
 	#Change  Indicator
 	remove_material_override(self)
-	built = true
+	instant_build()
 	worker.task_complete()
 	pass
 
@@ -139,7 +143,7 @@ func find_nearest_sibilyan() -> Node:
 	for kubo in Global.all_kubos:
 		if kubo.stored_sibilyans.size() > 0:
 			var sib = kubo.stored_sibilyans.pop_front()  # Take the first stored Sibilyan
-			get_tree().get_root().get_node("Root/Base/Entities").add_child(sib)  # Add to the scene
+			get_tree().current_scene.find_child("Entities").add_child(sib)  # Add to the scene
 			sib.global_transform.origin = kubo.global_transform.origin  # Spawn near the Kubo
 			print("Spawned stored Sibilyan from Kubo:", kubo)
 			return sib  # Return this Sibilyan for work

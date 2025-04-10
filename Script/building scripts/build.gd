@@ -67,7 +67,7 @@ func _input(event: InputEvent) -> void:
 				if instant_build:
 					remove_material_override(current_building)
 					if "built" in current_building:
-						current_building.built = true
+						current_building.instant_build()
 				else:
 					apply_material_override(current_building)
 					if current_building.has_method("build"):
@@ -77,8 +77,8 @@ func _input(event: InputEvent) -> void:
 		pass
 
 func follow_mouse():
-	var viewport = get_viewport()
-	var camera = viewport.get_camera_3d()
+	var viewport = get_tree().current_scene.find_child("SubViewport")
+	var camera = viewport.get_node("Camera3D")
 	if not camera:
 		return
 	

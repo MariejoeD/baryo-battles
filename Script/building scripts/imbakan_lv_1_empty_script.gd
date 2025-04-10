@@ -4,13 +4,12 @@ extends MeshInstance3D
 var active_panel
 var built: bool =false
 @onready var building_name = $UI.get_child(0)
-var food_cap = 3000
+var food_cap = 0
 
 func _ready() -> void:
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
 	building_name.get_node("upgrade").pressed.connect(_on_upgrade_pressed)
-	Global.all_imbakan.append(self)
 	
 	
 
@@ -68,12 +67,19 @@ func build():
 	sibilyan.add_work(self)
 	pass
 
+func instant_build():
+	built = true
+	add_to_group("Buildings")
+	food_cap = 3000
+	Global.all_imbakan.append(self)
+	pass
+
 func perform_work(worker):
 	await get_tree().create_timer(10).timeout
 	print("Build Complete")
 	#Change  Indicator
 	remove_material_override(self)
-	built = true
+	instant_build()
 	worker.task_complete()
 	pass
 
@@ -82,7 +88,7 @@ func find_nearest_sibilyan() -> Node:
 	for kubo in Global.all_kubos:
 		if kubo.stored_sibilyans.size() > 0:
 			var sib = kubo.stored_sibilyans.pop_front()  # Take the first stored Sibilyan
-			get_tree().get_root().get_node("Root/Base/Entities").add_child(sib)  # Add to the scene
+			get_tree().current_scene.find_child("Entities").add_child(sib)  # Add to the scene
 			sib.global_transform.origin = kubo.global_transform.origin  # Spawn near the Kubo
 			print("Spawned stored Sibilyan from Kubo:", kubo)
 			return sib  # Return this Sibilyan for work

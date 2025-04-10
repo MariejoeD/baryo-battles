@@ -72,7 +72,7 @@ func find_nearest_sibilyan() -> Node:
 	for kubo in Global.all_kubos:
 		if kubo.stored_sibilyans.size() > 0:
 			var sib = kubo.stored_sibilyans.pop_front()  # Take the first stored Sibilyan
-			get_tree().get_root().get_node("Root/Base/Entities").add_child(sib)  # Add to the scene
+			get_tree().current_scene.find_child("Entities").add_child(sib)  # Add to the scene
 			sib.global_transform.origin = kubo.global_transform.origin  # Spawn near the Kubo
 			print("Spawned stored Sibilyan from Kubo:", kubo)
 			return sib  # Return this Sibilyan for work

@@ -1,6 +1,6 @@
 extends NpcState
 
-var target : CharacterBody3D = null
+var target : Node3D = null
 var path = []
 var current_target_index = 0
 var path_recalculation_cooldown: float = 1.0  # Time in seconds before recalculating the path (adjust as needed)

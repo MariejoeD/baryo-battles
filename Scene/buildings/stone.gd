@@ -4,7 +4,7 @@ extends Node3D
 @onready var panel = $UI
 @onready var mine_button = $UI/Mine
 @onready var area = $Area3D
-@onready var Entities = get_tree().get_root().get_node("Root/Base/Entities")
+@onready var Entities = get_tree().current_scene.find_child("Entities")
 @onready var worker_assigned = false
 var is_panel_visible = false
 
