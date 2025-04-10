@@ -417,6 +417,7 @@ shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 albedo_texture = ExtResource("12_1pjnt")
+albedo_texture_force_srgb = true
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 6
@@ -1337,8 +1338,9 @@ process_material = SubResource("ParticleProcessMaterial_g3pt8")
 draw_pass_1 = SubResource("QuadMesh_pmilc")
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.53831)
 material_override = SubResource("StandardMaterial3D_63u5p")
-amount = 20
+amount = 50
 lifetime = 2.0
 fixed_fps = 50
 process_material = SubResource("ParticleProcessMaterial_ty10v")
