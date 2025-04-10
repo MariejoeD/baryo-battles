@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bny15mwxvytnl"]
+[gd_scene load_steps=30 format=4 uid="uid://bny15mwxvytnl"]
 
 [ext_resource type="Texture2D" uid="uid://blbcqgjsfd0ly" path="res://assets/Anim/Tiniente Gimo/TinienteGimo-Idle_0.png" id="1_mmfg7"]
 [ext_resource type="Animation" uid="uid://dkst1nfr5dphw" path="res://assets/Anim/Tiniente Gimo/Idle.tres" id="2_1c6fu"]
@@ -10,6 +10,8 @@
 [ext_resource type="Animation" uid="uid://crhcnnhkjrgw5" path="res://assets/Anim/Tiniente Gimo/attack.tres" id="6_7f105"]
 [ext_resource type="Texture2D" uid="uid://b07lfk17ubg50" path="res://assets/Anim/Tiniente Gimo/Dog_Running_0.png" id="7_1l3cr"]
 [ext_resource type="PackedScene" uid="uid://o7lqup8rddo1" path="res://Scene/Attack/stats.tscn" id="8_pr860"]
+[ext_resource type="Texture2D" uid="uid://een0nw2f5a30" path="res://assets/smoke/Smoke_4_128.png" id="11_dibmn"]
+[ext_resource type="Texture2D" uid="uid://csdl3hd3b74us" path="res://assets/smoke/Smoke_2_512.png" id="12_1pjnt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mshxl"]
 radius = 1.0
@@ -367,15 +369,12 @@ _data = {
 height = 5.0
 radius = 12.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6gx07"]
-load_path = "res://.godot/imported/202-2028007_same-sprite-sheet-manually-color-corrected-smoke-particle.png-7264828d7ca01fa95a364d3f68467f98.s3tc.ctex"
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1cr1e"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-albedo_texture = SubResource("CompressedTexture2D_6gx07")
+albedo_texture = ExtResource("11_dibmn")
 heightmap_scale = 15.752
 billboard_mode = 3
 billboard_keep_scale = true
@@ -411,6 +410,62 @@ turbulence_influence_min = 0.0
 turbulence_influence_max = 0.165
 
 [sub_resource type="QuadMesh" id="QuadMesh_pmilc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63u5p"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("12_1pjnt")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 6
+particles_anim_loop = false
+grow = true
+grow_amount = -0.18
+
+[sub_resource type="Gradient" id="Gradient_cv4bt"]
+offsets = PackedFloat32Array(0.274306, 0.479167, 0.71875, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.205765, 0.0132921, 0.0132577, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jbtbs"]
+gradient = SubResource("Gradient_cv4bt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ty10v"]
+particle_flag_rotate_y = true
+emission_shape_scale = Vector3(20, 20, 1)
+emission_shape = 1
+emission_sphere_radius = 0.01
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 1, 0)
+spread = 0.545
+flatness = 0.273
+initial_velocity_min = 1.8
+initial_velocity_max = 7.98
+gravity = Vector3(0, 100, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 21.59
+scale_min = 9.53
+scale_max = 63.5
+scale_over_velocity_min = 0.9
+scale_over_velocity_max = 2.2
+color_ramp = SubResource("GradientTexture1D_jbtbs")
+hue_variation_min = 0.66
+hue_variation_max = 1.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+turbulence_enabled = true
+turbulence_noise_strength = 5.04
+turbulence_noise_speed = Vector3(20, 0, 0)
+turbulence_noise_speed_random = 1.85
+turbulence_influence_min = 0.105
+turbulence_influence_max = 0.152
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 10.4
+
+[sub_resource type="QuadMesh" id="QuadMesh_ryv3h"]
 
 [node name="Tiniente Gimo" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 4
@@ -1267,6 +1322,7 @@ ability_name = "Wolf Transform"
 spawn_scale = Vector3(5, 5, 5)
 
 [node name="Smoke" type="Node3D" parent="."]
+visible = false
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(0.78079, -0.624793, 0, 0.624793, 0.78079, 0, 0, 0, 1, 0, 0, 0.0131512)
@@ -1279,5 +1335,13 @@ visibility_aabb = AABB(0, 0, 0, 0, 0, 0)
 draw_order = 3
 process_material = SubResource("ParticleProcessMaterial_g3pt8")
 draw_pass_1 = SubResource("QuadMesh_pmilc")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_63u5p")
+amount = 20
+lifetime = 2.0
+fixed_fps = 50
+process_material = SubResource("ParticleProcessMaterial_ty10v")
+draw_pass_1 = SubResource("QuadMesh_ryv3h")
 
 [editable path="FSM"]
