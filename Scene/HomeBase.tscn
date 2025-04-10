@@ -1,18 +1,22 @@
-[gd_scene load_steps=17 format=3 uid="uid://ddwrhwm3otd8p"]
+[gd_scene load_steps=22 format=3 uid="uid://ddwrhwm3otd8p"]
 
 [ext_resource type="Script" path="res://Script/day_cycle.gd" id="1_5bpij"]
 [ext_resource type="PackedScene" uid="uid://d4nb8cjrspohc" path="res://Scene/game.tscn" id="1_8noqr"]
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="1_cjqhy"]
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="3_3dh6a"]
-[ext_resource type="MeshLibrary" uid="uid://bcqqed14hyr4a" path="res://assets/mesh/floor_meshes.tres" id="3_ucrro"]
+[ext_resource type="MeshLibrary" uid="uid://bv8mw1dbyp7ki" path="res://assets/mesh/floor_meshes.tres" id="3_ucrro"]
 [ext_resource type="Script" path="res://Script/floor_setup.gd" id="4_6i8of"]
 [ext_resource type="Script" path="res://Script/duplicated_tiles.gd" id="6_ttmot"]
-[ext_resource type="MeshLibrary" uid="uid://g73cbdxw4nic" path="res://assets/mesh/grid_dis.tres" id="6_vs85m"]
+[ext_resource type="MeshLibrary" uid="uid://4s667kqwwoix" path="res://assets/mesh/grid_dis.tres" id="6_vs85m"]
 [ext_resource type="Resource" uid="uid://cw0w04fmunqv8" path="res://Scene/buildings/building_scenes.tres" id="7_5btd4"]
 [ext_resource type="Script" path="res://Script/load.gd" id="7_xwng1"]
 [ext_resource type="Script" path="res://Script/generate.gd" id="8_hwwmm"]
 [ext_resource type="Script" path="res://Script/defend_mechanism.gd" id="11_g7ptk"]
 [ext_resource type="Script" path="res://Script/HomeBaseWINLoseCheck.gd" id="11_ojvx7"]
+[ext_resource type="Script" path="res://Script/defend_control.gd" id="14_i7ulf"]
+[ext_resource type="Texture2D" uid="uid://dqh1fognt0y5" path="res://assets/game/warning.png" id="14_vf37y"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="15_2ivn5"]
+[ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="16_gh14k"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ihp4q"]
 panorama = ExtResource("1_cjqhy")
@@ -27,6 +31,19 @@ background_energy_multiplier = 0.4
 sky = SubResource("Sky_cjdic")
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.3273
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4oj3q"]
+bg_color = Color(0.529067, 0.529067, 0.529067, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.85098, 0, 0.137255, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [node name="HomeBase" type="CanvasLayer"]
 
@@ -100,7 +117,76 @@ script = ExtResource("11_ojvx7")
 [node name="Defend Mechanism" type="Node" parent="."]
 script = ExtResource("11_g7ptk")
 
+[node name="Defend Control" type="Control" parent="Defend Mechanism"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_i7ulf")
+
+[node name="warningContainer" type="HBoxContainer" parent="Defend Mechanism/Defend Control"]
+layout_mode = 0
+offset_left = 257.0
+offset_top = 268.0
+offset_right = 1058.0
+offset_bottom = 382.0
+
+[node name="warningIcon" type="TextureRect" parent="Defend Mechanism/Defend Control/warningContainer"]
+layout_mode = 2
+texture = ExtResource("14_vf37y")
+expand_mode = 2
+
+[node name="attackWarning" type="Label" parent="Defend Mechanism/Defend Control/warningContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85098, 0, 0.137255, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("15_2ivn5")
+theme_override_font_sizes/font_size = 40
+text = "Enemy forces are near. Prepare for battle!"
+
+[node name="assignTroop" type="Button" parent="Defend Mechanism/Defend Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.392
+anchor_top = 0.507
+anchor_right = 0.61
+anchor_bottom = 0.629
+offset_left = 0.23999
+offset_top = -0.0400085
+offset_right = 0.199951
+offset_bottom = 0.119995
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("15_2ivn5")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_4oj3q")
+text = "Assign Troop"
+
+[node name="UI" parent="Defend Mechanism" instance=ExtResource("16_gh14k")]
+
+[node name="surrenderButton" parent="Defend Mechanism/UI" index="0"]
+visible = false
+
+[node name="allyPanel" parent="Defend Mechanism/UI" index="1"]
+anchor_left = 0.214
+anchor_right = 0.777
+offset_left = 0.0799866
+offset_top = -0.160095
+offset_right = 0.440002
+
 [connection signal="tree_entered" from="Base/Control" to="Base/Control" method="_on_tree_entered"]
 [connection signal="tree_exiting" from="Base/Control" to="Base/Control" method="_on_tree_exiting"]
 [connection signal="tree_entered" from="Base/Generate" to="Base/Generate" method="_on_tree_entered"]
 [connection signal="tree_exiting" from="Base/Generate" to="Base/Generate" method="_on_tree_exiting"]
+
+[editable path="Defend Mechanism/UI"]

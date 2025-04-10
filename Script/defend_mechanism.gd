@@ -45,6 +45,7 @@ func enemy_attack_check():
 		spawn_enemy(selected)
 	else:
 		print("🌙 Quiet night. No attack.")
+		$DefendControl.show_defense_warning()
 	print("[enemy_attack_check] --- END ---\n")
 
 func get_time_points(seconds_passed: float) -> float:

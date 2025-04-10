@@ -95,7 +95,7 @@ func wolf_transform():
 	fsm.npc_root_node.get_child(2).visible = !is_wolf  # Wolf form
 
 	# Play smoke particles once when transforming
-	var smoke = fsm.npc_root_node.get_child(0)
+	var smoke = fsm.npc_root_node.find_child("GPUParticles3D2")
 	smoke.restart()  # Restarts the smoke particle system
 	
 	# Change evasion stat
