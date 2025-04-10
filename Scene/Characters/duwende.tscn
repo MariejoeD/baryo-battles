@@ -611,7 +611,7 @@ collision_mask = 2
 shape = SubResource("CylinderShape3D_qr8dd")
 
 [node name="Health Component" parent="." instance=ExtResource("7_mkoak")]
-health = 100.0
+script = null
 
 [node name="Stats" parent="." instance=ExtResource("8_10n6q")]
 hp = 200
