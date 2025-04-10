@@ -9,7 +9,7 @@ extends Node3D
 @onready var entities = $"../../Entities"
 var worker_assigned = false
 var is_panel_visible = false
-
+@export var wood_harvest := 10
 func _ready() -> void:
 	area.monitoring = true
 	panel.visible = false
@@ -49,12 +49,12 @@ func pressed_cut():
 		is_panel_visible = false
 		worker_assigned = true
 		var sibilyan = find_nearest_sibilyan()
+		if Global.get_wood_cap() == Global.wood_qty:
+			return
 		sibilyan.add_work(self)
 		pass
 
-func pressed_uproot():
-	
-	pass
+
 
 	
 	
@@ -62,7 +62,9 @@ func pressed_uproot():
 func perform_work(worker):
 	await get_tree().create_timer(5).timeout
 	print("Harvest Complete")
-	Global.wood_qty += 10
+	Global.wood_qty += wood_harvest
+	if Global.get_wood_cap() < Global.wood_qty:
+		Global.wood_qty = Global.get_wood_cap()
 	self.queue_free()
 	worker.task_complete()
 	pass

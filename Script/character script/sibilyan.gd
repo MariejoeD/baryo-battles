@@ -23,8 +23,10 @@ func move(delta):
 	if path_index < path.size():
 		$Skeleton3D.show()
 		$AnimationPlayer.play("walk")
+		await print("Before: ", path[path_index])
+		path[path_index].y = .5
 		var move_vec = (path[path_index] - global_transform.origin)
-		
+		print("After: ", path[path_index])
 		if move_vec.length() < 2:  # NPC is close to the target waypoint
 			path_index += 1
 		else:
@@ -41,8 +43,8 @@ func move(delta):
 
 func set_path(target_pos: Vector3):
 	var current_pos = global_transform.origin
-	current_pos.y = 1
-	target_pos.y = 1
+	#current_pos.y = 0
+	#target_pos.y = 0
 	
 	path = amap.find_path(current_pos, target_pos)
 	path_index = 0

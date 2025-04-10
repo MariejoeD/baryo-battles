@@ -18,7 +18,7 @@ func instant_build():
 	add_to_group("Buildings")
 	pass
 
-func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+func _on_area_3d_input_event(camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if built and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if not $UI.visible:
 			$UI.visible = true  # Only open UI, don't toggle it off

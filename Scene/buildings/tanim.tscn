@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://du2vgiukxku71"]
+[gd_scene load_steps=24 format=4 uid="uid://du2vgiukxku71"]
 
 [ext_resource type="Texture2D" uid="uid://d132x4t2qgyyn" path="res://assets/building models/shaded.png" id="1_laq7s"]
 [ext_resource type="Script" path="res://Script/building scripts/tanim_script.gd" id="2_8wqv3"]
@@ -85,6 +85,12 @@ shadow_size = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lv646"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nwwbo"]
+transparency = 1
+albedo_color = Color(0.369, 0.512, 0.273, 0.281)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x0aeq"]
 
 [node name="Tanim" type="MeshInstance3D"]
 transform = Transform3D(100, 0, 0, 0, 100, 7.54979e-06, 0, -7.54979e-06, 100, 0, 0, 0)
@@ -364,6 +370,12 @@ texture_pressed = ExtResource("12_ohgtq")
 
 [node name="tanim" parent="." instance=ExtResource("13_3oivw")]
 transform = Transform3D(0.005, 0, 0, 0, 0.005, -3.7749e-10, 0, 3.7749e-10, 0.005, 0, -0.00807993, -6.10018e-10)
+
+[node name="Selection Box" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0189988, 0, 0, 0, 0.01, -3.33067e-16, 0, 1.11022e-16, 0.0188699, 0, 0.005, 5.55112e-17)
+visible = false
+material_override = SubResource("StandardMaterial3D_nwwbo")
+mesh = SubResource("BoxMesh_x0aeq")
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
 [connection signal="pressed" from="UI/Tanim/viewInformation" to="." method="_on_view_information_pressed"]

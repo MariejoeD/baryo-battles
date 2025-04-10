@@ -26,6 +26,7 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if not $UI.visible:
 			$UI.visible = true  # Only open UI, don't toggle it off
+			$"Selection Box".visible = true
 		
 	pass # Replace with function body.
 
@@ -48,6 +49,7 @@ func _input(event: InputEvent) -> void:
 		# Hide UI only if clicking outside both buttons and panel
 		if not button_clicked and not panel_clicked:
 			$UI.visible = false
+			$"Selection Box".visible = false
 			if active_panel:
 				active_panel.hide()
 				active_panel = null

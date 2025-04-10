@@ -1,16 +1,18 @@
 extends Camera3D
 
 @export var zoom_speed := 2.0
-@export var pan_speed := 1
-@export var min_zoom := 20
-@export var max_zoom := 80
+@export var pan_speed := 3
+@export var cap:= 100
+@export var min_zoom := 3
+@export var max_zoom := 42
 
 var is_panning := false
 var last_mouse_pos := Vector2.ZERO
+@export var second_cam: Camera3D
 
 func _process(delta: float) -> void:
-	if is_panning:
-		print("pan")
+	
+		#print("pan")
 	_pan(delta)
 
 func _unhandled_input(event):
@@ -35,23 +37,29 @@ func _zoom(direction: int):
 	# Move the camera along its local Z axis (forward/backward)
 	var zoom_amount := direction * zoom_speed
 	var new_pos := transform.origin + transform.basis.z * zoom_amount
-	var distance := new_pos.distance_to(Vector3.ZERO)  # Calculate distance from the origin
 
 	# Only zoom if it's within the specified range
-	if distance > min_zoom and distance < max_zoom:
+	if new_pos.y > min_zoom and new_pos.y < max_zoom:
 		transform.origin = new_pos
+		second_cam.transform.origin = new_pos
 
 # Panning function based on camera's local space
 func _pan(delta: float):
 	if not is_panning:
 		return
-	# Get the current mouse position
+
 	var current_mouse_pos = get_parent().get_mouse_position()
 	var displacement = current_mouse_pos - last_mouse_pos
 	last_mouse_pos = current_mouse_pos
-	
-	# Calculate panning velocity based on the camera's local space
-	var velocity = (transform.basis.x * -displacement.x + transform.basis.z * -displacement.y) * delta * pan_speed
-	
-	# Apply the calculated velocity to move the camera
-	position -= velocity
+
+	var velocity = (transform.basis.x * -displacement.x + transform.basis.y * displacement.y) * delta * pan_speed
+	var proposed_position = position + velocity
+
+	# Clamp all 3 axes
+	proposed_position.x = clamp(proposed_position.x, -cap, cap)
+	proposed_position.y = clamp(proposed_position.y, min_zoom, max_zoom)
+	proposed_position.z = clamp(proposed_position.z, -cap, cap)
+
+	# Apply clamped position
+	position = proposed_position
+	second_cam.position = proposed_position

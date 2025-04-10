@@ -17,6 +17,7 @@ func move(delta):
 	if path_index < path.size():
 		character_body.get_node("Skeleton3D").show()
 		character_body.get_node("AnimationPlayer").play("run")
+		path[path_index].y = .5
 		var move_vec = (path[path_index] - global_transform.origin)
 		
 		if move_vec.length() < 2:  # NPC is close to the target waypoint

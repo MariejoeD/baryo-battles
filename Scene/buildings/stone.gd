@@ -7,6 +7,8 @@ extends Node3D
 @onready var Entities = get_tree().current_scene.find_child("Entities")
 @onready var worker_assigned = false
 var is_panel_visible = false
+@export var stone_harvest := 10
+
 
 func _ready() -> void:
 	area.monitoring = true
@@ -42,6 +44,8 @@ func pressed_mine():
 		is_panel_visible = false
 		worker_assigned = true
 		var sibilyan = find_nearest_sibilyan()
+		if Global.get_stone_cap() == Global.stone_qty:
+			return
 		sibilyan.add_work(self)
 
 
@@ -51,6 +55,8 @@ func perform_work(worker):
 	await get_tree().create_timer(5).timeout
 	print("Harvest Complete")
 	Global.stone_qty += 10
+	if Global.get_stone_cap() < Global.stone_qty:
+		Global.stone_qty = Global.get_stone_cap()
 	self.queue_free()
 	worker.task_complete()
 	pass

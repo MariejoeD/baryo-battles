@@ -8,6 +8,7 @@ func _ready() -> void:
 	SignalManager.night_time.connect(enemy_attack_check)
 	
 
+
 func enemy_attack_check():
 	await get_tree().create_timer(1).timeout
 	TH_level = Npc.TH_level

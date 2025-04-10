@@ -28,7 +28,7 @@ func load_chars():
 			for i in range(num_to_spawn):
 				var char_inst = character_scene.instantiate()
 				entities.add_child(char_inst)
-				char_inst.global_transform.origin = Vector3(randf() * 10, 0, randf() * 10)  # Set random positions
+				char_inst.global_transform.origin = Vector3(randf() * 10, 0.5, randf() * 10)  # Set random positions
 		else:
 			print("Unknown character ID:", char_name)
 	pass
