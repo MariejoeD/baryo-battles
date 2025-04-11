@@ -49,7 +49,7 @@ func pressed_cut():
 		is_panel_visible = false
 		worker_assigned = true
 		var sibilyan = find_nearest_sibilyan()
-		if Global.get_wood_cap() == Global.wood_qty:
+		if Global.get_wood_cap() == Global.wood_qty or Global.get_wood_cap() == 0:
 			return
 		sibilyan.add_work(self)
 		pass

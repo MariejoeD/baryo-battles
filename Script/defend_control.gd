@@ -5,12 +5,16 @@ extends Control
 @onready var ui_node = $"../UI"
 
 func _ready():
+	self.visible = false
 	warning_container.visible = false
+	$assignTroop.visible = false
 	ui_node.visible = false
 	assign_troop_btn.pressed.connect(_on_assign_troop_pressed)
 
 func show_defense_warning():
+	self.visible = true
 	warning_container.visible = true
+	$assignTroop.visible = true
 	print("⚠️ Defense Warning Shown")
 
 func _on_assign_troop_pressed():
@@ -23,7 +27,7 @@ func _on_assign_troop_pressed():
 
 	if build_button:
 		build_button.visible = false
-		print("🔧 BuildButton hidden.")
+		print("🔧 BuildButton hidden.")	
 
 	if attack_button:
 		attack_button.visible = false

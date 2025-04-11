@@ -44,7 +44,7 @@ func pressed_mine():
 		is_panel_visible = false
 		worker_assigned = true
 		var sibilyan = find_nearest_sibilyan()
-		if Global.get_stone_cap() == Global.stone_qty:
+		if Global.get_stone_cap() == Global.stone_qty or Global.get_stone_cap() == 0:
 			return
 		sibilyan.add_work(self)
 

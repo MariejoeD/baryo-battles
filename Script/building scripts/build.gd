@@ -6,7 +6,7 @@ var current_building: Node3D = null
 @export var instant_build: bool = false
 @export var building_data: building_resource
 @onready var grid_map = get_tree().current_scene.find_child("GridMap")  # Reference to your GridMap node
-@export var fixed_y: float = .5  # The Y position where the building will stay
+@export var fixed_y: float = 1  # The Y position where the building will stay
 var stone_req
 var wood_req
 func _ready() -> void:
@@ -60,6 +60,7 @@ func _input(event: InputEvent) -> void:
 		if building_mode:
 			if is_fully_on_floor(current_building) and not is_colliding_with_other_objects(current_building):
 				building_mode = false
+				current_building.global_transform.origin.y = .5
 				$"../BuildButton".show()
 				$"../AttackButton".show()
 				Global.wood_qty -= wood_req

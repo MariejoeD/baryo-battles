@@ -16,6 +16,7 @@ func instant_build():
 	built = true
 	Npc.TH_level = level
 	add_to_group("Buildings")
+	print(get_groups())
 	pass
 
 func _on_area_3d_input_event(camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:

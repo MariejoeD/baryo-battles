@@ -36,7 +36,7 @@ func enemy_attack_check():
 	var chance = randf_range(0.0, 100.0)
 	print("[Chance] Roll:", chance, " vs Threshold:", total_score)
 	
-	#total_score = 100
+	total_score = 100
 	if chance < total_score:
 		print("⚠️ Enemy Attack Triggered!")
 		var defender_score = get_defender_score()
@@ -44,9 +44,9 @@ func enemy_attack_check():
 		var selected = select_enemies_to_spawn(raid_strength)
 		print("[ENEMIES SELECTED]", selected)
 		spawn_enemy(selected)
+		#$"Defend Control".show_defense_warning()
 	else:
 		print("🌙 Quiet night. No attack.")
-		$DefendControl.show_defense_warning()
 	print("[enemy_attack_check] --- END ---\n")
 
 func get_time_points(seconds_passed: float) -> float:
@@ -167,7 +167,7 @@ func select_enemies_to_spawn(target_cp):
 	var selected_enemies = []
 	var total_cp = 0
 	print("[select_enemies_to_spawn] Target CP:", target_cp)
-	if target_cp == 0:
+	if target_cp == 0  and not TH_level == 0:
 		var random_enemy = enemies.pick_random()
 		var temp_inst = random_enemy.instantiate()
 		selected_enemies.append(temp_inst)

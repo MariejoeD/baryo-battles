@@ -97,6 +97,8 @@ func harvest() -> void:
 	#	find nearest sibilyan
 		var sibilyan = find_nearest_sibilyan()
 	#	add work to it
+		if Global.get_food_cap() == Global.food_qty or Global.get_food_cap() == 0:
+			return
 		sibilyan.add_work(self)
 	pass
 	
@@ -117,6 +119,8 @@ func perform_work(worker):
 		$UI/Tanim/Harvest.texture_normal = load("res://assets/button/harvest.png")
 		print("Harvest Complete")
 		Global.food_qty += 10
+		if Global.get_food_cap() < Global.food_qty:
+			Global.food_qty = Global.get_food_cap()
 		#Change  Indicator
 		grow(duration)
 		#gray
