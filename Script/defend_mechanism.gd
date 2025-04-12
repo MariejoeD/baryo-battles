@@ -44,7 +44,7 @@ func enemy_attack_check():
 		var selected = select_enemies_to_spawn(raid_strength)
 		print("[ENEMIES SELECTED]", selected)
 		spawn_enemy(selected)
-		#$"Defend Control".show_defense_warning()
+		$"Defend Control".show_defense_warning()
 	else:
 		print("🌙 Quiet night. No attack.")
 	print("[enemy_attack_check] --- END ---\n")
