@@ -135,6 +135,7 @@ grow_vertical = 2
 script = ExtResource("14_i7ulf")
 
 [node name="warningContainer" type="HBoxContainer" parent="Defend Mechanism/Defend Control"]
+visible = false
 layout_mode = 0
 offset_left = 257.0
 offset_top = 268.0
@@ -181,6 +182,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4oj3q")
 text = "Assign Troop"
 
 [node name="UI" parent="Defend Mechanism" instance=ExtResource("16_gh14k")]
+is_homebase = true
 
 [node name="surrenderButton" parent="Defend Mechanism/UI" index="0"]
 visible = false

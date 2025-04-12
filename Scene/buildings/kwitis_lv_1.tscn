@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bjv1y1o2hrgx8"]
+[gd_scene load_steps=16 format=3 uid="uid://bjv1y1o2hrgx8"]
 
 [ext_resource type="ArrayMesh" uid="uid://bbxahgw6jkft1" path="res://assets/building models/Kwitis-Lv1.obj" id="1_vaqk3"]
 [ext_resource type="Script" path="res://Script/building scripts/kwitis_lv_1_script.gd" id="2_4ms55"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="9_c1yhq"]
 [ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="10_daym3"]
 [ext_resource type="Texture2D" uid="uid://b0sop4onfphy8" path="res://assets/button/upgradeButton.png" id="11_lvefd"]
+[ext_resource type="Script" path="res://Script/building_stats.gd" id="12_hwf14"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ylxe0"]
 size = Vector3(12.9449, 7.05612, 15.4128)
@@ -302,3 +303,13 @@ offset_right = -0.143982
 offset_bottom = 0.019989
 texture_normal = ExtResource("11_lvefd")
 stretch_mode = 0
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("12_hwf14")
+damage = 0
+attack_range = 0.0
+attack_speed = 0.0
+target_priority = 6.0
+weight_hp = 1.0
+weight_damage = 0.0
+weight_attack_speed = 0.0

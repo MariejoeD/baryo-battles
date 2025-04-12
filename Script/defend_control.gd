@@ -20,7 +20,9 @@ func show_defense_warning():
 func _on_assign_troop_pressed():
 	print("✅ Troops Assigned. UI Activated.")
 	ui_node.visible = true
-
+	ui_node.troop_data.clear()
+	ui_node._load_homebase_troops()
+	ui_node.update_ui()
 	# Hide BuildButton and AttackButton using find_child
 	var build_button = get_tree().get_root().find_child("BuildButton", true, false)
 	var attack_button = get_tree().get_root().find_child("AttackButton", true, false)

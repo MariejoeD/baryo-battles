@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://djl0d3hbyn7eo"]
+[gd_scene load_steps=18 format=4 uid="uid://djl0d3hbyn7eo"]
 
 [ext_resource type="Script" path="res://Script/building scripts/malacadabra_script.gd" id="1_hoa8y"]
 [ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="2_womur"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="8_p52sc"]
 [ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="9_pjucu"]
 [ext_resource type="Texture2D" uid="uid://b0sop4onfphy8" path="res://assets/button/upgradeButton.png" id="10_jxv4i"]
+[ext_resource type="Script" path="res://Script/building_stats.gd" id="11_07pye"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v050q"]
 resource_name = "Stone"
@@ -1720,7 +1721,7 @@ script = ExtResource("1_hoa8y")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03035, 0)
@@ -1981,3 +1982,13 @@ offset_right = -0.143982
 offset_bottom = 0.019989
 texture_normal = ExtResource("10_jxv4i")
 stretch_mode = 0
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("11_07pye")
+damage = 0
+attack_range = 0.0
+attack_speed = 0.0
+target_priority = 10.0
+weight_hp = 1.0
+weight_damage = 0.0
+weight_attack_speed = 0.0

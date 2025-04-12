@@ -3,6 +3,7 @@ extends Node
 var TH_level: int
 var unlocked_defenders = []
 var enemies = []
+var available = []
 
 func _ready() -> void:
 	SignalManager.night_time.connect(enemy_attack_check)
@@ -43,8 +44,10 @@ func enemy_attack_check():
 		var raid_strength = determine_enemy_total_cp(wealth_score, defender_score)
 		var selected = select_enemies_to_spawn(raid_strength)
 		print("[ENEMIES SELECTED]", selected)
-		spawn_enemy(selected)
-		#$"Defend Control".show_defense_warning()
+		available = get_unassigned_troop()
+		
+		$"Defend Control".show_defense_warning()
+		#spawn_enemy(selected)
 	else:
 		print("🌙 Quiet night. No attack.")
 	print("[enemy_attack_check] --- END ---\n")
@@ -216,3 +219,83 @@ func spawn_enemy(sel_enemies):
 		entities_parent.add_child(enemy)
 		enemy.get_node("Detection/CollisionShape3D").shape.radius = 150  # Add the enemy to the scene
 		print("👹 Spawned enemy at:", spawn_cell, "=>", spawn_pos)
+
+func _input(event: InputEvent) -> void:
+	if get_selected_troop() != "":
+		var mouse_pos = get_viewport().get_mouse_position()
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not $UI.get_node("allyPanel").get_global_rect().has_point(mouse_pos):
+			var target_pos = get_mouse_floor_position()
+			if target_pos == Vector3.ZERO or target_pos == Vector3.INF:
+				return
+			station_selected_troop(target_pos)
+
+func get_mouse_floor_position() -> Vector3:
+	var mouse_pos = get_viewport().get_mouse_position()
+	var camera = get_viewport().get_camera_3d()
+	var from = camera.project_ray_origin(mouse_pos)
+	var to = from + camera.project_ray_normal(mouse_pos) * 1000
+	var space_state = $"../Base".get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(from, to)
+	var result = space_state.intersect_ray(query)
+
+	if result:
+		result.position.y = 0
+		return result.position
+	return Vector3.INF
+
+func is_position_valid(position: Vector3, collision_shape: CollisionShape3D) -> bool:
+	var temp_area = Area3D.new()
+	var temp_col = CollisionShape3D.new()
+	temp_col.shape = collision_shape.shape
+	temp_area.add_child(temp_col)
+	temp_area.position = position
+	add_child(temp_area)
+
+	await get_tree().physics_frame
+
+	var space_state = $"../Base".get_world_3d().direct_space_state
+	var query = PhysicsShapeQueryParameters3D.new()
+	query.shape = temp_col.shape
+	query.transform.origin = position
+	query.collide_with_areas = true
+	query.collide_with_bodies = true
+	query.set_collision_mask(2)
+
+	var results = space_state.intersect_shape(query)
+	temp_area.queue_free()
+
+	var valid = true
+	for result in results:
+		if result.collider is GridMap:
+			continue
+		if result.collider == temp_area:
+			continue
+		valid = false
+
+	return valid
+
+func get_unassigned_troop():
+	var entities = get_tree().current_scene.find_child("Entities")
+	var available = []
+	for entity in entities.get_children():
+		if entity.is_in_group("Good") and entity.has_node("Stats"):
+			available.append(entity)
+	return available
+
+func get_selected_troop() -> String:
+	for troop_name in $UI.troop_data.keys():
+		if $UI.troop_data[troop_name][1]:
+			return troop_name
+	return ""
+func station_selected_troop(target_pos: Vector3):
+	var selected_troop = get_selected_troop()
+	print(available)
+	for troop in available:
+		var name = troop.get_node("Stats").Name
+		if name == selected_troop:
+			var collision_shape = troop.get_node_or_null("CollisionShape3D")
+			if not await is_position_valid(target_pos, collision_shape):
+				return
+			troop.position = target_pos
+			available.erase(troop)
+			$UI.troop_data[selected_troop][0] -= 1

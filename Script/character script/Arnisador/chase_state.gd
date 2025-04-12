@@ -20,6 +20,9 @@ var start
 
 var last_target_position: Vector3 = Vector3.ZERO  # Track the last target position for recalculation
 
+# New variable to detect collision with building area
+@onready var building_area: Area3D = null  # This will be set to the building's Area3D for collision detection
+
 func enter(_previous_state_path: String, data := {}) -> void:
 	# Initialize pathfinding and set up the target
 	fsm.anim_player.play("run")
@@ -46,6 +49,11 @@ func enter(_previous_state_path: String, data := {}) -> void:
 	print("Initial path: ", path)
 	current_target_index = 0  # Start from the first point in the path
 	last_target_position = target.global_transform.origin  # Track initial target position
+
+	# Set the building_area to the target building's Area3D (if available)
+	if target.is_in_group("Buildings"):
+		print("Buildings")
+		building_area = target.get_node("Area3D")  # Assuming the building has an Area3D node
 
 func update(delta: float) -> void:
 	# Reduce the cooldown timer
@@ -75,14 +83,22 @@ func update(delta: float) -> void:
 		path_recalculation_timer = path_recalculation_cooldown  # Reset the cooldown timer
 		last_target_position = target_position  # Update the last target position after recalculation
 
-	# Step 2: Check if we are in attack range
+
+	# Step 2: Check for collision with the building's area
+	if building_area != null and building_area.get_overlapping_bodies().size() > 0:
+		# If the NPC is colliding with the building's area, stop moving
+		print("NPC is colliding with building. Stopping movement.")
+		fsm._transition_to_next_state("Attack", {"target" : target})  # Transition to attack state once in range
+		return
+	
+	# Step 3: Check if we are in attack range
 	var npc_position = fsm.npc_root_node.global_transform.origin
 	if npc_position.distance_to(target_position) <= npc_size * stats.attack_range:  # Check if within attack range
 		print("Target within attack range! Stopping movement and transitioning to Attack state.")
 		fsm._transition_to_next_state("Attack", {"target" : target})  # Transition to attack state once in range
 		return
 	
-	# Step 3: Continue moving along the path if not in attack range
+	# Step 4: Continue moving along the path if not in attack range
 	if path and current_target_index < len(path):
 		var path_target_position = path[current_target_index]  # Get the next target point
 		path_target_position.y = 0  # Ensure the target stays on the ground level
@@ -104,7 +120,7 @@ func update(delta: float) -> void:
 		# Smooth movement towards the target point
 		fsm.npc_root_node.global_transform.origin = npc_position.lerp(path_target_position, 0.1)  # Smooth movement with interpolation
 
-		# Step 4: Check if we've reached the current target point
+		# Step 5: Check if we've reached the current target point
 		if npc_position.distance_to(path_target_position) < distance_threshold:
 			current_target_index += 1  # Move to the next target in the path
 	

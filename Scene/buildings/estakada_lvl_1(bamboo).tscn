@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d154ueae2iqap"]
+[gd_scene load_steps=18 format=3 uid="uid://d154ueae2iqap"]
 
 [ext_resource type="ArrayMesh" uid="uid://c4kn8ehvhh2ad" path="res://assets/building models/Estakada-lvl1(Bamboo).obj" id="1_e78nu"]
 [ext_resource type="Script" path="res://Script/building scripts/estakada_lvl_1(bamboo)_script.gd" id="2_csinu"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="9_w5q4j"]
 [ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="10_1m0xi"]
 [ext_resource type="Texture2D" uid="uid://b0sop4onfphy8" path="res://assets/button/upgradeButton.png" id="11_c5hsv"]
+[ext_resource type="Script" path="res://Script/building_stats.gd" id="12_kxop1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ue1bp"]
 albedo_color = Color(0.173144, 0.207031, 0.0641744, 1)
@@ -307,3 +308,13 @@ offset_right = -0.143982
 offset_bottom = 0.019989
 texture_normal = ExtResource("11_c5hsv")
 stretch_mode = 0
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("12_kxop1")
+damage = 0
+attack_range = 0.0
+attack_speed = 0.0
+target_priority = 3.0
+weight_hp = 1.0
+weight_damage = 0.0
+weight_attack_speed = 0.0

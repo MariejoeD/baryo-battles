@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://ngmrdl4glq3"]
+[gd_scene load_steps=25 format=4 uid="uid://ngmrdl4glq3"]
 
 [ext_resource type="Script" path="res://Script/building scripts/kampo_lv_1_script.gd" id="1_amsd2"]
 [ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="2_yj4gm"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b0sop4onfphy8" path="res://assets/button/upgradeButton.png" id="10_dayok"]
 [ext_resource type="Texture2D" uid="uid://mwe4idbjnfn4" path="res://assets/button/manageTroops.png" id="11_awa0a"]
 [ext_resource type="Texture2D" uid="uid://dvmsmlpomaddt" path="res://assets/button/manageTroopsClicked.png" id="12_hid37"]
+[ext_resource type="Script" path="res://Script/building_stats.gd" id="13_uws8k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kafqx"]
 resource_name = "Material.003"
@@ -174,6 +175,8 @@ script = ExtResource("1_amsd2")
 troopImagePath = "res://assets/trainTroops/trainingTroops/"
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.205216, 1.26695, 0.258621)
@@ -495,5 +498,15 @@ theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("5_ep854")
 theme_override_font_sizes/font_size = 30
 text = "Available Troops"
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("13_uws8k")
+damage = 0
+attack_range = 0.0
+attack_speed = 0.0
+target_priority = 6.5
+weight_hp = 1.0
+weight_damage = 0.0
+weight_attack_speed = 0.0
 
 [connection signal="input_event" from="Area3D" to="." method="clicked_building"]

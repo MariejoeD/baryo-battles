@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dpo47nv4ah4wp"]
+[gd_scene load_steps=21 format=3 uid="uid://dpo47nv4ah4wp"]
 
 [ext_resource type="ArrayMesh" uid="uid://bjb1hy0hgmlb8" path="res://assets/building models/Imbakan-Lv1_Empty.obj" id="1_dbcc5"]
 [ext_resource type="Script" path="res://Script/building scripts/imbakan_lv_1_empty_script.gd" id="2_pkxnm"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="9_xm7et"]
 [ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="10_38cb3"]
 [ext_resource type="Texture2D" uid="uid://b0sop4onfphy8" path="res://assets/button/upgradeButton.png" id="11_887ih"]
+[ext_resource type="Script" path="res://Script/building_stats.gd" id="13_6cpud"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u17gb"]
 albedo_color = Color(0.242188, 0.15299, 0.0136202, 1)
@@ -364,3 +365,13 @@ offset_right = -0.143982
 offset_bottom = 0.019989
 texture_normal = ExtResource("11_887ih")
 stretch_mode = 0
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("13_6cpud")
+damage = 0
+attack_range = 0.0
+attack_speed = 0.0
+target_priority = 5.0
+weight_hp = 1.0
+weight_damage = 0.0
+weight_attack_speed = 0.0

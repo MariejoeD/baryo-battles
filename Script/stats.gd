@@ -1,5 +1,13 @@
 extends Node
 
+@onready var Name: String = get_filename_base()
+
+func get_filename_base() -> String:
+	var scene = get_parent().scene_file_path
+	if scene == "":
+		return get_parent().name  # fallback if instanced directly in editor
+	return scene.get_file().get_basename()
+
 # Exported variables to adjust stats in the editor
 @export var hp: int = 150  # Average health
 @export var damage: int = 25  # Moderate damage
@@ -64,9 +72,9 @@ func _on_attacked(damage):
 		current_hp = 0
 		_on_death()
 func _on_heal(heal):
-	print("before: ",current_hp)
+	#print("before: ",current_hp)
 	current_hp += heal
-	print("after: ",current_hp)
+	#print("after: ",current_hp)
 	
 	if current_hp >= get_scaled_hp():
 		current_hp = get_scaled_hp()

@@ -32,6 +32,7 @@ var boss_spawned = false
 signal finished
 func _ready() -> void:
 	UI.get_node("surrenderButton").pressed.connect(surrender)
+	
 	for troop_name in troops.keys():
 		troop_scenes[troop_name] = load(troops[troop_name])
 	player_cp = calculate_player_total_cp()
@@ -191,19 +192,19 @@ func _spawn_boss_conditionally() -> void:
 	match boss_spawn_condition:
 		# Condition 0: Spawn boss on load
 		BossSpawnCondition.SpawnOnLoad:
-			print("on load")
+			#print("on load")
 			if !boss_spawned:
 				spawn_boss()
 
 		# Condition 1: Spawn boss after all enemies are dead
 		BossSpawnCondition.SpawnAfterAllEnemiesDead:
-			print("all_defeated")
+			#print("all_defeated")
 			if all_enemies_defeated() and !boss_spawned:
 				spawn_boss()
 
 		# Condition 2: Spawn boss after a random delay
 		BossSpawnCondition.SpawnAfterRandomDelay:
-			print("random")
+			#print("random")
 			if randf() < 0.1 and !boss_spawned:  # 10% chance on each frame to spawn the boss
 				spawn_boss()
 

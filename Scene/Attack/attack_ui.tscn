@@ -126,7 +126,7 @@ visible = false
 layout_mode = 2
 texture_normal = ExtResource("2_yixm7")
 
-[node name="lakanWarrior" type="TextureButton" parent="allyPanel/allyContainer"]
+[node name="lakan_warrior" type="TextureButton" parent="allyPanel/allyContainer"]
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("3_giv6o")
@@ -146,12 +146,12 @@ visible = false
 layout_mode = 2
 texture_normal = ExtResource("6_1te5m")
 
-[node name="kapitanMakoy" type="TextureButton" parent="allyPanel/allyContainer"]
+[node name="kapitan_makoy" type="TextureButton" parent="allyPanel/allyContainer"]
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("7_q48x7")
 
-[node name="superInday" type="TextureButton" parent="allyPanel/allyContainer"]
+[node name="super_inday" type="TextureButton" parent="allyPanel/allyContainer"]
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("8_ymscb")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://bie2y84c6n0or"]
+[gd_scene load_steps=33 format=4 uid="uid://bie2y84c6n0or"]
 
 [ext_resource type="Script" path="res://Script/building scripts/kubo_lv_1_script.gd" id="1_lev62"]
 [ext_resource type="PackedScene" uid="uid://cqaslongx5bxb" path="res://Scene/Characters/sibilyan.tscn" id="2_3hcb3"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://qvnqls3rn6g5" path="res://assets/button/generateButtonClicked.png" id="12_htmfo"]
 [ext_resource type="Texture2D" uid="uid://4k34udy14ee8" path="res://assets/Almanac/Allyunlocked/Sibilyan.png" id="13_quxsy"]
 [ext_resource type="Texture2D" uid="uid://cn66uvxh4adkn" path="res://assets/game/foodIcon.png" id="14_u6fll"]
+[ext_resource type="Script" path="res://Script/building_stats.gd" id="16_iqcvx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eiqdy"]
 resource_name = "Material.006"
@@ -763,3 +764,13 @@ theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("5_fns7k")
 theme_override_font_sizes/font_size = 30
 text = "60"
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("16_iqcvx")
+damage = 0
+attack_range = 0.0
+attack_speed = 0.0
+target_priority = 2.0
+weight_hp = 1.0
+weight_damage = 0.0
+weight_attack_speed = 0.0

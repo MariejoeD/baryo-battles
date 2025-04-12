@@ -80,23 +80,37 @@ func _find_nearest_target() -> void:
 			elif not body.is_in_group("flying") and distance < nearest_distance:
 				nearest_distance = distance
 				nearest_target = body
-
+	
+	var highest_priority_score := -INF  # Track the highest dynamic priority score
 	# Check all areas (e.g., buildings)
 	for area in detection_area.get_overlapping_areas():
 		if area == get_parent():
 			continue
+		var parent_node := area.get_parent()
 		var is_valid_target = false
 		for group in target_group:
-			if area.get_parent().is_in_group(group):
+			if parent_node.is_in_group(group):
 				is_valid_target = true
 				break
 		if not is_valid_target:
 			continue
 
 		var distance = self_pos.distance_to(area.get_global_transform().origin)
-		if distance < nearest_distance:
-			nearest_distance = distance
-			nearest_target = area
+		# Check if it has a calculate_priority_score method
+		if parent_node.has_method("calculate_priority_score"):
+			var priority_score = parent_node.calculate_priority_score()
+
+			# Example logic: prefer closer targets but break ties with higher priority
+			var combined_score = priority_score - distance * 0.1  # Adjust distance penalty weight as needed
+
+			if combined_score > highest_priority_score:
+				highest_priority_score = combined_score
+				nearest_target = parent_node
+		else:
+			# Fallback if the building doesn't support priority logic
+			if distance < nearest_distance:
+				nearest_distance = distance
+				nearest_target = parent_node
 
 	# Assign new target if changed
 	if nearest_target != target:

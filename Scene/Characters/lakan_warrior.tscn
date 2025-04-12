@@ -398,6 +398,7 @@ height = 5.0
 radius = 150.0
 
 [node name="Lakan Warrior" type="CharacterBody3D" groups=["Good"]]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
 collision_layer = 2
 collision_mask = 0
 
