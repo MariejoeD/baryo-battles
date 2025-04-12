@@ -1998,7 +1998,6 @@ anchor_bottom = 15.025
 theme_override_styles/panel = SubResource("StyleBoxFlat_ql8km")
 
 [node name="Malacadabra" type="Panel" parent="DescriptionPanel"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.021
@@ -2048,27 +2047,6 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 40
 text = "Malacadabra"
 
-[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Malacadabra"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.03
-anchor_top = 0.022
-anchor_right = 0.186
-anchor_bottom = 0.078
-offset_left = 0.0699997
-offset_top = 0.242
-offset_right = -0.166
-offset_bottom = -0.141998
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_constants/h_separation = 0
-theme_override_constants/icon_max_width = 200
-theme_override_constants/align_to_largest_stylebox = 2
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 15
-text = "switch language"
-
 [node name="EnglishDescription" type="Label" parent="DescriptionPanel/Malacadabra"]
 layout_mode = 1
 anchors_preset = -1
@@ -2086,26 +2064,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 25
 text = "The heart of the village This mystical structure radiates power, guiding the community’s growth and prosperity. Defend it at all costs!"
-autowrap_mode = 3
-
-[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Malacadabra"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.373
-anchor_top = 0.162
-anchor_right = 0.974
-anchor_bottom = 0.963
-offset_left = -0.263031
-offset_top = -0.218002
-offset_right = 0.205994
-offset_bottom = 0.0929565
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 25
-text = "Ang puso ng baryo.  Isang makapangyarihang gusali na nagsisilbing gabay sa paglago at kaligtasan ng pamayanan. Pangalagaan ito sa lahat ng oras!"
 autowrap_mode = 3
 
 [node name="Kampo" type="Panel" parent="DescriptionPanel"]
@@ -2159,27 +2117,6 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 40
 text = "Kampo"
 
-[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Kampo"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.03
-anchor_top = 0.022
-anchor_right = 0.186
-anchor_bottom = 0.078
-offset_left = 0.0699997
-offset_top = 0.242
-offset_right = -0.166
-offset_bottom = -0.141998
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_constants/h_separation = 0
-theme_override_constants/icon_max_width = 200
-theme_override_constants/align_to_largest_stylebox = 2
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 15
-text = "switch language"
-
 [node name="EnglishDescription" type="Label" parent="DescriptionPanel/Kampo"]
 layout_mode = 1
 anchors_preset = -1
@@ -2197,27 +2134,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 25
 text = "A fortified ground where trained warriors gather, awaiting the call to battle. It serves as the rallying point for your forces before they march to reclaim the land.
-"
-autowrap_mode = 3
-
-[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Kampo"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.373
-anchor_top = 0.162
-anchor_right = 0.974
-anchor_bottom = 0.963
-offset_left = -0.263031
-offset_top = -0.218002
-offset_right = 0.205994
-offset_bottom = 0.0929565
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 25
-text = "Isang matibay na kampo kung saan nagtitipon ang sinanay na mga mandirigma, handang lumaban para mabawi ang bayan mula sa mga nilalang ng kadiliman.
 "
 autowrap_mode = 3
 
@@ -2272,27 +2188,6 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 40
 text = "Kawa"
 
-[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Kawa"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.03
-anchor_top = 0.022
-anchor_right = 0.186
-anchor_bottom = 0.078
-offset_left = 0.0699997
-offset_top = 0.242
-offset_right = -0.166
-offset_bottom = -0.141998
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_constants/h_separation = 0
-theme_override_constants/icon_max_width = 200
-theme_override_constants/align_to_largest_stylebox = 2
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 15
-text = "switch language"
-
 [node name="EnglishDescription" type="Label" parent="DescriptionPanel/Kawa"]
 layout_mode = 1
 anchors_preset = -1
@@ -2312,26 +2207,6 @@ theme_override_font_sizes/font_size = 25
 text = "A sacred forge of arcane energy where potent spells are brewed. Skilled Albularyos and mystics channel ancient magic to empower your army.
 
 "
-autowrap_mode = 3
-
-[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Kawa"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.373
-anchor_top = 0.162
-anchor_right = 0.974
-anchor_bottom = 0.963
-offset_left = -0.263031
-offset_top = -0.218002
-offset_right = 0.205994
-offset_bottom = 0.0929565
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 25
-text = "Isang banal na pugon ng mahiwagang enerhiya kung saan niluluto ang mga makapangyarihang sumpa at agimat. Dito ginagawang sandata ng mga Albularyo ang sinaunang kaalaman sa salamangka."
 autowrap_mode = 3
 
 [node name="Sandatahang Lakas" type="Panel" parent="DescriptionPanel"]
@@ -2385,27 +2260,6 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 40
 text = "Sandatahang Lakas"
 
-[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Sandatahang Lakas"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.03
-anchor_top = 0.022
-anchor_right = 0.186
-anchor_bottom = 0.078
-offset_left = 0.0699997
-offset_top = 0.242
-offset_right = -0.166
-offset_bottom = -0.141998
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_constants/h_separation = 0
-theme_override_constants/icon_max_width = 200
-theme_override_constants/align_to_largest_stylebox = 2
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 15
-text = "switch language"
-
 [node name="EnglishDescription" type="Label" parent="DescriptionPanel/Sandatahang Lakas"]
 layout_mode = 1
 anchors_preset = -1
@@ -2425,26 +2279,6 @@ theme_override_font_sizes/font_size = 25
 text = "A prestigious training ground where elite warriors hone their skills. Unlocks advanced combat techniques, special abilities, and battle strategies to gain the upper hand against mythical foes.
 
 "
-autowrap_mode = 3
-
-[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Sandatahang Lakas"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.373
-anchor_top = 0.162
-anchor_right = 0.974
-anchor_bottom = 0.963
-offset_left = -0.263031
-offset_top = -0.218002
-offset_right = 0.205994
-offset_bottom = 0.0929565
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 25
-text = "Isang kilalang paaralan kung saan hinahasa ang husay ng mga mandirigma. Nagbubukas ng mas mataas na antas ng pagsasanay, natatanging kakayahan, at taktikang pandigma upang magkaroon ng kalamangan sa labanan."
 autowrap_mode = 3
 
 [node name="Estakada" type="Panel" parent="DescriptionPanel"]
@@ -2498,27 +2332,6 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 40
 text = "Estakada"
 
-[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Estakada"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.03
-anchor_top = 0.022
-anchor_right = 0.186
-anchor_bottom = 0.078
-offset_left = 0.0699997
-offset_top = 0.242
-offset_right = -0.166
-offset_bottom = -0.141998
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_constants/h_separation = 0
-theme_override_constants/icon_max_width = 200
-theme_override_constants/align_to_largest_stylebox = 2
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 15
-text = "switch language"
-
 [node name="EnglishDescription" type="Label" parent="DescriptionPanel/Estakada"]
 layout_mode = 1
 anchors_preset = -1
@@ -2537,26 +2350,6 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 25
 text = "Sturdy defensive barriers built from hardened kawayan and enchanted stone. These walls slow down enemy advances and provide critical protection for the village.
 "
-autowrap_mode = 3
-
-[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Estakada"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.373
-anchor_top = 0.162
-anchor_right = 0.974
-anchor_bottom = 0.963
-offset_left = -0.263031
-offset_top = -0.218002
-offset_right = 0.205994
-offset_bottom = 0.0929565
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 25
-text = "Matitibay na harang na yari sa kawayan at batong nilagyan ng mahika. Pinipigilan at pinapabagal nito ang pagsalakay ng mga kaaway upang maprotektahan ang baryo."
 autowrap_mode = 3
 
 [node name="Balwarte" type="Panel" parent="DescriptionPanel"]
@@ -2610,27 +2403,6 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 40
 text = "Balwarte"
 
-[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Balwarte"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.03
-anchor_top = 0.022
-anchor_right = 0.186
-anchor_bottom = 0.078
-offset_left = 0.0699997
-offset_top = 0.242
-offset_right = -0.166
-offset_bottom = -0.141998
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_constants/h_separation = 0
-theme_override_constants/icon_max_width = 200
-theme_override_constants/align_to_largest_stylebox = 2
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 15
-text = "switch language"
-
 [node name="EnglishDescription" type="Label" parent="DescriptionPanel/Balwarte"]
 layout_mode = 1
 anchors_preset = -1
@@ -2648,27 +2420,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 25
 text = "A towering lookout post that enhances visibility across the battlefield. Guards stationed here provide early warnings of incoming threats, ensuring the village is prepared for any attack."
-autowrap_mode = 3
-
-[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Balwarte"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.373
-anchor_top = 0.162
-anchor_right = 0.974
-anchor_bottom = 0.963
-offset_left = -0.263031
-offset_top = -0.218002
-offset_right = 0.205994
-offset_bottom = 0.0929565
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 25
-text = "Isang matayog na bantayan na nagpapalawak ng tanaw sa paligid. Ang mga tagapagbantay rito ay nagbibigay ng babala sa nalalapit na panganib, kaya’t may sapat na oras ang baryo upang maghanda.
-"
 autowrap_mode = 3
 
 [node name="Kwitis" type="Panel" parent="DescriptionPanel"]
@@ -2722,27 +2473,6 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 40
 text = "Kwitis"
 
-[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Kwitis"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.03
-anchor_top = 0.022
-anchor_right = 0.186
-anchor_bottom = 0.078
-offset_left = 0.0699997
-offset_top = 0.242
-offset_right = -0.166
-offset_bottom = -0.141998
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_constants/h_separation = 0
-theme_override_constants/icon_max_width = 200
-theme_override_constants/align_to_largest_stylebox = 2
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 15
-text = "switch language"
-
 [node name="EnglishDescription" type="Label" parent="DescriptionPanel/Kwitis"]
 layout_mode = 1
 anchors_preset = -1
@@ -2760,26 +2490,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 25
 text = "A powerful defensive weapon that launches explosive paputok (fireworks) into the sky, raining down destruction on enemy forces. Inspired by festive yet deadly Filipino pyrotechnics."
-autowrap_mode = 3
-
-[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Kwitis"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.373
-anchor_top = 0.162
-anchor_right = 0.974
-anchor_bottom = 0.963
-offset_left = -0.263031
-offset_top = -0.218002
-offset_right = 0.205994
-offset_bottom = 0.0929565
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 25
-text = "Isang malakas na sandata na nagpapakawala ng paputok sa himpapawid, na sumasabog at sumusunog sa mga kaaway mula sa malayo. Hango sa mga makukulay ngunit mapanganib na paputok sa kulturang Pilipino."
 autowrap_mode = 3
 
 [node name="Kubo" type="Panel" parent="DescriptionPanel"]
@@ -2833,27 +2543,6 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 40
 text = "Kubo"
 
-[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Kubo"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.03
-anchor_top = 0.022
-anchor_right = 0.186
-anchor_bottom = 0.078
-offset_left = 0.0699997
-offset_top = 0.242
-offset_right = -0.166
-offset_bottom = -0.141998
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_constants/h_separation = 0
-theme_override_constants/icon_max_width = 200
-theme_override_constants/align_to_largest_stylebox = 2
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 15
-text = "switch language"
-
 [node name="EnglishDescription" type="Label" parent="DescriptionPanel/Kubo"]
 layout_mode = 1
 anchors_preset = -1
@@ -2871,26 +2560,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 25
 text = "The source of all Sibilyan (villagers). A humble yet vital dwelling for the village’s master builders. These skilled craftsmen construct and upgrade buildings, ensuring the village thrives and withstands enemy sieges."
-autowrap_mode = 3
-
-[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Kubo"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.373
-anchor_top = 0.162
-anchor_right = 0.974
-anchor_bottom = 0.963
-offset_left = -0.263031
-offset_top = -0.218002
-offset_right = 0.205994
-offset_bottom = 0.0929565
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 25
-text = "Pinagmumulan ng mga Sibilyan (mga taganayon). Payak ngunit mahalagang tirahan ng mga tagapagtayo ng baryo. Sila ang bumubuo at nagpapalakas ng mga gusali upang tiyakin ang paglago at katatagan ng pamayanan."
 autowrap_mode = 3
 
 [node name="Tanim" type="Panel" parent="DescriptionPanel"]
@@ -2944,27 +2613,6 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 40
 text = "Tanim"
 
-[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Tanim"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.03
-anchor_top = 0.022
-anchor_right = 0.186
-anchor_bottom = 0.078
-offset_left = 0.0699997
-offset_top = 0.242
-offset_right = -0.166
-offset_bottom = -0.141998
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_constants/h_separation = 0
-theme_override_constants/icon_max_width = 200
-theme_override_constants/align_to_largest_stylebox = 2
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 15
-text = "switch language"
-
 [node name="EnglishDescription" type="Label" parent="DescriptionPanel/Tanim"]
 layout_mode = 1
 anchors_preset = -1
@@ -2982,26 +2630,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 25
 text = "The lifeline of the community, where fertile fields yield an abundant harvest of food. Essential for feeding both villagers and warriors preparing for battle."
-autowrap_mode = 3
-
-[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Tanim"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.373
-anchor_top = 0.162
-anchor_right = 0.974
-anchor_bottom = 0.963
-offset_left = -0.263031
-offset_top = -0.218002
-offset_right = 0.205994
-offset_bottom = 0.0929565
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 25
-text = "Ang pangunahing pinagkukunan ng pagkain ng baryo. Dito inaani ang masaganang trigo na bumubuhay sa mga taganayon at mandirigma bago sumabak sa laban."
 autowrap_mode = 3
 
 [node name="Imbakan" type="Panel" parent="DescriptionPanel"]
@@ -3055,27 +2683,6 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 40
 text = "Imbakan"
 
-[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Imbakan"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.03
-anchor_top = 0.022
-anchor_right = 0.186
-anchor_bottom = 0.078
-offset_left = 0.0699997
-offset_top = 0.242
-offset_right = -0.166
-offset_bottom = -0.141998
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_constants/h_separation = 0
-theme_override_constants/icon_max_width = 200
-theme_override_constants/align_to_largest_stylebox = 2
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 15
-text = "switch language"
-
 [node name="EnglishDescription" type="Label" parent="DescriptionPanel/Imbakan"]
 layout_mode = 1
 anchors_preset = -1
@@ -3093,26 +2700,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 25
 text = "A well-secured granary where harvested food is stored, preserving supplies to sustain the village during times of war and hardship."
-autowrap_mode = 3
-
-[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Imbakan"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.373
-anchor_top = 0.162
-anchor_right = 0.974
-anchor_bottom = 0.963
-offset_left = -0.263031
-offset_top = -0.218002
-offset_right = 0.205994
-offset_bottom = 0.0929565
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 25
-text = "Isang ligtas na imbakan ng pagkain kung saan inilalagak ang mga ani upang may sapat na suplay sa panahon ng kagipitan at digmaan."
 autowrap_mode = 3
 
 [node name="Bodega" type="Panel" parent="DescriptionPanel"]
@@ -3166,27 +2753,6 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 40
 text = "Bodega"
 
-[node name="CheckButton" type="CheckButton" parent="DescriptionPanel/Bodega"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.03
-anchor_top = 0.022
-anchor_right = 0.186
-anchor_bottom = 0.078
-offset_left = 0.0699997
-offset_top = 0.242
-offset_right = -0.166
-offset_bottom = -0.141998
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.752941, 0.47451, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_constants/h_separation = 0
-theme_override_constants/icon_max_width = 200
-theme_override_constants/align_to_largest_stylebox = 2
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 15
-text = "switch language"
-
 [node name="EnglishDescription" type="Label" parent="DescriptionPanel/Bodega"]
 layout_mode = 1
 anchors_preset = -1
@@ -3204,27 +2770,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 25
 text = "A fortified depot where harvested wood and quarried stones are stockpiled. These essential materials are used to build and reinforce the village’s defenses and structures"
-autowrap_mode = 3
-
-[node name="TagalogDescription" type="Label" parent="DescriptionPanel/Bodega"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.373
-anchor_top = 0.162
-anchor_right = 0.974
-anchor_bottom = 0.963
-offset_left = -0.263031
-offset_top = -0.218002
-offset_right = 0.205994
-offset_bottom = 0.0929565
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_mlhjp")
-theme_override_font_sizes/font_size = 25
-text = "Isang matibay na kamalig kung saan iniipon ang inaning kahoy at batong ginagamit sa pagtatayo at pagpapalakas ng depensa ng baryo.
-"
 autowrap_mode = 3
 
 [node name="availableCivilian" type="HBoxContainer" parent="."]
@@ -3283,15 +2828,3 @@ offset_top = 5.76
 offset_right = 33.0
 texture = ExtResource("40_maiyq")
 expand_mode = 1
-
-[connection signal="toggled" from="DescriptionPanel/Malacadabra/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="toggled" from="DescriptionPanel/Kampo/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="toggled" from="DescriptionPanel/Kawa/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="toggled" from="DescriptionPanel/Sandatahang Lakas/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="toggled" from="DescriptionPanel/Estakada/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="toggled" from="DescriptionPanel/Balwarte/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="toggled" from="DescriptionPanel/Kwitis/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="toggled" from="DescriptionPanel/Kubo/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="toggled" from="DescriptionPanel/Tanim/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="toggled" from="DescriptionPanel/Imbakan/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="toggled" from="DescriptionPanel/Bodega/CheckButton" to="." method="_on_check_button_toggled"]
