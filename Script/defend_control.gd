@@ -24,8 +24,8 @@ func _on_assign_troop_pressed():
 	ui_node._load_homebase_troops()
 	ui_node.update_ui()
 	# Hide BuildButton and AttackButton using find_child
-	var build_button = get_tree().get_root().find_child("BuildButton", true, false)
-	var attack_button = get_tree().get_root().find_child("AttackButton", true, false)
+	var build_button = get_tree().current_scene.find_child("BuildButton", true, false)
+	var attack_button = get_tree().current_scene.find_child("AttackButton", true, false)
 
 	if build_button:
 		build_button.visible = false

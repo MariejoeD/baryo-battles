@@ -7,10 +7,7 @@ extends Control
 @onready var attack_panel = $AttackPanel
 @onready var settings_panel = $SettingsPanel
 
-
-@onready var check_button = $DescriptionPanel/Malacadabra/CheckButton
 @onready var english_description = $DescriptionPanel/Malacadabra/EnglishDescription
-@onready var tagalog_description = $DescriptionPanel/Malacadabra/TagalogDescription
 
 # Button textures for locked and unlocked states
 @onready var locked_textures = {
@@ -57,75 +54,59 @@ var button_states = {
 }
 
 func _ready():
-	
 	if MusicController.is_music_on and !MusicController.music_player.playing:
 		MusicController.music_player.play()
-	# Connect main buttons
+
 	attack_button.connect("pressed", Callable(self, "_on_attack_button_pressed"))
 	build_button.connect("pressed", Callable(self, "_on_build_button_pressed"))
 
-	# Connect settings button
 	var settings_button = $SettingsContainer/SettingsButton
 	settings_button.connect("pressed", Callable(self, "_on_settings_button_pressed"))
 
-	# Connect Back to Main Menu button
 	var back_to_main_menu_button = $SettingsPanel/BackToMainMenuButton
 	back_to_main_menu_button.connect("pressed", Callable(self, "_on_back_to_main_menu_pressed"))
 
-
-	# connect info button
 	for i in $BuildInventoryPanel/HScrollContainer/HBoxContainer.get_children():
 		i.get_node("informationButton").pressed.connect(description_show.bind(i))
-		pass
-	# Initialize the resource display and button visuals
-	
-	
+
 	update_resource_display()
 	update_button_visuals()
 
 func _on_attack_button_pressed():
-	print("Attack button pressed!")
 	attack_panel.visible = !attack_panel.visible
 	build_button.visible = !build_button.visible
 
 func _on_build_button_pressed():
-	print("Build button pressed!")
 	build_inventory_panel.visible = !build_inventory_panel.visible
 	attack_button.visible = !attack_button.visible
 	update_button_visuals()
 
 func _on_settings_button_pressed():
-	print("Settings button pressed!")
 	settings_panel.visible = !settings_panel.visible
 
 func _on_back_to_main_menu_pressed():
-	#print("Back to Main Menu button pressed!")
 	save_troops_to_file()
 	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
+
 func save_troops_to_file():
 	var save_dict = {}
 	for kampo in Global.all_kampo:
-		save_dict[kampo.get_instance_id()] = kampo.troops  # Save all troops
+		save_dict[kampo.get_instance_id()] = kampo.troops
 
 	var file = FileAccess.open("user://troops_data.save", FileAccess.WRITE)
 	file.store_string(JSON.stringify(save_dict))
 	file.close()
 
-# Update the resource display
 func update_resource_display():
-	#print("Updating resource display...")
 	$ResourcePanel/FoodContainer/Label.text = str(Global.food_qty)
 	$ResourcePanel/WoodContainer/Label.text = str(Global.wood_qty)
 	$ResourcePanel/StoneContainer/Label.text = str(Global.stone_qty)
-	# Placeholder for updating UI elements for resources
 
-# Update button visuals based on their states
 func update_button_visuals():
-	#print("Updating button visuals...")
 	for button_name in button_states.keys():
 		var button = grid_container.get_node_or_null(button_name)
 		if button:
-			button.get_node("resourceAmount").visible = true if button_states[button_name] else false
+			button.get_node("resourceAmount").visible = button_states[button_name]
 			button.texture_normal = unlocked_textures[button_name] if button_states[button_name] else locked_textures[button_name]
 
 func description_show(building):
@@ -135,40 +116,20 @@ func description_show(building):
 	var building_name = building.name.trim_suffix("Btn")
 	build_inventory_panel.visible = false
 	$DescriptionPanel.visible = true
-	
-	# Hide all other description panels first
+
 	for child in $DescriptionPanel.get_children():
 		child.visible = false
-	
+
 	$DescriptionPanel.get_node(building_name).visible = true
-	pass
-	
+
 func _input(event):
-	if event is InputEventMouseButton and event.pressed and $DescriptionPanel.visible == true:
+	if event is InputEventMouseButton and event.pressed and $DescriptionPanel.visible:
 		if not $DescriptionPanel.get_global_rect().has_point(event.position):
 			$DescriptionPanel.visible = false
 			build_inventory_panel.visible = true
 
 func _on_tree_entered() -> void:
 	SignalManager.update_mats.connect(update_resource_display)
-	pass # Replace with function body.
-
 
 func _on_tree_exiting() -> void:
 	SignalManager.update_mats.disconnect(update_resource_display)
-	
-	pass # Replace with function body.
-	
-#for toggle
-	# Set default visibility
-	english_description.visible = true
-	tagalog_description.visible = false
-	
-func _on_check_button_toggled(button_pressed: bool) -> void:
-	if button_pressed:
-		english_description.visible = false
-		tagalog_description.visible = true
-	else:
-		english_description.visible = true
-		tagalog_description.visible = false
-	
