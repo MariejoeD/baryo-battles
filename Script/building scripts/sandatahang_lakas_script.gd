@@ -207,6 +207,7 @@ func build() -> void:
 func instant_build():
 	built = true
 	add_to_group("Buildings")
+	Buildings.buildings["SandatahangLakasBtn"] -= 1
 	pass
 
 func perform_work(worker) -> void:

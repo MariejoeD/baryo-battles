@@ -38,20 +38,7 @@ extends Control
 	"ImbakanBtn": preload("res://assets/buildings/unlocked/11.png")
 }
 
-# Button states for features
-var button_states = {
-	"MalacadabraBtn": true,
-	"KampoBtn": false,
-	"BodegaBtn": false,
-	"SandatahangLakasBtn": false,
-	"KawaBtn": false,
-	"EstakadaBtn": false,
-	"BalwarteBtn": false,
-	"KwitisBtn": false,
-	"KuboBtn": false,
-	"TanimBtn": false,
-	"ImbakanBtn": false
-}
+
 
 func _ready():
 	if MusicController.is_music_on and !MusicController.music_player.playing:
@@ -103,14 +90,14 @@ func update_resource_display():
 	$ResourcePanel/StoneContainer/Label.text = str(Global.stone_qty)
 
 func update_button_visuals():
-	for button_name in button_states.keys():
+	for button_name in Buildings.buildings.keys():
 		var button = grid_container.get_node_or_null(button_name)
 		if button:
-			button.get_node("resourceAmount").visible = button_states[button_name]
-			button.texture_normal = unlocked_textures[button_name] if button_states[button_name] else locked_textures[button_name]
+			button.get_node("resourceAmount").visible = true if Buildings.buildings[button_name] != 0 else false
+			button.texture_normal = unlocked_textures[button_name] if Buildings.buildings[button_name] != 0 else locked_textures[button_name]
 
 func description_show(building):
-	if not button_states[building.name]:
+	if Buildings.buildings[building.name] == 0:
 		return
 	
 	var building_name = building.name.trim_suffix("Btn")

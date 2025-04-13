@@ -16,7 +16,8 @@ func instant_build():
 	built = true
 	Npc.TH_level = level
 	add_to_group("Buildings")
-	print(get_groups())
+	Buildings.buildings["MalacadabraBtn"] = 0
+	change_building_count()
 	pass
 
 func _on_area_3d_input_event(camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
@@ -116,17 +117,28 @@ func remove_material_override(mesh_instance) -> void:
 
 func _upgrade():
 	#still need condition
-	if level < 3:
+	var defeated_count = 0
+	for status in Npc.bosses.values():
+		if status == true:
+			defeated_count += 1
+	if level <= defeated_count and level < 3:
 		level += 1
+		change_building_count()
 		SignalManager.TH_upgrade.emit()
 	pass
 
-func change_states(build_states):
-	build_states["MalacadabraBtn"] = false
-	build_states["KampoBtn"] = true
-	build_states["BodegaBtn"] = true
-	build_states["SandatahangLakasBtn"] = true
-	build_states["KuboBtn"] = true
-	build_states["TanimBtn"] = true
-	build_states["ImbakanBtn"] = true
-	return build_states
+func change_building_count():
+	Buildings.buildings["KampoBtn"] += 1
+	Buildings.buildings["BodegaBtn"] += 1
+	Buildings.buildings["SandatahangLakasBtn"] += 1
+	Buildings.buildings["KuboBtn"] += 1
+	Buildings.buildings["TanimBtn"] += 10
+	Buildings.buildings["ImbakanBtn"] += 1
+	
+	if level >= 2:
+		Buildings.buildings["KawaBtn"] += 1
+		Buildings.buildings["EstakadaBtn"] += 100
+	
+	if level >= 3:
+		Buildings.buildings["Balwarte"] += 2
+		Buildings.buildings["Kwitis"] += 2

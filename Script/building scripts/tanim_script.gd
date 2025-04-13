@@ -110,6 +110,7 @@ func build():
 func instant_build():
 	built = true
 	add_to_group("Buildings")
+	Buildings.buildings["TanimBtn"] -= 1
 	grow(duration)  # Grow to the computed height over 3 seconds
 	pass
 

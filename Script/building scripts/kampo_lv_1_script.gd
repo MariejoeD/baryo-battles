@@ -65,6 +65,7 @@ func instant_build():
 	built = true
 	add_to_group("Buildings")
 	Global.all_kampo.append(self)
+	Buildings.buildings["KampoBtn"] -= 1
 	# Restore troops if saved
 	if Global.kampo_troops.has(self.get_instance_id()):
 		troops = Global.kampo_troops[self.get_instance_id()]

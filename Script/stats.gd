@@ -96,7 +96,9 @@ func apply_spawn_scaling():
 				print(mat.scale_max)
 
 func _on_death():
-	print(get_parent().name,"Died")
+	print(Name," Died")
+	if Npc.bosses.has(Name):
+		Npc.bosses[Name] = true
 	get_parent().queue_free()
 	find_parent("Entities").win_lose_check()
 	

@@ -37,7 +37,7 @@ func enemy_attack_check():
 	var chance = randf_range(0.0, 100.0)
 	print("[Chance] Roll:", chance, " vs Threshold:", total_score)
 	
-	total_score = 100
+	#total_score = 100
 	if chance < total_score:
 		print("⚠️ Enemy Attack Triggered!")
 		var defender_score = get_defender_score()
@@ -46,7 +46,7 @@ func enemy_attack_check():
 		print("[ENEMIES SELECTED]", selected)
 		available = get_unassigned_troop()
 		
-		$"Defend Control".show_defense_warning()
+		#$"Defend Control".show_defense_warning()
 		#spawn_enemy(selected)
 	else:
 		print("🌙 Quiet night. No attack.")

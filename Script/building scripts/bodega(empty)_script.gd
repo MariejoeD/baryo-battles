@@ -73,6 +73,8 @@ func instant_build():
 	wood_cap = 3000
 	stone_cap = 3000
 	Global.all_bodega.append(self)
+	Buildings.buildings["BodegaBtn"] -= 1
+
 	add_to_group("Buildings")
 	pass
 

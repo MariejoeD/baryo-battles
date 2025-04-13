@@ -22,6 +22,7 @@ SignalManager="*res://Script/Signal_Manager.gd"
 MusicController="*res://Script/GlobalMusic.gd"
 SceneManager="*res://Script/SceneManager.gd"
 Npc="*res://Script/NPC.gd"
+Buildings="*res://Script/Buildings.gd"
 
 [display]
 

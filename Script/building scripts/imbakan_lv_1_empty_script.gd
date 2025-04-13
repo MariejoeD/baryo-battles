@@ -70,6 +70,7 @@ func build():
 func instant_build():
 	built = true
 	add_to_group("Buildings")
+	Buildings.buildings["ImbakanBtn"] -= 1
 	food_cap = 3000
 	Global.all_imbakan.append(self)
 	pass

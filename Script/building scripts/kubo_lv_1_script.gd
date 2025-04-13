@@ -128,6 +128,7 @@ func build():
 func instant_build():
 	built = true
 	add_to_group("Buildings")
+	Buildings.buildings["KuboBtn"] -= 1
 	Global.all_kubos.append(self)  # Register this Kubo in Global
 	pass
 

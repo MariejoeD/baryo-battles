@@ -29,7 +29,7 @@ func _on_btn_pressed(btn: TextureButton) -> void:
 	wood_req = int(btn.get_node("resourceAmount/woodAmount").text)
 
 	# Building not unlocked
-	if not get_parent().button_states[btn.name]:
+	if Buildings.buildings[btn.name] == 0:
 		show_warning_label("buildingNotYetUnlocked")
 		return
 
@@ -73,8 +73,7 @@ func _input(event: InputEvent) -> void:
 					apply_material_override(current_building)
 					if current_building.has_method("build"):
 						current_building.build()
-				if current_building.has_method("change_states"):
-					get_parent().button_states = current_building.change_states(get_parent().button_states)
+				
 		pass
 
 func follow_mouse():

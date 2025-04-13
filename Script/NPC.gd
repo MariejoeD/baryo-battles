@@ -18,6 +18,14 @@ var TH_level = 0
 	"mananaggal" : [preload("res://Scene/Characters/manananggal.tscn"), 3]
 }
 
+@onready var bosses:= {
+	"tiniente_gimo": false,
+	"amomongo": false,
+	"agta": false,
+	"mangkukulam": false,
+	"lizardo": false
+}
+
 func _ready() -> void:
 	SignalManager.TH_upgrade.connect(th_on_upgrade)
 	SignalManager.night_time.connect(troop)
