@@ -353,6 +353,8 @@ script = ExtResource("1_lev62")
 sibilyan_scene = ExtResource("2_3hcb3")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.603, 0)

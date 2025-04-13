@@ -11,11 +11,12 @@ var last_mouse_pos := Vector2.ZERO
 @export var second_cam: Camera3D
 
 func _process(delta: float) -> void:
-	
+	#if is_panning:
 		#print("pan")
 	_pan(delta)
 
-func _unhandled_input(event):
+func _input(event: InputEvent) -> void:
+	
 	if event is InputEventMouseButton:
 		# Zoom in and out with mouse wheel
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
@@ -41,7 +42,8 @@ func _zoom(direction: int):
 	# Only zoom if it's within the specified range
 	if new_pos.y > min_zoom and new_pos.y < max_zoom:
 		transform.origin = new_pos
-		second_cam.transform.origin = new_pos
+		if second_cam != null:
+			second_cam.transform.origin = new_pos
 
 # Panning function based on camera's local space
 func _pan(delta: float):
@@ -62,4 +64,5 @@ func _pan(delta: float):
 
 	# Apply clamped position
 	position = proposed_position
-	second_cam.position = proposed_position
+	if second_cam != null:
+		second_cam.position = proposed_position

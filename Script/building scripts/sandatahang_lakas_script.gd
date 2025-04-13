@@ -8,13 +8,15 @@ var sacrificeSib: Array = []
 @export var troopImagePath : String
 @onready var building_name = $UI.get_child(0)
 var training_panel
+var level := 1
 var troopsDict = {
-	"arnisador": {"trainingTime": 1, "scene" : "res://Scene/Characters/arnisador.tscn"},
-	"lakanWarrior": {"trainingTime": 1, "scene" : "res://Scene/Characters/lakan_warrior.tscn"},
-	"tirador": {"trainingTime": 1, "scene" : "res://Scene/Characters/tirador.tscn"},
-	"manggagamot": {"trainingTime": 1, "scene" : "res://Scene/Characters/manggagamot.tscn"},
-	"marites": {"trainingTime": 1, "scene" : "res://Scene/Characters/marites.tscn"},
+	"arnisador": {"trainingTime": 1, "scene": "res://Scene/Characters/arnisador.tscn", "required_level": 1},
+	"lakanWarrior": {"trainingTime": 1, "scene": "res://Scene/Characters/lakan_warrior.tscn", "required_level": 2},
+	"tirador": {"trainingTime": 1, "scene": "res://Scene/Characters/tirador.tscn", "required_level": 3},
+	"manggagamot": {"trainingTime": 1, "scene": "res://Scene/Characters/manggagamot.tscn", "required_level": 2},
+	"marites": {"trainingTime": 1, "scene": "res://Scene/Characters/marites.tscn", "required_level": 3},
 }
+
 
 func _ready() -> void:
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
@@ -24,7 +26,7 @@ func _ready() -> void:
 	training_panel = building_name.get_node("trainTroops/mainPanel/trainingPanel/ScrollContainer/HBoxContainer")
 	for troop in building_name.get_node("trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer").get_children():
 		troop.pressed.connect(_on_troop_pressed.bind(troop))
-
+	find_child("upgradeButton").pressed.connect(upgrade)
 	pass
 
 
@@ -187,8 +189,20 @@ func _on_view_information_pressed() -> void:
 func _on_upgrade_pressed() -> void:
 	_toggle_panel("upgrade/upgradePanel")
 
+func upgrade():
+	if Npc.TH_level == level:
+		#upgrade limit reach
+		return
+	level += 1
+
 func _on_train_troops_pressed() -> void:
 	_toggle_panel("trainTroops/mainPanel")
+	var troop_buttons = building_name.get_node("trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer").get_children()
+	for troop_btn in troop_buttons:
+		var troop_name = troop_btn.name
+		if troopsDict.has(troop_name):
+			var required_level = troopsDict[troop_name].get("required_level", 1)
+			troop_btn.visible = level >= required_level
 
 func _toggle_panel(panel_path: String) -> void:
 	if active_panel:

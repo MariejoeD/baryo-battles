@@ -1,5 +1,6 @@
-[gd_scene load_steps=45 format=4 uid="uid://drpf1hpcd61c"]
+[gd_scene load_steps=46 format=4 uid="uid://drpf1hpcd61c"]
 
+[ext_resource type="Script" path="res://Script/camera_3d.gd" id="2_1dxk2"]
 [ext_resource type="PackedScene" uid="uid://y3ykhag1nqi" path="res://assets/building models/tree3.fbx" id="4_xdklk"]
 [ext_resource type="PackedScene" uid="uid://dcyy578mne1kp" path="res://Scene/Characters/duwende.tscn" id="5_eix77"]
 [ext_resource type="PackedScene" uid="uid://cs0wlb26i2c18" path="res://assets/building models/stone2.fbx" id="5_imfes"]
@@ -605,6 +606,10 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.71934, 0.40831, -0.56199, 0, 0.809017, 0.587785, 0.694658, -0.422817, 0.581958, -101, 81, 107.92)
 fov = 53.4
+script = ExtResource("2_1dxk2")
+zoom_speed = 10.0
+pan_speed = 50
+max_zoom = 82
 
 [node name="UI" parent="." instance=ExtResource("9_ryl7j")]
 

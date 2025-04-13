@@ -334,8 +334,8 @@ script = ExtResource("1_17mrt")
 troopImagePath = "res://assets/trainTroops/trainingTroops/"
 
 [node name="Area3D" type="Area3D" parent="."]
-collision_layer = 2
-collision_mask = 4
+collision_layer = 3
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("ConvexPolygonShape3D_a8obp")
@@ -963,154 +963,6 @@ theme_override_fonts/font = ExtResource("5_brcq3")
 theme_override_font_sizes/font_size = 15
 text = "10"
 
-[node name="tirador" type="TextureButton" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("18_4d4r2")
-
-[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.044
-anchor_top = 0.023
-anchor_right = 0.275
-anchor_bottom = 0.163
-offset_left = -0.00806141
-offset_top = 0.0889997
-offset_right = -0.0500603
-offset_bottom = 0.109001
-texture = ExtResource("19_vhbd5")
-expand_mode = 1
-
-[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.033
-anchor_top = 0.759
-anchor_right = 1.0
-anchor_bottom = 0.953
-offset_left = -0.00600004
-offset_top = -0.0630188
-offset_right = -4.0
-offset_bottom = 0.0789795
-theme_override_styles/panel = SubResource("StyleBoxFlat_gge17")
-
-[node name="costIcon" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.017
-anchor_top = -3.02
-anchor_right = 0.134
-anchor_bottom = -2.66
-offset_left = 0.0759311
-offset_top = 1.52588e-05
-offset_right = -0.048069
-texture = ExtResource("13_pp0i1")
-expand_mode = 1
-
-[node name="cost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.163
-anchor_top = -3.12
-anchor_right = 0.267
-anchor_bottom = -2.62
-offset_left = -0.0360622
-offset_right = 0.0759354
-theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("5_brcq3")
-theme_override_font_sizes/font_size = 20
-text = "10"
-
-[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.052
-anchor_top = 0.36
-anchor_right = 0.151
-anchor_bottom = 0.64
-offset_left = 0.0559387
-offset_right = 0.0279369
-texture = ExtResource("16_xrre7")
-expand_mode = 1
-
-[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.308
-anchor_top = 0.32
-anchor_right = 0.442
-anchor_bottom = 0.72
-offset_left = 0.0239868
-offset_right = -0.0240097
-texture = ExtResource("9_hjv27")
-expand_mode = 1
-
-[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.174
-anchor_top = 0.32
-anchor_right = 0.267
-anchor_bottom = 0.72
-offset_left = 0.0719376
-offset_right = 0.0759354
-theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("5_brcq3")
-theme_override_font_sizes/font_size = 15
-text = "60"
-
-[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.471
-anchor_top = 0.3
-anchor_right = 0.558
-anchor_bottom = 0.68
-offset_left = -0.0120621
-offset_right = 0.0239334
-theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("5_brcq3")
-theme_override_font_sizes/font_size = 15
-text = "10"
-
-[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.61
-anchor_top = 0.34
-anchor_right = 0.721
-anchor_bottom = 0.64
-offset_left = 0.0799332
-offset_right = -0.0120621
-texture = ExtResource("8_hi4ty")
-expand_mode = 1
-
-[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.738
-anchor_top = 0.3
-anchor_right = 0.826
-anchor_bottom = 0.68
-offset_left = 0.0639343
-offset_right = -0.0720673
-theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("5_brcq3")
-theme_override_font_sizes/font_size = 15
-text = "4"
-
 [node name="manggagamot" type="TextureButton" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("20_u8frn")
@@ -1258,6 +1110,154 @@ theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("5_brcq3")
 theme_override_font_sizes/font_size = 15
 text = "5"
+
+[node name="tirador" type="TextureButton" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("18_4d4r2")
+
+[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("19_vhbd5")
+expand_mode = 1
+
+[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.759
+anchor_right = 1.0
+anchor_bottom = 0.953
+offset_left = -0.00600004
+offset_top = -0.0630188
+offset_right = -4.0
+offset_bottom = 0.0789795
+theme_override_styles/panel = SubResource("StyleBoxFlat_gge17")
+
+[node name="costIcon" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.017
+anchor_top = -3.02
+anchor_right = 0.134
+anchor_bottom = -2.66
+offset_left = 0.0759311
+offset_top = 1.52588e-05
+offset_right = -0.048069
+texture = ExtResource("13_pp0i1")
+expand_mode = 1
+
+[node name="cost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.163
+anchor_top = -3.12
+anchor_right = 0.267
+anchor_bottom = -2.62
+offset_left = -0.0360622
+offset_right = 0.0759354
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 20
+text = "10"
+
+[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.052
+anchor_top = 0.36
+anchor_right = 0.151
+anchor_bottom = 0.64
+offset_left = 0.0559387
+offset_right = 0.0279369
+texture = ExtResource("16_xrre7")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.308
+anchor_top = 0.32
+anchor_right = 0.442
+anchor_bottom = 0.72
+offset_left = 0.0239868
+offset_right = -0.0240097
+texture = ExtResource("9_hjv27")
+expand_mode = 1
+
+[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.174
+anchor_top = 0.32
+anchor_right = 0.267
+anchor_bottom = 0.72
+offset_left = 0.0719376
+offset_right = 0.0759354
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 15
+text = "60"
+
+[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.471
+anchor_top = 0.3
+anchor_right = 0.558
+anchor_bottom = 0.68
+offset_left = -0.0120621
+offset_right = 0.0239334
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 15
+text = "10"
+
+[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.61
+anchor_top = 0.34
+anchor_right = 0.721
+anchor_bottom = 0.64
+offset_left = 0.0799332
+offset_right = -0.0120621
+texture = ExtResource("8_hi4ty")
+expand_mode = 1
+
+[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.738
+anchor_top = 0.3
+anchor_right = 0.826
+anchor_bottom = 0.68
+offset_left = 0.0639343
+offset_right = -0.0720673
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 15
+text = "4"
 
 [node name="marites" type="TextureButton" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
 layout_mode = 2

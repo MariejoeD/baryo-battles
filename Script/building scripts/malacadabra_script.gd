@@ -140,5 +140,5 @@ func change_building_count():
 		Buildings.buildings["EstakadaBtn"] += 100
 	
 	if level >= 3:
-		Buildings.buildings["Balwarte"] += 2
-		Buildings.buildings["Kwitis"] += 2
+		Buildings.buildings["BalwarteBtn"] += 2
+		Buildings.buildings["KwitisBtn"] += 2

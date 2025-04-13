@@ -6,7 +6,7 @@ var current_building: Node3D = null
 @export var instant_build: bool = false
 @export var building_data: building_resource
 @onready var grid_map = get_tree().current_scene.find_child("GridMap")  # Reference to your GridMap node
-@export var fixed_y: float = 1  # The Y position where the building will stay
+@export var fixed_y: float = .5  # The Y position where the building will stay
 var stone_req
 var wood_req
 func _ready() -> void:
@@ -131,17 +131,20 @@ func is_fully_on_floor(building) -> bool:
 func is_colliding_with_other_objects(building) -> bool:
 	# Get the Area3D node inside the building
 	var area_3d = building.get_node_or_null("Area3D")
+	print(area_3d.name)
 	if not area_3d:
 		return false  # No collision if there's no Area3D
 
 	# Check for overlapping bodies (other objects with a collision body)
 	for body in area_3d.get_overlapping_bodies():
 		if not body.is_in_group("floor"):  # Ignore GridMaps (add them to a group)
+			print(body.name)
 			return true  # Collision detected
 
 	# Check for overlapping areas (trees, stones, other buildings)
 	for area in area_3d.get_overlapping_areas():
 		if not area.is_in_group("floor"):  # Ignore GridMaps
+			print(area.name)
 			return true  # Collision detected
 
 	return false  # No collision

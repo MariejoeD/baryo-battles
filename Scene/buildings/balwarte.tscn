@@ -433,7 +433,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fetpc"]
-size = Vector3(6.45956, 9.55612, 5.81909)
+size = Vector3(6.46, 10, 5.819)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iq541"]
 bg_color = Color(0.919668, 0.878001, 0.698229, 1)
@@ -459,6 +459,8 @@ mesh = SubResource("ArrayMesh_mdxe6")
 script = ExtResource("1_mjbjy")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
