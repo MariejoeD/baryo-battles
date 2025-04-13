@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bb7bjegmerfbt"]
+[gd_scene load_steps=16 format=3 uid="uid://bb7bjegmerfbt"]
 
 [ext_resource type="Script" path="res://Script/deploy.gd" id="1_dk4n7"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_oaiwf"]
@@ -66,6 +66,33 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 shadow_color = Color(0.506, 0.435, 0.2, 0)
 shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4xcg"]
+bg_color = Color(0.986579, 0.94449, 0.901554, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.921569, 0.72549, 0.513726, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nc8wh"]
+bg_color = Color(0.498039, 0.54902, 0.552941, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 3
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -155,3 +182,95 @@ texture_normal = ExtResource("7_q48x7")
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("8_ymscb")
+
+[node name="surrenderPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.272
+anchor_top = 0.193
+anchor_right = 0.793
+anchor_bottom = 0.571
+offset_left = -0.160034
+offset_top = 0.0399933
+offset_right = -0.0400391
+offset_bottom = -0.120026
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4xcg")
+
+[node name="Label" type="Label" parent="surrenderPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.175
+anchor_top = 0.062
+anchor_right = 0.832
+anchor_bottom = 0.268
+offset_left = 0.274994
+offset_top = 0.136
+offset_right = 0.0559692
+offset_bottom = 0.103996
+theme_override_colors/font_color = Color(0.825866, 0.165097, 0.237769, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 30
+text = "Are you sure you want to surrender?"
+
+[node name="Label2" type="Label" parent="surrenderPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.171
+anchor_top = 0.305
+anchor_right = 0.867
+anchor_bottom = 0.647
+offset_left = -0.0569992
+offset_top = 0.0400009
+offset_right = -0.289001
+offset_bottom = 0.0159912
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 20
+text = "Your progress in this battle will not be saved.
+All trained troops will be lost and cannot be recovered."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="confirmSurrenderButton" type="Button" parent="surrenderPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.616
+anchor_top = 0.743
+anchor_right = 0.82
+anchor_bottom = 0.952
+offset_left = 0.12796
+offset_top = -0.0960083
+offset_right = 0.0599365
+offset_bottom = 0.0559998
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_von4y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pbted")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dwneg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dwneg")
+text = "SURRENDER"
+
+[node name="cancelButton" type="Button" parent="surrenderPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.19
+anchor_top = 0.743
+anchor_right = 0.394
+anchor_bottom = 0.952
+offset_left = 0.269989
+offset_top = -0.0960083
+offset_right = 0.201996
+offset_bottom = 0.0559998
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_von4y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pbted")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dwneg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nc8wh")
+text = "CANCEL"

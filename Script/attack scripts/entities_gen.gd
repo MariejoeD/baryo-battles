@@ -297,6 +297,7 @@ func show_result(result: String):
 
 func surrender():
 	print("Surrender")
+	
 	SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
 
 func calculate_player_total_cp():
