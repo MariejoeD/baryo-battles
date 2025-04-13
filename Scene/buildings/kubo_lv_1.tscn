@@ -359,7 +359,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.603, 0)
 shape = SubResource("BoxShape3D_xs3dh")
 
 [node name="UI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -447,6 +446,29 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
 text = "The source of all Sibilyan (villagers). A humble yet vital dwelling for the village’s master builders. These skilled craftsmen construct and upgrade buildings, ensuring the village thrives and withstands enemy sieges."
 autowrap_mode = 2
+
+[node name="level" type="Label" parent="UI/Kubo/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.843
+anchor_top = 0.059
+anchor_right = 0.945
+anchor_bottom = 0.14
+offset_left = 0.175964
+offset_top = 0.125999
+offset_right = 0.23999
+offset_bottom = -0.0400009
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_fns7k")
+theme_override_font_sizes/font_size = 20
+text = "Level: 1"
 
 [node name="upgrade" type="TextureButton" parent="UI/Kubo"]
 layout_mode = 2

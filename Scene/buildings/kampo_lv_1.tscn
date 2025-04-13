@@ -183,7 +183,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.205216, 1.26695, 0.2
 shape = SubResource("BoxShape3D_dbkpv")
 
 [node name="UI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -271,6 +270,29 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
 text = "A fortified ground where trained warriors gather, awaiting the call to battle. It serves as the rallying point for your forces before they march to reclaim the land."
 autowrap_mode = 3
+
+[node name="level" type="Label" parent="UI/Kampo/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.843
+anchor_top = 0.059
+anchor_right = 0.945
+anchor_bottom = 0.14
+offset_left = 0.175964
+offset_top = 0.125999
+offset_right = 0.23999
+offset_bottom = -0.0400009
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_ep854")
+theme_override_font_sizes/font_size = 20
+text = "Level: 1"
 
 [node name="upgrade" type="TextureButton" parent="UI/Kampo"]
 layout_mode = 2

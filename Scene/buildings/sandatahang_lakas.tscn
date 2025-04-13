@@ -341,7 +341,6 @@ collision_mask = 4
 shape = SubResource("ConvexPolygonShape3D_a8obp")
 
 [node name="UI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -398,14 +397,14 @@ expand_mode = 2
 [node name="title" type="Label" parent="UI/Sandatahang Lakas/viewInformation/InformationPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.456
-anchor_top = 0.028
-anchor_right = 0.876
-anchor_bottom = 0.233
-offset_left = -0.00802612
-offset_top = -0.00799561
-offset_right = -0.151947
-offset_bottom = 0.0960007
+anchor_left = 0.438
+anchor_top = 0.035
+anchor_right = 0.854
+anchor_bottom = 0.227
+offset_left = 0.215988
+offset_top = -0.0100012
+offset_right = -0.0720215
+offset_bottom = 0.0779877
 theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -429,6 +428,29 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
 text = "A prestigious training ground where elite warriors hone their skills. Unlocks advanced combat techniques, special abilities, and battle strategies to gain the upper hand against mythical foes."
 autowrap_mode = 3
+
+[node name="level" type="Label" parent="UI/Sandatahang Lakas/viewInformation/InformationPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.87
+anchor_top = 0.056
+anchor_right = 0.975
+anchor_bottom = 0.143
+offset_left = -0.160034
+offset_top = -0.0160007
+offset_right = 0.200012
+offset_bottom = 0.101994
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 20
+text = "Level: 1"
 
 [node name="upgrade" type="TextureButton" parent="UI/Sandatahang Lakas"]
 layout_mode = 2
