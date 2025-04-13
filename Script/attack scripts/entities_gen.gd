@@ -31,7 +31,10 @@ var troop_scenes: Dictionary = {}
 var boss_spawned = false
 signal finished
 func _ready() -> void:
-	UI.get_node("surrenderButton").pressed.connect(surrender)
+	# Connect button signals
+	UI.find_child("surrenderButton").pressed.connect(_on_surrender_button_pressed)
+	UI.find_child("cancelButton").pressed.connect(_on_cancel_button_pressed)
+	UI.find_child("confirmSurrenderButton").pressed.connect(_on_confirm_surrender_button_pressed)
 	
 	for troop_name in troops.keys():
 		troop_scenes[troop_name] = load(troops[troop_name])
@@ -295,9 +298,21 @@ func show_result(result: String):
 
 
 
+
+func _on_surrender_button_pressed():
+	UI.find_child("surrenderPanel").visible = true
+
+
+func _on_cancel_button_pressed():
+	UI.find_child("surrenderPanel").visible = false
+
+
+func _on_confirm_surrender_button_pressed():
+	surrender()
+
+
 func surrender():
 	print("Surrender")
-	
 	SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
 
 func calculate_player_total_cp():
