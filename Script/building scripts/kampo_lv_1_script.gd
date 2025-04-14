@@ -6,7 +6,7 @@ var built: bool =false
 @onready var building_name = $UI.get_child(0)
 var troops: Array = []
 @export var troopImagePath : String
-@onready var container = get_node("UI/Kampo/ManageTroops/manageTroopsPanel/ScrollContainer/ScrollContainer")
+@onready var container = get_node("UI/Kampo/ManageTroops/manageTroopsPanel/ScrollContainer/ScrollContainer/HBoxContainer")
 var spaces = 100
 
 func update_ui_container():
@@ -17,7 +17,7 @@ func update_ui_container():
 			troop_counts[troop.name] += 1
 		else:
 			troop_counts[troop.name] = 1
-	
+	print(troop_counts)
 	# Step 2: Loop through counted troops
 	for troop_name in troop_counts.keys():
 		var count = troop_counts[troop_name]
