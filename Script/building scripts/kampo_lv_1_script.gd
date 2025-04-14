@@ -10,48 +10,46 @@ var troops: Array = []
 var spaces = 100
 
 func update_ui_container():
-	
+	# Remove all previous UI children
 	for child in container.get_children():
 		child.queue_free()
 	await get_tree().process_frame
+	
+	# Step 1: Count troop types
+	var troop_counts = {}
 	for troop in troops:
-		
-		var existing_entry = container.get_node_or_null(NodePath(str(troop.name)))
-		
-		if existing_entry:
-			
-			var count_label = existing_entry.get_node("qty_label")
-			count_label.text = "x" + str(int(count_label.text.substr(1))+1)
+		if troop.name in troop_counts:
+			troop_counts[troop.name] += 1
 		else:
-			
-			var troop_display = TextureRect.new()
-			troop_display.name = troop.name
-			troop_display.texture =  load(troopImagePath + troop.name + ".png")
-			var qty_label = Label.new()
-			qty_label.name = "qty_label"
-			qty_label.text = "x1"
-			qty_label.add_theme_font_size_override("font_size", 20)
-			qty_label.add_theme_color_override("font_color", Color(1, 1, 1))
-		
-			container.add_child(troop_display)
-		
-#
-			# Correct Positioning: Anchor to top-right inside TextureButton
-			qty_label.anchor_right = 1.0
-			qty_label.anchor_top = 0.0
-			qty_label.anchor_left = 1.0
-			qty_label.anchor_bottom = 0.0
+			troop_counts[troop.name] = 1
 	
-			# Use `position` instead of `margin` to place it inside the button
-			qty_label.position = Vector2(-30, 5)  # Adjust X and Y to fit inside
-			
-			# Add Count Label to TextureButton
-			troop_display.add_child(qty_label)
-	
-			# Add TextureButton to training panel
-			container.add_child(troop_display)
-		pass
-	pass
+	# Step 2: Create UI elements for each troop type
+	for troop_name in troop_counts.keys():
+		var count = troop_counts[troop_name]
+
+		var troop_display = TextureRect.new()
+		troop_display.name = troop_name
+		troop_display.texture = load(troopImagePath + troop_name + ".png")
+		
+		var qty_label = Label.new()
+		qty_label.name = "qty_label"
+		qty_label.text = "x" + str(count)
+		qty_label.add_theme_font_size_override("font_size", 20)
+		qty_label.add_theme_color_override("font_color", Color(1, 1, 1))
+		
+		# Correct positioning
+		qty_label.anchor_right = 1.0
+		qty_label.anchor_top = 0.0
+		qty_label.anchor_left = 1.0
+		qty_label.anchor_bottom = 0.0
+		qty_label.position = Vector2(-30, 5)
+		
+		# Add label to image
+		troop_display.add_child(qty_label)
+		
+		# Add the troop image to the container
+		container.add_child(troop_display)
+
 
 func _ready() -> void:
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
