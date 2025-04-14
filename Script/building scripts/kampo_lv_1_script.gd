@@ -10,12 +10,7 @@ var troops: Array = []
 var spaces = 100
 
 func update_ui_container():
-	# Remove all previous UI children
-	for child in container.get_children():
-		child.queue_free()
-	await get_tree().process_frame
-	
-	# Step 1: Count troop types
+	# Step 1: Count each troop type
 	var troop_counts = {}
 	for troop in troops:
 		if troop.name in troop_counts:
@@ -23,32 +18,37 @@ func update_ui_container():
 		else:
 			troop_counts[troop.name] = 1
 	
-	# Step 2: Create UI elements for each troop type
+	# Step 2: Loop through counted troops
 	for troop_name in troop_counts.keys():
 		var count = troop_counts[troop_name]
 
-		var troop_display = TextureRect.new()
-		troop_display.name = troop_name
-		troop_display.texture = load(troopImagePath + troop_name + ".png")
-		
-		var qty_label = Label.new()
-		qty_label.name = "qty_label"
-		qty_label.text = "x" + str(count)
-		qty_label.add_theme_font_size_override("font_size", 20)
-		qty_label.add_theme_color_override("font_color", Color(1, 1, 1))
-		
-		# Correct positioning
-		qty_label.anchor_right = 1.0
-		qty_label.anchor_top = 0.0
-		qty_label.anchor_left = 1.0
-		qty_label.anchor_bottom = 0.0
-		qty_label.position = Vector2(-30, 5)
-		
-		# Add label to image
-		troop_display.add_child(qty_label)
-		
-		# Add the troop image to the container
-		container.add_child(troop_display)
+		# Check if UI element already exists
+		var existing_entry = container.get_node_or_null(troop_name)
+		if existing_entry:
+			# Just update the label
+			var count_label = existing_entry.get_node("qty_label")
+			count_label.text = "x" + str(count)
+		else:
+			# Create new troop icon
+			var troop_display = TextureRect.new()
+			troop_display.name = troop_name
+			troop_display.texture = load(troopImagePath + troop_name + ".png")
+			
+			var qty_label = Label.new()
+			qty_label.name = "qty_label"
+			qty_label.text = "x" + str(count)
+			qty_label.add_theme_font_size_override("font_size", 20)
+			qty_label.add_theme_color_override("font_color", Color(1, 1, 1))
+
+			# Positioning
+			qty_label.anchor_right = 1.0
+			qty_label.anchor_top = 0.0
+			qty_label.anchor_left = 1.0
+			qty_label.anchor_bottom = 0.0
+			qty_label.position = Vector2(-30, 5)
+
+			troop_display.add_child(qty_label)
+			container.add_child(troop_display)
 
 
 func _ready() -> void:
