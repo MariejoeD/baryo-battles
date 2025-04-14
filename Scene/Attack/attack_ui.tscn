@@ -185,6 +185,7 @@ layout_mode = 2
 texture_normal = ExtResource("8_ymscb")
 
 [node name="surrenderPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.272

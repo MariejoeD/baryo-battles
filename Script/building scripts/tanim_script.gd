@@ -3,7 +3,7 @@ extends MeshInstance3D
 
 var active_panel
 var plot_level = 1  # Example plot level
-var base_grow_duration = 5
+var base_grow_duration = 600
 var multiplier = .08
 var duration = base_grow_duration * pow(multiplier, plot_level-1)
 var is_harvestable:bool = false
@@ -112,6 +112,10 @@ func instant_build():
 	add_to_group("Buildings")
 	Buildings.buildings["TanimBtn"] -= 1
 	grow(duration)  # Grow to the computed height over 3 seconds
+	pass
+
+func random_harvest():
+	#random
 	pass
 
 func perform_work(worker):

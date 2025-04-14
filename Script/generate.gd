@@ -105,7 +105,6 @@ func find_qty(mats: String) -> int:
 			current_qty["tree"] += 1
 		elif  child.name.begins_with("Stone") and mats == "stone":
 			current_qty["stone"] += 1
-	print(current_qty)
 	if mats == "tree":
 		return current_qty["tree"]
 	elif mats == "stone":

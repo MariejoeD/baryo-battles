@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhhpfgn3vue6"]
+[gd_scene load_steps=6 format=3 uid="uid://ceg7c5m0r2df2"]
 
 [ext_resource type="Texture2D" uid="uid://ccargimus72s" path="res://assets/game/bg2.png" id="1_f742d"]
 [ext_resource type="Script" path="res://load_before_battle.gd" id="1_my4t0"]

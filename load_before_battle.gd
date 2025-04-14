@@ -1,8 +1,8 @@
 extends Control
 
-@onready var loading_bar = $LoadingBar
-@onready var random_message = $RandomFacts
-@onready var province_label = $provinceName
+@onready var loading_bar = $Panel/LoadingBar
+@onready var random_message = $Panel/Randomfacts
+@onready var province_label = $Panel/provinceName
 
 var target_scene_path := ""
 var random_texts = []
@@ -108,20 +108,37 @@ func set_province_data() -> void:
 		random_texts = ["Loading facts...", "Prepare for battle!", "Good luck, commander!"]
 
 func perform_loading() -> void:
-	var total_steps := 100
-	var change_message_interval := 0.30
+	# Start loading the scene in the background
+	ResourceLoader.load_threaded_request(target_scene_path)
 	var last_message_change := 0.0
+	var change_message_interval := 0.30
 
-	for step in range(total_steps):
-		loading_percentage = step
-		loading_bar.value = loading_percentage
-		
+	while true:
+		var status := ResourceLoader.load_threaded_get_status(target_scene_path)
+
+		if status == ResourceLoader.THREAD_LOAD_LOADED:
+			var resource := ResourceLoader.load_threaded_get(target_scene_path)
+			if resource:
+				var new_scene :Node = resource.instantiate()
+				get_tree().root.add_child(new_scene)
+				get_tree().current_scene.queue_free()
+				get_tree().current_scene = new_scene
+				queue_free()
+			else:
+				push_error("Failed to instantiate loaded scene.")
+			break
+		elif status == ResourceLoader.THREAD_LOAD_FAILED:
+			push_error("Failed to load scene: " + target_scene_path)
+			break
+
+		# You can't get actual progress in Godot 4 without a custom solution, so just simulate it
+		loading_bar.value = min(loading_bar.value + 2.0, 100.0)
+
+		# Update random message
 		if last_message_change >= change_message_interval:
 			random_message.text = random_texts[randi() % random_texts.size()]
 			last_message_change = 0.0
 		else:
 			last_message_change += 0.02
-		
+
 		await get_tree().create_timer(0.02).timeout
-	
-	get_tree().change_scene_to_file(target_scene_path)

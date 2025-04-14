@@ -13,7 +13,6 @@ func _ready() -> void:
 
 func _on_btn_pressed(btn):
 	# Save the troops data before changing scenes
-	
 	print("Before Saving:", Global.kampo_troops)  # Debugging print
 	Global.kampo_troops.clear()
 	for kampo in Global.all_kampo:
@@ -25,11 +24,14 @@ func _on_btn_pressed(btn):
 			Global.kampo_troops[kampo_id] = kampo.troops.duplicate(true)  # Deep copy
 
 	print("After Saving:", Global.kampo_troops)  # Check if duplicates appear
+
 	var scene_path = scene_exists_in_folder(base_path, btn.name)
 	if scene_path:
-		get_tree().change_scene_to_file(scene_path)
-		
-	pass
+		# Create a SceneLoader instance dynamically
+		var loader_node = preload("res://Scene/loadBeforeBattle.tscn").instantiate()
+		get_tree().current_scene.add_child(loader_node)  # Add loader to the current scene
+		loader_node.target_scene_path = scene_path  # Set the scene path
+		loader_node.perform_loading()  # Start the scene loading process
 
 func scene_exists_in_folder(folder_path: String, button_name: String) -> String:
 	var dir = DirAccess.open(folder_path)

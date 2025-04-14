@@ -291,12 +291,18 @@ func win_lose_check():
 
 func show_result(result: String):
 	if result == "win":
+		# gawing visible yung panel
+		#pumili ng resource
+		choose_resource_to_generate()
 		print("YOU WIN!")
 	elif result == "lose":
 		print("YOU LOSE!")
 	SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
 
-
+func choose_resource_to_generate(resource:= "Food"):
+	
+	MapManager.conquer_base(get_parent().name,resource, 5)
+	pass
 
 
 func _on_surrender_button_pressed():

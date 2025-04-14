@@ -773,11 +773,11 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 43.0725, -8.46482, -53.882
 
 [node name="Entities" type="Node3D" parent="." node_paths=PackedStringArray("Objects")]
 script = ExtResource("11_g6s22")
-required_cp = 0
+required_cp = 200
 enemies = Array[PackedScene]([ExtResource("5_eix77")])
-base_enemy_count = 0
-min_enemies = 0
-max_enemies = 0
+base_enemy_count = 1
+min_enemies = 1
+max_enemies = 1
 troops = {
 "arnisador": "res://Scene/Characters/arnisador.tscn",
 "kapitan_makoy": "res://Scene/Characters/kapitan_makoy.tscn",

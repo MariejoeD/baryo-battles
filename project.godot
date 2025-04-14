@@ -23,6 +23,7 @@ MusicController="*res://Script/GlobalMusic.gd"
 SceneManager="*res://Script/SceneManager.gd"
 Npc="*res://Script/NPC.gd"
 Buildings="*res://Script/Buildings.gd"
+MapManager="*res://Script/MapManager.gd"
 
 [display]
 

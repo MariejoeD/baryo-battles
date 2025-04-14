@@ -536,7 +536,6 @@ texture_normal = ExtResource("11_lhkt1")
 texture_pressed = ExtResource("12_k7lck")
 
 [node name="Panel" type="Panel" parent="UI/Kawa/BrewAndManageSpells"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -10.49
