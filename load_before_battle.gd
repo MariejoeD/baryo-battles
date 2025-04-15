@@ -102,8 +102,8 @@ func set_province_data() -> void:
 	}
 	province_label.text = file_name.capitalize().replace("_", " ").replace("-", " ")
 
-	if province_facts.has(file_name):
-		random_texts = province_facts[file_name]
+	if province_facts.has(file_name.capitalize()):
+		random_texts = province_facts[file_name.capitalize()]
 	else:
 		random_texts = ["Loading facts...", "Prepare for battle!", "Good luck, commander!"]
 

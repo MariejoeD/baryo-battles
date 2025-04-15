@@ -103,3 +103,5 @@ theme_override_constants/shadow_outline_size = -1
 theme_override_fonts/font = ExtResource("2_xs8g4")
 theme_override_font_sizes/font_size = 130
 text = "BARYO BATTLES"
+horizontal_alignment = 1
+vertical_alignment = 1

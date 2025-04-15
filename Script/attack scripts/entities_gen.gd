@@ -12,6 +12,16 @@ extends Node3D
 @export var boss_scene: PackedScene  # Reference to the boss scene
 var enemies_spawned: bool = false
 
+@onready var win_lose_panel = $"../UI/WinLosePanel"
+@onready var win_panel = $"../UI/WinLosePanel/winPanel"
+@onready var lose_panel = $"../UI/WinLosePanel/losePanel"
+@onready var go_home_button = $"../UI/WinLosePanel/goHome"
+@onready var food_button = $UI/WinLosePanel/winPanel/foodButton
+@onready var wood_button = $UI/WinLosePanel/winPanel/woodButton
+@onready var stone_button = $UI/WinLosePanel/winPanel/stoneButton
+
+
+
 # Enum for spawn conditions
 enum BossSpawnCondition {
 	SpawnOnLoad,
@@ -26,6 +36,7 @@ enum BossSpawnCondition {
 @onready var container = UI.get_node("allyPanel/allyContainer")
 @onready var camera = $"../SubViewportContainer/SubViewport/Camera3D"
 @onready var player_cp = 0
+
 
 var troop_scenes: Dictionary = {}
 var boss_spawned = false
@@ -286,23 +297,41 @@ func win_lose_check():
 		print("❌ LOSE!")
 		show_result("lose")
 
-
-
-
-
-
-
+#win or lose
 func show_result(result: String):
+	win_lose_panel.visible = true  # Show the result panel
+
 	if result == "win":
-		# gawing visible yung panel
-		#pumili ng resource
+		win_panel.visible = true
+		lose_panel.visible = false
+
+		go_home_button.visible = false  # Hide the Go Home button initially
 		choose_resource_to_generate()
 		print("YOU WIN!")
+
 	elif result == "lose":
+		win_panel.visible = false
+		lose_panel.visible = true
+		go_home_button.visible = true  # Show Go Home immediately on loss
 		print("YOU LOSE!")
-	SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
- 
-	
+
+	# Connect the go home button
+	if not go_home_button.is_connected("pressed", Callable(self, "_on_go_home_pressed")):
+		go_home_button.connect("pressed", Callable(self, "_on_go_home_pressed"))
+
+	# Connect resource buttons to show the go home button
+	if not food_button.is_connected("pressed", Callable(self, "_on_resource_selected")):
+		food_button.connect("pressed", Callable(self, "_on_resource_selected"))
+
+	if not wood_button.is_connected("pressed", Callable(self, "_on_resource_selected")):
+		wood_button.connect("pressed", Callable(self, "_on_resource_selected"))
+
+	if not stone_button.is_connected("pressed", Callable(self, "_on_resource_selected")):
+		stone_button.connect("pressed", Callable(self, "_on_resource_selected"))
+
+func _on_resource_selected():
+	go_home_button.visible = true
+
 
 func choose_resource_to_generate(resource:= "Food"):
 	
