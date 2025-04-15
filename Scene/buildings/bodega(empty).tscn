@@ -152,6 +152,7 @@ texture_normal = ExtResource("2_gjaj0")
 texture_pressed = ExtResource("3_83vpr")
 
 [node name="InformationPanel" type="Panel" parent="UI/Bodega/viewInformation"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -3.755

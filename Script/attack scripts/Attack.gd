@@ -13,9 +13,17 @@ func display():
 	#make panel visible
 	pass
 	
+func is_conquered(base_name: String) -> bool:
+	for pair in MapManager.conquered_bases:
+		print(base_name.capitalize())
+		if pair["name"] == base_name.capitalize():
+			return true
+	return false
+
 func _on_btn_pressed(btn):
 	# Save the troops data before changing scenes
-	if MapManager.conquered_bases.has(btn.name):
+	print(MapManager.conquered_bases)
+	if is_conquered(btn.name):
 		display()
 		return
 	print("Before Saving:", Global.kampo_troops)  # Debugging print

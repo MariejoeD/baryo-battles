@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://drpf1hpcd61c"]
+[gd_scene load_steps=46 format=4 uid="uid://drpf1hpcd61c"]
 
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="2_1dxk2"]
 [ext_resource type="PackedScene" uid="uid://y3ykhag1nqi" path="res://assets/building models/tree3.fbx" id="4_xdklk"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dkbavgjcgvhpl" path="res://assets/enemybase/bushWFruit.fbx" id="8_4jpti"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="9_ryl7j"]
 [ext_resource type="Script" path="res://Script/attack scripts/entities_gen.gd" id="11_g6s22"]
-[ext_resource type="PackedScene" uid="uid://bny15mwxvytnl" path="res://Scene/Characters/tiniente_gimo.tscn" id="11_v8r37"]
 [ext_resource type="Script" path="res://Script/attack scripts/path_generator.gd" id="12_y5kxr"]
 [ext_resource type="Script" path="res://Script/attack scripts/pathfindiing_in _attack.gd" id="13_nphp3"]
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="18_d4bkn"]
@@ -789,7 +788,6 @@ troops = {
 "tirador": "res://Scene/Characters/tirador.tscn"
 }
 Objects = [NodePath("../Buildings"), NodePath("../Trees"), NodePath("../Stones"), NodePath("../Bushes")]
-boss_scene = ExtResource("11_v8r37")
 boss_spawn_condition = 1
 
 [node name="GridMap" type="GridMap" parent="." groups=["Floor"]]
