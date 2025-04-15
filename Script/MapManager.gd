@@ -54,6 +54,7 @@ func map_report():
 			
 			if base_cp < enemy_cp or base_cp == 0:
 				print("⚔️ Lost: %s" % base["name"])
+				conquered_bases.erase(base)
 				continue
 
 		var res_type = base["resource"]

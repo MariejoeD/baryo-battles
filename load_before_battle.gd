@@ -108,37 +108,58 @@ func set_province_data() -> void:
 		random_texts = ["Loading facts...", "Prepare for battle!", "Good luck, commander!"]
 
 func perform_loading() -> void:
-	# Start loading the scene in the background
 	ResourceLoader.load_threaded_request(target_scene_path)
 	var last_message_change := 0.0
 	var change_message_interval := 0.30
+	var loading_speed := 1.0
+
+	var scene_ready := false
+	var resource_loaded: Resource = null
+	var reached_99 := false
+	var hold_timer := 0.0
+	var hold_duration := 0.7  # How long to pause at 99% before finishing
 
 	while true:
-		var status := ResourceLoader.load_threaded_get_status(target_scene_path)
+		# Update loading status
+		if not scene_ready:
+			var status = ResourceLoader.load_threaded_get_status(target_scene_path)
+			if status == ResourceLoader.THREAD_LOAD_LOADED:
+				print("Before Scene Target: ",target_scene_path)
+				
+				resource_loaded = ResourceLoader.load_threaded_get(target_scene_path)
+				
+				print("After: ",resource_loaded.resource_path.get_file().get_basename(), "Scene Target: ",target_scene_path)
+				scene_ready = true
+			elif status == ResourceLoader.THREAD_LOAD_FAILED:
+				push_error("Failed to load scene: " + target_scene_path)
+				break
 
-		if status == ResourceLoader.THREAD_LOAD_LOADED:
-			var resource := ResourceLoader.load_threaded_get(target_scene_path)
-			if resource:
-				var new_scene :Node = resource.instantiate()
-				get_tree().root.add_child(new_scene)
-				get_tree().current_scene.queue_free()
-				get_tree().current_scene = new_scene
-				queue_free()
-			else:
-				push_error("Failed to instantiate loaded scene.")
-			break
-		elif status == ResourceLoader.THREAD_LOAD_FAILED:
-			push_error("Failed to load scene: " + target_scene_path)
-			break
+		# Simulate progress
+		if loading_bar.value < 99:
+			loading_bar.value = clamp(loading_bar.value + randf_range(0.5, loading_speed), 0, 99)
+		elif scene_ready and not reached_99:
+			# Stay at 99 while holding
+			reached_99 = true
+			loading_bar.value = 99
+		elif reached_99 and hold_timer < hold_duration:
+			hold_timer += 0.02  # Same as timer wait
+		elif reached_99 and hold_timer >= hold_duration:
+			loading_bar.value = 100
 
-		# You can't get actual progress in Godot 4 without a custom solution, so just simulate it
-		loading_bar.value = min(loading_bar.value + 2.0, 100.0)
-
-		# Update random message
+		# Update loading text
 		if last_message_change >= change_message_interval:
 			random_message.text = random_texts[randi() % random_texts.size()]
 			last_message_change = 0.0
 		else:
 			last_message_change += 0.02
 
-		await get_tree().create_timer(0.02).timeout
+		# Change scene only when bar hits 100 and resource is ready
+		if scene_ready and loading_bar.value >= 100:
+			var new_scene: Node = resource_loaded.instantiate()
+			get_tree().root.add_child(new_scene)
+			get_tree().current_scene.queue_free()
+			get_tree().current_scene = new_scene
+			queue_free()
+			break
+
+		await get_tree().create_timer(0.08).timeout

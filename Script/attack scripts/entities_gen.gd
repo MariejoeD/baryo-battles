@@ -192,6 +192,9 @@ func create_area_and_collision():
 func _spawn_boss_conditionally() -> void:
 	if boss_spawned:
 		return
+	
+	if Npc.bosses[boss_scene.resource_path.get_file().get_basename()]:
+		return
 	match boss_spawn_condition:
 		# Condition 0: Spawn boss on load
 		BossSpawnCondition.SpawnOnLoad:
@@ -298,6 +301,8 @@ func show_result(result: String):
 	elif result == "lose":
 		print("YOU LOSE!")
 	SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
+ 
+	
 
 func choose_resource_to_generate(resource:= "Food"):
 	
@@ -318,7 +323,6 @@ func _on_confirm_surrender_button_pressed():
 
 
 func surrender():
-	print("Surrender")
 	SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
 
 func calculate_player_total_cp():

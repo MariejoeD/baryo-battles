@@ -280,6 +280,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_p640j")
 text = "Go Home"
 
 [node name="losePanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.213
