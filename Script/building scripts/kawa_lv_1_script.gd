@@ -113,3 +113,16 @@ func find_nearest_sibilyan() -> Node:
 func remove_material_override(mesh_instance) -> void:
 	for i in range(mesh_instance.mesh.get_surface_count()):
 		mesh_instance.set_surface_override_material(i, null)
+
+
+func _on_view_brewed_spells_pressed():
+	var brewed_spells = $UI/Kawa/BrewAndManageSpells.get_node_or_null("brewedSpells")
+	var panel = $UI/Kawa/BrewAndManageSpells.get_node_or_null("Panel")
+	
+	if brewed_spells:
+		brewed_spells.show()
+	else:
+		print("❌ brewedSpells panel not found")
+
+	if panel:
+		panel.hide()

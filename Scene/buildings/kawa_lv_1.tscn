@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://c355t02anfh15"]
+[gd_scene load_steps=37 format=4 uid="uid://c355t02anfh15"]
 
 [ext_resource type="Script" path="res://Script/building scripts/kawa_lv_1_script.gd" id="1_6h8mu"]
 [ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="2_0b180"]
@@ -210,7 +210,7 @@ shadow_size = 6
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48s2n"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rhtq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhlni"]
 bg_color = Color(0.919668, 0.878001, 0.698229, 1)
 border_width_left = 3
 border_width_top = 3
@@ -237,6 +237,33 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnu6u"]
+bg_color = Color(0.867372, 0.491355, 0.137878, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uum82"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 6
 
 [node name="Kawa-lv1" type="MeshInstance3D"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
@@ -536,6 +563,7 @@ texture_normal = ExtResource("11_lhkt1")
 texture_pressed = ExtResource("12_k7lck")
 
 [node name="Panel" type="Panel" parent="UI/Kawa/BrewAndManageSpells"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -10.49
@@ -546,7 +574,7 @@ offset_left = -0.0098877
 offset_top = 0.0170288
 offset_right = -0.00796509
 offset_bottom = -0.0259991
-theme_override_styles/panel = SubResource("StyleBoxFlat_5rhtq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_bhlni")
 
 [node name="spellPanel" type="Panel" parent="UI/Kawa/BrewAndManageSpells/Panel"]
 layout_mode = 1
@@ -580,9 +608,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lc7i4")
 text = "BOOST"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Kawa/BrewAndManageSpells/Panel/spellPanel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.002
+anchor_bottom = 1.0
+offset_right = -971.018
+offset_bottom = -228.0
 
 [node name="dinamita" type="TextureButton" parent="UI/Kawa/BrewAndManageSpells/Panel/spellPanel/HBoxContainer"]
 layout_mode = 2
@@ -808,6 +839,232 @@ offset_right = 61.9999
 offset_bottom = 262.0
 texture = ExtResource("11_lhkt1")
 
+[node name="viewBrewedSpells" type="Button" parent="UI/Kawa/BrewAndManageSpells/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164
+anchor_top = 0.366
+anchor_right = 0.417
+anchor_bottom = 0.5
+offset_left = -0.100052
+offset_top = 3.91599
+offset_right = -0.425049
+offset_bottom = -9.0
+theme_override_fonts/font = ExtResource("5_e0l4o")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_xnu6u")
+text = "View Brewed Spells"
+
+[node name="brewedSpells" type="Panel" parent="UI/Kawa/BrewAndManageSpells"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -10.098
+anchor_top = -9.868
+anchor_right = 10.059
+anchor_bottom = -0.887
+offset_left = -0.00195313
+offset_top = 0.00402832
+offset_right = -0.00897217
+offset_bottom = -12.989
+theme_override_styles/panel = SubResource("StyleBoxFlat_uum82")
+
+[node name="spellPanel" type="Panel" parent="UI/Kawa/BrewAndManageSpells/brewedSpells"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.408
+anchor_right = 0.977
+anchor_bottom = 0.968
+offset_left = -0.328
+offset_top = -0.208008
+offset_right = -0.0570679
+offset_bottom = 0.231964
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Kawa/BrewAndManageSpells/brewedSpells/spellPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.002
+anchor_bottom = 1.0
+offset_right = -971.018
+offset_bottom = -228.0
+
+[node name="dinamita" type="TextureButton" parent="UI/Kawa/BrewAndManageSpells/brewedSpells/spellPanel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_7kbsc")
+
+[node name="spellCount" type="Label" parent="UI/Kawa/BrewAndManageSpells/brewedSpells/spellPanel/HBoxContainer/dinamita"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = 0.027
+anchor_right = 0.212
+anchor_bottom = 0.169
+offset_left = -0.0549355
+offset_top = 0.0680161
+offset_right = -0.0839386
+offset_bottom = 0.0120125
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_e0l4o")
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="kasumpa-sumpa" type="TextureButton" parent="UI/Kawa/BrewAndManageSpells/brewedSpells/spellPanel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("15_04fri")
+
+[node name="spellCount" type="Label" parent="UI/Kawa/BrewAndManageSpells/brewedSpells/spellPanel/HBoxContainer/kasumpa-sumpa"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = 0.027
+anchor_right = 0.212
+anchor_bottom = 0.169
+offset_left = -0.0549355
+offset_top = 0.0680161
+offset_right = -0.0839386
+offset_bottom = 0.0120125
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_e0l4o")
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="kulam" type="TextureButton" parent="UI/Kawa/BrewAndManageSpells/brewedSpells/spellPanel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("16_bhqbl")
+
+[node name="spellCount" type="Label" parent="UI/Kawa/BrewAndManageSpells/brewedSpells/spellPanel/HBoxContainer/kulam"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = 0.027
+anchor_right = 0.212
+anchor_bottom = 0.169
+offset_left = -0.0549355
+offset_top = 0.0680161
+offset_right = -0.0839386
+offset_bottom = 0.0120125
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_e0l4o")
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="liwanag" type="TextureButton" parent="UI/Kawa/BrewAndManageSpells/brewedSpells/spellPanel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("17_l3l4s")
+
+[node name="spellCount" type="Label" parent="UI/Kawa/BrewAndManageSpells/brewedSpells/spellPanel/HBoxContainer/liwanag"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = 0.027
+anchor_right = 0.212
+anchor_bottom = 0.169
+offset_left = -0.0549355
+offset_top = 0.0680161
+offset_right = -0.0839386
+offset_bottom = 0.0120125
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_e0l4o")
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="luntiangPuso" type="TextureButton" parent="UI/Kawa/BrewAndManageSpells/brewedSpells/spellPanel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("18_frcuy")
+
+[node name="spellCount" type="Label" parent="UI/Kawa/BrewAndManageSpells/brewedSpells/spellPanel/HBoxContainer/luntiangPuso"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = 0.027
+anchor_right = 0.212
+anchor_bottom = 0.169
+offset_left = -0.0549355
+offset_top = 0.0680161
+offset_right = -0.0839386
+offset_bottom = 0.0120125
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_e0l4o")
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="spellCount" type="Label" parent="UI/Kawa/BrewAndManageSpells/brewedSpells"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.084
+anchor_right = 0.995
+anchor_bottom = 0.309
+offset_left = -0.223935
+offset_top = 0.107998
+offset_right = 0.140015
+offset_bottom = -0.0670013
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_e0l4o")
+theme_override_font_sizes/font_size = 50
+text = "AVAILABLE BREWED SPELLS
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("13_5tnru")
 damage = 0
@@ -817,3 +1074,5 @@ target_priority = 4.0
 weight_hp = 1.0
 weight_damage = 0.0
 weight_attack_speed = 0.0
+
+[connection signal="pressed" from="UI/Kawa/BrewAndManageSpells/Panel/viewBrewedSpells" to="." method="_on_view_brewed_spells_pressed"]

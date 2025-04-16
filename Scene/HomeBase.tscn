@@ -186,9 +186,6 @@ text = "Assign Troop"
 [node name="UI" parent="Defend Mechanism" instance=ExtResource("16_gh14k")]
 is_homebase = true
 
-[node name="surrenderButton" parent="Defend Mechanism/UI" index="0"]
-visible = false
-
 [node name="allyPanel" parent="Defend Mechanism/UI" index="1"]
 anchor_left = 0.214
 anchor_right = 0.777

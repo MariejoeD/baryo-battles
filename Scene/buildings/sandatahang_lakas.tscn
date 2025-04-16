@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://boxmykhsmisfq"]
+[gd_scene load_steps=48 format=4 uid="uid://boxmykhsmisfq"]
 
 [ext_resource type="Script" path="res://Script/building scripts/sandatahang_lakas_script.gd" id="1_17mrt"]
 [ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="2_gm6rr"]
@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://y550aldjrxn" path="res://assets/trainTroops/marites.png" id="22_34bsx"]
 [ext_resource type="Texture2D" uid="uid://cmntma10p51rv" path="res://assets/trainTroops/skill/sacrifice.png" id="23_udgva"]
 [ext_resource type="Script" path="res://Script/building_stats.gd" id="25_imdyd"]
+[ext_resource type="Texture2D" uid="uid://dubrt601jl5ej" path="res://assets/button/upgradeTroops.png" id="25_m3p7s"]
+[ext_resource type="Texture2D" uid="uid://cki1c8tlx4ov" path="res://assets/button/upgradeTroopsClicked.png" id="26_nyu7x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yiisn"]
 resource_name = "wood"
@@ -351,13 +353,13 @@ grow_vertical = 2
 [node name="Sandatahang Lakas" type="HBoxContainer" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.41
+anchor_left = 0.394
 anchor_top = 0.887
-anchor_right = 0.556
+anchor_right = 0.587
 anchor_bottom = 0.962
-offset_left = 0.199951
+offset_left = -0.320099
 offset_top = 0.359985
-offset_right = 0.319946
+offset_right = 0.639954
 offset_bottom = 0.359924
 theme_override_constants/separation = 10
 
@@ -461,14 +463,14 @@ texture_pressed = ExtResource("7_kqn2g")
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -5.059
+anchor_left = -4.725
 anchor_top = -9.83
-anchor_right = 6.078
+anchor_right = 6.412
 anchor_bottom = -4.434
-offset_left = 0.00906372
-offset_top = -0.00994873
-offset_right = 0.0220642
-offset_bottom = 0.0019989
+offset_left = -0.0249176
+offset_top = -0.0098877
+offset_right = -0.0119629
+offset_bottom = 0.00198364
 theme_override_styles/panel = SubResource("StyleBoxFlat_5q6u4")
 
 [node name="upgradeDesign" type="TextureRect" parent="UI/Sandatahang Lakas/upgrade/upgradePanel"]
@@ -1513,6 +1515,832 @@ theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("5_brcq3")
 theme_override_font_sizes/font_size = 40
 text = "300"
+
+[node name="upgradeTroops" type="TextureButton" parent="UI/Sandatahang Lakas"]
+layout_mode = 2
+texture_normal = ExtResource("25_m3p7s")
+texture_pressed = ExtResource("26_nyu7x")
+
+[node name="mainPanel" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -10.49
+anchor_top = -11.189
+anchor_right = 9.608
+anchor_bottom = -0.358
+offset_left = -0.0098877
+offset_top = 0.0170288
+offset_right = -0.00796509
+offset_bottom = -0.0259991
+theme_override_styles/panel = SubResource("StyleBoxFlat_h1yuc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.051
+anchor_top = 0.332
+anchor_right = 0.927
+anchor_bottom = 0.935
+offset_left = -0.324993
+offset_top = -0.163895
+offset_right = -0.436646
+offset_bottom = 0.182983
+
+[node name="arnisador" type="TextureButton" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_ednf3")
+
+[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("14_fkyxk")
+expand_mode = 1
+
+[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.759
+anchor_right = 1.0
+anchor_bottom = 0.895
+offset_left = -0.00600004
+offset_top = 0.072998
+offset_right = -4.0
+offset_bottom = 0.0649719
+theme_override_styles/panel = SubResource("StyleBoxFlat_gge17")
+
+[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = 0.379
+anchor_right = 0.145
+anchor_bottom = 0.733
+offset_left = -0.0720806
+offset_top = -0.0030365
+offset_right = 0.039917
+offset_bottom = 0.00496292
+texture = ExtResource("16_xrre7")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.337
+anchor_top = 0.354
+anchor_right = 0.477
+anchor_bottom = 0.771
+offset_left = 0.0359993
+offset_top = 0.00799942
+offset_right = -0.0440063
+offset_bottom = -0.00800323
+texture = ExtResource("9_hjv27")
+expand_mode = 1
+
+[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157
+anchor_top = 0.296
+anchor_right = 0.314
+anchor_bottom = 0.775
+offset_left = -0.0240822
+offset_top = -0.0190353
+offset_right = -0.0280838
+offset_bottom = -0.0110359
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 18
+text = "150"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.488
+anchor_top = 0.275
+anchor_right = 0.639
+anchor_bottom = 0.754
+offset_left = 0.0439148
+offset_top = -0.0110359
+offset_right = 0.071907
+offset_bottom = -0.0030365
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 18
+text = "120"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.657
+anchor_top = 0.354
+anchor_right = 0.773
+anchor_bottom = 0.687
+offset_left = -0.0039978
+offset_top = 0.00799942
+offset_right = 0.0439911
+offset_bottom = 0.0239983
+texture = ExtResource("8_hi4ty")
+expand_mode = 1
+
+[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.779
+anchor_top = 0.254
+anchor_right = 0.959
+anchor_bottom = 0.733
+offset_left = -0.00808716
+offset_top = -0.00303555
+offset_right = 0.0319061
+offset_bottom = 0.00496292
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 18
+text = "600"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = -0.13
+anchor_right = 1.0
+anchor_bottom = -0.02
+offset_left = -0.00600004
+offset_top = -0.109997
+offset_bottom = 0.0600004
+theme_override_colors/font_color = Color(0.523997, 0.372467, 0.301272, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 30
+text = "Level: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lakanWarrior" type="TextureButton" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("16_o5djn")
+
+[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("17_gtk3v")
+expand_mode = 1
+
+[node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = -0.13
+anchor_right = 1.0
+anchor_bottom = -0.02
+offset_left = -0.00600004
+offset_top = -0.109997
+offset_bottom = 0.0600004
+theme_override_colors/font_color = Color(0.523997, 0.372467, 0.301272, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 30
+text = "Level: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.759
+anchor_right = 1.0
+anchor_bottom = 0.895
+offset_left = -0.00600004
+offset_top = 0.072998
+offset_right = -4.0
+offset_bottom = 0.0649719
+theme_override_styles/panel = SubResource("StyleBoxFlat_gge17")
+
+[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = 0.379
+anchor_right = 0.145
+anchor_bottom = 0.733
+offset_left = -0.0720806
+offset_top = -0.0030365
+offset_right = 0.039917
+offset_bottom = 0.00496292
+texture = ExtResource("16_xrre7")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.337
+anchor_top = 0.354
+anchor_right = 0.477
+anchor_bottom = 0.771
+offset_left = 0.0359993
+offset_top = 0.00799942
+offset_right = -0.0440063
+offset_bottom = -0.00800323
+texture = ExtResource("9_hjv27")
+expand_mode = 1
+
+[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157
+anchor_top = 0.296
+anchor_right = 0.314
+anchor_bottom = 0.775
+offset_left = -0.0240822
+offset_top = -0.0190353
+offset_right = -0.0280838
+offset_bottom = -0.0110359
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 18
+text = "150"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.488
+anchor_top = 0.275
+anchor_right = 0.639
+anchor_bottom = 0.754
+offset_left = 0.0439148
+offset_top = -0.0110359
+offset_right = 0.071907
+offset_bottom = -0.0030365
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 18
+text = "120"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.657
+anchor_top = 0.354
+anchor_right = 0.773
+anchor_bottom = 0.687
+offset_left = -0.0039978
+offset_top = 0.00799942
+offset_right = 0.0439911
+offset_bottom = 0.0239983
+texture = ExtResource("8_hi4ty")
+expand_mode = 1
+
+[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.779
+anchor_top = 0.254
+anchor_right = 0.959
+anchor_bottom = 0.733
+offset_left = -0.00808716
+offset_top = -0.00303555
+offset_right = 0.0319061
+offset_bottom = 0.00496292
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 18
+text = "600"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="manggagamot" type="TextureButton" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("20_u8frn")
+
+[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("21_4o3fw")
+expand_mode = 1
+
+[node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = -0.13
+anchor_right = 1.0
+anchor_bottom = -0.02
+offset_left = -0.00600004
+offset_top = -0.109997
+offset_bottom = 0.0600004
+theme_override_colors/font_color = Color(0.523997, 0.372467, 0.301272, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 30
+text = "Level: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.759
+anchor_right = 1.0
+anchor_bottom = 0.895
+offset_left = -0.00600004
+offset_top = 0.072998
+offset_right = -4.0
+offset_bottom = 0.0649719
+theme_override_styles/panel = SubResource("StyleBoxFlat_gge17")
+
+[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = 0.379
+anchor_right = 0.145
+anchor_bottom = 0.733
+offset_left = -0.0720806
+offset_top = -0.0030365
+offset_right = 0.039917
+offset_bottom = 0.00496292
+texture = ExtResource("16_xrre7")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.337
+anchor_top = 0.354
+anchor_right = 0.477
+anchor_bottom = 0.771
+offset_left = 0.0359993
+offset_top = 0.00799942
+offset_right = -0.0440063
+offset_bottom = -0.00800323
+texture = ExtResource("9_hjv27")
+expand_mode = 1
+
+[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157
+anchor_top = 0.296
+anchor_right = 0.314
+anchor_bottom = 0.775
+offset_left = -0.0240822
+offset_top = -0.0190353
+offset_right = -0.0280838
+offset_bottom = -0.0110359
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 18
+text = "150"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.488
+anchor_top = 0.275
+anchor_right = 0.639
+anchor_bottom = 0.754
+offset_left = 0.0439148
+offset_top = -0.0110359
+offset_right = 0.071907
+offset_bottom = -0.0030365
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 18
+text = "120"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.657
+anchor_top = 0.354
+anchor_right = 0.773
+anchor_bottom = 0.687
+offset_left = -0.0039978
+offset_top = 0.00799942
+offset_right = 0.0439911
+offset_bottom = 0.0239983
+texture = ExtResource("8_hi4ty")
+expand_mode = 1
+
+[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.779
+anchor_top = 0.254
+anchor_right = 0.959
+anchor_bottom = 0.733
+offset_left = -0.00808716
+offset_top = -0.00303555
+offset_right = 0.0319061
+offset_bottom = 0.00496292
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 18
+text = "600"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tirador" type="TextureButton" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("18_4d4r2")
+
+[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("19_vhbd5")
+expand_mode = 1
+
+[node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = -0.13
+anchor_right = 1.0
+anchor_bottom = -0.02
+offset_left = -0.00600004
+offset_top = -0.109997
+offset_bottom = 0.0600004
+theme_override_colors/font_color = Color(0.523997, 0.372467, 0.301272, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 30
+text = "Level: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.759
+anchor_right = 1.0
+anchor_bottom = 0.895
+offset_left = -0.00600004
+offset_top = 0.072998
+offset_right = -4.0
+offset_bottom = 0.0649719
+theme_override_styles/panel = SubResource("StyleBoxFlat_gge17")
+
+[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = 0.379
+anchor_right = 0.145
+anchor_bottom = 0.733
+offset_left = -0.0720806
+offset_top = -0.0030365
+offset_right = 0.039917
+offset_bottom = 0.00496292
+texture = ExtResource("16_xrre7")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.337
+anchor_top = 0.354
+anchor_right = 0.477
+anchor_bottom = 0.771
+offset_left = 0.0359993
+offset_top = 0.00799942
+offset_right = -0.0440063
+offset_bottom = -0.00800323
+texture = ExtResource("9_hjv27")
+expand_mode = 1
+
+[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157
+anchor_top = 0.296
+anchor_right = 0.314
+anchor_bottom = 0.775
+offset_left = -0.0240822
+offset_top = -0.0190353
+offset_right = -0.0280838
+offset_bottom = -0.0110359
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 18
+text = "150"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.488
+anchor_top = 0.275
+anchor_right = 0.639
+anchor_bottom = 0.754
+offset_left = 0.0439148
+offset_top = -0.0110359
+offset_right = 0.071907
+offset_bottom = -0.0030365
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 18
+text = "120"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.657
+anchor_top = 0.354
+anchor_right = 0.773
+anchor_bottom = 0.687
+offset_left = -0.0039978
+offset_top = 0.00799942
+offset_right = 0.0439911
+offset_bottom = 0.0239983
+texture = ExtResource("8_hi4ty")
+expand_mode = 1
+
+[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.779
+anchor_top = 0.254
+anchor_right = 0.959
+anchor_bottom = 0.733
+offset_left = -0.00808716
+offset_top = -0.00303555
+offset_right = 0.0319061
+offset_bottom = 0.00496292
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 18
+text = "600"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="marites" type="TextureButton" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("22_34bsx")
+
+[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("23_udgva")
+expand_mode = 1
+
+[node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = -0.13
+anchor_right = 1.0
+anchor_bottom = -0.02
+offset_left = -0.00600004
+offset_top = -0.109997
+offset_bottom = 0.0600004
+theme_override_colors/font_color = Color(0.523997, 0.372467, 0.301272, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 30
+text = "Level: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.759
+anchor_right = 1.0
+anchor_bottom = 0.895
+offset_left = -0.00600004
+offset_top = 0.072998
+offset_right = -4.0
+offset_bottom = 0.0649719
+theme_override_styles/panel = SubResource("StyleBoxFlat_gge17")
+
+[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = 0.379
+anchor_right = 0.145
+anchor_bottom = 0.733
+offset_left = -0.0720806
+offset_top = -0.0030365
+offset_right = 0.039917
+offset_bottom = 0.00496292
+texture = ExtResource("16_xrre7")
+expand_mode = 1
+
+[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.337
+anchor_top = 0.354
+anchor_right = 0.477
+anchor_bottom = 0.771
+offset_left = 0.0359993
+offset_top = 0.00799942
+offset_right = -0.0440063
+offset_bottom = -0.00800323
+texture = ExtResource("9_hjv27")
+expand_mode = 1
+
+[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157
+anchor_top = 0.296
+anchor_right = 0.314
+anchor_bottom = 0.775
+offset_left = -0.0240822
+offset_top = -0.0190353
+offset_right = -0.0280838
+offset_bottom = -0.0110359
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 18
+text = "150"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.488
+anchor_top = 0.275
+anchor_right = 0.639
+anchor_bottom = 0.754
+offset_left = 0.0439148
+offset_top = -0.0110359
+offset_right = 0.071907
+offset_bottom = -0.0030365
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 18
+text = "120"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.657
+anchor_top = 0.354
+anchor_right = 0.773
+anchor_bottom = 0.687
+offset_left = -0.0039978
+offset_top = 0.00799942
+offset_right = 0.0439911
+offset_bottom = 0.0239983
+texture = ExtResource("8_hi4ty")
+expand_mode = 1
+
+[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites/cost"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.779
+anchor_top = 0.254
+anchor_right = 0.959
+anchor_bottom = 0.733
+offset_left = -0.00808716
+offset_top = -0.00303555
+offset_right = 0.0319061
+offset_bottom = 0.00496292
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 18
+text = "600"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.001
+anchor_bottom = 0.156
+offset_right = -0.261108
+offset_bottom = -0.233635
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("5_brcq3")
+theme_override_font_sizes/font_size = 50
+text = "Upgrade Troops"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("25_imdyd")

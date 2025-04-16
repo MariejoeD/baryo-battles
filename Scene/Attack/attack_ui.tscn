@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bb7bjegmerfbt"]
+[gd_scene load_steps=36 format=3 uid="uid://bb7bjegmerfbt"]
 
 [ext_resource type="Script" path="res://Script/deploy.gd" id="1_dk4n7"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_oaiwf"]
@@ -183,6 +183,93 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 shadow_size = 3
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2sc4"]
+bg_color = Color(0.918627, 0.627526, 0.351388, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy5yc"]
+bg_color = Color(0.917647, 0.627451, 0.352941, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1jxx"]
+bg_color = Color(0.917647, 0.627451, 0.352941, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0f8tp"]
+bg_color = Color(0.917647, 0.627451, 0.352941, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0fs5"]
+bg_color = Color(0.542554, 0.334565, 0.118909, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyx2m"]
+bg_color = Color(0.544054, 0.849897, 0.348393, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cja8a"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jym6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -194,6 +281,7 @@ mouse_filter = 2
 script = ExtResource("1_dk4n7")
 
 [node name="surrenderButton" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.042
@@ -213,6 +301,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_dwneg")
 text = "SURRENDER"
 
 [node name="allyPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.254
@@ -367,6 +456,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_nc8wh")
 text = "CANCEL"
 
 [node name="WinLosePanel" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -847,3 +937,394 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_afxt4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_p640j")
 theme_override_styles/normal = SubResource("StyleBoxFlat_p640j")
 text = "Go Home"
+
+[node name="addTroop_Civilian" type="Node" parent="."]
+
+[node name="Panel" type="Panel" parent="addTroop_Civilian"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.179
+anchor_top = 0.14
+anchor_right = 0.843
+anchor_bottom = 0.851
+offset_left = -0.12001
+offset_top = 0.199997
+offset_right = -0.0400391
+offset_bottom = 0.279968
+theme_override_styles/panel = SubResource("StyleBoxFlat_xww5h")
+
+[node name="addCivilian" type="Button" parent="addTroop_Civilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.334
+anchor_top = 0.328
+anchor_right = 0.515
+anchor_bottom = 0.45
+offset_left = 0.0999451
+offset_right = 0.249939
+offset_bottom = -1.52588e-05
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxFlat_r2sc4")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_sy5yc")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_g1jxx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0f8tp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_j0fs5")
+text = "Add Civilian"
+
+[node name="description" type="Label" parent="addTroop_Civilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.173
+anchor_top = 0.038
+anchor_right = 0.825
+anchor_bottom = 0.207
+offset_left = -0.194
+offset_top = 0.0619984
+offset_right = 0.149963
+offset_bottom = -0.0570068
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 26
+text = "Send civilians and trained units to your liberated provinces to maintain control and defend against enemy raids."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="allyContainer" type="HBoxContainer" parent="addTroop_Civilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.015
+anchor_right = 0.988
+anchor_bottom = 1.0
+offset_left = 164.25
+offset_top = 336.0
+offset_right = -165.8
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="arnisador" type="TextureButton" parent="addTroop_Civilian/Panel/allyContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_yixm7")
+
+[node name="count" type="Label" parent="addTroop_Civilian/Panel/allyContainer/arnisador"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.764
+anchor_right = 0.229
+anchor_bottom = 0.951
+offset_left = 2.0
+offset_top = 0.0279922
+offset_right = 0.0159988
+offset_bottom = 0.0269928
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level" type="Label" parent="addTroop_Civilian/Panel/allyContainer/arnisador"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.049
+anchor_right = 0.958
+anchor_bottom = 0.252
+offset_top = -0.0270004
+offset_right = 0.0319977
+offset_bottom = 0.00399971
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 20
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lakan_warrior" type="TextureButton" parent="addTroop_Civilian/Panel/allyContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_giv6o")
+
+[node name="count" type="Label" parent="addTroop_Civilian/Panel/allyContainer/lakan_warrior"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.764
+anchor_right = 0.229
+anchor_bottom = 0.951
+offset_left = 2.0
+offset_top = 0.0279922
+offset_right = 0.0159988
+offset_bottom = 0.0269928
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level" type="Label" parent="addTroop_Civilian/Panel/allyContainer/lakan_warrior"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.049
+anchor_right = 0.958
+anchor_bottom = 0.252
+offset_top = -0.0270004
+offset_right = 0.0319977
+offset_bottom = 0.00399971
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 20
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tirador" type="TextureButton" parent="addTroop_Civilian/Panel/allyContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_q5aik")
+
+[node name="count" type="Label" parent="addTroop_Civilian/Panel/allyContainer/tirador"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.764
+anchor_right = 0.229
+anchor_bottom = 0.951
+offset_left = 2.0
+offset_top = 0.0279922
+offset_right = 0.0159988
+offset_bottom = 0.0269928
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level" type="Label" parent="addTroop_Civilian/Panel/allyContainer/tirador"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.049
+anchor_right = 0.958
+anchor_bottom = 0.252
+offset_top = -0.0270004
+offset_right = 0.0319977
+offset_bottom = 0.00399971
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 20
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="manggagamot" type="TextureButton" parent="addTroop_Civilian/Panel/allyContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_brc5q")
+
+[node name="count" type="Label" parent="addTroop_Civilian/Panel/allyContainer/manggagamot"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.764
+anchor_right = 0.229
+anchor_bottom = 0.951
+offset_left = 2.0
+offset_top = 0.0279922
+offset_right = 0.0159988
+offset_bottom = 0.0269928
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level" type="Label" parent="addTroop_Civilian/Panel/allyContainer/manggagamot"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.049
+anchor_right = 0.958
+anchor_bottom = 0.252
+offset_top = -0.0270004
+offset_right = 0.0319977
+offset_bottom = 0.00399971
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 20
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="marites" type="TextureButton" parent="addTroop_Civilian/Panel/allyContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_1te5m")
+
+[node name="count" type="Label" parent="addTroop_Civilian/Panel/allyContainer/marites"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.764
+anchor_right = 0.229
+anchor_bottom = 0.951
+offset_left = 2.0
+offset_top = 0.0279922
+offset_right = 0.0159988
+offset_bottom = 0.0269928
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level" type="Label" parent="addTroop_Civilian/Panel/allyContainer/marites"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.049
+anchor_right = 0.958
+anchor_bottom = 0.252
+offset_top = -0.0270004
+offset_right = 0.0319977
+offset_bottom = 0.00399971
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 20
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="chooseTroops" type="Label" parent="addTroop_Civilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.314
+anchor_top = 0.544
+anchor_right = 0.671
+anchor_bottom = 0.652
+offset_left = 0.100006
+offset_right = -0.349976
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 26
+text = "Choose Troops:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="done" type="Button" parent="addTroop_Civilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.852
+anchor_top = 0.052
+anchor_right = 0.962
+anchor_bottom = 0.152
+offset_left = -0.200073
+offset_right = 0.299927
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_kyx2m")
+text = "Done"
+
+[node name="civilianCountPanel" type="Panel" parent="addTroop_Civilian/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.524
+anchor_top = 0.336
+anchor_right = 0.645
+anchor_bottom = 0.434
+offset_left = -0.400055
+offset_top = -1.52588e-05
+offset_right = -0.250061
+theme_override_styles/panel = SubResource("StyleBoxFlat_cja8a")
+
+[node name="minus" type="Button" parent="addTroop_Civilian/Panel/civilianCountPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.039
+anchor_top = 0.082
+anchor_right = 0.34
+anchor_bottom = 0.939
+offset_left = -0.0170002
+offset_top = -0.0180001
+offset_right = -0.0200005
+offset_bottom = -0.0110016
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_8jym6")
+text = "-"
+
+[node name="plus" type="Button" parent="addTroop_Civilian/Panel/civilianCountPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.67
+anchor_top = 0.082
+anchor_right = 0.971
+anchor_bottom = 0.939
+offset_left = -0.0100021
+offset_top = -0.0180001
+offset_right = -0.0130081
+offset_bottom = -0.0110016
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_8jym6")
+text = "+"
+
+[node name="civilianCount" type="Label" parent="addTroop_Civilian/Panel/civilianCountPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.408
+anchor_top = 0.122
+anchor_right = 0.65
+anchor_bottom = 0.898
+offset_left = -0.0240021
+offset_top = 0.0219994
+offset_right = 0.0499954
+offset_bottom = -0.00200272
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 30
+text = "0"
