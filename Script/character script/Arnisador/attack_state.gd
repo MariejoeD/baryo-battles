@@ -1,3 +1,4 @@
+
 #attack_state.gd
 extends NpcState
 @onready var fsm = get_parent() as StateMachine  # Reference to the FSM for state changes
@@ -88,18 +89,26 @@ func _heal():
 
 # Function to toggle between wolf and human form
 func wolf_transform():
-	var is_wolf = fsm.npc_root_node.get_child(2).visible
-	
-	# Toggle visibility
-	fsm.npc_root_node.get_child(1).visible = is_wolf  # Human form
-	fsm.npc_root_node.get_child(2).visible = !is_wolf  # Wolf form
+	var human_model = fsm.npc_root_node.get_node("HumanModel")  # change as needed
+	var wolf_model = fsm.npc_root_node.get_node("WolfModel")    # change as needed
 
-	# Play smoke particles once when transforming
-	var smoke = fsm.npc_root_node.find_child("GPUParticles3D2")
-	smoke.restart()  # Restarts the smoke particle system
-	
-	# Change evasion stat
-	stats.evasion_chance = 0.3
+	var is_currently_wolf = wolf_model.visible
+	var is_transforming_to_wolf = !is_currently_wolf
+
+	human_model.visible = is_currently_wolf
+	wolf_model.visible = is_transforming_to_wolf
+
+	# Play smoke particles only when transforming to wolf
+	if is_transforming_to_wolf:
+		var smoke = wolf_model.get_node("GPUParticles3D")  # update path if needed
+		if smoke:
+			smoke.one_shot = true
+			smoke.emitting = false  # reset in case it was already emitting
+			smoke.emitting = true
+
+	# Update evasion stat
+	stats.evasion_chance = 0.3 if is_transforming_to_wolf else 0.0
+
 
 	
 # Function to check if there's a new target and retarget
