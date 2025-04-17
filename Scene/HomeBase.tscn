@@ -80,6 +80,7 @@ min_zoom = 5
 second_cam = NodePath("../../../Camera3D")
 
 [node name="Control" parent="Base" instance=ExtResource("1_8noqr")]
+mouse_filter = 2
 
 [node name="Camera3D" type="Camera3D" parent="Base"]
 transform = Transform3D(0.707107, -0.5, 0.5, -2.55739e-08, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 39, 41, 40)
@@ -184,6 +185,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4oj3q")
 text = "Assign Troop"
 
 [node name="UI" parent="Defend Mechanism" instance=ExtResource("16_gh14k")]
+visible = false
 is_homebase = true
 
 [node name="allyPanel" parent="Defend Mechanism/UI" index="1"]
@@ -193,9 +195,47 @@ offset_left = 0.0799866
 offset_top = -0.160095
 offset_right = 0.440002
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.431
+anchor_top = 0.956
+anchor_right = 0.569
+anchor_bottom = 1.0
+offset_left = 88.3199
+offset_top = 31.68
+offset_right = -88.32
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.43
+anchor_top = 0.957
+anchor_right = 0.57
+anchor_bottom = 1.0
+offset_left = 0.599976
+offset_top = -0.0400391
+offset_right = -0.600098
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "Generate"
+
+[node name="Button2" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="Button3" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "Load"
+
 [connection signal="tree_entered" from="Base/Control" to="Base/Control" method="_on_tree_entered"]
 [connection signal="tree_exiting" from="Base/Control" to="Base/Control" method="_on_tree_exiting"]
 [connection signal="tree_entered" from="Base/Generate" to="Base/Generate" method="_on_tree_entered"]
 [connection signal="tree_exiting" from="Base/Generate" to="Base/Generate" method="_on_tree_exiting"]
+[connection signal="pressed" from="Control/HBoxContainer/Button" to="Base/Generate" method="_on_button_pressed"]
 
 [editable path="Defend Mechanism/UI"]

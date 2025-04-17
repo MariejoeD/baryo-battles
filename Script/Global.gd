@@ -19,10 +19,12 @@ var stone_qty :int = 3000:
 		
 var food_qty :int = 3000:
 	set(food):
-		food_qty = food
 		SignalManager.update_mats.emit()
+		food_qty = food
 	get:
 		return food_qty
+var total_space := 0
+var used_space := 0
 
 var grid_size :int = 100
 var npc_discovered = {}
@@ -77,30 +79,71 @@ func _process(delta: float) -> void:
 	time_of_day = current_time / DAY_DURATION
 
 
+func recalculate_space():
+	total_space = 0
+	used_space = 0
+
+	# Clean invalid kampo instances
+	all_kampo = all_kampo.filter(func(k): return is_instance_valid(k))
+
+	for kampo in all_kampo:
+		total_space += kampo.spaces
+
+	var entities = get_tree().current_scene.find_child("Entities")
+	if entities:
+		for entity in entities.get_children():
+			var stats = entity.find_child("Stats")
+			if stats:
+				used_space += stats.space_cost
+
+
+func get_remaining_space() -> int:
+	return total_space - used_space
+
 func get_food_cap():
 	var total_food_cap = 0
 	print("Imbakan")
 	print(all_imbakan)
+
+	all_imbakan = all_imbakan.filter(func(i): return is_instance_valid(i))  # Clean freed ones
+
 	for imbakan in all_imbakan:
-		print("Imbakan:" ,imbakan.food_cap)
+		print("Imbakan:", imbakan.food_cap)
 		total_food_cap += imbakan.food_cap
 	return total_food_cap
+
+
 func get_wood_cap():
 	var total_wood_cap = 0
+
+	all_bodega = all_bodega.filter(func(b): return is_instance_valid(b))  # Clean freed ones
+
 	for bodega in all_bodega:
 		total_wood_cap += bodega.wood_cap
 	return total_wood_cap
+
+
 func get_stone_cap():
 	var total_stone_cap = 0
+
+	all_bodega = all_bodega.filter(func(b): return is_instance_valid(b))  # Clean freed ones
+
 	for bodega in all_bodega:
 		total_stone_cap += bodega.stone_cap
 	return total_stone_cap
+
 # Count actual number of civilians in the scene dynamically
 func get_current_civilian_count() -> int:
 	var stored_civ = 0
+	
+	# Remove freed kubos
+	all_kubos = all_kubos.filter(func(kubo): return is_instance_valid(kubo))
+	
 	for kubo in all_kubos:
 		stored_civ += kubo.stored_sibilyans.size()
+	
 	return get_tree().get_nodes_in_group("Sibilyan").size() + stored_civ
+
 
 
 # Get the total max civilians from all built Kubos

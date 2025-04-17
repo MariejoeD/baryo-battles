@@ -102,6 +102,9 @@ func set_province_data() -> void:
 	}
 	province_label.text = file_name.capitalize().replace("_", " ").replace("-", " ")
 
+	if province_label.text == "Home Base":
+		province_label.text = "Capiz"
+
 	if province_facts.has(file_name.capitalize()):
 		random_texts = province_facts[file_name.capitalize()]
 	else:
@@ -159,6 +162,8 @@ func perform_loading() -> void:
 			get_tree().root.add_child(new_scene)
 			get_tree().current_scene.queue_free()
 			get_tree().current_scene = new_scene
+			if get_tree().current_scene.name == "HomeBase":
+				SaverLoader.load_save_data()
 			queue_free()
 			break
 

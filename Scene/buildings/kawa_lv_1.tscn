@@ -278,6 +278,7 @@ collision_mask = 5
 shape = SubResource("ConvexPolygonShape3D_82mc7")
 
 [node name="UI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

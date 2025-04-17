@@ -28,6 +28,7 @@ func _on_btn_pressed(btn):
 		return
 	print("Before Saving:", Global.kampo_troops)  # Debugging print
 	Global.kampo_troops.clear()
+	Global.all_kampo = Global.all_kampo.filter(func(k): return is_instance_valid(k))
 	for kampo in Global.all_kampo:
 		var kampo_id = kampo.get_instance_id()
 		

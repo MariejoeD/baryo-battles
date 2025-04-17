@@ -8,7 +8,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_2m2ys"]
 size = Vector3(1.92041, 1.26001, 1.96912)
 
-[node name="Stone" type="Node3D"]
+[node name="Stone" type="Node3D" groups=["Stones"]]
 script = ExtResource("1_egnvh")
 
 [node name="stone1" parent="." instance=ExtResource("1_wmfgu")]

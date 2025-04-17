@@ -2,10 +2,10 @@ extends MeshInstance3D
 
 
 var active_panel
-var plot_level = 1  # Example plot level
+var level = 1  # Example plot level
 var base_grow_duration = 600
 var multiplier = .08
-var duration = base_grow_duration * pow(multiplier, plot_level-1)
+var duration = base_grow_duration * pow(multiplier, level-1)
 var is_harvestable:bool = false
 var initial_pos
 var built = false

@@ -42,10 +42,10 @@ func pressed_mine():
 	if not worker_assigned:
 		panel.visible = false
 		is_panel_visible = false
-		worker_assigned = true
 		var sibilyan = find_nearest_sibilyan()
 		if Global.get_stone_cap() == Global.stone_qty or Global.get_stone_cap() == 0:
 			return
+		worker_assigned = true
 		sibilyan.add_work(self)
 
 

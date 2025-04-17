@@ -13,10 +13,25 @@ var is_panel_visible = false
 func _ready() -> void:
 	area.monitoring = true
 	panel.visible = false
+	area.input_event.connect(_on_area_3d_input_event)
+	#print("Area monitoring:", area.monitoring)
+	#print("Area input pickable:", area.input_ray_pickable)
+	#print("Collision layer:", area.collision_layer)
+	#print("Collision mask:", area.collision_mask)
 
+
+func init():
+	print("Tree init:", self.name)
+	area.input_event.disconnect(_on_area_3d_input_event)
+	if not area.is_connected("input_event", _on_area_3d_input_event):
+		print("Connected")
+		area.input_event.connect(_on_area_3d_input_event)
+	area.monitoring = true
 
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+	#print("Area received event:", event)
+
 	if $"../../Control/Build".building_mode:
 		return
 	if event is InputEventMouseButton:
@@ -47,10 +62,10 @@ func pressed_cut():
 	if not worker_assigned:
 		panel.visible = false
 		is_panel_visible = false
-		worker_assigned = true
 		var sibilyan = find_nearest_sibilyan()
 		if Global.get_wood_cap() == Global.wood_qty or Global.get_wood_cap() == 0:
 			return
+		worker_assigned = true
 		sibilyan.add_work(self)
 		pass
 

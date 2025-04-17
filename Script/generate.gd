@@ -15,16 +15,29 @@ var available_stone_indices = [] # List to keep track of available indices for s
 func _ready() -> void:
 	generate_trees()
 	generate_stones()
+	if SaverLoader.saved_game and SaverLoader.saved_game.environment_data and SaverLoader.saved_game.environment_data.size() > 0:
+		print("running")
+		SaverLoader.load_environment(self)
+
+
+func clear_environment():
+	for tree in get_tree().get_nodes_in_group("Trees"):
+		tree.get_parent().remove_child(tree)
+		tree.queue_free()
+	for stone in get_tree().get_nodes_in_group("Stones"):
+		stone.get_parent().remove_child(stone)
+		stone.queue_free()
 
 
 
 func generate_trees():
+	print("Tree: ",find_qty("tree"))
 	if find_qty("tree") >= max_tree_qty:
 		return
 	if tree_scene == null:
 		print("No Tree Scene")
 		return
-
+	
 
 	for i in range(max_tree_qty - find_qty("tree")):
 		var is_valid_position = false
@@ -53,7 +66,8 @@ func generate_trees():
 		selected_child.visible = true
 
 func generate_stones():
-	if find_qty("stones") >= max_stones_qty:
+	print("Stone: ",find_qty("stone"))
+	if find_qty("stone") >= max_stones_qty:
 		return
 	if stone_scene == null:
 		print("No Stone Scene")
@@ -93,23 +107,14 @@ func get_next_available_index(resource_type: String) -> int:
 	return next_index
 
 func find_qty(mats: String) -> int:
-	if mats != "tree" and mats != "stone":
-		print("%s is not a available resources" % [mats])
-		return 0
-	var current_qty = {
-		"tree" : 0,
-		"stone" : 0
-	}
-	for child in get_children():
-		if child.name.begins_with("Tree") and mats == "tree":
-			current_qty["tree"] += 1
-		elif  child.name.begins_with("Stone") and mats == "stone":
-			current_qty["stone"] += 1
 	if mats == "tree":
-		return current_qty["tree"]
+		return get_tree().get_nodes_in_group("Trees").size()
 	elif mats == "stone":
-		return current_qty["stone"]
-	return 0
+		return get_tree().get_nodes_in_group("Stones").size()
+	else:
+		print("%s is not an available resource" % [mats])
+		return 0
+
 
 # Call this when a tree is removed to free up its index
 func free_resource_index(resource: Node):
@@ -129,11 +134,24 @@ func _on_tree_entered() -> void:
 	SignalManager.discovered.connect(npc)
 	SignalManager.tree_remove.connect(free_resource_index)
 	SignalManager.new_day.connect(generate_trees)
+	SignalManager.new_day.connect(generate_stones)
+	
 	pass # Replace with function body.
 
 
 func _on_tree_exiting() -> void:
 	SignalManager.tree_remove.disconnect(free_resource_index)
 	SignalManager.new_day.disconnect(generate_trees)
+	SignalManager.new_day.disconnect(generate_stones)
 	
+	pass # Replace with function body.
+
+
+func _on_button_pressed() -> void:
+	clear_environment()
+	for child in $"../AMap/GridMap".get_children():
+		child.get_parent().remove_child(child)
+		child.queue_free()
+	generate_trees()
+	generate_stones()
 	pass # Replace with function body.

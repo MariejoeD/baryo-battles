@@ -5,7 +5,7 @@ var active_panel
 var built: bool =false
 @onready var building_name = $UI.get_child(0)
 var food_cap = 0
-
+var level =1
 func _ready() -> void:
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)

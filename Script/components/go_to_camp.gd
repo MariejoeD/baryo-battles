@@ -47,6 +47,7 @@ func go_here(target):
 	await path_ready  # Wait until NPC reaches the target
 
 func go_to_camp():
+	Global.all_kampo = Global.all_kampo.filter(func(k): return is_instance_valid(k))
 	for kampo in Global.all_kampo:
 		if kampo:
 			await go_here(kampo.global_transform.origin)

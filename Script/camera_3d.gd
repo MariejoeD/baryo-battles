@@ -10,11 +10,9 @@ var is_panning := false
 var last_mouse_pos := Vector2.ZERO
 @export var second_cam: Camera3D
 
-func _process(delta: float) -> void:
-	#if is_panning:
-		#print("pan")
+func _process(delta):
 	_pan(delta)
-
+	
 func _input(event: InputEvent) -> void:
 	
 	if event is InputEventMouseButton:

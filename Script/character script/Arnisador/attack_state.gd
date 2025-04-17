@@ -104,11 +104,10 @@ func wolf_transform():
 		if smoke:
 			smoke.visible = true
 
-	# Update evasion stat
+
 	stats.evasion_chance = 0.3 if is_transforming_to_wolf else 0.0
 
 
-	
 # Function to check if there's a new target and retarget
 func _find_new_target():
 	fsm.targeting_component._find_nearest_target()

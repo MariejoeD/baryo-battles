@@ -72,11 +72,15 @@ func _on_settings_button_pressed():
 	settings_panel.visible = !settings_panel.visible
 
 func _on_back_to_main_menu_pressed():
+	SignalManager.save.emit()
+	
 	save_troops_to_file()
 	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
 
 func save_troops_to_file():
 	var save_dict = {}
+	# Clean invalid kampo instances
+	Global.all_kampo = Global.all_kampo.filter(func(k): return is_instance_valid(k))
 	for kampo in Global.all_kampo:
 		save_dict[kampo.get_instance_id()] = kampo.troops
 

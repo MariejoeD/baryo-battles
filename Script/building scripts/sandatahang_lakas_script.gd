@@ -50,8 +50,19 @@ func _on_troop_pressed(troop) -> void:
 	var total_sibilyans = Global.get_current_civilian_count()
 	
 	print("Total Sibilyans: ", total_sibilyans)
-
-		
+	print(troop.get_node("cost/cost").text)
+	var food_cost :int = int(troop.find_child("foodCost").text)
+	var wood_cost :int = int(troop.find_child("woodCost").text)
+	var space_cost :int = int(troop.get_node("cost/cost").text)
+	var stone_cost :int = int(troop.find_child("stoneCost").text)
+	Global.recalculate_space()
+	var remaining_space :int = Global.get_remaining_space()
+	
+	if remaining_space < space_cost or Global.food_qty < food_cost or Global.wood_qty < wood_cost or Global.stone_qty < stone_cost:
+		# warning resource not enough
+		return
+	
+	
 	if sacrificeSib.size() >= total_sibilyans:
 		print("No available Sibilyan to sacrifice!")
 		show_warning_label("noAvailableCivilian")
@@ -62,6 +73,9 @@ func _on_troop_pressed(troop) -> void:
 		print("No valid Sibilyan found!")
 		show_warning_label("noValidSibilyanFound")
 		return
+	Global.food_qty -= food_cost
+	Global.wood_qty -= wood_cost
+	Global.stone_qty -= stone_cost
 	
 	sacrificeSib.append(sib)
 	if sib.assigned_kubo:

@@ -1,15 +1,38 @@
-extends MeshInstance3D
+# Kubo.gd
+extends Building
+
+@export var built: bool = false
+@export var current_sibilyan: int = 0
+@export var max_sibilyans: int = 0
+var stored_sibilyans: Array = []
+
+var sibilyan_scene = preload("res://Scene/Characters/sibilyan.tscn")
+
+func get_save_data() -> Dictionary:
+	var base_data = super.get_save_data()
+	base_data["built"] = built
+	base_data["current_sibilyan"] = current_sibilyan
+	base_data["max_sibilyans"] = max_sibilyans
+	base_data["stored_count"] = stored_sibilyans.size()
+	return base_data
+
+func load_from_data(data: Dictionary) -> void:
+	super.load_from_data(data)
+	built = data.get("built", false)
+	current_sibilyan = data.get("current_sibilyan", 0)
+	max_sibilyans = data.get("max_sibilyans", 0)
+
+	var stored_count = data.get("stored_count", 0)
+	for i in range(stored_count):
+		var sib_inst = sibilyan_scene.instantiate()
+		stored_sibilyans.append(sib_inst)
+		sib_inst.assigned_kubo = self
 
 
 var active_panel
-var built: bool =false
-var food_req = 60
+@export var food_req :int = 60
 @onready var building_name = $UI.get_child(0)
-@export var sibilyan_scene: PackedScene
-@onready var current_sibilyan: int = int($UI/Kubo/generateCivilian/Panel/current.text)
-@onready var max_sibilyans: int = int($UI/Kubo/generateCivilian/Panel/max.text)
 @onready var Entities = get_tree().current_scene.find_child("Entities")
-@onready var stored_sibilyans: Array = []
 func _ready() -> void: 
 
 
@@ -22,6 +45,7 @@ func _ready() -> void:
 	
 	pass
 
+	
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if built and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if not $UI.visible:

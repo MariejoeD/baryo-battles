@@ -4,6 +4,7 @@ extends MeshInstance3D
 var active_panel
 var built: bool =false
 @onready var building_name = $UI.get_child(0)
+var level = 1
 var troops: Array = []
 @export var troopImagePath : String
 @onready var container = get_node("UI/Kampo/ManageTroops/manageTroopsPanel/ScrollContainer/ScrollContainer/HBoxContainer")
