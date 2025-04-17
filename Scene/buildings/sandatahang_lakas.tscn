@@ -1522,6 +1522,7 @@ texture_normal = ExtResource("25_m3p7s")
 texture_pressed = ExtResource("26_nyu7x")
 
 [node name="mainPanel" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -10.49

@@ -16,9 +16,9 @@ var enemies_spawned: bool = false
 @onready var win_panel = $"../UI/WinLosePanel/winPanel"
 @onready var lose_panel = $"../UI/WinLosePanel/losePanel"
 @onready var go_home_button = $"../UI/WinLosePanel/goHome"
-@onready var food_button = $UI/WinLosePanel/winPanel/foodButton
-@onready var wood_button = $UI/WinLosePanel/winPanel/woodButton
-@onready var stone_button = $UI/WinLosePanel/winPanel/stoneButton
+@onready var food_button = $"../UI/WinLosePanel/winPanel/foodButton"
+@onready var wood_button = $"../UI/WinLosePanel/winPanel/woodButton"
+@onready var stone_button = $"../UI/WinLosePanel/winPanel/stoneButton"
 
 
 
@@ -306,36 +306,35 @@ func show_result(result: String):
 		lose_panel.visible = false
 
 		go_home_button.visible = false  # Hide the Go Home button initially
-		choose_resource_to_generate()
+		#choose_resource_to_generate()
 		print("YOU WIN!")
+		# Connect resource buttons to show the go home button
+		if not food_button.is_connected("pressed", Callable(self, "choose_resource_to_generate")):
+			food_button.pressed.connect(choose_resource_to_generate.bind("Food"))
+
+		if not wood_button.is_connected("pressed", Callable(self, "choose_resource_to_generate")):
+			wood_button.pressed.connect(choose_resource_to_generate.bind("Wood"))
+
+		if not stone_button.is_connected("pressed", Callable(self, "choose_resource_to_generate")):
+			stone_button.pressed.connect(choose_resource_to_generate.bind("Stone"))
 
 	elif result == "lose":
+
 		win_panel.visible = false
 		lose_panel.visible = true
 		go_home_button.visible = true  # Show Go Home immediately on loss
 		print("YOU LOSE!")
-
-	# Connect the go home button
-	if not go_home_button.is_connected("pressed", Callable(self, "_on_go_home_pressed")):
-		go_home_button.connect("pressed", Callable(self, "_on_go_home_pressed"))
-
-	# Connect resource buttons to show the go home button
-	if not food_button.is_connected("pressed", Callable(self, "_on_resource_selected")):
-		food_button.connect("pressed", Callable(self, "_on_resource_selected"))
-
-	if not wood_button.is_connected("pressed", Callable(self, "_on_resource_selected")):
-		wood_button.connect("pressed", Callable(self, "_on_resource_selected"))
-
-	if not stone_button.is_connected("pressed", Callable(self, "_on_resource_selected")):
-		stone_button.connect("pressed", Callable(self, "_on_resource_selected"))
+		# Connect the go home button
+		if not go_home_button.is_connected("pressed", Callable(self, "_on_go_home_pressed")):
+			go_home_button.connect("pressed", Callable(self, "_on_go_home_pressed"))
 
 func _on_resource_selected():
 	go_home_button.visible = true
 
 
 func choose_resource_to_generate(resource:= "Food"):
-	
 	MapManager.conquer_base(get_parent().name,resource, 5)
+	SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
 	pass
 
 

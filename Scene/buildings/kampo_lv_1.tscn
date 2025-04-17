@@ -505,24 +505,49 @@ theme_override_fonts/font = ExtResource("5_ep854")
 theme_override_font_sizes/font_size = 30
 text = "Available Troops"
 
-[node name="allyContainer" type="HBoxContainer" parent="UI/Kampo/ManageTroops/manageTroopsPanel"]
+[node name="ScrollContainer" type="Panel" parent="UI/Kampo/ManageTroops/manageTroopsPanel"]
 layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.091
+anchor_top = 0.283
+anchor_right = 0.896
+anchor_bottom = 0.89
+offset_left = 0.220997
+offset_top = 0.022995
+offset_right = 0.175995
+offset_bottom = 0.0899963
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Kampo/ManageTroops/manageTroopsPanel/ScrollContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Kampo/ManageTroops/manageTroopsPanel/ScrollContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="TEMP" type="Node" parent="UI"]
+
+[node name="allyContainer" type="HBoxContainer" parent="UI/TEMP"]
+visible = false
 anchors_preset = -1
 anchor_left = 0.015
 anchor_right = 0.988
 anchor_bottom = 1.0
-offset_left = 112.675
-offset_top = 66.0
-offset_right = -125.94
-offset_bottom = -56.0
+offset_left = 356.521
+offset_top = 261.0
+offset_right = 117.906
+offset_bottom = 139.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="arnisador" type="TextureButton" parent="UI/Kampo/ManageTroops/manageTroopsPanel/allyContainer"]
+[node name="arnisador" type="TextureButton" parent="UI/TEMP/allyContainer"]
 layout_mode = 2
 texture_normal = ExtResource("13_h8alp")
 
-[node name="count" type="Label" parent="UI/Kampo/ManageTroops/manageTroopsPanel/allyContainer/arnisador"]
+[node name="count" type="Label" parent="UI/TEMP/allyContainer/arnisador"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.764
@@ -541,7 +566,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="level" type="Label" parent="UI/Kampo/ManageTroops/manageTroopsPanel/allyContainer/arnisador"]
+[node name="level" type="Label" parent="UI/TEMP/allyContainer/arnisador"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.75
@@ -560,11 +585,11 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="lakan_warrior" type="TextureButton" parent="UI/Kampo/ManageTroops/manageTroopsPanel/allyContainer"]
+[node name="lakan_warrior" type="TextureButton" parent="UI/TEMP/allyContainer"]
 layout_mode = 2
 texture_normal = ExtResource("14_ggx81")
 
-[node name="count" type="Label" parent="UI/Kampo/ManageTroops/manageTroopsPanel/allyContainer/lakan_warrior"]
+[node name="count" type="Label" parent="UI/TEMP/allyContainer/lakan_warrior"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.764
@@ -583,7 +608,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="level" type="Label" parent="UI/Kampo/ManageTroops/manageTroopsPanel/allyContainer/lakan_warrior"]
+[node name="level" type="Label" parent="UI/TEMP/allyContainer/lakan_warrior"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.75
@@ -602,11 +627,11 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="tirador" type="TextureButton" parent="UI/Kampo/ManageTroops/manageTroopsPanel/allyContainer"]
+[node name="tirador" type="TextureButton" parent="UI/TEMP/allyContainer"]
 layout_mode = 2
 texture_normal = ExtResource("15_m4k4u")
 
-[node name="count" type="Label" parent="UI/Kampo/ManageTroops/manageTroopsPanel/allyContainer/tirador"]
+[node name="count" type="Label" parent="UI/TEMP/allyContainer/tirador"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.764
@@ -625,7 +650,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="level" type="Label" parent="UI/Kampo/ManageTroops/manageTroopsPanel/allyContainer/tirador"]
+[node name="level" type="Label" parent="UI/TEMP/allyContainer/tirador"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.75
@@ -644,11 +669,11 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="manggagamot" type="TextureButton" parent="UI/Kampo/ManageTroops/manageTroopsPanel/allyContainer"]
+[node name="manggagamot" type="TextureButton" parent="UI/TEMP/allyContainer"]
 layout_mode = 2
 texture_normal = ExtResource("16_rtax8")
 
-[node name="count" type="Label" parent="UI/Kampo/ManageTroops/manageTroopsPanel/allyContainer/manggagamot"]
+[node name="count" type="Label" parent="UI/TEMP/allyContainer/manggagamot"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.764
@@ -667,7 +692,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="level" type="Label" parent="UI/Kampo/ManageTroops/manageTroopsPanel/allyContainer/manggagamot"]
+[node name="level" type="Label" parent="UI/TEMP/allyContainer/manggagamot"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.75
@@ -686,11 +711,11 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="marites" type="TextureButton" parent="UI/Kampo/ManageTroops/manageTroopsPanel/allyContainer"]
+[node name="marites" type="TextureButton" parent="UI/TEMP/allyContainer"]
 layout_mode = 2
 texture_normal = ExtResource("17_xdug8")
 
-[node name="count" type="Label" parent="UI/Kampo/ManageTroops/manageTroopsPanel/allyContainer/marites"]
+[node name="count" type="Label" parent="UI/TEMP/allyContainer/marites"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.764
@@ -709,7 +734,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="level" type="Label" parent="UI/Kampo/ManageTroops/manageTroopsPanel/allyContainer/marites"]
+[node name="level" type="Label" parent="UI/TEMP/allyContainer/marites"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.75

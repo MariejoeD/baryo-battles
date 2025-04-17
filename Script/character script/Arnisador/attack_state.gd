@@ -89,8 +89,8 @@ func _heal():
 
 # Function to toggle between wolf and human form
 func wolf_transform():
-	var human_model = fsm.npc_root_node.get_node("HumanModel")  # change as needed
-	var wolf_model = fsm.npc_root_node.get_node("WolfModel")    # change as needed
+	var human_model = fsm.npc_root_node.get_node("Skeleton3D")  # change as needed
+	var wolf_model = fsm.npc_root_node.get_node("Dog")    # change as needed
 
 	var is_currently_wolf = wolf_model.visible
 	var is_transforming_to_wolf = !is_currently_wolf
@@ -100,11 +100,9 @@ func wolf_transform():
 
 	# Play smoke particles only when transforming to wolf
 	if is_transforming_to_wolf:
-		var smoke = wolf_model.get_node("GPUParticles3D")  # update path if needed
+		var smoke = fsm.npc_root_node.get_node("GPUParticles3D")  # update path if needed
 		if smoke:
-			smoke.one_shot = true
-			smoke.emitting = false  # reset in case it was already emitting
-			smoke.emitting = true
+			smoke.visible = true
 
 	# Update evasion stat
 	stats.evasion_chance = 0.3 if is_transforming_to_wolf else 0.0
