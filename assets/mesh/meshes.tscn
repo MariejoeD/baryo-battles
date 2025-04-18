@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://boknptc13ynpu"]
+[gd_scene load_steps=12 format=3 uid="uid://boknptc13ynpu"]
 
 [ext_resource type="PackedScene" uid="uid://djl0d3hbyn7eo" path="res://Scene/buildings/malacadabra.tscn" id="1_bx10a"]
 [ext_resource type="PackedScene" uid="uid://ngmrdl4glq3" path="res://Scene/buildings/kampo_lv_1.tscn" id="2_0wgx8"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://ce3w2f7bhpynu" path="res://Scene/buildings/balwarte.tscn" id="7_5n5wi"]
 [ext_resource type="PackedScene" uid="uid://bjv1y1o2hrgx8" path="res://Scene/buildings/kwitis_lv_1.tscn" id="8_ntr5i"]
 [ext_resource type="PackedScene" uid="uid://bie2y84c6n0or" path="res://Scene/buildings/kubo_lv_1.tscn" id="9_xns0a"]
-[ext_resource type="PackedScene" uid="uid://cqaslongx5bxb" path="res://Scene/Characters/sibilyan.tscn" id="10_luuu3"]
 [ext_resource type="PackedScene" uid="uid://du2vgiukxku71" path="res://Scene/buildings/tanim.tscn" id="10_tu4hc"]
 [ext_resource type="PackedScene" uid="uid://dpo47nv4ah4wp" path="res://Scene/buildings/imbakan_lv_1_empty.tscn" id="11_p8lof"]
 
@@ -41,7 +40,6 @@ visible = false
 
 [node name="Kubo-lv1" parent="." instance=ExtResource("9_xns0a")]
 visible = false
-sibilyan_scene = ExtResource("10_luuu3")
 
 [node name="Tanim" parent="." instance=ExtResource("10_tu4hc")]
 visible = false

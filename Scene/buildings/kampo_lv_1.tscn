@@ -475,6 +475,7 @@ texture_normal = ExtResource("11_awa0a")
 texture_pressed = ExtResource("12_hid37")
 
 [node name="manageTroopsPanel" type="Panel" parent="UI/Kampo/ManageTroops"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -5.961
@@ -765,3 +766,4 @@ weight_damage = 0.0
 weight_attack_speed = 0.0
 
 [connection signal="input_event" from="Area3D" to="." method="clicked_building"]
+[connection signal="pressed" from="UI/Kampo/upgrade/upgradePanel/upgradeButton" to="." method="_on_upgrade_button_pressed"]

@@ -9,7 +9,6 @@ extends Node3D
 @onready var entities = $"../../Entities"
 var worker_assigned = false
 var is_panel_visible = false
-@export var wood_harvest := 10
 func _ready() -> void:
 	area.monitoring = true
 	panel.visible = false
@@ -62,9 +61,9 @@ func pressed_cut():
 	if not worker_assigned:
 		panel.visible = false
 		is_panel_visible = false
-		var sibilyan = find_nearest_sibilyan()
 		if Global.get_wood_cap() == Global.wood_qty or Global.get_wood_cap() == 0:
 			return
+		var sibilyan = find_nearest_sibilyan()
 		worker_assigned = true
 		sibilyan.add_work(self)
 		pass
@@ -72,12 +71,18 @@ func pressed_cut():
 
 
 	
+var start_time := 0.0
+var duration := 5
+func get_remaining_time():
+	return max(0.0,duration - (Global.total_game_time - start_time))
 	
-	
-func perform_work(worker):
-	await get_tree().create_timer(5).timeout
+func perform_work(worker, duration:= -1):
+	if duration < 0.0:
+		duration = self.duration
+	start_time = Global.total_game_time
+	await get_tree().create_timer(duration).timeout
 	print("Harvest Complete")
-	Global.wood_qty += wood_harvest
+	Global.wood_qty += randi_range(8, 12)
 	if Global.get_wood_cap() < Global.wood_qty:
 		Global.wood_qty = Global.get_wood_cap()
 	self.queue_free()

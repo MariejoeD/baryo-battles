@@ -28,7 +28,10 @@ func clear_environment():
 		stone.get_parent().remove_child(stone)
 		stone.queue_free()
 
-
+func Load():
+	clear_environment()
+	generate_stones()
+	generate_trees()
 
 func generate_trees():
 	print("Tree: ",find_qty("tree"))
@@ -154,4 +157,5 @@ func _on_button_pressed() -> void:
 		child.queue_free()
 	generate_trees()
 	generate_stones()
+	Buildings.reset()
 	pass # Replace with function body.

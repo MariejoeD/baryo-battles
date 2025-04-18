@@ -1,16 +1,16 @@
 # Kubo.gd
 extends Building
 
-@export var built: bool = false
+
 @export var current_sibilyan: int = 0
-@export var max_sibilyans: int = 0
+@export var max_sibilyans: int = 3
 var stored_sibilyans: Array = []
 
 var sibilyan_scene = preload("res://Scene/Characters/sibilyan.tscn")
 
 func get_save_data() -> Dictionary:
 	var base_data = super.get_save_data()
-	base_data["built"] = built
+	
 	base_data["current_sibilyan"] = current_sibilyan
 	base_data["max_sibilyans"] = max_sibilyans
 	base_data["stored_count"] = stored_sibilyans.size()
@@ -18,7 +18,8 @@ func get_save_data() -> Dictionary:
 
 func load_from_data(data: Dictionary) -> void:
 	super.load_from_data(data)
-	built = data.get("built", false)
+	
+	
 	current_sibilyan = data.get("current_sibilyan", 0)
 	max_sibilyans = data.get("max_sibilyans", 0)
 
@@ -156,8 +157,16 @@ func instant_build():
 	Global.all_kubos.append(self)  # Register this Kubo in Global
 	pass
 
-func perform_work(worker):
-	await get_tree().create_timer(10).timeout
+var start_time := 0.0
+var duration := 5
+func get_remaining_time():
+	return max(0.0,duration - (Global.total_game_time - start_time))
+	
+func perform_work(worker, duration:= -1):
+	if duration < 0.0:
+		duration = self.duration
+	start_time = Global.total_game_time
+	await get_tree().create_timer(duration).timeout
 	print("Build Complete")
 	#Change  Indicator
 	remove_material_override(self)
