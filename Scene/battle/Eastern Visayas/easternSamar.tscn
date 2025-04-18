@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://d05ndib0068d4" path="res://assets/enemybase/grasssss.fbx" id="11_xksa6"]
 [ext_resource type="PackedScene" uid="uid://dkbavgjcgvhpl" path="res://assets/enemybase/bushWFruit.fbx" id="12_4govk"]
 [ext_resource type="Script" path="res://Script/attack scripts/entities_gen.gd" id="13_lrcji"]
+[ext_resource type="PackedScene" uid="uid://c7122h2mos5qk" path="res://Scene/Characters/mangkukulam.tscn" id="14_jmfms"]
 [ext_resource type="PackedScene" uid="uid://dcyy578mne1kp" path="res://Scene/Characters/duwende.tscn" id="14_wmda2"]
-[ext_resource type="PackedScene" uid="uid://bny15mwxvytnl" path="res://Scene/Characters/tiniente_gimo.tscn" id="15_k8pa6"]
 [ext_resource type="Script" path="res://Script/attack scripts/path_generator.gd" id="16_mdvmd"]
 [ext_resource type="Script" path="res://Script/attack scripts/pathfindiing_in _attack.gd" id="17_if6rh"]
 [ext_resource type="PackedScene" path="res://floor_1_gridmap.tscn" id="17_lu444"]
@@ -362,7 +362,7 @@ troops = {
 "arnisador": "res://Scene/arnisador.tscn"
 }
 Objects = [NodePath("../Buildings"), NodePath("../Trees"), NodePath("../Stones"), NodePath("../Bushes")]
-boss_scene = ExtResource("15_k8pa6")
+boss_scene = ExtResource("14_jmfms")
 
 [node name="Path Generator" type="Node3D" parent="."]
 script = ExtResource("16_mdvmd")

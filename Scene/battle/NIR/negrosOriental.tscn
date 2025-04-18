@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://cipwkvjlafbhu" path="res://assets/enemybase/bushSimple.fbx" id="12_noeva"]
 [ext_resource type="PackedScene" uid="uid://d05ndib0068d4" path="res://assets/enemybase/grasssss.fbx" id="13_15q0h"]
 [ext_resource type="Script" path="res://Script/attack scripts/entities_gen.gd" id="14_td2kf"]
+[ext_resource type="PackedScene" uid="uid://ce3nkr4kg4oan" path="res://Scene/Characters/amomongo.tscn" id="15_15llk"]
 [ext_resource type="PackedScene" uid="uid://dcyy578mne1kp" path="res://Scene/Characters/duwende.tscn" id="15_wisgq"]
-[ext_resource type="PackedScene" uid="uid://bny15mwxvytnl" path="res://Scene/Characters/tiniente_gimo.tscn" id="16_cub84"]
 [ext_resource type="Script" path="res://Script/attack scripts/path_generator.gd" id="17_iod43"]
 [ext_resource type="Script" path="res://Script/attack scripts/pathfindiing_in _attack.gd" id="18_r23ju"]
 
@@ -277,7 +277,7 @@ troops = {
 "arnisador": "res://Scene/Characters/arnisador.tscn"
 }
 Objects = [NodePath("../Buildings"), NodePath("../Trees"), NodePath("../Stones"), NodePath("../Bushes")]
-boss_scene = ExtResource("16_cub84")
+boss_scene = ExtResource("15_15llk")
 
 [node name="Path Generator" type="Node3D" parent="."]
 script = ExtResource("17_iod43")

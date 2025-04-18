@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://1rtyhdocfi6p"]
+[gd_scene load_steps=21 format=3 uid="uid://1rtyhdocfi6p"]
 
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="1_y0js1"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="4_o6fjd"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://dcyy578mne1kp" path="res://Scene/Characters/duwende.tscn" id="13_kd7ne"]
 [ext_resource type="PackedScene" uid="uid://dkbavgjcgvhpl" path="res://assets/enemybase/bushWFruit.fbx" id="13_ybo5a"]
 [ext_resource type="Script" path="res://Script/attack scripts/pathfindiing_in _attack.gd" id="14_qiyfq"]
-[ext_resource type="PackedScene" uid="uid://bny15mwxvytnl" path="res://Scene/Characters/tiniente_gimo.tscn" id="14_rggcx"]
 [ext_resource type="Script" path="res://Script/attack scripts/path_generator.gd" id="15_rqanh"]
 [ext_resource type="MeshLibrary" uid="uid://bcqqed14hyr4a" path="res://assets/mesh/floor_meshes.tres" id="17_r888m"]
 
@@ -260,7 +259,6 @@ troops = {
 "arnisador": "res://Scene/Characters/arnisador.tscn"
 }
 Objects = [NodePath("../Buildings"), NodePath("../Trees"), NodePath("../Stones"), NodePath("../Bushes")]
-boss_scene = ExtResource("14_rggcx")
 
 [node name="Path Generator" type="Node3D" parent="."]
 script = ExtResource("15_rqanh")

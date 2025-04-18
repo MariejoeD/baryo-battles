@@ -39,6 +39,6 @@ func update_time_label(game_hours: float):
 	if hours == 0:
 		hours = 12  # Convert 0 to 12 for 12-hour format
 	var minutes = int((game_hours - int(game_hours)) * 60)  # Convert fraction to minutes
-	var period = "AM" if game_hours < 12 else "PM"
+	var period = "PM" if game_hours > 12 and game_hours < 24 else "AM"
 	if time_label:
 		time_label.text = "%02d:%02d %s" % [hours, minutes, period]  # Format as HH:MM AM/PM

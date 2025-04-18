@@ -1,0 +1,127 @@
+[gd_scene load_steps=15 format=3 uid="uid://dsa3ldj1elw7n"]
+
+[ext_resource type="Shader" uid="uid://biwntkr8de4ld" path="res://assets/spells/spellAnim/circle_shader.tres" id="1_scsl3"]
+[ext_resource type="ArrayMesh" uid="uid://dqeiw8yf77wnb" path="res://assets/spells/spellAnim/circle_mesh.obj" id="2_e2ouq"]
+[ext_resource type="Texture2D" uid="uid://d2cik1rgirx8v" path="res://assets/spells/spellAnim/skull.png" id="3_fku2y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qqt03"]
+render_priority = 0
+shader = ExtResource("1_scsl3")
+shader_parameter/Circle_Color = Color(0, 0, 0, 1)
+shader_parameter/Extra_Opacity = 0.315
+shader_parameter/Speed = Vector2(0, -1.2)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_vjwct"]
+texture = ExtResource("3_fku2y")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_nd351"]
+expanded_output_ports = [0]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_xfh6k"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeBillboard" id="VisualShaderNodeBillboard_4nb44"]
+billboard_type = 2
+keep_scale = true
+
+[sub_resource type="VisualShader" id="VisualShader_apnmm"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
+
+uniform sampler2D tex_frg_2;
+
+
+
+void vertex() {
+	mat4 n_out2p0;
+// GetBillboardMatrix:2
+	{
+		mat4 __mvm = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], MODEL_MATRIX[1], vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, MODEL_MATRIX[1].xyz)), 0.0), MODEL_MATRIX[3]);
+		__mvm = __mvm * mat4(vec4(length(MODEL_MATRIX[0].xyz), 0.0, 0.0, 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(0.0, 0.0, length(MODEL_MATRIX[2].xyz), 0.0), vec4(0.0, 0.0, 0.0, 1.0));
+		n_out2p0 = __mvm;
+	}
+
+
+// Output:0
+	MODELVIEW_MATRIX = n_out2p0;
+
+
+}
+
+void fragment() {
+// Input:3
+	vec4 n_out3p0 = COLOR;
+	float n_out3p4 = n_out3p0.a;
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// FloatOp:4
+	float n_out4p0 = n_out3p4 * n_out2p0.x;
+
+
+// Output:0
+	ALBEDO = vec3(n_out3p0.xyz);
+	ALPHA = n_out4p0;
+
+
+}
+"
+graph_offset = Vector2(-365.941, 120.496)
+flags/unshaded = true
+nodes/vertex/2/node = SubResource("VisualShaderNodeBillboard_4nb44")
+nodes/vertex/2/position = Vector2(43.074, 283.303)
+nodes/vertex/connections = PackedInt32Array(2, 0, 0, 10)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_vjwct")
+nodes/fragment/2/position = Vector2(-400, 400)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_nd351")
+nodes/fragment/3/position = Vector2(-240, 180)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatOp_xfh6k")
+nodes/fragment/4/position = Vector2(111.381, 353.319)
+nodes/fragment/connections = PackedInt32Array(3, 0, 0, 0, 3, 4, 4, 0, 4, 0, 0, 1, 2, 0, 4, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a5wj1"]
+render_priority = 0
+shader = SubResource("VisualShader_apnmm")
+
+[sub_resource type="Curve" id="Curve_yvwtq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.498195, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_g2qb7"]
+texture_mode = 1
+curve = SubResource("Curve_yvwtq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2pbi4"]
+lifetime_randomness = 0.5
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 4.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_g2qb7")
+
+[sub_resource type="QuadMesh" id="QuadMesh_crwdg"]
+
+[node name="kasumpa-sumpa" type="Node3D"]
+
+[node name="CircleMesh" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_qqt03")
+mesh = ExtResource("2_e2ouq")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_a5wj1")
+amount = 40
+lifetime = 3.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_2pbi4")
+draw_pass_1 = SubResource("QuadMesh_crwdg")

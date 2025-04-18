@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=4 uid="uid://dtbmuk01hnhsj"]
+
+[ext_resource type="Shader" uid="uid://biwntkr8de4ld" path="res://assets/spells/spellAnim/circle_shader.tres" id="1_ykkrj"]
+[ext_resource type="Shader" uid="uid://ddly3uukbcr8j" path="res://assets/spells/spellAnim/simple_shader.tres" id="3_xksqi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5wpy4"]
+render_priority = 0
+shader = ExtResource("1_ykkrj")
+shader_parameter/Circle_Color = Color(0, 1.2, 0.7, 1)
+shader_parameter/Extra_Opacity = 0.315
+shader_parameter/Speed = Vector2(0, -1.2)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2clka"]
+_surfaces = [{
+"aabb": AABB(-4.00127, 0.021232, -4.02257, 8.00254, 0.002899, 8.13586),
+"attribute_data": PackedByteArray("//8AAP//////9wAA//f////3AAD/9////+8AAP/v////7wAA/+/////nAAD/5////+cAAP/n////3wAA/9/////fAAD/3////9cAAP/X////1wAA/9f////PAAD/z////88AAP/P////xwAA/8f////HAAD/x////78AAP+/////vwAA/7////+3AAD/t////7cAAP+3////rwAA/6////+vAAD/r////6cAAP+n////pwAA/6f///+fAAD/n////58AAP+f////lwAA/5f///+XAAD/l////48AAP+P////jwAA/4////+HAAD/h////4cAAP+H////fwAA/3////9/AAD/f////3cAAP93////dwAA/3f///9vAAD/b////28AAP9v////ZwAA/2f///9nAAD/Z////18AAP9f////XwAA/1////9XAAD/V////1cAAP9X////TwAA/0////9PAAD/T////0cAAP9H////RwAA/0f///8/AAD/P////z8AAP8/////NwAA/zf///83AAD/N////y8AAP8v////LwAA/y////8nAAD/J////ycAAP8n////HwAA/x////8fAAD/H////xcAAP8X////FwAA/xf///8PAAD/D////w8AAP8P////BwAA/wf///8HAAD/B///AAAAAAAA//8="),
+"format": 34896613399,
+"index_count": 192,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcAGAAZABoAGgAZABsAHAAdAB4AHgAdAB8AIAAhACIAIgAhACMAJAAlACYAJgAlACcAKAApACoAKgApACsALAAtAC4ALgAtAC8AMAAxADIAMgAxADMANAA1ADYANgA1ADcAOAA5ADoAOgA5ADsAPAA9AD4APgA9AD8AQABBAEIAQgBBAEMARABFAEYARgBFAEcASABJAEoASgBJAEsATABNAE4ATgBNAE8AUABRAFIAUgBRAFMAVABVAFYAVgBVAFcAWABZAFoAWgBZAFsAXABdAF4AXgBdAF8AYABhAGIAYgBhAGMAZABlAGYAZgBlAGcAaABpAGoAagBpAGsAbABtAG4AbgBtAG8AcABxAHIAcgBxAHMAdAB1AHYAdgB1AHcAeAB5AHoAegB5AHsAfAB9AH4AfgB9AH8A"),
+"name": "Cylinder",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 128,
+"vertex_data": PackedByteArray("/3///zZ+Kv3/fwAAAAAe/WyA//9Afij9+JgAAHUCHv1sgP//QH6G9/iYAAB1AmT31YD//19+gvf7sAAAvglk99WA//9ffuvx+7AAAL4JufE1gf//kn7l8RzHAACSFbnxNYH//5J+Y+wcxwAAkhUp7IqB///WflzsgdoAAH0lKeyKgf//1n715oHaAAB9Jb3mz4H//yl/7uZs6gAA4ji85s+B//8pf6rhbOoAAOI4fOECgv//iH+k4UD2AAADT3vhAoL//4h/jdxA9gAAA09v3CKC///vf4rcif0AAAZnb9wigv//73+p14n9AAAGZ5/XLYL//1qAqNf//wAA/3+f1y2C//9agArT//8AAP9/E9Migv//xYAL04n9AAD4mBPTIoL//8WAwc6J/QAA+JjazgKC//8sgcTOQPYAAPuw2s4Cgv//LIHfykD2AAD7sP/Kz4H//4uB48ps6gAAHMcAy8+B//+LgXbHbOoAABzHl8eKgf//3oF6x4HaAACB2pfHioH//96BmsSB2gAAgdq1xDWB//8jgp3EHMcAAGzqtcQ1gf//I4JgwhzHAABs6nHC1YD//1WCYsL7sAAAQPZxwtWA//9VgtjA+7AAAED238BsgP//dYLZwPiYAACJ/d/AbID//3WCEcD4mAAAif0RwP9///9/ghHA/38AAP//EcD/f///f4IRwP9/AAD//xHAkn///3WCEcAGZwAAif0RwJJ///91gtjABmcAAIn938Apf///VYLZwANPAABA9t/AKX///1WCYMIDTwAAQPZxwsl+//8jgmLC4jgAAGzqccLJfv//I4KaxOI4AABs6rXEdH7//96BncR9JQAAgdq1xHR+///egXbHfSUAAIHal8cvfv//i4F6x5IVAAAcx5fHL37//4uB38qSFQAAHMf/yvx9//8sgePKvgkAAPuwAMv8ff//LIHBzr4JAAD7sNrO3H3//8WAxM51AgAA+Jjaztx9///FgArTdQIAAPiYE9PRff//WoAL0wAAAAD/fxPT0X3//1qAqdcAAAAA/3+f19x9///vf6jXdQIAAAZnn9fcff//73+N3HUCAAAGZ2/c/H3//4h/ity+CQAAA09v3Px9//+If6rhvgkAAANPfOEvfv//KX+k4ZIVAADiOHvhL37//yl/9eaSFQAA4ji95nR+///Wfu7mfSUAAH0lvOZ0fv//1n5j7H0lAAB9JSnsyX7//5J+XOziOAAAkhUp7Ml+//+Sfuvx4jgAAJIVufEpf///X37m8QNPAAC+CbnxKX///19+hvcDTwAAvglk95J///9AfoL3BmcAAHUCZPeSf///QH4q/QZnAAB1Ah79/3///zZ+KP3/fwAAAAAe/YLBEQOIwR0Dg8ETA4jBHQNkxNUIdcT3CGbE2Qh1xPcIGcc+DjHHbQ4cx0MOMcdtDq/JahPKyaATsslxE8rJoBM2zHkYUcytGDnMfxhRzK4Yu86BHdHOrh2+zoYd0c6uHUnRnSJZ0bwiS9GhIlnRvCLv0+gn9NPzJ+/T6Sf00/Mnu9Z/LbXWcy261n0ttdZzLb/ZiDOt2WIzvdmEM63ZYjMV3TM69dz1ORHdLDr13PQ53eDDQbPgbkHY4LlBs+BuQUjlmEoW5TNKQuWMShblMkqf6kNVauraVJnqNlVq6tpUWPG0YirxWGJT8aliKvFYYkP6i3Qt+l50QfqGdC36XnSK9LqFXvTQhYX0vYVe9NCFtOKmjlji1I6p4quOWOLUjkLVX5XZ1JOVNtVlldnUk5WYyrWaMsromozKu5oyyuiawsEgn27BSp+4wSWfbcFLnzO66aL0uQijK7rtovS5CKOIsz6mYrNRpoOzQKZis1Gmfq1DqXKtSal9rUSpcq1JqeenD6zypwms6acOrPOnCaycorSuu6KlrqCis667oqWugJ1Dsa2dLLGGnUCxrZ0ssXiYx7OtmK2zfpjEs62YrbNqk0+2oJM0tnCTTLagkzS2PY7luGyOzbhDjuK4bY7NuNWImrv2iIm72YiYu/aIibsRg3y+HYN2vhKDe74dg3W+")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d6vbt"]
+render_priority = 0
+shader = ExtResource("3_xksqi")
+
+[sub_resource type="Curve" id="Curve_fvsob"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.498195, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_23368"]
+texture_mode = 1
+curve = SubResource("Curve_fvsob")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a7nvu"]
+lifetime_randomness = 0.5
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 4.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 1, 0.8, 1)
+alpha_curve = SubResource("CurveTexture_23368")
+
+[sub_resource type="QuadMesh" id="QuadMesh_wx2ie"]
+
+[node name="healSpell" type="Node3D"]
+
+[node name="CircleMesh" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_5wpy4")
+mesh = SubResource("ArrayMesh_2clka")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_d6vbt")
+amount = 40
+lifetime = 3.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_a7nvu")
+draw_pass_1 = SubResource("QuadMesh_wx2ie")

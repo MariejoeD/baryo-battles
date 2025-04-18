@@ -1,0 +1,75 @@
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://ddly3uukbcr8j"]
+
+[ext_resource type="Texture2D" uid="uid://c383qjiatg826" path="res://assets/spells/spellAnim/cross.jpg" id="1_v2bcl"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_c8dh6"]
+texture = ExtResource("1_v2bcl")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_aoi1r"]
+expanded_output_ports = [0]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_jpbhy"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeBillboard" id="VisualShaderNodeBillboard_qcyy3"]
+billboard_type = 2
+keep_scale = true
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
+
+uniform sampler2D tex_frg_2;
+
+
+
+void vertex() {
+	mat4 n_out2p0;
+// GetBillboardMatrix:2
+	{
+		mat4 __mvm = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], MODEL_MATRIX[1], vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, MODEL_MATRIX[1].xyz)), 0.0), MODEL_MATRIX[3]);
+		__mvm = __mvm * mat4(vec4(length(MODEL_MATRIX[0].xyz), 0.0, 0.0, 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(0.0, 0.0, length(MODEL_MATRIX[2].xyz), 0.0), vec4(0.0, 0.0, 0.0, 1.0));
+		n_out2p0 = __mvm;
+	}
+
+
+// Output:0
+	MODELVIEW_MATRIX = n_out2p0;
+
+
+}
+
+void fragment() {
+// Input:3
+	vec4 n_out3p0 = COLOR;
+	float n_out3p4 = n_out3p0.a;
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// FloatOp:4
+	float n_out4p0 = n_out3p4 * n_out2p0.x;
+
+
+// Output:0
+	ALBEDO = vec3(n_out3p0.xyz);
+	ALPHA = n_out4p0;
+
+
+}
+"
+graph_offset = Vector2(-564.37, 116.718)
+flags/unshaded = true
+nodes/vertex/2/node = SubResource("VisualShaderNodeBillboard_qcyy3")
+nodes/vertex/2/position = Vector2(43.074, 283.303)
+nodes/vertex/connections = PackedInt32Array(2, 0, 0, 10)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_c8dh6")
+nodes/fragment/2/position = Vector2(-400, 400)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_aoi1r")
+nodes/fragment/3/position = Vector2(-240, 180)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatOp_jpbhy")
+nodes/fragment/4/position = Vector2(111.381, 353.319)
+nodes/fragment/connections = PackedInt32Array(3, 0, 0, 0, 3, 4, 4, 0, 4, 0, 0, 1, 2, 0, 4, 1)

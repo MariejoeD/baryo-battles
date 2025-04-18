@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://qja6kfhplvrv"]
+[gd_scene load_steps=23 format=3 uid="uid://qja6kfhplvrv"]
 
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="1_2sbs2"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="4_fgo6i"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://d05ndib0068d4" path="res://assets/enemybase/grasssss.fbx" id="15_501j5"]
 [ext_resource type="Script" path="res://Script/attack scripts/entities_gen.gd" id="15_uo70a"]
 [ext_resource type="PackedScene" uid="uid://dcyy578mne1kp" path="res://Scene/Characters/duwende.tscn" id="16_tvwv4"]
-[ext_resource type="PackedScene" uid="uid://bny15mwxvytnl" path="res://Scene/Characters/tiniente_gimo.tscn" id="17_ike2y"]
 [ext_resource type="Script" path="res://Script/attack scripts/path_generator.gd" id="18_1muxf"]
 [ext_resource type="PackedScene" path="res://floor_1_gridmap.tscn" id="19_8rtjg"]
 [ext_resource type="Script" path="res://Script/attack scripts/pathfindiing_in _attack.gd" id="19_dxbcl"]
@@ -294,7 +293,6 @@ troops = {
 "arnisador": "res://Scene/Characters/arnisador.tscn"
 }
 Objects = [NodePath("../Buildings"), NodePath("../Trees"), NodePath("../Stones"), NodePath("../Bushes")]
-boss_scene = ExtResource("17_ike2y")
 
 [node name="Path Generator" type="Node3D" parent="."]
 script = ExtResource("18_1muxf")
