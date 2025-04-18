@@ -1,12 +1,16 @@
-extends MeshInstance3D
+extends Building
 
 
 var active_panel
-var built: bool =false
 @onready var building_name = $UI.get_child(0)
-var wood_cap = 0
-var stone_cap = 0
-var level = 1
+var wood_cap: int:
+	get:
+		return 1000 * (1 + (level-1)*.5)
+var stone_cap: int:
+	get:
+		return 1000 * (1 + (level-1)*.5)
+
+
 func _ready() -> void:
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
@@ -78,8 +82,16 @@ func instant_build():
 	add_to_group("Buildings")
 	pass
 
-func perform_work(worker):
-	await get_tree().create_timer(10).timeout
+var start_time := 0.0
+var duration := 5
+func get_remaining_time():
+	return max(0.0,duration - (Global.total_game_time - start_time))
+	
+func perform_work(worker, duration:= -1):
+	if duration < 0.0:
+		duration = self.duration
+	start_time = Global.total_game_time
+	await get_tree().create_timer(duration).timeout
 	print("Build Complete")
 	#Change  Indicator
 	remove_material_override(self)
@@ -119,3 +131,10 @@ func find_nearest_sibilyan() -> Node:
 func remove_material_override(mesh_instance) -> void:
 	for i in range(mesh_instance.mesh.get_surface_count()):
 		mesh_instance.set_surface_override_material(i, null)
+
+
+func _on_upgrade_button_pressed() -> void:
+	if Npc.TH_level <= level:
+		return
+	level += 1
+	pass # Replace with function body.

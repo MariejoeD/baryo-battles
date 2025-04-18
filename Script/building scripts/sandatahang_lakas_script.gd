@@ -1,14 +1,13 @@
-extends MeshInstance3D
+extends Building
 
 
 var active_panel
-var built: bool =false
+@onready var training_timer: Timer = $TrainingTimer
 var trainingTroops: Array = []
 var sacrificeSib: Array = []
 @export var troopImagePath : String
 @onready var building_name = $UI.get_child(0)
 var training_panel
-var level := 1
 var troopsDict = {
 	"arnisador": {"trainingTime": 1, "scene": "res://Scene/Characters/arnisador.tscn", "required_level": 1},
 	"lakanWarrior": {"trainingTime": 1, "scene": "res://Scene/Characters/lakan_warrior.tscn", "required_level": 2},
@@ -18,6 +17,43 @@ var troopsDict = {
 }
 
 
+func get_save_data() -> Dictionary:
+	var data = super.get_save_data()
+
+	var training_data: Array = []
+	for i in trainingTroops.size():
+		var troop = trainingTroops[i]
+		var troop_dict = {
+			"name": troop.name,
+			"scene": troop.scene,
+			"duration": troop.duration,
+		}
+		# Save remaining time only for the first troop (the one currently being trained)
+		if i == 0 and training_timer != null:
+			troop_dict["remaining_time"] = training_timer.time_left
+		training_data.append(troop_dict)
+	
+	data["trainingTroops"] = training_data
+	return data
+
+
+func load_from_data(data: Dictionary) -> void:
+	super.load_from_data(data)
+
+	trainingTroops.clear()
+	var loaded_queue: Array = data.get("trainingTroops", [])
+	for troop_dict in loaded_queue:
+		trainingTroops.append({
+			"name": troop_dict.get("name", ""),
+			"scene": troop_dict.get("scene", ""),
+			"duration": troop_dict.get("duration", 1),
+			"remaining_time": troop_dict.get("remaining_time", null),
+		})
+
+	if trainingTroops.size() > 0:
+		training()
+
+		
 func _ready() -> void:
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
@@ -134,12 +170,14 @@ func _on_troop_pressed(troop) -> void:
 func training() -> void:
 	if trainingTroops.is_empty():
 		return
+
+	var current = trainingTroops[0]
+	var duration = current.get("remaining_time", current.duration)
 	
-	var currentTroop = trainingTroops.front()
-	await get_tree().create_timer(currentTroop["duration"]).timeout
+	training_timer.start(duration)
 
 	# Find the troop entry in the training panel
-	var troop_entry = training_panel.get_node_or_null(NodePath(currentTroop["name"]))
+	var troop_entry = training_panel.get_node_or_null(NodePath(current["name"]))
 	if troop_entry:
 		var count_label = troop_entry.get_node("CountLabel")
 		var count = int(count_label.text.substr(1))  # Extract number from "xN"
@@ -148,7 +186,7 @@ func training() -> void:
 			count_label.text = "x" + str(count - 1)  # Decrease count
 		else:
 			troop_entry.queue_free()  # Remove when count reaches 0
-	send_to_kampo(currentTroop)
+	send_to_kampo(current)
 	trainingTroops.pop_front()  # Remove the troop from the queue
 	
 	if not trainingTroops.is_empty():

@@ -8,6 +8,8 @@ var workload = []  # Stores work tasks
 var assigned_kubo
 signal path_ready
 var returning = false
+var current_work :Node = null
+var remaining :float = 0
  # Emits when work is completed
 
 func _ready() -> void:
@@ -70,7 +72,10 @@ func execute_next_work():
 			$Skeleton3D.hide()
 			$Skeleton3D2.show()
 			$AnimationPlayer.play("chopping")
-			work.perform_work(self)  # Execute the task and wait for completion
+			if current_work == work:
+				work.perform_work(self,remaining)  # Execute the task and wait for completion
+			else:
+				work.perform_work(self)  # Execute the task and wait for completion
 			
 	
 

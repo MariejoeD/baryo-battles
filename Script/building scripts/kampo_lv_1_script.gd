@@ -1,14 +1,14 @@
-extends MeshInstance3D
+extends Building
 
 
 var active_panel
-var built: bool =false
 @onready var building_name = $UI.get_child(0)
-var level = 1
 var troops: Array = []
 @export var troopImagePath : String
 @onready var container = get_node("UI/Kampo/ManageTroops/manageTroopsPanel/ScrollContainer/ScrollContainer/HBoxContainer")
-var spaces = 100
+var spaces: int:
+	get:
+		return 100 * (1 + ((level -1)*.5))
 
 func update_ui_container():
 	# Step 1: Count each troop type
@@ -116,6 +116,7 @@ func _on_upgrade_pressed() -> void:
 	active_panel = building_name.get_node_or_null("upgrade/upgradePanel")
 	active_panel.show()
 	pass # Replace with function body.
+	
 
 func _on_manage_troops_pressed() -> void:
 	if active_panel:
@@ -129,8 +130,16 @@ func build():
 	sibilyan.add_work(self)
 	pass
 
-func perform_work(worker):
-	await get_tree().create_timer(10).timeout
+var start_time := 0.0
+var duration := 5
+func get_remaining_time():
+	return max(0.0,duration - (Global.total_game_time - start_time))
+	
+func perform_work(worker, duration:= -1):
+	if duration < 0.0:
+		duration = self.duration
+	start_time = Global.total_game_time
+	await get_tree().create_timer(duration).timeout
 	print("Build Complete")
 	#Change  Indicator
 	remove_material_override(self)
@@ -170,3 +179,10 @@ func find_nearest_sibilyan() -> Node:
 func remove_material_override(mesh_instance) -> void:
 	for i in range(mesh_instance.mesh.get_surface_count()):
 		mesh_instance.set_surface_override_material(i, null)
+
+
+func _on_upgrade_button_pressed() -> void:
+	if Npc.TH_level <= level:
+		return
+	level += 1
+	pass # Replace with function body.

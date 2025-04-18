@@ -1,10 +1,15 @@
 extends Node
 
 var saved_game:SavedGame 
+
 # Called when the autoload is initialized (before any scenes)
 func _ready():
 	SignalManager.save.connect(save_game)
-	get_tree().tree_changed.connect(scene_change)
+	SignalManager.homebase.connect(scene_change)
+	var current = get_tree().get_current_scene()
+	if current and current.name == "HomeBase":
+		current.get_node(NodePath("Control/HBoxContainer/Button2")).pressed.connect(save_game)
+		current.get_node(NodePath("Control/HBoxContainer/Button3")).pressed.connect(load_save_data)
 
 
 func scene_change():
@@ -14,34 +19,49 @@ func scene_change():
 		current.get_node(NodePath("Control/HBoxContainer/Button3")).pressed.connect(load_save_data)
 
 
-# Load saved data from file
 func load_save_data():
 	var path = "res://save.tres"
 	if ResourceLoader.exists(path):
 		saved_game = load(path) as SavedGame
 		if saved_game:
-			update_resources(saved_game.resources)
+			# Load time-related data
+			load_time_data()
+
+			# Load other game data like resources, environment, and buildings
+			load_resources(saved_game.resources)
 			load_environment(get_tree().current_scene.find_child("Generate"))
 			load_building()
-			print("Save data loaded successfully.")
+			
+			load_sibilyans()
+
 		else:
 			print("Failed to load save data.")
 	else:
 		print("No saved data found, starting fresh.")
 		saved_game = SavedGame.new()  # Create new if no data exists
 
+
 # Save the current game data
 func save_game():
 	saved_game = SavedGame.new()
-	get_resources()
+
+	# Save time-related data
+	save_time_data()
+
+	# Save other data like resources, environment, and buildings
+	save_resources()
 	save_environment(get_tree().current_scene.find_child("Generate"))
 	save_building()
 	
+	save_sibilyans()
+
+	# Save the game state
 	ResourceSaver.save(saved_game, "res://save.tres")
+
 	
 
 # Function to access resources (can be used in any scene)
-func get_resources():
+func save_resources():
 	saved_game.resources = {
 
 		"wood": Global.wood_qty,
@@ -55,7 +75,7 @@ func save_environment(env_root: Node):
 	for child in env_root.get_children():
 		if child.name.begins_with("Tree") or child.name.begins_with("Stone"):
 			var mesh_index := -1
-			for i in child.get_child_count():
+			for i in range(child.get_child_count()):
 				if child.get_child(i).visible:
 					mesh_index = i
 					break
@@ -68,7 +88,7 @@ func save_environment(env_root: Node):
 
 
 # Function to update/save resource data (to be used in different scenes)
-func update_resources(new_resources: Dictionary):
+func load_resources(new_resources: Dictionary):
 	Global.wood_qty = new_resources["wood"]
 	Global.stone_qty = new_resources["stone"]
 	Global.food_qty = new_resources["food"]
@@ -76,6 +96,7 @@ func update_resources(new_resources: Dictionary):
 func load_environment(env_root: Node):
 	# Step 1: Remove extra nodes not in the saved data
 	var saved_names = []
+	env_root.Load()
 	print(env_root.get_children())
 	for item in saved_game.environment_data:
 		saved_names.append(item["name"])  # Collect names of saved nodes
@@ -88,9 +109,9 @@ func load_environment(env_root: Node):
 
 	# Step 2: Update the existing nodes with the saved data
 	for item in saved_game.environment_data:
-		print("Load")
+		
 		var instance = env_root.get_node_or_null(NodePath(item["name"])) # Retrieve the existing node by name
-		print(item["name"])
+		
 		if instance:
 			# Update the position
 			print(instance.global_transform.origin)
@@ -174,3 +195,85 @@ func load_building():
 			gridmap.add_child(building)
 		else:
 			print("Failed to load:", scene_path)
+
+# Function to save time-related data
+func save_time_data():
+	saved_game.game_time = {
+	"current_time": Global.current_time,
+	"total_game_time": Global.total_game_time,
+	"time_of_day": Global.time_of_day,
+	"has_emitted_night_time": Global.has_emitted_night_time
+}
+
+
+func load_time_data():
+	if "current_time" in saved_game.game_time:
+		Global.current_time = saved_game.game_time["current_time"]
+		Global.total_game_time = saved_game.game_time["total_game_time"]
+		Global.time_of_day = saved_game.game_time["time_of_day"]
+		Global.has_emitted_night_time = saved_game.game_time["has_emitted_night_time"]
+	else:
+		push_warning("Time data missing from saved_game. Using defaults.")
+
+	# Optionally, reset time progression if necessary:
+	if Global.current_time >= Global.DAY_DURATION:
+		Global.current_time = 0.0
+		Global.has_emitted_night_time = false
+
+
+func save_sibilyans():
+	var sibilyan_data_array = []
+
+	for sib in get_tree().get_nodes_in_group("Sibilyan"):
+		var workload_names = []
+		var current_work = null
+		for task in sib.workload:
+			if current_work == null:
+				current_work = task
+			if is_instance_valid(task):
+				workload_names.append(task.name)  # or task.get_path() for uniqueness
+		var start_time = current_work.start_time if current_work else 0
+		var remaining_time = current_work.get_remaining_time() if current_work else 0
+		var data = {
+			"position": sib.global_transform.origin,
+			"assigned_kubo": sib.assigned_kubo.name if sib.assigned_kubo else "",
+			"returning": sib.returning,
+			"current_work":current_work.name if current_work else "",
+			"start_time": start_time,
+			"remaining_time": remaining_time if remaining_time != 0 else -1,
+			"workload": workload_names,
+		}
+		sibilyan_data_array.append(data)
+
+	saved_game.sibilyans = sibilyan_data_array
+
+
+func load_sibilyans():
+	for sib in get_tree().get_nodes_in_group("Sibilyan"):
+		sib.get_parent().remove_child(sib)
+		sib.queue_free()
+	var sib_scene = preload("res://Scene/Characters/sibilyan.tscn")
+	
+	for sib_data in saved_game.sibilyans:
+		var sib = sib_scene.instantiate()
+		sib.global_transform.origin = sib_data["position"]
+		sib.returning = sib_data.get("returning", false)
+		sib.current_work = find_node_by_name(sib_data.get("current_work", ""))
+		sib.remaining = sib_data.get("remaining_time", -1)
+		print(sib.remaining)
+		# Reassign kubo if found
+		for kubo in Global.all_kubos:
+			if kubo.name == sib_data["assigned_kubo"]:
+				sib.assigned_kubo = kubo
+				break
+
+		get_tree().current_scene.find_child("Entities").add_child(sib)
+
+		# Rebuild workload from task names
+		for task_name in sib_data["workload"]:
+			var task_node = find_node_by_name(task_name)
+			if task_node:
+				sib.add_work(task_node)
+
+func find_node_by_name(target_name: String) -> Node:
+	return get_tree().current_scene.find_child(target_name, true, false)

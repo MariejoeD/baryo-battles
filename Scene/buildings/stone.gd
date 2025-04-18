@@ -8,7 +8,8 @@ extends Node3D
 @onready var worker_assigned = false
 var is_panel_visible = false
 @export var stone_harvest := 10
-
+var start_time := 0.0
+var duration := 5
 
 func _ready() -> void:
 	area.monitoring = true
@@ -42,17 +43,21 @@ func pressed_mine():
 	if not worker_assigned:
 		panel.visible = false
 		is_panel_visible = false
-		var sibilyan = find_nearest_sibilyan()
 		if Global.get_stone_cap() == Global.stone_qty or Global.get_stone_cap() == 0:
 			return
+		var sibilyan = find_nearest_sibilyan()
 		worker_assigned = true
 		sibilyan.add_work(self)
 
 
+func get_remaining_time():
+	return max(0.0,duration - (Global.total_game_time - start_time))
 	
-	
-func perform_work(worker):
-	await get_tree().create_timer(5).timeout
+func perform_work(worker, duration:= -1):
+	if duration < 0.0:
+		duration = self.duration
+	start_time = Global.total_game_time
+	await get_tree().create_timer(duration).timeout
 	print("Harvest Complete")
 	Global.stone_qty += 10
 	if Global.get_stone_cap() < Global.stone_qty:

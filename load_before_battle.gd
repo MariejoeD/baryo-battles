@@ -164,6 +164,7 @@ func perform_loading() -> void:
 			get_tree().current_scene = new_scene
 			if get_tree().current_scene.name == "HomeBase":
 				SaverLoader.load_save_data()
+				SignalManager.homebase.emit()
 			queue_free()
 			break
 
