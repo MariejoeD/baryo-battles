@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dsa3ldj1elw7n"]
+[gd_scene load_steps=16 format=3 uid="uid://dsa3ldj1elw7n"]
 
 [ext_resource type="Shader" uid="uid://biwntkr8de4ld" path="res://assets/spells/spellAnim/circle_shader.tres" id="1_scsl3"]
 [ext_resource type="ArrayMesh" uid="uid://dqeiw8yf77wnb" path="res://assets/spells/spellAnim/circle_mesh.obj" id="2_e2ouq"]
@@ -70,7 +70,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-365.941, 120.496)
 flags/unshaded = true
 nodes/vertex/2/node = SubResource("VisualShaderNodeBillboard_4nb44")
 nodes/vertex/2/position = Vector2(43.074, 283.303)
@@ -112,6 +111,8 @@ alpha_curve = SubResource("CurveTexture_g2qb7")
 
 [sub_resource type="QuadMesh" id="QuadMesh_crwdg"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_kvrpw"]
+
 [node name="kasumpa-sumpa" type="Node3D"]
 
 [node name="CircleMesh" type="MeshInstance3D" parent="."]
@@ -125,3 +126,9 @@ lifetime = 3.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_2pbi4")
 draw_pass_1 = SubResource("QuadMesh_crwdg")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+shape = SubResource("SphereShape3D_kvrpw")

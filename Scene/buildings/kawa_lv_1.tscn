@@ -1083,7 +1083,6 @@ weight_damage = 0.0
 weight_attack_speed = 0.0
 
 [node name="healSpell" parent="." instance=ExtResource("20_dl8v5")]
-visible = false
 
 [node name="kasumpa-sumpa" parent="." instance=ExtResource("21_gxafo")]
 

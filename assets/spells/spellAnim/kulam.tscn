@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://fhts8g0fle32"]
+[gd_scene load_steps=30 format=3 uid="uid://fhts8g0fle32"]
 
 [ext_resource type="ArrayMesh" uid="uid://dqeiw8yf77wnb" path="res://assets/spells/spellAnim/circle_mesh.obj" id="1_n0xn5"]
 [ext_resource type="Texture2D" uid="uid://bkmpnh7lv6d7w" path="res://assets/spells/spellAnim/star.png" id="2_3ddvt"]
@@ -115,7 +115,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-267.989, 178.065)
 flags/unshaded = true
 nodes/fragment/0/position = Vector2(1080, 60)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_f64c7")
@@ -206,7 +205,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-524.275, 31.8868)
 flags/unshaded = true
 nodes/vertex/2/node = SubResource("VisualShaderNodeBillboard_6luo2")
 nodes/vertex/2/position = Vector2(43.074, 283.303)
@@ -248,6 +246,8 @@ alpha_curve = SubResource("CurveTexture_v3e0j")
 
 [sub_resource type="QuadMesh" id="QuadMesh_cxhh8"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_t8w04"]
+
 [node name="kulam" type="Node3D"]
 
 [node name="CircleMesh" type="MeshInstance3D" parent="."]
@@ -261,3 +261,9 @@ lifetime = 3.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_18k6h")
 draw_pass_1 = SubResource("QuadMesh_cxhh8")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+shape = SubResource("SphereShape3D_t8w04")
