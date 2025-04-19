@@ -6,6 +6,7 @@ var current_building: Node3D = null
 @export var instant_build: bool = false
 @export var building_data: building_resource
 @onready var grid_map = find_parent("HomeBase").find_child("GridMap")  # Reference to your GridMap node
+@onready var floor = find_parent("HomeBase").find_child("Floor")
 @export var fixed_y: float = .5  # The Y position where the building will stay
 var stone_req
 var wood_req
@@ -73,8 +74,46 @@ func _input(event: InputEvent) -> void:
 					apply_material_override(current_building)
 					if current_building.has_method("build"):
 						current_building.build()
-				
-		pass
+				remove_floor1_cells_inside_mesh(floor, current_building)
+	
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		if building_mode:
+			current_building.get_parent().remove_child(current_building)
+			current_building.queue_free()
+			building_mode = false
+			$"../BuildButton".show()
+			$"../AttackButton".show()
+
+func remove_floor1_cells_inside_mesh(grid_map: GridMap, building_mesh: MeshInstance3D):
+	var cell_size = grid_map.cell_size
+	var half_extents = cell_size * 0.5
+
+	# Get world-space AABB of the mesh
+	var aabb = building_mesh.get_aabb()
+	
+	 # Apply the scale of the mesh to the AABB size
+	var scale = building_mesh.global_transform.basis.get_scale()
+	aabb.size *= scale
+	
+	# Adjust the position by applying the mesh's global position and accounting for the scale
+	var scaled_position = building_mesh.global_transform.origin + (aabb.position * building_mesh.scale)
+	aabb.position = scaled_position
+	
+	aabb = aabb.grow(0.1) # optional small buffer
+
+	# Get XZ bounds in cell space
+	var start = grid_map.local_to_map(aabb.position)
+	var end = grid_map.local_to_map(aabb.position + aabb.size)
+
+	# Fixed Y level (floor 1)
+	var y = 1
+
+	for x in range(start.x, end.x + 1):
+		for z in range(start.z, end.z + 1):
+			var cell = Vector3i(x, y, z)
+			var world_pos = grid_map.map_to_local(cell) + half_extents
+			if aabb.has_point(world_pos):
+				grid_map.set_cell_item(cell, -1)
 
 func follow_mouse():
 	var viewport = get_tree().current_scene.find_child("SubViewport")

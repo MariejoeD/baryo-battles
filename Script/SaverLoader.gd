@@ -298,6 +298,9 @@ func save_kampo_troops() -> void:
 	saved_game.troops = Global.kampo_troops.duplicate(true)
 	
 func load_kampo_troops() -> void:
+	for troop in get_tree().get_nodes_in_group("Good"):
+		troop.get_parent().remove_child(troop)
+		troop.queue_free()
 	if saved_game.troops:
 		Global.kampo_troops = saved_game.troops.duplicate(true)
 	else:
@@ -315,10 +318,15 @@ func load_kampo_troops() -> void:
 				if Npc.Troops_unlocked.has(troop_name):
 					var scene = Npc.Troops_unlocked[troop_name][0]
 					var training_time = 1.0  # You can customize this per unit if needed
-					
 					for i in count:
 						kampo.troops.append({
 							"name": troop_name,
 							"duration": training_time,
 							"scene": scene
 						})
+						var instance = scene.instantiate()
+						get_tree().current_scene.find_child("Entities").add_child(instance)
+						instance.global_transform.origin = kampo.global_transform.origin
+						instance.get_node("Detection/CollisionShape3D").shape.radius *= 0.4
+
+	

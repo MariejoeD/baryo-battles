@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://c355t02anfh15"]
+[gd_scene load_steps=37 format=4 uid="uid://c355t02anfh15"]
 
 [ext_resource type="Script" path="res://Script/building scripts/kawa_lv_1_script.gd" id="1_6h8mu"]
 [ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="2_0b180"]
@@ -19,11 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://b6j77isecu61b" path="res://assets/spells/kulam.png" id="16_bhqbl"]
 [ext_resource type="Texture2D" uid="uid://1ywqdq5ykn5s" path="res://assets/spells/liwanag.png" id="17_l3l4s"]
 [ext_resource type="Texture2D" uid="uid://cnnef62t0j2s4" path="res://assets/spells/luntiangPuso.png" id="18_frcuy"]
-[ext_resource type="PackedScene" uid="uid://dtbmuk01hnhsj" path="res://assets/spells/spellAnim/heal_spell.tscn" id="20_dl8v5"]
-[ext_resource type="PackedScene" uid="uid://dsa3ldj1elw7n" path="res://assets/spells/spellAnim/kasumpa_sumpa.tscn" id="21_gxafo"]
-[ext_resource type="PackedScene" uid="uid://fhts8g0fle32" path="res://assets/spells/spellAnim/kulam.tscn" id="22_6ofit"]
-[ext_resource type="PackedScene" uid="uid://w50sof8mmrqa" path="res://assets/spells/spellAnim/liwanag.tscn" id="23_7mmc5"]
-[ext_resource type="PackedScene" uid="uid://dv5nn3yg03efs" path="res://assets/spells/spellAnim/dinamita.tscn" id="24_e4k7v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6imk"]
 resource_name = "Material.017"
@@ -271,8 +266,8 @@ shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
 shadow_size = 6
 
 [node name="Kawa-lv1" type="MeshInstance3D"]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
-visible = false
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.1, 0)
+layers = 3
 mesh = SubResource("ArrayMesh_k8lkk")
 script = ExtResource("1_6h8mu")
 
@@ -281,6 +276,7 @@ collision_layer = 3
 collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_82mc7")
 
 [node name="UI" type="Control" parent="."]
@@ -1081,15 +1077,5 @@ target_priority = 4.0
 weight_hp = 1.0
 weight_damage = 0.0
 weight_attack_speed = 0.0
-
-[node name="healSpell" parent="." instance=ExtResource("20_dl8v5")]
-
-[node name="kasumpa-sumpa" parent="." instance=ExtResource("21_gxafo")]
-
-[node name="kulam" parent="." instance=ExtResource("22_6ofit")]
-
-[node name="liwanag" parent="." instance=ExtResource("23_7mmc5")]
-
-[node name="dinamita" parent="." instance=ExtResource("24_e4k7v")]
 
 [connection signal="pressed" from="UI/Kawa/BrewAndManageSpells/Panel/viewBrewedSpells" to="." method="_on_view_brewed_spells_pressed"]

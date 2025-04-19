@@ -197,7 +197,7 @@ func send_to_kampo(troop):
 	troop_inst.find_child("Targeting Component").targeting_enabled = false
 	get_tree().current_scene.find_child("Entities").add_child(troop_inst)
 	troop_inst.global_transform.origin = self.global_transform.origin
-	troop_inst.get_node("Detection/CollisionShape3D").shape.radius *= 0.2
+	troop_inst.get_node("Detection/CollisionShape3D").shape.radius *= 0.4
 	
 	var kampo = await troop_inst.get_node("GoToCamp").go_to_camp()
 	kampo.troops.append(troop)
