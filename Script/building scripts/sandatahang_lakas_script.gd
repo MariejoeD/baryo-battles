@@ -2,7 +2,7 @@ extends Building
 
 
 var active_panel
-@onready var training_timer: Timer = $TrainingTimer
+@onready var training_timer: Timer = Timer.new()
 var trainingTroops: Array = []
 var sacrificeSib: Array = []
 @export var troopImagePath : String

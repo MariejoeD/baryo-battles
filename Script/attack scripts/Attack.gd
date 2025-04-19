@@ -26,19 +26,19 @@ func _on_btn_pressed(btn):
 	if is_conquered(btn.name):
 		display()
 		return
-	print("Before Saving:", Global.kampo_troops)  # Debugging print
-	Global.kampo_troops.clear()
-	Global.all_kampo = Global.all_kampo.filter(func(k): return is_instance_valid(k))
-	for kampo in Global.all_kampo:
-		var kampo_id = kampo.get_instance_id()
-		
-		if kampo_id in Global.kampo_troops:
-			print("⚠️ Duplicate Detected! Kampo ID:", kampo_id)
-		else:
-			Global.kampo_troops[kampo_id] = kampo.troops.duplicate(true)  # Deep copy
-	
-	print("After Saving:", Global.kampo_troops)  # Check if duplicates appear
-	
+	#print("Before Saving:", Global.kampo_troops)  # Debugging print
+	#Global.kampo_troops.clear()
+	#Global.all_kampo = Global.all_kampo.filter(func(k): return is_instance_valid(k))
+	#for kampo in Global.all_kampo:
+		#var kampo_id = kampo.get_instance_id()
+		#
+		#if kampo_id in Global.kampo_troops:
+			#print("⚠️ Duplicate Detected! Kampo ID:", kampo_id)
+		#else:
+			#Global.kampo_troops[kampo_id] = kampo.troops.duplicate(true)  # Deep copy
+	#
+	#print("After Saving:", Global.kampo_troops)  # Check if duplicates appear
+	#
 	var scene_path = scene_exists_in_folder(base_path, btn.name)
 	if scene_path:
 		# Create a SceneLoader instance dynamically

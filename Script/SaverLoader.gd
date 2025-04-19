@@ -33,6 +33,7 @@ func load_save_data():
 			load_building()
 			
 			load_sibilyans()
+			load_kampo_troops()
 
 		else:
 			print("Failed to load save data.")
@@ -54,7 +55,7 @@ func save_game():
 	save_building()
 	
 	save_sibilyans()
-
+	save_kampo_troops()
 	# Save the game state
 	ResourceSaver.save(saved_game, "res://save.tres")
 
@@ -277,3 +278,47 @@ func load_sibilyans():
 
 func find_node_by_name(target_name: String) -> Node:
 	return get_tree().current_scene.find_child(target_name, true, false)
+
+func save_kampo_troops() -> void:
+	Global.kampo_troops.clear()
+	Global.all_kampo = Global.all_kampo.filter(func(k): return is_instance_valid(k))
+
+	for kampo in Global.all_kampo:
+		var kampo_id = kampo.name  # Assuming this is unique
+		var troop_counts = {}
+
+		for troop in kampo.troops:
+			if troop.name in troop_counts:
+				troop_counts[troop.name] += 1
+			else:
+				troop_counts[troop.name] = 1
+
+		Global.kampo_troops[kampo_id] = troop_counts
+
+	saved_game.troops = Global.kampo_troops.duplicate(true)
+	
+func load_kampo_troops() -> void:
+	if saved_game.troops:
+		Global.kampo_troops = saved_game.troops.duplicate(true)
+	else:
+		Global.kampo_troops.clear()
+
+	for kampo in Global.all_kampo:
+		var kampo_id = kampo.name
+		if Global.kampo_troops.has(kampo_id):
+			kampo.troops.clear()
+
+			var troop_data = Global.kampo_troops[kampo_id]
+			for troop_name in troop_data.keys():
+				var count = troop_data[troop_name]
+
+				if Npc.Troops_unlocked.has(troop_name):
+					var scene = Npc.Troops_unlocked[troop_name][0]
+					var training_time = 1.0  # You can customize this per unit if needed
+					
+					for i in count:
+						kampo.troops.append({
+							"name": troop_name,
+							"duration": training_time,
+							"scene": scene
+						})

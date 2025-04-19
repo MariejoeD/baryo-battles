@@ -49,7 +49,7 @@ var kampo_troops: Dictionary = {}
 var prologue_played = false
 func _ready() -> void:
 	SignalManager.discovered.connect(npc)
-	load_troops_from_file()
+	#load_troops_from_file()
 
 func npc(name):
 	npc_discovered[name] = true
@@ -158,18 +158,18 @@ func get_max_civilians() -> int:
 func can_generate_civilian() -> bool:
 	print(get_current_civilian_count(),"/",get_max_civilians())
 	return get_current_civilian_count() < get_max_civilians()
-func load_troops_from_file():
-	var file_path = "user://troops_data.save"
-	print("Checking file at:", ProjectSettings.globalize_path(file_path))
-
-	if not FileAccess.file_exists(file_path):
-		print("File does not exist:", file_path)
-		return
-
-	var file = FileAccess.open(file_path, FileAccess.READ)
-	var save_data = JSON.parse_string(file.get_as_text())
-	file.close()
-
-	if save_data:
-		Global.kampo_troops = save_data
-		print("Loaded troops successfully from", ProjectSettings.globalize_path(file_path))
+#func load_troops_from_file():
+	#var file_path = "user://troops_data.save"
+	#print("Checking file at:", ProjectSettings.globalize_path(file_path))
+#
+	#if not FileAccess.file_exists(file_path):
+		#print("File does not exist:", file_path)
+		#return
+#
+	#var file = FileAccess.open(file_path, FileAccess.READ)
+	#var save_data = JSON.parse_string(file.get_as_text())
+	#file.close()
+#
+	#if save_data:
+		#Global.kampo_troops = save_data
+		#print("Loaded troops successfully from", ProjectSettings.globalize_path(file_path))

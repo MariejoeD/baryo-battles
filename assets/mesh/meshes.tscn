@@ -27,7 +27,6 @@ visible = false
 visible = false
 
 [node name="Kawa-lv1" parent="." instance=ExtResource("5_ftg2f")]
-visible = false
 
 [node name="Estakada-lvl1(bamboo)" parent="." instance=ExtResource("6_e7vde")]
 visible = false

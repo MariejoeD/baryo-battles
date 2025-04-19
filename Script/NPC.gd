@@ -3,19 +3,19 @@ extends Node
 var TH_level = 0
 
 @onready var Troops_unlocked: Dictionary = {
-	"arnisador" : [preload("res://Scene/Characters/arnisador.tscn"), 1],
-	"lakanWarrior" : [preload("res://Scene/Characters/lakan_warrior.tscn"), 2],
-	"mangagamot" : [preload("res://Scene/Characters/manggagamot.tscn"), 2],
-	"tirador" : [preload("res://Scene/Characters/tirador.tscn"), 3],
-	"marites" : [preload("res://Scene/Characters/marites.tscn"), 3]
+	"arnisador" : [load("res://Scene/Characters/arnisador.tscn"), 1],
+	"lakanWarrior" : [load("res://Scene/Characters/lakan_warrior.tscn"), 2],
+	"mangagamot" : [load("res://Scene/Characters/manggagamot.tscn"), 2],
+	"tirador" : [load("res://Scene/Characters/tirador.tscn"), 3],
+	"marites" : [load("res://Scene/Characters/marites.tscn"), 3]
 	
 }
 @onready var enemies: Dictionary = {
-	"duwende" : [preload("res://Scene/Characters/duwende.tscn"), 1],
-	"sigbin" : [preload("res://Scene/Characters/sigbin.tscn"), 2],
-	"kapre" : [preload("res://Scene/Characters/kapre.tscn"), 2],
-	"tikbalang" : [preload("res://Scene/Characters/tikbalang.tscn"), 3],
-	"mananaggal" : [preload("res://Scene/Characters/manananggal.tscn"), 3]
+	"duwende" : [load("res://Scene/Characters/duwende.tscn"), 1],
+	"sigbin" : [load("res://Scene/Characters/sigbin.tscn"), 2],
+	"kapre" : [load("res://Scene/Characters/kapre.tscn"), 2],
+	"tikbalang" : [load("res://Scene/Characters/tikbalang.tscn"), 3],
+	"mananaggal" : [load("res://Scene/Characters/manananggal.tscn"), 3]
 }
 
 @onready var bosses:= {

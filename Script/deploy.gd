@@ -24,13 +24,11 @@ func update_ui():
 		else:
 			button.visible = false
 func _load_kampo_troops() -> void:
-	for troops in Global.kampo_troops.values():
-		for troop in troops:
-			var name = troop.get("name", "")
-			if name != "":
-				if not troop_data.has(name):
-					troop_data[name] = [0, false]
-				troop_data[name][0] += 1
+	SaverLoader.saved_game = load("res://save.tres") as SavedGame
+	SaverLoader.load_kampo_troops()
+	for kampo in Global.kampo_troops.values():
+		for troop in kampo.keys():
+			troop_data[troop] = [kampo[troop], false]
 
 func _load_homebase_troops() -> void:
 	var entities = get_tree().current_scene.find_child("Entities")
