@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://3iyvf10cnhaf"]
+
+[ext_resource type="Texture2D" uid="uid://dpolk05qyjbd1" path="res://assets/game/clock.png" id="2_s4vlc"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="3_va0ml"]
+
+[node name="TextureButton" type="TextureButton"]
+
+[node name="time" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.5
+offset_top = -19.0
+offset_right = 58.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="clockIcon" type="TextureRect" parent="time"]
+layout_mode = 2
+texture = ExtResource("2_s4vlc")
+expand_mode = 2
+
+[node name="timeLeft" type="Label" parent="time"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_va0ml")
+theme_override_font_sizes/font_size = 30
+text = "10:00
+"

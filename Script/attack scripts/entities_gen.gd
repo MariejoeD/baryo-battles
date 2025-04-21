@@ -422,7 +422,7 @@ func select_enemies_to_spawn():
 	var target_multiplier = lerpf(1.5, 0.75, (ratio - 0.5) / (1.5 - 0.5))
 	var target_cp = max_cp * target_multiplier
 	target_cp = min(target_cp, get_max_cp())  # Final safety check
-
+	
 	print(target_cp)
 	var best_cp = 0
 	var best_selection = []

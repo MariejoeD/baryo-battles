@@ -3,9 +3,16 @@ extends Building
 
 var active_panel
 var stored_spell : Dictionary = {}
+const BREW_TIME := 600.0 # 10 minutes in seconds
+var to_brew: Array = [] # Queue of spells waiting
+var brewing_spells: Array = [] # Currently brewing (max 2)
+var max_concurrent_brews := 2
+@export var spell_pack: PackedScene
+var spell_instance
 @onready var building_name = $UI.get_child(0)
 @onready var h_box_container: HBoxContainer = %HBoxContainer
 @onready var brew_and_manage_spells: TextureButton = %BrewAndManageSpells
+@onready var brew_display: HBoxContainer = $UI/Kawa/BrewAndManageSpells/Panel/brewedPanel/ScrollContainer/HBoxContainer
 
 
 func get_save_data() -> Dictionary:
@@ -72,6 +79,7 @@ func _on_upgrade_pressed() -> void:
 	active_panel = building_name.get_node_or_null("upgrade/upgradePanel")
 	active_panel.show()
 	pass # Replace with function body.
+	
 func _on_brew_pressed() -> void:
 	if active_panel:
 		active_panel.hide()
@@ -79,17 +87,83 @@ func _on_brew_pressed() -> void:
 	active_panel.show()
 	pass # Replace with function body.
 
+
 func brew(spellbtn):
 	var food_amount = int(spellbtn.find_child("foodAmount").text)
 	if food_amount > Global.food_qty:
-#		not enough food
+		print("Not enough food.")
 		return
-	Global.food_qty -= food_amount
-	get_tree().create_timer(2).timeout
-	stored_spell[spellbtn] = stored_spell.get(spellbtn, 0) + 1
-	print(stored_spell)
-	pass
 
+	Global.food_qty -= food_amount
+	spell_instance = spell_pack.instantiate()
+	brew_display.add_child(spell_instance)
+	spell_instance.texture_normal = spellbtn.texture_normal
+	to_brew.append({"btn": spellbtn, "instance": spell_instance})
+	check_brewing_slots()
+
+func check_brewing_slots():
+	while brewing_spells.size() < max_concurrent_brews and to_brew.size() > 0:
+		var next = to_brew.pop_front()
+		start_brewing(next["btn"], next["instance"])
+
+
+func start_brewing(spellbtn, spell_instance):
+	var timer = Timer.new()
+	timer.wait_time = BREW_TIME
+	timer.one_shot = true
+	timer.timeout.connect(_on_brew_finished.bind(spellbtn, spell_instance, timer))
+	add_child(timer)
+	timer.start()
+
+	var update_timer = Timer.new()
+	update_timer.wait_time = 1.0
+	update_timer.one_shot = false
+	update_timer.autostart = true
+	update_timer.timeout.connect(_update_brew_time.bind(spell_instance, timer, update_timer))
+	add_child(update_timer)
+
+	brewing_spells.append({
+		"spell": spellbtn,
+		"instance": spell_instance,
+		"timer": timer,
+		"update_timer": update_timer
+	})
+
+	print("Started brewing:", spellbtn.name)
+
+func _update_brew_time(spell_instance, brew_timer, update_timer):
+	if not spell_instance.is_inside_tree():
+		return
+
+	var time_left = brew_timer.time_left
+	var minutes = int(time_left / 60)
+	var seconds = int(time_left) % 60
+	var label = spell_instance.find_child("timeLeft")
+
+	if label:
+		label.text = "%02d:%02d" % [minutes, seconds]
+
+	if time_left <= 0:
+		update_timer.stop()
+		update_timer.queue_free()
+
+
+
+func _on_brew_finished(spellbtn, timer):
+	print("Finished brewing:", spellbtn.name)
+
+	# Remove from brewing list
+	for i in brewing_spells.size():
+		if brewing_spells[i]["spell"] == spellbtn:
+			brewing_spells.remove_at(i)
+			break
+
+	timer.queue_free()
+
+	# Here you can increment inventory or stored spell count
+	# stored_spell[spellbtn] = stored_spell.get(spellbtn, 0) + 1
+
+	check_brewing_slots()
 
 
 func build():
