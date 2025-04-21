@@ -5,7 +5,7 @@ extends Node
 	"KampoBtn": 0,
 	"BodegaBtn": 0,
 	"SandatahangLakasBtn": 0,
-	"KawaBtn": 0,
+	"KawaBtn": -1,
 	"EstakadaBtn": 0,
 	"BalwarteBtn": 0,
 	"KwitisBtn": 0,

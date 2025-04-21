@@ -2,12 +2,26 @@ extends Building
 
 
 var active_panel
+var stored_spell : Dictionary = {}
 @onready var building_name = $UI.get_child(0)
+@onready var h_box_container: HBoxContainer = %HBoxContainer
+@onready var brew_and_manage_spells: TextureButton = %BrewAndManageSpells
+
+
+func get_save_data() -> Dictionary:
+	return {"stored_spell": stored_spell}
+
+func get_load_data(data: Dictionary):
+	stored_spell = data.get("stored_spell",{})
+
 func _ready() -> void:
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
 	building_name.get_node("upgrade").pressed.connect(_on_upgrade_pressed)
-	
+	brew_and_manage_spells.pressed.connect(_on_brew_pressed)
+	for child in h_box_container.get_children():
+		if child is TextureButton:
+			child.pressed.connect(brew.bind(child))
 	
 
 	pass
@@ -58,6 +72,25 @@ func _on_upgrade_pressed() -> void:
 	active_panel = building_name.get_node_or_null("upgrade/upgradePanel")
 	active_panel.show()
 	pass # Replace with function body.
+func _on_brew_pressed() -> void:
+	if active_panel:
+		active_panel.hide()
+	active_panel = brew_and_manage_spells.get_node_or_null("Panel")
+	active_panel.show()
+	pass # Replace with function body.
+
+func brew(spellbtn):
+	var food_amount = int(spellbtn.find_child("foodAmount").text)
+	if food_amount > Global.food_qty:
+#		not enough food
+		return
+	Global.food_qty -= food_amount
+	get_tree().create_timer(2).timeout
+	stored_spell[spellbtn] = stored_spell.get(spellbtn, 0) + 1
+	print(stored_spell)
+	pass
+
+
 
 func build():
 	var sibilyan = find_nearest_sibilyan()

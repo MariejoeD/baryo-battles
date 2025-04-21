@@ -339,6 +339,6 @@ game_time = {
 sibilyans = []
 troops = {
 "Kampo-lv1": {
-"arnisador": 0
+"arnisador": 10
 }
 }

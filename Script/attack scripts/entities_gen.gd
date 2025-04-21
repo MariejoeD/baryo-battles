@@ -372,7 +372,7 @@ func calculate_enemy_count():
 		return max_enemies
 	
 	var enemy_count = clampi(
-		base_enemy_count + ((required_cp - player_cp) / required_cp) * base_enemy_count,
+		base_enemy_count + ((required_cp/player_cp) - 1) * base_enemy_count,
 		min_enemies,
 		max_enemies
 	)
@@ -402,50 +402,91 @@ func pick_weighted_enemy(preferred_enemies: Array, remaining_enemies: Array) -> 
 
 	return all_enemies[0]
 
-func select_enemies_to_spawn():
-	var enemy_count = calculate_enemy_count()
-	var target_cp = required_cp
-	if player_cp < required_cp * 0.8:
-		target_cp = required_cp * 1.5
-	elif player_cp > required_cp * 1.2:
-		target_cp = required_cp * 0.75
-
-	var remaining_enemies = enemies.duplicate()
-	var selected_enemies = []
-	var total_cp = 0
-	var selected_enemy_types = {}
-	
-	# Add boss's CP to the total CP
-	if boss_scene:
-		var boss = boss_scene.instantiate()
-		var boss_stats_node = boss.get_node_or_null("Stats")
-		if boss_stats_node:
-			total_cp += boss_stats_node.calculate_cp()
-			
+func get_max_cp():
+	var max_cp = 0
 	for enemy_scene in enemies:
-		if not selected_enemy_types.has(enemy_scene):
-			var temp_enemy = enemy_scene.instantiate()
-			#print(temp_enemy.name)
-			var stats_node = temp_enemy.get_node_or_null("Stats")
+		var temp_enemy = enemy_scene.instantiate()
+		var stats_node = temp_enemy.get_node_or_null("Stats")
+		
+		if stats_node:
+			stats_node.level = Npc.TH_level if Npc.TH_level !=0 else 1
+			var enemy_cp = stats_node.calculate_cp()
+			max_cp = max(enemy_cp * max_enemies,max_cp)
+			temp_enemy.queue_free()
+	return max_cp
+
+func select_enemies_to_spawn():
+	var soft_enemy_count = calculate_enemy_count()
+	var max_cp = min(get_max_cp(), required_cp)
+	var ratio = clampf(player_cp / max_cp, 0.5, 1.5)
+	var target_multiplier = lerpf(1.5, 0.75, (ratio - 0.5) / (1.5 - 0.5))
+	var target_cp = max_cp * target_multiplier
+	target_cp = min(target_cp, get_max_cp())  # Final safety check
+
+	print(target_cp)
+	var best_cp = 0
+	var best_selection = []
+
+	var attempts = 5
+	while attempts > 0:
+		print(best_selection)
+		var remaining_enemies = enemies.duplicate()
+		var selected_enemies = []
+		var total_cp = 0
+		var selected_enemy_types = {}
+
+		# Add boss CP
+		if boss_scene:
+			var boss = boss_scene.instantiate()
+			var boss_stats_node = boss.get_node_or_null("Stats")
+			if boss_stats_node:
+				total_cp += boss_stats_node.calculate_cp()
+
+		# Pick one of each unique enemy type
+		for enemy_scene in enemies:
+			if not selected_enemy_types.has(enemy_scene):
+				var temp_enemy = enemy_scene.instantiate()
+				var stats_node = temp_enemy.get_node_or_null("Stats")
+				if stats_node:
+					var enemy_cp = stats_node.calculate_cp()
+					if total_cp + enemy_cp > target_cp:
+						break
+					total_cp += enemy_cp
+					selected_enemies.append(temp_enemy)
+					selected_enemy_types[enemy_scene] = true
+
+		# Fill remaining slots
+		while total_cp < target_cp and selected_enemies.size() < max_enemies:
+			var next_enemy_scene = pick_weighted_enemy(preferred_enemies, remaining_enemies)
+			var next_enemy = next_enemy_scene.instantiate()
+			var stats_node = next_enemy.get_node_or_null("Stats")
 			if stats_node:
 				var enemy_cp = stats_node.calculate_cp()
+				if total_cp + enemy_cp > target_cp:
+					break
 				total_cp += enemy_cp
-				selected_enemies.append(temp_enemy)
-				selected_enemy_types[enemy_scene] = true
-	while selected_enemies.size() < enemy_count:
-		print(selected_enemies.size())
-		var next_enemy_scene = pick_weighted_enemy(preferred_enemies, remaining_enemies)
+				selected_enemies.append(next_enemy)
+		print("Target CP: ", target_cp)
+		print("Enemy CP after loop: ", total_cp)
+		print("Enemy count: ", selected_enemies.size())
 
-		var next_enemy = next_enemy_scene.instantiate()
-		var stats_node = next_enemy.get_node_or_null("Stats")
-		if stats_node:
-			var enemy_cp = stats_node.calculate_cp()
-			total_cp += enemy_cp
-			selected_enemies.append(next_enemy)
+		# If CP is too low and enemy count is nearly max, retry
+		if total_cp < target_cp * 0.9 and selected_enemies.size() >= max_enemies - 1:
+			print("Retrying selection: low CP, high count")
+			attempts -= 1
+			continue
 
-		if total_cp >= target_cp:
-			break
-	return selected_enemies
+		# Acceptable result found
+		if total_cp >= best_cp:
+			best_cp = total_cp
+			best_selection = selected_enemies
+			print(best_selection)
+
+		break  # exit if good enough
+
+	return best_selection
+
+
 
 func spawn_enemy(enemies):
 	#print(enemies)

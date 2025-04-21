@@ -113,7 +113,8 @@ func remove_floor1_cells_inside_mesh(grid_map: GridMap, building_mesh: MeshInsta
 			var cell = Vector3i(x, y, z)
 			var world_pos = grid_map.map_to_local(cell) + half_extents
 			if aabb.has_point(world_pos):
-				grid_map.set_cell_item(cell, -1)
+				var astar = get_tree().get_nodes_in_group("pathscript")[0]
+				astar.remove_path(cell)
 
 func follow_mouse():
 	var viewport = get_tree().current_scene.find_child("SubViewport")

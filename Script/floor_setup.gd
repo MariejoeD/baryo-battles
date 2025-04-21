@@ -133,20 +133,16 @@ func remove_point(cell_pos: Vector3i):
 
 func update_neighbors(cell_pos: Vector3i):
 	for x in [-1, 0, 1]:
-		for y in [-1, 0, 1]:
-			for z in [-1, 0, 1]:
-				var offset = Vector3i(x, y, z)
-				if offset == Vector3i(0, 0, 0):
-					continue
-				
-				var neighbor_pos = cell_pos + offset
-				if v3_to_index(neighbor_pos) in all_points:
-					var neighbor_id = all_points[v3_to_index(neighbor_pos)]
-					if floor_map.get_cell_item(neighbor_pos) == 1:
-						# Reconnect valid neighbors
-						var point_id = all_points.get(v3_to_index(cell_pos), -1)
-						if point_id != -1 and !aS.are_points_connected(point_id, neighbor_id):
-							aS.connect_points(point_id, neighbor_id, true)
-					else:
-						# Disconnect invalid neighbors
-						aS.disconnect_points(all_points[v3_to_index(cell_pos)], neighbor_id)
+		for z in [-1, 0, 1]:
+			if x == 0 and z == 0:
+				continue
+
+			var neighbor_pos = cell_pos + Vector3i(x, 0, z)  # Only check same floor
+			if v3_to_index(neighbor_pos) in all_points:
+				var neighbor_id = all_points[v3_to_index(neighbor_pos)]
+				if floor_map.get_cell_item(neighbor_pos) == 1:
+					var point_id = all_points.get(v3_to_index(cell_pos), -1)
+					if point_id != -1 and !aS.are_points_connected(point_id, neighbor_id):
+						aS.connect_points(point_id, neighbor_id, true)
+				else:
+					aS.disconnect_points(all_points[v3_to_index(cell_pos)], neighbor_id)

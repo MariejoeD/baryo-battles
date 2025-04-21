@@ -25,6 +25,11 @@ var last_target_position: Vector3 = Vector3.ZERO  # Track the last target positi
 
 func enter(_previous_state_path: String, data := {}) -> void:
 	# Initialize pathfinding and set up the target
+	var two_models = fsm.two_models
+	if two_models:
+			fsm.npc_root_node.get_child(2).visible = false
+			fsm.npc_root_node.get_child(1).visible = true
+		
 	fsm.anim_player.play("run")
 	path_recalculation_timer = path_recalculation_cooldown
 	if not is_instance_valid(data.get("target", null)):
