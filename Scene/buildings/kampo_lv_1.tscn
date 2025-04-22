@@ -766,4 +766,5 @@ weight_damage = 0.0
 weight_attack_speed = 0.0
 
 [connection signal="input_event" from="Area3D" to="." method="clicked_building"]
+[connection signal="pressed" from="UI/Kampo/upgrade" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="UI/Kampo/upgrade/upgradePanel/upgradeButton" to="." method="_on_upgrade_button_pressed"]

@@ -184,5 +184,6 @@ func remove_material_override(mesh_instance) -> void:
 func _on_upgrade_button_pressed() -> void:
 	if Npc.TH_level <= level:
 		return
+
 	level += 1
-	pass # Replace with function body.
+	level_label.text = "Level: " + str(level)

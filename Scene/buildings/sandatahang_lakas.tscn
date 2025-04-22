@@ -2353,3 +2353,5 @@ target_priority = 7.5
 weight_hp = 1.0
 weight_damage = 0.0
 weight_attack_speed = 0.0
+
+[connection signal="pressed" from="UI/Sandatahang Lakas/upgrade/upgradePanel/upgradeButton" to="." method="_on_upgrade_button_pressed"]

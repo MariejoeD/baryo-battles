@@ -152,3 +152,10 @@ func change_building_count():
 	if level >= 3:
 		Buildings.buildings["BalwarteBtn"] += 2
 		Buildings.buildings["KwitisBtn"] += 2
+		
+func _on_upgrade_button_pressed() -> void:
+	if Npc.TH_level <= level:
+		return
+
+	level += 1
+	level_label.text = "Level: " + str(level)

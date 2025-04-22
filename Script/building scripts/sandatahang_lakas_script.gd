@@ -1,5 +1,5 @@
 extends Building
-
+@onready var level_label = %level
 
 var active_panel
 @onready var training_timer: Timer = Timer.new()
@@ -317,3 +317,9 @@ func find_nearest_sibilyan() -> Node:
 func remove_material_override(mesh_instance) -> void:
 	for i in range(mesh_instance.mesh.get_surface_count()):
 		mesh_instance.set_surface_override_material(i, null)
+func _on_upgrade_button_pressed() -> void:
+	if Npc.TH_level <= level:
+		return
+
+	level += 1
+	level_label.text = "Level: " + str(level)

@@ -797,3 +797,5 @@ target_priority = 2.0
 weight_hp = 1.0
 weight_damage = 0.0
 weight_attack_speed = 0.0
+
+[connection signal="pressed" from="UI/Kubo/upgrade/upgradePanel/upgradeButton" to="." method="_on_upgrade_button_pressed"]

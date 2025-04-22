@@ -239,3 +239,10 @@ func _on_view_brewed_spells_pressed():
 
 	if panel:
 		panel.hide()
+
+func _on_upgrade_button_pressed() -> void:
+	if Npc.TH_level <= level:
+		return
+
+	level += 1
+	level_label.text = "Level: " + str(level)
