@@ -494,7 +494,6 @@ texture_normal = ExtResource("2_u6ak0")
 texture_pressed = ExtResource("3_wldwn")
 
 [node name="InformationPanel" type="Panel" parent="UI/Balwarte/viewInformation"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -3.774
@@ -557,6 +556,7 @@ text = "A towering lookout post that enhances visibility across the battlefield.
 autowrap_mode = 3
 
 [node name="level" type="Label" parent="UI/Balwarte/viewInformation/InformationPanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.843
@@ -756,3 +756,5 @@ target_priority = 8.0
 weight_hp = 1.0
 weight_damage = 0.0
 weight_attack_speed = 0.0
+
+[connection signal="pressed" from="UI/Balwarte/upgrade" to="." method="_on_upgrade_button_pressed"]

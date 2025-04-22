@@ -1,5 +1,5 @@
 extends Building
-
+@onready var level_label = %level
 
 var active_panel
 @onready var building_name = $UI.get_child(0)

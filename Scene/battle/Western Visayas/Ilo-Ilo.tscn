@@ -273,7 +273,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 89.3976, 1.01587, -38.6564)
 [node name="grasssss8" parent="bush" instance=ExtResource("18_mtkow")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 48.3213, 1.01587, 76.3735)
 
-[node name="Entities" type="Node3D" parent="." node_paths=PackedStringArray("Objects")]
+[node name="Entities" type="Node3D" parent="."]
 script = ExtResource("19_exus0")
 required_cp = 1000
 enemies = Array[PackedScene]([ExtResource("20_bwnof")])
@@ -281,7 +281,6 @@ preferred_enemies = Array[PackedScene]([ExtResource("20_bwnof")])
 troops = {
 "arnisador": "res://Scene/Characters/arnisador.tscn"
 }
-Objects = [NodePath("../trees"), NodePath("../stones"), NodePath("../buildings"), NodePath("../bush")]
 
 [node name="Path Generator" type="Node3D" parent="."]
 script = ExtResource("21_tpjqk")

@@ -1,6 +1,6 @@
 # Kubo.gd
 extends Building
-
+@onready var level_label = %level
 
 @export var current_sibilyan: int = 0
 @export var max_sibilyans: int = 3

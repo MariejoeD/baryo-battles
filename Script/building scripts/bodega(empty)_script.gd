@@ -1,4 +1,5 @@
 extends Building
+@onready var level_label = %level
 
 
 var active_panel
@@ -15,7 +16,6 @@ func _ready() -> void:
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
 	building_name.get_node("upgrade").pressed.connect(_on_upgrade_pressed)
-	
 	
 
 	pass
@@ -136,5 +136,6 @@ func remove_material_override(mesh_instance) -> void:
 func _on_upgrade_button_pressed() -> void:
 	if Npc.TH_level <= level:
 		return
+
 	level += 1
-	pass # Replace with function body.
+	level_label.text = "Level: " + str(level)

@@ -331,6 +331,8 @@ func show_result(result: String):
 func _on_resource_selected():
 	go_home_button.visible = true
 
+func _on_go_home_pressed():
+	SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
 
 func choose_resource_to_generate(resource:= "Food"):
 	MapManager.conquer_base(get_parent().name,resource, 5)
@@ -423,6 +425,8 @@ func select_enemies_to_spawn():
 	var target_cp = max_cp * target_multiplier
 	target_cp = min(target_cp, get_max_cp())  # Final safety check
 	
+
+	print(get_max_cp())
 	print(target_cp)
 	var best_cp = 0
 	var best_selection = []
@@ -511,9 +515,9 @@ func spawn_enemy(enemies):
 	enemies_spawned = true
 
 func get_random_position() -> Vector3:
-	var x = randf_range(-50, 50)
+	var x = randf_range(-100, 100)
 	var y = 0
-	var z = randf_range(-50, 50)
+	var z = randf_range(-100, 100)
 	return Vector3(x, y, z)
 
 func sum_array(arr: Array) -> float:

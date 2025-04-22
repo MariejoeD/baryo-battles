@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SavedGame" load_steps=2 format=3 uid="uid://g1etx4dwv1x5"]
+[gd_resource type="Resource" script_class="SavedGame" load_steps=2 format=3 uid="uid://d31q8wair25wv"]
 
 [ext_resource type="Script" path="res://Script/saved_game.gd" id="1_u7w4t"]
 
@@ -339,6 +339,6 @@ game_time = {
 sibilyans = []
 troops = {
 "Kampo-lv1": {
-"arnisador": 10
+"arnisador": 1
 }
 }

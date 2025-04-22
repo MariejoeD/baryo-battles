@@ -126,7 +126,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.313, 2, -0.083)
 shape = SubResource("BoxShape3D_rr71q")
 
 [node name="UI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -277,6 +276,7 @@ theme_override_font_sizes/font_size = 15
 text = "Max Amount"
 
 [node name="level" type="Label" parent="UI/Bodega/viewInformation/InformationPanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.843

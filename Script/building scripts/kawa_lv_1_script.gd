@@ -1,5 +1,5 @@
 extends Building
-
+@onready var level_label = %level
 
 var active_panel
 var stored_spell : Dictionary = {}
