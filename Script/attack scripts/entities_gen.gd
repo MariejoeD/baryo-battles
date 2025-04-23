@@ -428,6 +428,7 @@ func select_enemies_to_spawn():
 
 	print(get_max_cp())
 	print(target_cp)
+	print("playe cp: ", calculate_player_total_cp())
 	var best_cp = 0
 	var best_selection = []
 
@@ -478,7 +479,7 @@ func select_enemies_to_spawn():
 		if total_cp < target_cp * 0.9 and selected_enemies.size() >= max_enemies - 1:
 			print("Retrying selection: low CP, high count")
 			attempts -= 1
-			continue
+			#continue
 
 		# Acceptable result found
 		if total_cp >= best_cp:
@@ -486,7 +487,7 @@ func select_enemies_to_spawn():
 			best_selection = selected_enemies
 			print(best_selection)
 
-		break  # exit if good enough
+		#break  # exit if good enough
 
 	return best_selection
 
@@ -515,9 +516,9 @@ func spawn_enemy(enemies):
 	enemies_spawned = true
 
 func get_random_position() -> Vector3:
-	var x = randf_range(-100, 100)
+	var x = randf_range(-70, 70)
 	var y = 0
-	var z = randf_range(-100, 100)
+	var z = randf_range(-70, 70)
 	return Vector3(x, y, z)
 
 func sum_array(arr: Array) -> float:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://da2fvbkssjreq"]
+[gd_scene load_steps=24 format=3 uid="uid://da2fvbkssjreq"]
 
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="1_hqmp8"]
+[ext_resource type="Script" path="res://Script/camera_3d.gd" id="2_2bot0"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="4_wcfb6"]
 [ext_resource type="PackedScene" uid="uid://buur5k7xhj1t4" path="res://assets/enemybase/Sigbin-Kweba.fbx" id="5_a6vtm"]
 [ext_resource type="PackedScene" uid="uid://dc6ql3e0xfe3j" path="res://assets/enemybase/Kapre-Baliti.fbx" id="6_4eya2"]
@@ -13,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://cipwkvjlafbhu" path="res://assets/enemybase/bushSimple.fbx" id="13_l1y8g"]
 [ext_resource type="Script" path="res://Script/attack scripts/entities_gen.gd" id="13_vl48m"]
 [ext_resource type="PackedScene" uid="uid://dcyy578mne1kp" path="res://Scene/Characters/duwende.tscn" id="14_hinej"]
+[ext_resource type="PackedScene" uid="uid://bdld6goa4wee4" path="res://Scene/Characters/sigbin.tscn" id="14_xj23k"]
+[ext_resource type="PackedScene" uid="uid://685fof7wdp38" path="res://Scene/Characters/kapre.tscn" id="15_4086b"]
 [ext_resource type="Script" path="res://Script/attack scripts/path_generator.gd" id="16_2d11s"]
 [ext_resource type="PackedScene" path="res://floor_1_gridmap.tscn" id="17_f52xs"]
 [ext_resource type="Script" path="res://Script/attack scripts/pathfindiing_in _attack.gd" id="17_vtl6j"]
@@ -68,8 +71,18 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.71934, 0.40831, -0.56199, 0, 0.809017, 0.587785, 0.694658, -0.422817, 0.581958, -101, 81, 107.92)
 fov = 53.4
+script = ExtResource("2_2bot0")
+zoom_speed = 10.0
+pan_speed = 50
+max_zoom = 82
 
 [node name="UI" parent="." instance=ExtResource("4_wcfb6")]
+
+[node name="surrenderButton" parent="UI" index="0"]
+visible = true
+
+[node name="allyPanel" parent="UI" index="1"]
+visible = true
 
 [node name="Buildings" type="Node" parent="."]
 
@@ -306,11 +319,18 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.132915, -0.592936, -27.0008
 
 [node name="Entities" type="Node3D" parent="." node_paths=PackedStringArray("Objects")]
 script = ExtResource("13_vl48m")
-required_cp = 800
-enemies = Array[PackedScene]([ExtResource("14_hinej")])
+required_cp = 3000
+enemies = Array[PackedScene]([ExtResource("14_hinej"), ExtResource("14_xj23k"), ExtResource("15_4086b")])
 preferred_enemies = Array[PackedScene]([ExtResource("14_hinej")])
+max_enemies = 30
 troops = {
-"arnisador": "res://Scene/Characters/arnisador.tscn"
+"arnisador": "res://Scene/Characters/arnisador.tscn",
+"kapitan_makoy": "res://Scene/Characters/kapitan_makoy.tscn",
+"lakan_warrior": "res://Scene/Characters/lakan_warrior.tscn",
+"manggagamot": "res://Scene/Characters/manggagamot.tscn",
+"marites": "res://Scene/Characters/marites.tscn",
+"super_inday": "res://Scene/Characters/super_inday.tscn",
+"tirador": "res://Scene/Characters/tirador.tscn"
 }
 Objects = [NodePath("../Trees"), NodePath("../Stones"), NodePath("../Bushes"), NodePath("../Buildings")]
 

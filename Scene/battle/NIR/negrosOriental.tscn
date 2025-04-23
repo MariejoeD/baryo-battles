@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://cblc3ijjhscy"]
+[gd_scene load_steps=23 format=3 uid="uid://cblc3ijjhscy"]
 
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="1_eci0f"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="3_cdw0c"]
+[ext_resource type="Script" path="res://Script/camera_3d.gd" id="3_qtspn"]
 [ext_resource type="MeshLibrary" uid="uid://bcqqed14hyr4a" path="res://assets/mesh/floor_meshes.tres" id="4_jnqcc"]
 [ext_resource type="PackedScene" uid="uid://buur5k7xhj1t4" path="res://assets/enemybase/Sigbin-Kweba.fbx" id="5_bumf3"]
 [ext_resource type="PackedScene" uid="uid://dc6ql3e0xfe3j" path="res://assets/enemybase/Kapre-Baliti.fbx" id="6_gtgdt"]
@@ -76,6 +77,10 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.71934, 0.40831, -0.56199, 0, 0.809017, 0.587785, 0.694658, -0.422817, 0.581958, -101, 81, 107.92)
 fov = 53.4
+script = ExtResource("3_qtspn")
+zoom_speed = 10.0
+pan_speed = 50
+max_zoom = 82
 
 [node name="UI" parent="." instance=ExtResource("3_cdw0c")]
 
@@ -274,7 +279,13 @@ required_cp = 800
 enemies = Array[PackedScene]([ExtResource("15_wisgq")])
 preferred_enemies = Array[PackedScene]([ExtResource("15_wisgq")])
 troops = {
-"arnisador": "res://Scene/Characters/arnisador.tscn"
+"arnisador": "res://Scene/Characters/arnisador.tscn",
+"kapitan_makoy": "res://Scene/Characters/kapitan_makoy.tscn",
+"lakan_warrior": "res://Scene/Characters/lakan_warrior.tscn",
+"manggagamot": "res://Scene/Characters/manggagamot.tscn",
+"marites": "res://Scene/Characters/marites.tscn",
+"super_inday": "res://Scene/Characters/super_inday.tscn",
+"tirador": "res://Scene/Characters/tirador.tscn"
 }
 Objects = [NodePath("../Buildings"), NodePath("../Trees"), NodePath("../Stones"), NodePath("../Bushes")]
 boss_scene = ExtResource("15_15llk")

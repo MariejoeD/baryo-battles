@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://gtppuv7il45"]
+[gd_scene load_steps=20 format=3 uid="uid://gtppuv7il45"]
 
 [ext_resource type="MeshLibrary" uid="uid://bcqqed14hyr4a" path="res://assets/mesh/floor_meshes.tres" id="1_8e173"]
+[ext_resource type="Script" path="res://Script/camera_3d.gd" id="1_s1168"]
 [ext_resource type="Texture2D" uid="uid://bcjrkwc5tmolr" path="res://assets/rocky_terrain_02_diff_4k.jpg" id="3_7mx51"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="3_vgl07"]
 [ext_resource type="Script" path="res://Script/attack scripts/entities_gen.gd" id="11_y5cqv"]
@@ -47,6 +48,7 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.71934, 0.40831, -0.56199, 0, 0.809017, 0.587785, 0.694658, -0.422817, 0.581958, -101, 81, 107.92)
 fov = 53.4
+script = ExtResource("1_s1168")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_eahwb")
@@ -230,11 +232,16 @@ shape = SubResource("BoxShape3D_mhbwc")
 
 [node name="UI" parent="." instance=ExtResource("3_vgl07")]
 
+[node name="surrenderButton" parent="UI" index="0"]
+visible = true
+
+[node name="allyPanel" parent="UI" index="1"]
+visible = true
+
 [node name="Entities" type="Node3D" parent="." node_paths=PackedStringArray("Objects")]
 script = ExtResource("11_y5cqv")
-required_cp = 2000
+required_cp = 1500
 enemies = Array[PackedScene]([ExtResource("12_4p4n6")])
-preferred_enemies = Array[PackedScene]([ExtResource("12_4p4n6")])
 base_enemy_count = 1
 min_enemies = 1
 max_enemies = 15
@@ -248,7 +255,6 @@ script = ExtResource("13_togkr")
 
 [node name="Path Generator" type="Node3D" parent="."]
 script = ExtResource("15_h0i1h")
-Create_path = true
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_8e173")
