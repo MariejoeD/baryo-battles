@@ -48,7 +48,7 @@ var kampo_troops: Dictionary = {}
 
 var prologue_played = false
 func _ready() -> void:
-	SignalManager.discovered.connect(npc)
+	SignalManager._discovered.connect(npc)
 	#load_troops_from_file()
 
 func npc(name):

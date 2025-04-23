@@ -3,6 +3,7 @@ extends Node3D
 @onready var placeable = false
 var building_mode = false
 var current_building: Node3D = null
+var cb_name 
 @export var instant_build: bool = false
 @export var building_data: building_resource
 @onready var grid_map = find_parent("HomeBase").find_child("GridMap")  # Reference to your GridMap node
@@ -38,7 +39,7 @@ func _on_btn_pressed(btn: TextureButton) -> void:
 	if Global.wood_qty < wood_req or Global.stone_qty < stone_req:
 		show_warning_label("notEnoughResources")
 		return
-
+	cb_name = btn.name
 	var scene = building_data.buildings[btn.name]
 	current_building = scene.instantiate()
 
@@ -60,12 +61,15 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if building_mode:
 			if is_fully_on_floor(current_building) and not is_colliding_with_other_objects(current_building):
-				building_mode = false
+				# Place the building
 				current_building.global_transform.origin.y = .5
-				$"../BuildButton".show()
-				$"../AttackButton".show()
+
+				# Deduct resources for each additional placement
 				Global.wood_qty -= wood_req
 				Global.stone_qty -= stone_req
+				
+				
+
 				if instant_build:
 					remove_material_override(current_building)
 					if "built" in current_building:
@@ -75,9 +79,33 @@ func _input(event: InputEvent) -> void:
 					if current_building.has_method("build"):
 						current_building.build()
 				remove_floor1_cells_inside_mesh(floor, current_building)
+				# Building not unlocked
+				if Buildings.buildings[cb_name] == 0:
+					building_mode = false
+					$"../BuildButton".show()
+					$"../AttackButton".show()
+					return
+
+				# Not enough resources
+				if Global.wood_qty < wood_req or Global.stone_qty < stone_req:
+					building_mode = false
+					$"../BuildButton".show()
+					$"../AttackButton".show()
+					return
+					# After placing one building, reset the current building to allow placing the next one
+					#current_building.queue_free()
+				# Check if we still have quantity left to build
+				# If no quantity left, exit building mode
+				
+				var scene = building_data.buildings[cb_name]
+				current_building = scene.instantiate()
+				grid_map.add_child(current_building)
+
+
 	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 		if building_mode:
+			# Cancel the building placement if right-clicked
 			current_building.get_parent().remove_child(current_building)
 			current_building.queue_free()
 			building_mode = false

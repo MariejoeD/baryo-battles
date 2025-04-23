@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dcyy578mne1kp"]
+[gd_scene load_steps=15 format=4 uid="uid://dcyy578mne1kp"]
 
 [ext_resource type="Texture2D" uid="uid://dkt74hha5gxtk" path="res://assets/Anim/Duwende/Duwende-Idle_0.png" id="1_svxaw"]
 [ext_resource type="Animation" uid="uid://csfejyw0q0xxq" path="res://assets/Anim/Duwende/run.res" id="2_7hsr1"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://chfyar41tdneb" path="res://Scene/Components/fsm.tscn" id="4_dmk26"]
 [ext_resource type="PackedScene" uid="uid://cir4xu05qnmre" path="res://Scene/Components/targeting_component.tscn" id="5_bfocj"]
 [ext_resource type="PackedScene" uid="uid://cp2vi4c5mg38k" path="res://Scene/Components/pathfinder_component.tscn" id="6_dxh4u"]
-[ext_resource type="PackedScene" uid="uid://ddus7m2bshw8c" path="res://Scene/Components/health_component.tscn" id="7_mkoak"]
 [ext_resource type="PackedScene" uid="uid://o7lqup8rddo1" path="res://Scene/Attack/stats.tscn" id="8_10n6q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nl6xy"]
@@ -609,9 +608,6 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection"]
 shape = SubResource("CylinderShape3D_qr8dd")
-
-[node name="Health Component" parent="." instance=ExtResource("7_mkoak")]
-script = null
 
 [node name="Stats" parent="." instance=ExtResource("8_10n6q")]
 hp = 200

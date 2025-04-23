@@ -81,6 +81,8 @@ func _on_upgrade_pressed() -> void:
 	pass # Replace with function body.
 	
 func _on_brew_pressed() -> void:
+	var brewed_spells: Panel = $UI/Kawa/BrewAndManageSpells/brewedSpells
+	brewed_spells.hide()
 	if active_panel:
 		active_panel.hide()
 	active_panel = brew_and_manage_spells.get_node_or_null("Panel")
@@ -149,7 +151,8 @@ func _update_brew_time(spell_instance, brew_timer, update_timer):
 
 
 
-func _on_brew_finished(spellbtn, timer):
+func _on_brew_finished(spellbtn, spell_instance, timer):
+	var stored_display_container: HBoxContainer = $UI/Kawa/BrewAndManageSpells/brewedSpells/spellPanel/HBoxContainer
 	print("Finished brewing:", spellbtn.name)
 
 	# Remove from brewing list
@@ -159,10 +162,10 @@ func _on_brew_finished(spellbtn, timer):
 			break
 
 	timer.queue_free()
-
+	brew_display.remove_child(spell_instance)
 	# Here you can increment inventory or stored spell count
-	# stored_spell[spellbtn] = stored_spell.get(spellbtn, 0) + 1
-
+	stored_spell[spellbtn] = stored_spell.get(spellbtn, 0) + 1
+	stored_display_container.get_node(spellbtn.name+"/spellCount").text =  str(stored_spell.get(spellbtn, 0))
 	check_brewing_slots()
 
 
