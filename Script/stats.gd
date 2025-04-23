@@ -81,7 +81,7 @@ func _on_heal(heal):
 func _ready():
 	# Test the CP calculation for Arnisador
 	var cp = calculate_cp()
-	print(get_parent().name," Combat Power: ", cp)
+	#print(get_parent().name," Combat Power: ", cp)
 	current_hp = get_scaled_hp() # Optional if you want to start full health
 
 func apply_spawn_scaling():

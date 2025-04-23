@@ -9,6 +9,8 @@ var brewing_spells: Array = [] # Currently brewing (max 2)
 var max_concurrent_brews := 2
 @export var spell_pack: PackedScene
 var spell_instance
+@onready var stored_display_container: HBoxContainer = $UI/Kawa/BrewAndManageSpells/brewedSpells/spellPanel/HBoxContainer
+
 @onready var building_name = $UI.get_child(0)
 @onready var h_box_container: HBoxContainer = %HBoxContainer
 @onready var brew_and_manage_spells: TextureButton = %BrewAndManageSpells
@@ -16,10 +18,95 @@ var spell_instance
 
 
 func get_save_data() -> Dictionary:
-	return {"stored_spell": stored_spell}
+	var data = super.get_save_data()
+	var brewing_info = []
+	for spell in brewing_spells:
+		brewing_info.append({
+			"name": spell["spell"].name,
+			"time_left": spell["timer"].time_left
+		})
 
-func get_load_data(data: Dictionary):
-	stored_spell = data.get("stored_spell",{})
+	var queue_info = []
+	for item in to_brew:
+		queue_info.append({
+			"name": item["btn"].name
+		})
+	data["spell_data"] = {
+		"stored_spell": stored_spell,
+		"to_brew": queue_info,
+		"brewing_spells": brewing_info
+	}
+	return data
+
+
+func load_from_data(data: Dictionary):
+	super.load_from_data(data)
+	await self.ready
+	var spell_data = data.get("spell_data", {})
+	stored_spell = spell_data.get("stored_spell", {})
+	# Iterate over each spell in stored_spell to update the UI
+	for spell_name in stored_spell.keys():
+		var spell_count = stored_spell[spell_name]
+
+		var label_path = spell_name + "/spellCount"
+		var spell_label = stored_display_container.get_node_or_null(label_path)
+		if spell_label:
+			spell_label.text = str(spell_count)
+		else:
+			print("Warning: Could not find label for spell:", label_path)
+
+	to_brew.clear()
+	
+	print(to_brew)
+	var brew_data = spell_data.get("brewing_spells", [])
+	for item in brew_data:
+		var spellbtn = find_spell_button_by_name(item["name"])
+		if spellbtn:
+			var instance = spell_pack.instantiate()
+			instance.texture_normal = spellbtn.texture_normal
+			brew_display.add_child(instance)
+			start_brewing_with_time_left(spellbtn, instance, item["time_left"])
+
+	var queue_data = spell_data.get("to_brew", [])
+	print("queue_data: ",queue_data)
+	for item in queue_data:
+		var spellbtn = find_spell_button_by_name(item["name"])
+		if spellbtn:
+			var instance = spell_pack.instantiate()
+			instance.texture_normal = spellbtn.texture_normal
+			brew_display.add_child(instance)
+			to_brew.append({"btn": spellbtn, "instance": instance})
+
+func find_spell_button_by_name(name: String) -> TextureButton:
+	print("finding spell")
+	for child in h_box_container.get_children():
+		print("spell: ",child)
+		if child.name == name and child is TextureButton:
+			return child
+	return null
+
+
+func start_brewing_with_time_left(spellbtn, spell_instance, time_left):
+	var timer = Timer.new()
+	timer.wait_time = time_left
+	timer.one_shot = true
+	timer.timeout.connect(_on_brew_finished.bind(spellbtn, spell_instance, timer))
+	add_child(timer)
+	timer.start()
+
+	var update_timer = Timer.new()
+	update_timer.wait_time = 1.0
+	update_timer.one_shot = false
+	update_timer.autostart = true
+	update_timer.timeout.connect(_update_brew_time.bind(spell_instance, timer, update_timer))
+	add_child(update_timer)
+
+	brewing_spells.append({
+		"spell": spellbtn,
+		"instance": spell_instance,
+		"timer": timer,
+		"update_timer": update_timer
+	})
 
 func _ready() -> void:
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
@@ -152,7 +239,6 @@ func _update_brew_time(spell_instance, brew_timer, update_timer):
 
 
 func _on_brew_finished(spellbtn, spell_instance, timer):
-	var stored_display_container: HBoxContainer = $UI/Kawa/BrewAndManageSpells/brewedSpells/spellPanel/HBoxContainer
 	print("Finished brewing:", spellbtn.name)
 
 	# Remove from brewing list
@@ -164,8 +250,8 @@ func _on_brew_finished(spellbtn, spell_instance, timer):
 	timer.queue_free()
 	brew_display.remove_child(spell_instance)
 	# Here you can increment inventory or stored spell count
-	stored_spell[spellbtn] = stored_spell.get(spellbtn, 0) + 1
-	stored_display_container.get_node(spellbtn.name+"/spellCount").text =  str(stored_spell.get(spellbtn, 0))
+	stored_spell[spellbtn.name] = stored_spell.get(spellbtn.name, 0) + 1
+	stored_display_container.get_node(spellbtn.name+"/spellCount").text =  str(stored_spell.get(spellbtn.name, 0))
 	check_brewing_slots()
 
 

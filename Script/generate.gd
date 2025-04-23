@@ -28,7 +28,7 @@ func Load():
 	generate_trees()
 
 func generate_trees():
-	print("Tree: ", find_qty("tree"))
+	#print("Tree: ", find_qty("tree"))
 	if find_qty("tree") >= max_tree_qty:
 		return
 	if tree_scene == null:
@@ -60,7 +60,7 @@ func generate_trees():
 		selected_child.visible = true
 
 func generate_stones():
-	print("Stone: ", find_qty("stone"))
+	#print("Stone: ", find_qty("stone"))
 	if find_qty("stone") >= max_stones_qty:
 		return
 	if stone_scene == null:

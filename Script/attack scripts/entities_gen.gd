@@ -84,6 +84,12 @@ func get_mouse_floor_position() -> Vector3:
 		return result.position
 	return Vector3.INF
 
+func troopCount():
+	var troop_count = 0
+	for troop in UI.troop_data.keys():
+		troop_count += UI.troop_data[troop][0]
+	return troop_count
+
 func spawn_troop(target_position: Vector3):
 	var selected_troop = get_selected_troop()
 	if selected_troop == "":
@@ -151,7 +157,7 @@ func is_position_valid(position: Vector3, collision_shape: CollisionShape3D) -> 
 		if result.collider == temp_area:
 			continue
 		valid = false
-
+	#print(valid)
 	return valid
 	
 func create_area_and_collision():
@@ -229,9 +235,12 @@ func spawn_boss() -> void:
 	if not boss_spawned and boss_scene:
 		var boss = boss_scene.instantiate()
 		# Find a valid position to spawn the boss
-		var valid_position = get_random_position()
-		boss.position = valid_position
-		boss.position = get_random_position()
+		var random_position = get_random_position()
+		var collision_shape = boss.get_node_or_null("CollisionShape3D")
+		if collision_shape and await is_position_valid(random_position, collision_shape):
+			#print("test+print")
+			boss.position = random_position
+		
 		if boss.find_child("Stats").has_method("apply_spawn_scaling"):
 			boss.find_child("Stats").apply_spawn_scaling()
 		add_child(boss)
@@ -387,11 +396,29 @@ func pick_weighted_enemy(preferred_enemies: Array, remaining_enemies: Array) -> 
 
 	for enemy in preferred_enemies:
 		all_enemies.append(enemy)
-		weights.append(2)
+		var check = enemy.instantiate()
+		if check.has_node("Stats"):
+			var defeated_count = 0
+			for status in Npc.bosses.values():
+				if status == true:
+					defeated_count += 1
+			check.get_node("Stats").level = defeated_count+ 1
+			weights.append(check.get_node("Stats").calculate_cp()*2)
+		check.queue_free()
+
+
 
 	for enemy in remaining_enemies:
 		all_enemies.append(enemy)
-		weights.append(1)
+		var check = enemy.instantiate()
+		if check.has_node("Stats"):
+			var defeated_count = 0
+			for status in Npc.bosses.values():
+				if status == true:
+					defeated_count += 1
+			check.get_node("Stats").level = defeated_count+ 1
+			weights.append(check.get_node("Stats").calculate_cp())
+		check.queue_free()
 
 	var total_weight = sum_array(weights)
 	var rand = randf_range(0, total_weight)
@@ -418,6 +445,7 @@ func get_max_cp():
 	return max_cp
 
 func select_enemies_to_spawn():
+	max_enemies = max(troopCount(), max_enemies)
 	var soft_enemy_count = calculate_enemy_count()
 	var max_cp = min(get_max_cp(), required_cp)
 	var ratio = clampf(player_cp / max_cp, 0.5, 1.5)
@@ -453,6 +481,11 @@ func select_enemies_to_spawn():
 				var temp_enemy = enemy_scene.instantiate()
 				var stats_node = temp_enemy.get_node_or_null("Stats")
 				if stats_node:
+					var defeated_count = 0
+					for status in Npc.bosses.values():
+						if status == true:
+							defeated_count += 1
+					stats_node.level = defeated_count+ 1
 					var enemy_cp = stats_node.calculate_cp()
 					if total_cp + enemy_cp > target_cp:
 						break
@@ -466,6 +499,11 @@ func select_enemies_to_spawn():
 			var next_enemy = next_enemy_scene.instantiate()
 			var stats_node = next_enemy.get_node_or_null("Stats")
 			if stats_node:
+				var defeated_count = 0
+				for status in Npc.bosses.values():
+					if status == true:
+						defeated_count += 1
+				stats_node.level = defeated_count+ 1
 				var enemy_cp = stats_node.calculate_cp()
 				if total_cp + enemy_cp > target_cp:
 					break
@@ -475,19 +513,19 @@ func select_enemies_to_spawn():
 		print("Enemy CP after loop: ", total_cp)
 		print("Enemy count: ", selected_enemies.size())
 
-		# If CP is too low and enemy count is nearly max, retry
-		if total_cp < target_cp * 0.9 and selected_enemies.size() >= max_enemies - 1:
-			print("Retrying selection: low CP, high count")
-			attempts -= 1
-			#continue
-
 		# Acceptable result found
 		if total_cp >= best_cp:
 			best_cp = total_cp
 			best_selection = selected_enemies
-			print(best_selection)
+			print(best_cp)
+		# If CP is too low and enemy count is nearly max, retry
+		if total_cp < target_cp * 0.9 and selected_enemies.size() >= max_enemies - 1:
+			print("Retrying selection: low CP, high count")
+			attempts -= 1
+			continue
 
-		#break  # exit if good enough
+
+		break  # exit if good enough
 
 	return best_selection
 
@@ -496,16 +534,25 @@ func select_enemies_to_spawn():
 func spawn_enemy(enemies):
 	#print(enemies)
 	for enemy in enemies:
-		print(enemy)
+		#print(enemy)
 		if enemy and is_instance_valid(enemy):
 			var found_pos = false
 			for i in range(max_enemies * 5):
+				#print("Test Print")
 				var random_position = get_random_position()
 				var collision_shape = enemy.get_node_or_null("CollisionShape3D")
 				if collision_shape and await is_position_valid(random_position, collision_shape):
+					#print("test+print")
 					enemy.position = random_position
 					if enemy.find_child("Stats").has_method("apply_spawn_scaling"):
 						enemy.find_child("Stats").apply_spawn_scaling()
+					var stats_node = enemy.get_node_or_null("Stats")
+					if stats_node:
+						var defeated_count = 0
+						for status in Npc.bosses.values():
+							if status == true:
+								defeated_count += 1
+						stats_node.level = defeated_count+ 1
 					add_child(enemy)
 					found_pos = true
 					break

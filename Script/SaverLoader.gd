@@ -98,7 +98,7 @@ func load_environment(env_root: Node):
 	# Step 1: Remove extra nodes not in the saved data
 	var saved_names = []
 	env_root.Load()
-	print(env_root.get_children())
+	#print(env_root.get_children())
 	for item in saved_game.environment_data:
 		saved_names.append(item["name"])  # Collect names of saved nodes
 
@@ -115,11 +115,11 @@ func load_environment(env_root: Node):
 		
 		if instance:
 			# Update the position
-			print(instance.global_transform.origin)
-			print(instance.name)
-			print(item["position"])
+			#print(instance.global_transform.origin)
+			#print(instance.name)
+			#print(item["position"])
 			instance.global_transform.origin = item["position"]
-			print(instance.global_transform.origin)
+			#print(instance.global_transform.origin)
 
 			# Set visibility for the mesh children based on the saved mesh_index
 			if instance.is_in_group("Trees"):

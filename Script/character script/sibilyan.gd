@@ -18,7 +18,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if path.size() > 0:
 		move(delta)
-	if returning and assigned_kubo and global_position.distance_to(assigned_kubo.global_position) < 3:
+	if returning and assigned_kubo and global_position.distance_to(assigned_kubo.global_position) < 5:
+		returning = false
 		store_in_kubo()
 
 func move(delta):
@@ -54,7 +55,6 @@ func go_here(target):
 	await path_ready  # Wait until NPC reaches the target
 
 func add_work(task_target):
-	returning = false
 	workload.append(task_target)
 	print("Added work:", task_target.name, "Current workload size:", workload.size())
 	if workload.size() == 1:  # Start immediately if idle

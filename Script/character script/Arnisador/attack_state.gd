@@ -58,7 +58,13 @@ func _attack():
 				stats.damage_multiplier = 1
 				timer.wait_time = 1 / stats.get_scaled_attack_speed()
 		target_stats._on_attacked(stats.get_scaled_damage())
-
+		if stats.has_ability and stats.ability_name == "AOE":
+			for targets in fsm.npc_root_node.find_child("Targeting Component").target_group:
+				for troop in get_tree().get_nodes_in_group(targets):
+					var troop_distance = fsm.npc_root_node.global_position.distance_to(troop.global_position)
+					if troop_distance <= stats.get_scaled_attack_ranged() and troop != target and troop.has_node("Stats"):
+						var troop_stats = troop.get_node("Stats")
+						troop_stats._on_attacked(stats.get_scaled_damage())
 		# If this unit has a taunt ability, force the target to target us
 		if stats.has_ability and stats.ability_name == "taunt":
 			var target_fsm = target.get_node_or_null("FSM")
