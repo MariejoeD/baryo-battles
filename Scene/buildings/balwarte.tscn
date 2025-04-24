@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=4 uid="uid://ce3w2f7bhpynu"]
+[gd_scene load_steps=26 format=4 uid="uid://ce3w2f7bhpynu"]
 
 [ext_resource type="Script" path="res://Script/building scripts/balwarte_script.gd" id="1_mjbjy"]
+[ext_resource type="PackedScene" uid="uid://b1pla7atwbyd4" path="res://Scene/Projectiles/Bato.tscn" id="2_1mqle"]
 [ext_resource type="Texture2D" uid="uid://co04rg2jui073" path="res://assets/button/viewInformation.png" id="2_u6ak0"]
 [ext_resource type="Texture2D" uid="uid://2lftuna7s6qb" path="res://assets/button/viewInformationClicked.png" id="3_wldwn"]
 [ext_resource type="Texture2D" uid="uid://bqi4v4rdmqr21" path="res://assets/BuildingsRawPics/7.png" id="4_c1334"]
@@ -453,10 +454,15 @@ shadow_size = 6
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7eh2"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ksuli"]
+height = 20.0
+radius = 100.0
+
 [node name="Balwarte" type="MeshInstance3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0561016, -0.243146, 0)
 mesh = SubResource("ArrayMesh_mdxe6")
 script = ExtResource("1_mjbjy")
+projectile_type = ExtResource("2_1mqle")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 3
@@ -757,4 +763,16 @@ weight_hp = 1.0
 weight_damage = 0.0
 weight_attack_speed = 0.0
 
+[node name="Projectile_Spawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
+[node name="AttackRange" type="Area3D" parent="."]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+shape = SubResource("CylinderShape3D_ksuli")
+
 [connection signal="pressed" from="UI/Balwarte/upgrade" to="." method="_on_upgrade_button_pressed"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]

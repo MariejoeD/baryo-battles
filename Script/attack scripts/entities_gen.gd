@@ -462,7 +462,6 @@ func select_enemies_to_spawn():
 
 	var attempts = 5
 	while attempts > 0:
-		print(best_selection)
 		var remaining_enemies = enemies.duplicate()
 		var selected_enemies = []
 		var total_cp = 0

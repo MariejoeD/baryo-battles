@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ddwrhwm3otd8p"]
+[gd_scene load_steps=24 format=3 uid="uid://ddwrhwm3otd8p"]
 
 [ext_resource type="Script" path="res://Script/day_cycle.gd" id="1_5bpij"]
 [ext_resource type="PackedScene" uid="uid://d4nb8cjrspohc" path="res://Scene/game.tscn" id="1_8noqr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Script/camera_3d.gd" id="3_3dh6a"]
 [ext_resource type="MeshLibrary" uid="uid://bcqqed14hyr4a" path="res://assets/mesh/floor_meshes.tres" id="3_ucrro"]
 [ext_resource type="Script" path="res://Script/floor_setup.gd" id="4_6i8of"]
+[ext_resource type="PackedScene" uid="uid://ce3w2f7bhpynu" path="res://Scene/buildings/balwarte.tscn" id="5_x7gd4"]
 [ext_resource type="Script" path="res://Script/duplicated_tiles.gd" id="6_ttmot"]
 [ext_resource type="MeshLibrary" uid="uid://g73cbdxw4nic" path="res://assets/mesh/grid_dis.tres" id="6_vs85m"]
 [ext_resource type="Resource" uid="uid://cw0w04fmunqv8" path="res://Scene/buildings/building_scenes.tres" id="7_5btd4"]
@@ -14,6 +15,7 @@
 [ext_resource type="Script" path="res://Script/defend_mechanism.gd" id="11_g7ptk"]
 [ext_resource type="Script" path="res://Script/HomeBaseWINLoseCheck.gd" id="11_ojvx7"]
 [ext_resource type="Script" path="res://Script/defend_control.gd" id="14_i7ulf"]
+[ext_resource type="PackedScene" uid="uid://685fof7wdp38" path="res://Scene/Characters/kapre.tscn" id="14_mfq4l"]
 [ext_resource type="Texture2D" uid="uid://dqh1fognt0y5" path="res://assets/game/warning.png" id="14_vf37y"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="15_2ivn5"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="16_gh14k"]
@@ -92,6 +94,8 @@ current = true
 cell_size = Vector3(1, 1, 1)
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
+[node name="Balwarte" parent="Base/AMap/GridMap" groups=["Buildings"] instance=ExtResource("5_x7gd4")]
+
 [node name="Floor" type="GridMap" parent="Base/AMap" groups=["floor"]]
 mesh_library = ExtResource("3_ucrro")
 cell_size = Vector3(1, 1, 1)
@@ -123,6 +127,12 @@ script = ExtResource("8_hwwmm")
 
 [node name="Entities" type="Node" parent="Base"]
 script = ExtResource("11_ojvx7")
+
+[node name="Kapre" parent="Base/Entities" instance=ExtResource("14_mfq4l")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 59.2671, 0, 0)
+
+[node name="Detection" parent="Base/Entities/Kapre" index="5"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="Defend Mechanism" type="Node" parent="."]
 script = ExtResource("11_g7ptk")
@@ -238,4 +248,6 @@ text = "Load"
 [connection signal="tree_exiting" from="Base/Generate" to="Base/Generate" method="_on_tree_exiting"]
 [connection signal="pressed" from="Control/HBoxContainer/Button" to="Base/Generate" method="_on_button_pressed"]
 
+[editable path="Base/Entities/Kapre"]
+[editable path="Base/Entities/Kapre/FSM"]
 [editable path="Defend Mechanism/UI"]
