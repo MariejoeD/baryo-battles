@@ -1,9 +1,18 @@
 extends Building
 @onready var level_label = %level
-
+var current_enemy :CharacterBody3D = null
+var enemies_in_range: Array[CharacterBody3D]
 var active_panel
 @onready var building_name = $UI.get_child(0)
+var attack_rate: float = 1.00
+@export var projectile_type: PackedScene
+var attack_cooldown = Timer.new()
 func _ready() -> void:
+	attack_cooldown.wait_time = 1/attack_rate
+	attack_cooldown.one_shot = true
+	add_child(attack_cooldown)
+	
+	
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
 	building_name.get_node("upgrade").pressed.connect(_on_upgrade_pressed)
@@ -11,6 +20,10 @@ func _ready() -> void:
 	
 
 	pass
+func _process(delta: float) -> void:
+	if enemies_in_range.size() > 0:
+		_maybe_fire()
+	
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if built and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -121,6 +134,28 @@ func remove_material_override(mesh_instance) -> void:
 func _on_upgrade_button_pressed() -> void:
 	if Npc.TH_level <= level:
 		return
-
+	%CollisionShape3D.shape.radius *= 1.5
 	level += 1
 	level_label.text = "Level: " + str(level)
+
+
+func _on_attack_range_body_entered(body: CharacterBody3D) -> void:
+	if !body.is_in_group("Enemy"):
+		return
+	if current_enemy == null:
+		current_enemy = body
+	enemies_in_range.append(body)
+	print("Enemy: ",current_enemy)
+	pass # Replace with function body.
+
+func _maybe_fire():
+	if attack_cooldown.time_left == 0:
+		print("Fire!!")
+		var projectile:Projectile = projectile_type.instantiate()
+		projectile.starting_position = $Projectile_Spawn.global_position
+		projectile.target = current_enemy
+		add_child(projectile)
+		attack_cooldown.start()
+func _on_attack_range_body_exited(body: CharacterBody3D) -> void:
+	enemies_in_range.erase(body)
+	pass # Replace with function body.

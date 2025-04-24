@@ -42,7 +42,22 @@ func _process(delta):
 			var arc = sin(lerp_pos * PI) * arc_height
 			pos.y += arc
 
+		
+
+
 		global_position = pos
+		
+		# 🔄 Rotate so the TOP (+Y) faces the target
+		var to_target = (target_pos - global_position).normalized()
+		if to_target.length() > 0.01:
+			var fallback = Vector3.FORWARD
+			if abs(to_target.dot(fallback)) > 0.99:
+				fallback = Vector3.RIGHT
+
+			var right = fallback.cross(to_target).normalized()
+			var forward = to_target.cross(right).normalized()
+			global_transform.basis = Basis(right, to_target, forward)
+		
 		lerp_pos += delta * speed
 	else:
 		queue_free()

@@ -1,351 +1,332 @@
-[gd_resource type="Resource" script_class="SavedGame" load_steps=2 format=3 uid="uid://v8yrghugvbhk"]
+[gd_resource type="Resource" script_class="SavedGame" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Script/saved_game.gd" id="1_wxmar"]
+[ext_resource type="Script" path="res://Script/saved_game.gd" id="1_wqry1"]
 
 [resource]
-script = ExtResource("1_wxmar")
+script = ExtResource("1_wqry1")
 resources = {
-"food": 2740,
-"stone": 2670,
-"wood": 2580
+"food": 3000,
+"stone": 2820,
+"wood": 2860
 }
 environment_data = [{
-"mesh_index": 1,
-"name": &"Stone0",
-"position": Vector3(18, 0, -6),
-"type": "stone"
-}, {
 "mesh_index": 0,
-"name": &"Stone1",
-"position": Vector3(-12, 0, -3),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone2",
-"position": Vector3(44, 0, -14),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone3",
-"position": Vector3(32, 0, -5),
-"type": "stone"
-}, {
-"mesh_index": 0,
-"name": &"Stone4",
-"position": Vector3(-4, 0, 28),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone5",
-"position": Vector3(10, 0, -39),
-"type": "stone"
-}, {
-"mesh_index": 0,
-"name": &"Stone6",
-"position": Vector3(5, 0, 32),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone7",
-"position": Vector3(45, 0, -49),
-"type": "stone"
-}, {
-"mesh_index": 0,
-"name": &"Stone8",
-"position": Vector3(-26, 0, 8),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone9",
-"position": Vector3(-32, 0, -4),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone10",
-"position": Vector3(-19, 0, 23),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone11",
-"position": Vector3(-48, 0, -14),
-"type": "stone"
-}, {
-"mesh_index": 0,
-"name": &"Stone12",
-"position": Vector3(-5, 0, -8),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone13",
-"position": Vector3(-12, 0, -41),
-"type": "stone"
-}, {
-"mesh_index": 0,
-"name": &"Stone14",
-"position": Vector3(-47, 0, 49),
-"type": "stone"
-}, {
-"mesh_index": 0,
-"name": &"Stone15",
-"position": Vector3(-24, 0, 10),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone16",
-"position": Vector3(47, 0, -38),
-"type": "stone"
-}, {
-"mesh_index": 0,
-"name": &"Stone17",
-"position": Vector3(-26, 0, -24),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone18",
-"position": Vector3(-6, 0, 6),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone19",
-"position": Vector3(-47, 0, 42),
-"type": "stone"
-}, {
-"mesh_index": 0,
-"name": &"Stone20",
-"position": Vector3(-9, 0, 15),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone21",
-"position": Vector3(21, 0, 47),
-"type": "stone"
-}, {
-"mesh_index": 0,
-"name": &"Stone22",
-"position": Vector3(-23, 0, 43),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone23",
-"position": Vector3(27, 0, -28),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone24",
-"position": Vector3(1, 0, -11),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone25",
-"position": Vector3(26, 0, 10),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone26",
-"position": Vector3(-3, 0, 33),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone27",
-"position": Vector3(43, 0, 22),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone28",
-"position": Vector3(7, 0, 38),
-"type": "stone"
-}, {
-"mesh_index": 1,
-"name": &"Stone29",
-"position": Vector3(-25, 0, 12),
-"type": "stone"
-}, {
-"mesh_index": 1,
 "name": &"Tree0",
-"position": Vector3(28, 0, -14),
+"position": Vector3(10, 0, 29),
+"type": "tree"
+}, {
+"mesh_index": 2,
+"name": &"Tree1",
+"position": Vector3(-1, 0, 36),
+"type": "tree"
+}, {
+"mesh_index": 2,
+"name": &"Tree2",
+"position": Vector3(25, 0, -19),
 "type": "tree"
 }, {
 "mesh_index": 1,
-"name": &"Tree1",
-"position": Vector3(40, 0, 33),
-"type": "tree"
-}, {
-"mesh_index": 3,
-"name": &"Tree2",
-"position": Vector3(34, 0, -17),
-"type": "tree"
-}, {
-"mesh_index": 2,
 "name": &"Tree3",
-"position": Vector3(13, 0, -14),
+"position": Vector3(1, 0, 34),
 "type": "tree"
 }, {
-"mesh_index": 2,
+"mesh_index": 0,
 "name": &"Tree4",
-"position": Vector3(-26, 0, 2),
+"position": Vector3(47, 0, 3),
 "type": "tree"
 }, {
-"mesh_index": 3,
+"mesh_index": 0,
 "name": &"Tree5",
-"position": Vector3(41, 0, -9),
+"position": Vector3(-37, 0, 40),
 "type": "tree"
 }, {
 "mesh_index": 1,
 "name": &"Tree6",
-"position": Vector3(-22, 0, 14),
+"position": Vector3(-22, 0, 45),
 "type": "tree"
 }, {
 "mesh_index": 3,
 "name": &"Tree7",
-"position": Vector3(3, 0, 30),
+"position": Vector3(-33, 0, -42),
 "type": "tree"
 }, {
-"mesh_index": 1,
+"mesh_index": 3,
 "name": &"Tree8",
-"position": Vector3(-35, 0, 23),
+"position": Vector3(50, 0, 2),
 "type": "tree"
 }, {
-"mesh_index": 1,
+"mesh_index": 3,
 "name": &"Tree9",
-"position": Vector3(48, 0, 26),
+"position": Vector3(27, 0, -39),
 "type": "tree"
 }, {
-"mesh_index": 0,
+"mesh_index": 2,
 "name": &"Tree10",
-"position": Vector3(-48, 0, -43),
+"position": Vector3(15, 0, -7),
 "type": "tree"
 }, {
 "mesh_index": 2,
 "name": &"Tree11",
-"position": Vector3(22, 0, -12),
+"position": Vector3(-28, 0, 47),
 "type": "tree"
 }, {
-"mesh_index": 2,
+"mesh_index": 1,
 "name": &"Tree12",
-"position": Vector3(37, 0, 6),
+"position": Vector3(30, 0, -23),
 "type": "tree"
 }, {
 "mesh_index": 2,
 "name": &"Tree13",
-"position": Vector3(22, 0, 18),
+"position": Vector3(29, 0, -2),
 "type": "tree"
 }, {
-"mesh_index": 1,
+"mesh_index": 3,
 "name": &"Tree14",
-"position": Vector3(45, 0, -44),
+"position": Vector3(-33, 0, 5),
 "type": "tree"
 }, {
 "mesh_index": 0,
 "name": &"Tree15",
-"position": Vector3(16, 0, -35),
-"type": "tree"
-}, {
-"mesh_index": 1,
-"name": &"Tree16",
-"position": Vector3(27, 0, 47),
-"type": "tree"
-}, {
-"mesh_index": 2,
-"name": &"Tree17",
-"position": Vector3(-23, 0, 10),
-"type": "tree"
-}, {
-"mesh_index": 2,
-"name": &"Tree18",
-"position": Vector3(-27, 0, 25),
+"position": Vector3(26, 0, -5),
 "type": "tree"
 }, {
 "mesh_index": 0,
+"name": &"Tree16",
+"position": Vector3(22, 0, -44),
+"type": "tree"
+}, {
+"mesh_index": 0,
+"name": &"Tree17",
+"position": Vector3(-41, 0, -10),
+"type": "tree"
+}, {
+"mesh_index": 0,
+"name": &"Tree18",
+"position": Vector3(-22, 0, 35),
+"type": "tree"
+}, {
+"mesh_index": 1,
 "name": &"Tree19",
-"position": Vector3(-3, 0, 31),
+"position": Vector3(-45, 0, 50),
 "type": "tree"
 }, {
-"mesh_index": 1,
+"mesh_index": 3,
 "name": &"Tree20",
-"position": Vector3(3, 0, -17),
+"position": Vector3(-22, 0, 39),
 "type": "tree"
 }, {
-"mesh_index": 1,
+"mesh_index": 2,
 "name": &"Tree21",
-"position": Vector3(15, 0, -13),
+"position": Vector3(49, 0, 14),
 "type": "tree"
 }, {
 "mesh_index": 1,
 "name": &"Tree22",
-"position": Vector3(-40, 0, -4),
-"type": "tree"
-}, {
-"mesh_index": 1,
-"name": &"Tree23",
-"position": Vector3(-16, 0, -5),
-"type": "tree"
-}, {
-"mesh_index": 1,
-"name": &"Tree24",
-"position": Vector3(8, 0, 38),
+"position": Vector3(22, 0, 1),
 "type": "tree"
 }, {
 "mesh_index": 0,
+"name": &"Tree23",
+"position": Vector3(-42, 0, -22),
+"type": "tree"
+}, {
+"mesh_index": 2,
+"name": &"Tree24",
+"position": Vector3(44, 0, 24),
+"type": "tree"
+}, {
+"mesh_index": 3,
 "name": &"Tree25",
-"position": Vector3(7, 0, -19),
+"position": Vector3(-30, 0, 2),
 "type": "tree"
 }, {
 "mesh_index": 0,
 "name": &"Tree26",
-"position": Vector3(-10, 0, -17),
-"type": "tree"
-}, {
-"mesh_index": 3,
-"name": &"Tree27",
-"position": Vector3(-46, 0, 47),
+"position": Vector3(21, 0, -22),
 "type": "tree"
 }, {
 "mesh_index": 2,
+"name": &"Tree27",
+"position": Vector3(-44, 0, 24),
+"type": "tree"
+}, {
+"mesh_index": 3,
 "name": &"Tree28",
-"position": Vector3(37, 0, -23),
+"position": Vector3(-39, 0, -25),
 "type": "tree"
 }, {
 "mesh_index": 0,
 "name": &"Tree29",
-"position": Vector3(-18, 0, -24),
+"position": Vector3(-31, 0, 6),
 "type": "tree"
+}, {
+"mesh_index": 0,
+"name": &"Stone0",
+"position": Vector3(36, 0, 14),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone1",
+"position": Vector3(-6, 0, -8),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone2",
+"position": Vector3(23, 0, -7),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone3",
+"position": Vector3(31, 0, -14),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone4",
+"position": Vector3(1, 0, -32),
+"type": "stone"
+}, {
+"mesh_index": 1,
+"name": &"Stone5",
+"position": Vector3(30, 0, -12),
+"type": "stone"
+}, {
+"mesh_index": 1,
+"name": &"Stone6",
+"position": Vector3(22, 0, -11),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone7",
+"position": Vector3(15, 0, -14),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone8",
+"position": Vector3(-14, 0, -21),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone9",
+"position": Vector3(24, 0, -47),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone10",
+"position": Vector3(31, 0, -17),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone11",
+"position": Vector3(1, 0, 44),
+"type": "stone"
+}, {
+"mesh_index": 1,
+"name": &"Stone12",
+"position": Vector3(30, 0, 30),
+"type": "stone"
+}, {
+"mesh_index": 1,
+"name": &"Stone13",
+"position": Vector3(0, 0, -50),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone14",
+"position": Vector3(2, 0, 8),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone15",
+"position": Vector3(23, 0, 22),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone16",
+"position": Vector3(-17, 0, -19),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone17",
+"position": Vector3(-29, 0, -18),
+"type": "stone"
+}, {
+"mesh_index": 1,
+"name": &"Stone18",
+"position": Vector3(41, 0, 6),
+"type": "stone"
+}, {
+"mesh_index": 1,
+"name": &"Stone19",
+"position": Vector3(30, 0, 2),
+"type": "stone"
+}, {
+"mesh_index": 1,
+"name": &"Stone20",
+"position": Vector3(-39, 0, 36),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone21",
+"position": Vector3(-44, 0, 31),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone22",
+"position": Vector3(10, 0, 48),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone23",
+"position": Vector3(20, 0, 43),
+"type": "stone"
+}, {
+"mesh_index": 1,
+"name": &"Stone24",
+"position": Vector3(15, 0, -2),
+"type": "stone"
+}, {
+"mesh_index": 1,
+"name": &"Stone25",
+"position": Vector3(-36, 0, 11),
+"type": "stone"
+}, {
+"mesh_index": 1,
+"name": &"Stone26",
+"position": Vector3(37, 0, 10),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone27",
+"position": Vector3(-28, 0, 44),
+"type": "stone"
+}, {
+"mesh_index": 0,
+"name": &"Stone28",
+"position": Vector3(-30, 0, -49),
+"type": "stone"
+}, {
+"mesh_index": 1,
+"name": &"Stone29",
+"position": Vector3(9, 0, 12),
+"type": "stone"
 }]
 building_data = [{
 "built": true,
 "level": 1,
-"name": "malacadabra",
-"position": Vector3(14, 0.5, 27),
-"scale": Vector3(1, 1, 1)
-}, {
-"built": true,
-"level": 1,
-"name": "kawa_lv_1",
-"position": Vector3(7, 0.5, 17),
-"scale": Vector3(0.4, 0.4, 0.4),
-"spell_data": {
-"brewing_spells": [{
-"name": &"kasumpa-sumpa",
-"time_left": 584.414
-}, {
-"name": &"kulam",
-"time_left": 594.666
-}],
-"stored_spell": {
-"dinamita": 3
-},
-"to_brew": []
-}
+"name": "kwitis_lv_1",
+"position": Vector3(11, 0.5, 7),
+"scale": Vector3(0.5, 0.5, 0.5)
 }]
 game_time = {
-"current_time": 28.8524,
-"has_emitted_night_time": true,
-"time_of_day": 0.721309,
-"total_game_time": 28.8524
+"current_time": 12.1129,
+"has_emitted_night_time": false,
+"time_of_day": 0.302823,
+"total_game_time": 12.1129
 }
 sibilyans = [{
 "assigned_kubo": "",
 "current_work": "",
-"position": Vector3(8.64999, 0.5, 4.15704),
+"position": Vector3(1.70326, 0.5, 6.28185),
 "remaining_time": -1,
 "returning": false,
 "start_time": 0,
@@ -353,7 +334,7 @@ sibilyans = [{
 }, {
 "assigned_kubo": "",
 "current_work": "",
-"position": Vector3(9.13481, 0.5, 8.09845),
+"position": Vector3(1.47015, 0.5, 0.666316),
 "remaining_time": -1,
 "returning": false,
 "start_time": 0,

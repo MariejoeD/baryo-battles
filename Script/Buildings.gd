@@ -8,7 +8,7 @@ extends Node
 	"KawaBtn": -1,
 	"EstakadaBtn": 0,
 	"BalwarteBtn": 0,
-	"KwitisBtn": 0,
+	"KwitisBtn": -1,
 	"KuboBtn": 0,
 	"TanimBtn": 0,
 	"ImbakanBtn": 0

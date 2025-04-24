@@ -138,7 +138,8 @@ func _upgrade():
 	pass
 
 func change_building_count():
-	Buildings.buildings["KampoBtn"] += 1
+	if level == 1:
+		Buildings.buildings["KampoBtn"] += 1
 	Buildings.buildings["BodegaBtn"] += 1
 	Buildings.buildings["SandatahangLakasBtn"] += 1
 	Buildings.buildings["KuboBtn"] += 1
