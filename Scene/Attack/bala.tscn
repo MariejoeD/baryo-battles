@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdnt1ivotdvwa"]
+[gd_scene load_steps=8 format=3 uid="uid://cdnt1ivotdvwa"]
 
 [ext_resource type="Shader" uid="uid://iwv0csapnsh" path="res://assets/bala/fireball_shader.tres" id="1_7v5gn"]
 [ext_resource type="ArrayMesh" uid="uid://c1555eq6oclfj" path="res://assets/bala/fireball_mesh.obj" id="2_mlwta"]
 [ext_resource type="Shader" uid="uid://cp3v0p0r1dmmb" path="res://assets/fireHeader_shader.tres" id="3_cwn7s"]
-[ext_resource type="Shader" uid="uid://cujcgfjmwcdv6" path="res://assets/bala/bala.tres" id="4_toh36"]
+[ext_resource type="PackedScene" uid="uid://8pvjm4xt4u4t" path="res://assets/bala/balaNgKwitis.fbx" id="4_ocolo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3205w"]
 render_priority = 1
@@ -19,16 +19,11 @@ shader_parameter/Fresnel_Power = 3.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_63a3a"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gjqaf"]
-render_priority = 0
-shader = ExtResource("4_toh36")
-shader_parameter/ColorParameter = Color(0, 0, 0, 1)
-
 [node name="bala" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.999937, 0.0112397, 0, -0.0112397, 0.999937, 0, 0, 0)
 
 [node name="fireballMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.18557e-08, 0, 0.5, 9.31323e-10, 0.5, 5.55112e-17, -0.5, 9.31323e-10, -2.18557e-08, 0.289074, 0.452702, 0.00508856)
+transform = Transform3D(-2.18557e-08, 0, 0.5, 1.39698e-09, 0.5, 5.55112e-17, -0.5, 1.39698e-09, -2.18557e-08, 0.289074, 0.452702, 0.00508856)
 material_override = SubResource("ShaderMaterial_3205w")
 cast_shadow = 0
 mesh = ExtResource("2_mlwta")
@@ -38,7 +33,5 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, -2.79397e-09, 0, 2.79397e-09, 0.7, 0.
 material_override = SubResource("ShaderMaterial_xllyx")
 mesh = SubResource("SphereMesh_63a3a")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-8.74228e-09, 0, 0.2, 4.65661e-10, 0.2, 2.77556e-17, -0.2, 4.65661e-10, -8.74228e-09, 0.473485, 0.4386, 0.00493004)
-material_override = SubResource("ShaderMaterial_gjqaf")
-mesh = ExtResource("2_mlwta")
+[node name="balaNgKwitis" parent="." instance=ExtResource("4_ocolo")]
+transform = Transform3D(-0.045172, 0.892274, -0.44923, -0.0757623, 0.445334, 0.892152, 0.996102, 0.0743349, 0.0474841, -2.19424, 0.599982, -1.67051)
