@@ -449,6 +449,7 @@ text = "The source of all Sibilyan (villagers). A humble yet vital dwelling for 
 autowrap_mode = 2
 
 [node name="level" type="Label" parent="UI/Kubo/viewInformation/InformationPanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.843

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bb7bjegmerfbt"]
+[gd_scene load_steps=42 format=3 uid="uid://bb7bjegmerfbt"]
 
 [ext_resource type="Script" path="res://Script/deploy.gd" id="1_dk4n7"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_oaiwf"]
@@ -14,6 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="12_cdj1i"]
 [ext_resource type="Texture2D" uid="uid://b1trcwc1mf1d0" path="res://assets/game/trophy.png" id="13_6l37u"]
 [ext_resource type="Texture2D" uid="uid://dhl7auru2cqeg" path="res://assets/game/lose.png" id="14_uqess"]
+[ext_resource type="Texture2D" uid="uid://cmrbn6kh3isjb" path="res://assets/spells/dinamita.png" id="15_np770"]
+[ext_resource type="Texture2D" uid="uid://dwl60sey2ntwr" path="res://assets/spells/kasumpa-sumpa.png" id="16_eidbg"]
+[ext_resource type="Texture2D" uid="uid://b6j77isecu61b" path="res://assets/spells/kulam.png" id="17_mgvsk"]
+[ext_resource type="Texture2D" uid="uid://1ywqdq5ykn5s" path="res://assets/spells/liwanag.png" id="18_1234i"]
+[ext_resource type="Texture2D" uid="uid://cnnef62t0j2s4" path="res://assets/spells/luntiangPuso.png" id="19_tn1qe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_von4y"]
 bg_color = Color(0.99973, 0.192196, 0.169605, 1)
@@ -57,7 +62,7 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 shadow_size = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mq55b"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2krt"]
 bg_color = Color(0.92, 0.878, 0.698, 0)
 border_width_left = 3
 border_width_top = 3
@@ -270,6 +275,17 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqp2h"]
+bg_color = Color(0.92, 0.878, 0.698, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+shadow_color = Color(0.506, 0.435, 0.2, 0)
+shadow_size = 5
+
 [node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -281,7 +297,6 @@ mouse_filter = 2
 script = ExtResource("1_dk4n7")
 
 [node name="surrenderButton" type="Button" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.042
@@ -301,7 +316,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_dwneg")
 text = "SURRENDER"
 
 [node name="allyPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.254
@@ -312,7 +326,7 @@ offset_left = -0.119995
 offset_top = -0.160034
 offset_right = 0.23999
 offset_bottom = 0.23999
-theme_override_styles/panel = SubResource("StyleBoxFlat_mq55b")
+theme_override_styles/panel = SubResource("StyleBoxFlat_b2krt")
 
 [node name="allyContainer" type="HBoxContainer" parent="allyPanel"]
 layout_mode = 1
@@ -1328,3 +1342,138 @@ theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("1_oaiwf")
 theme_override_font_sizes/font_size = 30
 text = "0"
+
+[node name="spellPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.859
+anchor_top = 0.249
+anchor_right = 0.963
+anchor_bottom = 0.782
+offset_left = 0.47998
+offset_top = -0.280014
+offset_right = -4.64014
+offset_bottom = -0.0400391
+theme_override_styles/panel = SubResource("StyleBoxFlat_mqp2h")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="spellPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 81.0
+offset_bottom = 247.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="spellPanel/ScrollContainer"]
+layout_mode = 2
+
+[node name="dinamita" type="TextureButton" parent="spellPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("15_np770")
+
+[node name="count" type="Label" parent="spellPanel/ScrollContainer/VBoxContainer/dinamita"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.291
+anchor_bottom = 0.179
+offset_right = 0.0909996
+offset_bottom = 0.0279999
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="kasumpa-sumpa" type="TextureButton" parent="spellPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("16_eidbg")
+
+[node name="count" type="Label" parent="spellPanel/ScrollContainer/VBoxContainer/kasumpa-sumpa"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.291
+anchor_bottom = 0.179
+offset_right = 0.0909996
+offset_bottom = 0.0279999
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="kulam" type="TextureButton" parent="spellPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("17_mgvsk")
+
+[node name="count" type="Label" parent="spellPanel/ScrollContainer/VBoxContainer/kulam"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.291
+anchor_bottom = 0.179
+offset_right = 0.0909996
+offset_bottom = 0.0279999
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="liwanag" type="TextureButton" parent="spellPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("18_1234i")
+
+[node name="count" type="Label" parent="spellPanel/ScrollContainer/VBoxContainer/liwanag"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.291
+anchor_bottom = 0.179
+offset_right = 0.0909996
+offset_bottom = 0.0279999
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="luntiangPuso" type="TextureButton" parent="spellPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("19_tn1qe")
+
+[node name="count" type="Label" parent="spellPanel/ScrollContainer/VBoxContainer/luntiangPuso"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.291
+anchor_bottom = 0.179
+offset_right = 0.0909996
+offset_bottom = 0.0279999
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oaiwf")
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -171,6 +171,7 @@ text = "Sturdy defensive barriers built from hardened kawayan and enchanted ston
 autowrap_mode = 3
 
 [node name="level" type="Label" parent="UI/Estakada/viewInformation/InformationPanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.843

@@ -201,6 +201,7 @@ theme_override_font_sizes/font_size = 15
 text = "current amount"
 
 [node name="level" type="Label" parent="UI/Imbakan/viewInformation/InformationPanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.843

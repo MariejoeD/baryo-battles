@@ -277,6 +277,7 @@ text = "A fortified ground where trained warriors gather, awaiting the call to b
 autowrap_mode = 3
 
 [node name="level" type="Label" parent="UI/Kampo/viewInformation/InformationPanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.843
