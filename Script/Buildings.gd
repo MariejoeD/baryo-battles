@@ -6,7 +6,7 @@ extends Node
 	"BodegaBtn": 0,
 	"SandatahangLakasBtn": 0,
 	"KawaBtn": -1,
-	"EstakadaBtn": 0,
+	"EstakadaBtn": -1,
 	"BalwarteBtn": 0,
 	"KwitisBtn": -1,
 	"KuboBtn": 0,

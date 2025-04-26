@@ -10,14 +10,14 @@ extends Node
 @export var weight_hp: float = 0.3  # Weight for HP
 @export var weight_damage: float = 0.4  # Weight for damage
 @export var weight_attack_speed: float = 0.3  # Weight for attack speed
-
+@onready var level = get_parent().level
 var current_hp
 
 func get_scaled_hp() -> float:
-	return hp * (1 + weight_hp)
+	return hp * (1 + (level-1) *.5)
 
 func get_scaled_damage() -> float:
-	return damage * (1 + weight_damage)
+	return damage * (1 + (level-1))
 
 func get_scaled_attack_speed() -> float:
 	return attack_speed * (1 + weight_attack_speed)
@@ -53,6 +53,7 @@ func _ready():
 	current_hp = get_scaled_hp() # Optional if you want to start full health
 
 func _on_destruction():
+	get_parent().on_destroyed()
 	print(get_parent().name,"Died")
 	get_parent().queue_free()
 	

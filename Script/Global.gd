@@ -30,7 +30,7 @@ var grid_size :int = 100
 var npc_discovered = {}
 
 
-const DAY_DURATION := 40.0
+const DAY_DURATION := 1200.0
 const HALF_DAY := DAY_DURATION / 2.0
 
 var current_time := 0.0

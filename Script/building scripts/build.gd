@@ -58,6 +58,11 @@ func _process(delta: float) -> void:
 			apply_material_override(current_building,Color(1, 0, 0, 0.5))  # Red transparent
 
 func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.keycode == KEY_R and event.pressed:
+		if building_mode and current_building.is_in_group("Rotatable"):
+			current_building.rotate_y(deg_to_rad(90))
+#			not working
+			
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if building_mode:
 			if is_fully_on_floor(current_building) and not is_colliding_with_other_objects(current_building):
@@ -78,7 +83,9 @@ func _input(event: InputEvent) -> void:
 					apply_material_override(current_building)
 					if current_building.has_method("build"):
 						current_building.build()
-				remove_floor1_cells_inside_mesh(floor, current_building)
+				 # ✨ Instead of remove_floor1_cells_inside_mesh()
+				if current_building.has_method("on_placed"):
+					current_building.on_placed()
 				# Building not unlocked
 				if Buildings.buildings[cb_name] == 0:
 					building_mode = false
@@ -112,37 +119,9 @@ func _input(event: InputEvent) -> void:
 			$"../BuildButton".show()
 			$"../AttackButton".show()
 
-func remove_floor1_cells_inside_mesh(grid_map: GridMap, building_mesh: MeshInstance3D):
-	var cell_size = grid_map.cell_size
-	var half_extents = cell_size * 0.5
 
-	# Get world-space AABB of the mesh
-	var aabb = building_mesh.get_aabb()
-	
-	 # Apply the scale of the mesh to the AABB size
-	var scale = building_mesh.global_transform.basis.get_scale()
-	aabb.size *= scale
-	
-	# Adjust the position by applying the mesh's global position and accounting for the scale
-	var scaled_position = building_mesh.global_transform.origin + (aabb.position * building_mesh.scale)
-	aabb.position = scaled_position
-	
-	aabb = aabb.grow(0.1) # optional small buffer
 
-	# Get XZ bounds in cell space
-	var start = grid_map.local_to_map(aabb.position)
-	var end = grid_map.local_to_map(aabb.position + aabb.size)
 
-	# Fixed Y level (floor 1)
-	var y = 1
-
-	for x in range(start.x, end.x + 1):
-		for z in range(start.z, end.z + 1):
-			var cell = Vector3i(x, y, z)
-			var world_pos = grid_map.map_to_local(cell) + half_extents
-			if aabb.has_point(world_pos):
-				var astar = get_tree().get_nodes_in_group("pathscript")[0]
-				astar.remove_path(cell)
 
 func follow_mouse():
 	var viewport = get_tree().current_scene.find_child("SubViewport")

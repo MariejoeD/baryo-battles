@@ -194,6 +194,7 @@ func load_building():
 				building.scale = data.get("scale", Vector3.ONE)
 				building.level = data.get("level", 1)
 			gridmap.add_child(building)
+			building.on_placed()
 		else:
 			print("Failed to load:", scene_path)
 

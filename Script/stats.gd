@@ -68,6 +68,8 @@ func _on_attacked(damage):
 		print(get_parent().name, " dodged the attack!")
 		return
 	current_hp -= damage
+	%Sprite3D.show()
+	create_tween().tween_property(%ProgressBar, "value", current_hp, 0.3)
 	if current_hp < 0:
 		current_hp = 0
 		_on_death()
@@ -79,6 +81,24 @@ func _on_heal(heal):
 	if current_hp >= get_scaled_hp():
 		current_hp = get_scaled_hp()
 func _ready():
+	%ProgressBar.max_value = get_scaled_hp()
+	%ProgressBar.value = get_scaled_hp()
+	
+	if get_parent().has_node("CollisionShape3D"):
+		var collider = get_parent().get_node("CollisionShape3D")
+		var shape = collider.shape
+		if shape is CapsuleShape3D:
+			# Capsule height + radius
+			var height = shape.height + shape.radius * 2.0
+			%Sprite3D.position.y = height*.9
+		elif shape is BoxShape3D:
+			# Box half extents
+			var height = shape.size.y
+			%Sprite3D.position.y = height/2
+	else:
+		# fallback if no shape
+		%Sprite3D.position.y = 2.0
+
 	# Test the CP calculation for Arnisador
 	var cp = calculate_cp()
 	#print(get_parent().name," Combat Power: ", cp)

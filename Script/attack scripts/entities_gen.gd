@@ -455,7 +455,7 @@ func select_enemies_to_spawn():
 	
 
 	print(get_max_cp())
-	print(target_cp)
+	print("required: ",target_cp)
 	print("playe cp: ", calculate_player_total_cp())
 	var best_cp = 0
 	var best_selection = []

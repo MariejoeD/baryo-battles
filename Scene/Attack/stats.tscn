@@ -1,6 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://o7lqup8rddo1"]
+[gd_scene load_steps=5 format=3 uid="uid://o7lqup8rddo1"]
 
 [ext_resource type="Script" path="res://Script/stats.gd" id="1_1dhya"]
 
-[node name="Stats" type="Node"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_7gfhb"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lv3jy"]
+bg_color = Color(0.66312, 0, 0.091477, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwoyh"]
+bg_color = Color(0.182355, 0.702936, 0, 1)
+
+[node name="Stats" type="Node3D"]
 script = ExtResource("1_1dhya")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+visible = false
+billboard = 1
+texture = SubResource("ViewportTexture_7gfhb")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+size = Vector2i(156, 26)
+
+[node name="ProgressBar" type="ProgressBar" parent="Sprite3D/SubViewport"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 20)
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 153.0
+offset_bottom = 23.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lv3jy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mwoyh")
+step = 1.0
+value = 100.0
+show_percentage = false

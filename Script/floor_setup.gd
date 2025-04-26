@@ -61,7 +61,21 @@ func remove_path(check_pos):
 		floor_map.set_cell_item(check_pos, -1)
 		remove_point(check_pos)
 		update_neighbors(check_pos)
-		
+
+func add_path(cell_pos: Vector3i):
+	if v3_to_index(cell_pos) in all_points:
+		return # Already exists
+
+	# PLACE TILE BACK VISUALLY
+	floor_map.set_cell_item(cell_pos, 1)
+
+	var index = aS.get_available_point_id()
+	aS.add_point(index, floor_map.map_to_local(cell_pos))
+	all_points[v3_to_index(cell_pos)] = index
+
+	update_neighbors(cell_pos)
+
+	
 func get_tile_size(tile_id):
 	var mesh = other_map.mesh_library.get_item_mesh(tile_id)
 	if mesh:

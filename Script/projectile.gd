@@ -11,6 +11,7 @@ var target: Node3D
 
 var arc_height: float = 0.0
 var lerp_pos: float = 0.0
+var target_collision_shape: CollisionShape3D = null
 
 func _ready():
 	global_position = starting_position
@@ -18,7 +19,8 @@ func _ready():
 	if target == null:
 		queue_free()
 		return
-
+	if target.has_node("CollisionShape3D"):
+		target_collision_shape = target.get_node("CollisionShape3D")
 	# Precompute arc height based on distance if arc is enabled
 	if use_arc:
 		var distance = starting_position.distance_to(target.global_position)
@@ -32,7 +34,7 @@ func _process(delta):
 	var target_pos = target.global_position
 	if target.has_node("CollisionShape3D"):
 		var sca = target.scale
-		var y = target.get_node("CollisionShape3D").shape.height 
+		var y = target_collision_shape.shape.height
 		target_pos.y = (y * 0.9) * sca.y
 
 	if lerp_pos < 1.0:
@@ -60,4 +62,6 @@ func _process(delta):
 		
 		lerp_pos += delta * speed
 	else:
+		if is_instance_valid(target) and target.has_node("Stats"):
+			target.get_node("Stats")._on_attacked(damage)
 		queue_free()
