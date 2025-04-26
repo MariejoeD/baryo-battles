@@ -108,7 +108,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00507355, 6.38948e-05)
 shape = SubResource("BoxShape3D_xldft")
 
 [node name="UI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,6 +116,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Tanim" type="HBoxContainer" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -200,6 +200,30 @@ text = "The lifeline of the community, where fertile fields yield an abundant ha
 
 "
 autowrap_mode = 3
+
+[node name="level" type="Label" parent="UI/Tanim/viewInformation/InformationPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.87
+anchor_top = 0.056
+anchor_right = 0.975
+anchor_bottom = 0.143
+offset_left = -0.160034
+offset_top = -0.0160007
+offset_right = 0.200012
+offset_bottom = 0.101994
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_pn27k")
+theme_override_font_sizes/font_size = 20
+text = "Level: 1"
 
 [node name="upgrade" type="TextureButton" parent="UI/Tanim"]
 layout_mode = 2
