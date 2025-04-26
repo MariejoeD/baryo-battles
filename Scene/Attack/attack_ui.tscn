@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bb7bjegmerfbt"]
+[gd_scene load_steps=37 format=3 uid="uid://bb7bjegmerfbt"]
 
 [ext_resource type="Script" path="res://Script/deploy.gd" id="1_dk4n7"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_oaiwf"]
@@ -57,7 +57,7 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 shadow_size = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mq55b"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2krt"]
 bg_color = Color(0.92, 0.878, 0.698, 0)
 border_width_left = 3
 border_width_top = 3
@@ -270,6 +270,17 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqp2h"]
+bg_color = Color(0.92, 0.878, 0.698, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+shadow_color = Color(0.506, 0.435, 0.2, 0)
+shadow_size = 5
+
 [node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -281,7 +292,6 @@ mouse_filter = 2
 script = ExtResource("1_dk4n7")
 
 [node name="surrenderButton" type="Button" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.042
@@ -301,7 +311,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_dwneg")
 text = "SURRENDER"
 
 [node name="allyPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.254
@@ -312,7 +321,7 @@ offset_left = -0.119995
 offset_top = -0.160034
 offset_right = 0.23999
 offset_bottom = 0.23999
-theme_override_styles/panel = SubResource("StyleBoxFlat_mq55b")
+theme_override_styles/panel = SubResource("StyleBoxFlat_b2krt")
 
 [node name="allyContainer" type="HBoxContainer" parent="allyPanel"]
 layout_mode = 1
@@ -1328,3 +1337,28 @@ theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("1_oaiwf")
 theme_override_font_sizes/font_size = 30
 text = "0"
+
+[node name="spellPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.859
+anchor_top = 0.249
+anchor_right = 0.963
+anchor_bottom = 0.782
+offset_left = 0.47998
+offset_top = -0.280014
+offset_right = 0.359863
+offset_bottom = -0.0400391
+theme_override_styles/panel = SubResource("StyleBoxFlat_mqp2h")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="spellPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="spellPanel/ScrollContainer"]
+layout_mode = 2
