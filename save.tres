@@ -10,156 +10,6 @@ resources = {
 "wood": 2880
 }
 environment_data = [{
-"mesh_index": 1,
-"name": &"Tree0",
-"position": Vector3(-37, 0, -11),
-"type": "tree"
-}, {
-"mesh_index": 1,
-"name": &"Tree1",
-"position": Vector3(-7, 0, -19),
-"type": "tree"
-}, {
-"mesh_index": 3,
-"name": &"Tree2",
-"position": Vector3(11, 0, -49),
-"type": "tree"
-}, {
-"mesh_index": 3,
-"name": &"Tree3",
-"position": Vector3(14, 0, 9),
-"type": "tree"
-}, {
-"mesh_index": 2,
-"name": &"Tree4",
-"position": Vector3(-24, 0, -41),
-"type": "tree"
-}, {
-"mesh_index": 1,
-"name": &"Tree5",
-"position": Vector3(41, 0, 21),
-"type": "tree"
-}, {
-"mesh_index": 2,
-"name": &"Tree6",
-"position": Vector3(2, 0, 47),
-"type": "tree"
-}, {
-"mesh_index": 2,
-"name": &"Tree7",
-"position": Vector3(-14, 0, -6),
-"type": "tree"
-}, {
-"mesh_index": 0,
-"name": &"Tree8",
-"position": Vector3(23, 0, -12),
-"type": "tree"
-}, {
-"mesh_index": 3,
-"name": &"Tree9",
-"position": Vector3(34, 0, 48),
-"type": "tree"
-}, {
-"mesh_index": 1,
-"name": &"Tree10",
-"position": Vector3(-49, 0, 25),
-"type": "tree"
-}, {
-"mesh_index": 1,
-"name": &"Tree11",
-"position": Vector3(7, 0, 15),
-"type": "tree"
-}, {
-"mesh_index": 1,
-"name": &"Tree12",
-"position": Vector3(-6, 0, 2),
-"type": "tree"
-}, {
-"mesh_index": 3,
-"name": &"Tree13",
-"position": Vector3(12, 0, 12),
-"type": "tree"
-}, {
-"mesh_index": 1,
-"name": &"Tree14",
-"position": Vector3(2, 0, 39),
-"type": "tree"
-}, {
-"mesh_index": 0,
-"name": &"Tree15",
-"position": Vector3(-6, 0, 9),
-"type": "tree"
-}, {
-"mesh_index": 3,
-"name": &"Tree16",
-"position": Vector3(-34, 0, -30),
-"type": "tree"
-}, {
-"mesh_index": 3,
-"name": &"Tree17",
-"position": Vector3(-31, 0, 34),
-"type": "tree"
-}, {
-"mesh_index": 1,
-"name": &"Tree18",
-"position": Vector3(11, 0, -10),
-"type": "tree"
-}, {
-"mesh_index": 0,
-"name": &"Tree19",
-"position": Vector3(-17, 0, -5),
-"type": "tree"
-}, {
-"mesh_index": 2,
-"name": &"Tree20",
-"position": Vector3(20, 0, -25),
-"type": "tree"
-}, {
-"mesh_index": 2,
-"name": &"Tree21",
-"position": Vector3(-44, 0, -47),
-"type": "tree"
-}, {
-"mesh_index": 0,
-"name": &"Tree22",
-"position": Vector3(-17, 0, -21),
-"type": "tree"
-}, {
-"mesh_index": 1,
-"name": &"Tree23",
-"position": Vector3(-28, 0, 25),
-"type": "tree"
-}, {
-"mesh_index": 1,
-"name": &"Tree24",
-"position": Vector3(16, 0, -6),
-"type": "tree"
-}, {
-"mesh_index": 3,
-"name": &"Tree25",
-"position": Vector3(0, 0, 15),
-"type": "tree"
-}, {
-"mesh_index": 0,
-"name": &"Tree26",
-"position": Vector3(-26, 0, -42),
-"type": "tree"
-}, {
-"mesh_index": 3,
-"name": &"Tree27",
-"position": Vector3(43, 0, 25),
-"type": "tree"
-}, {
-"mesh_index": 0,
-"name": &"Tree28",
-"position": Vector3(22, 0, 3),
-"type": "tree"
-}, {
-"mesh_index": 3,
-"name": &"Tree29",
-"position": Vector3(-16, 0, -6),
-"type": "tree"
-}, {
 "mesh_index": 0,
 "name": &"Stone0",
 "position": Vector3(14, 0, 31),
@@ -309,6 +159,156 @@ environment_data = [{
 "name": &"Stone29",
 "position": Vector3(-49, 0, -3),
 "type": "stone"
+}, {
+"mesh_index": 1,
+"name": &"Tree0",
+"position": Vector3(-37, 0, -11),
+"type": "tree"
+}, {
+"mesh_index": 1,
+"name": &"Tree1",
+"position": Vector3(-7, 0, -19),
+"type": "tree"
+}, {
+"mesh_index": 3,
+"name": &"Tree2",
+"position": Vector3(11, 0, -49),
+"type": "tree"
+}, {
+"mesh_index": 3,
+"name": &"Tree3",
+"position": Vector3(14, 0, 9),
+"type": "tree"
+}, {
+"mesh_index": 2,
+"name": &"Tree4",
+"position": Vector3(-24, 0, -41),
+"type": "tree"
+}, {
+"mesh_index": 1,
+"name": &"Tree5",
+"position": Vector3(41, 0, 21),
+"type": "tree"
+}, {
+"mesh_index": 2,
+"name": &"Tree6",
+"position": Vector3(2, 0, 47),
+"type": "tree"
+}, {
+"mesh_index": 2,
+"name": &"Tree7",
+"position": Vector3(-14, 0, -6),
+"type": "tree"
+}, {
+"mesh_index": 0,
+"name": &"Tree8",
+"position": Vector3(23, 0, -12),
+"type": "tree"
+}, {
+"mesh_index": 3,
+"name": &"Tree9",
+"position": Vector3(34, 0, 48),
+"type": "tree"
+}, {
+"mesh_index": 1,
+"name": &"Tree10",
+"position": Vector3(-49, 0, 25),
+"type": "tree"
+}, {
+"mesh_index": 1,
+"name": &"Tree11",
+"position": Vector3(7, 0, 15),
+"type": "tree"
+}, {
+"mesh_index": 1,
+"name": &"Tree12",
+"position": Vector3(-6, 0, 2),
+"type": "tree"
+}, {
+"mesh_index": 3,
+"name": &"Tree13",
+"position": Vector3(12, 0, 12),
+"type": "tree"
+}, {
+"mesh_index": 1,
+"name": &"Tree14",
+"position": Vector3(2, 0, 39),
+"type": "tree"
+}, {
+"mesh_index": 0,
+"name": &"Tree15",
+"position": Vector3(-6, 0, 9),
+"type": "tree"
+}, {
+"mesh_index": 3,
+"name": &"Tree16",
+"position": Vector3(-34, 0, -30),
+"type": "tree"
+}, {
+"mesh_index": 3,
+"name": &"Tree17",
+"position": Vector3(-31, 0, 34),
+"type": "tree"
+}, {
+"mesh_index": 1,
+"name": &"Tree18",
+"position": Vector3(11, 0, -10),
+"type": "tree"
+}, {
+"mesh_index": 0,
+"name": &"Tree19",
+"position": Vector3(-17, 0, -5),
+"type": "tree"
+}, {
+"mesh_index": 2,
+"name": &"Tree20",
+"position": Vector3(20, 0, -25),
+"type": "tree"
+}, {
+"mesh_index": 2,
+"name": &"Tree21",
+"position": Vector3(-44, 0, -47),
+"type": "tree"
+}, {
+"mesh_index": 0,
+"name": &"Tree22",
+"position": Vector3(-17, 0, -21),
+"type": "tree"
+}, {
+"mesh_index": 1,
+"name": &"Tree23",
+"position": Vector3(-28, 0, 25),
+"type": "tree"
+}, {
+"mesh_index": 1,
+"name": &"Tree24",
+"position": Vector3(16, 0, -6),
+"type": "tree"
+}, {
+"mesh_index": 3,
+"name": &"Tree25",
+"position": Vector3(0, 0, 15),
+"type": "tree"
+}, {
+"mesh_index": 0,
+"name": &"Tree26",
+"position": Vector3(-26, 0, -42),
+"type": "tree"
+}, {
+"mesh_index": 3,
+"name": &"Tree27",
+"position": Vector3(43, 0, 25),
+"type": "tree"
+}, {
+"mesh_index": 0,
+"name": &"Tree28",
+"position": Vector3(22, 0, 3),
+"type": "tree"
+}, {
+"mesh_index": 3,
+"name": &"Tree29",
+"position": Vector3(-16, 0, -6),
+"type": "tree"
 }]
 building_data = [{
 "built": true,
@@ -320,10 +320,10 @@ building_data = [{
 "spell_data": {
 "brewing_spells": [{
 "name": &"dinamita",
-"time_left": 595.577
+"time_left": 587.842
 }, {
 "name": &"kasumpa-sumpa",
-"time_left": 596.338
+"time_left": 588.603
 }],
 "stored_spell": {
 "dinamita": 1,
@@ -347,10 +347,10 @@ building_data = [{
 "spell_data": {
 "brewing_spells": [{
 "name": &"dinamita",
-"time_left": 595.577
+"time_left": 587.842
 }, {
 "name": &"kasumpa-sumpa",
-"time_left": 596.338
+"time_left": 588.603
 }],
 "stored_spell": {
 "dinamita": 1
@@ -365,10 +365,10 @@ building_data = [{
 }
 }]
 game_time = {
-"current_time": 14.0726,
+"current_time": 21.8073,
 "has_emitted_night_time": false,
-"time_of_day": 0.0117272,
-"total_game_time": 14.0726
+"time_of_day": 0.0181727,
+"total_game_time": 21.8073
 }
 sibilyans = [{
 "assigned_kubo": "",

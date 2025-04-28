@@ -232,11 +232,8 @@ shape = SubResource("BoxShape3D_mhbwc")
 
 [node name="UI" parent="." instance=ExtResource("3_vgl07")]
 
-[node name="surrenderButton" parent="UI" index="0"]
-visible = true
-
-[node name="allyPanel" parent="UI" index="1"]
-visible = true
+[node name="VBoxContainer" parent="UI/spellPanel" index="0"]
+layout_mode = 0
 
 [node name="Entities" type="Node3D" parent="." node_paths=PackedStringArray("Objects")]
 script = ExtResource("11_y5cqv")

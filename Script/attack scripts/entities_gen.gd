@@ -2,7 +2,8 @@ extends Node3D
 
 @export var Show_Debug: bool
 @export var required_cp: int = 100
-@export var enemies: Array[PackedScene]
+@export var enemies: Array[PackedScene] 
+@export var spell_list: SpellList = preload("res://assets/spells/spells.tres")
 @export var preferred_enemies: Array[PackedScene]
 @export var base_enemy_count: int = 5
 @export var min_enemies: int = 3
@@ -63,13 +64,25 @@ func _process(delta: float) -> void:
 	if enemies_spawned:
 		_spawn_boss_conditionally()
 func _input(event: InputEvent) -> void:
+	var panel_clicked = false
+	var mouse_pos = get_viewport().get_mouse_position()
+	if UI.get_node("allyPanel").get_global_rect().has_point(mouse_pos):
+		panel_clicked = true
+	if UI.get_node("spellPanel").get_global_rect().has_point(mouse_pos):
+		panel_clicked = true
+		
 	if get_selected_troop() != "":
-		var mouse_pos = get_viewport().get_mouse_position()
-		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not UI.get_node("allyPanel").get_global_rect().has_point(mouse_pos):
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not panel_clicked:
 			var target_pos = get_mouse_floor_position()
 			if target_pos == Vector3.ZERO or target_pos == Vector3.INF:
 				return
 			spawn_troop(target_pos)
+	elif get_selected_spell() != "":
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not panel_clicked:
+			var target_pos = get_mouse_floor_position()
+			if target_pos == Vector3.ZERO or target_pos == Vector3.INF:
+				return
+			cast_spell(target_pos)
 
 func get_mouse_floor_position() -> Vector3:
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -129,6 +142,41 @@ func get_selected_troop() -> String:
 			return troop_name
 	return ""
 
+func get_spell_scene(spell_name: String) -> PackedScene:
+	for spell in spell_list.spells:
+		if spell.Name == spell_name:
+			return spell.Scene
+	return null
+
+func cast_spell(target_position: Vector3):
+	var selected_spell = get_selected_spell()
+	if selected_spell == "":
+		return
+	if UI.spell_data[selected_spell][0] <= 0:
+		return
+	
+	var spell_scene = get_spell_scene(selected_spell)
+	if spell_scene == null:
+		print("Spell scene not found!")
+		return
+	
+	var spell_instance = spell_scene.instantiate()
+	UI.spell_data[selected_spell][0] -= 1
+	UI.find_child(selected_spell).get_child(0).text = str(UI.spell_data[selected_spell][0])
+	spell_instance.find_child("CollisionShape3D").shape.radius *= 3
+	target_position.y =1
+	spell_instance.global_position = target_position
+	add_child(spell_instance)
+	spell_instance.scale *= 3
+
+	
+
+func get_selected_spell() -> String:
+	for spell_name in UI.spell_data.keys():
+		if UI.spell_data[spell_name][1]:
+			return spell_name
+	return ""
+	
 func is_position_valid(position: Vector3, collision_shape: CollisionShape3D) -> bool:
 	var temp_area = Area3D.new()
 	var temp_col = CollisionShape3D.new()

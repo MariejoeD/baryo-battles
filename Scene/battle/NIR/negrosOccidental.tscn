@@ -79,7 +79,10 @@ max_zoom = 82
 [node name="UI" parent="." instance=ExtResource("4_wcfb6")]
 
 [node name="VBoxContainer" parent="UI/spellPanel" index="0"]
-layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 199.0
+offset_bottom = 1420.0
 
 [node name="Buildings" type="Node" parent="."]
 

@@ -1686,7 +1686,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador"]
-unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033

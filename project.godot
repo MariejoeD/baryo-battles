@@ -26,6 +26,10 @@ Buildings="*res://Script/Buildings.gd"
 MapManager="*res://Script/MapManager.gd"
 SaverLoader="*res://Script/SaverLoader.gd"
 
+[debug]
+
+shapes/collision/shape_color=Color(0, 0.6, 0.7, 1)
+
 [display]
 
 window/size/viewport_width=1280

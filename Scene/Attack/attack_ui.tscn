@@ -1358,6 +1358,7 @@ offset_bottom = 0.23999
 theme_override_styles/panel = SubResource("StyleBoxFlat_mqp2h")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="spellPanel"]
+layout_mode = 0
 offset_left = 1.0
 offset_top = 2.0
 offset_right = 200.0

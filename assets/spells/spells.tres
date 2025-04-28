@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="SpellList" load_steps=13 format=3 uid="uid://tyub4div317g"]
+
+[ext_resource type="Script" path="res://assets/spells/spell_lists.gd" id="1_wo2l5"]
+[ext_resource type="Script" path="res://assets/spells/spells.gd" id="2_6auon"]
+[ext_resource type="PackedScene" uid="uid://dv5nn3yg03efs" path="res://assets/spells/spellAnim/dinamita.tscn" id="3_aagbr"]
+[ext_resource type="PackedScene" uid="uid://dsa3ldj1elw7n" path="res://assets/spells/spellAnim/kasumpa_sumpa.tscn" id="4_4hwn1"]
+[ext_resource type="PackedScene" uid="uid://fhts8g0fle32" path="res://assets/spells/spellAnim/kulam.tscn" id="5_h6xd8"]
+[ext_resource type="PackedScene" uid="uid://w50sof8mmrqa" path="res://assets/spells/spellAnim/liwanag.tscn" id="6_4lu62"]
+[ext_resource type="PackedScene" uid="uid://dtbmuk01hnhsj" path="res://assets/spells/spellAnim/heal_spell.tscn" id="7_nrllf"]
+
+[sub_resource type="Resource" id="Resource_tnp6f"]
+script = ExtResource("2_6auon")
+Name = "dinamita"
+Scene = ExtResource("3_aagbr")
+
+[sub_resource type="Resource" id="Resource_ob0yy"]
+script = ExtResource("2_6auon")
+Name = "kasumpa-sumpa"
+Scene = ExtResource("4_4hwn1")
+
+[sub_resource type="Resource" id="Resource_ah1uu"]
+script = ExtResource("2_6auon")
+Name = "kulam"
+Scene = ExtResource("5_h6xd8")
+
+[sub_resource type="Resource" id="Resource_uqbq3"]
+script = ExtResource("2_6auon")
+Name = "liwanag"
+Scene = ExtResource("6_4lu62")
+
+[sub_resource type="Resource" id="Resource_t3kuv"]
+script = ExtResource("2_6auon")
+Name = "luntiangPuso"
+Scene = ExtResource("7_nrllf")
+
+[resource]
+script = ExtResource("1_wo2l5")
+spells = Array[ExtResource("2_6auon")]([SubResource("Resource_tnp6f"), SubResource("Resource_ob0yy"), SubResource("Resource_ah1uu"), SubResource("Resource_uqbq3"), SubResource("Resource_t3kuv"), null])

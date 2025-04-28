@@ -30,7 +30,7 @@ func _on_body_exited(body: Node3D) -> void:
 
 func _on_area_entered(area: Area3D) -> void:
 	for group in target_group:
-		print(group)
+		#print(group)
 		if area.get_parent().is_in_group(group):
 			print("Test")
 			_find_nearest_target()

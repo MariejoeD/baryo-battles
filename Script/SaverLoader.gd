@@ -306,6 +306,7 @@ func load_kampo_troops() -> void:
 		Global.kampo_troops = saved_game.troops.duplicate(true)
 	else:
 		Global.kampo_troops.clear()
+	Global.all_kampo = Global.all_kampo.filter(func(k): return is_instance_valid(k))
 
 	for kampo in Global.all_kampo:
 		var kampo_id = kampo.name

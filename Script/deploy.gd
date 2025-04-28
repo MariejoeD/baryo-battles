@@ -6,6 +6,7 @@ extends Control
 
 # Dictionary to store troop counts and selection status
 var troop_data = {}
+var spell_data = {}
 
 func _ready() -> void:
 	troop_data.clear()
@@ -66,8 +67,10 @@ func update_troop_count_label(button: TextureButton, count: int) -> void:
 func _on_button_pressed(troop_name: String) -> void:
 	for key in troop_data.keys():
 		troop_data[key][1] = false
+	for key in spell_data.keys():
+		spell_data[key][1] = false
 	troop_data[troop_name][1] = true
-	print("Troop Data:", troop_data)
+	#print("Troop Data:", troop_data)
 
 #load spell
 func load_spells():
@@ -77,7 +80,18 @@ func load_spells():
 		if data.has("spell_data"):
 			stored_spell= data["spell_data"]["stored_spell"]
 		for name in stored_spell.keys():
-			spell_panel.get_child(0).find_child(name).get_child(0).text = str(int(spell_panel.get_child(0).find_child(name).get_child(0).text) + stored_spell[name])
+			var qty = int(spell_panel.get_child(0).find_child(name).get_child(0).text)
+			qty += stored_spell[name]
+			spell_data[name] = [qty, false]
+			spell_panel.get_child(0).find_child(name).get_child(0).text = str(qty)
 			if spell_panel.get_child(0).find_child(name).get_child(0).text != "0":
 				spell_panel.get_child(0).find_child(name).show()
+	for button in spell_panel.get_child(0).get_children():
+		button.pressed.connect(_on_spell_pressed.bind(button.name))
 #apply spell in display
+func _on_spell_pressed(spell_name: String):
+	for key in troop_data.keys():
+		troop_data[key][1] = false
+	for key in spell_data.keys():
+		spell_data[key][1] = false
+	spell_data[spell_name][1] = true
