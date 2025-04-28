@@ -16,6 +16,7 @@ func get_save_data() -> Dictionary:
 		"position": global_transform.origin,
 		"scale": scale,
 		"level": level,
+		"rotation":rotation,
 		"built": built
 	}
 
@@ -24,6 +25,7 @@ func load_from_data(data: Dictionary) -> void:
 	scale = data.get("scale", Vector3.ONE)
 	level = data.get("level", 1)
 	built = data.get("built", false)
+	rotation = data.get("rotation", Vector3(0,0,0))
 
 	if built:
 		instant_build()

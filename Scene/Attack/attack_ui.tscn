@@ -1344,40 +1344,32 @@ theme_override_font_sizes/font_size = 30
 text = "0"
 
 [node name="spellPanel" type="Panel" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.859
-anchor_top = 0.249
-anchor_right = 0.963
-anchor_bottom = 0.782
-offset_left = 0.47998
-offset_top = -0.280014
-offset_right = -4.64014
-offset_bottom = -0.0400391
+anchor_left = 0.93
+anchor_top = 0.214
+anchor_right = 0.979
+anchor_bottom = 0.783
+offset_left = 0.599854
+offset_top = -0.0800171
+offset_right = 0.880005
+offset_bottom = 0.23999
 theme_override_styles/panel = SubResource("StyleBoxFlat_mqp2h")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="spellPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 3.0
-offset_right = 81.0
-offset_bottom = 247.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.6, 0.6)
-horizontal_scroll_mode = 0
+[node name="VBoxContainer" type="VBoxContainer" parent="spellPanel"]
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 200.0
+offset_bottom = 1422.0
+scale = Vector2(0.3, 0.3)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="spellPanel/ScrollContainer"]
-layout_mode = 2
-
-[node name="dinamita" type="TextureButton" parent="spellPanel/ScrollContainer/VBoxContainer"]
+[node name="dinamita" type="TextureButton" parent="spellPanel/VBoxContainer"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("15_np770")
 
-[node name="count" type="Label" parent="spellPanel/ScrollContainer/VBoxContainer/dinamita"]
+[node name="count" type="Label" parent="spellPanel/VBoxContainer/dinamita"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.291
@@ -1394,11 +1386,12 @@ text = "0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="kasumpa-sumpa" type="TextureButton" parent="spellPanel/ScrollContainer/VBoxContainer"]
+[node name="kasumpa-sumpa" type="TextureButton" parent="spellPanel/VBoxContainer"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("16_eidbg")
 
-[node name="count" type="Label" parent="spellPanel/ScrollContainer/VBoxContainer/kasumpa-sumpa"]
+[node name="count" type="Label" parent="spellPanel/VBoxContainer/kasumpa-sumpa"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.291
@@ -1415,11 +1408,12 @@ text = "0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="kulam" type="TextureButton" parent="spellPanel/ScrollContainer/VBoxContainer"]
+[node name="kulam" type="TextureButton" parent="spellPanel/VBoxContainer"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("17_mgvsk")
 
-[node name="count" type="Label" parent="spellPanel/ScrollContainer/VBoxContainer/kulam"]
+[node name="count" type="Label" parent="spellPanel/VBoxContainer/kulam"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.291
@@ -1436,11 +1430,12 @@ text = "0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="liwanag" type="TextureButton" parent="spellPanel/ScrollContainer/VBoxContainer"]
+[node name="liwanag" type="TextureButton" parent="spellPanel/VBoxContainer"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("18_1234i")
 
-[node name="count" type="Label" parent="spellPanel/ScrollContainer/VBoxContainer/liwanag"]
+[node name="count" type="Label" parent="spellPanel/VBoxContainer/liwanag"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.291
@@ -1457,11 +1452,12 @@ text = "0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="luntiangPuso" type="TextureButton" parent="spellPanel/ScrollContainer/VBoxContainer"]
+[node name="luntiangPuso" type="TextureButton" parent="spellPanel/VBoxContainer"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("19_tn1qe")
 
-[node name="count" type="Label" parent="spellPanel/ScrollContainer/VBoxContainer/luntiangPuso"]
+[node name="count" type="Label" parent="spellPanel/VBoxContainer/luntiangPuso"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.291

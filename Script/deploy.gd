@@ -2,6 +2,7 @@ extends Control
 
 @export var is_homebase: bool = false
 @onready var container = $allyPanel/allyContainer
+@onready var spell_panel = %spellPanel
 
 # Dictionary to store troop counts and selection status
 var troop_data = {}
@@ -12,6 +13,7 @@ func _ready() -> void:
 		_load_homebase_troops()
 	else:
 		_load_kampo_troops()
+	load_spells()
 	update_ui()
 	# Update UI
 func update_ui():
@@ -66,3 +68,16 @@ func _on_button_pressed(troop_name: String) -> void:
 		troop_data[key][1] = false
 	troop_data[troop_name][1] = true
 	print("Troop Data:", troop_data)
+
+#load spell
+func load_spells():
+	SaverLoader.saved_game = load("res://save.tres") as SavedGame
+	for data in SaverLoader.saved_game.building_data:
+		var stored_spell = {}
+		if data.has("spell_data"):
+			stored_spell= data["spell_data"]["stored_spell"]
+		for name in stored_spell.keys():
+			spell_panel.get_child(0).find_child(name).get_child(0).text = str(int(spell_panel.get_child(0).find_child(name).get_child(0).text) + stored_spell[name])
+			if spell_panel.get_child(0).find_child(name).get_child(0).text != "0":
+				spell_panel.get_child(0).find_child(name).show()
+#apply spell in display
