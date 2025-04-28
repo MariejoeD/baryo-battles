@@ -24,79 +24,110 @@ func set_province_data() -> void:
 
 	var province_facts = {
 		"bohol": [
-			"Did you know? The Chocolate Hills turn brown during dry season!",
-			"Tip: Watch out for the Tarsier's stare.",
-			"Fun Fact: Bohol is home to the Loboc River cruise."
+			"Bohol is home to the myth of Sappia, the goddess of mercy who helped end a long famine by filling the barren land with rice, symbolizing compassion and nourishment.",
+			"The story of Sappia explains why rice in Bohol is traditionally white or red, with white representing her milk and red representing her blood.",
+			"Bohol’s rich mythology may have been influenced by neighboring regions like Borneo and China, especially through trade and cultural exchanges involving Chinese traders and traders from Sabah.",
+			"The myth of rice’s origin in Bohol shares similarities with stories from Northern Borneo and China, highlighting a shared Asian folkloric theme of compassionate deities helping humanity",
+			"February 19th, a date observed in Chinese culture to honor Guan Yin (the Chinese goddess of mercy), could also be seen as a special day to honor Sappia in Bohol’s folklore tradition"
 		],
 		"cebu": [
-			"Fact: Cebu was the first Spanish settlement in the Philippines.",
-			"Tip: The Sinulog Festival boosts morale.",
-			"Did you know? Lapu-Lapu defeated Magellan in Mactan."
+			"Cebuano folklore features a variety of mythical beings, such as the Agta, a hairy giant spirit known for luring women with flowers and causing men to become suicidal. ",
+			"The aswang, a shape-shifting creature, is believed to prey on pregnant women by eating their fetuses, especially at night.",
+			"Duwendes, mischievous goblin-like creatures, are said to inhabit ant mounds and can cause illnesses if disrespected, highlighting local superstitions about respecting nature.",
+			"The kataw, akin to mermaids, are powerful sea spirits who can manipulate water and often lure men to the depths of the ocean with their beauty.",
+			"In Cebuano belief, trees are sacred because they are homes to spirits called Mansalauan, and cutting them without permission can bring sickness or misfortune."
 		],
 		"siquijor": [
-			"Fun Fact: Iloilo is known as the 'Heart of the Philippines'.",
-			"Did you know? The Dinagyang Festival honors the Santo Niño.",
-			"Tip: Iloilo warriors move faster during festivals."
+			"Siquijor was originally called 'Isla de Fuego' (Fire Island) by Spanish explorers because they thought the island was on fire, but it was actually due to fireflies swarming over the trees.",
+			"The island is renowned for its healing traditions, where local healers, called mananambal, use herbs from over 300 medicinal plants to treat various ailments.",
+			"Siquijor’s reputation for enchantment dates back to the time of Spanish explorers, who were fascinated by the firefly-lit nights and the island’s mystical aura.",
+			"The island blends shamanic practices with Catholic beliefs, with healers acknowledging their powers as gifts from God and incorporating religious icons into their therapies.",
+			"Every year during Holy Week, healers visit sacred sites to gather ingredients for a powerful black elixir called minasa, used in rituals to exorcise spirits and spells."
 		],
 		"biliran": [
-			"Did you know? General MacArthur landed in Leyte!",
-			"Tip: Strengthen your defenses against sea attacks.",
-			"Fact: Leyte has one of the longest bridges—San Juanico Bridge."
+			"Biliran was originally called Isla de Panamao, named after a native fishing net, and was the first large-scale Spanish shipyard site in the Philippines before it was transferred to Cavite in 1604.",
+			"The province is home to the active Panamao Volcano, which erupted around 1669, and its name might be derived from native grass used for mats.",
+			"Mount Suiro, standing at 2,495 feet, is the tallest peak in Biliran and is known for its thermal features, including hot springs and mud pools.",
+			"Biliran has a rich history linked to Spanish conquests, being the landing site of the first Spanish explorers in the Philippines",
+			"The picturesque Tres Marias mountain features three peaks and is known for its numerous waterfalls and biodiversity, making it a popular hiking destination"
 		],
 		"Eastern Samar": [
-			"Did you know? General MacArthur landed in Leyte!",
-			"Tip: Strengthen your defenses against sea attacks.",
-			"Fact: Leyte has one of the longest bridges—San Juanico Bridge."
+			"Eastern Samar is home to Ogis Island, a beautiful island known for its pristine beaches and natural scenery.",
+			"The island of Samar, including Eastern Samar, is part of the central Philippines and is divided into three provinces: Samar, Northern Samar, and Eastern Samar.",
+			"The location of the mysterious Biringan City is rumored to be somewhere between Calbayog City and Cataman in Samar, which includes parts of Eastern Samar.",
+			"Eastern Samar’s forests and natural sites are believed to be linked to Philippine myths and legends, including tales of mystical portals like the Balete tree.",
+			"Local stories warn against disturbing the spiritual energies of the forests and waters in Eastern Samar, as they are believed to be connected to the legendary city of Biringan and other supernatural phenomena."
 		],
 		"leyte": [
-			"Did you know? General MacArthur landed in Leyte!",
-			"Tip: Strengthen your defenses against sea attacks.",
-			"Fact: Leyte has one of the longest bridges—San Juanico Bridge."
+			"Leyte is historically significant as the site of General Douglas MacArthur's famous return to the Philippines during World War II on October 20, 1944, at Palo, Leyte.",
+			"The island of Leyte was originally named “Felipina” by Spanish navigator Ruy Lopez de Villalobos in honor of King Philip of Spain.",
+			"Leyte was the first place in the Philippines where the blood compact, a traditional Filipino ritual of friendship, was recorded between Rajah Kolambu and Magellan in 1521.",
+			"Leyte’s land area of 5,712.80 square kilometers makes up about 26.66% of the total land area of Eastern Visayas.",
+			"Leyte has a diverse landscape that includes agricultural lands, timberland, mangroves, wetlands, and built-up areas, supporting a vibrant local economy and community."
 		],
 		"Northern Samar": [
-			"Did you know? General MacArthur landed in Leyte!",
-			"Tip: Strengthen your defenses against sea attacks.",
-			"Fact: Leyte has one of the longest bridges—San Juanico Bridge."
+			"Northern Samar is part of the Philippines, located in a region known for its active volcanoes, including Mount Mayon and Mount Taal, which even has a lake inside its crater.",
+			"The local community in Northern Samar uses plants like Malunggay, Calambo, and Yerba Buena for traditional medicine, often asking neighbors for help with remedies.",
+			"Seawater in Northern Samar is believed to have healing properties, and after circumcisions, swimming in the sea is a common practice to promote healing.",
+			"Traditional beliefs in Northern Samar include spirits residing in trees and mythical creatures like a white lady and a monster called Onay, adding a mystical touch to everyday life.",
+			"Despite challenges, the people of Northern Samar find magic in their environment—through their plants, stories, and resilient spirits—highlighting their hopeful outlook amid hardships."
 		],
 		"Samar": [
-			"Did you know? General MacArthur landed in Leyte!",
-			"Tip: Strengthen your defenses against sea attacks.",
-			"Fact: Leyte has one of the longest bridges—San Juanico Bridge."
+			"Despite challenges, the people of Northern Samar find magic in their environment—through their plants, stories, and resilient spirits—highlighting their hopeful outlook amid hardships",
+			"Stories from the 1960s mention mysterious shipments of expensive construction equipment arriving at ports in Tacloban, addressed to Biringan, despite the city not existing on maps.",
+			"Locals believe Biringan is a city that rises from the waters up to the clouds, with everything in it being sleek, black, and ultramodern.",
+			"The legend includes tales of Biringan being a place where real money is used for transactions, challenging the idea that fairies or spirits rely solely on glamour.",
+			"Despite its mythical status, belief in Biringan persists today, with stories spreading through social media and stories from locals about encounters and sightings."
 		],
 		"Southern Leyte": [
-			"Did you know? General MacArthur landed in Leyte!",
-			"Tip: Strengthen your defenses against sea attacks.",
-			"Fact: Leyte has one of the longest bridges—San Juanico Bridge."
+			"Southern Leyte is rich in folk poetry, including riddles, proverbs, folk songs, and balitao, which reflect the local culture and beliefs.",
+			"The region's oral literature acts as a living cultural treasure, capturing the life, character, and traditions of the Southern Leytenos.",
+			"Despite modern influences like television and the internet, efforts are underway to document and preserve Southern Leyte’s unique folk stories and poetry.",
+			"The folk literature of Southern Leyte includes various genres such as myths, legends, jokes, and creation stories that serve as a window into their cultural identity.",
+			"The community actively participates in research activities like data collection and field immersion to safeguard their oral traditions for future generations."
 		],
 		"Negros Occidental": [
-			"Did you know? General MacArthur landed in Leyte!",
-			"Tip: Strengthen your defenses against sea attacks.",
-			"Fact: Leyte has one of the longest bridges—San Juanico Bridge."
+			"Negros Occidental is famously known as 'The Sugar Capital of the Philippines' due to its thriving sugar industry that significantly contributed to local culture and prosperity.",
+			"The province is renowned for its delicious pastries and confectionery, including guapple pie, piaya, barquillos, and dulce gatas, which are celebrated both locally and nationally.",
+			"Negrense cuisine is famous for Inasal, a flavorful marinated and barbecued chicken that is a staple dish in the region.",
+			"The vibrant MassKara Festival in Bacolod showcases the Negrenses' joyful spirit, featuring colorful masks and lively street celebrations every year.",
+			"Historic landmarks like the San Sebastian Cathedral (built in 1876) and the Capitol Building (1931) highlight Negros Occidental’s rich architectural heritage."
 		],
 		"Negros Oriental": [
-			"Did you know? General MacArthur landed in Leyte!",
-			"Tip: Strengthen your defenses against sea attacks.",
-			"Fact: Leyte has one of the longest bridges—San Juanico Bridge."
+			"Negros Oriental is known for its rich folklore featuring mythical creatures like the Aswang, a shapeshifting monster feared since the 16th century by Spanish colonists.",
+			"The Agta, a tall, black, tree-dwelling creature, is often mistaken for a Kapre but is actually a distinct being native to the Eastern Visayan provinces, including Negros Oriental.",
+			"The Banwaanon, a Cebuano mythological being with Caucasian features, is believed to appear to those who help or befriend them, highlighting the region's connection to enchanted forest spirits.",
+			"Duwende, mischievous small creatures living in ant mounds, are believed to cause diseases if offended, emphasizing local beliefs in nature spirits' influence on health",
+			"The Tambaluslos, originating from Bicol but known in nearby regions, is a humanoid creature with distinct features and a humorous weakness—if you see it following you, wearing your clothes upside-down can make it laugh and leave you alone"
+			
 		],
 		"Aklan": [
-			"Did you know? General MacArthur landed in Leyte!",
-			"Tip: Strengthen your defenses against sea attacks.",
-			"Fact: Leyte has one of the longest bridges—San Juanico Bridge."
+			"The legendary Barter of Panay began in the 1250s when Bornean datus traded land with the Ati people, marking the start of Aklan's history.  ",
+			"The Ati-atihan Festival, celebrated every January, has roots in a miraculous wooden figure that brought blessings and inspired the famous celebration.",
+			"Aklan is home to mythical creatures like the aswang, which can transform into animals such as birds, pigs, or cats to prowl the night.",
+			"The legendary manananggal, a creature that separates its upper body to fly at night, was reportedly seen in Aklan in 1997, adding to the province’s spooky folklore",
+			"The panigotlo, a mythical beast in Aklan, is believed to signal either a bountiful harvest or impending trouble, depending on when its cry is heard during a full moon."
 		],
 		"Antique": [
-			"Did you know? General MacArthur landed in Leyte!",
-			"Tip: Strengthen your defenses against sea attacks.",
-			"Fact: Leyte has one of the longest bridges—San Juanico Bridge."
+			"Antique is home to many mythical creatures, including Tamawo, an elf-like being that can hypnotize people with its food and is believed to roam in hidden underground mansions or woods.",
+			"The province celebrates the Binirayan Festival every December, commemorating the arrival of the ten Bornean datus and the first Malayan settlement in the Philippines.",
+			"Antiqueños follow unique superstitious death rituals, such as avoiding sweeping the floor while the body is in state and not bringing wake food home, to ensure a smooth journey to the afterlife.",
+			"Traditional livelihood in Antique includes Buri-making, where women craft bags, baskets, and mats from palm leaves, preserving a age-old craft passed down through generations.",
+			"The earliest settlers of Panay, including Antique, are believed to be tribal Negritos or Atis, with legends stating that Malay datus from Borneo arrived fleeing persecution, establishing the region’s rich history."
 		],
 		"Guimaras": [
-			"Did you know? General MacArthur landed in Leyte!",
-			"Tip: Strengthen your defenses against sea attacks.",
-			"Fact: Leyte has one of the longest bridges—San Juanico Bridge."
+			"Guimaras is rich in myths and legends, with each barangay having its own unique story about their place.",
+			"The island features four main mythological legends and ten miscellaneous legends, highlighting its vibrant oral tradition.",
+			"Many legends recount heroic deeds of actual historical figures, emphasizing the community’s respect for their heroes.",
+			"The stories often explore themes like good versus evil, love versus fear, and power and strength, reflecting core values of Guimaras' culture.",
+			"Legends in Guimaras typically do not specify exact dates or detailed character development, focusing instead on moral lessons and cultural symbols"
 		],
 		"Ilo-ilo": [
-			"Did you know? General MacArthur landed in Leyte!",
-			"Tip: Strengthen your defenses against sea attacks.",
-			"Fact: Leyte has one of the longest bridges—San Juanico Bridge."
+			"Iloilo is nicknamed “the Heart of the Philippines” because of its central location and vibrant culture.",
+			"The Dinagyang Festival in Iloilo blends pagan and Christian traditions in a lively street dance honoring Sto. Nino.",
+			"Iloilo was once called the “Queen City of the South” due to its importance as a major trading port during the sugar industry’s heyday.",
+			"The province is known as the Food Basket and Rice Granary of the Region, with popular dishes like La Paz Batchoy and Chicken Inasal",
+			"Iloilo’s rich heritage includes beautiful old buildings inspired by European and American architecture, including century-old churches and mansions."
 		]
 		
 	}

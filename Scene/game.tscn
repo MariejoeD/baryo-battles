@@ -1647,6 +1647,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_6iwvs")
 text = "i"
 
 [node name="AttackPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 7.125
