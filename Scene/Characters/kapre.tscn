@@ -1076,7 +1076,7 @@ shape = SubResource("CylinderShape3D_3lklv")
 
 [node name="Stats" parent="." instance=ExtResource("9_5r014")]
 hp = 500
-damage = 60
+damage = 60.0
 attack_range = 5.0
 attack_speed = 0.5
 movement_speed = 2.0

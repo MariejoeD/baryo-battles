@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://fhts8g0fle32"]
+[gd_scene load_steps=31 format=3 uid="uid://fhts8g0fle32"]
 
 [ext_resource type="ArrayMesh" uid="uid://dqeiw8yf77wnb" path="res://assets/spells/spellAnim/circle_mesh.obj" id="1_n0xn5"]
+[ext_resource type="Script" path="res://Script/spells/kulam.gd" id="1_ua52m"]
 [ext_resource type="Texture2D" uid="uid://bkmpnh7lv6d7w" path="res://assets/spells/spellAnim/star.png" id="2_3ddvt"]
 
 [sub_resource type="Gradient" id="Gradient_12fmy"]
@@ -249,6 +250,7 @@ alpha_curve = SubResource("CurveTexture_v3e0j")
 [sub_resource type="SphereShape3D" id="SphereShape3D_t8w04"]
 
 [node name="kulam" type="Node3D"]
+script = ExtResource("1_ua52m")
 
 [node name="CircleMesh" type="MeshInstance3D" parent="."]
 material_override = SubResource("ShaderMaterial_ia5kx")
@@ -263,6 +265,8 @@ process_material = SubResource("ParticleProcessMaterial_18k6h")
 draw_pass_1 = SubResource("QuadMesh_cxhh8")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)

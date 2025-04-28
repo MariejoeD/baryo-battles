@@ -10,7 +10,7 @@ func get_filename_base() -> String:
 
 # Exported variables to adjust stats in the editor
 @export var hp: int = 150  # Average health
-@export var damage: int = 25  # Moderate damage
+@export var damage: float = 25  # Moderate damage
 @export var attack_range: float = 2
 @export var attack_speed: float = 1.2  # Average attack speed (attacks per second)
 @export var movement_speed: float = 3.5  # Average movement speed
@@ -76,6 +76,10 @@ func _on_attacked(damage):
 func _on_heal(heal):
 	#print("before: ",current_hp)
 	current_hp += heal
+	create_tween().tween_property(%ProgressBar, "value", current_hp, 0.3)
+	if current_hp > get_scaled_hp():
+		current_hp = get_scaled_hp()
+		%Sprite3D.hide()
 	#print("after: ",current_hp)
 	
 	if current_hp >= get_scaled_hp():
@@ -90,7 +94,7 @@ func _ready():
 		if shape is CapsuleShape3D:
 			# Capsule height + radius
 			var height = shape.height + shape.radius * 2.0
-			%Sprite3D.position.y = height*.9
+			%Sprite3D.position.y = shape.height*2.05
 		elif shape is BoxShape3D:
 			# Box half extents
 			var height = shape.size.y

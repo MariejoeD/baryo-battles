@@ -90,6 +90,7 @@ func get_mouse_floor_position() -> Vector3:
 	var to = from + camera.project_ray_normal(mouse_pos) * 1000
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(from, to)
+	query.set_collision_mask(1)
 	var result = space_state.intersect_ray(query)
 
 	if result:
@@ -163,11 +164,11 @@ func cast_spell(target_position: Vector3):
 	var spell_instance = spell_scene.instantiate()
 	UI.spell_data[selected_spell][0] -= 1
 	UI.find_child(selected_spell).get_child(0).text = str(UI.spell_data[selected_spell][0])
-	spell_instance.find_child("CollisionShape3D").shape.radius *= 3
+	spell_instance.find_child("CollisionShape3D").shape.radius = 1.5
 	target_position.y =1
 	spell_instance.global_position = target_position
 	add_child(spell_instance)
-	spell_instance.scale *= 3
+	spell_instance.scale = Vector3(3,3,3)
 
 	
 
@@ -479,30 +480,30 @@ func pick_weighted_enemy(preferred_enemies: Array, remaining_enemies: Array) -> 
 
 	return all_enemies[0]
 
-func get_max_cp():
-	var max_cp = 0
-	for enemy_scene in enemies:
-		var temp_enemy = enemy_scene.instantiate()
-		var stats_node = temp_enemy.get_node_or_null("Stats")
-		
-		if stats_node:
-			stats_node.level = Npc.TH_level if Npc.TH_level !=0 else 1
-			var enemy_cp = stats_node.calculate_cp()
-			max_cp = max(enemy_cp * max_enemies,max_cp)
-			temp_enemy.queue_free()
-	return max_cp
+#func get_max_cp():
+	#var max_cp = 0
+	#for enemy_scene in enemies:
+		#var temp_enemy = enemy_scene.instantiate()
+		#var stats_node = temp_enemy.get_node_or_null("Stats")
+		#
+		#if stats_node:
+			#stats_node.level = Npc.TH_level if Npc.TH_level !=0 else 1
+			#var enemy_cp = stats_node.calculate_cp()
+			#max_cp = max(enemy_cp * max_enemies,max_cp)
+			#temp_enemy.queue_free()
+	#return max_cp
 
 func select_enemies_to_spawn():
 	max_enemies = max(troopCount(), max_enemies)
 	var soft_enemy_count = calculate_enemy_count()
-	var max_cp = min(get_max_cp(), required_cp)
-	var ratio = clampf(player_cp / max_cp, 0.5, 1.5)
+	#var max_cp = min(get_max_cp(), required_cp)
+	var ratio = clampf(player_cp / required_cp, 0.5, 1.5)
 	var target_multiplier = lerpf(1.5, 0.75, (ratio - 0.5) / (1.5 - 0.5))
-	var target_cp = max_cp * target_multiplier
-	target_cp = min(target_cp, get_max_cp())  # Final safety check
+	var target_cp = required_cp * target_multiplier
+	#target_cp = min(target_cp, get_max_cp())  # Final safety check
 	
 
-	print(get_max_cp())
+	#print(get_max_cp())
 	print("required: ",target_cp)
 	print("playe cp: ", calculate_player_total_cp())
 	var best_cp = 0
@@ -541,7 +542,7 @@ func select_enemies_to_spawn():
 					selected_enemy_types[enemy_scene] = true
 
 		# Fill remaining slots
-		while total_cp < target_cp and selected_enemies.size() < max_enemies:
+		while total_cp < target_cp:
 			var next_enemy_scene = pick_weighted_enemy(preferred_enemies, remaining_enemies)
 			var next_enemy = next_enemy_scene.instantiate()
 			var stats_node = next_enemy.get_node_or_null("Stats")

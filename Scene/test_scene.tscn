@@ -28,6 +28,9 @@ transform = Transform3D(5.455, 0, 0, 0, 5.455, 0, 0, 0, 5.455, 34.9236, 0, -11.3
 [node name="CollisionShape3D" parent="Kapre/Detection" index="0"]
 transform = Transform3D(3.14, 0, 0, 0, 3.14, 0, 0, 0, 3.14, 0, 0, 0)
 
+[node name="Stats" parent="Kapre" index="7"]
+damage = 25.0
+
 [node name="Kwitis-lv1" parent="." instance=ExtResource("2_yh0xr")]
 
 [editable path="Kapre"]

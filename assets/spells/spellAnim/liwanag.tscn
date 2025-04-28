@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://w50sof8mmrqa"]
+[gd_scene load_steps=17 format=3 uid="uid://w50sof8mmrqa"]
 
 [ext_resource type="Shader" uid="uid://biwntkr8de4ld" path="res://assets/spells/spellAnim/circle_shader.tres" id="1_r4blm"]
+[ext_resource type="Script" path="res://Script/spells/liwanag.gd" id="1_urfmn"]
 [ext_resource type="ArrayMesh" uid="uid://dqeiw8yf77wnb" path="res://assets/spells/spellAnim/circle_mesh.obj" id="2_mlims"]
 [ext_resource type="Texture2D" uid="uid://db252knm501wi" path="res://assets/spells/spellAnim/sparkle.jpg" id="3_72g34"]
 
@@ -113,6 +114,8 @@ alpha_curve = SubResource("CurveTexture_vfxkp")
 [sub_resource type="SphereShape3D" id="SphereShape3D_txam0"]
 
 [node name="liwanag" type="Node3D"]
+script = ExtResource("1_urfmn")
+spell_cast_duration = 5.0
 
 [node name="CircleMesh" type="MeshInstance3D" parent="."]
 material_override = SubResource("ShaderMaterial_sabkt")
@@ -127,6 +130,8 @@ process_material = SubResource("ParticleProcessMaterial_v8mku")
 draw_pass_1 = SubResource("QuadMesh_r83hh")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://dtbmuk01hnhsj"]
+[gd_scene load_steps=12 format=4 uid="uid://dtbmuk01hnhsj"]
 
+[ext_resource type="Script" path="res://Script/spells/heal_spell.gd" id="1_5b83s"]
 [ext_resource type="Shader" uid="uid://biwntkr8de4ld" path="res://assets/spells/spellAnim/circle_shader.tres" id="1_ykkrj"]
 [ext_resource type="Shader" uid="uid://ddly3uukbcr8j" path="res://assets/spells/spellAnim/simple_shader.tres" id="3_xksqi"]
 
@@ -57,6 +58,8 @@ alpha_curve = SubResource("CurveTexture_23368")
 [sub_resource type="SphereShape3D" id="SphereShape3D_4h5vi"]
 
 [node name="healSpell" type="Node3D"]
+script = ExtResource("1_5b83s")
+heal = 10.0
 
 [node name="CircleMesh" type="MeshInstance3D" parent="."]
 material_override = SubResource("ShaderMaterial_5wpy4")
@@ -71,7 +74,12 @@ process_material = SubResource("ParticleProcessMaterial_a7nvu")
 draw_pass_1 = SubResource("QuadMesh_wx2ie")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 shape = SubResource("SphereShape3D_4h5vi")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
