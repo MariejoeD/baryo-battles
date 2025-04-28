@@ -470,7 +470,6 @@ texture_normal = ExtResource("10_dayok")
 stretch_mode = 0
 
 [node name="ManageTroops" type="TextureButton" parent="UI/Kampo"]
-visible = false
 layout_mode = 2
 texture_normal = ExtResource("11_awa0a")
 texture_pressed = ExtResource("12_hid37")

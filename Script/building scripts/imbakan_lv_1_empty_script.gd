@@ -68,10 +68,12 @@ func build():
 	sibilyan.add_work(self)
 	pass
 
-func instant_build():
-	built = true
+func on_placed():
+	super.on_placed()
 	add_to_group("Buildings")
 	Buildings.buildings["ImbakanBtn"] -= 1
+func instant_build():
+	built = true
 	food_cap = 3000
 	Global.all_imbakan.append(self)
 	pass

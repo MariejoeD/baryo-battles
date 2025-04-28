@@ -72,14 +72,17 @@ func build():
 	sibilyan.add_work(self)
 	pass
 
+func on_placed():
+	super.on_placed()
+	add_to_group("Buildings")
+	Buildings.buildings["BodegaBtn"] -= 1
+
 func instant_build():
 	built = true
 	wood_cap = 3000
 	stone_cap = 3000
 	Global.all_bodega.append(self)
-	Buildings.buildings["BodegaBtn"] -= 1
 
-	add_to_group("Buildings")
 	pass
 
 var start_time := 0.0

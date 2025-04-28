@@ -22,7 +22,8 @@ func update_ui():
 		var troop_name = button.name  # Button name should match troop name
 		if troop_data.has(troop_name):
 			button.visible = true
-			button.pressed.connect(_on_button_pressed.bind(troop_name))
+			if !button.is_connected("pressed", _on_button_pressed):
+				button.pressed.connect(_on_button_pressed.bind(troop_name))
 			update_troop_count_label(button, troop_data[troop_name][0])
 		else:
 			button.visible = false
@@ -82,6 +83,8 @@ func load_spells():
 		for name in stored_spell.keys():
 			var qty = int(spell_panel.get_child(0).find_child(name).get_child(0).text)
 			qty += stored_spell[name]
+			if qty > 2:
+				qty = 2
 			spell_data[name] = [qty, false]
 			spell_panel.get_child(0).find_child(name).get_child(0).text = str(qty)
 			if spell_panel.get_child(0).find_child(name).get_child(0).text != "0":

@@ -77,10 +77,12 @@ func build():
 	sibilyan.add_work(self)
 	pass
 
-func instant_build():
-	built = true
+func on_placed():
+	super.on_placed()
 	add_to_group("Buildings")
 	Buildings.buildings["KwitisBtn"] -= 1
+func instant_build():
+	built = true
 	pass
 var start_time := 0.0
 var duration := 5

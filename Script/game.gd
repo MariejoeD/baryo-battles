@@ -74,19 +74,11 @@ func _on_settings_button_pressed():
 func _on_back_to_main_menu_pressed():
 	SignalManager.save.emit()
 	
-	save_troops_to_file()
+	
 	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
 
-func save_troops_to_file():
-	var save_dict = {}
-	# Clean invalid kampo instances
-	Global.all_kampo = Global.all_kampo.filter(func(k): return is_instance_valid(k))
-	for kampo in Global.all_kampo:
-		save_dict[kampo.get_instance_id()] = kampo.troops
 
-	var file = FileAccess.open("user://troops_data.save", FileAccess.WRITE)
-	file.store_string(JSON.stringify(save_dict))
-	file.close()
+	
 
 func update_resource_display():
 	$ResourcePanel/FoodContainer/Label.text = str(Global.food_qty)

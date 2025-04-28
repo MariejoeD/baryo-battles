@@ -270,10 +270,13 @@ func build() -> void:
 	if sibilyan:
 		sibilyan.add_work(self)
 
-func instant_build():
-	built = true
+func on_placed():
+	super.on_placed()
 	add_to_group("Buildings")
 	Buildings.buildings["SandatahangLakasBtn"] -= 1
+	
+func instant_build():
+	built = true
 	pass
 
 func perform_work(worker) -> void:

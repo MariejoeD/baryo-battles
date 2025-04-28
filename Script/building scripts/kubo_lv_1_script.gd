@@ -150,10 +150,12 @@ func build():
 	sibilyan.add_work(self)
 	pass
 
-func instant_build():
-	built = true
+func on_placed():
+	super.on_placed()
 	add_to_group("Buildings")
 	Buildings.buildings["KuboBtn"] -= 1
+func instant_build():
+	built = true
 	Global.all_kubos.append(self)  # Register this Kubo in Global
 	pass
 

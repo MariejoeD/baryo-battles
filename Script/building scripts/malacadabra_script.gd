@@ -6,7 +6,11 @@ var active_panel
 
 
 	
-
+func on_placed():
+	super.on_placed()
+	add_to_group("Buildings")
+	Buildings.buildings["MalacadabraBtn"] = 0
+	
 func _ready() -> void:
 	self.get_child(0).input_event.connect(_on_area_3d_input_event)
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
@@ -17,8 +21,6 @@ func _ready() -> void:
 func instant_build():
 	built = true
 	Npc.TH_level = level
-	add_to_group("Buildings")
-	Buildings.buildings["MalacadabraBtn"] = 0
 	change_building_count()
 	pass
 

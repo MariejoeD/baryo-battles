@@ -46,8 +46,8 @@ func enemy_attack_check():
 		#print("[ENEMIES SELECTED]", selected)
 		available = get_unassigned_troop()
 		
-		#$"Defend Control".show_defense_warning()
-		#spawn_enemy(selected)
+		$"Defend Control".show_defense_warning()
+		spawn_enemy(selected)
 	else:
 		#print("🌙 Quiet night. No attack.")
 	#print("[enemy_attack_check] --- END ---\n")

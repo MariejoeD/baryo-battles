@@ -63,10 +63,13 @@ func build():
 	var sibilyan = find_nearest_sibilyan()
 	sibilyan.add_work(self)
 	pass
-func instant_build():
-	built = true
+	
+func on_placed():
+	super.on_placed()
 	add_to_group("Buildings")
 	Buildings.buildings["EstakadaBtn"] -= 1
+func instant_build():
+	built = true
 	pass
 
 var start_time := 0.0
