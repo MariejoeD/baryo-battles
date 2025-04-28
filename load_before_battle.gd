@@ -163,6 +163,10 @@ func perform_loading() -> void:
 			get_tree().current_scene.queue_free()
 			get_tree().current_scene = new_scene
 			if get_tree().current_scene.name == "HomeBase":
+				Global.all_kampo = Global.all_kampo.filter(func(k): return is_instance_valid(k))
+				Global.all_kubos = Global.all_kubos.filter(func(k): return is_instance_valid(k))
+				Global.all_bodega = Global.all_bodega.filter(func(k): return is_instance_valid(k))
+				Global.all_imbakan = Global.all_imbakan.filter(func(k): return is_instance_valid(k))
 				SaverLoader.load_save_data()
 				SignalManager.homebase.emit()
 			queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://d4nb8cjrspohc"]
+[gd_scene load_steps=58 format=3 uid="uid://d4nb8cjrspohc"]
 
 [ext_resource type="Script" path="res://Script/attack scripts/Attack.gd" id="1_shcpm"]
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://umxq6nh6y4on" path="res://assets/game/stoneIcon.png" id="21_f868t"]
 [ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="22_u0e8w"]
 [ext_resource type="Texture2D" uid="uid://spocye4ssw8t" path="res://assets/game/settingsIcon.png" id="23_iau8l"]
+[ext_resource type="Texture2D" uid="uid://q4edvcse31ym" path="res://assets/button/biringan.png" id="26_dhuj4"]
 [ext_resource type="Texture2D" uid="uid://dj546n2w0r57a" path="res://assets/BuildingsRawPics/1.png" id="26_dx0v3"]
 [ext_resource type="Texture2D" uid="uid://dl2s57s3jegow" path="res://assets/BuildingsRawPics/2.png" id="27_5jsei"]
 [ext_resource type="Texture2D" uid="uid://3cct157onhcn" path="res://assets/BuildingsRawPics/5.png" id="28_gn438"]
@@ -1646,7 +1647,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_6iwvs")
 text = "i"
 
 [node name="AttackPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 7.125
@@ -1896,6 +1896,15 @@ offset_right = -0.23201
 offset_bottom = -0.0160065
 texture_normal = ExtResource("20_b3tbn")
 texture_pressed = ExtResource("21_a4jmo")
+
+[node name="biringan" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 0
+offset_left = 419.0
+offset_top = -8.0
+offset_right = 931.0
+offset_bottom = 504.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("26_dhuj4")
 
 [node name="ResourcePanel" type="HBoxContainer" parent="."]
 layout_mode = 1

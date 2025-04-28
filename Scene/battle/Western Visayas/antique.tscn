@@ -233,7 +233,10 @@ shape = SubResource("BoxShape3D_mhbwc")
 [node name="UI" parent="." instance=ExtResource("3_vgl07")]
 
 [node name="VBoxContainer" parent="UI/spellPanel" index="0"]
-layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 199.0
+offset_bottom = 1420.0
 
 [node name="Entities" type="Node3D" parent="." node_paths=PackedStringArray("Objects")]
 script = ExtResource("11_y5cqv")

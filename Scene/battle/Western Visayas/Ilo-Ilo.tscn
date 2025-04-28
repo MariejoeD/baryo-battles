@@ -75,11 +75,11 @@ spot_angle_attenuation = 0.0915064
 
 [node name="UI" parent="." instance=ExtResource("3_s8ifj")]
 
-[node name="surrenderButton" parent="UI" index="0"]
-visible = true
-
-[node name="allyPanel" parent="UI" index="1"]
-visible = true
+[node name="VBoxContainer" parent="UI/spellPanel" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 199.0
+offset_bottom = 1420.0
 
 [node name="trees" type="Node" parent="."]
 
