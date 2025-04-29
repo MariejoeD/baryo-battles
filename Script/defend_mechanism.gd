@@ -4,6 +4,7 @@ var TH_level: int
 var unlocked_defenders = []
 var enemies = []
 var available = []
+var selected = []
 
 func _ready() -> void:
 	SignalManager.night_time.connect(enemy_attack_check)
@@ -37,17 +38,18 @@ func enemy_attack_check():
 	var chance = randf_range(0.0, 100.0)
 	#print("[Chance] Roll:", chance, " vs Threshold:", total_score)
 	
-	#total_score = 100
+	total_score = 100
 	if chance < total_score:
 		#print("⚠️ Enemy Attack Triggered!")
+		SignalManager.base_under_attack.emit()
 		var defender_score = get_defender_score()
 		var raid_strength = determine_enemy_total_cp(wealth_score, defender_score)
-		var selected = select_enemies_to_spawn(raid_strength)
+		selected = select_enemies_to_spawn(raid_strength)
 		#print("[ENEMIES SELECTED]", selected)
 		available = get_unassigned_troop()
 		
 		$"Defend Control".show_defense_warning()
-		spawn_enemy(selected)
+		
 	else:
 		#print("🌙 Quiet night. No attack.")
 	#print("[enemy_attack_check] --- END ---\n")
@@ -188,12 +190,15 @@ func select_enemies_to_spawn(target_cp):
 		var cp = stats.calculate_cp()
 
 		if total_cp + cp > target_cp:
+			if total_cp == 0:
+				total_cp += cp
+				selected_enemies.append(temp_inst)
+				break
 			continue # Skip this and try another enemy
 
 		total_cp += cp
 		selected_enemies.append(temp_inst)
 		#print(" +", cp, "=> Current Total CP:", total_cp)
-
 	
 	#print("[select_enemies_to_spawn] Final Total CP:", total_cp)
 	return selected_enemies
@@ -303,3 +308,8 @@ func station_selected_troop(target_pos: Vector3):
 			troop.position = target_pos
 			available.erase(troop)
 			$UI.troop_data[selected_troop][0] -= 1
+			if $UI.troop_data[selected_troop][0] == 0:
+				$UI.troop_data[selected_troop][1] == false
+			$UI.update_ui()
+			if available.size() == 0:
+				spawn_enemy(selected)

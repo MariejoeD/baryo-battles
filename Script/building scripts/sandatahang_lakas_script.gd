@@ -193,17 +193,27 @@ func training() -> void:
 		training()  # Continue training the next troop
 
 func send_to_kampo(troop):
-	var troop_inst = load(troop["scene"]).instantiate()
+	var troop_scene = load(troop["scene"])
+	var troop_inst = troop_scene.instantiate()
+	
 	troop_inst.find_child("Targeting Component").targeting_enabled = false
 	get_tree().current_scene.find_child("Entities").add_child(troop_inst)
 	troop_inst.global_transform.origin = self.global_transform.origin
-	troop_inst.get_node("Detection/CollisionShape3D").shape.radius *= 0.4
-	
+
+	# Duplicate the shape to avoid modifying shared resource
+	var collision_shape = troop_inst.get_node("Detection/CollisionShape3D")
+	var shape = collision_shape.shape.duplicate()
+	collision_shape.shape = shape
+
+	# Only resize if not resized already
+	if not collision_shape.has_meta("resized"):
+		collision_shape.shape.radius *= 0.2
+		collision_shape.set_meta("resized", true)
+
 	var kampo = await troop_inst.get_node("GoToCamp").go_to_camp()
 	kampo.troops.append(troop)
 	kampo.update_ui_container()
-	pass
-	
+
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if built and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

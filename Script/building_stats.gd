@@ -42,7 +42,7 @@ func calculate_priority_score() -> float:
 
 func _on_attacked(damage):
 	current_hp -= damage
-	if current_hp < 0:
+	if current_hp <= 0:
 		current_hp = 0
 		_on_destruction()
 
@@ -55,5 +55,8 @@ func _ready():
 func _on_destruction():
 	get_parent().on_destroyed()
 	print(get_parent().name,"Died")
+	if get_parent().name == "Malacadabra":
+		print(get_parent().name,"Died")
+		get_tree().current_scene.find_child("Entities").show_result("lose")
 	get_parent().queue_free()
 	

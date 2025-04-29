@@ -70,7 +70,7 @@ func _on_attacked(damage):
 	current_hp -= damage
 	%Sprite3D.show()
 	create_tween().tween_property(%ProgressBar, "value", current_hp, 0.3)
-	if current_hp < 0:
+	if current_hp <= 0:
 		current_hp = 0
 		_on_death()
 func _on_heal(heal):

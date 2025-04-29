@@ -50,6 +50,8 @@ func go_to_camp():
 	Global.all_kampo = Global.all_kampo.filter(func(k): return is_instance_valid(k))
 	for kampo in Global.all_kampo:
 		if kampo:
+			if character_body.find_child("FSM").two_models:
+				character_body.get_child(2).hide()
 			await go_here(kampo.global_transform.origin)
 			print("Arrive")
 			character_body.get_node("AnimationPlayer").play("idle")

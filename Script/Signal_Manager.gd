@@ -9,3 +9,4 @@ signal night_time
 signal TH_upgrade
 signal save
 signal homebase
+signal base_under_attack

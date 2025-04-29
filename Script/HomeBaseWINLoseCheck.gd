@@ -1,5 +1,8 @@
 extends Node
 
+@onready var game_ui: Control = $"../Control"
+@onready var defense_ui: Control = $"../../Defend Mechanism/UI"
+
 
 func win_lose_check():
 	# Wait for the next frame to ensure nodes have been processed (queue_free is done)
@@ -32,9 +35,7 @@ func win_lose_check():
 	if all_enemies_defeat:
 		print("✅ WIN!")
 		show_result("win")
-	elif troops_remaining.size() == 0:
-		print("❌ LOSE!")
-		show_result("lose")
+	
 
 
 
@@ -45,5 +46,16 @@ func win_lose_check():
 func show_result(result: String):
 	if result == "win":
 		print("YOU WIN!")
+		return_troops()
 	elif result == "lose":
 		print("YOU LOSE!")
+		Engine.time_scale = 0  # Pause everything
+		#put a game over screen
+	Global.stop_time = false
+	game_ui.show()
+	defense_ui.hide()
+
+func return_troops():
+	for child in get_children():
+		if child.is_in_group("Good"):
+			child.find_child("GoToCamp").go_to_camp()

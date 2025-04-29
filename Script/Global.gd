@@ -37,7 +37,7 @@ var current_time := 0.0
 var time_of_day := 0.0
 var has_emitted_night_time := false
 var total_game_time := 0.0
-
+var stop_time = false
 
 #Kubo Tracking
 var all_kubos: Array = []  # Stores all Kubo nodes
@@ -49,8 +49,10 @@ var kampo_troops: Dictionary = {}
 var prologue_played = false
 func _ready() -> void:
 	SignalManager._discovered.connect(npc)
+	SignalManager.base_under_attack.connect(base_under_attack)
 	#load_troops_from_file()
-
+func base_under_attack():
+	stop_time = true
 func npc(name):
 	npc_discovered[name] = true
 
@@ -61,6 +63,8 @@ func _process(delta: float) -> void:
 	# If we're not in the main scene, skip time progression
 	#print(current_scene.name)
 	if current_scene == null or current_scene.name != "HomeBase":
+		return
+	if stop_time:
 		return
 	current_time += delta
 	total_game_time += delta
