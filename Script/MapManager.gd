@@ -6,12 +6,33 @@ var conquered_bases := []
 # Player’s total resources
 var resources
 
-# Called when the game starts
+# Sequence of maps: each map unlocks when a specific base is conquered
+var map_sequence := [
+	{ "map_name": "antique", "required_base": "Aklan" },
+	{ "map_name": "Ilo-Ilo", "required_base": "antique" },
+	{ "map_name": "guimaras", "required_base": "Ilo-ilo" },
+	{ "map_name": "negrosOccidental", "required_base": "guimaras" },
+	{ "map_name": "negrosOriental", "required_base": "negrosOccidental" },
+	{ "map_name": "siquijor", "required_base": "negrosOriental" },
+	{ "map_name": "cebu", "required_base": "siquijor" },
+	{ "map_name": "bohol", "required_base": "cebu" },
+	{ "map_name": "southernLeyte", "required_base": "bohol" },
+	{ "map_name": "leyte", "required_base": "southernLeyte" },
+	{ "map_name": "biliran", "required_base": "leyte" },
+	{ "map_name": "samar", "required_base": "biliran" },
+	{ "map_name": "easternSamar", "required_base": "samar" },
+	{ "map_name": "northernSamar", "required_base": "easternSamar" },
+	{ "map_name": "biringan", "required_base": "northernSamar" },
+]
+
+# Start with the first map unlocked
+var unlocked_maps := ["Aklan"]
+
 func _ready():
 	start_resource_timer()
 	SignalManager.new_day.connect(map_report)
 
-# Add a conquered base to the list
+# Add a conquered base to the list and check for map unlock
 func conquer_base(base_name: String, resource_type: String, rate_per_minute: int):
 	conquered_bases.append({
 		"name": base_name,
@@ -22,6 +43,20 @@ func conquer_base(base_name: String, resource_type: String, rate_per_minute: int
 		"stored_resources": 0
 	})
 	print("Conquered base: %s now producing %s" % [base_name, resource_type])
+
+	check_map_unlocks(base_name)
+
+# Check if conquering this base unlocks a new map
+func check_map_unlocks(conquered_base_name: String):
+	for entry in map_sequence:
+		# Case-insensitive comparison using to_lower()
+		if entry["required_base"].to_lower() == conquered_base_name.to_lower() and entry["map_name"] not in unlocked_maps:
+			unlocked_maps.append(entry["map_name"])
+			print("🗺️ New map unlocked: %s (via conquering %s)" % [entry["map_name"], conquered_base_name])
+
+# Get the list of currently available maps
+func get_available_maps() -> Array:
+	return unlocked_maps
 
 # Timer to generate resources every X seconds
 func start_resource_timer():
@@ -36,7 +71,7 @@ func start_resource_timer():
 func _on_resource_tick():
 	for base in conquered_bases:
 		var rate = base["rate"]
-		base["stored_resources"] += rate + (base["civilian"] * .5)
+		base["stored_resources"] += rate + (base["civilian"] * 0.5)
 		print("Generated %d from %s" % [rate, base["name"]])
 
 func map_report():
@@ -48,10 +83,10 @@ func map_report():
 			var base_value = base["rate"] * 240
 			var base_cp = base["base_cp"]
 			var pressure = base_value / max(base_cp, 1)
-			
+
 			var multiplier = clamp(0.8 + ((pressure - 2) / 8) * 0.4, 0.8, 1.2)
 			var enemy_cp = base_cp * multiplier
-			
+
 			if base_cp < enemy_cp or base_cp == 0:
 				print("⚔️ Lost: %s" % base["name"])
 				conquered_bases.erase(base)

@@ -3,7 +3,7 @@ extends Node3D
 @export var effect_duration: float = 5.0
 @export var spell_cast_duration: float = 2.0
 @onready var area_3d: Area3D = $Area3D
-
+var target = "Enemy"
 var affected_enemies := {}  # {body: original_damage}
 var pending_removal := {}   # {body: Timer}
 
@@ -16,7 +16,7 @@ func _ready() -> void:
 	spell_timer.timeout.connect(_on_spell_timeout)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if not body.is_in_group("Enemy"):
+	if not body.is_in_group(target):
 		return
 	
 	if not affected_enemies.has(body):

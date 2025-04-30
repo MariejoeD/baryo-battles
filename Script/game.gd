@@ -41,6 +41,10 @@ extends Control
 
 
 func _ready():
+	# Immediately trigger logic for already unlocked maps
+	for map_name in MapManager.get_available_maps():  # Replace with actual manager if different
+		if map_name != "Aklan":  # Avoid re-showing the starting map if unnecessary
+			map_unlock(map_name)
 	if MusicController.is_music_on and !MusicController.music_player.playing:
 		MusicController.music_player.play()
 
@@ -58,6 +62,11 @@ func _ready():
 
 	update_resource_display()
 	update_button_visuals()
+
+func map_unlock(map_name):
+	print("Showing")
+	print(map_name)
+	attack_panel.find_child(map_name).show()
 
 func _on_attack_button_pressed():
 	attack_panel.visible = !attack_panel.visible

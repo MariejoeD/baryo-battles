@@ -6,8 +6,6 @@ extends Control
 @onready var game_ui: Control = $"../../Base/Control"
 
 func _ready():
-	self.visible = false
-	ui_node.visible = false
 	assign_troop_btn.pressed.connect(_on_assign_troop_pressed)
 
 func show_defense_warning():

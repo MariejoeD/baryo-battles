@@ -47,6 +47,22 @@ func _attack():
 		var speed_scale = anim_length / desired_duration
 		fsm.anim_player.play("attack", -1.0, speed_scale)
 		var target_stats = target.get_node("Stats")
+		if stats.has_ability and stats.ability_name == "Magic":
+			var spell_paths = [
+				"res://assets/spells/spellAnim/kulam.tscn",  # Replace with your actual paths
+				"res://assets/spells/spellAnim/kasumpa_sumpa.tscn"
+			]
+			var random_index = randi() % spell_paths.size()
+			var selected_spell = load(spell_paths[random_index])
+			var spell_instance = selected_spell.instantiate()
+			spell_instance.target = "Good"
+			spell_instance.position = target.global_position
+			spell_instance.find_child("CollisionShape3D").shape.radius = 1.5
+			spell_instance.position.y = 1
+			get_tree().current_scene.add_child(spell_instance)
+			spell_instance.scale = Vector3(3,3,3)
+			print("Magic spell", spell_paths[random_index], "spawned at", target.global_position)
+			return
 		if stats.has_ability and stats.ability_name == "Rage Mode":
 			var rage_threshold = 0.3  # Rage Mode activates when HP is below 30%
 			var rage_multiplier = 1.5  # Increase damage and attack speed by 50%

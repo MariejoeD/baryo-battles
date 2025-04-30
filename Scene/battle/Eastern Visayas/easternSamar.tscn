@@ -359,7 +359,13 @@ required_cp = 800
 enemies = Array[PackedScene]([ExtResource("14_wmda2")])
 preferred_enemies = Array[PackedScene]([ExtResource("14_wmda2")])
 troops = {
-"arnisador": "res://Scene/arnisador.tscn"
+"arnisador": "res://Scene/Characters/arnisador.tscn",
+"kapitan_makoy": "res://Scene/Characters/kapitan_makoy.tscn",
+"lakan_warrior": "res://Scene/Characters/lakan_warrior.tscn",
+"manggagamot": "res://Scene/Characters/manggagamot.tscn",
+"marites": "res://Scene/Characters/marites.tscn",
+"super_inday": "res://Scene/Characters/super_inday.tscn",
+"tirador": "res://Scene/Characters/tirador.tscn"
 }
 Objects = [NodePath("../Buildings"), NodePath("../Trees"), NodePath("../Stones"), NodePath("../Bushes")]
 boss_scene = ExtResource("14_jmfms")

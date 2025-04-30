@@ -754,6 +754,8 @@ damage = 90
 attack_range = 5.0
 attack_speed = 1.5
 movement_speed = 2.8
+has_ability = true
+ability_name = "Rage Mode"
 
 [node name="Sprite3D2" type="Sprite3D" parent="Stats"]
 unique_name_in_owner = true

@@ -1677,6 +1677,7 @@ texture = ExtResource("17_gi6q2")
 stretch_mode = 3
 
 [node name="Ilo-Ilo" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.183
@@ -1691,6 +1692,7 @@ texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
 [node name="antique" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.097
@@ -1719,6 +1721,7 @@ texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
 [node name="guimaras" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.203
@@ -1733,6 +1736,7 @@ texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
 [node name="bohol" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.537
@@ -1747,6 +1751,7 @@ texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
 [node name="cebu" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.463
@@ -1761,6 +1766,7 @@ texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
 [node name="negrosOriental" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.277
@@ -1775,6 +1781,7 @@ texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
 [node name="negrosOccidental" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.281
@@ -1789,6 +1796,7 @@ texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
 [node name="siquijor" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.408
@@ -1803,6 +1811,7 @@ texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
 [node name="northernSamar" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.678
@@ -1815,6 +1824,7 @@ texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
 [node name="samar" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.708
@@ -1829,6 +1839,7 @@ texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
 [node name="easternSamar" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.788
@@ -1843,6 +1854,7 @@ texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
 [node name="biliran" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.602
@@ -1857,6 +1869,7 @@ texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
 [node name="leyte" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.665
@@ -1871,6 +1884,7 @@ texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
 [node name="southernLeyte" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.729
@@ -1899,6 +1913,7 @@ texture_normal = ExtResource("20_b3tbn")
 texture_pressed = ExtResource("21_a4jmo")
 
 [node name="biringan" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+visible = false
 layout_mode = 0
 offset_left = 419.0
 offset_top = -8.0

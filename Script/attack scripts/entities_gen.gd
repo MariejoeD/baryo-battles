@@ -43,6 +43,7 @@ var troop_scenes: Dictionary = {}
 var boss_spawned = false
 signal finished
 func _ready() -> void:
+	#show_result("win")
 	# Connect button signals
 	UI.find_child("surrenderButton").pressed.connect(_on_surrender_button_pressed)
 	UI.find_child("cancelButton").pressed.connect(_on_cancel_button_pressed)
@@ -557,6 +558,7 @@ func select_enemies_to_spawn():
 					break
 				total_cp += enemy_cp
 				selected_enemies.append(next_enemy)
+		
 		print("Target CP: ", target_cp)
 		print("Enemy CP after loop: ", total_cp)
 		print("Enemy count: ", selected_enemies.size())
@@ -574,6 +576,7 @@ func select_enemies_to_spawn():
 
 
 		break  # exit if good enough
+		
 
 	return best_selection
 
