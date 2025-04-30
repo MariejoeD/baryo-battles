@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bb7bjegmerfbt"]
+[gd_scene load_steps=43 format=3 uid="uid://bb7bjegmerfbt"]
 
 [ext_resource type="Script" path="res://Script/deploy.gd" id="1_dk4n7"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_oaiwf"]
@@ -145,6 +145,21 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b6obg"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 13
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38gvo"]
 bg_color = Color(0.99973, 0.192196, 0.169605, 1)
@@ -758,7 +773,7 @@ offset_left = 0.359985
 offset_top = -0.320007
 offset_right = -0.440063
 offset_bottom = 0.039978
-theme_override_styles/panel = SubResource("StyleBoxFlat_xww5h")
+theme_override_styles/panel = SubResource("StyleBoxFlat_b6obg")
 
 [node name="victory" type="Label" parent="WinLosePanel/losePanel"]
 layout_mode = 1

@@ -1,9 +1,9 @@
-[gd_scene load_steps=23 format=4 uid="uid://3rpix35aun0y"]
+[gd_scene load_steps=26 format=4 uid="uid://3rpix35aun0y"]
 
 [ext_resource type="Texture2D" uid="uid://dbfy6ykgpal05" path="res://assets/Anim/Lakan warrior/Lakan-Walking_0.png" id="1_70ux6"]
-[ext_resource type="Animation" uid="uid://1bohvf7lswt5" path="res://assets/Anim/Lakan warrior/Chase.tres" id="2_82x3j"]
+[ext_resource type="Animation" path="res://assets/Anim/Lakan warrior/Chase.tres" id="2_82x3j"]
 [ext_resource type="Texture2D" uid="uid://nibad3b3sy4l" path="res://assets/Anim/Lakan warrior/lakanWarrior-fight_0.png" id="2_s882y"]
-[ext_resource type="Animation" uid="uid://cror64o7tc2s7" path="res://assets/Anim/Lakan warrior/Attack.tres" id="4_7a1uh"]
+[ext_resource type="Animation" path="res://assets/Anim/Lakan warrior/Attack.tres" id="4_7a1uh"]
 [ext_resource type="Animation" uid="uid://c4wx1i3dgnn10" path="res://assets/Anim/Lakan warrior/idle.tres" id="5_7c6if"]
 [ext_resource type="PackedScene" uid="uid://chfyar41tdneb" path="res://Scene/Components/fsm.tscn" id="5_pu0ki"]
 [ext_resource type="PackedScene" uid="uid://cir4xu05qnmre" path="res://Scene/Components/targeting_component.tscn" id="6_1844w"]
@@ -396,6 +396,24 @@ _data = {
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ijhy2"]
 height = 5.0
 radius = 150.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vah74"]
+viewport_path = NodePath("Stats/Sprite3D2/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csvdq"]
+bg_color = Color(0.66312, 0, 0.091477, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4036"]
+bg_color = Color(0.182355, 0.702936, 0, 1)
 
 [node name="Lakan Warrior" type="CharacterBody3D" groups=["Good"]]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
@@ -1224,5 +1242,27 @@ weight_damage = 0.3
 weight_attack_speed = 0.1
 space_cost = 10
 spawn_scale = Vector3(2.5, 2.5, 2.5)
+
+[node name="Sprite3D2" type="Sprite3D" parent="Stats"]
+unique_name_in_owner = true
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 5.0654, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_vah74")
+
+[node name="SubViewport" type="SubViewport" parent="Stats/Sprite3D2"]
+size = Vector2i(156, 26)
+
+[node name="ProgressBar" type="ProgressBar" parent="Stats/Sprite3D2/SubViewport"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 20)
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 153.0
+offset_bottom = 23.0
+theme_override_styles/background = SubResource("StyleBoxFlat_csvdq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i4036")
+step = 1.0
+value = 100.0
+show_percentage = false
 
 [editable path="FSM"]

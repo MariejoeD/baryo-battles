@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bdld6goa4wee4"]
+[gd_scene load_steps=19 format=4 uid="uid://bdld6goa4wee4"]
 
 [ext_resource type="Texture2D" uid="uid://hwthscli6dt8" path="res://assets/Anim/Sigbin/Sigbin-Idle_0.png" id="1_poxgm"]
 [ext_resource type="Animation" uid="uid://bllqgb8wshy48" path="res://assets/Anim/Sigbin/run.tres" id="2_6cb62"]
@@ -399,6 +399,24 @@ _data = {
 height = 5.0
 radius = 150.0
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_3acsy"]
+viewport_path = NodePath("Stats/Sprite3D2/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebw6h"]
+bg_color = Color(0.66312, 0, 0.091477, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa6ex"]
+bg_color = Color(0.182355, 0.702936, 0, 1)
+
 [node name="Sigbin" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 0
@@ -734,5 +752,27 @@ attack_speed = 1.5
 movement_speed = 6.5
 evasion_chance = 0.2
 spawn_scale = Vector3(4, 4, 4)
+
+[node name="Sprite3D2" type="Sprite3D" parent="Stats"]
+unique_name_in_owner = true
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 3.03669, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_3acsy")
+
+[node name="SubViewport" type="SubViewport" parent="Stats/Sprite3D2"]
+size = Vector2i(156, 26)
+
+[node name="ProgressBar" type="ProgressBar" parent="Stats/Sprite3D2/SubViewport"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 20)
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 153.0
+offset_bottom = 23.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ebw6h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oa6ex")
+step = 1.0
+value = 100.0
+show_percentage = false
 
 [editable path="FSM"]

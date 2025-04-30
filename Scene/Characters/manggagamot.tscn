@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bugare6iho4m3"]
+[gd_scene load_steps=18 format=4 uid="uid://bugare6iho4m3"]
 
 [ext_resource type="Texture2D" uid="uid://ckubx32s2ky7r" path="res://assets/Anim/manggagamot/manggagamot-Run_0.png" id="1_3s0hj"]
 [ext_resource type="Animation" uid="uid://dnavk6h6u5jir" path="res://assets/Anim/manggagamot/heal.tres" id="2_e6kta"]
@@ -404,6 +404,24 @@ _data = {
 height = 5.0
 radius = 150.0
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_euwq7"]
+viewport_path = NodePath("Stats/Sprite3D2/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnseh"]
+bg_color = Color(0.66312, 0, 0.091477, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5l8o"]
+bg_color = Color(0.182355, 0.702936, 0, 1)
+
 [node name="Manggagamot" type="CharacterBody3D" groups=["Good"]]
 collision_layer = 2
 collision_mask = 0
@@ -741,5 +759,27 @@ movement_speed = 3.2
 space_cost = 10
 spawn_scale = Vector3(2.5, 2.5, 2.5)
 is_healer = true
+
+[node name="Sprite3D2" type="Sprite3D" parent="Stats"]
+unique_name_in_owner = true
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 3.63996, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_euwq7")
+
+[node name="SubViewport" type="SubViewport" parent="Stats/Sprite3D2"]
+size = Vector2i(156, 26)
+
+[node name="ProgressBar" type="ProgressBar" parent="Stats/Sprite3D2/SubViewport"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 20)
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 153.0
+offset_bottom = 23.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lnseh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_k5l8o")
+step = 1.0
+value = 100.0
+show_percentage = false
 
 [editable path="FSM"]

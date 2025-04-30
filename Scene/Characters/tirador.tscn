@@ -1,9 +1,9 @@
-[gd_scene load_steps=24 format=4 uid="uid://dg323o6jpan3v"]
+[gd_scene load_steps=27 format=4 uid="uid://dg323o6jpan3v"]
 
 [ext_resource type="Texture2D" uid="uid://dnb2ys6x8tsbu" path="res://assets/Anim/Tirador/TiradorRun_0.png" id="1_3bna5"]
-[ext_resource type="Animation" uid="uid://ckkfj56l0fkkw" path="res://assets/Anim/Tirador/run.tres" id="2_oscvf"]
+[ext_resource type="Animation" path="res://assets/Anim/Tirador/run.tres" id="2_oscvf"]
 [ext_resource type="Texture2D" uid="uid://bcg7duq6qwcuu" path="res://assets/Anim/Tirador/tirador-fight_0.png" id="2_tgbsm"]
-[ext_resource type="Animation" uid="uid://csmjvqhvdo26m" path="res://assets/Anim/Tirador/attack.tres" id="4_apda7"]
+[ext_resource type="Animation" path="res://assets/Anim/Tirador/attack.tres" id="4_apda7"]
 [ext_resource type="PackedScene" uid="uid://chfyar41tdneb" path="res://Scene/Components/fsm.tscn" id="5_0pomo"]
 [ext_resource type="PackedScene" uid="uid://cir4xu05qnmre" path="res://Scene/Components/targeting_component.tscn" id="6_imm00"]
 [ext_resource type="PackedScene" uid="uid://cp2vi4c5mg38k" path="res://Scene/Components/pathfinder_component.tscn" id="7_q1mb0"]
@@ -406,6 +406,24 @@ _data = {
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_e1125"]
 height = 5.0
 radius = 150.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1tq36"]
+viewport_path = NodePath("Stats/Sprite3D2/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28uag"]
+bg_color = Color(0.66312, 0, 0.091477, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kngst"]
+bg_color = Color(0.182355, 0.702936, 0, 1)
 
 [node name="Tirador" type="CharacterBody3D" groups=["Good", "range"]]
 collision_layer = 2
@@ -1109,5 +1127,27 @@ weight_damage = 0.6
 weight_attack_speed = 0.1
 space_cost = 10
 spawn_scale = Vector3(2.5, 2.5, 2.5)
+
+[node name="Sprite3D2" type="Sprite3D" parent="Stats"]
+unique_name_in_owner = true
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 4.37676, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_1tq36")
+
+[node name="SubViewport" type="SubViewport" parent="Stats/Sprite3D2"]
+size = Vector2i(156, 26)
+
+[node name="ProgressBar" type="ProgressBar" parent="Stats/Sprite3D2/SubViewport"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 20)
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 153.0
+offset_bottom = 23.0
+theme_override_styles/background = SubResource("StyleBoxFlat_28uag")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kngst")
+step = 1.0
+value = 100.0
+show_percentage = false
 
 [editable path="FSM"]
