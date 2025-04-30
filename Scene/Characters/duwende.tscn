@@ -635,8 +635,7 @@ movement_speed = 3.0
 spawn_scale = Vector3(5, 5, 5)
 
 [node name="Sprite3D2" type="Sprite3D" parent="Stats"]
-unique_name_in_owner = true
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 2.68323, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 2.15992, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_jg75v")
 
@@ -644,7 +643,6 @@ texture = SubResource("ViewportTexture_jg75v")
 size = Vector2i(156, 26)
 
 [node name="ProgressBar" type="ProgressBar" parent="Stats/Sprite3D2/SubViewport"]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 20)
 offset_left = 3.0
 offset_top = 3.0

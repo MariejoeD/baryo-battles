@@ -131,6 +131,8 @@ func _on_manage_troops_pressed() -> void:
 
 func build():
 	var sibilyan = find_nearest_sibilyan()
+	if sibilyan == null:
+		return
 	sibilyan.add_work(self)
 	pass
 

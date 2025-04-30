@@ -1,6 +1,8 @@
 extends Node
 
 @onready var Name: String = get_filename_base()
+@onready var sprite_3d_2 = $Sprite3D2
+@onready var progress_bar = $Sprite3D2/SubViewport/ProgressBar
 
 func get_filename_base() -> String:
 	var scene = get_parent().scene_file_path
@@ -68,25 +70,25 @@ func _on_attacked(damage):
 		print(get_parent().name, " dodged the attack!")
 		return
 	current_hp -= damage
-	%Sprite3D.show()
-	create_tween().tween_property(%ProgressBar, "value", current_hp, 0.3)
+	sprite_3d_2.show()
+	create_tween().tween_property(progress_bar, "value", current_hp, 0.3)
 	if current_hp <= 0:
 		current_hp = 0
 		_on_death()
 func _on_heal(heal):
 	#print("before: ",current_hp)
 	current_hp += heal
-	create_tween().tween_property(%ProgressBar, "value", current_hp, 0.3)
+	create_tween().tween_property(progress_bar, "value", current_hp, 0.3)
 	if current_hp > get_scaled_hp():
 		current_hp = get_scaled_hp()
-		%Sprite3D.hide()
+		sprite_3d_2.hide()
 	#print("after: ",current_hp)
 	
 	if current_hp >= get_scaled_hp():
 		current_hp = get_scaled_hp()
 func _ready():
-	%ProgressBar.max_value = get_scaled_hp()
-	%ProgressBar.value = get_scaled_hp()
+	progress_bar.max_value = get_scaled_hp()
+	progress_bar.value = get_scaled_hp()
 	
 	if get_parent().has_node("CollisionShape3D"):
 		var collider = get_parent().get_node("CollisionShape3D")
@@ -94,14 +96,14 @@ func _ready():
 		if shape is CapsuleShape3D:
 			# Capsule height + radius
 			var height = shape.height + shape.radius * 2.0
-			%Sprite3D.position.y = shape.height*2.05
+			sprite_3d_2.position.y = shape.height*2.05
 		elif shape is BoxShape3D:
 			# Box half extents
 			var height = shape.size.y
-			%Sprite3D.position.y = height/2
+			sprite_3d_2.position.y = height/2
 	else:
 		# fallback if no shape
-		%Sprite3D.position.y = 2.0
+		sprite_3d_2.position.y = 2.0
 
 	# Test the CP calculation for Arnisador
 	var cp = calculate_cp()

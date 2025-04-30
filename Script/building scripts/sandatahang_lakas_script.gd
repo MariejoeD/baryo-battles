@@ -277,6 +277,8 @@ func _toggle_panel(panel_path: String) -> void:
 
 func build() -> void:
 	var sibilyan = find_nearest_sibilyan()
+	if sibilyan == null:
+		return
 	if sibilyan:
 		sibilyan.add_work(self)
 

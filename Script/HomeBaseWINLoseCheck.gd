@@ -31,11 +31,6 @@ func win_lose_check():
 			break  # If one is alive, no need to continue checking
 
 	
-	# Determine win or lose
-	if all_enemies_defeat:
-		print("✅ WIN!")
-		show_result("win")
-	
 func show_result(result: String):
 	if result == "win":
 		print("YOU WIN!")
@@ -48,13 +43,16 @@ func show_result(result: String):
 		game_ui.show()
 		defense_ui.hide()
 
-		# Show the Game Over Panel
 		var game_over_panel = defense_ui.find_child("Defend Control/gameOverPanel")
 		game_over_panel.show()
 
-		# Enable playAgain button
 		var play_again_button = game_over_panel.find_child("playAgain")
 		play_again_button.disabled = false
+
+		play_again_button.pressed.connect(func():
+			get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
+		)
+
 
 
 func return_troops():

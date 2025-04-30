@@ -122,6 +122,8 @@ func harvest() -> void:
 		is_harvestable = false  # Disable harvesting while growing
 	#	find nearest sibilyan
 		var sibilyan = find_nearest_sibilyan()
+		if sibilyan == null:
+			return
 	#	add work to it
 		if Global.get_food_cap() == Global.food_qty or Global.get_food_cap() == 0:
 			return
@@ -130,6 +132,10 @@ func harvest() -> void:
 	
 func build():
 	var sibilyan = find_nearest_sibilyan()
+	if sibilyan == null:
+		return
+	if sibilyan == null:
+		return
 	sibilyan.add_work(self)
 	pass
 func on_placed():

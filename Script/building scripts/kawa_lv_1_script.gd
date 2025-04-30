@@ -257,6 +257,8 @@ func _on_brew_finished(spellbtn, spell_instance, timer):
 
 func build():
 	var sibilyan = find_nearest_sibilyan()
+	if sibilyan == null:
+		return
 	sibilyan.add_work(self)
 	pass
 

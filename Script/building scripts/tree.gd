@@ -64,6 +64,8 @@ func pressed_cut():
 		if Global.get_wood_cap() == Global.wood_qty or Global.get_wood_cap() == 0:
 			return
 		var sibilyan = find_nearest_sibilyan()
+		if sibilyan == null:
+			return
 		worker_assigned = true
 		sibilyan.add_work(self)
 		pass
