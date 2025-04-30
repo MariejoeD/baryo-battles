@@ -36,13 +36,6 @@ func win_lose_check():
 		print("✅ WIN!")
 		show_result("win")
 	
-
-
-
-
-
-
-
 func show_result(result: String):
 	if result == "win":
 		print("YOU WIN!")
@@ -50,10 +43,19 @@ func show_result(result: String):
 	elif result == "lose":
 		print("YOU LOSE!")
 		Engine.time_scale = 0  # Pause everything
-		#put a game over screen
-	Global.stop_time = false
-	game_ui.show()
-	defense_ui.hide()
+		Global.stop_time = false
+		
+		game_ui.show()
+		defense_ui.hide()
+
+		# Show the Game Over Panel
+		var game_over_panel = defense_ui.find_child("Defend Control/gameOverPanel")
+		game_over_panel.show()
+
+		# Enable playAgain button
+		var play_again_button = game_over_panel.find_child("playAgain")
+		play_again_button.disabled = false
+
 
 func return_troops():
 	for child in get_children():
