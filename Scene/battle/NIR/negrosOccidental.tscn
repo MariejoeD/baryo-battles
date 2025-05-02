@@ -319,7 +319,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.132915, -0.592936, -27.0008
 
 [node name="Entities" type="Node3D" parent="." node_paths=PackedStringArray("Objects")]
 script = ExtResource("13_vl48m")
-required_cp = 10000
+required_cp = 1000
 enemies = Array[PackedScene]([ExtResource("14_hinej"), ExtResource("14_xj23k"), ExtResource("15_4086b")])
 preferred_enemies = Array[PackedScene]([ExtResource("14_hinej")])
 max_enemies = 30
