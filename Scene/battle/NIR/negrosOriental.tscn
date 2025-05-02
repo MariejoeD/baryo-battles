@@ -275,7 +275,7 @@ transform = Transform3D(4.94626, 0, 0.731106, 0, 5, 0, -0.731106, 0, 4.94626, -3
 
 [node name="Entities" type="Node3D" parent="." node_paths=PackedStringArray("Objects")]
 script = ExtResource("14_td2kf")
-required_cp = 1500
+required_cp = 800
 enemies = Array[PackedScene]([ExtResource("15_wisgq")])
 preferred_enemies = Array[PackedScene]([ExtResource("15_wisgq")])
 troops = {
