@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://d4nb8cjrspohc"]
+[gd_scene load_steps=59 format=3 uid="uid://d4nb8cjrspohc"]
 
 [ext_resource type="Script" path="res://Script/attack scripts/Attack.gd" id="1_shcpm"]
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
@@ -42,6 +42,7 @@
 [ext_resource type="Script" path="res://Script/progress_bar.gd" id="39_hjfwg"]
 [ext_resource type="Script" path="res://Script/resources/civilianCount.gd" id="39_u67xc"]
 [ext_resource type="Texture2D" uid="uid://dpolk05qyjbd1" path="res://assets/game/clock.png" id="40_maiyq"]
+[ext_resource type="PackedScene" uid="uid://qcxj1rw1fmpl" path="res://Scene/tutorial.tscn" id="43_okd6o"]
 
 [sub_resource type="Theme" id="Theme_1ed3j"]
 
@@ -2012,6 +2013,17 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_rg8t3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_066ap")
 text = " Back to Main Menu"
 
+[node name="HelpButton" type="Button" parent="SettingsPanel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mlhjp")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wts8e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_f03b4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rg8t3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rg8t3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_066ap")
+text = "Help"
+
 [node name="DescriptionPanel" type="Panel" parent="."]
 visible = false
 layout_mode = 1
@@ -2853,3 +2865,10 @@ offset_top = 5.76
 offset_right = 33.0
 texture = ExtResource("40_maiyq")
 expand_mode = 1
+
+[node name="Control" parent="." instance=ExtResource("43_okd6o")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 32.0
+anchor_bottom = 18.0

@@ -50,6 +50,8 @@ var prologue_played = false
 func _ready() -> void:
 	SignalManager._discovered.connect(npc)
 	SignalManager.base_under_attack.connect(base_under_attack)
+	var cursor_texture = preload("res://assets/game/cursor.png")
+	Input.set_custom_mouse_cursor(cursor_texture)
 	#load_troops_from_file()
 func base_under_attack():
 	stop_time = true

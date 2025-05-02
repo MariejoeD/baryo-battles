@@ -1,0 +1,898 @@
+[gd_scene load_steps=30 format=3 uid="uid://qcxj1rw1fmpl"]
+
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_2ewrm"]
+[ext_resource type="Script" path="res://Script/tutorial.gd" id="1_5e2cj"]
+[ext_resource type="Texture2D" uid="uid://rrmp8vesjab7" path="res://assets/button/buildButton.png" id="2_vkrwo"]
+[ext_resource type="Texture2D" uid="uid://cbe6lxhtyrt6w" path="res://assets/button/attackButton.png" id="3_seiob"]
+[ext_resource type="Texture2D" uid="uid://cyk1wjb6woiou" path="res://assets/TUTS/BUILD/2.jpg" id="4_bs72m"]
+[ext_resource type="Texture2D" uid="uid://c64elwvb601n2" path="res://assets/TUTS/BUILD/3.jpg" id="5_e1h0t"]
+[ext_resource type="Texture2D" uid="uid://b808ca65wgxhg" path="res://assets/TUTS/BUILD/4.jpg" id="6_wju2a"]
+[ext_resource type="Texture2D" uid="uid://boyipwh8obq" path="res://assets/TUTS/BUILD/5.jpg" id="7_48p8q"]
+[ext_resource type="Texture2D" uid="uid://dnfgrvlw40dhu" path="res://assets/TUTS/ATTACK/2.jpg" id="9_og1x2"]
+[ext_resource type="Texture2D" uid="uid://bbwsxai4bkrv6" path="res://assets/TUTS/ATTACK/3.jpg" id="10_2ptnb"]
+[ext_resource type="Texture2D" uid="uid://bdgiyweiaa1yo" path="res://assets/TUTS/ATTACK/4.jpg" id="11_q8a61"]
+[ext_resource type="Texture2D" uid="uid://bhk545vn0beib" path="res://assets/TUTS/RESOURCE/1.jpg" id="12_3ck3j"]
+[ext_resource type="Texture2D" uid="uid://c1lskdbfaodk4" path="res://assets/TUTS/RESOURCE/3.jpg" id="13_hl2rt"]
+[ext_resource type="Texture2D" uid="uid://hjibnto4h7i1" path="res://assets/TUTS/TRAIN/1.jpg" id="14_bn4fl"]
+[ext_resource type="Texture2D" uid="uid://b0sqtw7l0utll" path="res://assets/TUTS/TRAIN/2.jpg" id="15_d4vh4"]
+[ext_resource type="Texture2D" uid="uid://d3dc5cf6defww" path="res://assets/TUTS/TRAIN/3.jpg" id="16_72r8b"]
+[ext_resource type="Texture2D" uid="uid://droeklxb1rtuh" path="res://assets/game/quit_icon.png" id="17_vfamn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xh41"]
+bg_color = Color(0.921569, 0.878431, 0.698039, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fcboc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xyde"]
+bg_color = Color(0.921569, 0.878431, 0.698039, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cdiw"]
+bg_color = Color(0.921569, 0.878431, 0.698039, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msblx"]
+bg_color = Color(0.921569, 0.878431, 0.698039, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wmxa"]
+bg_color = Color(0.921569, 0.878431, 0.698039, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwaua"]
+bg_color = Color(0.921569, 0.878431, 0.698039, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drh05"]
+bg_color = Color(0.921569, 0.878431, 0.698039, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j63vf"]
+bg_color = Color(0.921569, 0.878431, 0.698039, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4qqx"]
+bg_color = Color(0.921569, 0.878431, 0.698039, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4xe1"]
+bg_color = Color(0.921569, 0.878431, 0.698039, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0vvxl"]
+bg_color = Color(0.780895, 0.713741, 0.436071, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5e2cj")
+
+[node name="mainPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.112
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.360001
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3xh41")
+
+[node name="buildTutorial" type="Panel" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fcboc")
+
+[node name="title" type="Label" parent="mainPanel/buildTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.03
+anchor_right = 0.345
+anchor_bottom = 0.167
+offset_left = 0.0399971
+offset_top = -0.17
+offset_right = -0.600037
+offset_bottom = 0.286995
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 70
+text = "HOW TO BUILD"
+
+[node name="buildPic" type="TextureRect" parent="mainPanel/buildTutorial"]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 19.0
+offset_right = 764.0
+offset_bottom = 116.0
+texture = ExtResource("2_vkrwo")
+
+[node name="title2" type="Label" parent="mainPanel/buildTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.424
+anchor_top = 0.081
+anchor_right = 0.467
+anchor_bottom = 0.141
+offset_left = 0.279968
+offset_top = 0.241001
+offset_right = 0.23999
+offset_bottom = -0.098999
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 30
+text = "Click"
+
+[node name="2" type="TextureRect" parent="mainPanel/buildTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.036
+anchor_top = 0.294
+anchor_right = 0.25
+anchor_bottom = 0.526
+offset_left = -0.0800018
+offset_top = 0.134003
+offset_bottom = -0.114014
+texture = ExtResource("4_bs72m")
+expand_mode = 1
+
+[node name="3" type="TextureRect" parent="mainPanel/buildTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.262
+anchor_top = 0.294
+anchor_right = 0.477
+anchor_bottom = 0.526
+offset_left = 0.639954
+offset_top = 0.134003
+offset_right = -0.560059
+offset_bottom = -0.114014
+texture = ExtResource("5_e1h0t")
+expand_mode = 1
+
+[node name="4" type="TextureRect" parent="mainPanel/buildTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.491
+anchor_top = 0.294
+anchor_right = 0.705
+anchor_bottom = 0.526
+offset_left = -0.480042
+offset_top = 0.134003
+offset_right = -0.400024
+offset_bottom = -0.114014
+texture = ExtResource("6_wju2a")
+expand_mode = 1
+
+[node name="5" type="TextureRect" parent="mainPanel/buildTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.719
+anchor_top = 0.294
+anchor_right = 0.933
+anchor_bottom = 0.526
+offset_left = -0.320068
+offset_top = 0.134003
+offset_right = -0.23999
+offset_bottom = -0.114014
+texture = ExtResource("7_48p8q")
+expand_mode = 1
+
+[node name="title3" type="Label" parent="mainPanel/buildTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.551
+anchor_right = 0.235
+anchor_bottom = 0.674
+offset_top = -0.0889893
+offset_right = 0.199982
+offset_bottom = -36.686
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 30
+text = "Click building you want to build"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="title4" type="Label" parent="mainPanel/buildTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.272
+anchor_top = 0.557
+anchor_right = 0.457
+anchor_bottom = 0.681
+offset_left = -0.160034
+offset_top = 0.0769653
+offset_right = 0.039978
+offset_bottom = -0.159027
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 30
+text = "This means you can build it "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="title5" type="Label" parent="mainPanel/buildTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.512
+anchor_top = 0.56
+anchor_right = 0.698
+anchor_bottom = 0.684
+offset_left = 0.639954
+offset_top = 0.160004
+offset_right = -0.440002
+offset_bottom = -0.0760193
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 30
+text = "This means you cannot build it "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="title6" type="Label" parent="mainPanel/buildTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.735
+anchor_top = 0.556
+anchor_right = 0.92
+anchor_bottom = 0.743
+offset_left = 0.199951
+offset_top = -0.284027
+offset_right = 0.400024
+offset_bottom = -40.777
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 30
+text = "Wait for the sibilyan to finish building"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="attackTutorial" type="Panel" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fcboc")
+
+[node name="title" type="Label" parent="mainPanel/attackTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.03
+anchor_right = 0.345
+anchor_bottom = 0.167
+offset_left = 0.0399971
+offset_top = -0.17
+offset_right = -0.600037
+offset_bottom = 0.286995
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 70
+text = "HOW TO ATTACK"
+
+[node name="buildPic" type="TextureRect" parent="mainPanel/attackTutorial"]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 19.0
+offset_right = 764.0
+offset_bottom = 116.0
+texture = ExtResource("3_seiob")
+
+[node name="title2" type="Label" parent="mainPanel/attackTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.424
+anchor_top = 0.081
+anchor_right = 0.467
+anchor_bottom = 0.141
+offset_left = 0.279968
+offset_top = 0.241001
+offset_right = 0.23999
+offset_bottom = -0.098999
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 30
+text = "Click"
+
+[node name="2" type="TextureRect" parent="mainPanel/attackTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.031
+anchor_top = 0.225
+anchor_right = 0.325
+anchor_bottom = 0.556
+offset_left = 0.32
+offset_top = 0.224991
+offset_right = -3.05176e-05
+offset_bottom = -0.284027
+texture = ExtResource("9_og1x2")
+expand_mode = 1
+
+[node name="3" type="TextureRect" parent="mainPanel/attackTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.341
+anchor_top = 0.225
+anchor_right = 0.634
+anchor_bottom = 0.556
+offset_left = -0.480042
+offset_top = 0.224991
+offset_right = 0.47998
+offset_bottom = -0.284027
+texture = ExtResource("10_2ptnb")
+expand_mode = 1
+
+[node name="4" type="TextureRect" parent="mainPanel/attackTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.655
+anchor_top = 0.225
+anchor_right = 0.948
+anchor_bottom = 0.556
+offset_left = -0.400024
+offset_top = 0.224991
+offset_right = 0.559937
+offset_bottom = -0.284027
+texture = ExtResource("11_q8a61")
+expand_mode = 1
+
+[node name="title3" type="Label" parent="mainPanel/attackTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.045
+anchor_top = 0.624
+anchor_right = 0.27
+anchor_bottom = 0.693
+offset_left = 0.399998
+offset_top = 0.263977
+offset_right = 0.399994
+offset_bottom = 0.172974
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 30
+text = "Click the available map"
+
+[node name="title4" type="Label" parent="mainPanel/attackTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.379
+anchor_top = 0.618
+anchor_right = 0.604
+anchor_bottom = 0.742
+offset_left = -0.119995
+offset_top = 0.0979919
+offset_right = -0.120056
+offset_bottom = -35.138
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 30
+text = "Choose from your available troops"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="title5" type="Label" parent="mainPanel/attackTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.688
+anchor_top = 0.62
+anchor_right = 0.913
+anchor_bottom = 0.743
+offset_left = 0.359985
+offset_top = -0.179993
+offset_right = 0.359985
+offset_bottom = 0.222992
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 30
+text = "Click anywhere you want to put the Troop"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="resourceTutorial" type="Panel" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fcboc")
+
+[node name="title" type="Label" parent="mainPanel/resourceTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.03
+anchor_right = 0.637
+anchor_bottom = 0.167
+offset_left = 0.0399971
+offset_top = -0.17
+offset_right = -374.36
+offset_bottom = 0.286995
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 70
+text = "HOW TO COLLECT RESOURCES"
+
+[node name="pic" type="TextureRect" parent="mainPanel/resourceTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.249
+anchor_right = 0.459
+anchor_bottom = 0.765
+offset_left = -0.400009
+offset_top = -0.111008
+offset_right = -0.52002
+offset_bottom = 0.164978
+texture = ExtResource("12_3ck3j")
+expand_mode = 1
+
+[node name="title2" type="Label" parent="mainPanel/resourceTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.102
+anchor_top = 0.793
+anchor_right = 0.422
+anchor_bottom = 0.917
+offset_left = -0.560013
+offset_top = 0.27298
+offset_right = -0.160034
+offset_bottom = -40.963
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 30
+text = "Click any tree you want to chop then click cut"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="pic2" type="TextureRect" parent="mainPanel/resourceTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.249
+anchor_right = 0.459
+anchor_bottom = 0.765
+offset_left = 571.6
+offset_top = -0.111008
+offset_right = 571.48
+offset_bottom = 0.164978
+texture = ExtResource("13_hl2rt")
+expand_mode = 1
+
+[node name="title3" type="Label" parent="mainPanel/resourceTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.548
+anchor_top = 0.793
+anchor_right = 0.869
+anchor_bottom = 0.917
+offset_left = 0.559937
+offset_top = 0.27298
+offset_right = -0.320068
+offset_bottom = -40.963
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 30
+text = "Click any stone you want to mine then click mine"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="trainTutorial" type="Panel" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fcboc")
+
+[node name="title" type="Label" parent="mainPanel/trainTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.03
+anchor_right = 0.54
+anchor_bottom = 0.167
+offset_left = 0.0399971
+offset_top = -0.17
+offset_right = -250.2
+offset_bottom = 0.286995
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 70
+text = "HOW TO TRAIN A TROOP"
+
+[node name="trainpic" type="TextureRect" parent="mainPanel/trainTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.026
+anchor_top = 0.203
+anchor_right = 0.312
+anchor_bottom = 0.598
+offset_left = 21.72
+offset_top = 0.28299
+offset_right = 21.64
+offset_bottom = -0.12204
+texture = ExtResource("14_bn4fl")
+expand_mode = 1
+
+[node name="title2" type="Label" parent="mainPanel/trainTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.047
+anchor_top = 0.623
+anchor_right = 0.283
+anchor_bottom = 0.811
+offset_left = 21.84
+offset_top = -0.0970154
+offset_right = 21.76
+offset_bottom = -0.229004
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 30
+text = "Click Sandatahang Lakas then click \"Train Troops\" Button"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="trainpic2" type="TextureRect" parent="mainPanel/trainTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.353
+anchor_top = 0.203
+anchor_right = 0.639
+anchor_bottom = 0.598
+offset_left = 0.159973
+offset_top = 0.28299
+offset_right = 0.0799561
+offset_bottom = -0.12204
+texture = ExtResource("15_d4vh4")
+expand_mode = 1
+
+[node name="title3" type="Label" parent="mainPanel/trainTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.374
+anchor_top = 0.623
+anchor_right = 0.61
+anchor_bottom = 0.811
+offset_left = 0.279968
+offset_top = -0.0970154
+offset_right = 0.199951
+offset_bottom = -0.229004
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 30
+text = "Choose troop to train"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="trainpic3" type="TextureRect" parent="mainPanel/trainTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.663
+anchor_top = 0.203
+anchor_right = 0.949
+anchor_bottom = 0.598
+offset_left = 0.359924
+offset_top = 0.28299
+offset_right = 0.279907
+offset_bottom = -0.12204
+texture = ExtResource("16_72r8b")
+expand_mode = 1
+
+[node name="title4" type="Label" parent="mainPanel/trainTutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.684
+anchor_top = 0.623
+anchor_right = 0.92
+anchor_bottom = 0.875
+offset_left = 0.47998
+offset_top = -0.0970154
+offset_right = 0.400024
+offset_bottom = -41.1251
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 30
+text = "You can see trained troops from kampo when you click \"Manage Troop\" Button"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="howToBuild" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.002
+anchor_right = 0.12
+anchor_bottom = 0.111
+offset_left = 0.44
+offset_top = 1.0
+offset_right = 0.399994
+offset_bottom = 0.0799942
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxFlat_0xyde")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_3cdiw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_msblx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_0wmxa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_qwaua")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_drh05")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j63vf")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_f4qqx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h4xe1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0vvxl")
+text = "BUILD"
+
+[node name="howToAttack" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.122
+anchor_top = 0.001
+anchor_right = 0.24
+anchor_bottom = 0.111
+offset_left = -0.160004
+offset_top = 0.28
+offset_right = -0.200012
+offset_bottom = 0.0799942
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxFlat_0xyde")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_3cdiw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_msblx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_0wmxa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_qwaua")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_drh05")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j63vf")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_f4qqx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h4xe1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0vvxl")
+text = "ATTACK"
+
+[node name="howToCollectResource" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.241
+anchor_top = 0.001
+anchor_right = 0.396
+anchor_bottom = 0.111
+offset_left = 0.519989
+offset_top = 0.28
+offset_right = 0.119965
+offset_bottom = 0.0799942
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxFlat_0xyde")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_3cdiw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_msblx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_0wmxa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_qwaua")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_drh05")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j63vf")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_f4qqx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h4xe1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0vvxl")
+text = "RESOURCE"
+
+[node name="howToTrain" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.398
+anchor_top = 0.001
+anchor_right = 0.552
+anchor_bottom = 0.111
+offset_left = -0.440033
+offset_top = 0.28
+offset_right = 0.439941
+offset_bottom = 0.0799942
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxFlat_0xyde")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_3cdiw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_msblx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_0wmxa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_qwaua")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_drh05")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j63vf")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_f4qqx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h4xe1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0vvxl")
+text = "TRAIN"
+
+[node name="exitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.928
+anchor_top = 0.001
+anchor_right = 0.998
+anchor_bottom = 0.111
+offset_left = 0.159912
+offset_top = 0.28
+offset_right = 0.559937
+offset_bottom = 0.0799942
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_2ewrm")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxFlat_0xyde")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_3cdiw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_msblx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_0wmxa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_qwaua")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_drh05")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j63vf")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_f4qqx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h4xe1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0vvxl")
+icon = ExtResource("17_vfamn")
+alignment = 0
+icon_alignment = 1

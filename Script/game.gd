@@ -9,6 +9,9 @@ extends Control
 
 @onready var english_description = $DescriptionPanel/Malacadabra/EnglishDescription
 
+@onready var help_button = $SettingsPanel/HelpButton  # Add this
+var tutorial_scene = preload("res://Scene/tutorial.tscn")  # Adjust the path if different
+
 # Button textures for locked and unlocked states
 @onready var locked_textures = {
 	"MalacadabraBtn": preload("res://assets/buildings/locked/1.png"),
@@ -56,6 +59,8 @@ func _ready():
 
 	var back_to_main_menu_button = $SettingsPanel/BackToMainMenuButton
 	back_to_main_menu_button.connect("pressed", Callable(self, "_on_back_to_main_menu_pressed"))
+	
+	help_button.connect("pressed", Callable(self, "_on_help_button_pressed"))
 
 	for i in $BuildInventoryPanel/HScrollContainer/HBoxContainer.get_children():
 		i.get_node("informationButton").pressed.connect(description_show.bind(i))
@@ -79,6 +84,12 @@ func _on_build_button_pressed():
 
 func _on_settings_button_pressed():
 	settings_panel.visible = !settings_panel.visible
+	
+
+
+func _on_help_button_pressed():
+	$Control.show()
+
 
 func _on_back_to_main_menu_pressed():
 	SignalManager.save.emit()
