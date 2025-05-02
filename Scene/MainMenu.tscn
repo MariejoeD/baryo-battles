@@ -50,16 +50,14 @@ Button/styles/pressed = SubResource("StyleBoxFlat_5dkn3")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mc7y"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="Scenes" type="Node2D"]
-
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1299.0
 offset_bottom = 739.0
 script = ExtResource("1_mnnij")
 
-[node name="Panel" type="Panel" parent="Control"]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.984
@@ -70,7 +68,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_byc1u")
 
-[node name="Baryo Battles" type="Label" parent="Control"]
+[node name="Baryo Battles" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -94,7 +92,7 @@ theme_override_fonts/font = ExtResource("3_1jttn")
 theme_override_font_sizes/font_size = 130
 text = "BARYO BATTLES"
 
-[node name="Description" type="Label" parent="Control"]
+[node name="Description" type="Label" parent="."]
 layout_mode = 0
 offset_left = 210.0
 offset_top = 241.0
@@ -109,7 +107,7 @@ theme_override_font_sizes/font_size = 34
 text = "A FILIPINO GAME FOR PHILIPPINE CULTURAL HERITAGE PRESERVATION.
 "
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 328.0
 offset_top = 346.0
@@ -119,12 +117,12 @@ theme = SubResource("Theme_xot5b")
 theme_override_constants/separation = 29
 alignment = 1
 
-[node name="play" type="Button" parent="Control/VBoxContainer"]
+[node name="play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1jttn")
 text = "Play"
 
-[node name="playIcon" type="TextureRect" parent="Control/VBoxContainer/play"]
+[node name="playIcon" type="TextureRect" parent="VBoxContainer/play"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.045
@@ -136,12 +134,12 @@ offset_top = 0.0279999
 offset_right = -0.155006
 offset_bottom = 0.00799942
 
-[node name="options" type="Button" parent="Control/VBoxContainer"]
+[node name="options" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1jttn")
 text = "Options"
 
-[node name="optionsIcon" type="TextureRect" parent="Control/VBoxContainer/options"]
+[node name="optionsIcon" type="TextureRect" parent="VBoxContainer/options"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.041
@@ -153,13 +151,13 @@ offset_top = -6.007
 offset_right = 0.264992
 offset_bottom = -0.0240021
 
-[node name="quit" type="Button" parent="Control/VBoxContainer"]
+[node name="quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1jttn")
 text = "Quit
 "
 
-[node name="quitIcon" type="TextureRect" parent="Control/VBoxContainer/quit"]
+[node name="quitIcon" type="TextureRect" parent="VBoxContainer/quit"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.046
@@ -171,7 +169,7 @@ offset_top = -0.973001
 offset_right = -0.760002
 offset_bottom = -0.993004
 
-[node name="AlmanacContainer" type="VBoxContainer" parent="Control"]
+[node name="AlmanacContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.075
@@ -184,12 +182,12 @@ offset_right = 0.498993
 offset_bottom = 0.242981
 theme_override_constants/separation = 1
 
-[node name="AlmanacButton" type="Button" parent="Control/AlmanacContainer"]
+[node name="AlmanacButton" type="Button" parent="AlmanacContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_7mc7y")
 
-[node name="ButtonIcon" type="TextureRect" parent="Control/AlmanacContainer/AlmanacButton"]
+[node name="ButtonIcon" type="TextureRect" parent="AlmanacContainer/AlmanacButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -203,7 +201,7 @@ grow_vertical = 2
 texture = ExtResource("4_60vqa")
 expand_mode = 3
 
-[node name="AlmanacLabel" type="Label" parent="Control/AlmanacContainer"]
+[node name="AlmanacLabel" type="Label" parent="AlmanacContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1jttn")
 theme_override_font_sizes/font_size = 29

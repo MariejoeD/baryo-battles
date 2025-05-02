@@ -28,7 +28,7 @@ func update_ui():
 		else:
 			button.visible = false
 func _load_kampo_troops() -> void:
-	SaverLoader.saved_game = load("res://save.tres") as SavedGame
+	SaverLoader.saved_game = load(Global.save_path) as SavedGame
 	SaverLoader.load_kampo_troops()
 	for kampo in Global.kampo_troops.values():
 		for troop in kampo.keys():
@@ -75,22 +75,51 @@ func _on_button_pressed(troop_name: String) -> void:
 
 #load spell
 func load_spells():
+	if SaverLoader.saved_game == null:
+		return
+
 	SaverLoader.saved_game = load("res://save.tres") as SavedGame
+
+	var spell_shown := {}  # Tracks how many of each spell were shown in UI
+
+	# Loop through each building
 	for data in SaverLoader.saved_game.building_data:
-		var stored_spell = {}
-		if data.has("spell_data"):
-			stored_spell= data["spell_data"]["stored_spell"]
+		if not data.has("spell_data"):
+			continue
+
+		var stored_spell = data["spell_data"]["stored_spell"]
+
+		# Loop through spells stored in this building
 		for name in stored_spell.keys():
-			var qty = int(spell_panel.get_child(0).find_child(name).get_child(0).text)
-			qty += stored_spell[name]
-			if qty > 2:
-				qty = 2
-			spell_data[name] = [qty, false]
-			spell_panel.get_child(0).find_child(name).get_child(0).text = str(qty)
-			if spell_panel.get_child(0).find_child(name).get_child(0).text != "0":
+			var shown = spell_shown.get(name, 0)
+			if shown >= 2:
+				continue  # We already showed max for this spell
+
+			var available = stored_spell[name]
+			var to_load = min(2 - shown, available)
+
+			# Update display and internal spell_data
+			if spell_data.has(name):
+				spell_data[name][0] += to_load
+			else:
+				spell_data[name] = [to_load, false]
+
+			# Update UI
+			var spell_label = spell_panel.get_child(0).find_child(name).get_child(0)
+			spell_label.text = str(spell_data[name][0])
+			if spell_data[name][0] > 0:
 				spell_panel.get_child(0).find_child(name).show()
+
+			# Update how many shown and reduce in this building
+			spell_shown[name] = shown + to_load
+			stored_spell[name] = available - to_load  # Decrease only from this building
+
+	# Connect buttons
 	for button in spell_panel.get_child(0).get_children():
 		button.pressed.connect(_on_spell_pressed.bind(button.name))
+
+	ResourceSaver.save(SaverLoader.saved_game, Global.save_path)
+
 #apply spell in display
 func _on_spell_pressed(spell_name: String):
 	for key in troop_data.keys():

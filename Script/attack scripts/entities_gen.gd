@@ -367,6 +367,10 @@ func show_result(result: String):
 		go_home_button.visible = false  # Hide the Go Home button initially
 		#choose_resource_to_generate()
 		print("YOU WIN!")
+		Global.food_qty = min(Global.food_qty + 500, Global.get_food_cap())
+		Global.wood_qty = min(Global.wood_qty + 500, Global.get_wood_cap())
+		Global.stone_qty = min(Global.stone_qty + 500, Global.get_stone_cap())
+		SaverLoader.save_resources()
 		# Connect resource buttons to show the go home button
 		if not food_button.is_connected("pressed", Callable(self, "choose_resource_to_generate")):
 			food_button.pressed.connect(choose_resource_to_generate.bind("Food"))
@@ -391,10 +395,12 @@ func _on_resource_selected():
 	go_home_button.visible = true
 
 func _on_go_home_pressed():
+	SaverLoader.clear_used_troops()
 	SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
 
 func choose_resource_to_generate(resource:= "Food"):
 	MapManager.conquer_base(get_parent().name,resource, 5)
+	SaverLoader.clear_used_troops()
 	SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
 	pass
 
@@ -412,6 +418,7 @@ func _on_confirm_surrender_button_pressed():
 
 
 func surrender():
+	SaverLoader.clear_used_troops()
 	SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
 
 func calculate_player_total_cp():

@@ -37,6 +37,15 @@ func instant_build():
 func on_placed():
 	remove_floor1_cells_inside_mesh()
 
+func apply_material_override(color = Color(0.5, 0.5, 1.0, 0.5)) -> void:
+	var material = StandardMaterial3D.new()
+	material.albedo_color = color  # Light blue with 50% transparency
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.flags_unshaded = true  # Optional: makes it unaffected by lighting
+	
+	for i in range(self.mesh.get_surface_count()):
+		self.set_surface_override_material(i, material)
+
 func on_destroyed():
 	add_floor1_cells_inside_mesh()
 
@@ -79,3 +88,46 @@ func remove_floor1_cells_inside_mesh():
 func add_floor1_cells_inside_mesh():
 	for cell in blocked_cells:
 		astar.add_path(cell)
+
+func find_nearest_sibilyan() -> Node:
+	var chosen_sib = null
+	var chosen_sib_kubo = null
+	while chosen_sib== null:
+		# First, check if we have stored Sibilyans in any Kubo
+		for kubo in Global.all_kubos:
+			if kubo.stored_sibilyans.size() > 0:
+				var sib = kubo.stored_sibilyans.pop_front()
+				chosen_sib_kubo = kubo
+				chosen_sib = sib
+				print("Picked kubo")
+				break
+			chosen_sib_kubo = null
+
+		# If not found in Kubo, find the nearest active one
+		if chosen_sib == null:
+			
+			var sibilyans = get_tree().get_nodes_in_group("Sibilyan")
+			var nearest_sibilyan = null
+			var min_distance = INF
+			var min_workload = INF
+
+			for sib in sibilyans:
+				var distance = global_position.distance_to(sib.global_position)
+				var workload = sib.get_workload()
+
+				if workload < min_workload or (workload == min_workload and distance < min_distance):
+					nearest_sibilyan = sib
+					min_distance = distance
+					min_workload = workload
+
+			if nearest_sibilyan != null:
+				print("Picked outside")
+				chosen_sib = nearest_sibilyan
+				break
+
+		await get_tree().process_frame  # Retry next frame
+	if chosen_sib_kubo:
+		get_tree().current_scene.find_child("Entities").add_child(chosen_sib)
+		chosen_sib.global_transform.origin = chosen_sib_kubo.global_transform.origin
+		print("Spawned stored Sibilyan from Kubo:", chosen_sib_kubo)
+	return chosen_sib

@@ -84,6 +84,25 @@ func _on_reset_confirmed():
 	MusicController.play_click_sound()
 	if reset_text_input.text == "confirm reset":
 		get_tree().change_scene_to_file("res://Scene/loading.tscn")
+		var path = Global.save_path
+	
+		delete_save_file(path)
+
 	else:
 		print("Reset not confirmed. Please type 'confirm reset' to proceed.")
 		reset_dialog.hide()
+func delete_save_file(path: String) -> void:
+	if FileAccess.file_exists(path):
+		var dir_path = path.get_base_dir()
+		var file_name = path.get_file()
+		var dir = DirAccess.open(dir_path)
+		if dir:
+			var result = dir.remove(file_name)
+			if result == OK:
+				print("Deleted file:", path)
+			else:
+				print("Failed to delete file:", path)
+		else:
+			print("Failed to open directory:", dir_path)
+	else:
+		print("File does not exist:", path)

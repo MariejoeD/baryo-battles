@@ -43,18 +43,36 @@ func show_result(result: String):
 		game_ui.show()
 		defense_ui.hide()
 
-		var game_over_panel = defense_ui.find_child("Defend Control/gameOverPanel")
-		game_over_panel.show()
+		var game_over_panel = get_tree().current_scene.find_child("gameOverPanel")
+		$"../../Defend Mechanism/Defend Control".show()
+		$"../../Defend Mechanism/Defend Control/warningContainer".hide()
+		$"../../Defend Mechanism/Defend Control/assignTroop".hide()
+		$"../../Defend Mechanism/Defend Control/gameOverPanel".show()
 
 		var play_again_button = game_over_panel.find_child("playAgain")
-		play_again_button.disabled = false
 
 		play_again_button.pressed.connect(func():
-			get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
+			Engine.time_scale = 1
+			delete_save_file(Global.save_path)
+			SceneManager.go_to_scene("res://Scene/MainMenu.tscn", true)
 		)
 
 
-
+func delete_save_file(path: String):
+	if FileAccess.file_exists(path):
+		var dir_path = path.get_base_dir()
+		var file_name = path.get_file()
+		var dir = DirAccess.open(dir_path)
+		if dir:
+			var result = dir.remove(file_name)
+			if result == OK:
+				print("Deleted file:", path)
+			else:
+				print("Failed to delete file:", path)
+		else:
+			print("Failed to open directory:", dir_path)
+	else:
+		print("File does not exist:", path)
 func return_troops():
 	for child in get_children():
 		if child.is_in_group("Good"):

@@ -7,3 +7,4 @@ class_name SavedGame
 @export var game_time: Dictionary = {}
 @export var sibilyans: Array = []
 @export var troops: Dictionary = {}
+@export var battle_data: Dictionary = {}

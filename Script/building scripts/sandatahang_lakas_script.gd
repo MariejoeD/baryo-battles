@@ -83,6 +83,9 @@ func show_warning_label(label_name: String) -> void:
 
 func _on_troop_pressed(troop) -> void:
 	# Check available Sibilyans
+	if Global.all_kampo.size() == 0:
+		#warning no camp
+		return
 	var total_sibilyans = Global.get_current_civilian_count()
 	
 	print("Total Sibilyans: ", total_sibilyans)
@@ -91,11 +94,11 @@ func _on_troop_pressed(troop) -> void:
 	var wood_cost :int = int(troop.find_child("woodCost").text)
 	var space_cost :int = int(troop.get_node("cost/cost").text)
 	var stone_cost :int = int(troop.find_child("stoneCost").text)
-	Global.recalculate_space()
+	
 	var remaining_space :int = Global.get_remaining_space()
 	
 	if remaining_space < space_cost or Global.food_qty < food_cost or Global.wood_qty < wood_cost or Global.stone_qty < stone_cost:
-		# warning resource not enough
+		#warning resource not enough
 		return
 	
 	
@@ -104,7 +107,9 @@ func _on_troop_pressed(troop) -> void:
 		show_warning_label("noAvailableCivilian")
 		return
 
-	var sib = find_nearest_sibilyan()	
+	var sib = get_available_sibilyan()
+	
+		
 	if sib == null:
 		print("No valid Sibilyan found!")
 		show_warning_label("noValidSibilyanFound")
@@ -114,10 +119,7 @@ func _on_troop_pressed(troop) -> void:
 	Global.stone_qty -= stone_cost
 	
 	sacrificeSib.append(sib)
-	if sib.assigned_kubo:
-		var kubo = sib.assigned_kubo
-		kubo.current_sibilyan -= 1
-		kubo.stored_sibilyans.erase(sib)
+	
 
 	await sib.go_here(self.global_transform.origin)
 	sacrificeSib.erase(sib)
@@ -213,7 +215,7 @@ func send_to_kampo(troop):
 	var kampo = await troop_inst.get_node("GoToCamp").go_to_camp()
 	kampo.troops.append(troop)
 	kampo.update_ui_container()
-
+	Global.recalculate_space()
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if built and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -276,7 +278,7 @@ func _toggle_panel(panel_path: String) -> void:
 
 
 func build() -> void:
-	var sibilyan = find_nearest_sibilyan()
+	var sibilyan = await find_nearest_sibilyan()
 	if sibilyan == null:
 		return
 	if sibilyan:
@@ -298,41 +300,45 @@ func perform_work(worker) -> void:
 	instant_build()
 	worker.task_complete()
 
-func find_nearest_sibilyan() -> Node:
-	# First, check if we have stored Sibilyans in any Kubo
-	for kubo in Global.all_kubos:
-		if kubo.stored_sibilyans.size() > 0:
-			var sib = kubo.stored_sibilyans.pop_front()  # Take the first stored Sibilyan
-			get_tree().current_scene.find_child("Entities").add_child(sib)  # Add to the scene
-			sib.global_transform.origin = kubo.global_transform.origin  # Spawn near the Kubo
-			print("Spawned stored Sibilyan from Kubo:", kubo)
-			return sib  # Return this Sibilyan for work
 
-	# If no stored Sibilyans, find the nearest active one
-	var sibilyans = get_tree().get_nodes_in_group("Sibilyan")
-	var nearest_sibilyan = null
-	var min_distance = INF
-	var min_workload = INF
-
-	for sib in sibilyans:
-		if sib in sacrificeSib:
-			continue
-		
-		var distance = global_position.distance_to(sib.global_position)
-		var workload = sib.get_workload()
-
-		if workload < min_workload or (workload == min_workload and distance < min_distance):
-			nearest_sibilyan = sib
-			min_distance = distance
-			min_workload = workload
-
-	return nearest_sibilyan
 
 	
 func remove_material_override(mesh_instance) -> void:
 	for i in range(mesh_instance.mesh.get_surface_count()):
 		mesh_instance.set_surface_override_material(i, null)
+		
+		
+func get_available_sibilyan() -> Node:
+	# First check idle Sibilyans stored in Kubos
+	for kubo in Global.all_kubos:
+		for sib in kubo.stored_sibilyans:
+			if sib.done:
+				kubo.stored_sibilyans.erase(sib)
+				kubo.current_sibilyan -= 1  # Only decrease here!
+				get_tree().current_scene.find_child("Entities").add_child(sib)
+				sib.global_transform.origin = kubo.global_transform.origin
+				sib.assigned_kubo = null  # Unlink from old kubo
+				return sib
+
+	# If no idle stored Sibilyan found, check active scene ones
+	var sibilyans = get_tree().get_nodes_in_group("Sibilyan")
+	var nearest_sibilyan = null
+	var min_distance = INF
+
+	for sib in sibilyans:
+		if sib.done and sib not in sacrificeSib:
+			var distance = global_position.distance_to(sib.global_position)
+			if distance < min_distance:
+				min_distance = distance
+				nearest_sibilyan = sib
+
+	return nearest_sibilyan
+
+
 func _on_upgrade_button_pressed() -> void:
+	if !DevMode.is_dev_mode_enabled(DevMode.insta_build_dev_mode):
+		super.apply_material_override()
+		await build()
 	if Npc.TH_level <= level:
 		return
 

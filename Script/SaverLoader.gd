@@ -20,7 +20,7 @@ func scene_change():
 
 
 func load_save_data():
-	var path = "res://save.tres"
+	var path = Global.save_path
 	if ResourceLoader.exists(path):
 		saved_game = load(path) as SavedGame
 		if saved_game:
@@ -34,12 +34,13 @@ func load_save_data():
 			
 			load_sibilyans()
 			load_kampo_troops()
+			load_battle_data()
 
 		else:
 			print("Failed to load save data.")
 	else:
 		print("No saved data found, starting fresh.")
-		saved_game = SavedGame.new()  # Create new if no data exists
+		  # Create new if no data exists
 
 
 # Save the current game data
@@ -56,8 +57,9 @@ func save_game():
 	
 	save_sibilyans()
 	save_kampo_troops()
+	save_battle_data()
 	# Save the game state
-	ResourceSaver.save(saved_game, "res://save.tres")
+	ResourceSaver.save(saved_game, Global.save_path)
 
 	
 
@@ -297,7 +299,11 @@ func save_kampo_troops() -> void:
 		Global.kampo_troops[kampo_id] = troop_counts
 
 	saved_game.troops = Global.kampo_troops.duplicate(true)
-	
+
+func clear_used_troops() -> void:
+	saved_game.troops.clear()
+	Global.kampo_troops.clear()
+
 func load_kampo_troops() -> void:
 	for troop in get_tree().get_nodes_in_group("Good"):
 		troop.get_parent().remove_child(troop)
@@ -333,5 +339,17 @@ func load_kampo_troops() -> void:
 						shape.radius *= 0.2
 						instance.get_node("Detection/CollisionShape3D").shape = shape
 
+func save_battle_data() -> void:
+	var battle_data = {
+		"conquered_bases": MapManager.conquered_bases,
+		"unlocked_maps": MapManager.unlocked_maps,
+		"boss_defeated": Npc.bosses
+	}
+	saved_game.battle_data = battle_data
 
-	
+func load_battle_data() -> void:
+	if saved_game.battle_data != null:
+		var battle_data = saved_game.battle_data
+		MapManager.conquered_bases = battle_data.get("conquered_bases", [])
+		MapManager.unlocked_maps = battle_data.get("unlocked_maps", ["Aklan"])
+		Npc.bosses = battle_data["boss_defeated"]

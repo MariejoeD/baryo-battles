@@ -8,6 +8,7 @@ var workload = []  # Stores work tasks
 var assigned_kubo
 signal path_ready
 var returning = false
+var done = true
 var current_work :Node = null
 var remaining :float = 0
  # Emits when work is completed
@@ -55,6 +56,7 @@ func go_here(target):
 	await path_ready  # Wait until NPC reaches the target
 
 func add_work(task_target):
+	done = false
 	workload.append(task_target)
 	print("Added work:", task_target.name, "Current workload size:", workload.size())
 	if workload.size() == 1:  # Start immediately if idle
@@ -92,6 +94,7 @@ func task_complete():
 	else:
 		returning = true
 		return_to_kubo()
+		done = true
 		pass
 
 

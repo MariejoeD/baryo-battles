@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://xp45vpyr6c1n"]
+[gd_scene load_steps=6 format=3 uid="uid://xp45vpyr6c1n"]
 
 [ext_resource type="PackedScene" uid="uid://685fof7wdp38" path="res://Scene/Characters/kapre.tscn" id="2_24vkn"]
 [ext_resource type="PackedScene" uid="uid://bjv1y1o2hrgx8" path="res://Scene/buildings/kwitis_lv_1.tscn" id="2_yh0xr"]
@@ -8,6 +8,9 @@ albedo_color = Color(0.150255, 0.293701, 0.177637, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h1q2l"]
 material = SubResource("StandardMaterial3D_qy0jm")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qkerd"]
+viewport_path = NodePath("Stats/Sprite3D2/SubViewport")
 
 [node name="Test Scene" type="Node3D"]
 
@@ -30,6 +33,9 @@ transform = Transform3D(3.14, 0, 0, 0, 3.14, 0, 0, 0, 3.14, 0, 0, 0)
 
 [node name="Stats" parent="Kapre" index="7"]
 damage = 25.0
+
+[node name="Sprite3D2" parent="Kapre/Stats" index="0"]
+texture = SubResource("ViewportTexture_qkerd")
 
 [node name="Kwitis-lv1" parent="." instance=ExtResource("2_yh0xr")]
 

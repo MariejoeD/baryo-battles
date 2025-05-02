@@ -44,7 +44,9 @@ var tutorial_scene = preload("res://Scene/tutorial.tscn")  # Adjust the path if 
 
 
 func _ready():
+	DevMode.dev_mode_changed.connect(activate_dev_mode)
 	# Immediately trigger logic for already unlocked maps
+	activate_dev_mode()
 	for map_name in MapManager.get_available_maps():  # Replace with actual manager if different
 		if map_name != "Aklan":  # Avoid re-showing the starting map if unnecessary
 			map_unlock(map_name)
@@ -64,9 +66,17 @@ func _ready():
 
 	for i in $BuildInventoryPanel/HScrollContainer/HBoxContainer.get_children():
 		i.get_node("informationButton").pressed.connect(description_show.bind(i))
-
 	update_resource_display()
 	update_button_visuals()
+func activate_dev_mode():
+	for btn in $"AttackPanel/ScrollContainer/VBoxContainer/TextureRect".get_children():
+		if btn.name == "aklan":
+			continue
+		btn.hide()
+	
+	if DevMode.is_dev_mode_enabled(DevMode.map_dev_mode):
+		for btn in $"AttackPanel/ScrollContainer/VBoxContainer/TextureRect".get_children():
+			map_unlock(btn.name)
 
 func map_unlock(map_name):
 	print("Showing")

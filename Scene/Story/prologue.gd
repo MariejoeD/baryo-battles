@@ -14,4 +14,5 @@ func _ready():
 		video_player.play()
 
 func _on_video_finished():
-	get_tree().change_scene_to_file("res://Scene/HomeBase.tscn")
+	SaverLoader.saved_game = SavedGame.new()
+	SceneManager.go_to_scene("res://Scene/HomeBase.tscn")

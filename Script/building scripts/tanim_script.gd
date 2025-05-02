@@ -121,7 +121,7 @@ func harvest() -> void:
 	if is_harvestable:
 		is_harvestable = false  # Disable harvesting while growing
 	#	find nearest sibilyan
-		var sibilyan = find_nearest_sibilyan()
+		var sibilyan = await find_nearest_sibilyan()
 		if sibilyan == null:
 			return
 	#	add work to it
@@ -131,9 +131,7 @@ func harvest() -> void:
 	pass
 	
 func build():
-	var sibilyan = find_nearest_sibilyan()
-	if sibilyan == null:
-		return
+	var sibilyan = await find_nearest_sibilyan()
 	if sibilyan == null:
 		return
 	sibilyan.add_work(self)
@@ -178,37 +176,17 @@ func perform_work(worker, duration:= -1):
 		grow(grow_duration)
 		worker.task_complete()
 
-func find_nearest_sibilyan() -> Node:
-	# First, check if we have stored Sibilyans in any Kubo
-	for kubo in Global.all_kubos:
-		if kubo.stored_sibilyans.size() > 0:
-			var sib = kubo.stored_sibilyans.pop_front()  # Take the first stored Sibilyan
-			get_tree().current_scene.find_child("Entities").add_child(sib)  # Add to the scene
-			sib.global_transform.origin = kubo.global_transform.origin  # Spawn near the Kubo
-			print("Spawned stored Sibilyan from Kubo:", kubo)
-			return sib  # Return this Sibilyan for work
 
-	# If no stored Sibilyans, find the nearest active one
-	var sibilyans = get_tree().get_nodes_in_group("Sibilyan")
-	var nearest_sibilyan = null
-	var min_distance = INF
-	var min_workload = INF
 
-	for sib in sibilyans:
-		var distance = global_position.distance_to(sib.global_position)
-		var workload = sib.get_workload()
-
-		if workload < min_workload or (workload == min_workload and distance < min_distance):
-			nearest_sibilyan = sib
-			min_distance = distance
-			min_workload = workload
-
-	return nearest_sibilyan
 
 func remove_material_override(mesh_instance) -> void:
 	for i in range(mesh_instance.mesh.get_surface_count()):
 		mesh_instance.set_surface_override_material(i, null)
 func _on_upgrade_button_pressed() -> void:
+	if !DevMode.is_dev_mode_enabled(DevMode.insta_build_dev_mode):
+		super.apply_material_override()
+		built = false
+		await build()
 	if Npc.TH_level <= level:
 		return
 

@@ -25,6 +25,7 @@ Npc="*res://Script/NPC.gd"
 Buildings="*res://Script/Buildings.gd"
 MapManager="*res://Script/MapManager.gd"
 SaverLoader="*res://Script/SaverLoader.gd"
+DevMode="*res://Script/dev_mode.gd"
 
 [debug]
 

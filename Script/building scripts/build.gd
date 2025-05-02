@@ -12,10 +12,13 @@ var cb_name
 var stone_req
 var wood_req
 func _ready() -> void:
+	DevMode.dev_mode_changed.connect(dev_mode)
 	for btn in get_node("../BuildInventoryPanel/HScrollContainer/HBoxContainer").get_children():
 		if btn is TextureButton:
 			btn.pressed.connect(_on_btn_pressed.bind(btn))
-
+func dev_mode():
+	instant_build = DevMode.is_dev_mode_enabled(DevMode.insta_build_dev_mode)
+	pass
 func show_warning_label(label_name: String) -> void:
 	var warning_label = get_tree().current_scene.find_child(label_name, true, false)
 	if warning_label:
@@ -53,9 +56,9 @@ func _process(delta: float) -> void:
 	if building_mode and current_building:
 		follow_mouse()
 		if is_fully_on_floor(current_building) and not is_colliding_with_other_objects(current_building):
-			apply_material_override(current_building,Color(0, 1, 0, 0.5))  # Greenish transparent
+			current_building.apply_material_override(Color(0, 1, 0, 0.5))  # Greenish transparent
 		else:
-			apply_material_override(current_building,Color(1, 0, 0, 0.5))  # Red transparent
+			current_building.apply_material_override(Color(1, 0, 0, 0.5))  # Red transparent
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.keycode == KEY_R and event.pressed:
@@ -80,7 +83,7 @@ func _input(event: InputEvent) -> void:
 					if "built" in current_building:
 						current_building.instant_build()
 				else:
-					apply_material_override(current_building)
+					current_building.apply_material_override()
 					if current_building.has_method("build"):
 						current_building.build()
 				 # ✨ Instead of remove_floor1_cells_inside_mesh()

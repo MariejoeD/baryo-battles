@@ -1,23 +1,23 @@
 #Global.gd a global script
 extends Node
 
+var save_path = "user://save.tres"
 
-
-var wood_qty :int = 3000:
+var wood_qty :int = 1500:
 	set(wood):
 		wood_qty = wood
 		SignalManager.update_mats.emit()
 	get:
 		return wood_qty
 		
-var stone_qty :int = 3000:
+var stone_qty :int = 1500:
 	set(stone):
 		stone_qty = stone
 		SignalManager.update_mats.emit()
 	get:
 		return stone_qty
 		
-var food_qty :int = 3000:
+var food_qty :int = 1500:
 	set(food):
 		food_qty = food
 		SignalManager.update_mats.emit()

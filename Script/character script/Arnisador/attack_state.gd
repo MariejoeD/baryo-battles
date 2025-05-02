@@ -38,8 +38,10 @@ func enter(_previous_state_path: String, data := {}) -> void:
 # Function to handle the attack logic
 func _attack():
 	var target_distance = fsm.npc_root_node.global_position.distance_to(target.global_position)
-	if target_distance > stats.get_scaled_attack_ranged():
-		fsm._transition_to_next_state("Chase", {"target" : target})
+			
+	if !target.is_in_group("Buildings") and target_distance > stats.get_scaled_attack_ranged():
+			fsm._transition_to_next_state("Chase", {"target": target})
+			
 	
 	if target and is_instance_valid(target):
 		var desired_duration = 1.0 / stats.get_scaled_attack_speed()

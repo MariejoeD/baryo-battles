@@ -15,8 +15,9 @@ var almanac_icon = preload("res://assets/button/almanac.png")
 # Function to start the game
 func _on_play_button_pressed():
 	print("Play button pressed!")
-	if Global.prologue_played:
-		get_tree().change_scene_to_file("res://Scene/HomeBase.tscn")
+	var path = Global.save_path
+	if ResourceLoader.exists(path):
+		SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
 	else:
 		get_tree().change_scene_to_file("res://Scene/Story/Prologue.tscn")
 	

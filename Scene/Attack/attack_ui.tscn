@@ -1398,8 +1398,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_oaiwf")
 theme_override_font_sizes/font_size = 30
-text = "0
-"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1420,8 +1419,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_oaiwf")
 theme_override_font_sizes/font_size = 30
-text = "0
-"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1442,8 +1440,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_oaiwf")
 theme_override_font_sizes/font_size = 30
-text = "0
-"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1464,8 +1461,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_oaiwf")
 theme_override_font_sizes/font_size = 30
-text = "0
-"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1486,7 +1482,6 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_oaiwf")
 theme_override_font_sizes/font_size = 30
-text = "0
-"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

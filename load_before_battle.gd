@@ -193,6 +193,22 @@ func perform_loading() -> void:
 			get_tree().root.add_child(new_scene)
 			get_tree().current_scene.queue_free()
 			get_tree().current_scene = new_scene
+			if SaverLoader.saved_game != null:
+				SaverLoader.saved_game = load(Global.save_path) as SavedGame
+				for data in SaverLoader.saved_game.building_data:
+					if data.name == "bodega(empty)" or data.name =="imbakan_lv_1_empty":
+						print("instancing storage")
+						var scene_path = "res://Scene/buildings/%s.tscn" % data["name"]
+						var packed_scene = load(scene_path)
+
+						if packed_scene and packed_scene is PackedScene:
+							var building = packed_scene.instantiate()
+							print("Instance: ", building)
+							if data.name == "bodega(empty)":
+								Global.all_bodega.append(building)
+							else:
+								Global.all_imbakan.append(building)
+					pass
 			if get_tree().current_scene.name == "HomeBase":
 				Global.all_kampo = Global.all_kampo.filter(func(k): return is_instance_valid(k))
 				Global.all_kubos = Global.all_kubos.filter(func(k): return is_instance_valid(k))

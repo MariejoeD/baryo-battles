@@ -244,8 +244,8 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a8obp"]
-points = PackedVector3Array(-0.932167, 0.0081, -0.991228, 1.0851, 1.48663, 1.0924, -1.05526, 1.4662, 1.06268, 1.0851, 1.48663, -1.0777, 0.976347, 1.11022e-16, 0.983645, -1.05526, 1.4662, -1.04798, -0.97622, -2.22045e-16, 0.983645, 0.972774, 0.0363718, -1.03241, -1.1023, 1.39513, 1.10972, 1.03783, 0.104616, 0.944667, -0.997635, 0.108741, -0.95702, 1.10242, 1.39513, -1.09502, -0.939026, 0.0363718, -1.03241, 1.10242, 1.39513, 1.10972, -0.969127, 0.0389204, 1.00963, 0.96567, 0.0081, -0.991228, 1.00212, 0.0392148, -0.92796, -0.97622, 1.11022e-16, -0.968735, 0.962563, 0.0769302, 1.00271, 1.00825, 0.0349298, 0.948373, -0.996359, 0.109549, -0.623434)
+[sub_resource type="BoxShape3D" id="BoxShape3D_dlec2"]
+size = Vector3(2.16382, 1.46487, 2.19678)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5q6u4"]
 bg_color = Color(0.919668, 0.878001, 0.698229, 1)
@@ -340,7 +340,8 @@ collision_layer = 3
 collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("ConvexPolygonShape3D_a8obp")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00842285, 0.770554, 0.00805664)
+shape = SubResource("BoxShape3D_dlec2")
 
 [node name="UI" type="Control" parent="."]
 visible = false

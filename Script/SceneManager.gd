@@ -1,11 +1,10 @@
 extends Node
 
-func go_to_scene(path: String):
+func go_to_scene(path: String, skip_save := false):
 	await get_tree().process_frame
-	if get_tree().current_scene.name == "HomeBase":
+	if !skip_save and get_tree().current_scene.name == "HomeBase":
 		SignalManager.save.emit()
 	await get_tree().process_frame
 	var loader_node = preload("res://Scene/loadBeforeBattle.tscn").instantiate()
-	loader_node.target_scene_path = path  # Set the scene path
-	get_tree().current_scene.add_child(loader_node)  # Add loader to the current scene
-	
+	loader_node.target_scene_path = path
+	get_tree().current_scene.add_child(loader_node)
