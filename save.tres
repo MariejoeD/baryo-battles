@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SavedGame" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SavedGame" load_steps=2 format=3 uid="uid://cleswyv5c5kva"]
 
 [ext_resource type="Script" path="res://Script/saved_game.gd" id="1_buoyb"]
 
@@ -334,4 +334,8 @@ sibilyans = [{
 "start_time": 0,
 "workload": []
 }]
-troops = {}
+troops = {
+"KAMPO": {
+"arnisador": 13
+}
+}

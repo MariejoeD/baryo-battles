@@ -240,7 +240,7 @@ offset_bottom = 1420.0
 
 [node name="Entities" type="Node3D" parent="." node_paths=PackedStringArray("Objects")]
 script = ExtResource("11_y5cqv")
-required_cp = 1500
+required_cp = 900
 enemies = Array[PackedScene]([ExtResource("12_4p4n6")])
 base_enemy_count = 1
 min_enemies = 1

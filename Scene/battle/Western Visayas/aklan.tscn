@@ -805,7 +805,7 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 43.0725, -8.46482, -53.882
 
 [node name="Entities" type="Node3D" parent="."]
 script = ExtResource("11_g6s22")
-required_cp = 900
+required_cp = 500
 enemies = Array[PackedScene]([ExtResource("5_eix77")])
 min_enemies = 1
 max_enemies = 9

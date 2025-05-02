@@ -285,7 +285,7 @@ shape = SubResource("BoxShape3D_jjgbb")
 
 [node name="Entities" type="Node3D" parent="." node_paths=PackedStringArray("Objects")]
 script = ExtResource("21_kkirv")
-required_cp = 5000
+required_cp = 1600
 enemies = Array[PackedScene]([ExtResource("22_g8nc2")])
 preferred_enemies = Array[PackedScene]([ExtResource("22_g8nc2")])
 max_enemies = 25
