@@ -61,14 +61,16 @@ func perform_work(worker, duration:= -1):
 	start_time = Global.total_game_time
 	await get_tree().create_timer(duration).timeout
 	print("Harvest Complete")
-	Global.stone_qty += 10
+	Global.stone_qty += randi_range(20, 30)
 	if Global.get_stone_cap() < Global.stone_qty:
 		Global.stone_qty = Global.get_stone_cap()
+	get_parent().spawn_stone_after_delay()
 	self.queue_free()
 	worker.task_complete()
 	pass
 
 func find_nearest_sibilyan() -> Node:
+	Entities = get_tree().current_scene.find_child("Entities")
 	# First, check if we have stored Sibilyans in any Kubo
 	for kubo in Global.all_kubos:
 		if kubo.stored_sibilyans.size() > 0:

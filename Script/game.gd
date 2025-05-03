@@ -105,7 +105,7 @@ func _on_back_to_main_menu_pressed():
 	SignalManager.save.emit()
 	
 	
-	get_tree().change_scene_to_file("res://Scene/MainMenu.tscn")
+	SceneManager.go_to_scene("res://Scene/MainMenu.tscn")
 
 
 	

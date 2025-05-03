@@ -3,9 +3,9 @@ extends NpcState
 var target : Node3D = null
 var path = []
 var current_target_index = 0
-var path_recalculation_cooldown: float = 1.0  # Time in seconds before recalculating the path (adjust as needed)
+var path_recalculation_cooldown: float = 2.0  # Time in seconds before recalculating the path (adjust as needed)
 var path_recalculation_timer: float = 0.0  # Timer to track the cooldown
-
+var prev_direction: Vector3 = Vector3.ZERO
 var end
 @onready var fsm = get_parent() as StateMachine  # Reference to the FSM for state changes
 @onready var stats = fsm.get_parent().get_node("Stats")
@@ -17,6 +17,8 @@ var start
 
 # Adjust the distance threshold dynamically based on NPC size
 @onready var distance_threshold = npc_size * .6  # You can tweak this multiplier based on desired behavior
+var target_update_timer = 0.0
+var target_update_interval = 2
 
 var last_target_position: Vector3 = Vector3.ZERO  # Track the last target position for recalculation
 
@@ -60,12 +62,13 @@ func enter(_previous_state_path: String, data := {}) -> void:
 		print("Buildings")
 		building_area = target.get_node("Area3D")  # Assuming the building has an Area3D node
 
-func update(delta: float) -> void:
-	# Reduce the cooldown timer
-	if path_recalculation_timer > 0:
-		path_recalculation_timer -= delta
 
-	# If no target or invalid target, find a new one
+func update(delta: float) -> void:
+	target_update_timer -= delta
+	if target_update_timer <= 0:
+		fsm.targeting_component._find_nearest_target()
+		target_update_timer = target_update_interval
+	# Reduce the cooldown timer
 	if not is_instance_valid(target):
 		print("Lost target.")
 		fsm._transition_to_next_state("Idle")  # Change to idle or another state if the target is lost
@@ -74,6 +77,10 @@ func update(delta: float) -> void:
 	
 	# Step 1: Check if the target has moved significantly to recalculate the path
 	var target_position = target.global_transform.origin
+	if path_recalculation_timer <= 0.0 and target_position.distance_to(last_target_position) > npc_size * 1.0:
+		# recalculate path
+		path_recalculation_timer = path_recalculation_cooldown
+	# If no target or invalid target, find a new one
 	if target_position.distance_to(last_target_position) > npc_size * 1.0:  # Adjust threshold if needed
 		# Recalculate the path if the target moved significantly
 		print("Target moved significantly, recalculating path...")
@@ -112,10 +119,10 @@ func update(delta: float) -> void:
 		var direction = (path_target_position - npc_position).normalized()  # Get the direction towards the target
 		var movement = direction * speed * delta  # Calculate the movement step
 		# Rotate the NPC to face the direction it's walking
-		if direction.length() > 0.1:
+		if direction.length() > 0.1 and not direction.is_equal_approx(prev_direction):
 			var npc_pos = fsm.npc_root_node.global_transform.origin
 			var target_pos = npc_position + direction
-
+			prev_direction =direction
 			# Make the NPC look at the target position while preserving its scale
 			var look_rotation = fsm.npc_root_node
 			look_rotation.look_at(target_position, Vector3.UP)

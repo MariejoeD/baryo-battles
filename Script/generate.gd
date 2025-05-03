@@ -59,6 +59,42 @@ func generate_trees():
 
 		selected_child.visible = true
 
+func spawn_tree_after_delay(delay: float = 60.0):
+	if find_qty("tree") >= max_tree_qty:
+		return
+
+	var timer = Timer.new()
+	timer.one_shot = true
+	timer.wait_time = delay
+	add_child(timer)
+
+	timer.timeout.connect(func():
+		var is_valid_position = false
+		var pos = Vector3()
+
+		var tree_index = get_next_available_index("tree")
+		var tree_inst = tree_scene.instantiate()
+		tree_inst.name = "Tree" + str(tree_index)
+		var selected_child = tree_inst.get_children()[randi() % 4]
+		var tree_area = tree_inst.get_child(4)
+		add_child(tree_inst)
+
+		while not is_valid_position:
+			var random_x = randi_range(-grid_range, grid_range)
+			var random_z = randi_range(-grid_range, grid_range)
+			pos = Vector3(random_x, 0, random_z)
+
+			tree_inst.global_transform.origin = pos
+
+			if tree_area.get_overlapping_bodies().size() == 0 and tree_area.get_overlapping_areas().size() == 0:
+				is_valid_position = true
+
+		selected_child.visible = true
+		timer.queue_free()
+	)
+	timer.start()
+
+
 func generate_stones():
 	#print("Stone: ", find_qty("stone"))
 	if find_qty("stone") >= max_stones_qty:
@@ -88,6 +124,42 @@ func generate_stones():
 				is_valid_position = true
 
 		selected_child.visible = true
+
+func spawn_stone_after_delay(delay: float = 60.0):
+	if find_qty("stone") >= max_stones_qty:
+		return
+
+	var timer = Timer.new()
+	timer.one_shot = true
+	timer.wait_time = delay
+	add_child(timer)
+
+	timer.timeout.connect(func():
+		var is_valid_position = false
+		var pos = Vector3()
+
+		var stone_index = get_next_available_index("stone")
+		var stone_inst = stone_scene.instantiate()
+		stone_inst.name = "Stone" + str(stone_index)
+		var selected_child = stone_inst.get_children()[randi() % 2]
+		var stone_area = stone_inst.get_child(2)
+		add_child(stone_inst)
+
+		while not is_valid_position:
+			var random_x = randi_range(-grid_range, grid_range)
+			var random_z = randi_range(-grid_range, grid_range)
+			pos = Vector3(random_x, 0, random_z)
+
+			stone_inst.global_transform.origin = pos
+
+			if stone_area.get_overlapping_bodies().size() == 0 and stone_area.get_overlapping_areas().size() == 0:
+				is_valid_position = true
+
+		selected_child.visible = true
+		timer.queue_free()
+	)
+	timer.start()
+
 
 func get_next_available_index(resource_type: String) -> int:
 	var next_index = 0

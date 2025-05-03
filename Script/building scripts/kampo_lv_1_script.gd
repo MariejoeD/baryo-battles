@@ -50,6 +50,7 @@ func update_ui_container():
 
 			troop_display.add_child(qty_label)
 			container.add_child(troop_display)
+			container.get_parent().position.y = 21
 
 
 func _ready() -> void:
@@ -77,6 +78,7 @@ func instant_build():
 		update_ui_container()  # Refresh UI after restoring troops
 	pass
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+	update_ui_container()
 	if built and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if not $UI.visible:
 			$UI.visible = true  # Only open UI, don't toggle it off

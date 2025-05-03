@@ -125,6 +125,7 @@ func _on_death():
 	print(Name," Died")
 	if Npc.bosses.has(Name):
 		Npc.bosses[Name] = true
+	
 	get_parent().queue_free()
 	find_parent("Entities").win_lose_check()
 	

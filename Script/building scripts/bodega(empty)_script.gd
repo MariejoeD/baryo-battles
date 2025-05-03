@@ -56,7 +56,8 @@ func _on_view_information_pressed() -> void:
 		active_panel.hide()
 	active_panel = building_name.get_node_or_null("viewInformation/InformationPanel")
 	active_panel.show()
-	
+	$UI/Bodega/viewInformation/InformationPanel/HBoxContainer/woodAmount.text = str(wood_cap)
+	$UI/Bodega/viewInformation/InformationPanel/HBoxContainer/stoneAmount.text = str(stone_cap)
 	pass # Replace with function body.
 
 

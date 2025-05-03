@@ -29,6 +29,9 @@ func win_lose_check():
 		if enemy.is_inside_tree() and enemy.visible:
 			all_enemies_defeat = false
 			break  # If one is alive, no need to continue checking
+	if all_enemies_defeat:
+		print("✅ WIN!")
+		show_result("win")
 
 	
 func show_result(result: String):

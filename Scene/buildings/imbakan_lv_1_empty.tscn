@@ -198,7 +198,7 @@ theme_override_colors/font_shadow_color = Color(0.986752, 0.986752, 0.986752, 1)
 theme_override_colors/font_outline_color = Color(0.982343, 0.982342, 0.982342, 1)
 theme_override_fonts/font = ExtResource("6_75sm4")
 theme_override_font_sizes/font_size = 15
-text = "current amount"
+text = "Max Amount"
 
 [node name="level" type="Label" parent="UI/Imbakan/viewInformation/InformationPanel"]
 unique_name_in_owner = true

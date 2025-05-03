@@ -76,7 +76,7 @@ func _on_resource_tick():
 
 func map_report():
 	print("---Report---")
-
+	SignalManager.save.emit()
 	for base in conquered_bases:
 		# Battle roll (skip base if lost)
 		if randi_range(1, 100) <= 50:

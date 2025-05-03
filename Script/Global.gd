@@ -3,21 +3,21 @@ extends Node
 
 var save_path = "user://save.tres"
 
-var wood_qty :int = 1500:
+var wood_qty :int = 500:
 	set(wood):
 		wood_qty = wood
 		SignalManager.update_mats.emit()
 	get:
 		return wood_qty
 		
-var stone_qty :int = 1500:
+var stone_qty :int = 500:
 	set(stone):
 		stone_qty = stone
 		SignalManager.update_mats.emit()
 	get:
 		return stone_qty
 		
-var food_qty :int = 1500:
+var food_qty :int = 500:
 	set(food):
 		food_qty = food
 		SignalManager.update_mats.emit()
@@ -48,11 +48,18 @@ var kampo_troops: Dictionary = {}
 
 var prologue_played = false
 func _ready() -> void:
+	DevMode.dev_mode_changed.connect(dev_mode)
 	SignalManager._discovered.connect(npc)
 	SignalManager.base_under_attack.connect(base_under_attack)
 	var cursor_texture = preload("res://assets/game/cursor.png")
 	Input.set_custom_mouse_cursor(cursor_texture)
 	#load_troops_from_file()
+func dev_mode():
+	if DevMode.is_dev_mode_enabled(DevMode.save_path_dev_mode):
+		save_path = "res://save.tres"
+	else:
+		save_path = "user://save.tres"
+	pass
 func base_under_attack():
 	stop_time = true
 func npc(name):

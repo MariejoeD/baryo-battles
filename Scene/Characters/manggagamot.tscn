@@ -752,7 +752,7 @@ script = ExtResource("6_7id4d")
 
 [node name="Stats" parent="." instance=ExtResource("7_owks2")]
 hp = 130
-damage = 35
+damage = 25.0
 attack_range = 30.0
 attack_speed = 1.5
 movement_speed = 3.2

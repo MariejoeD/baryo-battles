@@ -131,3 +131,17 @@ func find_nearest_sibilyan() -> Node:
 		chosen_sib.global_transform.origin = chosen_sib_kubo.global_transform.origin
 		print("Spawned stored Sibilyan from Kubo:", chosen_sib_kubo)
 	return chosen_sib
+
+func show_warning_label(label_name: String) -> void:
+	var warning_label = get_tree().current_scene.find_child("warningLabel")
+	if warning_label:
+		warning_label.text = label_name
+		warning_label.visible = true
+		
+		# Ensure the label is on top by setting its Z-Index to a high value
+		warning_label.z_index = 10  # Adjust this value to suit your needs
+		
+		await get_tree().create_timer(3.0).timeout
+		warning_label.visible = false
+	else:
+		print("Warning label NOT found:", label_name)

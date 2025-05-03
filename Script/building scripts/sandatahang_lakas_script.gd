@@ -66,28 +66,21 @@ func _ready() -> void:
 	pass
 
 
-func show_warning_label(label_name: String) -> void:
-	var warning_label = get_tree().current_scene.find_child(label_name, true, false)
-	if warning_label:
-		warning_label.visible = true
-		
-		# Ensure the label is on top by setting its Z-Index to a high value
-		warning_label.z_index = 10  # Adjust this value to suit your needs
-		
-		await get_tree().create_timer(3.0).timeout
-		warning_label.visible = false
-	else:
-		print("Warning label NOT found:", label_name)
+
 
 
 
 func _on_troop_pressed(troop) -> void:
 	# Check available Sibilyans
 	if Global.all_kampo.size() == 0:
+		show_warning_label("No available Sibilyan to sacrifice!")
 		#warning no camp
 		return
 	var total_sibilyans = Global.get_current_civilian_count()
-	
+	if total_sibilyans == 1:
+		print("No available Sibilyan to sacrifice!")
+		show_warning_label("No available Sibilyan to Train!")
+		return
 	print("Total Sibilyans: ", total_sibilyans)
 	print(troop.get_node("cost/cost").text)
 	var food_cost :int = int(troop.find_child("foodCost").text)
@@ -99,12 +92,13 @@ func _on_troop_pressed(troop) -> void:
 	
 	if remaining_space < space_cost or Global.food_qty < food_cost or Global.wood_qty < wood_cost or Global.stone_qty < stone_cost:
 		#warning resource not enough
+		show_warning_label("Not Enough Resources!")
 		return
 	
 	
 	if sacrificeSib.size() >= total_sibilyans:
 		print("No available Sibilyan to sacrifice!")
-		show_warning_label("noAvailableCivilian")
+		show_warning_label("No available Sibilyan to Train!")
 		return
 
 	var sib = get_available_sibilyan()
@@ -112,7 +106,7 @@ func _on_troop_pressed(troop) -> void:
 		
 	if sib == null:
 		print("No valid Sibilyan found!")
-		show_warning_label("noValidSibilyanFound")
+		show_warning_label("No available Sibilyan to Train!")
 		return
 	Global.food_qty -= food_cost
 	Global.wood_qty -= wood_cost

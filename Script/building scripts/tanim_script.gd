@@ -2,7 +2,7 @@ extends Building
 @onready var level_label = %level
 
 var active_panel
-var base_grow_duration = 600
+var base_grow_duration = 120
 var multiplier = .08
 var grow_duration = base_grow_duration * pow(multiplier, level-1)
 var is_harvestable:bool = false
@@ -159,7 +159,7 @@ func perform_work(worker, duration:= -1):
 		await get_tree().create_timer(duration).timeout
 		$UI/Tanim/Harvest.texture_normal = load("res://assets/button/harvest.png")
 		print("Harvest Complete")
-		Global.food_qty += randi_range(20,40)
+		Global.food_qty += randi_range(5,10)
 		if Global.get_food_cap() < Global.food_qty:
 			Global.food_qty = Global.get_food_cap()
 		#Change  Indicator

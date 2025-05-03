@@ -14,7 +14,7 @@ func _ready() -> void:
 		_load_homebase_troops()
 	else:
 		_load_kampo_troops()
-	load_spells()
+		load_spells()
 	update_ui()
 	# Update UI
 func update_ui():

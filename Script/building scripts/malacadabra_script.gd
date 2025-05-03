@@ -3,6 +3,19 @@ extends Building
 
 var active_panel
 @onready var building_name = $UI.get_child(0)
+var wood_cap: int:
+	get:
+		return 500 * (1 + (level-1)*.5)
+var stone_cap: int:
+	get:
+		return 500 * (1 + (level-1)*.5)
+var food_cap: int:
+	get:
+		return 500 * (1 + (level-1)*.5)
+@onready var wood_amount: Label = %woodAmount
+@onready var stone_amount: Label = %stoneAmount
+@onready var food_amount: Label = %foodAmount
+
 
 
 	
@@ -22,6 +35,8 @@ func _ready() -> void:
 	pass
 func instant_build():
 	built = true
+	Global.all_bodega.append(self)
+	Global.all_imbakan.append(self)
 	Npc.TH_level = level
 	pass
 
@@ -61,6 +76,9 @@ func _on_view_information_pressed() -> void:
 		active_panel.hide()
 	active_panel = building_name.get_node_or_null("viewInformation/InformationPanel")
 	active_panel.show()
+	wood_amount.text = str(wood_cap)
+	stone_amount.text = str(stone_cap)
+	food_amount.text = str(food_cap)
 	
 	pass # Replace with function body.
 

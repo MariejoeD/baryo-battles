@@ -400,6 +400,7 @@ func _on_go_home_pressed():
 
 func choose_resource_to_generate(resource:= "Food"):
 	MapManager.conquer_base(get_parent().name,resource, 5)
+	SaverLoader.save_battle_data()
 	SaverLoader.clear_used_troops()
 	SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
 	pass

@@ -188,6 +188,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.205216, 1.26695, 0.2
 shape = SubResource("BoxShape3D_dbkpv")
 
 [node name="UI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -520,12 +521,15 @@ offset_right = 0.175995
 offset_bottom = 0.0899963
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/Kampo/ManageTroops/manageTroopsPanel/ScrollContainer"]
+clip_contents = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 0.795)
+vertical_scroll_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Kampo/ManageTroops/manageTroopsPanel/ScrollContainer/ScrollContainer"]
 layout_mode = 2

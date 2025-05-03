@@ -28,6 +28,18 @@ enum DevState {
 			return
 		insta_build_dev_mode = value
 		dev_mode_changed.emit()
+@export var save_path_dev_mode: DevState = DevState.FOLLOW_GLOBAL:
+	set(value):
+		if save_path_dev_mode == value:
+			return
+		save_path_dev_mode = value
+		dev_mode_changed.emit()
+
+func _ready() -> void:
+	if dev_mode:
+		Global.save_path = "res://save.tres"
+	else:
+		Global.save_path = "user://save.tres"
 
 func is_dev_mode_enabled(mode_setting: int) -> bool:
 	match mode_setting:

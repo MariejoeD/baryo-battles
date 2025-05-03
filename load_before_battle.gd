@@ -193,10 +193,13 @@ func perform_loading() -> void:
 			get_tree().root.add_child(new_scene)
 			get_tree().current_scene.queue_free()
 			get_tree().current_scene = new_scene
-			if SaverLoader.saved_game != null:
+			var path = Global.save_path
+			if ResourceLoader.exists(path):
 				SaverLoader.saved_game = load(Global.save_path) as SavedGame
+				if !SaverLoader.saved_game.building_data:
+					return
 				for data in SaverLoader.saved_game.building_data:
-					if data.name == "bodega(empty)" or data.name =="imbakan_lv_1_empty":
+					if data.name == "bodega(empty)" or data.name =="imbakan_lv_1_empty" or data.name == "malacadabra":
 						print("instancing storage")
 						var scene_path = "res://Scene/buildings/%s.tscn" % data["name"]
 						var packed_scene = load(scene_path)
@@ -204,7 +207,10 @@ func perform_loading() -> void:
 						if packed_scene and packed_scene is PackedScene:
 							var building = packed_scene.instantiate()
 							print("Instance: ", building)
-							if data.name == "bodega(empty)":
+							if data.name == "malacadabra":
+								Global.all_bodega.append(building)
+								Global.all_imbakan.append(building)
+							elif data.name == "bodega(empty)":
 								Global.all_bodega.append(building)
 							else:
 								Global.all_imbakan.append(building)
@@ -214,7 +220,9 @@ func perform_loading() -> void:
 				Global.all_kubos = Global.all_kubos.filter(func(k): return is_instance_valid(k))
 				Global.all_bodega = Global.all_bodega.filter(func(k): return is_instance_valid(k))
 				Global.all_imbakan = Global.all_imbakan.filter(func(k): return is_instance_valid(k))
-				SaverLoader.load_save_data()
+				if ResourceLoader.exists(path):
+					SaverLoader.load_save_data()
+				SaverLoader.save_game()
 				SignalManager.homebase.emit()
 			queue_free()
 			break

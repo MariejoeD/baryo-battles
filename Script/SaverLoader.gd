@@ -73,6 +73,8 @@ func save_resources():
 	}
 	
 func save_environment(env_root: Node):
+	#if env_root == null:
+		#return
 	saved_game.environment_data.clear()
 
 	for child in env_root.get_children():

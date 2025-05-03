@@ -47,6 +47,8 @@ func enemy_attack_check():
 		selected = select_enemies_to_spawn(raid_strength)
 		#print("[ENEMIES SELECTED]", selected)
 		available = get_unassigned_troop()
+		if available.size() == 0:
+			return
 		$UI.load_spells()
 		$"Defend Control".show_defense_warning()
 		

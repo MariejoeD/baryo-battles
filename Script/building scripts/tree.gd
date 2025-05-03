@@ -84,9 +84,10 @@ func perform_work(worker, duration:= -1):
 	start_time = Global.total_game_time
 	await get_tree().create_timer(duration).timeout
 	print("Harvest Complete")
-	Global.wood_qty += randi_range(8, 12)
+	Global.wood_qty += randi_range(20, 30)
 	if Global.get_wood_cap() < Global.wood_qty:
 		Global.wood_qty = Global.get_wood_cap()
+	get_parent().spawn_tree_after_delay()
 	self.queue_free()
 	worker.task_complete()
 	pass
