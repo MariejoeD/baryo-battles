@@ -37,6 +37,9 @@ func win_lose_check():
 func show_result(result: String):
 	if result == "win":
 		print("YOU WIN!")
+		$"../../Defend Mechanism/UI".hide()
+		$"../Control".show()
+		Global.stop_time = false
 		return_troops()
 	elif result == "lose":
 		print("YOU LOSE!")

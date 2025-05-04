@@ -18,7 +18,7 @@ var start
 # Adjust the distance threshold dynamically based on NPC size
 @onready var distance_threshold = npc_size * .6  # You can tweak this multiplier based on desired behavior
 var target_update_timer = 0.0
-var target_update_interval = 2
+var target_update_interval = 10
 
 var last_target_position: Vector3 = Vector3.ZERO  # Track the last target position for recalculation
 

@@ -90,10 +90,26 @@ func _on_troop_pressed(troop) -> void:
 	
 	var remaining_space :int = Global.get_remaining_space()
 	
-	if remaining_space < space_cost or Global.food_qty < food_cost or Global.wood_qty < wood_cost or Global.stone_qty < stone_cost:
-		#warning resource not enough
-		show_warning_label("Not Enough Resources!")
+	if remaining_space < space_cost:
+		# Warning: not enough space
+		show_warning_label("Not Enough Space!")
 		return
+
+	if Global.food_qty < food_cost:
+		# Warning: not enough food
+		show_warning_label("Not Enough Food!")
+		return
+
+	if Global.wood_qty < wood_cost:
+		# Warning: not enough wood
+		show_warning_label("Not Enough Wood!")
+		return
+
+	if Global.stone_qty < stone_cost:
+		# Warning: not enough stone
+		show_warning_label("Not Enough Stone!")
+		return
+
 	
 	
 	if sacrificeSib.size() >= total_sibilyans:

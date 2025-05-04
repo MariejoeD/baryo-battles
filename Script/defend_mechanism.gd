@@ -228,7 +228,8 @@ func spawn_enemy(sel_enemies):
 		var spawn_pos = gridmap.map_to_local(spawn_cell)  # Get the world position of the cell
 		enemy.global_transform.origin = spawn_pos  # Set the enemy's position
 		entities_parent.add_child(enemy)
-		enemy.get_node("Detection/CollisionShape3D").shape.radius = 150  # Add the enemy to the scene
+		if enemy.has_node("Detection/CollisionShape3D"):
+			enemy.get_node("Detection/CollisionShape3D").shape.radius = 150  # Add the enemy to the scene
 		#print("👹 Spawned enemy at:", spawn_cell, "=>", spawn_pos)
 
 func _input(event: InputEvent) -> void:

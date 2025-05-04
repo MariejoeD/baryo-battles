@@ -735,8 +735,7 @@ targeting_component = NodePath("../Targeting Component")
 anim_player = NodePath("../AnimationPlayer")
 pathfinder_component = NodePath("../Pathfinder")
 
-[node name="Targeting Component" parent="." node_paths=PackedStringArray("detection_area") instance=ExtResource("5_82xou")]
-detection_area = NodePath("../Detection")
+[node name="Targeting Component" parent="." instance=ExtResource("5_82xou")]
 target_group = Array[String](["Good"])
 
 [node name="Detection" type="Area3D" parent="."]

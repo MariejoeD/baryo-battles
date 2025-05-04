@@ -614,15 +614,15 @@ targeting_component = NodePath("../Targeting Component")
 anim_player = NodePath("../AnimationPlayer")
 pathfinder_component = NodePath("../Pathfinder")
 
-[node name="Targeting Component" parent="." node_paths=PackedStringArray("detection_area") instance=ExtResource("5_bfocj")]
-detection_area = NodePath("../Detection")
+[node name="Targeting Component" parent="." instance=ExtResource("5_bfocj")]
 target_group = Array[String](["Good", "Buildings"])
 
 [node name="Pathfinder" parent="." instance=ExtResource("6_dxh4u")]
 
 [node name="Detection" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
+monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection"]
 shape = SubResource("CylinderShape3D_qr8dd")

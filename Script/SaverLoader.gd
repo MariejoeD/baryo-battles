@@ -337,9 +337,10 @@ func load_kampo_troops() -> void:
 						var instance = scene.instantiate()
 						get_tree().current_scene.find_child("Entities").add_child(instance)
 						instance.global_transform.origin = kampo.global_transform.origin
-						var shape = instance.get_node("Detection/CollisionShape3D").shape.duplicate()
-						shape.radius *= 0.2
-						instance.get_node("Detection/CollisionShape3D").shape = shape
+						if instance.has_node("Detection/CollisionShape3D"):
+							var shape = instance.get_node("Detection/CollisionShape3D").shape.duplicate()
+							shape.radius *= 0.2
+							instance.get_node("Detection/CollisionShape3D").shape = shape
 
 func save_battle_data() -> void:
 	var battle_data = {

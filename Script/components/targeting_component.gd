@@ -1,47 +1,30 @@
 extends Node3D
 
-@export var detection_area: Area3D  # Exported Area3D to check for bodies and areas
-@export var target_group: Array[String] = []  # Target groups to find, e.g., "enemies", "buildings"
+@export var detection_perimeter: Area3D 
+@export var target_group: Array[String] = []
 
-var target: Node3D = null  # Current target
+var target: Node3D = null
 var forced_target: Node3D = null
 @onready var healer: bool = get_parent().find_child("Stats").is_healer
 @onready var targeting_enabled: bool = true
 
-func _ready():
-	if detection_area:
-		detection_area.body_entered.connect(_on_body_entered)
-		detection_area.body_exited.connect(_on_body_exited)
-		detection_area.area_entered.connect(_on_area_entered)
-		detection_area.area_exited.connect(_on_area_exited)
-	else:
-		print("Detection Area not assigned!")
+func _ready() -> void:
+	if detection_perimeter == null:
+		detection_perimeter = $"../Detection"
+	# Turn off all collision layers (0–19)
+	for i in 32:
+		detection_perimeter.set_collision_layer_value(i, false)
+		detection_perimeter.set_collision_mask_value(i, false)
 
-func _on_body_entered(body: Node3D) -> void:
-	for group in target_group:
-		if body.is_in_group(group):
-			_find_nearest_target()
-			break
+	# Just in case — turn off physics monitoring
+	detection_perimeter.monitoring = false
+	detection_perimeter.monitorable = false
 
-func _on_body_exited(body: Node3D) -> void:
-	if body == target:
-		target = null
-		_find_nearest_target()
 
-func _on_area_entered(area: Area3D) -> void:
-	for group in target_group:
-		#print(group)
-		if area.get_parent().is_in_group(group):
-			print("Test")
-			_find_nearest_target()
-			break
+func _process(_delta):
+	_find_nearest_target()
 
-func _on_area_exited(area: Area3D) -> void:
-	if area == target:
-		target = null
-		_find_nearest_target()
-
-func _find_nearest_target() -> void:
+func _find_nearest_target():
 	if not targeting_enabled:
 		return
 
@@ -49,69 +32,63 @@ func _find_nearest_target() -> void:
 		target = forced_target
 		return
 
+	var self_pos = global_transform.origin
+	# Get the radius/extent of the Area's collision shape
+	var shape = detection_perimeter.get_node("CollisionShape3D").shape
+	var extents: Vector3
+	if shape is SphereShape3D:
+		extents = Vector3.ONE * shape.radius
+	elif shape is BoxShape3D:
+		extents = shape.size / 2.0
+	elif shape is CylinderShape3D:
+		extents = Vector3(shape.radius, shape.height / 2.0, shape.radius)
+	else:
+		return # Unsupported shape
+
+	var detection_aabb = AABB(self_pos - extents, extents * 2)
+
 	var nearest_target: Node3D = null
 	var nearest_distance: float = INF
-	var self_pos = get_global_transform().origin
+	var highest_priority_score := -INF
 
-	# Check all bodies
-	for body in detection_area.get_overlapping_bodies():
-		if body == get_parent():
-			continue
-		var is_valid_target = false
-		for group in target_group:
-			if body.is_in_group(group):
-				is_valid_target = true
-				break
-		if not is_valid_target:
-			continue
+	for group in target_group:
+		for node in get_tree().get_nodes_in_group(group):
+			if node == get_parent() or not is_instance_valid(node):
+				continue
 
-		var distance = self_pos.distance_to(body.get_global_transform().origin)
+			var node_pos: Vector3 = node.global_transform.origin
 
-		if healer and body is CharacterBody3D:
-			var target_stats = body.get_node("Stats")
-			if target_stats.current_hp < target_stats.get_scaled_hp() and distance < nearest_distance:
-				nearest_distance = distance
-				nearest_target = body
-		elif body is CharacterBody3D:
-			if body.is_in_group("flying") and get_parent().is_in_group("range"):
-				if distance < nearest_distance:
+			if not detection_aabb.has_point(node_pos):
+				continue
+
+			var distance = self_pos.distance_to(node_pos)
+
+			if healer and node is CharacterBody3D:
+				var stats = node.get_node("Stats")
+				if stats.current_hp < stats.get_scaled_hp() and distance < nearest_distance:
+					nearest_target = node
 					nearest_distance = distance
-					nearest_target = body
-			elif not body.is_in_group("flying") and distance < nearest_distance:
+				continue
+
+			if node is CharacterBody3D:
+				if node.is_in_group("flying") and get_parent().is_in_group("range"):
+					if distance < nearest_distance:
+						nearest_target = node
+						nearest_distance = distance
+				elif not node.is_in_group("flying") and distance < nearest_distance:
+					nearest_target = node
+					nearest_distance = distance
+				continue
+
+			if node.has_method("calculate_priority_score"):
+				var priority = node.calculate_priority_score()
+				var combined_score = priority - distance * 0.1
+				if combined_score > highest_priority_score:
+					highest_priority_score = combined_score
+					nearest_target = node
+			elif distance < nearest_distance:
+				nearest_target = node
 				nearest_distance = distance
-				nearest_target = body
-	
-	var highest_priority_score := -INF  # Track the highest dynamic priority score
-	# Check all areas (e.g., buildings)
-	for area in detection_area.get_overlapping_areas():
-		if area == get_parent():
-			continue
-		var parent_node := area.get_parent()
-		var is_valid_target = false
-		for group in target_group:
-			if parent_node.is_in_group(group):
-				is_valid_target = true
-				break
-		if not is_valid_target:
-			continue
 
-		var distance = self_pos.distance_to(area.get_global_transform().origin)
-		# Check if it has a calculate_priority_score method
-		if parent_node.has_method("calculate_priority_score"):
-			var priority_score = parent_node.calculate_priority_score()
-
-			# Example logic: prefer closer targets but break ties with higher priority
-			var combined_score = priority_score - distance * 0.1  # Adjust distance penalty weight as needed
-
-			if combined_score > highest_priority_score:
-				highest_priority_score = combined_score
-				nearest_target = parent_node
-		else:
-			# Fallback if the building doesn't support priority logic
-			if distance < nearest_distance:
-				nearest_distance = distance
-				nearest_target = parent_node
-
-	# Assign new target if changed
 	if nearest_target != target:
 		target = nearest_target
