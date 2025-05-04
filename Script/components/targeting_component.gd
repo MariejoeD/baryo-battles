@@ -2,7 +2,7 @@ extends Node3D
 
 @export var detection_perimeter: Area3D 
 @export var target_group: Array[String] = []
-
+@onready var scaling = get_parent().scale.x
 var target: Node3D = null
 var forced_target: Node3D = null
 @onready var healer: bool = get_parent().find_child("Stats").is_healer
@@ -12,7 +12,7 @@ func _ready() -> void:
 	if detection_perimeter == null:
 		detection_perimeter = $"../Detection"
 	# Turn off all collision layers (0–19)
-	for i in 32:
+	for i in range(1, 33):  # 1 to 32 inclusive
 		detection_perimeter.set_collision_layer_value(i, false)
 		detection_perimeter.set_collision_mask_value(i, false)
 
@@ -41,7 +41,7 @@ func _find_nearest_target():
 	elif shape is BoxShape3D:
 		extents = shape.size / 2.0
 	elif shape is CylinderShape3D:
-		extents = Vector3(shape.radius, shape.height / 2.0, shape.radius)
+		extents = Vector3(shape.radius*scaling, shape.height / 2.0, shape.radius*scaling)
 	else:
 		return # Unsupported shape
 

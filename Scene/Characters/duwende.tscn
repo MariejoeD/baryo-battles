@@ -337,7 +337,7 @@ _data = {
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qr8dd"]
 height = 5.0
-radius = 10.0
+radius = 6.82241
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_jg75v"]
 viewport_path = NodePath("Stats/Sprite3D2/SubViewport")
@@ -629,7 +629,7 @@ shape = SubResource("CylinderShape3D_qr8dd")
 
 [node name="Stats" parent="." instance=ExtResource("8_10n6q")]
 hp = 200
-damage = 30
+damage = 25.0
 attack_speed = 1.0
 movement_speed = 3.0
 spawn_scale = Vector3(5, 5, 5)

@@ -3,7 +3,7 @@ extends NpcState
 var target : Node3D = null
 var path = []
 var current_target_index = 0
-var path_recalculation_cooldown: float = 2.0  # Time in seconds before recalculating the path (adjust as needed)
+var path_recalculation_cooldown: float = 10.0  # Time in seconds before recalculating the path (adjust as needed)
 var path_recalculation_timer: float = 0.0  # Timer to track the cooldown
 var prev_direction: Vector3 = Vector3.ZERO
 var end
@@ -65,6 +65,8 @@ func enter(_previous_state_path: String, data := {}) -> void:
 
 func update(delta: float) -> void:
 	target_update_timer -= delta
+	path_recalculation_timer -= delta
+
 	if target_update_timer <= 0:
 		fsm.targeting_component._find_nearest_target()
 		target_update_timer = target_update_interval
@@ -77,11 +79,7 @@ func update(delta: float) -> void:
 	
 	# Step 1: Check if the target has moved significantly to recalculate the path
 	var target_position = target.global_transform.origin
-	if path_recalculation_timer <= 0.0 and target_position.distance_to(last_target_position) > npc_size * 1.0:
-		# recalculate path
-		path_recalculation_timer = path_recalculation_cooldown
-	# If no target or invalid target, find a new one
-	if target_position.distance_to(last_target_position) > npc_size * 1.0:  # Adjust threshold if needed
+	if path_recalculation_timer <= 0.0 and target_position.distance_to(last_target_position) > npc_size:
 		# Recalculate the path if the target moved significantly
 		print("Target moved significantly, recalculating path...")
 		start = fsm.npc_root_node.global_transform.origin
@@ -94,7 +92,7 @@ func update(delta: float) -> void:
 		current_target_index = 0
 		path_recalculation_timer = path_recalculation_cooldown  # Reset the cooldown timer
 		last_target_position = target_position  # Update the last target position after recalculation
-
+	
 
 	# Step 2: Check for collision with the building's area
 	if building_area != null and building_area.get_overlapping_bodies().size() > 0:
@@ -124,17 +122,18 @@ func update(delta: float) -> void:
 			var target_pos = npc_position + direction
 			prev_direction =direction
 			# Make the NPC look at the target position while preserving its scale
-			var look_rotation = fsm.npc_root_node
-			look_rotation.look_at(target_position, Vector3.UP)
-			# Rotate 180 degrees on the Y-axis
-			look_rotation.rotate_y(deg_to_rad(180))
+			if direction.length() > 0.1 and direction.angle_to(prev_direction) > 0.1:
+				var look_rotation = fsm.npc_root_node
+				look_rotation.look_at(target_position, Vector3.UP)
+				# Rotate 180 degrees on the Y-axis
+				look_rotation.rotate_y(deg_to_rad(180))
 
 		# Smooth movement towards the target point
-		fsm.npc_root_node.global_transform.origin = npc_position.lerp(path_target_position, 0.1)  # Smooth movement with interpolation
+		fsm.npc_root_node.global_transform.origin = npc_position.lerp(path_target_position, 0.25)  # Smooth movement with interpolation
 
 		# Step 5: Check if we've reached the current target point
 		if npc_position.distance_to(path_target_position) < distance_threshold:
 			current_target_index += 1  # Move to the next target in the path
 	
 	# Check for a new target every update while following the path
-	fsm.targeting_component._find_nearest_target()  # This ensures the Tirador will always be aware of the closest target
+	#fsm.targeting_component._find_nearest_target()  # This ensures the Tirador will always be aware of the closest target

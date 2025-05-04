@@ -895,6 +895,7 @@ shape = SubResource("CylinderShape3D_m50gx")
 script = ExtResource("11_f1jef")
 
 [node name="Stats" parent="." instance=ExtResource("12_mx8gt")]
+attack_speed = 0.95
 movement_speed = 10.0
 space_cost = 5
 spawn_scale = Vector3(3, 3, 3)

@@ -397,7 +397,7 @@ _data = {
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7fws7"]
 height = 5.0
-radius = 150.0
+radius = 14.8202
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3acsy"]
 viewport_path = NodePath("Stats/Sprite3D2/SubViewport")
@@ -729,8 +729,7 @@ targeting_component = NodePath("../Targeting Component")
 anim_player = NodePath("../AnimationPlayer")
 pathfinder_component = NodePath("../Pathfinder")
 
-[node name="Targeting Component" parent="." node_paths=PackedStringArray("detection_area") instance=ExtResource("5_vjyh1")]
-detection_area = NodePath("../Detection")
+[node name="Targeting Component" parent="." instance=ExtResource("5_vjyh1")]
 target_group = Array[String](["Good", "Buildings"])
 
 [node name="Detection" type="Area3D" parent="."]

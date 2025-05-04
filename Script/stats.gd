@@ -95,8 +95,8 @@ func _ready():
 		var shape = collider.shape
 		if shape is CapsuleShape3D:
 			# Capsule height + radius
-			var height = shape.height + shape.radius * 2.0
-			sprite_3d_2.position.y = shape.height*2.05
+			var height = shape.height * 1.1
+			sprite_3d_2.position.y = height
 		elif shape is BoxShape3D:
 			# Box half extents
 			var height = shape.size.y
