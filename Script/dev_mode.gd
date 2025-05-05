@@ -8,7 +8,7 @@ enum DevState {
 	FORCE_OFF
 }
 
-@export var dev_mode: bool = true:
+@export var dev_mode: bool = false:
 	set(value):
 		if dev_mode == value:
 			return

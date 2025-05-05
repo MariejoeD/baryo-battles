@@ -107,9 +107,6 @@ func _on_back_to_main_menu_pressed():
 	
 	SceneManager.go_to_scene("res://Scene/MainMenu.tscn")
 
-
-	
-
 func update_resource_display():
 	$ResourcePanel/FoodContainer/Label.text = str(Global.food_qty)
 	$ResourcePanel/WoodContainer/Label.text = str(Global.wood_qty)
