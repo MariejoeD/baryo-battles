@@ -59,6 +59,8 @@ func dev_mode():
 		save_path = "res://save.tres"
 	else:
 		save_path = "user://save.tres"
+	print("Saving to: ", save_path)
+
 	pass
 func base_under_attack():
 	stop_time = true

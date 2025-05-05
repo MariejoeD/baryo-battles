@@ -60,7 +60,7 @@ func save_game():
 	save_battle_data()
 	# Save the game state
 	ResourceSaver.save(saved_game, Global.save_path)
-
+	return
 	
 
 # Function to access resources (can be used in any scene)

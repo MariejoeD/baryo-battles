@@ -78,7 +78,7 @@ func load_spells():
 	if SaverLoader.saved_game == null:
 		return
 
-	SaverLoader.saved_game = load("res://save.tres") as SavedGame
+	SaverLoader.saved_game = load(Global.save_path) as SavedGame
 
 	var spell_shown := {}  # Tracks how many of each spell were shown in UI
 

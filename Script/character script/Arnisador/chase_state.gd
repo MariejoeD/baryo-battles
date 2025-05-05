@@ -3,7 +3,7 @@ extends NpcState
 var target : Node3D = null
 var path = []
 var current_target_index = 0
-var path_recalculation_cooldown: float = 10.0  # Time in seconds before recalculating the path (adjust as needed)
+var path_recalculation_cooldown: float = 0.5  # Time in seconds before recalculating the path (adjust as needed)
 var path_recalculation_timer: float = 0.0  # Timer to track the cooldown
 var prev_direction: Vector3 = Vector3.ZERO
 var end
@@ -16,9 +16,10 @@ var start
 @onready var npc_size = fsm.get_parent().get_node("CollisionShape3D").shape.radius * 2  # Get diameter
 
 # Adjust the distance threshold dynamically based on NPC size
-@onready var distance_threshold = npc_size * .6  # You can tweak this multiplier based on desired behavior
 var target_update_timer = 0.0
-var target_update_interval = 10
+var target_update_interval = .5
+var building_check_timer := 0.0
+var building_check_interval := 0.25
 
 var last_target_position: Vector3 = Vector3.ZERO  # Track the last target position for recalculation
 
@@ -34,9 +35,6 @@ func enter(_previous_state_path: String, data := {}) -> void:
 		
 	fsm.anim_player.play("run")
 	path_recalculation_timer = path_recalculation_cooldown
-	if not is_instance_valid(data.get("target", null)):
-		fsm._transition_to_next_state("Idle")
-		return
 	
 	target = data.get("target", null)
 	start = fsm.npc_root_node.global_transform.origin
@@ -66,20 +64,33 @@ func enter(_previous_state_path: String, data := {}) -> void:
 func update(delta: float) -> void:
 	target_update_timer -= delta
 	path_recalculation_timer -= delta
+	building_check_timer -= delta
 
 	if target_update_timer <= 0:
-		fsm.targeting_component._find_nearest_target()
+		fsm.targeting_component._find_nearest_target()  # Change to idle or another state if the target is lost
 		target_update_timer = target_update_interval
 	# Reduce the cooldown timer
 	if not is_instance_valid(target):
 		print("Lost target.")
-		fsm._transition_to_next_state("Idle")  # Change to idle or another state if the target is lost
-		fsm.targeting_component._find_nearest_target()  # Try to acquire a new target
-		return
+		var new_target = fsm.targeting_component._find_nearest_target()
+		if new_target == null or !is_instance_valid(new_target):
+			print("No new target found. Going to Idle.")
+			fsm._transition_to_next_state("Idle")
+			return
+		else:
+			target = new_target
+			end = target.global_transform.origin
+			path = fsm.pathfinder_component.findpaths(fsm.npc_root_node.global_transform.origin, end)
+			if not path:
+				print("No path to new target. Going to Idle.")
+				fsm._transition_to_next_state("Idle")
+				return
+			current_target_index = 0
+
 	
 	# Step 1: Check if the target has moved significantly to recalculate the path
 	var target_position = target.global_transform.origin
-	if path_recalculation_timer <= 0.0 and target_position.distance_to(last_target_position) > npc_size:
+	if path_recalculation_timer <= 0.0 and target_position.distance_to(last_target_position) >= 3:
 		# Recalculate the path if the target moved significantly
 		print("Target moved significantly, recalculating path...")
 		start = fsm.npc_root_node.global_transform.origin
@@ -87,7 +98,8 @@ func update(delta: float) -> void:
 		path = fsm.pathfinder_component.findpaths(start, end)
 		if not path:
 			print("No path found after target moved. Transitioning to Idle.")
-			fsm._transition_to_next_state("Idle")
+			fsm.targeting_component._find_nearest_target()  # Change to idle or another state if the target is lost
+
 			return
 		current_target_index = 0
 		path_recalculation_timer = path_recalculation_cooldown  # Reset the cooldown timer
@@ -95,11 +107,13 @@ func update(delta: float) -> void:
 	
 
 	# Step 2: Check for collision with the building's area
-	if building_area != null and building_area.get_overlapping_bodies().size() > 0:
-		# If the NPC is colliding with the building's area, stop moving
-		print("NPC is colliding with building. Stopping movement.")
-		fsm._transition_to_next_state("Attack", {"target" : target})  # Transition to attack state once in range
-		return
+	if building_check_timer <= 0:
+		building_check_timer = building_check_interval
+		if building_area != null and building_area.get_overlapping_bodies().size() > 0:
+			print("NPC is colliding with building. Stopping movement.")
+			fsm._transition_to_next_state("Attack", {"target" : target})
+			return
+
 	
 	# Step 3: Check if we are in attack range
 	var npc_position = fsm.npc_root_node.global_transform.origin
@@ -115,24 +129,22 @@ func update(delta: float) -> void:
 		
 		# Move smoothly towards the target position
 		var direction = (path_target_position - npc_position).normalized()  # Get the direction towards the target
-		var movement = direction * speed * delta  # Calculate the movement step
 		# Rotate the NPC to face the direction it's walking
 		if direction.length() > 0.1 and not direction.is_equal_approx(prev_direction):
 			var npc_pos = fsm.npc_root_node.global_transform.origin
 			var target_pos = npc_position + direction
-			prev_direction =direction
 			# Make the NPC look at the target position while preserving its scale
-			if direction.length() > 0.1 and direction.angle_to(prev_direction) > 0.1:
-				var look_rotation = fsm.npc_root_node
-				look_rotation.look_at(target_position, Vector3.UP)
-				# Rotate 180 degrees on the Y-axis
-				look_rotation.rotate_y(deg_to_rad(180))
+			var look_rotation = fsm.npc_root_node
+			var target_rotation_y = atan2(direction.x, direction.z)
+			fsm.npc_root_node.rotation.y = lerp_angle(fsm.npc_root_node.rotation.y, target_rotation_y, delta * 5)
 
 		# Smooth movement towards the target point
-		fsm.npc_root_node.global_transform.origin = npc_position.lerp(path_target_position, 0.25)  # Smooth movement with interpolation
+		var move_distance = speed * delta
+		fsm.npc_root_node.global_transform.origin = npc_position.move_toward(path_target_position, move_distance)
+
 
 		# Step 5: Check if we've reached the current target point
-		if npc_position.distance_to(path_target_position) < distance_threshold:
+		if npc_position.distance_to(path_target_position) <= npc_size *.5:
 			current_target_index += 1  # Move to the next target in the path
 	
 	# Check for a new target every update while following the path

@@ -220,8 +220,10 @@ func perform_loading() -> void:
 				Global.all_kubos = Global.all_kubos.filter(func(k): return is_instance_valid(k))
 				Global.all_bodega = Global.all_bodega.filter(func(k): return is_instance_valid(k))
 				Global.all_imbakan = Global.all_imbakan.filter(func(k): return is_instance_valid(k))
-				if ResourceLoader.exists(path):
-					SaverLoader.load_save_data()
+				print("Path:", path)
+				
+				
+				SaverLoader.load_save_data()
 				SaverLoader.save_game()
 				SignalManager.homebase.emit()
 			queue_free()
