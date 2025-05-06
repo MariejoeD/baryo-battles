@@ -224,9 +224,9 @@ func perform_loading() -> void:
 				
 				if ResourceLoader.exists(path):
 					SaverLoader.load_save_data()
-				else:
-					var tutorial = load("res://Scene/Story/tutorial.tscn").instantiate()
-					get_tree().current_scene.find_child("Control").add_child(tutorial)
+					get_tree().current_scene.remove_child($"tutorial")
+					
+				
 				SaverLoader.save_game()
 				SignalManager.homebase.emit()
 			queue_free()

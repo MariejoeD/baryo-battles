@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ddwrhwm3otd8p"]
+[gd_scene load_steps=38 format=3 uid="uid://ddwrhwm3otd8p"]
 
 [ext_resource type="Script" path="res://Script/day_cycle.gd" id="1_5bpij"]
 [ext_resource type="PackedScene" uid="uid://d4nb8cjrspohc" path="res://Scene/game.tscn" id="1_8noqr"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dqh1fognt0y5" path="res://assets/game/warning.png" id="14_vf37y"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="15_2ivn5"]
 [ext_resource type="PackedScene" uid="uid://bb7bjegmerfbt" path="res://Scene/Attack/attack_ui.tscn" id="16_gh14k"]
+[ext_resource type="PackedScene" uid="uid://b1pm07pdstyiw" path="res://Scene/Story/tutorial.tscn" id="17_544fp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ihp4q"]
 panorama = ExtResource("1_cjqhy")
@@ -446,6 +447,8 @@ text = "Save"
 [node name="Button3" type="Button" parent="Control/HBoxContainer"]
 layout_mode = 2
 text = "Load"
+
+[node name="tutorial" parent="." instance=ExtResource("17_544fp")]
 
 [connection signal="tree_entered" from="Base/Control" to="Base/Control" method="_on_tree_entered"]
 [connection signal="tree_exiting" from="Base/Control" to="Base/Control" method="_on_tree_exiting"]
