@@ -1,0 +1,523 @@
+[gd_scene load_steps=9 format=3 uid="uid://ducev4oqll2lx"]
+
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_0j6nq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iltto"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yod7w"]
+bg_color = Color(0.86942, 0.637044, 0.42535, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0646966, 0.0646965, 0.0646965, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_umjwt"]
+bg_color = Color(0.86942, 0.637044, 0.42535, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0646966, 0.0646965, 0.0646965, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2no7q"]
+bg_color = Color(0.86942, 0.637044, 0.42535, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0646966, 0.0646965, 0.0646965, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gg33"]
+bg_color = Color(0.86942, 0.637044, 0.42535, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0646966, 0.0646965, 0.0646965, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwvdc"]
+bg_color = Color(0.86942, 0.637044, 0.42535, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0646966, 0.0646965, 0.0646965, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8rc7"]
+bg_color = Color(0.77789, 0.543052, 0.323326, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0646966, 0.0646965, 0.0646965, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="mainPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iltto")
+
+[node name="welcome" type="Label" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.105
+anchor_top = 0.287
+anchor_right = 0.898
+anchor_bottom = 0.596
+offset_left = -0.400009
+offset_top = 0.360001
+offset_right = 0.559937
+offset_bottom = -0.120026
+theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 50
+text = "Welcome, Master! Let's start building your village."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="1" type="Label" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.685
+anchor_right = 0.906
+anchor_bottom = 0.993
+offset_left = 0.639999
+offset_top = -0.200043
+offset_right = 0.319946
+offset_bottom = 0.039978
+theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 50
+text = "Tap the Build button and place the Malacadabra — the heart of your baryo."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="2" type="Label" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.236
+anchor_top = 0.554
+anchor_right = 0.764
+anchor_bottom = 0.678
+offset_left = -0.0800171
+offset_top = 0.119995
+offset_right = 0.0799561
+offset_bottom = -0.160034
+theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 30
+text = "Great work! Now we need a place for your warriors to rest."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="3" type="Label" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.236
+anchor_top = 0.554
+anchor_right = 0.764
+anchor_bottom = 0.678
+offset_left = -0.0800171
+offset_top = 0.119995
+offset_right = 0.0799561
+offset_bottom = -0.160034
+theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 30
+text = "Tap Build again and place a Kampo to house your trained troops."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="4" type="Label" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.236
+anchor_top = 0.554
+anchor_right = 0.764
+anchor_bottom = 0.678
+offset_left = -0.0800171
+offset_top = 0.119995
+offset_right = 0.0799561
+offset_bottom = -0.160034
+theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 30
+text = "Ready to train your defenders?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="5" type="Label" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.236
+anchor_top = 0.554
+anchor_right = 0.764
+anchor_bottom = 0.678
+offset_left = -0.0800171
+offset_top = 0.119995
+offset_right = 0.0799561
+offset_bottom = -0.160034
+theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 30
+text = "Build the Sandatahang Lakas, where your brave fighters will be trained."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="6" type="Label" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.236
+anchor_top = 0.554
+anchor_right = 0.764
+anchor_bottom = 0.678
+offset_left = -0.0800171
+offset_top = 0.119995
+offset_right = 0.0799561
+offset_bottom = -0.160034
+theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 30
+text = "Excellent! Time to train your first warriors."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="7" type="Label" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.236
+anchor_top = 0.554
+anchor_right = 0.764
+anchor_bottom = 0.678
+offset_left = -0.0800171
+offset_top = 0.119995
+offset_right = 0.0799561
+offset_bottom = -0.160034
+theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 30
+text = "Tap the Sandatahang Lakas, click train troops, choose a unit, and start training!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="8" type="Label" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.236
+anchor_top = 0.554
+anchor_right = 0.764
+anchor_bottom = 0.678
+offset_left = -0.0800171
+offset_top = 0.119995
+offset_right = 0.0799561
+offset_bottom = -0.160034
+theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 30
+text = "Your troops are ready. Let’s send them into battle!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="9" type="Label" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.236
+anchor_top = 0.554
+anchor_right = 0.764
+anchor_bottom = 0.678
+offset_left = -0.0800171
+offset_top = 0.119995
+offset_right = 0.0799561
+offset_bottom = -0.160034
+theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 30
+text = "Tap Attack, select a province, and launch your first strike!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="10" type="Label" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.236
+anchor_top = 0.554
+anchor_right = 0.764
+anchor_bottom = 0.678
+offset_left = -0.0800171
+offset_top = 0.119995
+offset_right = 0.0799561
+offset_bottom = -0.160034
+theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 30
+text = "Victory! Let’s gather what your baryo has produced."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="11" type="Label" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.236
+anchor_top = 0.554
+anchor_right = 0.764
+anchor_bottom = 0.678
+offset_left = -0.0800171
+offset_top = 0.119995
+offset_right = 0.0799561
+offset_bottom = -0.160034
+theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 30
+text = "Tap on your rice fields, stones or tree to collect resources. if you don't have rice fields yet, build it later!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="12" type="Label" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.236
+anchor_top = 0.554
+anchor_right = 0.764
+anchor_bottom = 0.678
+offset_left = -0.0800171
+offset_top = 0.119995
+offset_right = 0.0799561
+offset_bottom = -0.160034
+theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 30
+text = "To grow stronger, we must improve our core."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="13" type="Label" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.236
+anchor_top = 0.554
+anchor_right = 0.764
+anchor_bottom = 0.678
+offset_left = -0.0800171
+offset_top = 0.119995
+offset_right = 0.0799561
+offset_bottom = -0.160034
+theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 30
+text = "Tap the Malacadabra, then hit Upgrade soon to unlock new features and buildings."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="nextButton" type="Button" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.659
+anchor_top = 0.762
+anchor_right = 0.803
+anchor_bottom = 0.874
+offset_left = 0.47998
+offset_top = 0.359985
+offset_right = 0.159912
+offset_bottom = -0.280029
+theme_override_constants/outline_size = 3
+theme_override_constants/h_separation = 3
+theme_override_constants/icon_max_width = 3
+theme_override_constants/align_to_largest_stylebox = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_yod7w")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_umjwt")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_2no7q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6gg33")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nwvdc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8rc7")
+text = "Next"
+
+[node name="finishButton" type="Button" parent="mainPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.659
+anchor_top = 0.762
+anchor_right = 0.803
+anchor_bottom = 0.874
+offset_left = 0.47998
+offset_top = 0.359985
+offset_right = 0.159912
+offset_bottom = -0.280029
+theme_override_constants/outline_size = 3
+theme_override_constants/h_separation = 3
+theme_override_constants/icon_max_width = 3
+theme_override_constants/align_to_largest_stylebox = 3
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_yod7w")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_umjwt")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_2no7q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6gg33")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nwvdc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8rc7")
+text = "Finish"
