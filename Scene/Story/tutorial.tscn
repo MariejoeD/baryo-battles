@@ -1,81 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1pm07pdstyiw"]
+[gd_scene load_steps=4 format=3 uid="uid://ducev4oqll2lx"]
 
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_0j6nq"]
 [ext_resource type="Script" path="res://Script/tutorial_story.gd" id="1_5nut2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iltto"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yod7w"]
-bg_color = Color(0.86942, 0.637044, 0.42535, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.0646966, 0.0646965, 0.0646965, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_umjwt"]
-bg_color = Color(0.86942, 0.637044, 0.42535, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.0646966, 0.0646965, 0.0646965, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2no7q"]
-bg_color = Color(0.86942, 0.637044, 0.42535, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.0646966, 0.0646965, 0.0646965, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gg33"]
-bg_color = Color(0.86942, 0.637044, 0.42535, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.0646966, 0.0646965, 0.0646965, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwvdc"]
-bg_color = Color(0.86942, 0.637044, 0.42535, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.0646966, 0.0646965, 0.0646965, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8rc7"]
-bg_color = Color(0.77789, 0.543052, 0.323326, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.0646966, 0.0646965, 0.0646965, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -97,6 +25,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_iltto")
 
 [node name="welcome" type="Label" parent="mainPanel"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.105
@@ -143,7 +72,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("1_0j6nq")
 theme_override_font_sizes/font_size = 50
-text = "Tap the Build button and place the Malacadabra — the heart of your baryo."
+text = "Let’s begin by building the heart of your baryo. Tap the Build button and place the Malacadabra."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -170,7 +99,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("1_0j6nq")
 theme_override_font_sizes/font_size = 30
-text = "Great work! Now we need a place for your warriors to rest."
+text = "Now, let's build a simple home for our people. Place a Kubo to house your first villager."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -197,7 +126,8 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("1_0j6nq")
 theme_override_font_sizes/font_size = 30
-text = "Tap Build again and place a Kampo to house your trained troops."
+text = "Great! We need more hands to help. Tap the Kubo, then click Generate to create another Sibilyan.
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -224,7 +154,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("1_0j6nq")
 theme_override_font_sizes/font_size = 30
-text = "Ready to train your defenders?"
+text = "Let’s collect some wood to use for future buildings. Tap any tree nearby to gather wood."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -251,7 +181,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("1_0j6nq")
 theme_override_font_sizes/font_size = 30
-text = "Build the Sandatahang Lakas, where your brave fighters will be trained."
+text = "Now we need stones for stronger structures. Tap any stone or rock pile to gather stone."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -278,7 +208,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("1_0j6nq")
 theme_override_font_sizes/font_size = 30
-text = "Excellent! Time to train your first warriors."
+text = "Your people need food to stay strong. Tap Build, then place a Tanim to grow crops."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -305,7 +235,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("1_0j6nq")
 theme_override_font_sizes/font_size = 30
-text = "Tap the Sandatahang Lakas, click train troops, choose a unit, and start training!"
+text = "It's time to train defenders to protect the baryo. Build the Sandatahang Lakas, where warriors will be trained."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -332,7 +262,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("1_0j6nq")
 theme_override_font_sizes/font_size = 30
-text = "Your troops are ready. Let’s send them into battle!"
+text = "Now let’s set up a place for trained troops to stay. Place a Kampo to house your units."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -359,7 +289,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("1_0j6nq")
 theme_override_font_sizes/font_size = 30
-text = "Tap Attack, select a province, and launch your first strike!"
+text = "Let’s get our army ready. Tap the Sandatahang Lakas, click Train Troops, and select 5 units."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -386,7 +316,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("1_0j6nq")
 theme_override_font_sizes/font_size = 30
-text = "Victory! Let’s gather what your baryo has produced."
+text = "Your troops are ready for action! Tap Attack, select an enemy, and launch your first battle."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -413,119 +343,28 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("1_0j6nq")
 theme_override_font_sizes/font_size = 30
-text = "Tap on your rice fields, stones or tree to collect resources. if you don't have rice fields yet, build it later!"
+text = "Well done! Now pick the reward you want from the province. Choose between wood, stone, or food to collect from the liberated land."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
-
-[node name="12" type="Label" parent="mainPanel"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.236
-anchor_top = 0.554
-anchor_right = 0.764
-anchor_bottom = 0.678
-offset_left = -0.0800171
-offset_top = 0.119995
-offset_right = 0.0799561
-offset_bottom = -0.160034
-theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 3
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 3
-theme_override_constants/outline_size = 3
-theme_override_constants/shadow_outline_size = 3
-theme_override_fonts/font = ExtResource("1_0j6nq")
-theme_override_font_sizes/font_size = 30
-text = "To grow stronger, we must improve our core."
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="13" type="Label" parent="mainPanel"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.236
-anchor_top = 0.554
-anchor_right = 0.764
-anchor_bottom = 0.678
-offset_left = -0.0800171
-offset_top = 0.119995
-offset_right = 0.0799561
-offset_bottom = -0.160034
-theme_override_colors/font_color = Color(0.981304, 0.862936, 0.862493, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 3
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 3
-theme_override_constants/outline_size = 3
-theme_override_constants/shadow_outline_size = 3
-theme_override_fonts/font = ExtResource("1_0j6nq")
-theme_override_font_sizes/font_size = 30
-text = "Tap the Malacadabra, then hit Upgrade soon to unlock new features and buildings."
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="nextButton" type="Button" parent="mainPanel"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.659
-anchor_top = 0.762
-anchor_right = 0.803
-anchor_bottom = 0.874
-offset_left = 0.47998
-offset_top = 0.359985
-offset_right = 0.159912
-offset_bottom = -0.280029
-theme_override_constants/outline_size = 3
-theme_override_constants/h_separation = 3
-theme_override_constants/icon_max_width = 3
-theme_override_constants/align_to_largest_stylebox = 3
-theme_override_fonts/font = ExtResource("1_0j6nq")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxFlat_yod7w")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_umjwt")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_2no7q")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6gg33")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_nwvdc")
-theme_override_styles/normal = SubResource("StyleBoxFlat_a8rc7")
-text = "Next"
-
-[node name="finishButton" type="Button" parent="mainPanel"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.659
-anchor_top = 0.762
-anchor_right = 0.803
-anchor_bottom = 0.874
-offset_left = 0.47998
-offset_top = 0.359985
-offset_right = 0.159912
-offset_bottom = -0.280029
-theme_override_constants/outline_size = 3
-theme_override_constants/h_separation = 3
-theme_override_constants/icon_max_width = 3
-theme_override_constants/align_to_largest_stylebox = 3
-theme_override_fonts/font = ExtResource("1_0j6nq")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxFlat_yod7w")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_umjwt")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_2no7q")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6gg33")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_nwvdc")
-theme_override_styles/normal = SubResource("StyleBoxFlat_a8rc7")
-text = "Finish"
 
 [node name="skip" type="Label" parent="mainPanel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.003
+anchor_right = 0.176
+anchor_bottom = 0.035
+offset_left = 0.16
+offset_right = -0.280014
+offset_bottom = -0.200001
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("1_0j6nq")
+theme_override_font_sizes/font_size = 20
 text = "Press Space To Skip Tutorial"

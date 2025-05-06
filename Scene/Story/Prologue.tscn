@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bw2nmlnaqmgji"]
+[gd_scene load_steps=5 format=3 uid="uid://bw2nmlnaqmgji"]
 
 [ext_resource type="Script" path="res://Scene/Story/prologue.gd" id="1_3mgyw"]
 [ext_resource type="VideoStream" path="res://assets/prologue/baryo-battles-intro.ogv" id="1_ck6sb"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="2_36abd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kv7sc"]
 font_size = 24
@@ -20,17 +21,21 @@ script = ExtResource("1_3mgyw")
 [node name="Label" type="Label" parent="."]
 z_index = 1
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = -1
+anchor_left = 0.849
+anchor_top = 0.947
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -230.0
-offset_top = -36.0
+offset_left = 0.279907
+offset_top = 0.159973
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_36abd")
+theme_override_font_sizes/font_size = 50
 text = "Press Enter To Skip"
 label_settings = SubResource("LabelSettings_kv7sc")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 layout_mode = 1
