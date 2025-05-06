@@ -3,6 +3,8 @@ extends Control
 @export var is_homebase: bool = false
 @onready var container = $allyPanel/allyContainer
 @onready var spell_panel = %spellPanel
+@export var time:float = 120.0
+@onready var battle_countdown: Label = %battleCountdown
 
 # Dictionary to store troop counts and selection status
 var troop_data = {}
@@ -15,6 +17,10 @@ func _ready() -> void:
 	else:
 		_load_kampo_troops()
 		load_spells()
+		battle_countdown.time = time
+		battle_countdown.update_time_text()
+		battle_countdown.show()
+		
 	update_ui()
 	# Update UI
 func update_ui():

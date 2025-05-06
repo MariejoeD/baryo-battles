@@ -632,10 +632,11 @@ hp = 200
 damage = 25.0
 attack_speed = 1.0
 movement_speed = 3.0
-spawn_scale = Vector3(5, 5, 5)
+spawn_scale = Vector3(4, 4, 4)
 
 [node name="Sprite3D2" type="Sprite3D" parent="Stats"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 2.15992, 0)
+visible = false
 billboard = 1
 texture = SubResource("ViewportTexture_jg75v")
 

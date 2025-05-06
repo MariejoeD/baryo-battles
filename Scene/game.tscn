@@ -46,7 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://dpolk05qyjbd1" path="res://assets/game/clock.png" id="40_maiyq"]
 [ext_resource type="Texture2D" uid="uid://c7kqd2n554cnt" path="res://assets/BuildingsRawPics/superIndayBase.jpg" id="41_wj07t"]
 [ext_resource type="Texture2D" uid="uid://86nma88jnhgi" path="res://assets/BuildingsRawPics/kapitanMakoyBase.jpg" id="42_hagam"]
-[ext_resource type="PackedScene" uid="uid://qcxj1rw1fmpl" path="res://Scene/tutorial.tscn" id="43_okd6o"]
+[ext_resource type="PackedScene" path="res://Scene/tutorial.tscn" id="43_okd6o"]
 
 [sub_resource type="Theme" id="Theme_1ed3j"]
 
@@ -1679,11 +1679,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_2knsy")
 theme_override_styles/normal = SubResource("StyleBoxFlat_6iwvs")
 text = "i"
 
-[node name="superIndayBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="SuperIndayBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("21_p828f")
 
-[node name="resourceAmount" type="Panel" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/superIndayBtn"]
+[node name="resourceAmount" type="Panel" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/SuperIndayBtn"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.14
@@ -1695,7 +1695,7 @@ offset_right = 1.89999
 offset_bottom = -0.141998
 theme_override_styles/panel = SubResource("StyleBoxFlat_g44d6")
 
-[node name="stone" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/superIndayBtn/resourceAmount"]
+[node name="stone" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/SuperIndayBtn/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.055
@@ -1709,7 +1709,7 @@ offset_bottom = 0.0119972
 texture = ExtResource("21_f868t")
 expand_mode = 1
 
-[node name="wood" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/superIndayBtn/resourceAmount"]
+[node name="wood" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/SuperIndayBtn/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.507
@@ -1723,7 +1723,7 @@ offset_bottom = 0.0200005
 texture = ExtResource("22_u0e8w")
 expand_mode = 1
 
-[node name="stoneAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/superIndayBtn/resourceAmount"]
+[node name="stoneAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/SuperIndayBtn/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.24
@@ -1745,7 +1745,7 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 27
 text = "200"
 
-[node name="woodAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/superIndayBtn/resourceAmount"]
+[node name="woodAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/SuperIndayBtn/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.71
@@ -1768,7 +1768,7 @@ theme_override_font_sizes/font_size = 27
 text = "300
 "
 
-[node name="informationButton" type="Button" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/superIndayBtn"]
+[node name="informationButton" type="Button" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/SuperIndayBtn"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.843
@@ -1788,11 +1788,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_2knsy")
 theme_override_styles/normal = SubResource("StyleBoxFlat_6iwvs")
 text = "i"
 
-[node name="kapitanMakoyBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
+[node name="KapitanMakoyBtn" type="TextureButton" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("22_lh6v6")
 
-[node name="resourceAmount" type="Panel" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/kapitanMakoyBtn"]
+[node name="resourceAmount" type="Panel" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KapitanMakoyBtn"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.14
@@ -1804,7 +1804,7 @@ offset_right = 1.89999
 offset_bottom = -0.141998
 theme_override_styles/panel = SubResource("StyleBoxFlat_g44d6")
 
-[node name="stone" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/kapitanMakoyBtn/resourceAmount"]
+[node name="stone" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KapitanMakoyBtn/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.055
@@ -1818,7 +1818,7 @@ offset_bottom = 0.0119972
 texture = ExtResource("21_f868t")
 expand_mode = 1
 
-[node name="wood" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/kapitanMakoyBtn/resourceAmount"]
+[node name="wood" type="TextureRect" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KapitanMakoyBtn/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.507
@@ -1832,7 +1832,7 @@ offset_bottom = 0.0200005
 texture = ExtResource("22_u0e8w")
 expand_mode = 1
 
-[node name="stoneAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/kapitanMakoyBtn/resourceAmount"]
+[node name="stoneAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KapitanMakoyBtn/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.24
@@ -1854,7 +1854,7 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 27
 text = "200"
 
-[node name="woodAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/kapitanMakoyBtn/resourceAmount"]
+[node name="woodAmount" type="Label" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KapitanMakoyBtn/resourceAmount"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.71
@@ -1876,7 +1876,7 @@ theme_override_fonts/font = ExtResource("3_mlhjp")
 theme_override_font_sizes/font_size = 27
 text = "300"
 
-[node name="informationButton" type="Button" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/kapitanMakoyBtn"]
+[node name="informationButton" type="Button" parent="BuildInventoryPanel/HScrollContainer/HBoxContainer/KapitanMakoyBtn"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.843

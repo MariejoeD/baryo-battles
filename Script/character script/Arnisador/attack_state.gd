@@ -93,9 +93,8 @@ func _attack():
 						targeting.forced_target = fsm.get_parent()
 						print("Taunted ", target.name, " into targeting ", fsm.get_parent().name)
 						target_fsm._transition_to_next_state("Chase", {"target": fsm.get_parent()})
-		if target_stats.current_hp <= 0:
-			print("Target is dead. Looking for new target.")
-			_find_new_target()
+		await fsm.anim_player.animation_finished
+
 
 func _heal():
 	if target and is_instance_valid(target):

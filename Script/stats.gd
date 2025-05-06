@@ -90,20 +90,20 @@ func _ready():
 	progress_bar.max_value = get_scaled_hp()
 	progress_bar.value = get_scaled_hp()
 	
-	if get_parent().has_node("CollisionShape3D"):
-		var collider = get_parent().get_node("CollisionShape3D")
-		var shape = collider.shape
-		if shape is CapsuleShape3D:
-			# Capsule height + radius
-			var height = shape.height * 1.1
-			sprite_3d_2.position.y = height
-		elif shape is BoxShape3D:
-			# Box half extents
-			var height = shape.size.y
-			sprite_3d_2.position.y = height/2
-	else:
-		# fallback if no shape
-		sprite_3d_2.position.y = 2.0
+	#if get_parent().has_node("CollisionShape3D"):
+		#var collider = get_parent().get_node("CollisionShape3D")
+		#var shape = collider.shape
+		#if shape is CapsuleShape3D:
+			## Capsule height + radius
+			#var height = shape.height * 1.1
+			#sprite_3d_2.position.y = height
+		#elif shape is BoxShape3D:
+			## Box half extents
+			#var height = shape.size.y
+			#sprite_3d_2.position.y = height/2
+	#else:
+		## fallback if no shape
+		#sprite_3d_2.position.y = 2.0
 
 	# Test the CP calculation for Arnisador
 	var cp = calculate_cp()

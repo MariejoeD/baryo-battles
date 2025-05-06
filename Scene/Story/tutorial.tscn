@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ducev4oqll2lx"]
+[gd_scene load_steps=10 format=3 uid="uid://b1pm07pdstyiw"]
 
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_0j6nq"]
+[ext_resource type="Script" path="res://Script/tutorial_story.gd" id="1_5nut2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iltto"]
 
@@ -83,6 +84,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_5nut2")
 
 [node name="mainPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -94,7 +97,6 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_iltto")
 
 [node name="welcome" type="Label" parent="mainPanel"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.105
@@ -521,3 +523,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_6gg33")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_nwvdc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_a8rc7")
 text = "Finish"
+
+[node name="skip" type="Label" parent="mainPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Press Space To Skip Tutorial"

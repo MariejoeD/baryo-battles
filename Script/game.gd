@@ -24,7 +24,9 @@ var tutorial_scene = preload("res://Scene/tutorial.tscn")  # Adjust the path if 
 	"KwitisBtn": preload("res://assets/buildings/locked/8.png"),
 	"KuboBtn": preload("res://assets/buildings/locked/9.png"),
 	"TanimBtn": preload("res://assets/buildings/locked/10.png"),
-	"ImbakanBtn": preload("res://assets/buildings/locked/11.png")
+	"ImbakanBtn": preload("res://assets/buildings/locked/11.png"),
+	"SuperIndayBtn":preload("res://assets/buildings/locked/14.png"),
+	"KapitanMakoyBtn":preload("res://assets/buildings/locked/16.png")
 }
 
 @onready var unlocked_textures = {
@@ -38,7 +40,9 @@ var tutorial_scene = preload("res://Scene/tutorial.tscn")  # Adjust the path if 
 	"KwitisBtn": preload("res://assets/buildings/unlocked/8.png"),
 	"KuboBtn": preload("res://assets/buildings/unlocked/9.png"),
 	"TanimBtn": preload("res://assets/buildings/unlocked/10.png"),
-	"ImbakanBtn": preload("res://assets/buildings/unlocked/11.png")
+	"ImbakanBtn": preload("res://assets/buildings/unlocked/11.png"),
+	"SuperIndayBtn":preload("res://assets/buildings/unlocked/13.png"),
+	"KapitanMakoyBtn":preload("res://assets/buildings/unlocked/15.png")
 }
 
 

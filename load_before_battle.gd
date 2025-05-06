@@ -222,8 +222,11 @@ func perform_loading() -> void:
 				Global.all_imbakan = Global.all_imbakan.filter(func(k): return is_instance_valid(k))
 				print("Path:", path)
 				
-				
-				SaverLoader.load_save_data()
+				if ResourceLoader.exists(path):
+					SaverLoader.load_save_data()
+				else:
+					var tutorial = load("res://Scene/Story/tutorial.tscn").instantiate()
+					get_tree().current_scene.find_child("Control").add_child(tutorial)
 				SaverLoader.save_game()
 				SignalManager.homebase.emit()
 			queue_free()

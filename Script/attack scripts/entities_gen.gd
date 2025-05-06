@@ -12,7 +12,7 @@ extends Node3D
 @export var Objects: Array[Node]
 @export var boss_scene: PackedScene  # Reference to the boss scene
 var enemies_spawned: bool = false
-
+@onready var ui: Control = $"../UI"
 @onready var win_lose_panel = $"../UI/WinLosePanel"
 @onready var win_panel = $"../UI/WinLosePanel/winPanel"
 @onready var lose_panel = $"../UI/WinLosePanel/losePanel"
@@ -44,7 +44,7 @@ var boss_spawned = false
 signal finished
 func _ready() -> void:
 	#show_result("win")
-	# Connect button signals
+	ui.battle_countdown.times_up.connect(show_result.bind("lose"))
 	UI.find_child("surrenderButton").pressed.connect(_on_surrender_button_pressed)
 	UI.find_child("cancelButton").pressed.connect(_on_cancel_button_pressed)
 	UI.find_child("confirmSurrenderButton").pressed.connect(_on_confirm_surrender_button_pressed)
@@ -137,6 +137,7 @@ func spawn_troop(target_position: Vector3):
 	temp_instance.position = target_position
 	temp_instance.find_child("Stats").apply_spawn_scaling()
 	add_child(temp_instance)
+	ui.battle_countdown.countdown_on = true
 
 func get_selected_troop() -> String:
 	for troop_name in UI.troop_data.keys():
@@ -359,7 +360,8 @@ func win_lose_check():
 #win or lose
 func show_result(result: String):
 	win_lose_panel.visible = true  # Show the result panel
-
+	ui.battle_countdown.countdown_on = false
+	
 	if result == "win":
 		win_panel.visible = true
 		lose_panel.visible = false

@@ -62,13 +62,24 @@ func enter(_previous_state_path: String, data := {}) -> void:
 
 
 func update(delta: float) -> void:
-	target_update_timer -= delta
 	path_recalculation_timer -= delta
 	building_check_timer -= delta
 
-	if target_update_timer <= 0:
-		fsm.targeting_component._find_nearest_target()  # Change to idle or another state if the target is lost
-		target_update_timer = target_update_interval
+	if fsm.npc_root_node.global_transform.origin.distance_to(prev_direction) <= 2:
+		var new_target = fsm.targeting_component._find_nearest_target()
+		if new_target == null or !is_instance_valid(new_target):
+			print("No new target found. Going to Idle.")
+			fsm._transition_to_next_state("Idle")
+			return
+		else:
+			target = new_target
+			end = target.global_transform.origin
+			path = fsm.pathfinder_component.findpaths(fsm.npc_root_node.global_transform.origin, end)
+			if not path:
+				print("No path to new target. Going to Idle.")
+				fsm._transition_to_next_state("Idle")
+				return
+			current_target_index = 0
 	# Reduce the cooldown timer
 	if not is_instance_valid(target):
 		print("Lost target.")

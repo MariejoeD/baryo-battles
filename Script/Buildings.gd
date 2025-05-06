@@ -11,7 +11,9 @@ extends Node
 	"KwitisBtn": 0,
 	"KuboBtn": 0,
 	"TanimBtn": 0,
-	"ImbakanBtn": 0
+	"ImbakanBtn": 0,
+	"SuperIndayBtn": 0,
+	"KapitanMakoyBtn": 0
 }
 
 func reset():
@@ -26,6 +28,8 @@ func reset():
 		"KwitisBtn": 0,
 		"KuboBtn": 0,
 		"TanimBtn": 0,
-		"ImbakanBtn": 0
+		"ImbakanBtn": 0,
+		"SuperIndayBtn": 0,
+		"KapitanMakoyBtn": 0
 	}
 	
