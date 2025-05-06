@@ -21,6 +21,12 @@ var food_cap: int:
 	
 func on_placed():
 	super.on_placed()
+	var tutorial_node = get_tree().current_scene.find_child("tutorial")
+
+	if is_instance_valid(tutorial_node):
+		tutorial_node.step_1.emit()
+	else:
+		print("Tutorial node is no longer valid, skipping signal emission.")
 	add_to_group("Buildings")
 	Buildings.buildings["MalacadabraBtn"] = 0
 	change_building_count()
