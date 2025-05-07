@@ -13,11 +13,11 @@ func _ready():
 
 	# Connect the timeout signal of the timer to a method
 	timer.timeout.connect(_on_timer_timeout)
+	pathfinding = get_tree().current_scene.find_child("AStar")
 
 # This method is triggered when the timer finishes
 func _on_timer_timeout():
 	# After the timer is done, we can safely access the AStar node
-	pathfinding = get_tree().current_scene.find_child("AStar")
 	if pathfinding:
 		#print("Updated AStar:", pathfinding.get_parent().name)
 		pass
@@ -33,3 +33,6 @@ func findpaths(start: Vector3, end: Vector3) -> Array:
 	else:
 		#print("No valid pathfinding node.")
 		return []
+
+func find_closest(pos: Vector3):
+	return pathfinding.find_closest_pos(pos)

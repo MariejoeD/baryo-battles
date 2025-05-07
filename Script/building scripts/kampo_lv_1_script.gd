@@ -76,6 +76,13 @@ func instant_build():
 	if Global.kampo_troops.has(self.get_instance_id()):
 		troops = Global.kampo_troops[self.get_instance_id()]
 		update_ui_container()  # Refresh UI after restoring troops
+	await self.ready 
+	var tutorial_node = get_tree().current_scene.find_child("tutorial")
+
+	if is_instance_valid(tutorial_node):
+		tutorial_node.step_8.emit()
+	else:
+		print("Tutorial node is no longer valid, skipping signal emission.")
 	pass
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	update_ui_container()

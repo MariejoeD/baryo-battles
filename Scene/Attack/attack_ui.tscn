@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bb7bjegmerfbt"]
+[gd_scene load_steps=45 format=3 uid="uid://bb7bjegmerfbt"]
 
 [ext_resource type="Script" path="res://Script/deploy.gd" id="1_dk4n7"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_oaiwf"]
@@ -77,6 +77,14 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 shadow_color = Color(0.506, 0.435, 0.2, 0)
 shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j35mj"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4xcg"]
 bg_color = Color(0.986579, 0.94449, 0.901554, 1)
@@ -362,35 +370,85 @@ visible = false
 layout_mode = 2
 texture_normal = ExtResource("2_yixm7")
 
+[node name="Panel" type="Panel" parent="allyPanel/allyContainer/arnisador"]
+visible = false
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 121.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j35mj")
+
 [node name="lakan_warrior" type="TextureButton" parent="allyPanel/allyContainer"]
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("3_giv6o")
+
+[node name="Panel" type="Panel" parent="allyPanel/allyContainer/lakan_warrior"]
+visible = false
+offset_right = 96.0
+offset_bottom = 121.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j35mj")
 
 [node name="tirador" type="TextureButton" parent="allyPanel/allyContainer"]
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("4_q5aik")
 
+[node name="Panel" type="Panel" parent="allyPanel/allyContainer/tirador"]
+visible = false
+offset_right = 96.0
+offset_bottom = 121.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j35mj")
+
 [node name="manggagamot" type="TextureButton" parent="allyPanel/allyContainer"]
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("5_brc5q")
+
+[node name="Panel" type="Panel" parent="allyPanel/allyContainer/manggagamot"]
+visible = false
+offset_right = 96.0
+offset_bottom = 121.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j35mj")
 
 [node name="marites" type="TextureButton" parent="allyPanel/allyContainer"]
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("6_1te5m")
 
+[node name="Panel" type="Panel" parent="allyPanel/allyContainer/marites"]
+visible = false
+offset_right = 96.0
+offset_bottom = 121.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j35mj")
+
 [node name="kapitan_makoy" type="TextureButton" parent="allyPanel/allyContainer"]
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("7_q48x7")
 
+[node name="Panel" type="Panel" parent="allyPanel/allyContainer/kapitan_makoy"]
+visible = false
+offset_right = 96.0
+offset_bottom = 121.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j35mj")
+
 [node name="super_inday" type="TextureButton" parent="allyPanel/allyContainer"]
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("8_ymscb")
+
+[node name="Panel" type="Panel" parent="allyPanel/allyContainer/super_inday"]
+visible = false
+offset_right = 96.0
+offset_bottom = 121.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j35mj")
 
 [node name="surrenderPanel" type="Panel" parent="."]
 visible = false

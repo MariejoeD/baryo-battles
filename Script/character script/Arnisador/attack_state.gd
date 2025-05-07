@@ -147,7 +147,7 @@ func update(_delta: float):
 	if not is_instance_valid(target) and not target:
 		fsm._transition_to_next_state("Idle")
 	if stats.has_ability and stats.ability_name == "Wolf Transform":
-		if stats.current_hp <= stats.get_scaled_hp() * .3 and !transform:
+		if stats.current_hp <= stats.get_scaled_hp() * .25 and !transform:
 			transform = true
 			# show smoke
 			wolf_transform()

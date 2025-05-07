@@ -89,7 +89,7 @@ func _on_heal(heal):
 func _ready():
 	progress_bar.max_value = get_scaled_hp()
 	progress_bar.value = get_scaled_hp()
-	
+	sprite_3d_2.hide()
 	#if get_parent().has_node("CollisionShape3D"):
 		#var collider = get_parent().get_node("CollisionShape3D")
 		#var shape = collider.shape

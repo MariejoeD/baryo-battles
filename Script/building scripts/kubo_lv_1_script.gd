@@ -123,6 +123,13 @@ func generate_civilian() -> void:
 			return
 		current_sibilyan += 1
 		store_sibilyans()
+		await self.ready
+		var tutorial_node = get_tree().current_scene.find_child("tutorial")
+
+		if is_instance_valid(tutorial_node):
+			tutorial_node.step_3.emit()
+		else:
+			print("Tutorial node is no longer valid, skipping signal emission.")
 		update_value()
 	else:
 		print("Max civilians reached!")
@@ -154,10 +161,18 @@ func build():
 
 func on_placed():
 	super.on_placed()
+	
 	add_to_group("Buildings")
 	Buildings.buildings["KuboBtn"] -= 1
 func instant_build():
 	built = true
+	await self.ready 
+	var tutorial_node = get_tree().current_scene.find_child("tutorial")
+
+	if is_instance_valid(tutorial_node):
+		tutorial_node.step_2.emit()
+	else:
+		print("Tutorial node is no longer valid, skipping signal emission.")
 	Global.all_kubos.append(self)  # Register this Kubo in Global
 	pass
 

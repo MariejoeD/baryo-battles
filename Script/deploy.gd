@@ -29,7 +29,7 @@ func update_ui():
 		if troop_data.has(troop_name):
 			button.visible = true
 			if !button.is_connected("pressed", _on_button_pressed):
-				button.pressed.connect(_on_button_pressed.bind(troop_name))
+				button.pressed.connect(_on_button_pressed.bind(button))
 			update_troop_count_label(button, troop_data[troop_name][0])
 		else:
 			button.visible = false
@@ -60,7 +60,9 @@ func update_troop_count_label(button: TextureButton, count: int) -> void:
 		label.name = "CountLabel"
 		label.add_theme_color_override("font_color", Color(1, 1, 1))
 		button.add_child(label)
-
+	if count == 0:
+		button.get_child(0).hide()
+		troop_data[button.name][1] = false
 	label.text = str(count)
 
 	# Set anchors manually for top-right positioning
@@ -71,12 +73,16 @@ func update_troop_count_label(button: TextureButton, count: int) -> void:
 	label.offset_left = -15
 	label.offset_top = 1
 
-func _on_button_pressed(troop_name: String) -> void:
+func _on_button_pressed(button:TextureButton) -> void:
+	var troop_name = button.name
 	for key in troop_data.keys():
 		troop_data[key][1] = false
+		button.get_parent().find_child(key).get_child(0).hide()
+		
 	for key in spell_data.keys():
 		spell_data[key][1] = false
 	troop_data[troop_name][1] = true
+	button.get_child(0).show()
 	#print("Troop Data:", troop_data)
 
 #load spell

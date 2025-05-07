@@ -1274,8 +1274,7 @@ targeting_component = NodePath("../Targeting Component")
 anim_player = NodePath("../AnimationPlayer")
 pathfinder_component = NodePath("../Pathfinder")
 
-[node name="Targeting Component" parent="." node_paths=PackedStringArray("detection_area") instance=ExtResource("4_btij3")]
-detection_area = NodePath("../Detection")
+[node name="Targeting Component" parent="." instance=ExtResource("4_btij3")]
 target_group = Array[String](["Good"])
 
 [node name="Detection" type="Area3D" parent="."]
@@ -1288,11 +1287,11 @@ shape = SubResource("CylinderShape3D_y1ppn")
 [node name="Pathfinder" parent="." instance=ExtResource("5_5j1j8")]
 
 [node name="Stats" parent="." instance=ExtResource("8_pr860")]
-hp = 2000
+hp = 1800
 damage = 90
 attack_range = 5.0
 attack_speed = 1.5
-movement_speed = 2.8
+movement_speed = 10.0
 has_ability = true
 ability_name = "Wolf Transform"
 spawn_scale = Vector3(5, 5, 5)

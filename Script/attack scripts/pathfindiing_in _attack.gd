@@ -69,3 +69,6 @@ func find_path(start: Vector3, end: Vector3):
 	# Generate the path from AStar3D
 	
 	return aS.get_point_path(start_id, end_id)
+
+func find_closest_pos(pos: Vector3):
+	return aS.get_point_position(aS.get_closest_point(pos))

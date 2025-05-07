@@ -11,9 +11,7 @@ extends Control
 @onready var _8: Label = $"mainPanel/8"
 @onready var _9: Label = $"mainPanel/9"
 @onready var _10: Label = $"mainPanel/10"
-@onready var _11: Label = $"mainPanel/11"
-@onready var _12: Label = $"mainPanel/12"
-@onready var _13: Label = $"mainPanel/13"
+
 
 signal step_1
 signal step_2
@@ -25,16 +23,16 @@ signal step_7
 signal step_8
 signal step_9
 signal step_10
-signal step_11
-signal step_12
-signal step_13
+
 
 var steps: Array[Label]
 var current_index := -1
-
+var path = Global.save_path
 func _ready() -> void:
-	steps = [_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13]
-	await get_tree().create_timer(10).timeout
+	if ResourceLoader.exists(path):
+		queue_free()
+	steps = [_1, _2, _3, _4, _5, _6, _7, _8, _9, _10]
+	await get_tree().create_timer(5).timeout
 	welcome.hide()
 	_1.show()
 	current_index = 0
@@ -50,29 +48,30 @@ func _ready() -> void:
 	step_8.connect(_on_step_8)
 	step_9.connect(_on_step_9)
 	step_10.connect(_on_step_10)
-	step_11.connect(_on_step_11)
-	step_12.connect(_on_step_12)
-	step_13.connect(_on_step_13)
+
 
 func _advance_to_step(step_number: int) -> void:
 	print("Advance")
 	if step_number < 1 or step_number > steps.size():
 		return
 	
+	# Prevent going backward
+	if step_number <= current_index:
+		return
 	# Hide the current step (unless it's the last step)
 	if current_index >= 0 and current_index < steps.size():
 		steps[current_index].hide()
 		
-	# Show the next step
-	if step_number <= steps.size():
-		steps[step_number].show()
-	
 	# Update current step index
 	current_index = step_number
 
+	# Show the next step
+	if step_number < steps.size():
+		steps[step_number].show()
+	
 	# At the last step, just hide it (no label displayed after)
 	if current_index == steps.size():
-		steps[current_index].hide()  # Hide the last step
+		queue_free() # Hide the last step
 
 # Function for each step
 func _on_step_1(): _advance_to_step(1)
@@ -85,9 +84,7 @@ func _on_step_7(): _advance_to_step(7)
 func _on_step_8(): _advance_to_step(8)
 func _on_step_9(): _advance_to_step(9)
 func _on_step_10(): _advance_to_step(10)
-func _on_step_11(): _advance_to_step(11)
-func _on_step_12(): _advance_to_step(12)
-func _on_step_13(): _advance_to_step(13)
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.keycode == KEY_SPACE and event.pressed:

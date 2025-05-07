@@ -26,6 +26,13 @@ func _on_btn_pressed(btn):
 	if is_conquered(btn.name):
 		display()
 		return
+	await self.ready 
+	var tutorial_node = get_tree().current_scene.find_child("tutorial")
+
+	if is_instance_valid(tutorial_node):
+		tutorial_node.step_10.emit()
+	else:
+		print("Tutorial node is no longer valid, skipping signal emission.")
 	#print("Before Saving:", Global.kampo_troops)  # Debugging print
 	#Global.kampo_troops.clear()
 	#Global.all_kampo = Global.all_kampo.filter(func(k): return is_instance_valid(k))

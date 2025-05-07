@@ -3,6 +3,8 @@ extends NpcState
 var target : Node3D = null
 var path = []
 var current_target_index = 0
+var recheck_timer: float = 0.0
+var recheck_down: float = 0.75
 var path_recalculation_cooldown: float = 0.5  # Time in seconds before recalculating the path (adjust as needed)
 var path_recalculation_timer: float = 0.0  # Timer to track the cooldown
 var prev_direction: Vector3 = Vector3.ZERO
@@ -34,6 +36,7 @@ func enter(_previous_state_path: String, data := {}) -> void:
 			fsm.npc_root_node.get_child(1).visible = true
 		
 	fsm.anim_player.play("run")
+	recheck_timer =recheck_down
 	path_recalculation_timer = path_recalculation_cooldown
 	
 	target = data.get("target", null)
@@ -48,6 +51,9 @@ func enter(_previous_state_path: String, data := {}) -> void:
 	path = fsm.pathfinder_component.findpaths(start, end)
 	if not path:
 		print("No path found. Transitioning to Idle.")
+		print("Start:",start)
+		print("Path: ", path)
+		print("Closest_pos: ",fsm.pathfinder_component.find_closest(start))
 		fsm._transition_to_next_state("Idle")
 		return
 	
@@ -64,8 +70,8 @@ func enter(_previous_state_path: String, data := {}) -> void:
 func update(delta: float) -> void:
 	path_recalculation_timer -= delta
 	building_check_timer -= delta
-
-	if fsm.npc_root_node.global_transform.origin.distance_to(prev_direction) <= 2:
+	recheck_timer -= delta
+	if fsm.npc_root_node.global_transform.origin.distance_to(prev_direction) <= 2 or recheck_timer <= 0.0:
 		var new_target = fsm.targeting_component._find_nearest_target()
 		if new_target == null or !is_instance_valid(new_target):
 			print("No new target found. Going to Idle.")
@@ -80,6 +86,7 @@ func update(delta: float) -> void:
 				fsm._transition_to_next_state("Idle")
 				return
 			current_target_index = 0
+		recheck_timer = recheck_down
 	# Reduce the cooldown timer
 	if not is_instance_valid(target):
 		print("Lost target.")
@@ -128,7 +135,7 @@ func update(delta: float) -> void:
 	
 	# Step 3: Check if we are in attack range
 	var npc_position = fsm.npc_root_node.global_transform.origin
-	if npc_position.distance_to(target_position) <= npc_size * stats.attack_range:  # Check if within attack range
+	if npc_position.distance_to(target_position) <= npc_size:  # Check if within attack range
 		print("Target within attack range! Stopping movement and transitioning to Attack state.")
 		fsm._transition_to_next_state("Attack", {"target" : target})  # Transition to attack state once in range
 		return

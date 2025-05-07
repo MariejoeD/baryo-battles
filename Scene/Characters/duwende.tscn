@@ -337,7 +337,7 @@ _data = {
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qr8dd"]
 height = 5.0
-radius = 6.82241
+radius = 15.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_jg75v"]
 viewport_path = NodePath("Stats/Sprite3D2/SubViewport")
@@ -628,16 +628,17 @@ monitoring = false
 shape = SubResource("CylinderShape3D_qr8dd")
 
 [node name="Stats" parent="." instance=ExtResource("8_10n6q")]
-hp = 200
-damage = 25.0
+hp = 400
+damage = 20.0
 attack_speed = 1.0
-movement_speed = 3.0
+movement_speed = 9.0
 spawn_scale = Vector3(4, 4, 4)
 
 [node name="Sprite3D2" type="Sprite3D" parent="Stats"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 2.15992, 0)
 visible = false
 billboard = 1
+render_priority = 127
 texture = SubResource("ViewportTexture_jg75v")
 
 [node name="SubViewport" type="SubViewport" parent="Stats/Sprite3D2"]

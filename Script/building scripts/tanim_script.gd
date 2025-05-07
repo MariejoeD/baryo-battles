@@ -142,7 +142,13 @@ func on_placed():
 	Buildings.buildings["TanimBtn"] -= 1
 func instant_build():
 	built = true
-	
+	await self.ready 
+	var tutorial_node = get_tree().current_scene.find_child("tutorial")
+
+	if is_instance_valid(tutorial_node):
+		tutorial_node.step_6.emit()
+	else:
+		print("Tutorial node is no longer valid, skipping signal emission.")
 	pass
 
 
@@ -159,7 +165,7 @@ func perform_work(worker, duration:= -1):
 		await get_tree().create_timer(duration).timeout
 		$UI/Tanim/Harvest.texture_normal = load("res://assets/button/harvest.png")
 		print("Harvest Complete")
-		Global.food_qty += randi_range(5,10)
+		Global.food_qty += randi_range(30,40)
 		if Global.get_food_cap() < Global.food_qty:
 			Global.food_qty = Global.get_food_cap()
 		#Change  Indicator

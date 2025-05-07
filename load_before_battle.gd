@@ -190,8 +190,8 @@ func perform_loading() -> void:
 		# Change scene only when bar hits 100 and resource is ready
 		if scene_ready and loading_bar.value >= 100:
 			var new_scene: Node = resource_loaded.instantiate()
-			get_tree().root.add_child(new_scene)
 			get_tree().current_scene.queue_free()
+			get_tree().root.add_child(new_scene)
 			get_tree().current_scene = new_scene
 			var path = Global.save_path
 			if ResourceLoader.exists(path):
@@ -224,9 +224,7 @@ func perform_loading() -> void:
 				
 				if ResourceLoader.exists(path):
 					SaverLoader.load_save_data()
-				else:
-					var tutorial = load("res://Scene/Story/tutorial.tscn").instantiate()
-					get_tree().current_scene.add_child(tutorial)
+					
 				SaverLoader.save_game()
 				SignalManager.homebase.emit()
 			queue_free()

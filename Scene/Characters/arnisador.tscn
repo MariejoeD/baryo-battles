@@ -854,7 +854,7 @@ bones/38/rotation = Quaternion(0, 0, 0, 1)
 bones/38/scale = Vector3(1, 1, 1)
 
 [node name="Cylinder_000" type="BoneAttachment3D" parent="Skeleton3D2"]
-transform = Transform3D(-9.6218, -8.03585, -0.0702753, 4.84738, -5.89105, 9.94772, -6.40958, 7.60785, 7.62868, -0.98842, 1.71666, 0.425544)
+transform = Transform3D(-9.6218, -8.03585, -0.0702682, 4.84738, -5.89105, 9.94773, -6.40958, 7.60786, 7.62868, -0.98842, 1.71666, 0.425544)
 bone_name = "Cylinder.000"
 bone_idx = 23
 
@@ -897,16 +897,17 @@ shape = SubResource("CylinderShape3D_m50gx")
 script = ExtResource("11_f1jef")
 
 [node name="Stats" parent="." instance=ExtResource("12_mx8gt")]
-damage = 34.0
-attack_speed = 0.85
-movement_speed = 15.0
+hp = 300
+damage = 25.0
+attack_range = 3.0
+attack_speed = 0.5
+movement_speed = 30.0
 space_cost = 5
 spawn_scale = Vector3(4, 4, 4)
 
 [node name="Sprite3D2" type="Sprite3D" parent="Stats"]
 unique_name_in_owner = true
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 4.64571, 0)
-visible = false
 billboard = 1
 texture = SubResource("ViewportTexture_gycqf")
 

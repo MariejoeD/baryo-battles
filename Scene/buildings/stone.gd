@@ -61,6 +61,13 @@ func perform_work(worker, duration:= -1):
 	start_time = Global.total_game_time
 	await get_tree().create_timer(duration).timeout
 	print("Harvest Complete")
+	await self.ready 
+	var tutorial_node = get_tree().current_scene.find_child("tutorial")
+
+	if is_instance_valid(tutorial_node):
+		tutorial_node.step_5.emit()
+	else:
+		print("Tutorial node is no longer valid, skipping signal emission.")
 	Global.stone_qty += randi_range(20, 30)
 	if Global.get_stone_cap() < Global.stone_qty:
 		Global.stone_qty = Global.get_stone_cap()

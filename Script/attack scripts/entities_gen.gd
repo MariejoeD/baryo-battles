@@ -20,7 +20,9 @@ var enemies_spawned: bool = false
 @onready var food_button = $"../UI/WinLosePanel/winPanel/foodButton"
 @onready var wood_button = $"../UI/WinLosePanel/winPanel/woodButton"
 @onready var stone_button = $"../UI/WinLosePanel/winPanel/stoneButton"
-
+@onready var a_star: Node3D = %AStar
+@onready var grid_map: GridMap = %GridMap
+var place_holder
 
 
 # Enum for spawn conditions
@@ -59,9 +61,13 @@ func _ready() -> void:
 	$"../AStar".finished.connect($".".spawn_enemy.bind(enemies))
 	create_area_and_collision()
 	print(boss_spawn_condition)
+	ui.battle_countdown.countdown_on = true
+	
 	
 func _process(delta: float) -> void:
 # Call spawn boss function based on different conditions
+	if place_holder:
+		follow_mouse()
 	if enemies_spawned:
 		_spawn_boss_conditionally()
 func _input(event: InputEvent) -> void:
@@ -73,10 +79,14 @@ func _input(event: InputEvent) -> void:
 		panel_clicked = true
 		
 	if get_selected_troop() != "":
+		if !place_holder:
+			place_holder = load("res://Scene/placement_checker.tscn").instantiate()
+			get_parent().add_child(place_holder)
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not panel_clicked:
 			var target_pos = get_mouse_floor_position()
 			if target_pos == Vector3.ZERO or target_pos == Vector3.INF:
 				return
+			
 			spawn_troop(target_pos)
 	elif get_selected_spell() != "":
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not panel_clicked:
@@ -85,6 +95,53 @@ func _input(event: InputEvent) -> void:
 				return
 			cast_spell(target_pos)
 
+func update_placeholder_color(can_place: bool) -> void:
+	if not is_instance_valid(place_holder):
+		return
+
+	var mesh_instance = place_holder as MeshInstance3D
+	if not mesh_instance:
+		return
+
+	var active_mat := mesh_instance.get_active_material(0)
+	if active_mat == null:
+		return
+
+	# Duplicate the material to avoid editing the original
+	var mat := active_mat.duplicate()
+	mat.albedo_color = Color(0, 1, 0, 0.5) if can_place else Color(1, 0, 0, 0.5)
+	mat.emission = Color(0, 1, 0) if can_place else Color(1, 0, 0)
+	# Assign the modified material to override
+	mesh_instance.set_surface_override_material(0, mat)
+
+func follow_mouse():
+	var fixed_y= 1.5
+	var viewport = get_tree().current_scene.find_child("SubViewport")
+	var camera = viewport.get_node("Camera3D")
+	if not camera:
+		return
+	
+	var mouse_pos = viewport.get_mouse_position()
+	var ray_origin = camera.project_ray_origin(mouse_pos)
+	var ray_dir = camera.project_ray_normal(mouse_pos)
+	
+	# Plane at a fixed Y position
+	var t = (fixed_y - ray_origin.y) / ray_dir.y
+	var target_position = ray_origin + ray_dir * t
+
+	# Snap to the GridMap
+	var grid_cell_size = grid_map.cell_size  # Assumes GridMap uses uniform cells
+	var snapped_x = snappedf(target_position.x, grid_cell_size.x)
+	var snapped_z = snappedf(target_position.z, grid_cell_size.z)
+
+	# Apply snapped position (keeping fixed Y)
+	if is_instance_valid(place_holder):
+		var final_pos = Vector3(snapped_x, fixed_y, snapped_z)
+		place_holder.global_transform.origin = final_pos
+		var can_place = await is_position_valid(final_pos)
+		update_placeholder_color(can_place)
+
+	
 func get_mouse_floor_position() -> Vector3:
 	var mouse_pos = get_viewport().get_mouse_position()
 	var from = camera.project_ray_origin(mouse_pos)
@@ -127,17 +184,21 @@ func spawn_troop(target_position: Vector3):
 		temp_instance.queue_free()
 		return
 
-	if not await is_position_valid(target_position, collision_shape):
+	if not await is_position_valid(place_holder.global_transform.origin):
 		
 		temp_instance.queue_free()
 		return
 
 	UI.troop_data[selected_troop][0] -= 1
+	if UI.troop_data[selected_troop][0] == 0:
+		get_parent().remove_child(place_holder)
+		place_holder.queue_free()
 	UI.update_troop_count_label(container.get_node(selected_troop), UI.troop_data[selected_troop][0])
-	temp_instance.position = target_position
+	temp_instance.position = a_star.find_closest_pos(target_position)
+	print("Position Spawned: ",temp_instance.position)
+	temp_instance.position.y = 1.25
 	temp_instance.find_child("Stats").apply_spawn_scaling()
 	add_child(temp_instance)
-	ui.battle_countdown.countdown_on = true
 
 func get_selected_troop() -> String:
 	for troop_name in UI.troop_data.keys():
@@ -180,36 +241,15 @@ func get_selected_spell() -> String:
 			return spell_name
 	return ""
 	
-func is_position_valid(position: Vector3, collision_shape: CollisionShape3D) -> bool:
-	var temp_area = Area3D.new()
-	var temp_col = CollisionShape3D.new()
-	temp_col.shape = collision_shape.shape
-	temp_area.add_child(temp_col)
-	temp_area.position = position
-	add_child(temp_area)
+func is_position_valid(position: Vector3) -> bool:
+	var closest_point = a_star.aS.get_closest_point(position)
+	if not a_star.aS.has_point(closest_point):
+		print("false")
+		return false
+	var closest_position = a_star.aS.get_point_position(closest_point)
+	var distance = position.distance_to(closest_position)
+	return distance < 3.0  # Adjust this threshold as needed based on your grid scale
 
-	await get_tree().physics_frame
-
-	var space_state = get_world_3d().direct_space_state
-	var query = PhysicsShapeQueryParameters3D.new()
-	query.shape = temp_col.shape
-	query.transform.origin = position
-	query.collide_with_areas = true
-	query.collide_with_bodies = true
-	query.set_collision_mask(1)
-
-	var results = space_state.intersect_shape(query)
-	temp_area.queue_free()
-
-	var valid = true
-	for result in results:
-		if result.collider is GridMap:
-			continue
-		if result.collider == temp_area:
-			continue
-		valid = false
-	#print(valid)
-	return valid
 	
 func create_area_and_collision():
 	for group in Objects:
@@ -288,7 +328,7 @@ func spawn_boss() -> void:
 		# Find a valid position to spawn the boss
 		var random_position = get_random_position()
 		var collision_shape = boss.get_node_or_null("CollisionShape3D")
-		if collision_shape and await is_position_valid(random_position, collision_shape):
+		if collision_shape and await is_position_valid(random_position):
 			#print("test+print")
 			boss.position = random_position
 		
@@ -507,15 +547,17 @@ func pick_weighted_enemy(preferred_enemies: Array, remaining_enemies: Array) -> 
 func select_enemies_to_spawn():
 	max_enemies = max(troopCount(), max_enemies)
 	var soft_enemy_count = calculate_enemy_count()
-	#var max_cp = min(get_max_cp(), required_cp)
-	var ratio = clampf(player_cp / required_cp, 0.5, 1.5)
-	var target_multiplier = lerpf(1.5, 0.75, (ratio - 0.5) / (1.5 - 0.5))
+
+	# Ensure player_cp doesn't cause target_cp to go below required_cp
+	var ratio = clampf(required_cp / player_cp if player_cp != 0 else 1, 1.0, 1.5)
+	var target_multiplier = lerpf(1.0, 1.5, (ratio - 1.0) / (1.5 - 1.0))
 	var target_cp = required_cp * target_multiplier
+
 	#target_cp = min(target_cp, get_max_cp())  # Final safety check
 	
 
 	#print(get_max_cp())
-	print("required: ",target_cp)
+	print("required: ",required_cp)
 	print("playe cp: ", calculate_player_total_cp())
 	var best_cp = 0
 	var best_selection = []
@@ -564,8 +606,8 @@ func select_enemies_to_spawn():
 						defeated_count += 1
 				stats_node.level = defeated_count+ 1
 				var enemy_cp = stats_node.calculate_cp()
-				if total_cp + enemy_cp > target_cp:
-					break
+				#if total_cp + enemy_cp > target_cp:
+					#break
 				total_cp += enemy_cp
 				selected_enemies.append(next_enemy)
 		
@@ -602,8 +644,9 @@ func spawn_enemy(enemies):
 				#print("Test Print")
 				var random_position = get_random_position()
 				var collision_shape = enemy.get_node_or_null("CollisionShape3D")
-				if collision_shape and await is_position_valid(random_position, collision_shape):
+				if collision_shape and await is_position_valid(random_position):
 					#print("test+print")
+					random_position.y = 0
 					enemy.position = random_position
 					if enemy.find_child("Stats").has_method("apply_spawn_scaling"):
 						enemy.find_child("Stats").apply_spawn_scaling()
@@ -627,7 +670,8 @@ func get_random_position() -> Vector3:
 	var x = randf_range(-70, 70)
 	var y = 0
 	var z = randf_range(-70, 70)
-	return Vector3(x, y, z)
+	var snapped_pos = a_star.find_closest_pos(Vector3(x, 0, z))
+	return snapped_pos
 
 func sum_array(arr: Array) -> float:
 	var total = 0.0

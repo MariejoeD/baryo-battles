@@ -9,13 +9,13 @@ var sacrificeSib: Array = []
 @onready var building_name = $UI.get_child(0)
 var training_panel
 var troopsDict = {
-	"arnisador": {"trainingTime": 1, "scene": "res://Scene/Characters/arnisador.tscn", "required_level": 1},
-	"lakanWarrior": {"trainingTime": 1, "scene": "res://Scene/Characters/lakan_warrior.tscn", "required_level": 2},
-	"tirador": {"trainingTime": 1, "scene": "res://Scene/Characters/tirador.tscn", "required_level": 3},
-	"manggagamot": {"trainingTime": 1, "scene": "res://Scene/Characters/manggagamot.tscn", "required_level": 2},
-	"marites": {"trainingTime": 1, "scene": "res://Scene/Characters/marites.tscn", "required_level": 3},
+	"arnisador": {"trainingTime": 10, "scene": "res://Scene/Characters/arnisador.tscn", "required_level": 1},
+	"lakanWarrior": {"trainingTime": 10, "scene": "res://Scene/Characters/lakan_warrior.tscn", "required_level": 2},
+	"tirador": {"trainingTime": 10, "scene": "res://Scene/Characters/tirador.tscn", "required_level": 3},
+	"manggagamot": {"trainingTime": 10, "scene": "res://Scene/Characters/manggagamot.tscn", "required_level": 2},
+	"marites": {"trainingTime": 10, "scene": "res://Scene/Characters/marites.tscn", "required_level": 3},
 }
-
+var tutorial_count = 0
 
 func get_save_data() -> Dictionary:
 	var data = super.get_save_data()
@@ -77,8 +77,9 @@ func _on_troop_pressed(troop) -> void:
 		#warning no camp
 		return
 	var total_sibilyans = Global.get_current_civilian_count()
-	if total_sibilyans == 1:
-		print("No available Sibilyan to sacrifice!")
+	var available_sibilyans = total_sibilyans - sacrificeSib.size()
+
+	if available_sibilyans <= 1:
 		show_warning_label("No available Sibilyan to Train!")
 		return
 	print("Total Sibilyans: ", total_sibilyans)
@@ -134,7 +135,15 @@ func _on_troop_pressed(troop) -> void:
 	await sib.go_here(self.global_transform.origin)
 	sacrificeSib.erase(sib)
 	sib.queue_free()
+	tutorial_count += 1
+	if tutorial_count == 5:
+		await self.ready 
+		var tutorial_node = get_tree().current_scene.find_child("tutorial")
 
+		if is_instance_valid(tutorial_node):
+			tutorial_node.step_9.emit()
+		else:
+			print("Tutorial node is no longer valid, skipping signal emission.")
 	# Check if the troop already exists in the training panel
 	var existing_entry = training_panel.get_node_or_null(NodePath(str(troop.name)))
 	
@@ -301,6 +310,13 @@ func on_placed():
 	
 func instant_build():
 	built = true
+	await self.ready 
+	var tutorial_node = get_tree().current_scene.find_child("tutorial")
+
+	if is_instance_valid(tutorial_node):
+		tutorial_node.step_7.emit()
+	else:
+		print("Tutorial node is no longer valid, skipping signal emission.")
 	pass
 
 func perform_work(worker) -> void:
