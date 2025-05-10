@@ -15,8 +15,9 @@ var end
 var start
 
 # Get the NPC's size (assuming it uses a CollisionShape3D)
-@onready var npc_size = fsm.get_parent().get_node("CollisionShape3D").shape.radius * 2  # Get diameter
-
+@onready var shape_rad = fsm.get_parent().get_node("CollisionShape3D").shape.radius  # Get diameter
+@onready var collision_scale = fsm.get_parent().get_node("CollisionShape3D").global_transform.basis.get_scale()
+@onready var npc_size = shape_rad * collision_scale.x
 # Adjust the distance threshold dynamically based on NPC size
 var target_update_timer = 0.0
 var target_update_interval = .5
@@ -42,7 +43,7 @@ func enter(_previous_state_path: String, data := {}) -> void:
 	target = data.get("target", null)
 	start = fsm.npc_root_node.global_transform.origin
 	if not is_instance_valid(target):
-		print("Target invalid when setting end point. Transitioning to Idle.")
+		#print("Target invalid when setting end point. Transitioning to Idle.")
 		fsm._transition_to_next_state("Idle")
 		return
 	
@@ -50,20 +51,20 @@ func enter(_previous_state_path: String, data := {}) -> void:
 	# Calculate the initial path
 	path = fsm.pathfinder_component.findpaths(start, end)
 	if not path:
-		print("No path found. Transitioning to Idle.")
-		print("Start:",start)
-		print("Path: ", path)
-		print("Closest_pos: ",fsm.pathfinder_component.find_closest(start))
+		#print("No path found. Transitioning to Idle.")
+		#print("Start:",start)
+		#print("Path: ", path)
+		#print("Closest_pos: ",fsm.pathfinder_component.find_closest(start))
 		fsm._transition_to_next_state("Idle")
 		return
 	
-	print("Initial path: ", path)
+	#print("Initial path: ", path)
 	current_target_index = 0  # Start from the first point in the path
 	last_target_position = target.global_transform.origin  # Track initial target position
 
 	# Set the building_area to the target building's Area3D (if available)
 	if target.is_in_group("Buildings"):
-		print("Buildings")
+		#print("Buildings")
 		building_area = target.get_node("Area3D")  # Assuming the building has an Area3D node
 
 
@@ -74,7 +75,7 @@ func update(delta: float) -> void:
 	if fsm.npc_root_node.global_transform.origin.distance_to(prev_direction) <= 2 or recheck_timer <= 0.0:
 		var new_target = fsm.targeting_component._find_nearest_target()
 		if new_target == null or !is_instance_valid(new_target):
-			print("No new target found. Going to Idle.")
+			#print("No new target found. Going to Idle.")
 			fsm._transition_to_next_state("Idle")
 			return
 		else:
@@ -82,17 +83,17 @@ func update(delta: float) -> void:
 			end = target.global_transform.origin
 			path = fsm.pathfinder_component.findpaths(fsm.npc_root_node.global_transform.origin, end)
 			if not path:
-				print("No path to new target. Going to Idle.")
+				#print("No path to new target. Going to Idle.")
 				fsm._transition_to_next_state("Idle")
 				return
 			current_target_index = 0
 		recheck_timer = recheck_down
 	# Reduce the cooldown timer
 	if not is_instance_valid(target):
-		print("Lost target.")
+		#print("Lost target.")
 		var new_target = fsm.targeting_component._find_nearest_target()
 		if new_target == null or !is_instance_valid(new_target):
-			print("No new target found. Going to Idle.")
+			#print("No new target found. Going to Idle.")
 			fsm._transition_to_next_state("Idle")
 			return
 		else:
@@ -100,7 +101,7 @@ func update(delta: float) -> void:
 			end = target.global_transform.origin
 			path = fsm.pathfinder_component.findpaths(fsm.npc_root_node.global_transform.origin, end)
 			if not path:
-				print("No path to new target. Going to Idle.")
+				#print("No path to new target. Going to Idle.")
 				fsm._transition_to_next_state("Idle")
 				return
 			current_target_index = 0
@@ -110,12 +111,12 @@ func update(delta: float) -> void:
 	var target_position = target.global_transform.origin
 	if path_recalculation_timer <= 0.0 and target_position.distance_to(last_target_position) >= 3:
 		# Recalculate the path if the target moved significantly
-		print("Target moved significantly, recalculating path...")
+		#print("Target moved significantly, recalculating path...")
 		start = fsm.npc_root_node.global_transform.origin
 		end = target.global_transform.origin
 		path = fsm.pathfinder_component.findpaths(start, end)
 		if not path:
-			print("No path found after target moved. Transitioning to Idle.")
+			#print("No path found after target moved. Transitioning to Idle.")
 			fsm.targeting_component._find_nearest_target()  # Change to idle or another state if the target is lost
 
 			return
@@ -128,7 +129,7 @@ func update(delta: float) -> void:
 	if building_check_timer <= 0:
 		building_check_timer = building_check_interval
 		if building_area != null and building_area.get_overlapping_bodies().size() > 0:
-			print("NPC is colliding with building. Stopping movement.")
+			#print("NPC is colliding with building. Stopping movement.")
 			fsm._transition_to_next_state("Attack", {"target" : target})
 			return
 
@@ -136,7 +137,7 @@ func update(delta: float) -> void:
 	# Step 3: Check if we are in attack range
 	var npc_position = fsm.npc_root_node.global_transform.origin
 	if npc_position.distance_to(target_position) <= npc_size:  # Check if within attack range
-		print("Target within attack range! Stopping movement and transitioning to Attack state.")
+		#print("Target within attack range! Stopping movement and transitioning to Attack state.")
 		fsm._transition_to_next_state("Attack", {"target" : target})  # Transition to attack state once in range
 		return
 	

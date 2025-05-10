@@ -1233,14 +1233,15 @@ script = ExtResource("8_ue71l")
 
 [node name="Stats" parent="." instance=ExtResource("9_exxhy")]
 hp = 400
-damage = 60.0
-attack_speed = 0.3
+damage = 40.0
+attack_range = 1.5
+attack_speed = 0.5
 movement_speed = 20.0
 weight_hp = 0.5
 weight_damage = 0.3
 weight_attack_speed = 0.1
 space_cost = 10
-spawn_scale = Vector3(5, 5, 5)
+spawn_scale = Vector3(4, 4, 4)
 
 [node name="Sprite3D2" type="Sprite3D" parent="Stats"]
 unique_name_in_owner = true

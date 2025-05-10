@@ -5,6 +5,7 @@ extends NpcState
 var two_models: bool
 @onready var stats = fsm.get_parent().get_node("Stats")
 
+# Get the NPC's size (assuming it uses a CollisionShape3D)
 
 var timer
 var target
@@ -24,7 +25,7 @@ func enter(_previous_state_path: String, data := {}) -> void:
 	var attack_speed = stats.get_scaled_attack_speed()
 	target = data.get("target",null)
 	timer.wait_time = 1.0 / attack_speed
-	print("entered attack state")
+	#print("entered attack state")
 	if not timer.is_stopped():
 		timer.stop()
 	timer.start()
@@ -32,7 +33,8 @@ func enter(_previous_state_path: String, data := {}) -> void:
 	if two_models:
 		fsm.npc_root_node.get_child(2).visible = true
 		fsm.npc_root_node.get_child(1).visible = false
-		
+	fsm.anim_player.play("attack")
+	
 
 	
 # Function to handle the attack logic
@@ -47,7 +49,12 @@ func _attack():
 		var desired_duration = 1.0 / stats.get_scaled_attack_speed()
 		var anim_length = fsm.anim_player.get_animation("attack").length
 		var speed_scale = anim_length / desired_duration
-		fsm.anim_player.play("attack", -1.0, speed_scale)
+		if !fsm.anim_player.is_playing():
+			fsm.anim_player.play("attack", -1.0, speed_scale)
+		
+		#print("Playing attack animation at speed scale:", speed_scale)
+		#print("Anim length:", anim_length, "Desired duration:", desired_duration)
+
 		var target_stats = target.get_node("Stats")
 		if stats.has_ability and stats.ability_name == "Magic":
 			var spell_paths = [
@@ -63,13 +70,12 @@ func _attack():
 			spell_instance.position.y = 1
 			get_tree().current_scene.add_child(spell_instance)
 			spell_instance.scale = Vector3(3,3,3)
-			print("Magic spell", spell_paths[random_index], "spawned at", target.global_position)
-			return
+			#print("Magic spell", spell_paths[random_index], "spawned at", target.global_position)
 		if stats.has_ability and stats.ability_name == "Rage Mode":
 			var rage_threshold = 0.3  # Rage Mode activates when HP is below 30%
 			var rage_multiplier = 1.5  # Increase damage and attack speed by 50%
 			if stats.current_hp / stats.get_scaled_hp() <= rage_threshold:
-				print("Rage Mode activated!")
+				#print("Rage Mode activated!")
 				stats.damage_multiplier = rage_multiplier
 				timer.wait_time = 1 / stats.get_scaled_attack_speed() * rage_multiplier
 			else:
@@ -91,9 +97,8 @@ func _attack():
 				if targeting:
 					if targeting.forced_target == null:
 						targeting.forced_target = fsm.get_parent()
-						print("Taunted ", target.name, " into targeting ", fsm.get_parent().name)
+						#print("Taunted ", target.name, " into targeting ", fsm.get_parent().name)
 						target_fsm._transition_to_next_state("Chase", {"target": fsm.get_parent()})
-		await fsm.anim_player.animation_finished
 
 
 func _heal():
@@ -104,7 +109,7 @@ func _heal():
 		target.get_node("Stats")._on_heal(stats.get_scaled_damage())
 		# After attack, check if the target is dead
 		if target.get_node("Stats").current_hp >= target.get_node("Stats").get_scaled_hp():
-			print("Target is full health. Looking for new target.")
+			#print("Target is full health. Looking for new target.")
 			_find_new_target()
 	pass
 # Function to handle the wolf transform and the return cycle
@@ -137,10 +142,10 @@ func _find_new_target():
 	var new_target = fsm.targeting_component.target
 	if is_instance_valid(new_target) and new_target != target:
 		target = new_target
-		print("New target found: ", target.name)
+		#print("New target found: ", target.name)
 		fsm._transition_to_next_state("Chase", {"target": target})
 	else:
-		print("No new target. Transitioning to Idle.")
+		#print("No new target. Transitioning to Idle.")
 		fsm._transition_to_next_state("Idle")
 var transform : bool = false
 func update(_delta: float):

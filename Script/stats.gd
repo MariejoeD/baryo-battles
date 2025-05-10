@@ -11,6 +11,7 @@ func get_filename_base() -> String:
 	return scene.get_file().get_basename()
 
 # Exported variables to adjust stats in the editor
+@export var range_shaped: CollisionShape3D = null
 @export var hp: int = 150  # Average health
 @export var damage: float = 25  # Moderate damage
 @export var attack_range: float = 2
@@ -52,7 +53,8 @@ func get_scaled_movement_speed() -> float:
 	return movement_speed * (1 + weight_movement_speed * (level - 1))
 
 func get_scaled_attack_ranged() -> float:
-	return attack_range * (1 + .2 * (level - 1))
+	var used_range = range_shaped.shape.radius if range_shaped else attack_range
+	return used_range * (1 + .2 * (level - 1))
 
 
 func calculate_cp() -> float:
@@ -67,7 +69,7 @@ func calculate_cp() -> float:
 
 func _on_attacked(damage):
 	if randf() < evasion_chance:
-		print(get_parent().name, " dodged the attack!")
+		#print(get_parent().name, " dodged the attack!")
 		return
 	current_hp -= damage
 	sprite_3d_2.show()
@@ -117,12 +119,12 @@ func apply_spawn_scaling():
 		if particle is GPUParticles3D:
 			var mat : ParticleProcessMaterial = particle.process_material
 			if mat is ParticleProcessMaterial:
-				print(mat.scale_min)
+				#print(mat.scale_min)
 				mat.scale_min *= spawn_scale.x
-				print(mat.scale_max)
+				#print(mat.scale_max)
 
 func _on_death():
-	print(Name," Died")
+	#print(Name," Died")
 	if Npc.bosses.has(Name):
 		Npc.bosses[Name] = true
 	

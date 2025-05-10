@@ -14,7 +14,7 @@ func update(_delta: float) -> void:
 		# If target is found, change state to 'Running' or another relevant state
 		# Assuming 'RunningState' is a state where the NPC moves towards the target
 		fsm._transition_to_next_state("Chase", {"target": target})
-		print("Transitioning to Chase")
+		#print("Transitioning to Chase")
 		
 	else:
 		#fsm.anim_player.play("idle")

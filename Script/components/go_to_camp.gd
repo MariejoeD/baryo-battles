@@ -53,7 +53,7 @@ func go_to_camp():
 			if character_body.find_child("FSM").two_models:
 				character_body.get_child(2).hide()
 			await go_here(kampo.global_transform.origin)
-			print("Arrive")
+			#print("Arrive")
 			character_body.get_node("AnimationPlayer").play("idle")
 			
 			return kampo

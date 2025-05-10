@@ -244,7 +244,6 @@ func get_selected_spell() -> String:
 func is_position_valid(position: Vector3) -> bool:
 	var closest_point = a_star.aS.get_closest_point(position)
 	if not a_star.aS.has_point(closest_point):
-		print("false")
 		return false
 	var closest_position = a_star.aS.get_point_position(closest_point)
 	var distance = position.distance_to(closest_position)
@@ -312,13 +311,11 @@ func _spawn_boss_conditionally() -> void:
 
 		# Condition 1: Spawn boss after all enemies are dead
 		BossSpawnCondition.SpawnAfterAllEnemiesDead:
-			#print("all_defeated")
 			if all_enemies_defeated() and !boss_spawned:
 				spawn_boss()
 
 		# Condition 2: Spawn boss after a random delay
 		BossSpawnCondition.SpawnAfterRandomDelay:
-			#print("random")
 			if randf() < 0.1 and !boss_spawned:  # 10% chance on each frame to spawn the boss
 				spawn_boss()
 
@@ -329,7 +326,6 @@ func spawn_boss() -> void:
 		var random_position = get_random_position()
 		var collision_shape = boss.get_node_or_null("CollisionShape3D")
 		if collision_shape and await is_position_valid(random_position):
-			#print("test+print")
 			boss.position = random_position
 		
 		if boss.find_child("Stats").has_method("apply_spawn_scaling"):
@@ -641,11 +637,9 @@ func spawn_enemy(enemies):
 		if enemy and is_instance_valid(enemy):
 			var found_pos = false
 			for i in range(max_enemies * 5):
-				#print("Test Print")
 				var random_position = get_random_position()
 				var collision_shape = enemy.get_node_or_null("CollisionShape3D")
 				if collision_shape and await is_position_valid(random_position):
-					#print("test+print")
 					random_position.y = 0
 					enemy.position = random_position
 					if enemy.find_child("Stats").has_method("apply_spawn_scaling"):

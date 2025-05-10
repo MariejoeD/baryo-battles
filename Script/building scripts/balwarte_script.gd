@@ -95,7 +95,7 @@ func perform_work(worker, duration:= -1):
 		duration = self.duration
 	start_time = Global.total_game_time
 	await get_tree().create_timer(duration).timeout
-	print("Build Complete")
+	#print("Build Complete")
 	#Change  Indicator
 	remove_material_override(self)
 	instant_build()

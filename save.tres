@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SavedGame" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SavedGame" load_steps=2 format=3 uid="uid://divvehiipvgfy"]
 
 [ext_resource type="Script" path="res://Script/saved_game.gd" id="1_jahlu"]
 
@@ -363,7 +363,10 @@ game_time = {
 }
 sibilyans = []
 troops = {
-"Kampo-lv1": {}
+"sdfsdf": {
+"arnisador": 10,
+"lakan_warrior": 10
+}
 }
 battle_data = {
 "boss_defeated": {

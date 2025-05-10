@@ -21,6 +21,6 @@ func _process(delta: float) -> void:
 
 	# Perform a raycast to find where to spawn the NPC
 	var result = space_state.intersect_ray(query)
-	if result:
-		print(result["position"])
+	#if result:
+		#print(result["position"])
 	pass

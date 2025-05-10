@@ -745,11 +745,11 @@ shape = SubResource("CylinderShape3D_7fws7")
 script = ExtResource("7_loks7")
 
 [node name="Stats" parent="." instance=ExtResource("8_g0cmi")]
-hp = 80
+hp = 120
 attack_range = 1.2
 attack_speed = 1.5
 movement_speed = 6.5
-evasion_chance = 0.2
+evasion_chance = 0.1
 spawn_scale = Vector3(4, 4, 4)
 
 [node name="Sprite3D2" type="Sprite3D" parent="Stats"]

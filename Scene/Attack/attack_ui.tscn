@@ -385,6 +385,7 @@ texture_normal = ExtResource("3_giv6o")
 
 [node name="Panel" type="Panel" parent="allyPanel/allyContainer/lakan_warrior"]
 visible = false
+layout_mode = 0
 offset_right = 96.0
 offset_bottom = 121.0
 mouse_filter = 2
@@ -397,6 +398,7 @@ texture_normal = ExtResource("4_q5aik")
 
 [node name="Panel" type="Panel" parent="allyPanel/allyContainer/tirador"]
 visible = false
+layout_mode = 0
 offset_right = 96.0
 offset_bottom = 121.0
 mouse_filter = 2
@@ -409,6 +411,7 @@ texture_normal = ExtResource("5_brc5q")
 
 [node name="Panel" type="Panel" parent="allyPanel/allyContainer/manggagamot"]
 visible = false
+layout_mode = 0
 offset_right = 96.0
 offset_bottom = 121.0
 mouse_filter = 2
@@ -421,6 +424,7 @@ texture_normal = ExtResource("6_1te5m")
 
 [node name="Panel" type="Panel" parent="allyPanel/allyContainer/marites"]
 visible = false
+layout_mode = 0
 offset_right = 96.0
 offset_bottom = 121.0
 mouse_filter = 2
@@ -433,6 +437,7 @@ texture_normal = ExtResource("7_q48x7")
 
 [node name="Panel" type="Panel" parent="allyPanel/allyContainer/kapitan_makoy"]
 visible = false
+layout_mode = 0
 offset_right = 96.0
 offset_bottom = 121.0
 mouse_filter = 2
@@ -445,6 +450,7 @@ texture_normal = ExtResource("8_ymscb")
 
 [node name="Panel" type="Panel" parent="allyPanel/allyContainer/super_inday"]
 visible = false
+layout_mode = 0
 offset_right = 96.0
 offset_bottom = 121.0
 mouse_filter = 2
