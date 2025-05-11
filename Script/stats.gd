@@ -11,7 +11,6 @@ func get_filename_base() -> String:
 	return scene.get_file().get_basename()
 
 # Exported variables to adjust stats in the editor
-@export var range_shaped: CollisionShape3D = null
 @export var hp: int = 150  # Average health
 @export var damage: float = 25  # Moderate damage
 @export var attack_range: float = 2
@@ -53,8 +52,7 @@ func get_scaled_movement_speed() -> float:
 	return movement_speed * (1 + weight_movement_speed * (level - 1))
 
 func get_scaled_attack_ranged() -> float:
-	var used_range = range_shaped.shape.radius if range_shaped else attack_range
-	return used_range * (1 + .2 * (level - 1))
+	return attack_range * (1 + .2 * (level - 1))
 
 
 func calculate_cp() -> float:
@@ -114,7 +112,7 @@ func _ready():
 
 func apply_spawn_scaling():
 	get_parent().scale = spawn_scale
-	if $"../Smoke/GPUParticles3D":
+	if has_node(NodePath("../Smoke/GPUParticles3D")):
 		var particle = $"../Smoke/GPUParticles3D"
 		if particle is GPUParticles3D:
 			var mat : ParticleProcessMaterial = particle.process_material

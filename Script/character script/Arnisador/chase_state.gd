@@ -43,17 +43,17 @@ func enter(_previous_state_path: String, data := {}) -> void:
 	target = data.get("target", null)
 	start = fsm.npc_root_node.global_transform.origin
 	if not is_instance_valid(target):
-		#print("Target invalid when setting end point. Transitioning to Idle.")
+		print("[DEBUG] Transitioning to Idle: Target is invalid during enter()")
 		fsm._transition_to_next_state("Idle")
 		return
 	
 	end = target.global_transform.origin
 	# Calculate the initial path
 	path = fsm.pathfinder_component.findpaths(start, end)
+	print("Path: ", path)
 	if not path:
-		#print("No path found. Transitioning to Idle.")
+		print("[DEBUG] Transitioning to Idle: No path found during enter()")
 		#print("Start:",start)
-		#print("Path: ", path)
 		#print("Closest_pos: ",fsm.pathfinder_component.find_closest(start))
 		fsm._transition_to_next_state("Idle")
 		return
@@ -69,31 +69,39 @@ func enter(_previous_state_path: String, data := {}) -> void:
 
 
 func update(delta: float) -> void:
+	#print("Path: ", path)
+	
 	path_recalculation_timer -= delta
 	building_check_timer -= delta
 	recheck_timer -= delta
 	if fsm.npc_root_node.global_transform.origin.distance_to(prev_direction) <= 2 or recheck_timer <= 0.0:
 		var new_target = fsm.targeting_component._find_nearest_target()
+
+		# If no new target is found, but the current one is still valid — keep it
 		if new_target == null or !is_instance_valid(new_target):
-			#print("No new target found. Going to Idle.")
-			fsm._transition_to_next_state("Idle")
-			return
-		else:
-			target = new_target
-			end = target.global_transform.origin
-			path = fsm.pathfinder_component.findpaths(fsm.npc_root_node.global_transform.origin, end)
-			if not path:
-				#print("No path to new target. Going to Idle.")
+			if target == null or !is_instance_valid(target):
+				print("[DEBUG] Transitioning to Idle: No new or current target found during recheck")
 				fsm._transition_to_next_state("Idle")
 				return
-			current_target_index = 0
+		else:
+			target = new_target
+
+		end = target.global_transform.origin
+		path = fsm.pathfinder_component.findpaths(fsm.npc_root_node.global_transform.origin, end)
+		if not path:
+			print("[DEBUG] Transitioning to Idle: No path to target after recheck")
+			fsm._transition_to_next_state("Idle")
+			return
+
+		current_target_index = 0
 		recheck_timer = recheck_down
+
 	# Reduce the cooldown timer
 	if not is_instance_valid(target):
 		#print("Lost target.")
 		var new_target = fsm.targeting_component._find_nearest_target()
 		if new_target == null or !is_instance_valid(new_target):
-			#print("No new target found. Going to Idle.")
+			print("[DEBUG] Transitioning to Idle: Lost target during update")
 			fsm._transition_to_next_state("Idle")
 			return
 		else:
@@ -101,7 +109,7 @@ func update(delta: float) -> void:
 			end = target.global_transform.origin
 			path = fsm.pathfinder_component.findpaths(fsm.npc_root_node.global_transform.origin, end)
 			if not path:
-				#print("No path to new target. Going to Idle.")
+				print("[DEBUG] Transitioning to Idle: Target moved but new path not found")
 				fsm._transition_to_next_state("Idle")
 				return
 			current_target_index = 0
@@ -136,8 +144,9 @@ func update(delta: float) -> void:
 	
 	# Step 3: Check if we are in attack range
 	var npc_position = fsm.npc_root_node.global_transform.origin
-	if npc_position.distance_to(target_position) <= npc_size:  # Check if within attack range
-		#print("Target within attack range! Stopping movement and transitioning to Attack state.")
+	var target_stats = target.find_child("Stats")
+	if npc_position.distance_to(target_position) <= npc_size + stats.get_scaled_attack_ranged():  # Check if within attack range
+		#print(target_stats.Name," within attack range! Stopping ", stats.Name," and transitioning to Attack state.")
 		fsm._transition_to_next_state("Attack", {"target" : target})  # Transition to attack state once in range
 		return
 	

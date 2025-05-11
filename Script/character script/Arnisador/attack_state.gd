@@ -6,7 +6,9 @@ var two_models: bool
 @onready var stats = fsm.get_parent().get_node("Stats")
 
 # Get the NPC's size (assuming it uses a CollisionShape3D)
-
+@onready var shape_rad = fsm.get_parent().get_node("CollisionShape3D").shape.radius  # Get diameter
+@onready var collision_scale = fsm.get_parent().get_node("CollisionShape3D").global_transform.basis.get_scale()
+@onready var npc_size = shape_rad * collision_scale.x
 var timer
 var target
 
@@ -41,11 +43,23 @@ func enter(_previous_state_path: String, data := {}) -> void:
 func _attack():
 	var target_distance = fsm.npc_root_node.global_position.distance_to(target.global_position)
 			
-	if !target.is_in_group("Buildings") and target_distance > stats.get_scaled_attack_ranged():
+	if !target.is_in_group("Buildings") and target_distance > npc_size + stats.get_scaled_attack_ranged():
 			fsm._transition_to_next_state("Chase", {"target": target})
 			
 	
 	if target and is_instance_valid(target):
+		var npc_pos = fsm.npc_root_node.global_transform.origin
+		var target_pos = target.global_transform.origin
+		var direction = (target_pos - npc_pos).normalized()
+		
+		# Create a basis that only rotates on the Y-axis
+		var look_rotation = Vector3(direction.x, 0, direction.z).normalized()
+		look_rotation = -look_rotation
+		var current_transform = fsm.npc_root_node.global_transform
+		var current_scale = fsm.npc_root_node.global_transform.basis.get_scale()
+		current_transform.basis = Basis().looking_at(look_rotation, Vector3.UP).scaled(current_scale)
+		fsm.npc_root_node.global_transform = current_transform
+
 		var desired_duration = 1.0 / stats.get_scaled_attack_speed()
 		var anim_length = fsm.anim_player.get_animation("attack").length
 		var speed_scale = anim_length / desired_duration
@@ -73,14 +87,19 @@ func _attack():
 			#print("Magic spell", spell_paths[random_index], "spawned at", target.global_position)
 		if stats.has_ability and stats.ability_name == "Rage Mode":
 			var rage_threshold = 0.3  # Rage Mode activates when HP is below 30%
-			var rage_multiplier = 1.5  # Increase damage and attack speed by 50%
+			var rage_multiplier = 5  # Increase damage and attack speed by 50%
 			if stats.current_hp / stats.get_scaled_hp() <= rage_threshold:
-				#print("Rage Mode activated!")
 				stats.damage_multiplier = rage_multiplier
-				timer.wait_time = 1 / stats.get_scaled_attack_speed() * rage_multiplier
+				timer.wait_time = 1.0 / (stats.get_scaled_attack_speed() * rage_multiplier)
+				# Restart the timer to apply the new wait_time
+				timer.start()
 			else:
 				stats.damage_multiplier = 1
-				timer.wait_time = 1 / stats.get_scaled_attack_speed()
+				timer.wait_time = 1.0 / stats.get_scaled_attack_speed()
+				# Restart the timer to apply the new wait_time
+				#timer.start()?
+
+
 		target_stats._on_attacked(stats.get_scaled_damage())
 		if stats.has_ability and stats.ability_name == "AOE":
 			for targets in fsm.npc_root_node.find_child("Targeting Component").target_group:

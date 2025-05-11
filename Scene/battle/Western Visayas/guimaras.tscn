@@ -92,24 +92,6 @@ spot_angle_attenuation = 0.0915064
 
 [node name="UI" parent="." instance=ExtResource("3_e83xp")]
 
-[node name="Panel" parent="UI/allyPanel/allyContainer/lakan_warrior" index="0"]
-layout_mode = 0
-
-[node name="Panel" parent="UI/allyPanel/allyContainer/tirador" index="0"]
-layout_mode = 0
-
-[node name="Panel" parent="UI/allyPanel/allyContainer/manggagamot" index="0"]
-layout_mode = 0
-
-[node name="Panel" parent="UI/allyPanel/allyContainer/marites" index="0"]
-layout_mode = 0
-
-[node name="Panel" parent="UI/allyPanel/allyContainer/kapitan_makoy" index="0"]
-layout_mode = 0
-
-[node name="Panel" parent="UI/allyPanel/allyContainer/super_inday" index="0"]
-layout_mode = 0
-
 [node name="VBoxContainer" parent="UI/spellPanel" index="0"]
 offset_left = 0.0
 offset_top = 0.0

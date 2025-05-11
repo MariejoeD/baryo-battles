@@ -37,19 +37,25 @@ func _find_nearest_target():
 	var shape = detection_perimeter.get_node("CollisionShape3D").shape
 	var extents: Vector3
 	if shape is SphereShape3D:
-		extents = Vector3.ONE * shape.radius
+		extents = Vector3.ONE * shape.radius * scaling  # Apply scale
 	elif shape is BoxShape3D:
-		extents = shape.size / 2.0
+		extents = shape.size / 2.0 * scaling  # Apply scale
 	elif shape is CylinderShape3D:
-		extents = Vector3(shape.radius*scaling, shape.height / 2.0, shape.radius*scaling)
+		extents = Vector3(shape.radius * scaling, shape.height / 2.0 * scaling, shape.radius * scaling)
+
 	else:
 		return # Unsupported shape
 
-	var detection_aabb = AABB(self_pos - extents, extents * 2)
+	var detection_aabb = AABB(detection_perimeter.global_transform.origin - extents, extents * 2)
+
 
 	var nearest_target: Node3D = null
 	var nearest_distance: float = INF
 	var highest_priority_score := -INF
+
+		# After calculating detection_aabb
+	print("Detection AABB center: ", detection_aabb.position + detection_aabb.size / 2.0)
+	print("Detection AABB size: ", detection_aabb.size)
 
 	for group in target_group:
 		for node in get_tree().get_nodes_in_group(group):
@@ -57,6 +63,14 @@ func _find_nearest_target():
 				continue
 
 			var node_pos: Vector3 = node.global_transform.origin
+
+			if not detection_aabb.has_point(node_pos):
+				print("Skipped: %s is outside AABB" % node.name)
+				continue
+			else:
+				print("Inside AABB: %s" % node.name)
+
+			# Rest of the distance checking and target logic here...
 
 			if not detection_aabb.has_point(node_pos):
 				continue

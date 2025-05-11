@@ -751,7 +751,7 @@ _data = {
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3nxyh"]
 height = 5.0
-radius = 15.4437
+radius = 25.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rfieo"]
 viewport_path = NodePath("Stats/Sprite3D2/SubViewport")
@@ -792,7 +792,7 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 0.990323, 0.138784, 0, -0.138784, 0.990323, 0, 0.0850328, -0.0119165)
 bones/1/enabled = true
 bones/1/position = Vector3(0, 0.0850328, -0.0119165)
-bones/1/rotation = Quaternion(-0.0488246, -0.00836828, 0.00525958, 0.998759)
+bones/1/rotation = Quaternion(-0.0488246, -0.00836828, 0.00525958, 0.998758)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "mixamorig_Spine1"
 bones/2/parent = 1
@@ -862,7 +862,7 @@ bones/11/parent = 10
 bones/11/rest = Transform3D(0.672428, -0.740008, 0.0151173, 0.740163, 0.672287, -0.0137339, 3.72529e-09, 0.0204243, 0.999791, -0.0648141, 0.0799861, 0.0020788)
 bones/11/enabled = true
 bones/11/position = Vector3(-0.0648141, 0.0799861, 0.0020788)
-bones/11/rotation = Quaternion(0.183617, 0.0634996, 0.176325, 0.964967)
+bones/11/rotation = Quaternion(0.183617, 0.0634995, 0.176325, 0.964967)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "mixamorig_LeftHandThumb2"
 bones/12/parent = 11
@@ -925,7 +925,7 @@ bones/20/parent = 19
 bones/20/rest = Transform3D(1, -3.05782e-17, -5.27584e-17, 1.79941e-17, 0.97463, -0.22382, 5.82639e-17, 0.22382, 0.97463, -0.00368937, 0.11041, 1.30766e-09)
 bones/20/enabled = true
 bones/20/position = Vector3(-0.00368937, 0.11041, 1.30766e-09)
-bones/20/rotation = Quaternion(0.440892, -0.00589877, -0.0967209, 0.892314)
+bones/20/rotation = Quaternion(0.440892, -0.00589877, -0.0967208, 0.892314)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/name = "mixamorig_LeftHandMiddle3"
 bones/21/parent = 20
@@ -981,7 +981,7 @@ bones/28/parent = 27
 bones/28/rest = Transform3D(1, 7.23705e-17, 8.82603e-18, -5.5999e-17, 0.839961, -0.542646, -4.66851e-17, 0.542646, 0.839961, -0.000390121, 0.0872517, 6.79197e-10)
 bones/28/enabled = true
 bones/28/position = Vector3(-0.000390121, 0.0872517, 6.79197e-10)
-bones/28/rotation = Quaternion(0.0010225, 0.0754316, 0.454106, 0.887748)
+bones/28/rotation = Quaternion(0.00102249, 0.0754316, 0.454106, 0.887748)
 bones/28/scale = Vector3(1, 1, 1)
 bones/29/name = "mixamorig_RightHandThumb3"
 bones/29/parent = 28
@@ -1079,7 +1079,7 @@ bones/42/parent = 41
 bones/42/rest = Transform3D(0.999987, 0.00494544, -0.00128433, -6.28643e-09, -0.251361, -0.967893, -0.00510949, 0.967881, -0.251358, 1.82221e-10, 0.107839, -6.87118e-11)
 bones/42/enabled = true
 bones/42/position = Vector3(1.82221e-10, 0.107839, -6.87118e-11)
-bones/42/rotation = Quaternion(0.793462, 0.00217594, -0.00220146, 0.608611)
+bones/42/rotation = Quaternion(0.793463, 0.00217594, -0.00220146, 0.608611)
 bones/42/scale = Vector3(1, 1, 1)
 bones/43/name = "mixamorig_LeftToe_End"
 bones/43/parent = 42
@@ -1114,7 +1114,7 @@ bones/47/parent = 46
 bones/47/rest = Transform3D(0.998914, -0.0433506, 0.0171004, 0.0466015, 0.92923, -0.366552, 2.42144e-08, 0.366951, 0.93024, -1.40069e-09, 0.379048, 5.33863e-09)
 bones/47/enabled = true
 bones/47/position = Vector3(-1.40069e-09, 0.379048, 5.33863e-09)
-bones/47/rotation = Quaternion(0.186711, 0.00435293, 0.022897, 0.982138)
+bones/47/rotation = Quaternion(0.186711, 0.00435293, 0.0228969, 0.982138)
 bones/47/scale = Vector3(1, 1, 1)
 bones/48/name = "mixamorig_RightToe_End"
 bones/48/parent = 47
@@ -1139,8 +1139,7 @@ targeting_component = NodePath("../Targeting Component")
 anim_player = NodePath("../AnimationPlayer")
 pathfinder_component = NodePath("../Pathfinder")
 
-[node name="Targeting Component" parent="." node_paths=PackedStringArray("detection_area") instance=ExtResource("4_u07on")]
-detection_area = NodePath("../Detection")
+[node name="Targeting Component" parent="." instance=ExtResource("4_u07on")]
 target_group = Array[String](["Good", "Buildings"])
 
 [node name="Detection" type="Area3D" parent="."]
@@ -1154,10 +1153,10 @@ shape = SubResource("CylinderShape3D_3nxyh")
 
 [node name="Stats" parent="." instance=ExtResource("6_rowfy")]
 hp = 200
-damage = 40
+damage = 25.0
 attack_speed = 1.5
 movement_speed = 6.0
-spawn_scale = Vector3(4, 4, 4)
+spawn_scale = Vector3(3, 3, 3)
 
 [node name="Sprite3D2" type="Sprite3D" parent="Stats"]
 unique_name_in_owner = true

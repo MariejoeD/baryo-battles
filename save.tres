@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SavedGame" load_steps=2 format=3 uid="uid://divvehiipvgfy"]
+[gd_resource type="Resource" script_class="SavedGame" load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://Script/saved_game.gd" id="1_jahlu"]
 
@@ -365,7 +365,8 @@ sibilyans = []
 troops = {
 "sdfsdf": {
 "arnisador": 10,
-"lakan_warrior": 10
+"lakan_warrior": 10,
+"tirador": 5
 }
 }
 battle_data = {
