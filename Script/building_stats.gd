@@ -1,7 +1,7 @@
 extends Node
 
 # Exported variables to adjust stats in the editor
-@export var hp: int = 150  # Average health
+@export var hp: int = 300  # Average health
 @export var damage: int = 25  # Moderate damage
 @export var attack_range: float = 2
 @export var attack_speed: float = 1.2  # Average attack speed (attacks per second)
@@ -10,14 +10,13 @@ extends Node
 @export var weight_hp: float = 0.3  # Weight for HP
 @export var weight_damage: float = 0.4  # Weight for damage
 @export var weight_attack_speed: float = 0.3  # Weight for attack speed
-@onready var level = get_parent().level
 var current_hp
 
 func get_scaled_hp() -> float:
-	return hp * (1 + (level-1) *.5)
+	return hp * (1 + (get_parent().level-1) *.5)
 
 func get_scaled_damage() -> float:
-	return damage * (1 + (level-1))
+	return damage * (1 + (get_parent().level-1))
 
 func get_scaled_attack_speed() -> float:
 	return attack_speed * (1 + weight_attack_speed)
