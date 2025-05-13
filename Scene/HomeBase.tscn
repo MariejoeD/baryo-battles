@@ -415,6 +415,7 @@ offset_right = 199.0
 offset_bottom = 1420.0
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchor_left = 0.431
 anchor_top = 0.956

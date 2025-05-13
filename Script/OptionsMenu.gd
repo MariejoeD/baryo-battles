@@ -76,14 +76,13 @@ func _on_about_button_pressed():
 
 func _on_reset_game_button_pressed():
 	MusicController.play_click_sound()
-	reset_dialog.dialog_text = "Are you sure you want to reset the game? Type 'confirm reset' to proceed."
+	reset_dialog.dialog_text = "Are you sure you want to reset the game, the game will restart? Type 'confirm reset' to proceed."
 	reset_dialog.popup_centered()
 	reset_text_input.text = ""  # Clear text field when the dialog pops up
 
 func _on_reset_confirmed():
 	MusicController.play_click_sound()
 	if reset_text_input.text == "confirm reset":
-		get_tree().change_scene_to_file("res://Scene/loading.tscn")
 		var path = Global.save_path
 	
 		delete_save_file(path)
@@ -100,6 +99,11 @@ func delete_save_file(path: String) -> void:
 			var result = dir.remove(file_name)
 			if result == OK:
 				print("Deleted file:", path)
+				# Launch a new instance of the game
+				OS.shell_open(OS.get_executable_path())
+				# Delay quit just a little
+				await get_tree().create_timer(0.1).timeout
+				get_tree().quit()
 			else:
 				print("Failed to delete file:", path)
 		else:

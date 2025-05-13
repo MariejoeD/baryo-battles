@@ -47,78 +47,106 @@ func _attack():
 			fsm._transition_to_next_state("Chase", {"target": target})
 			
 	
-	if target and is_instance_valid(target):
-		var npc_pos = fsm.npc_root_node.global_transform.origin
-		var target_pos = target.global_transform.origin
-		var direction = (target_pos - npc_pos).normalized()
-		
-		# Create a basis that only rotates on the Y-axis
-		var look_rotation = Vector3(direction.x, 0, direction.z).normalized()
-		look_rotation = -look_rotation
-		var current_transform = fsm.npc_root_node.global_transform
-		var current_scale = fsm.npc_root_node.global_transform.basis.get_scale()
-		current_transform.basis = Basis().looking_at(look_rotation, Vector3.UP).scaled(current_scale)
-		fsm.npc_root_node.global_transform = current_transform
+	if !is_instance_valid(target):
+		return
+	
+	#Handle facing the target
+	_face_target()
+	
+	#// Play attack animation
+	_play_attack_animation()
 
-		var desired_duration = 1.0 / stats.get_scaled_attack_speed()
-		var anim_length = fsm.anim_player.get_animation("attack").length
-		var speed_scale = anim_length / desired_duration
-		if !fsm.anim_player.is_playing():
-			fsm.anim_player.play("attack", -1.0, speed_scale)
-		
-		#print("Playing attack animation at speed scale:", speed_scale)
-		#print("Anim length:", anim_length, "Desired duration:", desired_duration)
+	#// Handle abilities
+	_handle_abilities()
 
-		var target_stats = target.get_node("Stats")
-		if stats.has_ability and stats.ability_name == "Magic":
-			var spell_paths = [
-				"res://assets/spells/spellAnim/kulam.tscn",  # Replace with your actual paths
-				"res://assets/spells/spellAnim/kasumpa_sumpa.tscn"
-			]
-			var random_index = randi() % spell_paths.size()
-			var selected_spell = load(spell_paths[random_index])
-			var spell_instance = selected_spell.instantiate()
-			spell_instance.target = "Good"
-			spell_instance.position = target.global_position
-			spell_instance.find_child("CollisionShape3D").shape.radius = 1.5
-			spell_instance.position.y = 1
-			get_tree().current_scene.add_child(spell_instance)
-			spell_instance.scale = Vector3(3,3,3)
-			#print("Magic spell", spell_paths[random_index], "spawned at", target.global_position)
-		if stats.has_ability and stats.ability_name == "Rage Mode":
-			var rage_threshold = 0.3  # Rage Mode activates when HP is below 30%
-			var rage_multiplier = 5  # Increase damage and attack speed by 50%
-			if stats.current_hp / stats.get_scaled_hp() <= rage_threshold:
-				stats.damage_multiplier = rage_multiplier
-				timer.wait_time = 1.0 / (stats.get_scaled_attack_speed() * rage_multiplier)
-				# Restart the timer to apply the new wait_time
-				timer.start()
-			else:
-				stats.damage_multiplier = 1
-				timer.wait_time = 1.0 / stats.get_scaled_attack_speed()
-				# Restart the timer to apply the new wait_time
-				#timer.start()?
+	#// Apply damage to target
+	var target_stats = target.get_node("Stats")
+	target_stats._on_attacked(stats.get_scaled_damage())
 
+	#// Handle AOE damage
+	_apply_aoe_damage()
+	
+	#// Handle taunt ability
+	_apply_taunt()
 
-		target_stats._on_attacked(stats.get_scaled_damage())
-		if stats.has_ability and stats.ability_name == "AOE":
-			for targets in fsm.npc_root_node.find_child("Targeting Component").target_group:
-				for troop in get_tree().get_nodes_in_group(targets):
-					var troop_distance = fsm.npc_root_node.global_position.distance_to(troop.global_position)
-					if troop_distance <= stats.get_scaled_attack_ranged() and troop != target and troop.has_node("Stats"):
-						var troop_stats = troop.get_node("Stats")
-						troop_stats._on_attacked(stats.get_scaled_damage())
-		# If this unit has a taunt ability, force the target to target us
-		if stats.has_ability and stats.ability_name == "taunt":
-			var target_fsm = target.get_node_or_null("FSM")
-			if target_fsm:
-				var targeting = target_fsm.targeting_component
-				if targeting:
-					if targeting.forced_target == null:
-						targeting.forced_target = fsm.get_parent()
-						#print("Taunted ", target.name, " into targeting ", fsm.get_parent().name)
-						target_fsm._transition_to_next_state("Chase", {"target": fsm.get_parent()})
+# Function to handle facing the target
+func _face_target():
+	var target_pos = target.global_transform.origin
+	var npc_pos = fsm.npc_root_node.global_transform.origin
+	var direction = (target_pos - npc_pos).normalized()
+	
+	var look_rotation = Vector3(direction.x, 0, direction.z).normalized()
+	look_rotation = -look_rotation
+	var current_transform = fsm.npc_root_node.global_transform
+	var current_scale = fsm.npc_root_node.global_transform.basis.get_scale()
+	current_transform.basis = Basis().looking_at(look_rotation, Vector3.UP).scaled(current_scale)
+	fsm.npc_root_node.global_transform = current_transform
 
+# Function to play attack animation
+func _play_attack_animation():
+	var desired_duration = 1.0 / stats.get_scaled_attack_speed()
+	var anim_length = fsm.anim_player.get_animation("attack").length
+	var speed_scale = anim_length / desired_duration
+	if !fsm.anim_player.is_playing():
+		fsm.anim_player.play("attack", -1.0, speed_scale)
+
+# Function to handle all abilities
+func _handle_abilities():
+	if stats.has_ability:
+		match stats.ability_name:
+			"Magic":
+				_cast_magic()
+			"Rage Mode":
+				_apply_rage_mode()
+			"AOE":
+				_apply_aoe_damage()
+			"taunt":
+				_apply_taunt()
+
+# Handle magic ability
+func _cast_magic():
+	var spell_paths = [
+		"res://assets/spells/spellAnim/kulam.tscn",
+		"res://assets/spells/spellAnim/kasumpa_sumpa.tscn"
+	]
+	var random_index = randi() % spell_paths.size()
+	var selected_spell = load(spell_paths[random_index])
+	var spell_instance = selected_spell.instantiate()
+	spell_instance.target = "Good"
+	spell_instance.position = target.global_position
+	spell_instance.find_child("CollisionShape3D").shape.radius = 1.5
+	spell_instance.position.y = 1
+	get_tree().current_scene.add_child(spell_instance)
+	spell_instance.scale = Vector3(3,3,3)
+
+# Handle rage mode ability
+func _apply_rage_mode():
+	if stats.current_hp / stats.get_scaled_hp() <= 0.3:
+		stats.damage_multiplier = 5
+		timer.wait_time = 1.0 / (stats.get_scaled_attack_speed() * 5)
+		timer.start()
+	else:
+		stats.damage_multiplier = 1
+		timer.wait_time = 1.0 / stats.get_scaled_attack_speed()
+		timer.start()
+
+# Handle AOE damage
+func _apply_aoe_damage():
+	for group_name in fsm.npc_root_node.find_child("Targeting Component").target_group:
+		for troop in get_tree().get_nodes_in_group(group_name):
+			var troop_distance = fsm.npc_root_node.global_position.distance_to(troop.global_position)
+			if troop_distance <= stats.get_scaled_attack_ranged() and troop != target and troop.has_node("Stats"):
+				var troop_stats = troop.get_node("Stats")
+				troop_stats._on_attacked(stats.get_scaled_damage())
+
+# Handle taunt ability
+func _apply_taunt():
+	var target_fsm = target.get_node_or_null("FSM")
+	if target_fsm:
+		var targeting = target_fsm.targeting_component
+		if targeting and targeting.forced_target == null:
+			targeting.forced_target = fsm.get_parent()
+			target_fsm._transition_to_next_state("Chase", {"target": fsm.get_parent()})
 
 func _heal():
 	if target and is_instance_valid(target):
