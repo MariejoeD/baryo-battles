@@ -25,7 +25,7 @@ func _ready():
 	# Connect enemy and ally to their description and initializze their discovered states
 	for child in enemy_container.get_child(0).get_children() + ally_container.get_child(0).get_children():
 		if child.name not in npc_discovered:
-			npc_discovered[child.name] = false
+			npc_discovered[child.name] = true
 		var folder = "Allyunlocked" if child in ally_container.get_child(0).get_children() else "Enemyunlocked"
 		var name_png = child.name+".png"
 		var image_path = "res://assets/Almanac/%s/%s" % [folder, name_png]

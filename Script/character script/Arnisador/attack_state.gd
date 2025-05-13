@@ -93,15 +93,33 @@ func _play_attack_animation():
 # Function to handle all abilities
 func _handle_abilities():
 	if stats.has_ability:
-		match stats.ability_name:
-			"Magic":
+		if stats.ability_name == "ALL":
+			var hp_ratio = stats.current_hp / stats.get_scaled_hp()
+
+			if hp_ratio <= 0.25:
+				if !transform:
+					transform = true
+					print("Ability in use: wolf_transform (HP <= 25%)")
+					wolf_transform()
+			elif hp_ratio <= 0.5:
+				print("Ability in use: _cast_magic (HP <= 50%)")
 				_cast_magic()
-			"Rage Mode":
-				_apply_rage_mode()
-			"AOE":
+			elif hp_ratio <= 0.75:
+				print("Ability in use: _apply_aoe_damage (HP <= 75%)")
 				_apply_aoe_damage()
-			"taunt":
-				_apply_taunt()
+			elif hp_ratio <= 1:
+				print("Ability in use: _apply_rage_mode (HP <= 100%)")
+				_apply_rage_mode()
+		else:
+			match stats.ability_name:
+				"Magic":
+					_cast_magic()
+				"Rage Mode":
+					_apply_rage_mode()
+				"AOE":
+					_apply_aoe_damage()
+				"taunt":
+					_apply_taunt()
 
 # Handle magic ability
 func _cast_magic():

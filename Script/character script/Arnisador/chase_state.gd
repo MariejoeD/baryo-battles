@@ -50,7 +50,7 @@ func enter(_previous_state_path: String, data := {}) -> void:
 	end = target.global_transform.origin
 	# Calculate the initial path
 	path = fsm.pathfinder_component.findpaths(start, end)
-	print("Path: ", path)
+	#print("Path: ", path)
 	if not path:
 		print("[DEBUG] Transitioning to Idle: No path found during enter()")
 		#print("Start:",start)

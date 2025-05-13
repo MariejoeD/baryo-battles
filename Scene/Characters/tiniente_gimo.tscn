@@ -405,7 +405,7 @@ grow_amount = -0.18
 offsets = PackedFloat32Array(0.274306, 0.479167, 0.71875, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.205765, 0.0132921, 0.0132577, 1, 0, 0, 0, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_jbtbs"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_embbe"]
 gradient = SubResource("Gradient_cv4bt")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ty10v"]
@@ -427,7 +427,7 @@ scale_min = 9.53
 scale_max = 63.5
 scale_over_velocity_min = 0.9
 scale_over_velocity_max = 2.2
-color_ramp = SubResource("GradientTexture1D_jbtbs")
+color_ramp = SubResource("GradientTexture1D_embbe")
 hue_variation_min = 0.66
 hue_variation_max = 1.0
 anim_speed_min = 1.0
