@@ -61,7 +61,7 @@ func perform_work(worker, duration:= -1):
 	start_time = Global.total_game_time
 	await get_tree().create_timer(duration).timeout
 	print("Harvest Complete")
-	await self.ready 
+
 	var tutorial_node = get_tree().current_scene.find_child("tutorial")
 
 	if is_instance_valid(tutorial_node):

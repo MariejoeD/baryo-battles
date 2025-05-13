@@ -137,11 +137,11 @@ func _on_troop_pressed(troop) -> void:
 	sib.queue_free()
 	tutorial_count += 1
 	if tutorial_count == 5:
-		await self.ready 
-		var tutorial_node = get_tree().current_scene.find_child("tutorial")
 
-		if is_instance_valid(tutorial_node):
-			tutorial_node.step_9.emit()
+		if get_tree() and get_tree().current_scene and get_tree().current_scene.has_node("tutorial"):
+			var tutorial_node = get_tree().current_scene.get_node("tutorial")
+			if is_instance_valid(tutorial_node):
+				tutorial_node.step_9.emit()
 		else:
 			print("Tutorial node is no longer valid, skipping signal emission.")
 	# Check if the troop already exists in the training panel
@@ -310,11 +310,11 @@ func on_placed():
 	
 func instant_build():
 	built = true
-	await self.ready 
-	var tutorial_node = get_tree().current_scene.find_child("tutorial")
 
-	if is_instance_valid(tutorial_node):
-		tutorial_node.step_7.emit()
+	if get_tree() and get_tree().current_scene and get_tree().current_scene.has_node("tutorial"):
+		var tutorial_node = get_tree().current_scene.get_node("tutorial")
+		if is_instance_valid(tutorial_node):
+			tutorial_node.step_7.emit()
 	else:
 		print("Tutorial node is no longer valid, skipping signal emission.")
 	pass

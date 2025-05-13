@@ -462,17 +462,31 @@ func surrender():
 
 func calculate_player_total_cp():
 	var total_cp = 0
+	print("=== Calculating Player Total CP ===")
+	print("UI.troop_data keys: ", UI.troop_data.keys())
+	print("troops keys: ", troops.keys())
+
 	for troop_name in UI.troop_data.keys():
 		if troop_name in troops:
 			var troop_scene = load(troops[troop_name])
 			var troop_instance = troop_scene.instantiate()
 
 			if troop_instance.has_node("Stats"):
-				total_cp += UI.troop_data[troop_name][0] * troop_instance.get_node("Stats").calculate_cp()
+				var troop_count = UI.troop_data[troop_name][0]
+				var cp = troop_instance.get_node("Stats").calculate_cp()
+				var troop_cp_total = troop_count * cp
+				print("✅ Troop: %s | Count: %d | CP per unit: %d | Total CP: %d" % [troop_name, troop_count, cp, troop_cp_total])
+				total_cp += troop_cp_total
+			else:
+				print("⚠️ Troop '%s' does not have a 'Stats' node." % troop_name)
 
 			troop_instance.queue_free()
+		else:
+			print("❌ Troop '%s' found in UI.troop_data but missing in troops dictionary." % troop_name)
 
+	print(">> ✅ Total Player CP: %d" % total_cp)
 	return total_cp
+
 
 func calculate_enemy_count():
 	if player_cp == 0:

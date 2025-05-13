@@ -54,8 +54,8 @@ func _find_nearest_target():
 	var highest_priority_score := -INF
 
 		# After calculating detection_aabb
-	print("Detection AABB center: ", detection_aabb.position + detection_aabb.size / 2.0)
-	print("Detection AABB size: ", detection_aabb.size)
+	#print("Detection AABB center: ", detection_aabb.position + detection_aabb.size / 2.0)
+	#print("Detection AABB size: ", detection_aabb.size)
 
 	for group in target_group:
 		for node in get_tree().get_nodes_in_group(group):
@@ -65,10 +65,11 @@ func _find_nearest_target():
 			var node_pos: Vector3 = node.global_transform.origin
 
 			if not detection_aabb.has_point(node_pos):
-				print("Skipped: %s is outside AABB" % node.name)
+				#print("Skipped: %s is outside AABB" % node.name)
 				continue
 			else:
-				print("Inside AABB: %s" % node.name)
+				#print("Inside AABB: %s" % node.name)
+				pass
 
 			# Rest of the distance checking and target logic here...
 

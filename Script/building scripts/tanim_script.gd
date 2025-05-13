@@ -142,11 +142,11 @@ func on_placed():
 	Buildings.buildings["TanimBtn"] -= 1
 func instant_build():
 	built = true
-	await self.ready 
-	var tutorial_node = get_tree().current_scene.find_child("tutorial")
 
-	if is_instance_valid(tutorial_node):
-		tutorial_node.step_6.emit()
+	if get_tree() and get_tree().current_scene and get_tree().current_scene.has_node("tutorial"):
+		var tutorial_node = get_tree().current_scene.get_node("tutorial")
+		if is_instance_valid(tutorial_node):
+			tutorial_node.step_6.emit()
 	else:
 		print("Tutorial node is no longer valid, skipping signal emission.")
 	pass

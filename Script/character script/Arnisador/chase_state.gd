@@ -77,14 +77,27 @@ func update(delta: float) -> void:
 	if fsm.npc_root_node.global_transform.origin.distance_to(prev_direction) <= 2 or recheck_timer <= 0.0:
 		var new_target = fsm.targeting_component._find_nearest_target()
 
-		# If no new target is found, but the current one is still valid — keep it
+		# Check if there's a valid new target
 		if new_target == null or !is_instance_valid(new_target):
+			# If current target is also invalid, go idle
 			if target == null or !is_instance_valid(target):
 				print("[DEBUG] Transitioning to Idle: No new or current target found during recheck")
 				fsm._transition_to_next_state("Idle")
 				return
 		else:
-			target = new_target
+			var npc_pos = fsm.npc_root_node.global_transform.origin
+			var new_distance = npc_pos.distance_to(new_target.global_transform.origin)
+			
+			# If current target is valid, compare distances
+			if target != null and is_instance_valid(target):
+				var current_distance = npc_pos.distance_to(target.global_transform.origin)
+				if new_distance < current_distance:
+					target = new_target  # Only switch if the new target is closer
+					print("[DEBUG] Switched to closer target")
+				else:
+					print("[DEBUG] Kept current target - closer or equal")
+			else:
+				target = new_target  # No valid current target, accept new one
 
 		end = target.global_transform.origin
 		path = fsm.pathfinder_component.findpaths(fsm.npc_root_node.global_transform.origin, end)
@@ -95,6 +108,7 @@ func update(delta: float) -> void:
 
 		current_target_index = 0
 		recheck_timer = recheck_down
+
 
 	# Reduce the cooldown timer
 	if not is_instance_valid(target):

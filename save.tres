@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SavedGame" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SavedGame" load_steps=2 format=3 uid="uid://dtci3ytyqyhmw"]
 
 [ext_resource type="Script" path="res://Script/saved_game.gd" id="1_jahlu"]
 
@@ -363,9 +363,11 @@ game_time = {
 }
 sibilyans = []
 troops = {
-"sdfsdf": {
+"asdasd": {
 "arnisador": 10,
+"kapitan_makoy": 1,
 "lakan_warrior": 10,
+"super_inday": 1,
 "tirador": 5
 }
 }

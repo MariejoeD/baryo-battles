@@ -26,7 +26,7 @@ func _on_btn_pressed(btn):
 	if is_conquered(btn.name):
 		display()
 		return
-	await self.ready 
+
 	var tutorial_node = get_tree().current_scene.find_child("tutorial")
 
 	if is_instance_valid(tutorial_node):
