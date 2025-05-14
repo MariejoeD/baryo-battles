@@ -1520,6 +1520,7 @@ theme_override_font_sizes/font_size = 40
 text = "300"
 
 [node name="upgradeTroops" type="TextureButton" parent="UI/Sandatahang Lakas"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("25_m3p7s")
 texture_pressed = ExtResource("26_nyu7x")

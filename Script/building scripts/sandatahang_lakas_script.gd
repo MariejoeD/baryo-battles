@@ -59,6 +59,12 @@ func _ready() -> void:
 	building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
 	building_name.get_node("upgrade").pressed.connect(_on_upgrade_pressed)
 	building_name.get_node("trainTroops").pressed.connect(_on_train_troops_pressed)
+	%upgradeTroops.pressed.connect(_on_upgrade_troops_pressed)
+	# Add training_timer to the scene
+	add_child(training_timer)
+	training_timer.one_shot = true
+	training_timer.timeout.connect(_on_training_timer_timeout)
+	
 	training_panel = building_name.get_node("trainTroops/mainPanel/trainingPanel/ScrollContainer/HBoxContainer")
 	for troop in building_name.get_node("trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer").get_children():
 		troop.pressed.connect(_on_troop_pressed.bind(troop))
@@ -194,24 +200,30 @@ func training() -> void:
 
 	var current = trainingTroops[0]
 	var duration = current.get("remaining_time", current.duration)
-	
+
 	training_timer.start(duration)
 
-	# Find the troop entry in the training panel
+func _on_training_timer_timeout():
+	if trainingTroops.is_empty():
+		return
+
+	var current = trainingTroops[0]
+	send_to_kampo(current)
+
+	# Update UI
 	var troop_entry = training_panel.get_node_or_null(NodePath(current["name"]))
 	if troop_entry:
 		var count_label = troop_entry.get_node("CountLabel")
-		var count = int(count_label.text.substr(1))  # Extract number from "xN"
+		var count = int(count_label.text.substr(1))  # Remove the 'x'
 		
 		if count > 1:
-			count_label.text = "x" + str(count - 1)  # Decrease count
+			count_label.text = "x" + str(count - 1)
 		else:
-			troop_entry.queue_free()  # Remove when count reaches 0
-	send_to_kampo(current)
-	trainingTroops.pop_front()  # Remove the troop from the queue
-	
-	if not trainingTroops.is_empty():
-		training()  # Continue training the next troop
+			troop_entry.queue_free()
+
+	trainingTroops.pop_front()  # Now remove the troop
+	training()  # Start training the next troop
+
 
 func send_to_kampo(troop):
 	var troop_scene = load(troop["scene"])
@@ -271,7 +283,8 @@ func _on_view_information_pressed() -> void:
 
 func _on_upgrade_pressed() -> void:
 	_toggle_panel("upgrade/upgradePanel")
-
+func _on_upgrade_troops_pressed() -> void:
+	_toggle_panel("upgradeTroops/mainPanel")
 func upgrade():
 	if Npc.TH_level == level:
 		#upgrade limit reach

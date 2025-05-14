@@ -1061,7 +1061,7 @@ bones/38/rotation = Quaternion(0, 0, 0, 1)
 bones/38/scale = Vector3(1, 1, 1)
 
 [node name="model_001" type="BoneAttachment3D" parent="Skeleton3D2"]
-transform = Transform3D(-3.53514, -4.69941, 25.6815, 23.7249, 10.239, 5.13944, -10.8974, 23.8159, 2.85799, 0.0739711, 0.784998, -0.0639109)
+transform = Transform3D(-3.53514, -4.69942, 25.6815, 23.7249, 10.239, 5.13944, -10.8974, 23.8159, 2.858, 0.0739712, 0.784998, -0.0639108)
 bone_name = "model.001"
 bone_idx = 23
 

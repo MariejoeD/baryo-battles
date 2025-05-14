@@ -52,6 +52,7 @@ func _ready():
 	# Immediately trigger logic for already unlocked maps
 	activate_dev_mode()
 	for map_name in MapManager.get_available_maps():  # Replace with actual manager if different
+		#print(map_name)
 		if map_name != "Aklan":  # Avoid re-showing the starting map if unnecessary
 			map_unlock(map_name)
 	if MusicController.is_music_on and !MusicController.music_player.playing:
@@ -74,7 +75,7 @@ func _ready():
 	update_button_visuals()
 func activate_dev_mode():
 	for btn in $"AttackPanel/ScrollContainer/VBoxContainer/TextureRect".get_children():
-		if btn.name == "aklan":
+		if btn.name == "aklan" or "Capiz":
 			continue
 		btn.hide()
 	
@@ -83,11 +84,15 @@ func activate_dev_mode():
 			map_unlock(btn.name)
 
 func map_unlock(map_name):
-	print("Showing")
+	#print("Showing")
 	print(map_name)
 	attack_panel.find_child(map_name).show()
 
 func _on_attack_button_pressed():
+	for map_name in MapManager.get_available_maps():  # Replace with actual manager if different
+		#print(map_name)
+		if map_name != "Aklan":  # Avoid re-showing the starting map if unnecessary
+			map_unlock(map_name)
 	attack_panel.visible = !attack_panel.visible
 	build_button.visible = !build_button.visible
 

@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="SavedGame" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SavedGame" load_steps=2 format=3 uid="uid://d0qtunyrm3f1f"]
 
 [ext_resource type="Script" path="res://Script/saved_game.gd" id="1_jahlu"]
 
 [resource]
 script = ExtResource("1_jahlu")
 resources = {
-"food": 9410,
-"stone": 9690,
-"wood": 9540
+"food": 0,
+"stone": 0,
+"wood": 0
 }
 environment_data = [{
 "mesh_index": 0,
@@ -330,15 +330,15 @@ building_data = [{
 }, {
 "built": true,
 "duration": 120.0,
-"grow_start_time": 94.4277,
-"is_harvestable": false,
+"grow_start_time": 117.94,
+"is_harvestable": true,
 "level": 1,
 "name": "tanim",
 "position": Vector3(18, 0.5, 10),
-"remaining_grow_time": 120.0,
+"remaining_grow_time": 0.0,
 "rotation": Vector3(-7.54979e-08, 0, 0),
 "scale": Vector3(100, 100, 100),
-"y_position": -0.00807993
+"y_position": -0.001
 }, {
 "built": true,
 "level": 1,
@@ -356,29 +356,39 @@ building_data = [{
 "scale": Vector3(0.5, 0.5, 0.5)
 }]
 game_time = {
-"current_time": 94.4277,
+"current_time": 164.019,
 "has_emitted_night_time": false,
-"time_of_day": 0.0786898,
-"total_game_time": 94.4277
+"time_of_day": 0.136682,
+"total_game_time": 745.794
 }
 sibilyans = []
 troops = {
-"asdasd": {
-"arnisador": 10,
-"kapitan_makoy": 1,
-"lakan_warrior": 10,
-"super_inday": 1,
-"tirador": 5
+"Kampo-lv1": {
+"arnisador": 8
 }
 }
 battle_data = {
 "boss_defeated": {
 "agta": false,
 "amomongo": false,
-"lizardo": false,
+"lizardo": true,
 "mangkukulam": false,
 "tiniente_gimo": false
 },
-"conquered_bases": [],
+"conquered_bases": [{
+"base_cp": 515.5,
+"civilian": 10,
+"name": "Aklan",
+"rate": 5,
+"resource": "Wood",
+"stored_resources": 1000.0
+}, {
+"base_cp": 0,
+"civilian": 0,
+"name": "FinalBattle",
+"rate": 5,
+"resource": "Food",
+"stored_resources": 1125.0
+}],
 "unlocked_maps": ["Aklan"]
 }

@@ -26,7 +26,7 @@ var map_sequence := [
 ]
 
 # Start with the first map unlocked
-var unlocked_maps := ["Aklan"]
+var unlocked_maps := ["Capiz","Aklan"]
 
 func _ready():
 	start_resource_timer()
@@ -69,28 +69,41 @@ func start_resource_timer():
 	timer.start()
 
 func _on_resource_tick():
-	for base in conquered_bases:
+	for i in conquered_bases.size():
+		var base = conquered_bases[i]
 		var rate = base["rate"]
 		base["stored_resources"] += rate + (base["civilian"] * 0.5)
-		print("Generated %d from %s" % [rate, base["name"]])
+		conquered_bases[i] = base  # Reassign the updated dictionary back
 
 func map_report():
 	print("---Report---")
-	SignalManager.save.emit()
 	for base in conquered_bases:
 		# Battle roll (skip base if lost)
 		if randi_range(1, 100) <= 50:
-			var base_value = base["rate"] * 240
+			var civ = base["civilian"]
 			var base_cp = base["base_cp"]
-			var pressure = base_value / max(base_cp, 1)
+			var troops = max(base_cp / 40.0, 1.0)
 
-			var multiplier = clamp(0.8 + ((pressure - 2) / 8) * 0.4, 0.8, 1.2)
+			# Calculate pressure based on civilian-to-troop ratio
+			var pressure = civ / troops
+
+			# Adjust multiplier based on pressure
+			var multiplier = clamp(0.8 + ((pressure - 1.5) / 2.5) * 0.6, 0.8, 1.5)
+
+			# Calculate enemy's CP
 			var enemy_cp = base_cp * multiplier
 
-			if base_cp < enemy_cp or base_cp == 0:
+			# Calculate the chance of losing
+			var chance_of_loss = clamp((multiplier - 1) * 50, 0, 100)
+
+			print("Base %s has a %.2f chance of losing." % [base["name"], chance_of_loss])
+			if base_cp < enemy_cp and increase_value >= base_value:
 				print("⚔️ Lost: %s" % base["name"])
 				conquered_bases.erase(base)
 				continue
+
+			base["base_cp"] *= 0.5
+
 
 		var res_type = base["resource"]
 		var stored = base["stored_resources"]
@@ -123,4 +136,5 @@ func map_report():
 			"Stone": Global.stone_qty = current
 			"Food": Global.food_qty = current
 
-		base["base_cp"] *= 0.5
+		
+	SignalManager.save.emit()

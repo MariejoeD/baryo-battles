@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://cbopsrppipav"]
+[gd_scene load_steps=21 format=3 uid="uid://cbopsrppipav"]
 
+[ext_resource type="Script" path="res://Script/harvest_from_enemy.gd" id="1_emkci"]
 [ext_resource type="Texture2D" uid="uid://c6u8180hydsfk" path="res://assets/trainTroops/arnisador.png" id="1_p04kr"]
 [ext_resource type="Texture2D" uid="uid://p5svy4v2t8kb" path="res://assets/trainTroops/skill/stick.png" id="2_328w4"]
 [ext_resource type="Texture2D" uid="uid://b0x3obf2dadg1" path="res://assets/trainTroops/lakanWarrior.png" id="3_ivqcn"]
@@ -27,17 +28,21 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
 shadow_size = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ue3nq"]
-bg_color = Color(0.489384, 0.664894, 0.279811, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="LabelSettings" id="LabelSettings_hlpc5"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qk0ef"]
+bg_color = Color(0.947107, 0.421823, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npwop"]
 bg_color = Color(0.490196, 0.666667, 0.278431, 1)
@@ -50,6 +55,23 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_1yyst"]
+font_size = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ue3nq"]
+bg_color = Color(0.489384, 0.664894, 0.279811, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4bvwm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pourj"]
 bg_color = Color(0.812499, 0.0518025, 0.119025, 1)
@@ -64,20 +86,6 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4bvwm"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qk0ef"]
-bg_color = Color(0.947107, 0.421823, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-
 [node name="harvestFromEnemy" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -85,55 +93,103 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_emkci")
 
 [node name="mainPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 348.0
-offset_top = 98.0
-offset_right = -245.0
-offset_bottom = -284.0
+offset_left = 293.0
+offset_top = 128.0
+offset_right = -300.0
+offset_bottom = -175.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w2k6n")
 
-[node name="troopsPanel" type="Panel" parent="mainPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="mainPanel"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.026
-anchor_top = 0.506
-anchor_right = 0.728
-anchor_bottom = 0.935
-offset_left = 0.138
-offset_top = -0.0280151
-offset_right = -0.136017
-offset_bottom = -0.0300293
-theme_override_styles/panel = SubResource("StyleBoxFlat_ue3nq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="mainPanel/troopsPanel"]
+[node name="BaseName" type="Panel" parent="mainPanel/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="mainPanel/VBoxContainer/BaseName"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="baseName" type="Label" parent="mainPanel/VBoxContainer/BaseName/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "base name"
+label_settings = SubResource("LabelSettings_hlpc5")
+
+[node name="Panel" type="Panel" parent="mainPanel/VBoxContainer/BaseName/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="infoButton" type="Button" parent="mainPanel/VBoxContainer/BaseName/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -21.0
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_68ab8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_qk0ef")
+text = "i
+"
+
+[node name="pickedTroops" type="Panel" parent="mainPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_npwop")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="mainPanel/VBoxContainer/pickedTroops"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.999
 anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 327.199
-offset_bottom = 103.224
-scale = Vector2(0.5, 0.5)
+offset_right = 249.687
+offset_bottom = 122.0
+scale = Vector2(0.725, 0.5)
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="mainPanel/troopsPanel/ScrollContainer"]
+[node name="addedTroops" type="HBoxContainer" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="arnisador" type="TextureButton" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
+[node name="arnisador" type="TextureButton" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer/addedTroops"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("1_p04kr")
 
-[node name="skill" type="TextureRect" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer/arnisador"]
+[node name="skill" type="TextureRect" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer/addedTroops/arnisador"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.044
@@ -147,11 +203,25 @@ offset_bottom = 0.109001
 texture = ExtResource("2_328w4")
 expand_mode = 1
 
-[node name="lakanWarrior" type="TextureButton" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
+[node name="qty" type="Label" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer/addedTroops/arnisador"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_1yyst")
+
+[node name="lakan_warrior" type="TextureButton" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer/addedTroops"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("3_ivqcn")
 
-[node name="skill" type="TextureRect" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakanWarrior"]
+[node name="skill" type="TextureRect" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer/addedTroops/lakan_warrior"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.044
@@ -165,11 +235,25 @@ offset_bottom = 0.109001
 texture = ExtResource("4_ca3qt")
 expand_mode = 1
 
-[node name="manggagamot" type="TextureButton" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
+[node name="qty" type="Label" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer/addedTroops/lakan_warrior"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_1yyst")
+
+[node name="manggagamot" type="TextureButton" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer/addedTroops"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("5_s315l")
 
-[node name="skill" type="TextureRect" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer/manggagamot"]
+[node name="skill" type="TextureRect" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer/addedTroops/manggagamot"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.044
@@ -183,11 +267,25 @@ offset_bottom = 0.109001
 texture = ExtResource("6_q2fwk")
 expand_mode = 1
 
-[node name="tirador" type="TextureButton" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
+[node name="qty" type="Label" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer/addedTroops/manggagamot"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_1yyst")
+
+[node name="tirador" type="TextureButton" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer/addedTroops"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("7_mg5j1")
 
-[node name="skill" type="TextureRect" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador"]
+[node name="skill" type="TextureRect" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer/addedTroops/tirador"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.044
@@ -201,11 +299,25 @@ offset_bottom = 0.109001
 texture = ExtResource("8_ef0nf")
 expand_mode = 1
 
-[node name="marites" type="TextureButton" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
+[node name="qty" type="Label" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer/addedTroops/tirador"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_1yyst")
+
+[node name="marites" type="TextureButton" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer/addedTroops"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("9_mrj2d")
 
-[node name="skill" type="TextureRect" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer/marites"]
+[node name="skill" type="TextureRect" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer/addedTroops/marites"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.044
@@ -219,64 +331,215 @@ offset_bottom = 0.109001
 texture = ExtResource("10_g67hr")
 expand_mode = 1
 
-[node name="pickedTroops" type="Panel" parent="mainPanel"]
+[node name="qty" type="Label" parent="mainPanel/VBoxContainer/pickedTroops/ScrollContainer/addedTroops/marites"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_1yyst")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="mainPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="troopsPanel" type="Panel" parent="mainPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ue3nq")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.008
-anchor_top = 0.014
-anchor_right = 0.992
-anchor_bottom = 0.343
-offset_left = -0.200001
-offset_top = -0.0360003
-offset_right = 0.199951
-offset_bottom = 0.118011
-theme_override_styles/panel = SubResource("StyleBoxFlat_npwop")
+anchor_right = 0.999
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 327.199
+offset_bottom = 103.224
+scale = Vector2(0.5, 0.5)
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="mainPanel/pickedTroops"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.009
-anchor_top = 0.042
-anchor_right = 0.988
-anchor_bottom = 0.931
-offset_left = -0.0810604
-offset_top = 0.0619979
-offset_right = 0.108093
-offset_bottom = 0.0409546
-
-[node name="HBoxContainer" type="HBoxContainer" parent="mainPanel/pickedTroops/ScrollContainer"]
+[node name="troops" type="HBoxContainer" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="deployButton" type="Button" parent="mainPanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.801
-anchor_top = 0.382
-anchor_right = 0.977
-anchor_bottom = 0.553
-offset_left = -0.287048
-offset_top = -0.116013
-offset_right = -0.199036
-offset_bottom = 0.0859833
-theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("11_68ab8")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_pourj")
-text = "Deploy"
+[node name="arnisador" type="TextureButton" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer/troops"]
+layout_mode = 2
+texture_normal = ExtResource("1_p04kr")
 
-[node name="sibilyan" type="Label" parent="mainPanel"]
+[node name="skill" type="TextureRect" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer/troops/arnisador"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.796
-anchor_top = 0.663
-anchor_right = 0.917
-anchor_bottom = 0.757
-offset_left = 0.147949
-offset_top = -0.0940094
-offset_right = 0.0209351
-offset_bottom = 0.133987
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("2_328w4")
+expand_mode = 1
+
+[node name="qty" type="Label" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer/troops/arnisador"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_1yyst")
+
+[node name="lakan_warrior" type="TextureButton" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer/troops"]
+layout_mode = 2
+texture_normal = ExtResource("3_ivqcn")
+
+[node name="skill" type="TextureRect" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer/troops/lakan_warrior"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("4_ca3qt")
+expand_mode = 1
+
+[node name="qty" type="Label" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer/troops/lakan_warrior"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_1yyst")
+
+[node name="manggagamot" type="TextureButton" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer/troops"]
+layout_mode = 2
+texture_normal = ExtResource("5_s315l")
+
+[node name="skill" type="TextureRect" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer/troops/manggagamot"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("6_q2fwk")
+expand_mode = 1
+
+[node name="qty" type="Label" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer/troops/manggagamot"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_1yyst")
+
+[node name="tirador" type="TextureButton" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer/troops"]
+layout_mode = 2
+texture_normal = ExtResource("7_mg5j1")
+
+[node name="skill" type="TextureRect" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer/troops/tirador"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("8_ef0nf")
+expand_mode = 1
+
+[node name="qty" type="Label" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer/troops/tirador"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_1yyst")
+
+[node name="marites" type="TextureButton" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer/troops"]
+layout_mode = 2
+texture_normal = ExtResource("9_mrj2d")
+
+[node name="skill" type="TextureRect" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer/troops/marites"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("10_g67hr")
+expand_mode = 1
+
+[node name="qty" type="Label" parent="mainPanel/VBoxContainer/HBoxContainer2/troopsPanel/ScrollContainer/troops/marites"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0
+"
+label_settings = SubResource("LabelSettings_1yyst")
+
+[node name="Panel" type="Panel" parent="mainPanel/VBoxContainer/HBoxContainer2"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mainPanel/VBoxContainer/HBoxContainer2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="sibilyan" type="Label" parent="mainPanel/VBoxContainer/HBoxContainer2/Panel/VBoxContainer"]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -284,34 +547,24 @@ theme_override_fonts/font = ExtResource("11_68ab8")
 theme_override_font_sizes/font_size = 25
 text = "Sibilyan"
 
-[node name="+" type="Button" parent="mainPanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.771
-anchor_top = 0.716
-anchor_right = 0.814
-anchor_bottom = 0.864
-offset_left = 0.322998
-offset_top = -0.00801086
-offset_right = -0.218018
-offset_bottom = -0.0320129
+[node name="HBoxContainer" type="HBoxContainer" parent="mainPanel/VBoxContainer/HBoxContainer2/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="+" type="Button" parent="mainPanel/VBoxContainer/HBoxContainer2/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("11_68ab8")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4bvwm")
 text = "+"
 
-[node name="sibilyan2" type="Label" parent="mainPanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.824
-anchor_top = 0.751
-anchor_right = 0.885
-anchor_bottom = 0.846
-offset_left = -0.0880127
-offset_top = 0.161987
-offset_right = 0.00494385
-offset_bottom = 0.052002
+[node name="sibilyanQty" type="Label" parent="mainPanel/VBoxContainer/HBoxContainer2/Panel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -321,41 +574,103 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="-" type="Button" parent="mainPanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.908
-anchor_top = 0.716
-anchor_right = 0.951
-anchor_bottom = 0.864
-offset_left = 0.203979
-offset_top = -0.00801086
-offset_right = -0.337036
-offset_bottom = -0.0320129
+[node name="-" type="Button" parent="mainPanel/VBoxContainer/HBoxContainer2/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("11_68ab8")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4bvwm")
 text = "-"
 
-[node name="infoButton" type="Button" parent="mainPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="mainPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="mainPanel/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(535, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mainPanel/VBoxContainer/HBoxContainer/Panel"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.012
-anchor_top = 0.373
-anchor_right = 0.055
-anchor_bottom = 0.453
-offset_left = -0.244
-offset_top = -0.0740051
-offset_right = 0.214996
-offset_bottom = -0.113998
-theme_override_fonts/font = ExtResource("11_68ab8")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_qk0ef")
-text = "i
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResourceType" type="HBoxContainer" parent="mainPanel/VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Resource" type="Label" parent="mainPanel/VBoxContainer/HBoxContainer/Panel/VBoxContainer/ResourceType"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Resource: "
+
+[node name="type" type="Label" parent="mainPanel/VBoxContainer/HBoxContainer/Panel/VBoxContainer/ResourceType"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Wood"
+
+[node name="ResourceQty" type="HBoxContainer" parent="mainPanel/VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Resource" type="Label" parent="mainPanel/VBoxContainer/HBoxContainer/Panel/VBoxContainer/ResourceQty"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Qty: "
+
+[node name="rate" type="Label" parent="mainPanel/VBoxContainer/HBoxContainer/Panel/VBoxContainer/ResourceQty"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "60/m
 "
 
+[node name="addedRate" type="Label" parent="mainPanel/VBoxContainer/HBoxContainer/Panel/VBoxContainer/ResourceQty"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "+0/m
+"
+
+[node name="CurrentCP" type="HBoxContainer" parent="mainPanel/VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="mainPanel/VBoxContainer/HBoxContainer/Panel/VBoxContainer/CurrentCP"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Current CP: "
+
+[node name="currentCP" type="Label" parent="mainPanel/VBoxContainer/HBoxContainer/Panel/VBoxContainer/CurrentCP"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+
+[node name="toBeAddedCP" type="Label" parent="mainPanel/VBoxContainer/HBoxContainer/Panel/VBoxContainer/CurrentCP"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "+0"
+
+[node name="deployButton" type="Button" parent="mainPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("11_68ab8")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_pourj")
+text = "Deploy"
+
 [node name="infoPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.323
@@ -376,16 +691,25 @@ anchor_left = 0.027
 anchor_top = 0.074
 anchor_right = 0.96
 anchor_bottom = 0.934
-offset_left = 0.0669994
-offset_top = 0.0539989
-offset_right = 0.159973
-offset_bottom = 0.113998
+offset_left = 1.067
+offset_top = -14.946
+offset_right = 1.15997
+offset_bottom = 9.114
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("11_68ab8")
 theme_override_font_sizes/font_size = 20
-text = "Assign a troop to defend your newly reclaimed base from enemy counterattacks. Don’t forget to deploy Sibilyan to gather extra resources from the area."
+text = "Assign your troops to defend the base. Their total Combat Power (CP) will determine its defense strength.
+
+Add Sibilyan to boost resource production — each one increases your income rate.
+
+Choose your defenders and gatherers wisely!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[connection signal="pressed" from="mainPanel/VBoxContainer/BaseName/HBoxContainer/Panel/infoButton" to="." method="_on_info_button_pressed"]
+[connection signal="pressed" from="mainPanel/VBoxContainer/HBoxContainer2/Panel/VBoxContainer/HBoxContainer/+" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="mainPanel/VBoxContainer/HBoxContainer2/Panel/VBoxContainer/HBoxContainer/-" to="." method="_on_reduce_pressed"]
+[connection signal="pressed" from="mainPanel/VBoxContainer/HBoxContainer/deployButton" to="." method="_on_deploy_button_pressed"]

@@ -38,22 +38,23 @@ func enemy_attack_check():
 	var chance = randf_range(0.0, 100.0)
 	#print("[Chance] Roll:", chance, " vs Threshold:", total_score)
 	
-	total_score = 100
+	#total_score = 100
 	if chance < total_score:
-		#print("⚠️ Enemy Attack Triggered!")
+		print("⚠️ Enemy Attack Triggered!")
 		SignalManager.base_under_attack.emit()
 		var defender_score = get_defender_score()
 		var raid_strength = determine_enemy_total_cp(wealth_score, defender_score)
 		selected = select_enemies_to_spawn(raid_strength)
 		#print("[ENEMIES SELECTED]", selected)
 		available = get_unassigned_troop()
-		if available.size() == 0:
+		if available.size() <= 5:
+			Global.stop_time = false
 			return
 		$UI.load_spells()
 		$"Defend Control".show_defense_warning()
 		
 	else:
-		#print("🌙 Quiet night. No attack.")
+		print("🌙 Quiet night. No attack.")
 	#print("[enemy_attack_check] --- END ---\n")
 		pass
 
@@ -163,7 +164,7 @@ func determine_enemy_total_cp(wealth, defenders):
 		# 🛡️ Optional: Safety net for early-game players with really low CP
 		if base_cp < estimate_max_cp() * 0.2 and TH_level <= 2:
 			#print("⚠️ [Early Game Safety Net Triggered] Raid Strength Reduced!")
-			raid_strength *= 0.75  # Give them a slim chance to survive
+			raid_strength *= 0.5 # Give them a slim chance to survive
 
 	else:
 		#print("[determine_enemy_total_cp] NO Aggression (Balanced or Over-defended)")

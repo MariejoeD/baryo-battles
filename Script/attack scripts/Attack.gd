@@ -3,15 +3,29 @@ extends Node
 var base_path = "res://Scene/battle/"  # Parent path
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for btn in $"../AttackPanel/ScrollContainer/VBoxContainer/TextureRect".get_children():
-		btn.connect("pressed", Callable(self, "_on_btn_pressed").bind(btn))
+	for region in $"../AttackPanel/ScrollContainer/VBoxContainer/TextureRect".get_children():
+		for btn in region.get_children():
+			btn.connect("pressed", Callable(self, "_on_btn_pressed").bind(btn))
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func display():
-	#make panel visible
+	%conquered.show()
 	pass
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		if %conquered.visible:
+			var mouse_pos = get_viewport().get_mouse_position()
+
+			# Adjust this to match your actual grandchild path
+			var panel := %conquered.get_child(0).get_child(0)
+
+			if panel is Control:
+				if not panel.get_global_rect().has_point(mouse_pos):
+					%conquered.hide()
+
+
 	
 func is_conquered(base_name: String) -> bool:
 	for pair in MapManager.conquered_bases:
@@ -19,11 +33,37 @@ func is_conquered(base_name: String) -> bool:
 		if pair["name"] == base_name.capitalize():
 			return true
 	return false
+#var conquered_bases := [{"name": "Aklan",
+		#"resource": "Wood",
+		#"rate": 5,
+		#"civilian": 0,
+		#"base_cp": 0,
+		#"stored_resources": 0},]
+func base_data(base_name: String):
+	for base in MapManager.conquered_bases:
+		if base["name"] == base_name.capitalize():
+			return base
+	return {}
+func update_conquered_panel(base_name: String):
+	var panel := %conquered.get_child(0)
+	var data = base_data(base_name)
+	if data.size() == 0:  # Check if base data was found
+		print("Base not found.")
+		return
+	
+	panel.base_name = data["name"]
+	panel.resource_type = data["resource"]
+	panel.rate = data["rate"] + (data["civilian"] * 0.5) * 12
+	panel.baseCp = data["base_cp"]
+	
+	panel.start()
+	pass
 
 func _on_btn_pressed(btn):
 	# Save the troops data before changing scenes
 	print(MapManager.conquered_bases)
 	if is_conquered(btn.name):
+		update_conquered_panel(btn.name)
 		display()
 		return
 
@@ -46,22 +86,12 @@ func _on_btn_pressed(btn):
 	#
 	#print("After Saving:", Global.kampo_troops)  # Check if duplicates appear
 	#
-	var scene_path = scene_exists_in_folder(base_path, btn.name)
+	var folder_name :String = btn.get_parent().name
+	var file_name :String = btn.name
+	var scene_path :String= "res://Scene/battle/%s/%s.tscn" % [folder_name, file_name]
+	print("Button Pressed")
+	print(scene_path)
 	if scene_path:
 		# Create a SceneLoader instance dynamically
+		
 		SceneManager.go_to_scene(scene_path) # Start the scene loading process
-
-func scene_exists_in_folder(folder_path: String, button_name: String) -> String:
-	var dir = DirAccess.open(folder_path)
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-
-		while file_name != "":
-			# Check if it's a folder (region name)
-			if dir.current_is_dir():
-				var scene_path = folder_path + file_name + "/" + button_name + ".tscn"
-				if FileAccess.file_exists(scene_path):
-					return scene_path  # Return the correct path
-			file_name = dir.get_next()
-	return ""  # Return empty if not found

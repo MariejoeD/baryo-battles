@@ -165,13 +165,14 @@ func perform_work(worker, duration:= -1):
 		await get_tree().create_timer(duration).timeout
 		$UI/Tanim/Harvest.texture_normal = load("res://assets/button/harvest.png")
 		print("Harvest Complete")
-		Global.food_qty += randi_range(30,40)
-		if Global.get_food_cap() < Global.food_qty:
-			Global.food_qty = Global.get_food_cap()
-		#Change  Indicator
-		grow(grow_duration)
-		#gray
-		worker.task_complete()
+		if worker:
+			Global.food_qty += randi_range(30,40)
+			if Global.get_food_cap() < Global.food_qty:
+				Global.food_qty = Global.get_food_cap()
+			#Change  Indicator
+			grow(grow_duration)
+			#gray
+			worker.task_complete()
 	else:
 		start_time = Global.total_game_time
 		await get_tree().create_timer(duration).timeout

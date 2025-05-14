@@ -12,7 +12,6 @@ var is_panel_visible = false
 func _ready() -> void:
 	area.monitoring = true
 	panel.visible = false
-	area.input_event.connect(_on_area_3d_input_event)
 	#print("Area monitoring:", area.monitoring)
 	#print("Area input pickable:", area.input_ray_pickable)
 	#print("Collision layer:", area.collision_layer)

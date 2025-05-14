@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cn7iqqyud5p6q"]
+[gd_scene load_steps=26 format=4 uid="uid://cn7iqqyud5p6q"]
 
 [ext_resource type="Texture2D" uid="uid://q6s4l8ippmrn" path="res://assets/building models/kapitanMakoyBase_0.png" id="1_3knre"]
 [ext_resource type="Script" path="res://Scene/buildings/super_inday_base.gd" id="2_rlqur"]
@@ -179,6 +179,21 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqpud"]
+bg_color = Color(0.66312, 0, 0.091477, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnucu"]
+bg_color = Color(0.182355, 0.702936, 0, 1)
+
 [node name="Kapitan-Makoy-Base" type="MeshInstance3D"]
 transform = Transform3D(100, 0, 0, 0, 100, 7.54979e-06, 0, -7.54979e-06, 100, 0, 0, 0)
 mesh = SubResource("ArrayMesh_honoo")
@@ -337,7 +352,7 @@ theme_override_constants/outline_size = 2
 theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("7_podsp")
 theme_override_font_sizes/font_size = 30
-text = "300"
+text = "500"
 
 [node name="feedButton" type="Button" parent="UI/super_inday_base/viewInformation/InformationPanel"]
 layout_mode = 1
@@ -380,3 +395,18 @@ offset_left = -0.055954
 offset_top = 0.119995
 offset_right = 0.152039
 offset_bottom = -0.0500031
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/super_inday_base/viewInformation/InformationPanel/Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_gqpud")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pnucu")
+step = 1.0
+value = 100.0
+show_percentage = false

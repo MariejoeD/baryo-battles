@@ -391,12 +391,12 @@ offset_bottom = 121.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_j35mj")
 
-[node name="tirador" type="TextureButton" parent="allyPanel/allyContainer"]
+[node name="manggagamot" type="TextureButton" parent="allyPanel/allyContainer"]
 visible = false
 layout_mode = 2
-texture_normal = ExtResource("4_q5aik")
+texture_normal = ExtResource("5_brc5q")
 
-[node name="Panel" type="Panel" parent="allyPanel/allyContainer/tirador"]
+[node name="Panel" type="Panel" parent="allyPanel/allyContainer/manggagamot"]
 visible = false
 layout_mode = 0
 offset_right = 96.0
@@ -404,12 +404,12 @@ offset_bottom = 121.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_j35mj")
 
-[node name="manggagamot" type="TextureButton" parent="allyPanel/allyContainer"]
+[node name="tirador" type="TextureButton" parent="allyPanel/allyContainer"]
 visible = false
 layout_mode = 2
-texture_normal = ExtResource("5_brc5q")
+texture_normal = ExtResource("4_q5aik")
 
-[node name="Panel" type="Panel" parent="allyPanel/allyContainer/manggagamot"]
+[node name="Panel" type="Panel" parent="allyPanel/allyContainer/tirador"]
 visible = false
 layout_mode = 0
 offset_right = 96.0

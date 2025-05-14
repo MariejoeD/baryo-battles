@@ -73,6 +73,10 @@ func delete_save_file(path: String):
 			var result = dir.remove(file_name)
 			if result == OK:
 				print("Deleted file:", path)
+				OS.shell_open(OS.get_executable_path())
+				# Delay quit just a little
+				await get_tree().create_timer(0.1).timeout
+				get_tree().quit()
 			else:
 				print("Failed to delete file:", path)
 		else:

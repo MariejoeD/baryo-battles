@@ -23,6 +23,7 @@ func on_placed():
 	super.on_placed()
 	
 	add_to_group("Buildings")
+	Buildings.reset()
 	Buildings.buildings["MalacadabraBtn"] = 0
 	change_building_count()
 	
@@ -156,7 +157,7 @@ func change_building_count():
 	
 	if level >= 2:
 		Buildings.buildings["KawaBtn"] += 1
-		Buildings.buildings["EstakadaBtn"] += 20
+		Buildings.buildings["EstakadaBtn"] += 10
 	
 	if level >= 3:
 		Buildings.buildings["BalwarteBtn"] += 2

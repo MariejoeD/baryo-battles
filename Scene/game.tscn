@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://d4nb8cjrspohc"]
+[gd_scene load_steps=64 format=3 uid="uid://d4nb8cjrspohc"]
 
 [ext_resource type="Script" path="res://Script/attack scripts/Attack.gd" id="1_shcpm"]
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
@@ -47,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://c7kqd2n554cnt" path="res://assets/BuildingsRawPics/superIndayBase.jpg" id="41_wj07t"]
 [ext_resource type="Texture2D" uid="uid://86nma88jnhgi" path="res://assets/BuildingsRawPics/kapitanMakoyBase.jpg" id="42_hagam"]
 [ext_resource type="PackedScene" path="res://Scene/tutorial.tscn" id="43_okd6o"]
+[ext_resource type="PackedScene" uid="uid://cbopsrppipav" path="res://Scene/battle/harvest_from_enemy.tscn" id="48_sv6fs"]
 
 [sub_resource type="Theme" id="Theme_1ed3j"]
 
@@ -1926,37 +1927,16 @@ layout_mode = 2
 texture = ExtResource("17_gi6q2")
 stretch_mode = 3
 
-[node name="Ilo-Ilo" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
-visible = false
+[node name="Western Visayas" type="Control" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.183
-anchor_top = 0.356
-anchor_right = 0.238
-anchor_bottom = 0.453
-offset_left = 0.265991
-offset_top = 0.052002
-offset_right = -0.124008
-offset_bottom = 0.200989
-texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="antique" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.097
-anchor_top = 0.348
-anchor_right = 0.15
-anchor_bottom = 0.445
-offset_left = -0.706001
-offset_top = -0.0840149
-offset_right = 0.299995
-offset_bottom = 0.0649872
-texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
-
-[node name="aklan" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="aklan" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Western Visayas"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.125
@@ -1970,7 +1950,37 @@ offset_bottom = 0.201996
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
-[node name="guimaras" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="Ilo-Ilo" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Western Visayas"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.183
+anchor_top = 0.356
+anchor_right = 0.238
+anchor_bottom = 0.453
+offset_left = 0.265999
+offset_top = 0.052002
+offset_right = -0.124008
+offset_bottom = 0.200989
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="antique" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Western Visayas"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.097
+anchor_top = 0.348
+anchor_right = 0.15
+anchor_bottom = 0.445
+offset_left = -0.706001
+offset_top = -0.0840149
+offset_right = 0.299995
+offset_bottom = 0.0650177
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="guimaras" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Western Visayas"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -1980,171 +1990,8 @@ anchor_right = 0.258
 anchor_bottom = 0.553
 offset_left = 0.306
 offset_top = 0.235001
-offset_right = -0.0840149
-offset_bottom = -0.0990295
-texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
-
-[node name="bohol" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.537
-anchor_top = 0.64
-anchor_right = 0.592
-anchor_bottom = 0.737
-offset_left = 0.174011
-offset_top = -0.120026
-offset_right = -0.216003
-offset_bottom = 0.0289917
-texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
-
-[node name="cebu" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.463
-anchor_top = 0.482
-anchor_right = 0.517
-anchor_bottom = 0.58
-offset_left = -0.174011
-offset_top = 0.193985
-offset_right = 0.133972
-offset_bottom = -0.140015
-texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
-
-[node name="negrosOriental" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.277
-anchor_top = 0.727
-anchor_right = 0.331
-anchor_bottom = 0.824
-offset_left = -0.346008
-offset_top = -0.141022
-offset_right = -0.0380249
-offset_bottom = 0.00796509
-texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
-
-[node name="negrosOccidental" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.281
-anchor_top = 0.509
-anchor_right = 0.334
-anchor_bottom = 0.607
-offset_left = -1.13802
-offset_top = 0.153
-offset_right = -0.132019
-offset_bottom = -0.18103
-texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
-
-[node name="siquijor" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.408
-anchor_top = 0.82
-anchor_right = 0.463
-anchor_bottom = 0.917
-offset_left = 0.215973
-offset_top = -0.0600281
-offset_right = -0.174011
-offset_bottom = 0.0889587
-texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
-
-[node name="northernSamar" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.678
-anchor_right = 0.732
-anchor_bottom = 0.097
-offset_left = -0.244019
-offset_right = 0.0639648
-offset_bottom = 0.148998
-texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
-
-[node name="samar" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.708
-anchor_top = 0.128
-anchor_right = 0.762
-anchor_bottom = 0.226
-offset_left = -0.18399
-offset_top = 0.175999
-offset_right = 0.123962
-offset_bottom = -0.158005
-texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
-
-[node name="easternSamar" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.788
-anchor_top = 0.224
-anchor_right = 0.842
-anchor_bottom = 0.321
-offset_left = -0.0240479
-offset_top = -0.192001
-offset_right = 0.283936
-offset_bottom = -0.0429993
-texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
-
-[node name="biliran" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.602
-anchor_top = 0.211
-anchor_right = 0.656
-anchor_bottom = 0.308
-offset_left = -0.196045
-offset_top = 0.086998
-offset_right = 0.112
-offset_bottom = 0.235992
-texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
-
-[node name="leyte" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.665
-anchor_top = 0.337
-anchor_right = 0.719
-anchor_bottom = 0.435
-offset_left = -0.170013
-offset_top = 0.228989
-offset_right = 0.13797
-offset_bottom = -0.105011
-texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
-
-[node name="southernLeyte" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.729
-anchor_top = 0.505
-anchor_right = 0.784
-anchor_bottom = 0.602
-offset_left = 0.15799
-offset_top = 0.0850067
-offset_right = -0.232056
-offset_bottom = 0.233978
+offset_right = -0.0839844
+offset_bottom = -0.098999
 texture_normal = ExtResource("18_2wtt7")
 texture_pressed = ExtResource("19_m2dyo")
 
@@ -2162,7 +2009,158 @@ offset_bottom = -0.0160065
 texture_normal = ExtResource("20_b3tbn")
 texture_pressed = ExtResource("21_a4jmo")
 
-[node name="biringan" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+[node name="NIR" type="Control" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="negrosOriental" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/NIR"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.277
+anchor_top = 0.727
+anchor_right = 0.331
+anchor_bottom = 0.824
+offset_left = -0.346008
+offset_top = -0.141022
+offset_right = -0.0379944
+offset_bottom = 0.00796509
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="negrosOccidental" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/NIR"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.281
+anchor_top = 0.509
+anchor_right = 0.334
+anchor_bottom = 0.607
+offset_left = -1.13802
+offset_top = 0.153
+offset_right = -0.132019
+offset_bottom = -0.181
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="siquijor" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/NIR"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.408
+anchor_top = 0.82
+anchor_right = 0.463
+anchor_bottom = 0.917
+offset_left = 0.216003
+offset_top = -0.0600281
+offset_right = -0.173981
+offset_bottom = 0.0889587
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="Eastern Visayas" type="Control" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="northernSamar" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Eastern Visayas"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.678
+anchor_right = 0.732
+anchor_bottom = 0.097
+offset_left = -0.243988
+offset_right = 0.0639954
+offset_bottom = 0.148998
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="samar" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Eastern Visayas"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.708
+anchor_top = 0.128
+anchor_right = 0.762
+anchor_bottom = 0.226
+offset_left = -0.18399
+offset_top = 0.175999
+offset_right = 0.123962
+offset_bottom = -0.157997
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="easternSamar" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Eastern Visayas"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.788
+anchor_top = 0.224
+anchor_right = 0.842
+anchor_bottom = 0.321
+offset_left = -0.0240479
+offset_top = -0.192001
+offset_right = 0.283936
+offset_bottom = -0.0429993
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="biliran" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Eastern Visayas"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.602
+anchor_top = 0.211
+anchor_right = 0.656
+anchor_bottom = 0.308
+offset_left = -0.196045
+offset_top = 0.0870056
+offset_right = 0.112
+offset_bottom = 0.236008
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="leyte" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Eastern Visayas"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.665
+anchor_top = 0.337
+anchor_right = 0.719
+anchor_bottom = 0.435
+offset_left = -0.170013
+offset_top = 0.228989
+offset_right = 0.138
+offset_bottom = -0.104996
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="southernLeyte" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Eastern Visayas"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.729
+anchor_top = 0.505
+anchor_right = 0.784
+anchor_bottom = 0.602
+offset_left = 0.15802
+offset_top = 0.0850067
+offset_right = -0.231995
+offset_bottom = 0.234009
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="biringan" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Eastern Visayas"]
 visible = false
 layout_mode = 0
 offset_left = 419.0
@@ -2171,6 +2169,45 @@ offset_right = 931.0
 offset_bottom = 504.0
 scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("26_dhuj4")
+
+[node name="Central Visayas" type="Control" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="bohol" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Central Visayas"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.537
+anchor_top = 0.64
+anchor_right = 0.592
+anchor_bottom = 0.737
+offset_left = 0.174011
+offset_top = -0.120026
+offset_right = -0.216003
+offset_bottom = 0.0289917
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
+
+[node name="cebu" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Central Visayas"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.463
+anchor_top = 0.482
+anchor_right = 0.517
+anchor_bottom = 0.58
+offset_left = -0.174011
+offset_top = 0.194
+offset_right = 0.133972
+offset_bottom = -0.139984
+texture_normal = ExtResource("18_2wtt7")
+texture_pressed = ExtResource("19_m2dyo")
 
 [node name="ResourcePanel" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -3261,3 +3298,16 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 32.0
 anchor_bottom = 18.0
+
+[node name="conquered" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 32.05
+anchor_bottom = 18.0
+offset_right = -0.00012207
+
+[node name="harvestFromEnemy" parent="conquered" instance=ExtResource("48_sv6fs")]
+layout_mode = 1
