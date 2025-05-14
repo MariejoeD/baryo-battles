@@ -1,0 +1,391 @@
+[gd_scene load_steps=18 format=3 uid="uid://cbopsrppipav"]
+
+[ext_resource type="Texture2D" uid="uid://c6u8180hydsfk" path="res://assets/trainTroops/arnisador.png" id="1_p04kr"]
+[ext_resource type="Texture2D" uid="uid://p5svy4v2t8kb" path="res://assets/trainTroops/skill/stick.png" id="2_328w4"]
+[ext_resource type="Texture2D" uid="uid://b0x3obf2dadg1" path="res://assets/trainTroops/lakanWarrior.png" id="3_ivqcn"]
+[ext_resource type="Texture2D" uid="uid://c2b73m57ohl40" path="res://assets/trainTroops/skill/sword.png" id="4_ca3qt"]
+[ext_resource type="Texture2D" uid="uid://827rqaxdoicq" path="res://assets/trainTroops/manggagamot.png" id="5_s315l"]
+[ext_resource type="Texture2D" uid="uid://tmuyiyj1213k" path="res://assets/trainTroops/skill/healing.png" id="6_q2fwk"]
+[ext_resource type="Texture2D" uid="uid://hiwyvocbl406" path="res://assets/trainTroops/tirador.png" id="7_mg5j1"]
+[ext_resource type="Texture2D" uid="uid://dr65xsg74vtl3" path="res://assets/trainTroops/skill/slingshot.png" id="8_ef0nf"]
+[ext_resource type="Texture2D" uid="uid://y550aldjrxn" path="res://assets/trainTroops/marites.png" id="9_mrj2d"]
+[ext_resource type="Texture2D" uid="uid://cmntma10p51rv" path="res://assets/trainTroops/skill/sacrifice.png" id="10_g67hr"]
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="11_68ab8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2k6n"]
+bg_color = Color(0.919668, 0.878001, 0.698229, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.920885, 0.723552, 0.515144, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.505882, 0.435294, 0.2, 0.854902)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ue3nq"]
+bg_color = Color(0.489384, 0.664894, 0.279811, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npwop"]
+bg_color = Color(0.490196, 0.666667, 0.278431, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pourj"]
+bg_color = Color(0.812499, 0.0518025, 0.119025, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4bvwm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qk0ef"]
+bg_color = Color(0.947107, 0.421823, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="harvestFromEnemy" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="mainPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 348.0
+offset_top = 98.0
+offset_right = -245.0
+offset_bottom = -284.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w2k6n")
+
+[node name="troopsPanel" type="Panel" parent="mainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.026
+anchor_top = 0.506
+anchor_right = 0.728
+anchor_bottom = 0.935
+offset_left = 0.138
+offset_top = -0.0280151
+offset_right = -0.136017
+offset_bottom = -0.0300293
+theme_override_styles/panel = SubResource("StyleBoxFlat_ue3nq")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="mainPanel/troopsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.999
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 327.199
+offset_bottom = 103.224
+scale = Vector2(0.5, 0.5)
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="mainPanel/troopsPanel/ScrollContainer"]
+layout_mode = 2
+
+[node name="arnisador" type="TextureButton" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_p04kr")
+
+[node name="skill" type="TextureRect" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer/arnisador"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("2_328w4")
+expand_mode = 1
+
+[node name="lakanWarrior" type="TextureButton" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_ivqcn")
+
+[node name="skill" type="TextureRect" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakanWarrior"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("4_ca3qt")
+expand_mode = 1
+
+[node name="manggagamot" type="TextureButton" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_s315l")
+
+[node name="skill" type="TextureRect" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer/manggagamot"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("6_q2fwk")
+expand_mode = 1
+
+[node name="tirador" type="TextureButton" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_mg5j1")
+
+[node name="skill" type="TextureRect" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer/tirador"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("8_ef0nf")
+expand_mode = 1
+
+[node name="marites" type="TextureButton" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_mrj2d")
+
+[node name="skill" type="TextureRect" parent="mainPanel/troopsPanel/ScrollContainer/HBoxContainer/marites"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.023
+anchor_right = 0.275
+anchor_bottom = 0.163
+offset_left = -0.00806141
+offset_top = 0.0889997
+offset_right = -0.0500603
+offset_bottom = 0.109001
+texture = ExtResource("10_g67hr")
+expand_mode = 1
+
+[node name="pickedTroops" type="Panel" parent="mainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.014
+anchor_right = 0.992
+anchor_bottom = 0.343
+offset_left = -0.200001
+offset_top = -0.0360003
+offset_right = 0.199951
+offset_bottom = 0.118011
+theme_override_styles/panel = SubResource("StyleBoxFlat_npwop")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="mainPanel/pickedTroops"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.009
+anchor_top = 0.042
+anchor_right = 0.988
+anchor_bottom = 0.931
+offset_left = -0.0810604
+offset_top = 0.0619979
+offset_right = 0.108093
+offset_bottom = 0.0409546
+
+[node name="HBoxContainer" type="HBoxContainer" parent="mainPanel/pickedTroops/ScrollContainer"]
+layout_mode = 2
+
+[node name="deployButton" type="Button" parent="mainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.801
+anchor_top = 0.382
+anchor_right = 0.977
+anchor_bottom = 0.553
+offset_left = -0.287048
+offset_top = -0.116013
+offset_right = -0.199036
+offset_bottom = 0.0859833
+theme_override_colors/font_color = Color(0.00351917, 0.00351917, 0.00351916, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("11_68ab8")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_pourj")
+text = "Deploy"
+
+[node name="sibilyan" type="Label" parent="mainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.796
+anchor_top = 0.663
+anchor_right = 0.917
+anchor_bottom = 0.757
+offset_left = 0.147949
+offset_top = -0.0940094
+offset_right = 0.0209351
+offset_bottom = 0.133987
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_68ab8")
+theme_override_font_sizes/font_size = 25
+text = "Sibilyan"
+
+[node name="+" type="Button" parent="mainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.771
+anchor_top = 0.716
+anchor_right = 0.814
+anchor_bottom = 0.864
+offset_left = 0.322998
+offset_top = -0.00801086
+offset_right = -0.218018
+offset_bottom = -0.0320129
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_68ab8")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4bvwm")
+text = "+"
+
+[node name="sibilyan2" type="Label" parent="mainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.824
+anchor_top = 0.751
+anchor_right = 0.885
+anchor_bottom = 0.846
+offset_left = -0.0880127
+offset_top = 0.161987
+offset_right = 0.00494385
+offset_bottom = 0.052002
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_68ab8")
+theme_override_font_sizes/font_size = 25
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="-" type="Button" parent="mainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.908
+anchor_top = 0.716
+anchor_right = 0.951
+anchor_bottom = 0.864
+offset_left = 0.203979
+offset_top = -0.00801086
+offset_right = -0.337036
+offset_bottom = -0.0320129
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_68ab8")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4bvwm")
+text = "-"
+
+[node name="infoButton" type="Button" parent="mainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.012
+anchor_top = 0.373
+anchor_right = 0.055
+anchor_bottom = 0.453
+offset_left = -0.244
+offset_top = -0.0740051
+offset_right = 0.214996
+offset_bottom = -0.113998
+theme_override_fonts/font = ExtResource("11_68ab8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_qk0ef")
+text = "i
+"
+
+[node name="infoPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.323
+anchor_top = 0.25
+anchor_right = 0.698
+anchor_bottom = 0.568
+offset_left = 0.559998
+offset_right = -0.440002
+offset_bottom = 0.039978
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w2k6n")
+
+[node name="information" type="Label" parent="infoPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.027
+anchor_top = 0.074
+anchor_right = 0.96
+anchor_bottom = 0.934
+offset_left = 0.0669994
+offset_top = 0.0539989
+offset_right = 0.159973
+offset_bottom = 0.113998
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_68ab8")
+theme_override_font_sizes/font_size = 20
+text = "Assign a troop to defend your newly reclaimed base from enemy counterattacks. Don’t forget to deploy Sibilyan to gather extra resources from the area."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
