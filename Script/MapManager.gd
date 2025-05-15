@@ -82,7 +82,7 @@ func map_report():
 		if randi_range(1, 100) <= 50:
 			var civ = base["civilian"]
 			var base_cp = base["base_cp"]
-			var troops = max(base_cp / 40.0, 1.0)
+			var troops = max(base_cp / 100.0, 1.0)
 
 			# Calculate pressure based on civilian-to-troop ratio
 			var pressure = civ / troops
@@ -97,7 +97,7 @@ func map_report():
 			var chance_of_loss = clamp((multiplier - 1) * 50, 0, 100)
 
 			print("Base %s has a %.2f chance of losing." % [base["name"], chance_of_loss])
-			if base_cp < enemy_cp and increase_value >= base_value:
+			if base_cp < enemy_cp:
 				print("⚔️ Lost: %s" % base["name"])
 				conquered_bases.erase(base)
 				continue

@@ -612,6 +612,7 @@ text = "300
 "
 
 [node name="upgradeButton" type="TextureButton" parent="UI/Sandatahang Lakas/upgrade/upgradePanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.738

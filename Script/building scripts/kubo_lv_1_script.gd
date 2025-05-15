@@ -3,7 +3,14 @@ extends Building
 @onready var level_label = %level
 
 @export var current_sibilyan: int = 0
-@export var max_sibilyans: int = 3
+@export var max_sibilyans: int = 3:
+	set(value):
+		if max_sibilyans == value:
+			return
+		max_sibilyans = value
+		%max.text = "Max: "+str(value)
+	get:
+		return max_sibilyans
 var stored_sibilyans: Array = []
 
 var sibilyan_scene = preload("res://Scene/Characters/sibilyan.tscn")
@@ -171,7 +178,8 @@ func instant_build():
 			tutorial_node.step_2.emit()
 	else:
 		print("Tutorial node is no longer valid, skipping signal emission.")
-	Global.all_kubos.append(self)  # Register this Kubo in Global
+	if self not in Global.all_kubos:
+		Global.all_kubos.append(self)  # Register this Kubo in Global
 	pass
 
 var start_time := 0.0
@@ -208,11 +216,15 @@ func remove_material_override(mesh_instance) -> void:
 		mesh_instance.set_surface_override_material(i, null)
 		
 func _on_upgrade_button_pressed() -> void:
+	if Npc.TH_level <= level:
+		return
+	self.find_child("upgradeButton").disabled = true
+
 	if !DevMode.is_dev_mode_enabled(DevMode.insta_build_dev_mode):
 		super.apply_material_override()
 		await build()
-	if Npc.TH_level <= level:
-		return
 
 	level += 1
+	max_sibilyans +=1
 	level_label.text = "Level: " + str(level)
+	self.find_child("upgradeButton").disabled = false

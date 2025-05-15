@@ -43,8 +43,9 @@ func instant_build():
 			tutorial_node.step_1.emit()
 	else:
 		print("Tutorial node is no longer valid, skipping signal emission.")
-	Global.all_bodega.append(self)
-	Global.all_imbakan.append(self)
+	if self not in Global.all_bodega and self not in Global.all_imbakan:
+		Global.all_bodega.append(self)
+		Global.all_imbakan.append(self)
 	Npc.TH_level = level
 	pass
 
@@ -132,19 +133,27 @@ func remove_material_override(mesh_instance) -> void:
 		mesh_instance.set_surface_override_material(i, null)
 
 func _upgrade():
-	if !DevMode.is_dev_mode_enabled(DevMode.insta_build_dev_mode):
-		super.apply_material_override()
-		await build()
-	#still need condition
+	building_name.find_child("upgradeButton").disabled = true
 	var defeated_count = 0
 	for status in Npc.bosses.values():
-		if status == true:
+		if status:
 			defeated_count += 1
-	if level <= defeated_count and level < 3:
+	print("Level:", level, " Defeated bosses:", defeated_count)
+
+	if level <= defeated_count:
+		print("Upgrading...")
+		if not DevMode.is_dev_mode_enabled(DevMode.insta_build_dev_mode):
+			super.apply_material_override()
+			await build()
 		level += 1
 		change_building_count()
 		SignalManager.TH_upgrade.emit()
-	pass
+	else:
+		print("Cannot upgrade yet")
+
+	building_name.find_child("upgradeButton").disabled = false
+
+
 
 func change_building_count():
 	if level == 1:
@@ -163,12 +172,3 @@ func change_building_count():
 		Buildings.buildings["BalwarteBtn"] += 2
 		Buildings.buildings["KwitisBtn"] += 2
 		
-func _on_upgrade_button_pressed() -> void:
-	if !DevMode.is_dev_mode_enabled(DevMode.insta_build_dev_mode):
-		super.apply_material_override()
-		await build()
-	if Npc.TH_level <= level:
-		return
-
-	level += 1
-	level_label.text = "Level: " + str(level)

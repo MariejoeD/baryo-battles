@@ -1,6 +1,6 @@
 extends Building
 
-var inday_scene = load("res://Scene/Characters/super_inday.tscn")
+var makoy_scene = load("res://Scene/Characters/super_inday.tscn")
 var active_panel
 var start_time := 0.0
 
@@ -59,8 +59,8 @@ func on_placed():
 func instant_build():
 	built = true
 	# 🪖 Spawn the troop when construction is complete
-	if inday_scene:
-		var inday_instance = inday_scene.instantiate()
+	if makoy_scene:
+		var inday_instance = makoy_scene.instantiate()
 		get_tree().current_scene.find_child("Entities").add_child(inday_instance)
 		inday_instance.global_transform.origin = self.global_transform.origin
 		

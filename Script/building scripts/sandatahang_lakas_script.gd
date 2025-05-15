@@ -68,7 +68,6 @@ func _ready() -> void:
 	training_panel = building_name.get_node("trainTroops/mainPanel/trainingPanel/ScrollContainer/HBoxContainer")
 	for troop in building_name.get_node("trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer").get_children():
 		troop.pressed.connect(_on_troop_pressed.bind(troop))
-	find_child("upgradeButton").pressed.connect(upgrade)
 	pass
 
 
@@ -79,7 +78,7 @@ func _ready() -> void:
 func _on_troop_pressed(troop) -> void:
 	# Check available Sibilyans
 	if Global.all_kampo.size() == 0:
-		show_warning_label("No available Sibilyan to sacrifice!")
+		show_warning_label("No Kampo Built")
 		#warning no camp
 		return
 	var total_sibilyans = Global.get_current_civilian_count()
@@ -129,7 +128,7 @@ func _on_troop_pressed(troop) -> void:
 		
 	if sib == null:
 		print("No valid Sibilyan found!")
-		show_warning_label("No available Sibilyan to Train!")
+		show_warning_label("No available Idle Sibilyan to Train!")
 		return
 	Global.food_qty -= food_cost
 	Global.wood_qty -= wood_cost
@@ -348,38 +347,30 @@ func remove_material_override(mesh_instance) -> void:
 		
 		
 func get_available_sibilyan() -> Node:
-	# First check idle Sibilyans stored in Kubos
+	# Only check idle Sibilyans stored in Kubos
 	for kubo in Global.all_kubos:
 		for sib in kubo.stored_sibilyans:
 			if sib.done:
 				kubo.stored_sibilyans.erase(sib)
-				kubo.current_sibilyan -= 1  # Only decrease here!
+				kubo.current_sibilyan -= 1  # Only decrease here
 				get_tree().current_scene.find_child("Entities").add_child(sib)
 				sib.global_transform.origin = kubo.global_transform.origin
 				sib.assigned_kubo = null  # Unlink from old kubo
 				return sib
 
-	# If no idle stored Sibilyan found, check active scene ones
-	var sibilyans = get_tree().get_nodes_in_group("Sibilyan")
-	var nearest_sibilyan = null
-	var min_distance = INF
+	# No idle Sibilyan found in any kubo
+	return null
 
-	for sib in sibilyans:
-		if sib.done and sib not in sacrificeSib:
-			var distance = global_position.distance_to(sib.global_position)
-			if distance < min_distance:
-				min_distance = distance
-				nearest_sibilyan = sib
-
-	return nearest_sibilyan
 
 
 func _on_upgrade_button_pressed() -> void:
+	if Npc.TH_level <= level:
+		return
+	%upgradeButton.disabled = true
 	if !DevMode.is_dev_mode_enabled(DevMode.insta_build_dev_mode):
 		super.apply_material_override()
 		await build()
-	if Npc.TH_level <= level:
-		return
 
 	level += 1
 	level_label.text = "Level: " + str(level)
+	%upgradeButton.disabled = false

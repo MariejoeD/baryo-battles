@@ -310,11 +310,14 @@ func _on_view_brewed_spells_pressed():
 		panel.hide()
 
 func _on_upgrade_button_pressed() -> void:
+	if Npc.TH_level <= level:
+		return
+	self.find_child("upgradeButton").disabled = true
+
 	if !DevMode.is_dev_mode_enabled(DevMode.insta_build_dev_mode):
 		super.apply_material_override()
 		await build()
-	if Npc.TH_level <= level:
-		return
 
 	level += 1
 	level_label.text = "Level: " + str(level)
+	self.find_child("upgradeButton").disabled = false

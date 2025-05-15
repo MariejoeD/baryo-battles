@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://d4nb8cjrspohc"]
+[gd_scene load_steps=66 format=3 uid="uid://d4nb8cjrspohc"]
 
 [ext_resource type="Script" path="res://Script/attack scripts/Attack.gd" id="1_shcpm"]
 [ext_resource type="Script" path="res://Script/game.gd" id="1_soyno"]
@@ -170,6 +170,29 @@ corner_radius_bottom_left = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmljh"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8ut1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 23
+corner_radius_top_right = 23
+corner_radius_bottom_right = 23
+corner_radius_bottom_left = 23
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktoqp"]
+bg_color = Color(0.266701, 0.484858, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa3kr"]
 bg_color = Color(0.610067, 0.486057, 0.314577, 1)
@@ -3235,6 +3258,21 @@ theme_override_font_sizes/font_size = 25
 text = "House of Kapitan Makoy, it is where he rest after the fight."
 autowrap_mode = 3
 
+[node name="civBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.3
+anchor_top = 0.1
+anchor_right = 5.475
+anchor_bottom = 1.45
+offset_right = -1.52588e-05
+theme_override_styles/background = SubResource("StyleBoxFlat_x8ut1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ktoqp")
+max_value = 3.0
+value = 1.0
+show_percentage = false
+
 [node name="availableCivilian" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -3242,6 +3280,7 @@ anchor_left = 1.3
 anchor_top = 0.1
 anchor_right = 4.25
 anchor_bottom = 1.45
+offset_right = 71.2
 
 [node name="civilianIcon" type="TextureRect" parent="availableCivilian"]
 layout_mode = 2

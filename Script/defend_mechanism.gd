@@ -33,8 +33,9 @@ func enemy_attack_check():
 	#print("[NPC] Total NPC Score:", npc_score)
 
 	var total_score = (time_score * 0.4) + (wealth_score * 0.3) + (npc_score * 0.3)
+	total_score = clamp(total_score, 0, 100)
 	#print("[TOTAL SCORE] Combined Score:", total_score)
-
+	total_score *= .1 * (MapManager.unlocked_maps.size()-2)
 	var chance = randf_range(0.0, 100.0)
 	#print("[Chance] Roll:", chance, " vs Threshold:", total_score)
 	

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Baryo Battles"
-config/version="0.0.0.1"
+config/version="0.0.0.2"
 run/main_scene="res://Scene/LoadingScreen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://assets/Design_a_simple_bold_game_icon_for_Baryo_Battles._Use_tribal_or_baybayin-inspired_text._Add_subtl.png"

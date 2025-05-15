@@ -2,6 +2,8 @@ extends Building
 @onready var level_label = %level
 
 var active_panel
+var start_time := 0.0
+var duration := 5
 @onready var building_name = $UI.get_child(0)
 var food_cap: int:
 	get:
@@ -77,11 +79,11 @@ func on_placed():
 func instant_build():
 	built = true
 	food_cap = 3000
-	Global.all_imbakan.append(self)
+	if self not in Global.all_imbakan:
+		Global.all_imbakan.append(self)
 	pass
 
-var start_time := 0.0
-var duration := 5
+
 func get_remaining_time():
 	return max(0.0,duration - (Global.total_game_time - start_time))
 	
@@ -106,11 +108,14 @@ func remove_material_override(mesh_instance) -> void:
 
 
 func _on_upgrade_button_pressed() -> void:
+	if Npc.TH_level <= level:
+		return
+	self.find_child("upgradeButton").disabled = true
+
 	if !DevMode.is_dev_mode_enabled(DevMode.insta_build_dev_mode):
 		super.apply_material_override()
 		await build()
-	if Npc.TH_level <= level:
-		return
 
 	level += 1
 	level_label.text = "Level: " + str(level)
+	self.find_child("upgradeButton").disabled = false

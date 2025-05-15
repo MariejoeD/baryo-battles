@@ -447,7 +447,6 @@ turbulence_initial_displacement_max = 10.4
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ao5r"]
 resource_name = "Material.001"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("12_u84vy")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)

@@ -202,6 +202,7 @@ weight_damage = 0.0
 weight_attack_speed = 0.0
 
 [node name="UI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -228,6 +229,7 @@ texture_normal = ExtResource("4_8bh1d")
 texture_pressed = ExtResource("5_1mm78")
 
 [node name="InformationPanel" type="Panel" parent="UI/super_inday_base/viewInformation"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -4.887
