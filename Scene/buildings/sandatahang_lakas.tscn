@@ -821,11 +821,11 @@ theme_override_fonts/font = ExtResource("5_brcq3")
 theme_override_font_sizes/font_size = 15
 text = "6"
 
-[node name="lakanWarrior" type="TextureButton" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
+[node name="lakan_warrior" type="TextureButton" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("16_o5djn")
 
-[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakanWarrior"]
+[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakan_warrior"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.044
@@ -839,7 +839,7 @@ offset_bottom = 0.109001
 texture = ExtResource("17_gtk3v")
 expand_mode = 1
 
-[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakanWarrior"]
+[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakan_warrior"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033
@@ -852,7 +852,7 @@ offset_right = -4.0
 offset_bottom = 0.0789795
 theme_override_styles/panel = SubResource("StyleBoxFlat_gge17")
 
-[node name="costIcon" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakanWarrior/cost"]
+[node name="costIcon" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakan_warrior/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.017
@@ -865,7 +865,7 @@ offset_right = -0.048069
 texture = ExtResource("13_pp0i1")
 expand_mode = 1
 
-[node name="cost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakanWarrior/cost"]
+[node name="cost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakan_warrior/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.163
@@ -882,7 +882,7 @@ theme_override_fonts/font = ExtResource("5_brcq3")
 theme_override_font_sizes/font_size = 20
 text = "10"
 
-[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakanWarrior/cost"]
+[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakan_warrior/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.052
@@ -894,7 +894,7 @@ offset_right = 0.0279369
 texture = ExtResource("16_xrre7")
 expand_mode = 1
 
-[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakanWarrior/cost"]
+[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakan_warrior/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.32
@@ -906,7 +906,7 @@ offset_right = 0.083992
 texture = ExtResource("9_hjv27")
 expand_mode = 1
 
-[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakanWarrior/cost"]
+[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakan_warrior/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.174
@@ -923,7 +923,7 @@ theme_override_fonts/font = ExtResource("5_brcq3")
 theme_override_font_sizes/font_size = 15
 text = "100"
 
-[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakanWarrior/cost"]
+[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakan_warrior/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.483
@@ -940,7 +940,7 @@ theme_override_fonts/font = ExtResource("5_brcq3")
 theme_override_font_sizes/font_size = 15
 text = "15"
 
-[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakanWarrior/cost"]
+[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakan_warrior/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.61
@@ -952,7 +952,7 @@ offset_right = -0.0120621
 texture = ExtResource("8_hi4ty")
 expand_mode = 1
 
-[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakanWarrior/cost"]
+[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer/lakan_warrior/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.738
@@ -1540,7 +1540,8 @@ offset_right = -0.00796509
 offset_bottom = -0.0259991
 theme_override_styles/panel = SubResource("StyleBoxFlat_h1yuc")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel"]
+[node name="upgradeTroopsContainer" type="HBoxContainer" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.051
@@ -1552,11 +1553,11 @@ offset_top = -0.163895
 offset_right = -0.436646
 offset_bottom = 0.182983
 
-[node name="arnisador" type="TextureButton" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer"]
+[node name="arnisador" type="TextureButton" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer"]
 layout_mode = 2
 texture_normal = ExtResource("13_ednf3")
 
-[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador"]
+[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/arnisador"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.044
@@ -1570,7 +1571,7 @@ offset_bottom = 0.109001
 texture = ExtResource("14_fkyxk")
 expand_mode = 1
 
-[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador"]
+[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/arnisador"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033
@@ -1583,7 +1584,7 @@ offset_right = -4.0
 offset_bottom = 0.0649719
 theme_override_styles/panel = SubResource("StyleBoxFlat_gge17")
 
-[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador/cost"]
+[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/arnisador/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.041
@@ -1597,7 +1598,7 @@ offset_bottom = 0.00496292
 texture = ExtResource("16_xrre7")
 expand_mode = 1
 
-[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador/cost"]
+[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/arnisador/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.337
@@ -1611,7 +1612,7 @@ offset_bottom = -0.00800323
 texture = ExtResource("9_hjv27")
 expand_mode = 1
 
-[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador/cost"]
+[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/arnisador/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.157
@@ -1632,7 +1633,7 @@ text = "150"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador/cost"]
+[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/arnisador/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.488
@@ -1653,7 +1654,7 @@ text = "120"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador/cost"]
+[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/arnisador/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.657
@@ -1667,7 +1668,7 @@ offset_bottom = 0.0239983
 texture = ExtResource("8_hi4ty")
 expand_mode = 1
 
-[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador/cost"]
+[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/arnisador/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.779
@@ -1688,7 +1689,7 @@ text = "600"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/arnisador"]
+[node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/arnisador"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033
@@ -1707,11 +1708,11 @@ text = "Level: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="lakanWarrior" type="TextureButton" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer"]
+[node name="lakan_warrior" type="TextureButton" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer"]
 layout_mode = 2
 texture_normal = ExtResource("16_o5djn")
 
-[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior"]
+[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/lakan_warrior"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.044
@@ -1725,7 +1726,7 @@ offset_bottom = 0.109001
 texture = ExtResource("17_gtk3v")
 expand_mode = 1
 
-[node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior"]
+[node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/lakan_warrior"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033
@@ -1744,7 +1745,7 @@ text = "Level: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior"]
+[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/lakan_warrior"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033
@@ -1757,7 +1758,7 @@ offset_right = -4.0
 offset_bottom = 0.0649719
 theme_override_styles/panel = SubResource("StyleBoxFlat_gge17")
 
-[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior/cost"]
+[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/lakan_warrior/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.041
@@ -1771,7 +1772,7 @@ offset_bottom = 0.00496292
 texture = ExtResource("16_xrre7")
 expand_mode = 1
 
-[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior/cost"]
+[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/lakan_warrior/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.337
@@ -1785,7 +1786,7 @@ offset_bottom = -0.00800323
 texture = ExtResource("9_hjv27")
 expand_mode = 1
 
-[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior/cost"]
+[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/lakan_warrior/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.157
@@ -1806,7 +1807,7 @@ text = "150"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior/cost"]
+[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/lakan_warrior/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.488
@@ -1827,7 +1828,7 @@ text = "120"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior/cost"]
+[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/lakan_warrior/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.657
@@ -1841,7 +1842,7 @@ offset_bottom = 0.0239983
 texture = ExtResource("8_hi4ty")
 expand_mode = 1
 
-[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/lakanWarrior/cost"]
+[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/lakan_warrior/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.779
@@ -1862,11 +1863,11 @@ text = "600"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="manggagamot" type="TextureButton" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer"]
+[node name="manggagamot" type="TextureButton" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer"]
 layout_mode = 2
 texture_normal = ExtResource("20_u8frn")
 
-[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot"]
+[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/manggagamot"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.044
@@ -1880,7 +1881,7 @@ offset_bottom = 0.109001
 texture = ExtResource("21_4o3fw")
 expand_mode = 1
 
-[node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot"]
+[node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/manggagamot"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033
@@ -1899,7 +1900,7 @@ text = "Level: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot"]
+[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/manggagamot"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033
@@ -1912,7 +1913,7 @@ offset_right = -4.0
 offset_bottom = 0.0649719
 theme_override_styles/panel = SubResource("StyleBoxFlat_gge17")
 
-[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot/cost"]
+[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/manggagamot/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.041
@@ -1926,7 +1927,7 @@ offset_bottom = 0.00496292
 texture = ExtResource("16_xrre7")
 expand_mode = 1
 
-[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot/cost"]
+[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/manggagamot/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.337
@@ -1940,7 +1941,7 @@ offset_bottom = -0.00800323
 texture = ExtResource("9_hjv27")
 expand_mode = 1
 
-[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot/cost"]
+[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/manggagamot/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.157
@@ -1961,7 +1962,7 @@ text = "150"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot/cost"]
+[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/manggagamot/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.488
@@ -1982,7 +1983,7 @@ text = "120"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot/cost"]
+[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/manggagamot/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.657
@@ -1996,7 +1997,7 @@ offset_bottom = 0.0239983
 texture = ExtResource("8_hi4ty")
 expand_mode = 1
 
-[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/manggagamot/cost"]
+[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/manggagamot/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.779
@@ -2017,11 +2018,11 @@ text = "600"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="tirador" type="TextureButton" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer"]
+[node name="tirador" type="TextureButton" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer"]
 layout_mode = 2
 texture_normal = ExtResource("18_4d4r2")
 
-[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador"]
+[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/tirador"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.044
@@ -2035,7 +2036,7 @@ offset_bottom = 0.109001
 texture = ExtResource("19_vhbd5")
 expand_mode = 1
 
-[node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador"]
+[node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/tirador"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033
@@ -2054,7 +2055,7 @@ text = "Level: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador"]
+[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/tirador"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033
@@ -2067,7 +2068,7 @@ offset_right = -4.0
 offset_bottom = 0.0649719
 theme_override_styles/panel = SubResource("StyleBoxFlat_gge17")
 
-[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador/cost"]
+[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/tirador/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.041
@@ -2081,7 +2082,7 @@ offset_bottom = 0.00496292
 texture = ExtResource("16_xrre7")
 expand_mode = 1
 
-[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador/cost"]
+[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/tirador/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.337
@@ -2095,7 +2096,7 @@ offset_bottom = -0.00800323
 texture = ExtResource("9_hjv27")
 expand_mode = 1
 
-[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador/cost"]
+[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/tirador/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.157
@@ -2116,7 +2117,7 @@ text = "150"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador/cost"]
+[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/tirador/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.488
@@ -2137,7 +2138,7 @@ text = "120"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador/cost"]
+[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/tirador/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.657
@@ -2151,7 +2152,7 @@ offset_bottom = 0.0239983
 texture = ExtResource("8_hi4ty")
 expand_mode = 1
 
-[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/tirador/cost"]
+[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/tirador/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.779
@@ -2172,11 +2173,11 @@ text = "600"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="marites" type="TextureButton" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer"]
+[node name="marites" type="TextureButton" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer"]
 layout_mode = 2
 texture_normal = ExtResource("22_34bsx")
 
-[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites"]
+[node name="skill" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/marites"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.044
@@ -2190,7 +2191,7 @@ offset_bottom = 0.109001
 texture = ExtResource("23_udgva")
 expand_mode = 1
 
-[node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites"]
+[node name="level" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/marites"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033
@@ -2209,7 +2210,7 @@ text = "Level: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites"]
+[node name="cost" type="Panel" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/marites"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033
@@ -2222,7 +2223,7 @@ offset_right = -4.0
 offset_bottom = 0.0649719
 theme_override_styles/panel = SubResource("StyleBoxFlat_gge17")
 
-[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites/cost"]
+[node name="food" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/marites/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.041
@@ -2236,7 +2237,7 @@ offset_bottom = 0.00496292
 texture = ExtResource("16_xrre7")
 expand_mode = 1
 
-[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites/cost"]
+[node name="wood" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/marites/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.337
@@ -2250,7 +2251,7 @@ offset_bottom = -0.00800323
 texture = ExtResource("9_hjv27")
 expand_mode = 1
 
-[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites/cost"]
+[node name="foodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/marites/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.157
@@ -2271,7 +2272,7 @@ text = "150"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites/cost"]
+[node name="woodCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/marites/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.488
@@ -2292,7 +2293,7 @@ text = "120"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites/cost"]
+[node name="stone" type="TextureRect" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/marites/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.657
@@ -2306,7 +2307,7 @@ offset_bottom = 0.0239983
 texture = ExtResource("8_hi4ty")
 expand_mode = 1
 
-[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/HBoxContainer/marites/cost"]
+[node name="stoneCost" type="Label" parent="UI/Sandatahang Lakas/upgradeTroops/mainPanel/upgradeTroopsContainer/marites/cost"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.779

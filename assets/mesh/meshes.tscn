@@ -17,7 +17,6 @@
 [node name="Meshes" type="Node3D"]
 
 [node name="Malacadabra" parent="." instance=ExtResource("1_bx10a")]
-visible = false
 
 [node name="Kampo-lv1" parent="." instance=ExtResource("2_0wgx8")]
 visible = false
@@ -50,5 +49,7 @@ visible = false
 visible = false
 
 [node name="Super-Inday-Base" parent="." instance=ExtResource("12_fgvgh")]
+visible = false
 
 [node name="Kapitan-Makoy-Base" parent="." instance=ExtResource("13_ugjou")]
+visible = false

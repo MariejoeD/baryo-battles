@@ -4,11 +4,18 @@ var TH_level = 0
 
 @onready var Troops_unlocked: Dictionary = {
 	"arnisador" : [load("res://Scene/Characters/arnisador.tscn"), 1],
-	"lakanWarrior" : [load("res://Scene/Characters/lakan_warrior.tscn"), 2],
-	"mangagamot" : [load("res://Scene/Characters/manggagamot.tscn"), 2],
+	"lakan_warrior" : [load("res://Scene/Characters/lakan_warrior.tscn"), 2],
+	"manggagamot" : [load("res://Scene/Characters/manggagamot.tscn"), 2],
 	"tirador" : [load("res://Scene/Characters/tirador.tscn"), 3],
 	"marites" : [load("res://Scene/Characters/marites.tscn"), 3]
 	
+}
+var troops_level = {
+	"arnisador" : 1,
+	"lakan_warrior" : 1,
+	"manggagamot" : 1,
+	"tirador" : 1,
+	"marites" : 1,
 }
 @onready var enemies: Dictionary = {
 	"duwende" : [load("res://Scene/Characters/duwende.tscn"), 1],
@@ -19,7 +26,7 @@ var TH_level = 0
 }
 
 @onready var bosses:= {
-	"tiniente_gimo": false,
+	"tiniente_gimo": true,
 	"amomongo": false,
 	"agta": false,
 	"mangkukulam": false,

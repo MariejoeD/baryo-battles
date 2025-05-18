@@ -198,6 +198,7 @@ func spawn_troop(target_position: Vector3):
 	print("Position Spawned: ",temp_instance.position)
 	temp_instance.position.y = 1.25
 	temp_instance.find_child("Stats").apply_spawn_scaling()
+	temp_instance.find_child("Stats").level = Npc.troops_level[selected_troop]
 	add_child(temp_instance)
 
 func get_selected_troop() -> String:

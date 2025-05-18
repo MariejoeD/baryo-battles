@@ -327,7 +327,7 @@ func load_kampo_troops() -> void:
 
 				if Npc.Troops_unlocked.has(troop_name):
 					var scene = Npc.Troops_unlocked[troop_name][0]
-					var training_time = 1.0  # You can customize this per unit if needed
+					var training_time = 10.0  # You can customize this per unit if needed
 					for i in count:
 						kampo.troops.append({
 							"name": troop_name,
@@ -346,7 +346,8 @@ func save_battle_data() -> void:
 	var battle_data = {
 		"conquered_bases": MapManager.conquered_bases,
 		"unlocked_maps": MapManager.unlocked_maps,
-		"boss_defeated": Npc.bosses
+		"boss_defeated": Npc.bosses,
+		"troops_level": Npc.troops_level
 	}
 	saved_game.battle_data = battle_data
 
@@ -356,3 +357,4 @@ func load_battle_data() -> void:
 		MapManager.conquered_bases = battle_data.get("conquered_bases", [])
 		MapManager.unlocked_maps = battle_data.get("unlocked_maps", ["Aklan"])
 		Npc.bosses = battle_data["boss_defeated"]
+		Npc.troops_level = battle_data["troops_level"]

@@ -9,11 +9,11 @@ var sacrificeSib: Array = []
 @onready var building_name = $UI.get_child(0)
 var training_panel
 var troopsDict = {
-	"arnisador": {"trainingTime": 10, "scene": "res://Scene/Characters/arnisador.tscn", "required_level": 1},
-	"lakanWarrior": {"trainingTime": 10, "scene": "res://Scene/Characters/lakan_warrior.tscn", "required_level": 2},
-	"tirador": {"trainingTime": 10, "scene": "res://Scene/Characters/tirador.tscn", "required_level": 3},
-	"manggagamot": {"trainingTime": 10, "scene": "res://Scene/Characters/manggagamot.tscn", "required_level": 2},
-	"marites": {"trainingTime": 10, "scene": "res://Scene/Characters/marites.tscn", "required_level": 3},
+	"arnisador": {"trainingTime": 10, "scene": "res://Scene/Characters/arnisador.tscn", "required_level": 1, "level":Npc.troops_level["arnisador"]},
+	"lakan_warrior": {"trainingTime": 10, "scene": "res://Scene/Characters/lakan_warrior.tscn", "required_level": 2, "level":Npc.troops_level["lakan_warrior"]},
+	"tirador": {"trainingTime": 10, "scene": "res://Scene/Characters/tirador.tscn", "required_level": 3, "level":Npc.troops_level["tirador"]},
+	"manggagamot": {"trainingTime": 10, "scene": "res://Scene/Characters/manggagamot.tscn", "required_level": 2, "level":Npc.troops_level["manggagamot"]},
+	"marites": {"trainingTime": 10, "scene": "res://Scene/Characters/marites.tscn", "required_level": 3, "level":Npc.troops_level["marites"]},
 }
 var tutorial_count = 0
 
@@ -68,11 +68,21 @@ func _ready() -> void:
 	training_panel = building_name.get_node("trainTroops/mainPanel/trainingPanel/ScrollContainer/HBoxContainer")
 	for troop in building_name.get_node("trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer").get_children():
 		troop.pressed.connect(_on_troop_pressed.bind(troop))
+	for troop in %upgradeTroopsContainer.get_children():
+		troop.pressed.connect(troop_upgrade.bind(troop))
+		troop.mouse_entered.connect(mouse_enter.bind(troop))
+		troop.mouse_exited.connect(mouse_exit.bind(troop))
+		
+	pass
+
+func mouse_enter(btn):
+	btn.self_modulate = Color(0.8, 0.8, 0.8, 1)
 	pass
 
 
-
-
+func mouse_exit(btn):
+	btn.self_modulate = Color(1, 1, 1, 1)
+	pass
 
 
 func _on_troop_pressed(troop) -> void:
@@ -227,6 +237,7 @@ func _on_training_timer_timeout():
 func send_to_kampo(troop):
 	var troop_scene = load(troop["scene"])
 	var troop_inst = troop_scene.instantiate()
+	troop_inst.find_child("Stats").level = Npc.troops_level[troop["name"]]
 	
 	troop_inst.find_child("Targeting Component").targeting_enabled = false
 	get_tree().current_scene.find_child("Entities").add_child(troop_inst)
@@ -284,12 +295,31 @@ func _on_upgrade_pressed() -> void:
 	_toggle_panel("upgrade/upgradePanel")
 func _on_upgrade_troops_pressed() -> void:
 	_toggle_panel("upgradeTroops/mainPanel")
-func upgrade():
-	if Npc.TH_level == level:
-		#upgrade limit reach
+	for i in %upgradeTroopsContainer.get_children():
+		var troop_name = i.name
+		if troopsDict.has(troop_name):
+			var required_level = troopsDict[troop_name].get("required_level", 1)
+			i.visible = level >= required_level+1
+func troop_upgrade(btn):
+	if level <= Npc.troops_level[btn.name]:
+		show_warning_label("Level Up Sandatahang Lakas First")
 		return
-	level += 1
-
+	if int(btn.find_child("foodCost").text) > Global.food_qty:
+		show_warning_label("food not enough")
+		return
+	if int(btn.find_child("woodCost").text) > Global.wood_qty:
+		show_warning_label("wood not enough")
+		return
+	if int(btn.find_child("stoneCost").text) > Global.stone_qty:
+		show_warning_label("stone not enough")
+		return
+	Global.food_qty -= int(btn.find_child("foodCost").text)
+	Global.wood_qty -= int(btn.find_child("woodCost").text)
+	Global.stone_qty -= int(btn.find_child("stoneCost").text)
+	Npc.troops_level[btn.name] += 1
+	troopsDict[btn.name]["level"] = Npc.troops_level[btn.name]
+	btn.find_child("level").text = "Level: "+ str(Npc.troops_level[btn.name])
+	pass
 func _on_train_troops_pressed() -> void:
 	_toggle_panel("trainTroops/mainPanel")
 	var troop_buttons = building_name.get_node("trainTroops/mainPanel/troopsPanel/ScrollContainer/HBoxContainer").get_children()
