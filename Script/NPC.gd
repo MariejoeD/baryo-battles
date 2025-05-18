@@ -26,7 +26,7 @@ var troops_level = {
 }
 
 @onready var bosses:= {
-	"tiniente_gimo": true,
+	"tiniente_gimo": false,
 	"amomongo": false,
 	"agta": false,
 	"mangkukulam": false,
