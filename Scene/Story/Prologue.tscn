@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bw2nmlnaqmgji"]
 
 [ext_resource type="Script" path="res://Scene/Story/prologue.gd" id="1_3mgyw"]
-[ext_resource type="VideoStream" path="res://assets/prologue/baryo-battles-intro.ogv" id="1_ck6sb"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="2_36abd"]
+[ext_resource type="VideoStream" path="res://assets/prologue/updated.ogv" id="3_vpgu5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kv7sc"]
 font_size = 24
@@ -44,6 +44,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("1_ck6sb")
+stream = ExtResource("3_vpgu5")
 autoplay = true
 expand = true
