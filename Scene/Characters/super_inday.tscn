@@ -539,6 +539,7 @@ expand_margin_bottom = 3.0
 bg_color = Color(0.182355, 0.702936, 0, 1)
 
 [node name="Super Inday" type="CharacterBody3D" groups=["Good"]]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 collision_layer = 2
 collision_mask = 0
 
@@ -1108,6 +1109,7 @@ attack_speed = 1.5
 movement_speed = 10.0
 has_ability = true
 ability_name = "AOE"
+space_cost = 0
 spawn_scale = Vector3(7, 7, 7)
 
 [node name="Sprite3D2" type="Sprite3D" parent="Stats"]

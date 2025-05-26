@@ -3,17 +3,40 @@ extends Building
 var inday_scene = load("res://Scene/Characters/super_inday.tscn")
 var active_panel
 var start_time := 0.0
+var inday_instance
+var duration = 10
+var troops: Array = []
 
 @onready var building_name = $UI.get_child(0)
-
+func get_save_data() -> Dictionary:
+	var data = super.get_save_data()
+	
+	return data
 func _ready() -> void:
+		%feedButton.pressed.connect(feed_revive)
+		self.get_child(0).input_event.connect(_on_area_3d_input_event)
 		building_name.get_node("viewInformation").pressed.connect(_on_view_information_pressed)
-
+func feed_revive():
+	if int(%viewInformation.find_child("foodAmount").text) > Global.food_qty:
+		show_warning_label("Not Enough Food")
+		return
+	instant_scene()
+	%ProgressBar.max_value = inday_instance.find_child("Stats").get_scaled_hp() 
+	%ProgressBar.value = inday_instance.find_child("Stats").current_hp
+	Global.food_qty -= int(%viewInformation.find_child("foodAmount").text)
 func _on_view_information_pressed() -> void:
 	if active_panel:
 		active_panel.hide()
 	active_panel = building_name.get_node_or_null("viewInformation/InformationPanel")
 	active_panel.show()
+	if is_instance_valid(inday_instance):
+		%feedButton.text = "FEED"
+		%ProgressBar.max_value = inday_instance.find_child("Stats").get_scaled_hp() 
+		%ProgressBar.value = inday_instance.find_child("Stats").current_hp
+	else:
+		%feedButton.text = "REVIVE"
+		%ProgressBar.max_value = 1
+		%ProgressBar.value = 0
 	
 	pass # Replace with function body.
 
@@ -55,25 +78,35 @@ func build():
 func on_placed():
 	super.on_placed()
 	add_to_group("Buildings")
-	Buildings.buildings["KapitanMakoyBtn"] -= 1
+	Buildings.buildings["SuperIndayBtn"] -= 1
 func instant_build():
 	built = true
+	if self not in Global.all_kampo:
+		Global.all_kampo.append(self)
 	# 🪖 Spawn the troop when construction is complete
 	if inday_scene:
-		var inday_instance = inday_scene.instantiate()
-		get_tree().current_scene.find_child("Entities").add_child(inday_instance)
-		inday_instance.global_transform.origin = self.global_transform.origin
-		
-		# Duplicate the shape to avoid modifying shared resource
-		var collision_shape = inday_instance.get_node("Detection/CollisionShape3D")
-		var shape = collision_shape.shape.duplicate()
-		collision_shape.shape = shape
+		instant_scene()
+func instant_scene():
+	inday_instance = inday_scene.instantiate()
+	find_parent("HomeBase").find_child("Entities").add_child(inday_instance)
+	print(inday_instance.get_parent())
+	inday_instance.global_transform.origin = self.global_transform.origin
+	inday_instance.global_transform.origin.z +=3
+	# Duplicate the shape to avoid modifying shared resource
+	var collision_shape = inday_instance.get_node("Detection/CollisionShape3D")
+	var shape = collision_shape.shape.duplicate()
+	collision_shape.shape = shape
+	if not Global.kampo_troops.has(self.name):
+		Global.kampo_troops[self.name] = {}
 
-		# Only resize if not resized already
-		if not collision_shape.has_meta("resized"):
-			collision_shape.shape.radius *= 0.2
-			collision_shape.set_meta("resized", true)
-		pass
+	if not Global.kampo_troops[self.name].has("super_inday"):
+		Global.kampo_troops[self.name]["super_inday"] = 1
+	# Only resize if not resized already
+	if not collision_shape.has_meta("resized"):
+		collision_shape.shape.radius *= 0.2
+		collision_shape.set_meta("resized", true)
+	troops.append({"name": "super_inday", "duration": 10, "scene": "res://Scene/Characters/super_inday.tscn"})
+	
 func perform_work(worker, duration:= -1):
 	if duration < 0.0:
 		duration = self.duration

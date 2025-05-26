@@ -126,7 +126,7 @@ func estimate_max_cp() -> int:
 	var remaining_space = 0
 	Global.all_kampo = Global.all_kampo.filter(func(k): return is_instance_valid(k))
 	for kampo in Global.all_kampo:
-		if is_instance_valid(kampo):
+		if is_instance_valid(kampo) and kampo.has("spaces"):
 			remaining_space += kampo.spaces
 	
 	unlocked_defenders.sort_custom(func(a, b): return (b.cp / b.space) - (a.cp / a.space))
