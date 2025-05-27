@@ -190,6 +190,7 @@ func load_building():
 
 		if packed_scene and packed_scene is PackedScene:
 			var building = packed_scene.instantiate()
+			gridmap.add_child(building)
 			if building.has_method("load_from_data"):
 				building.load_from_data(data)
 			else:
@@ -197,7 +198,6 @@ func load_building():
 				building.global_transform.origin = data.get("position", Vector3.ZERO)
 				building.scale = data.get("scale", Vector3.ONE)
 				building.level = data.get("level", 1)
-			gridmap.add_child(building)
 			building.on_placed()
 		else:
 			print("Failed to load:", scene_path)
@@ -318,8 +318,8 @@ func load_kampo_troops() -> void:
 
 	for kampo in Global.all_kampo:
 		var kampo_id = kampo.name
+		kampo.troops.clear()
 		if Global.kampo_troops.has(kampo_id):
-			kampo.troops.clear()
 
 			var troop_data = Global.kampo_troops[kampo_id]
 			for troop_name in troop_data.keys():

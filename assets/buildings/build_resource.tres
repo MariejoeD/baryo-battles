@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="building_resource" load_steps=13 format=3 uid="uid://q1x85i1by7qk"]
+[gd_resource type="Resource" script_class="building_resource" load_steps=15 format=3 uid="uid://q1x85i1by7qk"]
 
 [ext_resource type="PackedScene" uid="uid://djl0d3hbyn7eo" path="res://Scene/buildings/malacadabra.tscn" id="1_3s8ou"]
 [ext_resource type="PackedScene" uid="uid://ngmrdl4glq3" path="res://Scene/buildings/kampo_lv_1.tscn" id="2_4u7fd"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://bie2y84c6n0or" path="res://Scene/buildings/kubo_lv_1.tscn" id="9_yw3n2"]
 [ext_resource type="PackedScene" uid="uid://du2vgiukxku71" path="res://Scene/buildings/tanim.tscn" id="10_ukjgv"]
 [ext_resource type="PackedScene" uid="uid://dpo47nv4ah4wp" path="res://Scene/buildings/imbakan_lv_1_empty.tscn" id="11_xt2r7"]
+[ext_resource type="PackedScene" uid="uid://bl1edxudn77qo" path="res://Scene/buildings/super_inday_base.tscn" id="12_pney1"]
+[ext_resource type="PackedScene" uid="uid://cn7iqqyud5p6q" path="res://Scene/buildings/kapitan_makoy_base.tscn" id="13_1a5wb"]
 
 [resource]
 script = ExtResource("2_rk4r2")
@@ -21,10 +23,12 @@ buildings = {
 "EstakadaBtn": ExtResource("6_hklkq"),
 "ImbakanBtn": ExtResource("11_xt2r7"),
 "KampoBtn": ExtResource("2_4u7fd"),
+"KapitanMakoyBtn": ExtResource("13_1a5wb"),
 "KawaBtn": ExtResource("5_3hbo5"),
 "KuboBtn": ExtResource("9_yw3n2"),
 "KwitisBtn": ExtResource("8_ghtco"),
 "MalacadabraBtn": ExtResource("1_3s8ou"),
 "SandatahangLakasBtn": ExtResource("4_3skgg"),
+"SuperIndayBtn": ExtResource("12_pney1"),
 "TanimBtn": ExtResource("10_ukjgv")
 }

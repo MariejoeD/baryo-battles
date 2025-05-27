@@ -7,7 +7,10 @@ var TH_level = 0
 	"lakan_warrior" : [load("res://Scene/Characters/lakan_warrior.tscn"), 2],
 	"manggagamot" : [load("res://Scene/Characters/manggagamot.tscn"), 2],
 	"tirador" : [load("res://Scene/Characters/tirador.tscn"), 3],
-	"marites" : [load("res://Scene/Characters/marites.tscn"), 3]
+	"marites" : [load("res://Scene/Characters/marites.tscn"), 3],
+	"super_inday": [load("res://Scene/Characters/super_inday.tscn"),4],
+	"kapitan_makoy": [load("res://Scene/Characters/kapitan_makoy.tscn"),4],
+	
 	
 }
 var troops_level = {
@@ -16,6 +19,8 @@ var troops_level = {
 	"manggagamot" : 1,
 	"tirador" : 1,
 	"marites" : 1,
+	"super_inday" : 1,
+	"kapitan_makoy" : 1
 }
 @onready var enemies: Dictionary = {
 	"duwende" : [load("res://Scene/Characters/duwende.tscn"), 1],
