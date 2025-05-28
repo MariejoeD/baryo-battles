@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://bm25vbrs667u" path="res://assets/buildings/unlocked/11.png" id="14_hj4q3"]
 [ext_resource type="Texture2D" uid="uid://do70ksveq3ml4" path="res://assets/map/VisayasMap.png" id="17_gi6q2"]
 [ext_resource type="Texture2D" uid="uid://b55dwwbj5ipbl" path="res://assets/button/pin.png" id="18_2wtt7"]
-[ext_resource type="Texture2D" uid="uid://b5sxdcvqsn2qg" path="res://assets/button/pinClicked.png" id="19_m2dyo"]
 [ext_resource type="Texture2D" uid="uid://cn66uvxh4adkn" path="res://assets/game/foodIcon.png" id="20_5oy3o"]
 [ext_resource type="Texture2D" uid="uid://c7q8wjmnr0a4h" path="res://assets/button/basePin.png" id="20_b3tbn"]
 [ext_resource type="Texture2D" uid="uid://ckpcgttrqqoy1" path="res://assets/button/basePinClicked.png" id="21_a4jmo"]
@@ -29,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://geybn7mwn5ue" path="res://assets/buildings/unlocked/15.png" id="22_lh6v6"]
 [ext_resource type="Texture2D" uid="uid://bv185ay660rft" path="res://assets/game/woodIcon.png" id="22_u0e8w"]
 [ext_resource type="Texture2D" uid="uid://spocye4ssw8t" path="res://assets/game/settingsIcon.png" id="23_iau8l"]
+[ext_resource type="Texture2D" uid="uid://dxo5322qj4jei" path="res://assets/button/pinHover.png" id="25_k73b3"]
 [ext_resource type="Texture2D" uid="uid://q4edvcse31ym" path="res://assets/button/biringan.png" id="26_dhuj4"]
 [ext_resource type="Texture2D" uid="uid://dj546n2w0r57a" path="res://assets/BuildingsRawPics/1.png" id="26_dx0v3"]
 [ext_resource type="Texture2D" uid="uid://dl2s57s3jegow" path="res://assets/BuildingsRawPics/2.png" id="27_5jsei"]
@@ -1971,7 +1971,7 @@ offset_top = 0.0529938
 offset_right = 0.0579987
 offset_bottom = 0.201996
 texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+texture_pressed = ExtResource("25_k73b3")
 
 [node name="Ilo-Ilo" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Western Visayas"]
 visible = false
@@ -1986,7 +1986,7 @@ offset_top = 0.052002
 offset_right = -0.124008
 offset_bottom = 0.200989
 texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+texture_pressed = ExtResource("25_k73b3")
 
 [node name="antique" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Western Visayas"]
 visible = false
@@ -2001,7 +2001,7 @@ offset_top = -0.0840149
 offset_right = 0.299995
 offset_bottom = 0.0650177
 texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+texture_pressed = ExtResource("25_k73b3")
 
 [node name="guimaras" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Western Visayas"]
 visible = false
@@ -2016,7 +2016,7 @@ offset_top = 0.235001
 offset_right = -0.0839844
 offset_bottom = -0.098999
 texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+texture_pressed = ExtResource("25_k73b3")
 
 [node name="Capiz" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
@@ -2054,7 +2054,7 @@ offset_top = -0.141022
 offset_right = -0.0379944
 offset_bottom = 0.00796509
 texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+texture_pressed = ExtResource("25_k73b3")
 
 [node name="negrosOccidental" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/NIR"]
 visible = false
@@ -2069,7 +2069,7 @@ offset_top = 0.153
 offset_right = -0.132019
 offset_bottom = -0.181
 texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+texture_pressed = ExtResource("25_k73b3")
 
 [node name="siquijor" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/NIR"]
 visible = false
@@ -2084,7 +2084,7 @@ offset_top = -0.0600281
 offset_right = -0.173981
 offset_bottom = 0.0889587
 texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+texture_pressed = ExtResource("25_k73b3")
 
 [node name="Eastern Visayas" type="Control" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
@@ -2106,7 +2106,7 @@ offset_left = -0.243988
 offset_right = 0.0639954
 offset_bottom = 0.148998
 texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+texture_pressed = ExtResource("25_k73b3")
 
 [node name="samar" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Eastern Visayas"]
 visible = false
@@ -2121,7 +2121,7 @@ offset_top = 0.175999
 offset_right = 0.123962
 offset_bottom = -0.157997
 texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+texture_pressed = ExtResource("25_k73b3")
 
 [node name="easternSamar" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Eastern Visayas"]
 visible = false
@@ -2136,7 +2136,7 @@ offset_top = -0.192001
 offset_right = 0.283936
 offset_bottom = -0.0429993
 texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+texture_pressed = ExtResource("25_k73b3")
 
 [node name="biliran" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Eastern Visayas"]
 visible = false
@@ -2151,7 +2151,7 @@ offset_top = 0.0870056
 offset_right = 0.112
 offset_bottom = 0.236008
 texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+texture_pressed = ExtResource("25_k73b3")
 
 [node name="leyte" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Eastern Visayas"]
 visible = false
@@ -2166,7 +2166,7 @@ offset_top = 0.228989
 offset_right = 0.138
 offset_bottom = -0.104996
 texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+texture_pressed = ExtResource("25_k73b3")
 
 [node name="southernLeyte" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Eastern Visayas"]
 visible = false
@@ -2181,7 +2181,7 @@ offset_top = 0.0850067
 offset_right = -0.231995
 offset_bottom = 0.234009
 texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+texture_pressed = ExtResource("25_k73b3")
 
 [node name="biringan" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Eastern Visayas"]
 visible = false
@@ -2215,7 +2215,7 @@ offset_top = -0.120026
 offset_right = -0.216003
 offset_bottom = 0.0289917
 texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+texture_pressed = ExtResource("25_k73b3")
 
 [node name="cebu" type="TextureButton" parent="AttackPanel/ScrollContainer/VBoxContainer/TextureRect/Central Visayas"]
 visible = false
@@ -2230,7 +2230,7 @@ offset_top = 0.194
 offset_right = 0.133972
 offset_bottom = -0.139984
 texture_normal = ExtResource("18_2wtt7")
-texture_pressed = ExtResource("19_m2dyo")
+texture_pressed = ExtResource("25_k73b3")
 
 [node name="ResourcePanel" type="HBoxContainer" parent="."]
 layout_mode = 1

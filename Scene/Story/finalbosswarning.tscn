@@ -1,0 +1,172 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckudh6m08jb5d"]
+
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_lxym1"]
+
+[node name="Finalbosswarning" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164
+anchor_top = 0.165
+anchor_right = 0.841
+anchor_bottom = 0.761
+offset_left = 0.0799866
+offset_top = 0.199997
+offset_right = 0.52002
+offset_bottom = 0.0799561
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("1_lxym1")
+theme_override_font_sizes/font_size = 30
+text = "You have defeated the four mighty bosses..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="2" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164
+anchor_top = 0.165
+anchor_right = 0.841
+anchor_bottom = 0.761
+offset_left = 0.0799866
+offset_top = 0.199997
+offset_right = 0.52002
+offset_bottom = 0.0799561
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("1_lxym1")
+theme_override_font_sizes/font_size = 30
+text = "But a new presence stirs in the shadows."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="3" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164
+anchor_top = 0.165
+anchor_right = 0.841
+anchor_bottom = 0.761
+offset_left = 0.0799866
+offset_top = 0.199997
+offset_right = 0.52002
+offset_bottom = 0.0799561
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("1_lxym1")
+theme_override_font_sizes/font_size = 30
+text = "A mysterious figure appears... It is Biringan."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="4" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164
+anchor_top = 0.165
+anchor_right = 0.841
+anchor_bottom = 0.761
+offset_left = 0.0799866
+offset_top = 0.199997
+offset_right = 0.52002
+offset_bottom = 0.0799561
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("1_lxym1")
+theme_override_font_sizes/font_size = 30
+text = "But Biringan was only a disguise."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="5" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164
+anchor_top = 0.165
+anchor_right = 0.841
+anchor_bottom = 0.761
+offset_left = 0.0799866
+offset_top = 0.199997
+offset_right = 0.52002
+offset_bottom = 0.0799561
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("1_lxym1")
+theme_override_font_sizes/font_size = 30
+text = "Behold the true final enemy... LIZARDO!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="6" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164
+anchor_top = 0.165
+anchor_right = 0.841
+anchor_bottom = 0.761
+offset_left = 0.0799866
+offset_top = 0.199997
+offset_right = 0.52002
+offset_bottom = 0.0799561
+theme_override_colors/font_color = Color(0.915042, 0.06037, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.446777, 0.446777, 0.446777, 1)
+theme_override_colors/font_outline_color = Color(0.000693898, 0.000693898, 0.000693898, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("1_lxym1")
+theme_override_font_sizes/font_size = 50
+text = "Prepare yourself for the ultimate battle."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
