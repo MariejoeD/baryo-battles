@@ -1,12 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://s2361p0ki7br"]
+[gd_scene load_steps=3 format=3 uid="uid://s2361p0ki7br"]
 
-[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_57isd"]
+[ext_resource type="Script" path="res://Scene/Story/epilogue.gd" id="1_msjid"]
 [ext_resource type="VideoStream" path="res://assets/epilogue/epilogueogv.ogv" id="2_sjlub"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_quisj"]
-font_size = 24
-outline_size = 6
-outline_color = Color(0, 0, 0, 1)
 
 [node name="Epilogue" type="Control"]
 layout_mode = 3
@@ -15,25 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Label" type="Label" parent="."]
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.849
-anchor_top = 0.947
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.279907
-offset_top = 0.159973
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("1_57isd")
-theme_override_font_sizes/font_size = 50
-text = "Press Enter To Skip"
-label_settings = SubResource("LabelSettings_quisj")
-horizontal_alignment = 1
-vertical_alignment = 1
+script = ExtResource("1_msjid")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 layout_mode = 1

@@ -2,6 +2,7 @@ extends Node
 
 var saved_game:SavedGame 
 var final_warning_shown := false
+var finish_game := false
 # Called when the autoload is initialized (before any scenes)
 func _ready():
 	SignalManager.save.connect(save_game)
@@ -21,8 +22,16 @@ func scene_change():
 		if Npc.bosses.values().count(true) == 4 and not final_warning_shown:
 			#print("Warning Scene")
 			final_warning_shown = true
+			save_game()
+			load_save_data()
 			var warning = preload("res://Scene/Story/finalbosswarning.tscn").instantiate()
 			current.add_child(warning)
+		if MapManager.conquered_bases.size() == 16 and not finish_game:
+			finish_game = true
+			save_game()
+			load_save_data()
+			get_tree().change_scene_to_file("res://Scene/Story/epilogue.tscn")
+			
 func load_save_data():
 	var path = Global.save_path
 	if ResourceLoader.exists(path):
@@ -40,6 +49,7 @@ func load_save_data():
 			load_kampo_troops()
 			load_battle_data()
 			final_warning_shown = saved_game.final_warning_shown
+			finish_game = saved_game.finish_game
 		else:
 			print("Failed to load save data.")
 	else:
@@ -63,6 +73,8 @@ func save_game():
 	save_kampo_troops()
 	save_battle_data()
 	saved_game.final_warning_shown = final_warning_shown
+	saved_game.finish_game = finish_game
+	
 	# Save the game state
 	ResourceSaver.save(saved_game, Global.save_path)
 	return

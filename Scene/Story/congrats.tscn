@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwaw8g03mhjny"]
+[gd_scene load_steps=16 format=3 uid="uid://bwaw8g03mhjny"]
 
 [ext_resource type="Texture2D" uid="uid://djg672i86ta8" path="res://assets/game/bgMainMenu.png" id="1_uf6hm"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_xk061"]
+[ext_resource type="Script" path="res://Script/congrats.gd" id="1_xr40n"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vn0gw"]
 texture = ExtResource("1_uf6hm")
@@ -95,6 +96,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xr40n")
 
 [node name="bg" type="Panel" parent="."]
 layout_mode = 1
