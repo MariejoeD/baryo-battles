@@ -28,7 +28,8 @@ var tutorial_scene = preload("res://Scene/tutorial.tscn")  # Adjust the path if 
 	"SuperIndayBtn":preload("res://assets/buildings/locked/14.png"),
 	"KapitanMakoyBtn":preload("res://assets/buildings/locked/16.png")
 }
-
+var conquered_pin = preload("res://assets/button/pinClicked.png")
+var pin = preload("res://assets/button/pin.png")
 @onready var unlocked_textures = {
 	"MalacadabraBtn": preload("res://assets/buildings/unlocked/1.png"),
 	"KampoBtn": preload("res://assets/buildings/unlocked/2.png"),
@@ -93,6 +94,13 @@ func _on_attack_button_pressed():
 		#print(map_name)
 		if map_name != "Aklan":  # Avoid re-showing the starting map if unnecessary
 			map_unlock(map_name)
+	for region in $AttackPanel/ScrollContainer/VBoxContainer/TextureRect.get_children():
+		if region is Control:
+			for button in region.get_children():
+				button.texture_normal = pin
+				if MapManager.conquered_bases.any(func(base): return base["name"].to_upper() == button.name.to_upper()):
+					button.texture_normal = conquered_pin
+					
 	attack_panel.visible = !attack_panel.visible
 	build_button.visible = !build_button.visible
 

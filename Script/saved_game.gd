@@ -8,3 +8,4 @@ class_name SavedGame
 @export var sibilyans: Array = []
 @export var troops: Dictionary = {}
 @export var battle_data: Dictionary = {}
+@export var final_warning_shown := false

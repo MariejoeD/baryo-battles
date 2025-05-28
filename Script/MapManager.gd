@@ -2,7 +2,8 @@ extends Node
 
 # Holds data about conquered bases
 var conquered_bases := []
-
+var base_invaded := []
+var resources_received := {}
 # Player’s total resources
 var resources
 
@@ -77,7 +78,7 @@ func _on_resource_tick():
 
 func map_report():
 	print("---Report---")
-	for base in conquered_bases:
+	for base in conquered_bases.duplicate():
 		# Battle roll (skip base if lost)
 		if randi_range(1, 100) <= 50:
 			var civ = base["civilian"]
@@ -91,7 +92,7 @@ func map_report():
 			var multiplier = clamp(0.8 + ((pressure - 1.5) / 2.5) * 0.6, 0.8, 1.5)
 
 			# Calculate enemy's CP
-			var enemy_cp = base_cp * multiplier
+			var enemy_cp = max(base_cp, 1.0) * multiplier
 
 			# Calculate the chance of losing
 			var chance_of_loss = clamp((multiplier - 1) * 50, 0, 100)
@@ -99,6 +100,7 @@ func map_report():
 			print("Base %s has a %.2f chance of losing." % [base["name"], chance_of_loss])
 			if base_cp < enemy_cp:
 				print("⚔️ Lost: %s" % base["name"])
+				base_invaded.append(base["name"])
 				conquered_bases.erase(base)
 				continue
 
@@ -127,6 +129,7 @@ func map_report():
 		if to_add > 0:
 			print("✅ [Collected] %s: +%d (Before: %d)" % [res_type, to_add, current])
 			current += to_add
+			resources_received[res_type] = resources_received.get(res_type, 0) + to_add
 			base["stored_resources"] -= to_add
 		else:
 			print("❌ [Cap Reached] %s: %d / %d | Stored: %d" % [res_type, current, cap, stored])

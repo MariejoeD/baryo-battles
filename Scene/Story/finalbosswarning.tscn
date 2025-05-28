@@ -36,6 +36,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Timer" type="Timer" parent="1"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
 [node name="2" type="Label" parent="."]
 visible = false
 layout_mode = 1
@@ -62,6 +67,10 @@ text = "But a new presence stirs in the shadows."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="2"]
+wait_time = 3.0
+one_shot = true
 
 [node name="3" type="Label" parent="."]
 visible = false
@@ -90,6 +99,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Timer" type="Timer" parent="3"]
+wait_time = 3.0
+one_shot = true
+
 [node name="4" type="Label" parent="."]
 visible = false
 layout_mode = 1
@@ -116,6 +129,10 @@ text = "But Biringan was only a disguise."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="4"]
+wait_time = 3.0
+one_shot = true
 
 [node name="5" type="Label" parent="."]
 visible = false
@@ -144,6 +161,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Timer" type="Timer" parent="5"]
+wait_time = 3.0
+one_shot = true
+
 [node name="6" type="Label" parent="."]
 visible = false
 layout_mode = 1
@@ -170,3 +191,24 @@ text = "Prepare yourself for the ultimate battle."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="6"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="1/Timer" to="1" method="hide"]
+[connection signal="timeout" from="1/Timer" to="2" method="show"]
+[connection signal="timeout" from="1/Timer" to="2/Timer" method="start"]
+[connection signal="timeout" from="2/Timer" to="2" method="hide"]
+[connection signal="timeout" from="2/Timer" to="3" method="show"]
+[connection signal="timeout" from="2/Timer" to="3/Timer" method="start"]
+[connection signal="timeout" from="3/Timer" to="3" method="hide"]
+[connection signal="timeout" from="3/Timer" to="4" method="show"]
+[connection signal="timeout" from="3/Timer" to="4/Timer" method="start"]
+[connection signal="timeout" from="4/Timer" to="4" method="hide"]
+[connection signal="timeout" from="4/Timer" to="5" method="show"]
+[connection signal="timeout" from="4/Timer" to="5/Timer" method="start"]
+[connection signal="timeout" from="5/Timer" to="5" method="hide"]
+[connection signal="timeout" from="5/Timer" to="6" method="show"]
+[connection signal="timeout" from="5/Timer" to="6/Timer" method="start"]
+[connection signal="timeout" from="6/Timer" to="." method="queue_free"]

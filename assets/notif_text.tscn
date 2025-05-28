@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddr7v0t5c4aaw"]
+
+[ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="1_gbj4l"]
+
+[node name="notifText" type="Label"]
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gbj4l")
+theme_override_font_sizes/font_size = 20
+text = "Negros Occidental  has been taken over"
+horizontal_alignment = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="queue_free"]
