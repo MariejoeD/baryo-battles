@@ -302,7 +302,7 @@ func find_node_by_name(target_name: String) -> Node:
 	return get_tree().current_scene.find_child(target_name, true, false)
 
 func save_kampo_troops() -> void:
-	Global.kampo_troops.clear()
+	#Global.kampo_troops.clear()
 	Global.all_kampo = Global.all_kampo.filter(func(k): return is_instance_valid(k))
 
 	for kampo in Global.all_kampo:
