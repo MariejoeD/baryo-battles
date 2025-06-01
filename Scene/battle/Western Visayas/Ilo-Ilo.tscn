@@ -86,31 +86,31 @@ offset_bottom = 1420.0
 [node name="trees" type="Node" parent="."]
 
 [node name="tree1" parent="trees" instance=ExtResource("12_fgc1h")]
-transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, -92.6859, 1.01588, -85.2509)
+transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, -92.6859, 1.01588, -51.2535)
 
 [node name="Narra tree FBX" parent="trees" instance=ExtResource("13_tl7a8")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -62.5782, 1, -83.4409)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -29.2649, 1, -28.0402)
 
 [node name="tree2" parent="trees" instance=ExtResource("12_fgc1h")]
-transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, -30.1427, 1.01588, -85.2509)
+transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, -62.0052, 1.01588, -85.2509)
 
 [node name="Narra tree FBX2" parent="trees" instance=ExtResource("13_tl7a8")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.0350647, 1, -83.4409)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.0350647, 1, 31.6145)
 
 [node name="tree3" parent="trees" instance=ExtResource("12_fgc1h")]
-transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, 41.6083, 1.01588, -85.2509)
+transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, -10.8015, 1.01588, -35.81)
 
 [node name="Narra tree FBX3" parent="trees" instance=ExtResource("13_tl7a8")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 71.716, 1, -83.4409)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 21.4465, 1, -83.4409)
 
 [node name="tree4" parent="trees" instance=ExtResource("12_fgc1h")]
-transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, 91.216, 1.01588, -46.908)
+transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, 59.5715, 1.01588, 26.2571)
 
 [node name="Narra tree FBX4" parent="trees" instance=ExtResource("13_tl7a8")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 88.1548, 1, -3.6921)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 88.1548, 1, -42.3831)
 
 [node name="tree5" parent="trees" instance=ExtResource("12_fgc1h")]
-transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, 91.216, 1.01588, 35.6117)
+transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, 145.717, 1.01588, -11.9855)
 
 [node name="Narra tree FBX5" parent="trees" instance=ExtResource("13_tl7a8")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 88.1548, 1, 78.8276)
@@ -119,10 +119,10 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 88.1548, 1, 78.8276)
 transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, 31.9016, 1.01588, 94.4334)
 
 [node name="Narra tree FBX6" parent="trees" instance=ExtResource("13_tl7a8")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -22.3008, 1, 99.1257)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -72.7512, 1, 58.0338)
 
 [node name="Narra tree FBX7" parent="trees" instance=ExtResource("13_tl7a8")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -96.4473, 1, -23.3259)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -72.3074, 1, -3.18313)
 
 [node name="tree7" parent="trees" instance=ExtResource("12_fgc1h")]
 transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, -96.7701, 1.01588, 19.897)

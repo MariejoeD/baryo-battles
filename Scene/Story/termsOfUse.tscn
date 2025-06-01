@@ -18,21 +18,6 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gafad"]
-bg_color = Color(0.921569, 0.878431, 0.698039, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.632011, 0.569625, 0.310078, 1)
-border_blend = true
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_color = Color(0.584817, 0.52559, 0.27879, 1)
-shadow_size = 3
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kmef"]
 bg_color = Color(0.962303, 0.94097, 0.849294, 1)
 border_width_left = 3
@@ -94,7 +79,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_togxm"]
-bg_color = Color(0.80958, 0.743302, 0.469512, 1)
+bg_color = Color(0.825845, 0.177995, 0.263396, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -104,6 +89,21 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gafad"]
+bg_color = Color(0.921569, 0.878431, 0.698039, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.632011, 0.569625, 0.310078, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.584817, 0.52559, 0.27879, 1)
+shadow_size = 3
 
 [node name="TermsOfUse" type="Control"]
 layout_mode = 3
@@ -123,6 +123,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_tmyvq")
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.111
@@ -135,17 +136,31 @@ offset_right = -0.00012207
 offset_bottom = -0.320007
 theme_override_styles/panel = SubResource("StyleBoxFlat_88dqi")
 
-[node name="terms&Privacy" type="Label" parent="."]
+[node name="CheckBox" type="CheckBox" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.123
-anchor_top = 0.317
-anchor_right = 0.907
-anchor_bottom = 0.786
-offset_left = -0.440002
-offset_top = -0.240005
-offset_right = 0.039917
-offset_bottom = 0.0800171
+anchor_left = 0.019
+anchor_top = 0.888
+anchor_right = 0.299
+anchor_bottom = 0.96
+offset_left = 0.202017
+offset_top = 0.0159607
+offset_right = 0.442017
+offset_bottom = 0.175934
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "I agree with the terms and privacy"
+
+[node name="terms&Privacy" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.018
+anchor_top = 0.224
+anchor_right = 0.982
+anchor_bottom = 0.876
+offset_left = 0.244017
+offset_top = -0.0320053
+offset_right = -0.243958
+offset_bottom = 0.231964
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -168,35 +183,17 @@ Thank you for playing and supporting Filipino-made games!"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="age" type="Label" parent="."]
+[node name="enterAge" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.294
-anchor_top = 0.196
-anchor_right = 0.551
-anchor_bottom = 0.282
-offset_left = -0.320007
-offset_top = -0.12001
-offset_right = -0.280029
-offset_bottom = -0.0400085
-theme_override_constants/line_spacing = 3
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 3
-theme_override_constants/outline_size = 3
-theme_override_constants/shadow_outline_size = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_gafad")
-
-[node name="enterAge" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.135
-anchor_top = 0.211
-anchor_right = 0.263
-anchor_bottom = 0.265
-offset_left = 0.199997
-offset_top = 0.0799866
-offset_right = 0.359985
-offset_bottom = 0.199982
+anchor_left = 0.03
+anchor_top = 0.069
+anchor_right = 0.158
+anchor_bottom = 0.124
+offset_left = -0.259983
+offset_top = 0.257996
+offset_right = -0.0999756
+offset_bottom = -0.140015
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -211,31 +208,17 @@ text = "Enter your age:"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="CheckBox" type="CheckBox" parent="."]
+[node name="Button" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.123
-anchor_top = 0.786
-anchor_right = 0.352
-anchor_bottom = 0.858
-offset_left = 0.559998
-offset_top = 0.0800171
-offset_right = -0.560028
-offset_bottom = 0.23999
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "I agree with the terms and privacy"
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.753
-anchor_top = 0.769
-anchor_right = 0.879
-anchor_bottom = 0.849
-offset_left = 0.159973
-offset_top = 0.319946
-offset_right = -0.120117
-offset_bottom = -0.280029
+anchor_left = 0.789
+anchor_top = 0.846
+anchor_right = 0.954
+anchor_bottom = 0.956
+offset_left = -0.137939
+offset_top = -0.228058
+offset_right = -0.0679321
+offset_bottom = -0.208069
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.796243, 0.796243, 0.796243, 1)
 theme_override_constants/outline_size = 5
@@ -251,3 +234,93 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_4rvdj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6qkuj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_togxm")
 text = "Proceed"
+
+[node name="age" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.225
+anchor_top = 0.048
+anchor_right = 0.512
+anchor_bottom = 0.172
+offset_left = -0.449966
+offset_top = 0.136
+offset_right = -0.503967
+offset_bottom = -0.0960007
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_otj8t")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_gafad")
+
+[node name="under13" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.185
+anchor_top = 0.178
+anchor_right = 0.821
+anchor_bottom = 0.794
+offset_left = 0.199997
+offset_top = -0.160004
+offset_right = 0.119995
+offset_bottom = 0.320007
+theme_override_styles/panel = SubResource("StyleBoxFlat_88dqi")
+
+[node name="warning" type="Label" parent="under13"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.088
+anchor_top = 0.16
+anchor_right = 0.898
+anchor_bottom = 0.8
+offset_left = 0.367996
+offset_top = -0.0400009
+offset_right = 0.348022
+offset_bottom = -0.200012
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_otj8t")
+theme_override_font_sizes/font_size = 30
+text = "Baryo Battles contains themes and creatures from Filipino folklore that may be scary or disturbing.
+
+This game is not allowed for players under 13 years old.
+
+If you are under 13, you cannot play this game. "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="exitButton" type="Button" parent="under13"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.789
+anchor_top = 0.846
+anchor_right = 0.972
+anchor_bottom = 0.955
+offset_left = -0.246033
+offset_top = -0.623993
+offset_right = -0.208069
+offset_bottom = -0.0200195
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.796243, 0.796243, 0.796243, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 5
+theme_override_constants/icon_max_width = 5
+theme_override_constants/align_to_largest_stylebox = 5
+theme_override_fonts/font = ExtResource("2_otj8t")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_4kmef")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2cdmf")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_t5ebh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4rvdj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6qkuj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_togxm")
+text = "Exit Game"
