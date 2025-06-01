@@ -19,7 +19,16 @@ func _on_play_button_pressed():
 	if ResourceLoader.exists(path):
 		SceneManager.go_to_scene("res://Scene/HomeBase.tscn")
 	else:
-		get_tree().change_scene_to_file("res://Scene/Story/Prologue.tscn")
+		if ResourceLoader.exists("user://agreement.tres"):
+			var aggrement = load("user://agreement.tres") as Agreement
+			if aggrement and not aggrement.agreement:
+				get_tree().change_scene_to_file("res://Scene/Story/termsOfUse.tscn")
+			if aggrement and aggrement.agreement:
+				get_tree().change_scene_to_file("res://Scene/Story/Prologue.tscn")
+		else:
+			var agreement = Agreement.new()
+			ResourceSaver.save(agreement, "user://agreement.tres")
+			_on_play_button_pressed()
 	
 
 # Function to open options

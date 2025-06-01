@@ -46,7 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://dpolk05qyjbd1" path="res://assets/game/clock.png" id="40_maiyq"]
 [ext_resource type="Texture2D" uid="uid://c7kqd2n554cnt" path="res://assets/BuildingsRawPics/superIndayBase.jpg" id="41_wj07t"]
 [ext_resource type="Texture2D" uid="uid://86nma88jnhgi" path="res://assets/BuildingsRawPics/kapitanMakoyBase.jpg" id="42_hagam"]
-[ext_resource type="PackedScene" uid="uid://qcxj1rw1fmpl" path="res://Scene/tutorial.tscn" id="43_okd6o"]
+[ext_resource type="PackedScene" path="res://Scene/tutorial.tscn" id="43_okd6o"]
 [ext_resource type="PackedScene" uid="uid://cbopsrppipav" path="res://Scene/battle/harvest_from_enemy.tscn" id="48_sv6fs"]
 
 [sub_resource type="Theme" id="Theme_1ed3j"]

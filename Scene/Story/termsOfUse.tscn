@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfsryj8bi8lgv"]
+[gd_scene load_steps=13 format=3 uid="uid://cfsryj8bi8lgv"]
 
 [ext_resource type="Texture2D" uid="uid://djg672i86ta8" path="res://assets/game/bgMainMenu.png" id="1_5s0iq"]
+[ext_resource type="Script" path="res://Script/terms_of_use.gd" id="1_6web1"]
 [ext_resource type="FontFile" uid="uid://b7v21r8xenb3" path="res://assets/game/Jaro-Regular.ttf" id="2_otj8t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tmyvq"]
@@ -112,6 +113,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6web1")
 
 [node name="bg" type="Panel" parent="."]
 layout_mode = 1
@@ -123,7 +125,6 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_tmyvq")
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.111
@@ -235,7 +236,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_6qkuj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_togxm")
 text = "Proceed"
 
-[node name="age" type="Label" parent="Panel"]
+[node name="age" type="LineEdit" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.225
@@ -246,16 +247,43 @@ offset_left = -0.449966
 offset_top = 0.136
 offset_right = -0.503967
 offset_bottom = -0.0960007
-theme_override_constants/line_spacing = 3
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 3
-theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("2_otj8t")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_gafad")
 
+[node name="Pan" type="Panel" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.148
+anchor_top = 0.402
+anchor_right = 0.858
+anchor_bottom = 0.595
+offset_left = -0.215988
+offset_top = -0.236008
+offset_right = -0.0359497
+offset_bottom = -0.210022
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_88dqi")
+
+[node name="Label" type="Label" parent="Panel/Pan"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Please Click The Check Box If You Agree with the terms & privacy to proceed"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="under13" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.185
